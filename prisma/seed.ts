@@ -361,16 +361,12 @@ async function main() {
     update: {
       telegramBotId: BigInt(8954703429),
       name: "UI Computing Freshers Study Buddy",
-      description: "Official 24/7 AI Mentor for University of Ibadan Freshers by Disciples Christian Network.",
-      status: "ACTIVE",
       facultyId: computingFac ? computingFac.id : null,
     },
     create: {
       telegramBotId: BigInt(8954703429),
       username: "UIDCNComputingFreshersBot",
       name: "UI Computing Freshers Study Buddy",
-      description: "Official 24/7 AI Mentor for University of Ibadan Freshers by Disciples Christian Network.",
-      status: "ACTIVE",
       facultyId: computingFac ? computingFac.id : null,
     },
   });
