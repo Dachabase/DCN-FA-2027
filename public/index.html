@@ -960,33 +960,27 @@
     async function fetchAllData() {
       try {
         const [facRes, guiRes, resRes, oppRes, faqRes, botRes] = await Promise.all([
-          fetch("/api/faculties").then(r => r.json()),
-          fetch("/api/faculties/all/guides").catch(() => fetch("/api/faculties")),
-          fetch("/api/resources").then(r => r.json()),
-          fetch("/api/opportunities").then(r => r.json()),
-          fetch("/api/faqs").then(r => r.json()),
-          fetch("/api/study-assistant-link").then(r => r.json())
+          fetch("/api/faculties").then(r => r.json()).catch(() => ({ success: false, data: [] })),
+          fetch("/api/faculties/all/guides").then(r => r.json()).catch(() => ({ success: false, data: [] })),
+          fetch("/api/resources").then(r => r.json()).catch(() => ({ success: false, data: [] })),
+          fetch("/api/opportunities").then(r => r.json()).catch(() => ({ success: false, data: [] })),
+          fetch("/api/faqs").then(r => r.json()).catch(() => ({ success: false, data: [] })),
+          fetch("/api/study-assistant-link").then(r => r.json()).catch(() => ({ success: false, data: null }))
         ]);
 
-        if (facRes.success) {
+        if (facRes.success && facRes.data) {
           appData.faculties = facRes.data;
           renderFacultyCatalog();
         }
-        if (resRes.success) appData.resources = resRes.data;
-        if (oppRes.success) appData.opportunities = oppRes.data;
-        if (faqRes.success) appData.faqs = faqRes.data;
-        if (botRes.success) {
+        if (guiRes.success && guiRes.data && guiRes.data.length > 0) {
+          appData.guides = guiRes.data;
+        }
+        if (resRes.success && resRes.data) appData.resources = resRes.data;
+        if (oppRes.success && oppRes.data) appData.opportunities = oppRes.data;
+        if (faqRes.success && faqRes.data) appData.faqs = faqRes.data;
+        if (botRes.success && botRes.data) {
           appData.studyAssistantLink = botRes.data;
           updateBotLinks(botRes.data.botUrl);
-        }
-
-        // Fetch all guides across faculties
-        if (appData.faculties.length > 0) {
-          const guidePromises = appData.faculties.map(f => fetch(`/api/faculties/${f.id}/guides`).then(r => r.json()));
-          const guideResults = await Promise.all(guidePromises);
-          const allGuides = [];
-          guideResults.forEach(r => { if (r.success) allGuides.push(...r.data); });
-          appData.guides = allGuides;
         }
       } catch (err) {
         console.error("Data loading error:", err);
@@ -994,12 +988,15 @@
     }
 
     function updateBotLinks(url) {
-      document.getElementById("home-tg-btn").href = url;
-      document.getElementById("faq-tg-btn").href = url;
+      const homeBtn = document.getElementById("home-tg-btn");
+      const faqBtn = document.getElementById("faq-tg-btn");
+      if (homeBtn) homeBtn.href = url;
+      if (faqBtn) faqBtn.href = url;
     }
 
     // Switch Tabs
-    function switchTab(tabId) {
+    function switchTab(tabId, ev) {
+      if (ev && ev.preventDefault) ev.preventDefault();
       document.querySelectorAll(".tab-section").forEach(s => s.classList.remove("active"));
       document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
       document.querySelectorAll(".mobile-nav-btn").forEach(b => b.classList.remove("active"));
@@ -1022,36 +1019,53 @@
     function renderHome() {
       const featured = appData.guides.slice(0, 3);
       const container = document.getElementById("home-featured-guides");
-      container.innerHTML = featured.map(g => createGuideCardHtml(g)).join("");
+      if (container) {
+        container.innerHTML = featured.map(g => createGuideCardHtml(g)).join("");
+      }
     }
 
     function renderGuides(filteredFacultyId = "ALL") {
       const filterContainer = document.getElementById("faculty-filter-bar");
-      let chipsHtml = `<button class="filter-chip ${filteredFacultyId === 'ALL' ? 'active' : ''}" onclick="renderGuides('ALL')">All Faculties</button>`;
-      appData.faculties.forEach(f => {
-        chipsHtml += `<button class="filter-chip ${filteredFacultyId === f.id ? 'active' : ''}" onclick="renderGuides('${f.id}')">${f.name}</button>`;
-      });
-      filterContainer.innerHTML = chipsHtml;
+      if (filterContainer) {
+        let chipsHtml = `<button class="filter-chip ${filteredFacultyId === 'ALL' ? 'active' : ''}" onclick="renderGuides('ALL')">All Faculties</button>`;
+        if (appData.faculties && appData.faculties.length > 0) {
+          appData.faculties.forEach(f => {
+            chipsHtml += `<button class="filter-chip ${filteredFacultyId === f.id ? 'active' : ''}" onclick="renderGuides('${f.id}')">${escapeHtml(f.name)}</button>`;
+          });
+        }
+        filterContainer.innerHTML = chipsHtml;
+      }
 
-      const items = filteredFacultyId === "ALL" 
-        ? appData.guides 
-        : appData.guides.filter(g => g.facultyId === filteredFacultyId);
+      let items = appData.guides || [];
+      if (filteredFacultyId !== "ALL") {
+        const matched = items.filter(g => g.facultyId === filteredFacultyId || (g.faculty && g.faculty.id === filteredFacultyId));
+        if (matched.length > 0) {
+          items = matched;
+        }
+      }
 
-      document.getElementById("guides-grid").innerHTML = items.map(g => createGuideCardHtml(g)).join("");
+      const container = document.getElementById("guides-grid");
+      if (container) {
+        if (items.length === 0) {
+          container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 2.5rem; color: var(--text-muted);">No guides found.</div>`;
+        } else {
+          container.innerHTML = items.map(g => createGuideCardHtml(g)).join("");
+        }
+      }
     }
 
     function createGuideCardHtml(g) {
       return `
         <div class="card">
           <div class="card-header">
-            <span class="card-badge">${g.category || 'Guide'}</span>
-            <span style="font-size: 0.82rem; color: var(--text-muted);">${g.faculty ? g.faculty.name : 'University Wide'}</span>
+            <span class="card-badge">${escapeHtml(g.category || 'Guide')}</span>
+            <span style="font-size: 0.82rem; color: var(--text-muted);">${escapeHtml(g.faculty ? g.faculty.name : 'University Wide')}</span>
           </div>
           <h3 class="card-title">${escapeHtml(g.title)}</h3>
-          <p class="card-desc">${escapeHtml(g.summary || g.content.substring(0, 120) + '...')}</p>
+          <p class="card-desc">${escapeHtml(g.summary || (g.content ? g.content.substring(0, 120) + '...' : ''))}</p>
           <div class="provenance-bar">
             <div class="provenance-item">📌 <span>Source: ${escapeHtml(g.source)}</span></div>
-            <div class="provenance-item">🛡️ <span>Verified: ${new Date(g.verifiedDate).toLocaleDateString()}</span></div>
+            <div class="provenance-item">🛡️ <span>Verified: ${g.verifiedDate ? new Date(g.verifiedDate).toLocaleDateString() : 'Official'}</span></div>
           </div>
           <div class="card-footer">
             <button class="action-btn" onclick="openGuideModal('${g.id}')">Read Full Guide →</button>
@@ -1063,45 +1077,67 @@
     function renderResources(category = "ALL") {
       const items = category === "ALL" ? appData.resources : appData.resources.filter(r => r.category === category);
       const container = document.getElementById("resources-grid");
-      container.innerHTML = items.map(r => `
-        <div class="card">
-          <div class="card-header">
-            <span class="card-badge">${r.type.toUpperCase()}</span>
-            <span style="font-size: 0.82rem; color: var(--text-muted);">${r.category}</span>
+      if (container) {
+        container.innerHTML = items.map(r => `
+          <div class="card">
+            <div class="card-header">
+              <span class="card-badge">${escapeHtml(r.type ? r.type.toUpperCase() : 'DOC')}</span>
+              <span style="font-size: 0.82rem; color: var(--text-muted);">${escapeHtml(r.category)}</span>
+            </div>
+            <h3 class="card-title">${escapeHtml(r.title)}</h3>
+            <p class="card-desc">${escapeHtml(r.description)}</p>
+            <div class="provenance-bar">
+              <div class="provenance-item">📌 <span>Source: ${escapeHtml(r.source)}</span></div>
+              <div class="provenance-item">👑 <span>Owner: ${escapeHtml(r.owner)}</span></div>
+            </div>
+            <div class="card-footer">
+              <a href="${r.url}" target="_blank" rel="noopener" class="action-btn">Open Resource 🔗</a>
+            </div>
           </div>
-          <h3 class="card-title">${escapeHtml(r.title)}</h3>
-          <p class="card-desc">${escapeHtml(r.description)}</p>
-          <div class="provenance-bar">
-            <div class="provenance-item">📌 <span>Source: ${escapeHtml(r.source)}</span></div>
-            <div class="provenance-item">👑 <span>Owner: ${escapeHtml(r.owner)}</span></div>
-          </div>
-          <div class="card-footer">
-            <a href="${r.url}" target="_blank" rel="noopener" class="action-btn">Open Resource 🔗</a>
-          </div>
-        </div>
-      `).join("");
+        `).join("");
+      }
+    }
+
+    function filterResources(category = "ALL", event) {
+      if (event && event.target) {
+        const chips = event.target.parentElement.querySelectorAll(".filter-chip");
+        chips.forEach(c => c.classList.remove("active"));
+        event.target.classList.add("active");
+      }
+      renderResources(category);
     }
 
     function renderOpportunities(type = "ALL") {
       const items = type === "ALL" ? appData.opportunities : appData.opportunities.filter(o => o.type === type);
       const container = document.getElementById("opportunities-grid");
-      container.innerHTML = items.map(o => `
-        <div class="card">
-          <div class="card-header">
-            <span class="card-badge ${o.type.toLowerCase()}">${o.type}</span>
-            <span style="font-size: 0.82rem; color: var(--accent-gold);">⏳ ${o.deadline ? new Date(o.deadline).toLocaleDateString() : 'Ongoing'}</span>
+      if (container) {
+        container.innerHTML = items.map(o => `
+          <div class="card">
+            <div class="card-header">
+              <span class="card-badge ${escapeHtml(o.type ? o.type.toLowerCase() : '')}">${escapeHtml(o.type)}</span>
+              <span style="font-size: 0.82rem; color: var(--accent-gold);">⏳ ${o.deadline ? new Date(o.deadline).toLocaleDateString() : 'Ongoing'}</span>
+            </div>
+            <h3 class="card-title">${escapeHtml(o.title)}</h3>
+            <p class="card-desc">${escapeHtml(o.description)}</p>
+            <div class="provenance-bar">
+              <div class="provenance-item">🏢 <span>Org: ${escapeHtml(o.organization)}</span></div>
+              <div class="provenance-item">📌 <span>Source: ${escapeHtml(o.source)}</span></div>
+            </div>
+            <div class="card-footer">
+              <a href="${o.url}" target="_blank" rel="noopener" class="action-btn">Apply Now 🚀</a>
+            </div>
           </div>
-          <h3 class="card-title">${escapeHtml(o.title)}</h3>
-          <p class="card-desc">${escapeHtml(o.description)}</p>
-          <div class="provenance-bar">
-            <div class="provenance-item">🏢 <span>Org: ${escapeHtml(o.organization)}</span></div>
-            <div class="provenance-item">📌 <span>Source: ${escapeHtml(o.source)}</span></div>
-          </div>
-          <div class="card-footer">
-            <a href="${o.url}" target="_blank" rel="noopener" class="action-btn">Apply Now 🚀</a>
-          </div>
-        </div>
-      `).join("");
+        `).join("");
+      }
+    }
+
+    function filterOpportunities(type = "ALL", event) {
+      if (event && event.target) {
+        const chips = event.target.parentElement.querySelectorAll(".filter-chip");
+        chips.forEach(c => c.classList.remove("active"));
+        event.target.classList.add("active");
+      }
+      renderOpportunities(type);
     }
 
     function renderFaqs() {
