@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UI Freshers Companion | Academic Navigator & AI Mentor</title>
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#15131C">
+  <meta name="theme-color" content="#0F0D15">
   
-  <!-- Fonts: Plus Jakarta Sans (Primary UI), Instrument Serif (Italic Emphasis), Outfit (Headings) -->
+  <!-- Fonts: Plus Jakarta Sans (Body), Instrument Serif (Italic Accent), Outfit (Headings) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,27 +15,28 @@
   
   <style>
     :root {
-      /* Partstack Design Tokens */
-      --ps-dark-bg: #14121A;
-      --ps-dark-surface: #1E1B26;
-      --ps-dark-card: #181622;
+      /* Ultra-Premium Design System Tokens */
+      --ps-dark-bg: #0F0D15;
+      --ps-dark-surface: #161420;
+      --ps-dark-card: #1A1826;
       --ps-purple-primary: #8B5CF6;
       --ps-purple-hover: #7C3AED;
       --ps-purple-light: #A855F7;
-      --ps-purple-soft: rgba(139, 92, 246, 0.12);
-      --ps-light-bg: #F7F8FA;
+      --ps-purple-soft: rgba(139, 92, 246, 0.08);
+      --ps-purple-soft-border: rgba(139, 92, 246, 0.2);
+      --ps-light-bg: #F8FAFC;
       --ps-light-surface: #FFFFFF;
-      --ps-light-card: #F3F4F6;
+      --ps-light-card: #F1F5F9;
       --ps-text-dark: #0F172A;
       --ps-text-gray: #475569;
       --ps-text-light: #F8FAFC;
       --ps-text-muted: #94A3B8;
-      --ps-border-dark: rgba(255, 255, 255, 0.12);
+      --ps-border-dark: rgba(255, 255, 255, 0.1);
       --ps-border-light: #E2E8F0;
-      --radius-lg: 18px;
+      --radius-lg: 16px;
       --radius-md: 12px;
       --radius-sm: 8px;
-      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     * {
@@ -55,7 +56,6 @@
       overflow-x: hidden;
     }
 
-    /* Serif Italic Emphasis (Partstack signature aesthetic) */
     .serif-italic {
       font-family: 'Instrument Serif', serif;
       font-style: italic;
@@ -67,9 +67,10 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--ps-dark-bg);
+      background: rgba(15, 13, 21, 0.92);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--ps-border-dark);
-      padding: 1rem 2rem;
+      padding: 0.85rem 2rem;
     }
 
     .header-container {
@@ -89,21 +90,21 @@
     }
 
     .brand-logo {
-      width: 36px;
-      height: 36px;
-      background: var(--ps-purple-primary);
-      border-radius: 8px;
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+      border-radius: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #FFF;
       box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4);
     }
 
     .brand-title {
       font-family: 'Outfit', sans-serif;
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       font-weight: 800;
       letter-spacing: -0.5px;
       color: #FFFFFF;
@@ -113,9 +114,22 @@
       color: var(--ps-purple-light);
     }
 
+    .brand-tag {
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      color: #C084FC;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.15rem 0.5rem;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-left: 0.4rem;
+    }
+
     .nav-links {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.35rem;
       align-items: center;
     }
 
@@ -123,10 +137,10 @@
       background: transparent;
       border: none;
       color: #94A3B8;
-      padding: 0.6rem 1.1rem;
+      padding: 0.55rem 1rem;
       border-radius: 8px;
       font-weight: 600;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       cursor: pointer;
       transition: var(--transition);
       display: flex;
@@ -142,10 +156,16 @@
     .nav-btn.active {
       color: #FFFFFF;
       background: var(--ps-purple-primary);
-      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.35);
+      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
     }
 
-    /* PARTSTACK HERO SECTION (DARK FACETED BACKGROUND) */
+    .nav-icon {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2.2;
+    }
+
+    /* HERO SECTION */
     .hero-section {
       background: var(--ps-dark-bg);
       color: #FFFFFF;
@@ -156,7 +176,6 @@
       border-bottom: 1px solid var(--ps-border-dark);
     }
 
-    /* Faceted Polygon Backdrop Effects */
     .hero-section::before {
       content: '';
       position: absolute;
@@ -165,18 +184,7 @@
       transform: translateX(-50%);
       width: 1000px;
       height: 600px;
-      background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.25) 0%, rgba(20, 18, 26, 0) 70%);
-      pointer-events: none;
-    }
-
-    .hero-section::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(30, 27, 38, 0.4) 0%, transparent 60%, rgba(20, 18, 26, 0.8) 100%);
+      background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.22) 0%, rgba(15, 13, 21, 0) 70%);
       pointer-events: none;
     }
 
@@ -187,22 +195,43 @@
       z-index: 2;
     }
 
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #CBD5E1;
+      padding: 0.35rem 0.95rem;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      background: #34D399;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #34D399;
+    }
+
     .hero-title {
       font-family: 'Outfit', sans-serif;
-      font-size: 3.4rem;
-      font-weight: 700;
-      line-height: 1.12;
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.1;
       letter-spacing: -1.2px;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
       color: #FFFFFF;
     }
 
     .hero-title .serif-italic {
       font-size: 3.8rem;
-      color: #E2E8F0;
+      color: #F1F5F9;
     }
 
-    /* SEARCH BAR (PARTSTACK STYLE - WHITE INPUT) */
     .search-box-container {
       max-width: 680px;
       margin: 0 auto 1.25rem auto;
@@ -218,13 +247,13 @@
       width: 100%;
       background: #FFFFFF;
       border: 2px solid transparent;
-      padding: 1.15rem 1.4rem 1.15rem 3.4rem;
+      padding: 1.15rem 1.4rem 1.15rem 3.3rem;
       border-radius: 12px;
       color: var(--ps-text-dark);
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 500;
       outline: none;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
       transition: var(--transition);
     }
 
@@ -233,11 +262,13 @@
       box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
     }
 
-    .search-icon {
+    .search-icon-svg {
       position: absolute;
-      left: 1.25rem;
-      font-size: 1.25rem;
-      color: #64748B;
+      left: 1.2rem;
+      width: 20px;
+      height: 20px;
+      stroke: #64748B;
+      stroke-width: 2.2;
     }
 
     .search-hint {
@@ -257,11 +288,11 @@
     .hero-subtext {
       font-size: 1.05rem;
       color: #94A3B8;
-      margin-top: 2.5rem;
+      margin-top: 2rem;
       line-height: 1.6;
     }
 
-    /* MAIN BODY CONTENT (LIGHT BACKGROUND) */
+    /* MAIN BODY CONTENT */
     main {
       flex: 1;
       max-width: 1280px;
@@ -270,10 +301,9 @@
       padding: 3rem 2rem 6rem 2rem;
     }
 
-    /* TAB SECTIONS */
     .tab-section {
       display: none;
-      animation: fadeIn 0.3s ease;
+      animation: fadeIn 0.25s ease;
     }
 
     .tab-section.active {
@@ -281,11 +311,11 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* PARTSTACK FEATURE OVERVIEW BANNER */
+    /* HOME SHOWCASE & STATS */
     .partstack-feature-header {
       display: flex;
       justify-content: space-between;
@@ -308,7 +338,7 @@
     .partstack-feature-desc {
       max-width: 520px;
       color: var(--ps-text-gray);
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       line-height: 1.65;
     }
 
@@ -316,17 +346,17 @@
       background: var(--ps-purple-primary);
       color: #FFFFFF;
       text-decoration: none;
-      padding: 0.9rem 1.6rem;
+      padding: 0.85rem 1.5rem;
       border-radius: 10px;
       font-weight: 700;
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
       border: none;
       cursor: pointer;
       transition: var(--transition);
-      margin-top: 1.5rem;
+      margin-top: 1.25rem;
       box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
     }
 
@@ -336,7 +366,6 @@
       box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
     }
 
-    /* DUAL SHOWCASE CARDS (PARTSTACK SCREENSHOT 2) */
     .showcase-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -350,7 +379,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 280px;
+      min-height: 260px;
       position: relative;
       overflow: hidden;
       transition: var(--transition);
@@ -359,11 +388,11 @@
     }
 
     .showcase-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
     }
 
     .showcase-card.purple {
-      background: var(--ps-purple-primary);
+      background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
       color: #FFFFFF;
       box-shadow: 0 12px 30px rgba(139, 92, 246, 0.3);
     }
@@ -377,14 +406,14 @@
 
     .showcase-title {
       font-family: 'Outfit', sans-serif;
-      font-size: 2.2rem;
+      font-size: 2.1rem;
       font-weight: 800;
-      line-height: 1.15;
+      line-height: 1.18;
       letter-spacing: -0.5px;
     }
 
     .showcase-arrow {
-      font-size: 1.5rem;
+      font-size: 1rem;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -392,7 +421,6 @@
       margin-top: 2rem;
     }
 
-    /* KEY STATS SECTION (PARTSTACK SCREENSHOT 3 - DARK FACETED SECTION) */
     .partstack-stats-section {
       background: var(--ps-dark-bg);
       color: #FFFFFF;
@@ -401,22 +429,12 @@
       margin-bottom: 4rem;
       position: relative;
       overflow: hidden;
-    }
-
-    .partstack-stats-section::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      right: -100px;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);
-      pointer-events: none;
+      border: 1px solid var(--ps-border-dark);
     }
 
     .stats-header-title {
       font-family: 'Outfit', sans-serif;
-      font-size: 2.6rem;
+      font-size: 2.5rem;
       font-weight: 800;
       letter-spacing: -0.8px;
       margin-bottom: 1rem;
@@ -424,7 +442,7 @@
 
     .stats-header-desc {
       color: #94A3B8;
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       max-width: 600px;
       margin-bottom: 3rem;
       line-height: 1.6;
@@ -448,50 +466,162 @@
 
     .stat-label {
       color: #E2E8F0;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
     }
 
-    /* STANDARD GRID & CARDS (LIGHT MODE CONTENT) */
+    /* PREMIUM CARD GRID SYSTEM */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 1.5rem;
     }
 
-    .card {
-      background: var(--ps-light-surface);
+    /* ULTRA-REFINED FACULTY CARD */
+    .faculty-card {
+      background: #FFFFFF;
       border: 1px solid var(--ps-border-light);
       border-radius: var(--radius-md);
       padding: 1.6rem;
       transition: var(--transition);
       display: flex;
       flex-direction: column;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      justify-content: space-between;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 16px rgba(0, 0, 0, 0.02);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .faculty-card:hover {
+      border-color: rgba(139, 92, 246, 0.5);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px -6px rgba(139, 92, 246, 0.18);
+    }
+
+    .faculty-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.85rem;
+    }
+
+    .faculty-category-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      color: #64748B;
+      text-transform: uppercase;
+    }
+
+    .faculty-dept-pill {
+      background: rgba(139, 92, 246, 0.08);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      color: var(--ps-purple-primary);
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .faculty-dept-pill-dot {
+      width: 5px;
+      height: 5px;
+      background: var(--ps-purple-primary);
+      border-radius: 50%;
+    }
+
+    .faculty-card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--ps-text-dark);
+      margin-bottom: 0.85rem;
+      line-height: 1.25;
+      letter-spacing: -0.3px;
+    }
+
+    .faculty-dept-previews {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .faculty-dept-chip {
+      background: #F1F5F9;
+      color: #334155;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.28rem 0.65rem;
+      border-radius: 6px;
+      border: 1px solid #E2E8F0;
+    }
+
+    .faculty-dept-chip.highlight {
+      background: var(--ps-purple-soft);
+      color: var(--ps-purple-primary);
+      border-color: rgba(139, 92, 246, 0.3);
+      font-weight: 700;
+    }
+
+    .faculty-card-action {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid #F1F5F9;
+      color: var(--ps-purple-primary);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .faculty-card:hover .faculty-card-action-arrow {
+      transform: translateX(4px);
+    }
+
+    .faculty-card-action-arrow {
+      transition: transform 0.2s ease;
+      width: 16px;
+      height: 16px;
+      stroke-width: 2.5;
+    }
+
+    /* STANDARD CONTENT CARDS (GUIDES, RESOURCES, OPPORTUNITIES) */
+    .card {
+      background: #FFFFFF;
+      border: 1px solid var(--ps-border-light);
+      border-radius: var(--radius-md);
+      padding: 1.6rem;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     }
 
     .card:hover {
-      border-color: var(--ps-purple-primary);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 25px rgba(139, 92, 246, 0.15);
+      border-color: rgba(139, 92, 246, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px -4px rgba(139, 92, 246, 0.12);
     }
 
     .card-header {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: space-between;
       margin-bottom: 1rem;
-      gap: 0.75rem;
     }
 
     .card-badge {
       background: var(--ps-purple-soft);
+      border: 1px solid var(--ps-purple-soft-border);
       color: var(--ps-purple-primary);
       padding: 0.3rem 0.75rem;
       border-radius: 6px;
       font-size: 0.8rem;
       font-weight: 700;
-      letter-spacing: 0.3px;
     }
 
     .card-title {
@@ -511,28 +641,13 @@
       flex: 1;
     }
 
-    .provenance-bar {
-      border-top: 1px solid var(--ps-border-light);
-      padding-top: 0.8rem;
-      margin-top: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      font-size: 0.8rem;
-      color: #64748B;
-    }
-
-    .provenance-item {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
     .card-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-top: 1rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid #F1F5F9;
     }
 
     .action-btn {
@@ -558,13 +673,13 @@
     /* FILTER BAR & CHIPS */
     .filter-bar {
       display: flex;
-      gap: 0.6rem;
+      gap: 0.5rem;
       margin-bottom: 2rem;
       flex-wrap: wrap;
     }
 
     .filter-chip {
-      background: var(--ps-light-surface);
+      background: #FFFFFF;
       border: 1px solid var(--ps-border-light);
       color: var(--ps-text-gray);
       padding: 0.55rem 1.1rem;
@@ -584,11 +699,12 @@
       background: var(--ps-purple-primary);
       border-color: var(--ps-purple-primary);
       color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
     }
 
     /* FAQ ACCORDION */
     .faq-item {
-      background: var(--ps-light-surface);
+      background: #FFFFFF;
       border: 1px solid var(--ps-border-light);
       border-radius: var(--radius-md);
       margin-bottom: 1rem;
@@ -598,7 +714,7 @@
     }
 
     .faq-item:hover {
-      border-color: var(--ps-purple-primary);
+      border-color: rgba(139, 92, 246, 0.4);
     }
 
     .faq-question {
@@ -612,59 +728,108 @@
     }
 
     .faq-answer {
-      display: none;
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--ps-border-light);
       color: var(--ps-text-gray);
       font-size: 0.98rem;
       line-height: 1.65;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #F1F5F9;
+      display: none;
     }
 
-    .faq-item.open .faq-answer {
+    .faq-answer.show {
       display: block;
     }
 
-    /* MODAL */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
-
-    .modal-content {
-      background: #FFFFFF;
-      border-radius: var(--radius-lg);
-      max-width: 800px;
+    /* TABLE STYLING FOR COURSE PACKAGES */
+    .course-table {
       width: 100%;
-      max-height: 85vh;
-      overflow-y: auto;
-      padding: 2.5rem;
-      position: relative;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+      border-collapse: collapse;
+      margin-top: 1rem;
     }
 
-    .modal-close {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      background: var(--ps-light-card);
-      border: none;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      font-size: 1.1rem;
-      cursor: pointer;
-      color: var(--ps-text-gray);
+    .course-table th {
+      background: #F8FAFC;
+      color: #475569;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0.85rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .course-table td {
+      padding: 1rem;
+      border-bottom: 1px solid #F1F5F9;
+      font-size: 0.92rem;
+      color: #1E293B;
+    }
+
+    .course-table tr:hover td {
+      background: #F8FAFC;
+    }
+
+    .badge-compulsory {
+      background: rgba(16, 185, 129, 0.1);
+      color: #059669;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+    }
+
+    .badge-required {
+      background: rgba(59, 130, 246, 0.1);
+      color: #2563EB;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+    }
+
+    .badge-ges {
+      background: rgba(245, 158, 11, 0.1);
+      color: #D97706;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--ps-dark-bg);
+      color: #94A3B8;
+      border-top: 1px solid var(--ps-border-dark);
+      padding: 3rem 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      color: #CBD5E1;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--ps-purple-light);
     }
 
     /* MOBILE NAVIGATION BAR */
@@ -674,11 +839,17 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: var(--ps-dark-bg);
+      background: rgba(15, 13, 21, 0.96);
+      backdrop-filter: blur(16px);
       border-top: 1px solid var(--ps-border-dark);
-      padding: 0.6rem 1rem;
-      z-index: 100;
+      padding: 0.6rem 0.5rem;
+      z-index: 999;
+    }
+
+    .mobile-nav-container {
+      display: flex;
       justify-content: space-around;
+      align-items: center;
     }
 
     .mobile-nav-btn {
@@ -689,23 +860,32 @@
       flex-direction: column;
       align-items: center;
       gap: 0.25rem;
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 600;
       cursor: pointer;
+      padding: 0.3rem 0.5rem;
     }
 
     .mobile-nav-btn.active {
       color: var(--ps-purple-light);
     }
 
-    @media (max-width: 868px) {
-      .nav-links { display: none; }
-      .mobile-nav { display: flex; }
-      .hero-title { font-size: 2.4rem; }
-      .hero-title .serif-italic { font-size: 2.7rem; }
-      .partstack-feature-header { flex-direction: column; gap: 1.25rem; }
-      .partstack-feature-title { font-size: 2rem; }
-      main { padding-bottom: 6rem; }
+    @media (max-width: 768px) {
+      .header-container .nav-links {
+        display: none;
+      }
+      .mobile-nav {
+        display: block;
+      }
+      .hero-title {
+        font-size: 2.4rem;
+      }
+      .hero-title .serif-italic {
+        font-size: 2.7rem;
+      }
+      main {
+        padding-bottom: 7rem;
+      }
     }
   </style>
 </head>
@@ -714,68 +894,103 @@
   <!-- HEADER -->
   <header>
     <div class="header-container">
-      <a href="#" class="brand" onclick="switchTab('home', event)">
-        <div class="brand-logo">🎓</div>
-        <span class="brand-title">uifreshers<span>.</span></span>
+      <a href="#" onclick="switchTab('home', event)" class="brand">
+        <div class="brand-logo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div class="brand-title">
+          uifreshers<span>.</span> <span class="brand-tag">v2.4 Live</span>
+        </div>
       </a>
 
       <nav class="nav-links">
-        <button class="nav-btn active" onclick="switchTab('home', event)">🏠 Dashboard</button>
-        <button class="nav-btn" onclick="switchTab('catalog', event)">🏛️ Course Catalog</button>
-        <button class="nav-btn" onclick="switchTab('guides', event)">📚 Faculty Guides</button>
-        <button class="nav-btn" onclick="switchTab('resources', event)">📂 Resources</button>
-        <button class="nav-btn" onclick="switchTab('opportunities', event)">🚀 Opportunities</button>
-        <button class="nav-btn" onclick="switchTab('cbt', event)">🎯 CBT Practice</button>
-        <button class="nav-btn" onclick="switchTab('faqs', event)">❓ FAQ & AI</button>
+        <button class="nav-btn active" onclick="switchTab('home', event)">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Dashboard
+        </button>
+        <button class="nav-btn" onclick="switchTab('catalog', event)">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+          Course Catalog
+        </button>
+        <button class="nav-btn" onclick="switchTab('guides', event)">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Faculty Guides
+        </button>
+        <button class="nav-btn" onclick="switchTab('resources', event)">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          Resources
+        </button>
+        <button class="nav-btn" onclick="switchTab('opportunities', event)">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Opportunities
+        </button>
+        <button class="nav-btn" onclick="switchTab('cbt', event)">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          CBT Practice
+        </button>
+        <button class="nav-btn" onclick="switchTab('faqs', event)">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          FAQ & AI
+        </button>
       </nav>
     </div>
   </header>
 
-  <!-- PARTSTACK HERO SECTION (DARK FACETED GEOMETRY) -->
-  <div class="hero-section">
+  <!-- HERO SECTION -->
+  <section class="hero-section">
     <div class="hero-container">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        Official University of Ibadan Academic Companion
+      </div>
+
       <h1 class="hero-title">
-        The <span class="serif-italic">most trusted</span> platform for discovering, navigating, and mastering your 100-Level courses.
+        The <span class="serif-italic">most accurate</span> academic guide for UI Freshers
       </h1>
 
       <div class="search-box-container">
         <div class="search-box">
-          <span class="search-icon">🔍</span>
-          <input type="text" class="search-input" id="global-search" placeholder="Search by course code, department, GST course, or venue..." oninput="handleGlobalSearch(this.value)">
+          <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input 
+            type="text" 
+            class="search-input" 
+            id="global-search-input"
+            placeholder="Search by course code, department, GST course, or venue..."
+            oninput="handleGlobalSearch(this.value)"
+          >
         </div>
         <div class="search-hint">
-          Try an exact match search like <code>MAT111</code>, or a partial search like <code>Computer Science</code>, <code>Senate CGPA Rules</code>, or <code>GES107</code>.
+          Popular searches: <code>MAT111</code>, <code>Computer Science</code>, <code>Senate CGPA Rules</code>, <code>GES101</code>
         </div>
       </div>
 
       <p class="hero-subtext">
-        We're an academic community platform built for today's University of Ibadan freshers, faculty, and departments.
+        Verified 100-Level course packages, credit limits, clearance guides, and AI mentor support for all 17 Faculties.
       </p>
     </div>
-  </div>
+  </section>
 
-  <!-- MAIN CONTENT CONTAINER (LIGHT BODY BACKGROUND) -->
+  <!-- MAIN CONTAINER -->
   <main>
     <!-- 1. HOME / DASHBOARD TAB -->
     <section id="tab-home" class="tab-section active">
-      <!-- PARTSTACK FEATURE OVERVIEW -->
       <div class="partstack-feature-header">
         <div>
           <h2 class="partstack-feature-title">Powerful search for every department</h2>
           <button class="partstack-primary-btn" onclick="switchTab('catalog', event)">
-            📑 Explore Course Catalog
+            Explore Course Catalog
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </div>
         <div class="partstack-feature-desc">
-          Ready to experience an academic course package and student discovery platform like no other? UI Freshers Companion helps your team find the 100-Level packages, faculty rules, and study tools they need, no matter the requirement.
+          Ready to inspect course registration requirements and academic guidelines? UI Freshers Companion gives you direct access to 100-Level course packages, credit rules, and study tools for all 94 departments.
         </div>
       </div>
 
-      <!-- DUAL SHOWCASE CARDS (PARTSTACK SCREENSHOT 2) -->
       <div class="showcase-grid">
         <div class="showcase-card purple" onclick="switchTab('catalog', event)">
           <div>
-            <div style="font-size: 0.85rem; font-weight: 700; opacity: 0.9; margin-bottom: 0.75rem; text-transform: uppercase;">VERIFIED ACADEMIC PACKAGES</div>
+            <div style="font-size: 0.8rem; font-weight: 800; opacity: 0.9; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px;">VERIFIED ACADEMIC PACKAGES</div>
             <div class="showcase-title">Explore Course Catalog</div>
           </div>
           <div class="showcase-arrow">Select Faculty & Department →</div>
@@ -783,14 +998,13 @@
 
         <a href="https://t.me/UI_Computing_Bot" target="_blank" rel="noopener" class="showcase-card dark" id="home-tg-card">
           <div>
-            <div style="font-size: 0.85rem; font-weight: 700; color: var(--ps-purple-light); margin-bottom: 0.75rem; text-transform: uppercase;">24/7 PERSONALIZED AI MENTOR</div>
+            <div style="font-size: 0.8rem; font-weight: 800; color: var(--ps-purple-light); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px;">24/7 PERSONALIZED AI MENTOR</div>
             <div class="showcase-title">Telegram AI Assistant, join the channel</div>
           </div>
           <div class="showcase-arrow" style="color: var(--ps-purple-light);">Launch Telegram Bot →</div>
         </a>
       </div>
 
-      <!-- KEY STATS SECTION (PARTSTACK SCREENSHOT 3 - DARK FACETED SECTION) -->
       <div class="partstack-stats-section">
         <h2 class="stats-header-title">UI Freshers Companion helps you navigate with ease</h2>
         <p class="stats-header-desc">
@@ -813,8 +1027,7 @@
         </div>
       </div>
 
-      <!-- FEATURED GUIDES -->
-      <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; margin-bottom: 1.5rem;">📌 Essential Freshers Guides</h2>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.5px;">Essential Freshers Guides</h2>
       <div class="grid" id="home-featured-guides">
         <!-- Rendered via JS -->
       </div>
@@ -822,35 +1035,59 @@
 
     <!-- 2. ACADEMIC COURSE CATALOG TAB -->
     <section id="tab-catalog" class="tab-section">
-      <div style="background: var(--ps-dark-bg); color: #FFF; border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 2.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem;">
+      <!-- SENATE RULE CALLOUT BANNER -->
+      <div style="background: var(--ps-dark-bg); color: #FFF; border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 2.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; border: 1px solid var(--ps-border-dark);">
         <div>
-          <span style="background: rgba(139, 92, 246, 0.25); color: var(--ps-purple-light); font-size: 0.8rem; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 0.6rem;">📜 UI Academic Rules & Senate Policy</span>
-          <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.85rem; font-weight: 800; color: #FFFFFF;">Semester Credit Load & 4.0 CGPA Scale</h2>
-          <p style="color: #94A3B8; font-size: 0.95rem; margin-top: 0.35rem; max-width: 680px;">Official University of Ibadan guidelines. Credit load is strictly 15 – 24 units per semester. Good Standing minimum CGPA is 1.50.</p>
+          <span style="background: rgba(139, 92, 246, 0.2); color: var(--ps-purple-light); font-size: 0.78rem; font-weight: 800; padding: 0.3rem 0.8rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.6px; display: inline-block; margin-bottom: 0.6rem;">📜 UI Academic Policy</span>
+          <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.85rem; font-weight: 800; color: #FFFFFF; letter-spacing: -0.5px;">Semester Credit Load & 4.0 CGPA Scale</h2>
+          <p style="color: #94A3B8; font-size: 0.95rem; margin-top: 0.35rem; max-width: 680px;">Official Senate rules: Credit load is strictly 15 – 24 units per semester. Good Standing minimum CGPA is 1.50.</p>
         </div>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255,255,255,0.12); padding: 0.85rem 1.25rem; border-radius: 12px; text-align: center;">
-            <div style="font-size: 0.75rem; color: #94A3B8; text-transform: uppercase; font-weight: 700;">Credit Limit</div>
+          <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255,255,255,0.1); padding: 0.85rem 1.25rem; border-radius: 12px; text-align: center;">
+            <div style="font-size: 0.72rem; color: #94A3B8; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Credit Limit</div>
             <div style="font-size: 1.25rem; font-weight: 800; color: var(--ps-purple-light); font-family: 'Outfit', sans-serif;">15 – 24 Units</div>
           </div>
-          <div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255,255,255,0.12); padding: 0.85rem 1.25rem; border-radius: 12px; text-align: center;">
-            <div style="font-size: 0.75rem; color: #94A3B8; text-transform: uppercase; font-weight: 700;">Good Standing</div>
+          <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255,255,255,0.1); padding: 0.85rem 1.25rem; border-radius: 12px; text-align: center;">
+            <div style="font-size: 0.72rem; color: #94A3B8; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Good Standing</div>
             <div style="font-size: 1.25rem; font-weight: 800; color: #34D399; font-family: 'Outfit', sans-serif;">≥ 1.50 CGPA</div>
           </div>
         </div>
       </div>
 
+      <!-- CATALOG HEADER & CONTROLS -->
       <div style="margin-bottom: 2rem;">
-        <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">🏛️ UI Faculties & Departmental Course Packages</h2>
-        <p style="color: var(--ps-text-gray); margin-bottom: 1.5rem;">Pick your faculty → Select your department → View 100-Level Course Package & Shared University-Wide GES Block.</p>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+          <div>
+            <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.4rem;">UI Faculties & Course Packages</h2>
+            <p style="color: var(--ps-text-gray); font-size: 0.98rem;">Select a faculty to inspect 100-Level departmental course packages and shared GES requirements.</p>
+          </div>
+          <div style="font-size: 0.88rem; font-weight: 700; color: #64748B;" id="faculty-count-summary">
+            Showing 17 Faculties (94 Departments)
+          </div>
+        </div>
 
-        <!-- SEARCH BAR FOR FACULTIES -->
-        <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; max-width: 600px;">
-          <input type="text" id="faculty-search-input" placeholder="🔍 Search among 17 Faculties or 94 Departments..." style="width: 100%; background: #FFF; border: 1px solid var(--ps-border-light); color: var(--ps-text-dark); padding: 0.9rem 1.25rem; border-radius: 10px; font-size: 0.98rem;" oninput="filterFacultyCatalog(this.value)">
+        <!-- FACULTY CATEGORY FILTER CHIPS -->
+        <div class="filter-bar" id="catalog-category-bar">
+          <button class="filter-chip active" onclick="filterFacultyCategory('ALL', this)">All Faculties (17)</button>
+          <button class="filter-chip" onclick="filterFacultyCategory('STEM', this)">STEM & Computing</button>
+          <button class="filter-chip" onclick="filterFacultyCategory('MEDICAL', this)">Medical & Health</button>
+          <button class="filter-chip" onclick="filterFacultyCategory('HUMANITIES', this)">Arts & Social Sciences</button>
+          <button class="filter-chip" onclick="filterFacultyCategory('LAW_EDU', this)">Law & Education</button>
+        </div>
+
+        <!-- FACULTY SEARCH INPUT -->
+        <div style="margin-bottom: 1.75rem; max-width: 540px;">
+          <input 
+            type="text" 
+            id="faculty-search-input" 
+            placeholder="Search faculties or departments (e.g. Computer Science, MBBS, Law)..." 
+            style="width: 100%; background: #FFF; border: 1px solid var(--ps-border-light); color: var(--ps-text-dark); padding: 0.85rem 1.25rem; border-radius: 10px; font-size: 0.95rem; outline: none; box-shadow: 0 1px 3px rgba(0,0,0,0.03);" 
+            oninput="filterFacultyCatalog(this.value)"
+          >
         </div>
 
         <!-- FACULTY CARDS GRID -->
-        <div id="catalog-faculties-grid" class="grid" style="grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.25rem;">
+        <div id="catalog-faculties-grid" class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.35rem;">
           <!-- Dynamically populated -->
         </div>
       </div>
@@ -861,7 +1098,7 @@
           <h3 id="selected-faculty-title" style="font-family: 'Outfit', sans-serif; font-size: 1.45rem; font-weight: 800; color: var(--ps-purple-primary);">Select Department</h3>
           <button onclick="hideDepartmentSection()" style="background: var(--ps-light-card); border: none; color: var(--ps-text-gray); padding: 0.45rem 1rem; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.85rem;">✕ Close</button>
         </div>
-        <div id="catalog-departments-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem;">
+        <div id="catalog-departments-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.85rem;">
           <!-- Dynamically populated -->
         </div>
       </div>
@@ -874,7 +1111,7 @@
 
     <!-- 3. GUIDES TAB -->
     <section id="tab-guides" class="tab-section">
-      <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">📚 Faculty & Departmental Guides</h2>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.5px;">Faculty & Clearance Guides</h2>
       <p style="color: var(--ps-text-gray); margin-bottom: 1.75rem;">Verified course registration rules, UI 4.0 CGPA breakdown, and lecture venue maps.</p>
 
       <div class="filter-bar" id="faculty-filter-bar">
@@ -888,8 +1125,8 @@
 
     <!-- 4. RESOURCES TAB -->
     <section id="tab-resources" class="tab-section">
-      <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">📂 Academic & Library Resources</h2>
-      <p style="color: var(--ps-text-gray); margin-bottom: 1.75rem;">Download course slides, GST past questions, academic calendar, and KDL library catalog links.</p>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.5px;">Academic Resources & Library</h2>
+      <p style="color: var(--ps-text-gray); margin-bottom: 1.75rem;">Download lecture slides, GST past questions, academic calendar, and KDL catalog links.</p>
 
       <div class="filter-bar">
         <button class="filter-chip active" onclick="filterResources('ALL', event)">All Categories</button>
@@ -905,7 +1142,7 @@
 
     <!-- 5. OPPORTUNITIES TAB -->
     <section id="tab-opportunities" class="tab-section">
-      <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">🚀 Scholarships & Student Grants</h2>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.5px;">Scholarships & Student Grants</h2>
       <p style="color: var(--ps-text-gray); margin-bottom: 1.75rem;">Explore verified scholarships, campus work-study schemes, hackathons, and mentorship programs.</p>
 
       <div class="filter-bar">
@@ -920,19 +1157,19 @@
       </div>
     </section>
 
-    <!-- 6. CBT QUIZ PRACTICE TAB -->
+    <!-- 6. CBT PRACTICE TAB -->
     <section id="tab-cbt" class="tab-section">
-      <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">🎯 100L CBT Exam & Practice Simulator</h2>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.5px;">100L CBT Exam & Practice Simulator</h2>
       <p style="color: var(--ps-text-gray); margin-bottom: 1.75rem;">Practice 100L general and departmental courses matching UI CBT exam standards.</p>
 
       <div class="grid">
         <div class="card">
           <div class="card-header">
             <span class="card-badge">CSC101</span>
-            <span style="font-size: 0.82rem; color: #10B981; font-weight: 700;">Compulsory</span>
+            <span style="font-size: 0.8rem; color: #10B981; font-weight: 700;">Compulsory</span>
           </div>
           <h3 class="card-title">CSC101: Introduction to Computer Science</h3>
-          <p class="card-desc">Binary arithmetic, computer hardware, operating systems, and algorithms.</p>
+          <p class="card-desc">Binary arithmetic, computer hardware, operating systems, and basic algorithms.</p>
           <div class="card-footer">
             <a href="https://t.me/UI_Computing_Bot" target="_blank" rel="noopener" class="action-btn">Practice CBT on Telegram →</a>
           </div>
@@ -941,7 +1178,7 @@
         <div class="card">
           <div class="card-header">
             <span class="card-badge">MAT111</span>
-            <span style="font-size: 0.82rem; color: #10B981; font-weight: 700;">Compulsory</span>
+            <span style="font-size: 0.8rem; color: #10B981; font-weight: 700;">Compulsory</span>
           </div>
           <h3 class="card-title">MAT111: Algebra and Trigonometry</h3>
           <p class="card-desc">Quadratic equations, polynomials, sequences, series, and trigonometry.</p>
@@ -953,7 +1190,7 @@
         <div class="card">
           <div class="card-header">
             <span class="card-badge">GST101</span>
-            <span style="font-size: 0.82rem; color: #F59E0B; font-weight: 700;">General Study</span>
+            <span style="font-size: 0.8rem; color: #F59E0B; font-weight: 700;">General Study</span>
           </div>
           <h3 class="card-title">GST101: Use of English I</h3>
           <p class="card-desc">Grammar, sentence structure, antonyms, vocabulary, and reading comprehension.</p>
@@ -965,7 +1202,7 @@
         <div class="card">
           <div class="card-header">
             <span class="card-badge">GES107</span>
-            <span style="font-size: 0.82rem; color: #F59E0B; font-weight: 700;">General Study</span>
+            <span style="font-size: 0.8rem; color: #F59E0B; font-weight: 700;">General Study</span>
           </div>
           <h3 class="card-title">GES107: Nigerian Peoples and Culture</h3>
           <p class="card-desc">Nok culture, Nigerian history, ethnic groups, and cultural heritage.</p>
@@ -978,12 +1215,12 @@
 
     <!-- 7. FAQ TAB -->
     <section id="tab-faqs" class="tab-section">
-      <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">❓ Frequently Asked Questions</h2>
-      <p style="color: var(--ps-text-gray); margin-bottom: 1.75rem;">Answers to clearance, hostel reservation, course add/drop, and school fees payments.</p>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.5px;">Frequently Asked Questions</h2>
+      <p style="color: var(--ps-text-gray); margin-bottom: 1.75rem;">Verified guidance for clearance, course add/drop, hostel reservation, and school fees.</p>
 
       <div class="showcase-card dark" style="margin-bottom: 2.5rem;" id="faq-tg-card">
         <div>
-          <div style="font-size: 0.85rem; font-weight: 700; color: var(--ps-purple-light); margin-bottom: 0.75rem; text-transform: uppercase;">NEED EXTRA ACADEMIC GUIDANCE?</div>
+          <div style="font-size: 0.8rem; font-weight: 800; color: var(--ps-purple-light); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px;">NEED EXTRA ACADEMIC GUIDANCE?</div>
           <div class="showcase-title">Chat with Your Friendly AI Teacher & Mentor</div>
           <p style="color: #94A3B8; margin-top: 0.5rem; font-size: 1rem;">Our Telegram AI Study Assistant is warm, knowledgeable, and always ready to answer your questions!</p>
         </div>
@@ -998,54 +1235,104 @@
     </section>
   </main>
 
-  <!-- MODAL FOR READING GUIDES -->
-  <div class="modal-overlay" id="guide-modal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal()">✕</button>
-      <div id="modal-body"></div>
+  <!-- MOBILE NAVIGATION -->
+  <div class="mobile-nav">
+    <div class="mobile-nav-container">
+      <button class="mobile-nav-btn active" onclick="switchTab('home', event)">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        Home
+      </button>
+      <button class="mobile-nav-btn" onclick="switchTab('catalog', event)">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg>
+        Catalog
+      </button>
+      <button class="mobile-nav-btn" onclick="switchTab('guides', event)">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
+        Guides
+      </button>
+      <button class="mobile-nav-btn" onclick="switchTab('resources', event)">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        Resources
+      </button>
+      <button class="mobile-nav-btn" onclick="switchTab('faqs', event)">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        AI Help
+      </button>
     </div>
   </div>
 
-  <!-- MOBILE NAVIGATION BAR -->
-  <nav class="mobile-nav">
-    <button class="mobile-nav-btn active" onclick="switchTab('home', event)">
-      <span>🏠</span>
-      <span>Home</span>
-    </button>
-    <button class="mobile-nav-btn" onclick="switchTab('guides', event)">
-      <span>📚</span>
-      <span>Guides</span>
-    </button>
-    <button class="mobile-nav-btn" onclick="switchTab('resources', event)">
-      <span>📂</span>
-      <span>Resources</span>
-    </button>
-    <button class="mobile-nav-btn" onclick="switchTab('opportunities', event)">
-      <span>🚀</span>
-      <span>Opps</span>
-    </button>
-    <button class="mobile-nav-btn" onclick="switchTab('cbt', event)">
-      <span>🎯</span>
-      <span>CBT</span>
-    </button>
-    <button class="mobile-nav-btn" onclick="switchTab('faqs', event)">
-      <span>❓</span>
-      <span>FAQ</span>
-    </button>
-  </nav>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.25rem; color: #FFF;">
+        uifreshers<span style="color: var(--ps-purple-light);">.</span>
+      </div>
+      <div class="footer-links">
+        <a href="#" onclick="switchTab('home', event)">Dashboard</a>
+        <a href="#" onclick="switchTab('catalog', event)">Course Catalog</a>
+        <a href="#" onclick="switchTab('guides', event)">Faculty Guides</a>
+        <a href="#" onclick="switchTab('resources', event)">Resources</a>
+        <a href="https://t.me/UI_Computing_Bot" target="_blank" rel="noopener">Telegram Bot</a>
+      </div>
+      <div>
+        © 2026 UI Freshers Companion. Grounded in official University of Ibadan Senate regulations.
+      </div>
+    </div>
+  </footer>
 
   <script>
     // State Store
-    let appData = {
+    const appData = {
       faculties: [],
       guides: [],
       resources: [],
       opportunities: [],
       faqs: [],
-      studyAssistantLink: { botUrl: "https://t.me/UI_Computing_Bot", botUsername: "UI_Computing_Bot" }
+      studyAssistantLink: null,
+      activeCategoryFilter: 'ALL'
     };
 
-    // Initialize App
+    // Category mappings for faculties
+    const facultyCategoryMap = {
+      COMPUTING: 'STEM',
+      SCIENCE: 'STEM',
+      TECH: 'STEM',
+      AGRIC: 'STEM',
+      NAT_RES: 'STEM',
+      CLINICAL: 'MEDICAL',
+      BASIC_MED: 'MEDICAL',
+      DENTISTRY: 'MEDICAL',
+      PHARMACY: 'MEDICAL',
+      PUBLIC_HEALTH: 'MEDICAL',
+      VET_MED: 'MEDICAL',
+      ARTS: 'HUMANITIES',
+      SOCIAL_SCI: 'HUMANITIES',
+      ECON_MGMT: 'HUMANITIES',
+      EDM: 'HUMANITIES',
+      LAW: 'LAW_EDU',
+      EDUCATION: 'LAW_EDU'
+    };
+
+    const facultyDisplayCategory = {
+      COMPUTING: 'COMPUTING & IT',
+      SCIENCE: 'NATURAL SCIENCES',
+      TECH: 'ENGINEERING & TECH',
+      AGRIC: 'AGRICULTURAL SCIENCES',
+      NAT_RES: 'RENEWABLE RESOURCES',
+      CLINICAL: 'CLINICAL MEDICINE',
+      BASIC_MED: 'BASIC MEDICAL SCIENCES',
+      DENTISTRY: 'DENTISTRY',
+      PHARMACY: 'PHARMACEUTICAL SCIENCES',
+      PUBLIC_HEALTH: 'PUBLIC HEALTH',
+      VET_MED: 'VETERINARY MEDICINE',
+      ARTS: 'ARTS & HUMANITIES',
+      SOCIAL_SCI: 'SOCIAL SCIENCES',
+      ECON_MGMT: 'ECONOMICS & MANAGEMENT',
+      EDM: 'ENVIRONMENTAL DESIGN',
+      LAW: 'FACULTY OF LAW',
+      EDUCATION: 'FACULTY OF EDUCATION'
+    };
+
     document.addEventListener("DOMContentLoaded", async () => {
       await fetchAllData();
       renderHome();
@@ -1057,7 +1344,6 @@
       registerServiceWorker();
     });
 
-    // Fetch API Data
     async function fetchAllData() {
       try {
         const [facRes, guiRes, resRes, oppRes, faqRes, botRes] = await Promise.all([
@@ -1073,9 +1359,7 @@
           appData.faculties = facRes.data;
           renderFacultyCatalog();
         }
-        if (guiRes.success && guiRes.data && guiRes.data.length > 0) {
-          appData.guides = guiRes.data;
-        }
+        if (guiRes.success && guiRes.data && guiRes.data.length > 0) appData.guides = guiRes.data;
         if (resRes.success && resRes.data) appData.resources = resRes.data;
         if (oppRes.success && oppRes.data) appData.opportunities = oppRes.data;
         if (faqRes.success && faqRes.data) appData.faqs = faqRes.data;
@@ -1095,7 +1379,6 @@
       if (faqBtn) faqBtn.href = url;
     }
 
-    // Switch Tabs
     function switchTab(tabId, ev) {
       if (ev && ev.preventDefault) ev.preventDefault();
       document.querySelectorAll(".tab-section").forEach(s => s.classList.remove("active"));
@@ -1116,7 +1399,6 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Global Search
     function handleGlobalSearch(query) {
       if (!query.trim()) {
         renderHome();
@@ -1141,42 +1423,78 @@
       })[m]);
     }
 
-    // RENDERERS
-    function renderHome() {
-      const featured = appData.guides.slice(0, 3);
-      const container = document.getElementById("home-featured-guides");
-      if (container) {
-        container.innerHTML = featured.map(g => createGuideCardHtml(g)).join("");
-      }
+    // FACULTY CATALOG RENDERER (ULTRA-PREMIUM)
+    function filterFacultyCategory(cat, btnElem) {
+      appData.activeCategoryFilter = cat;
+      document.querySelectorAll("#catalog-category-bar .filter-chip").forEach(b => b.classList.remove("active"));
+      if (btnElem) btnElem.classList.add("active");
+      renderFacultyCatalog();
     }
 
     function renderFacultyCatalog(filterQuery = "") {
       const grid = document.getElementById("catalog-faculties-grid");
       if (!grid) return;
 
-      const q = filterQuery.toLowerCase();
-      const list = appData.faculties.filter(f => 
-        f.name.toLowerCase().includes(q) || 
-        (f.departments && f.departments.some(d => d.name.toLowerCase().includes(q)))
-      );
+      const q = filterQuery.toLowerCase().trim();
+      let list = appData.faculties;
+
+      // Filter by category chip
+      if (appData.activeCategoryFilter !== 'ALL') {
+        list = list.filter(f => facultyCategoryMap[f.code] === appData.activeCategoryFilter);
+      }
+
+      // Filter by search query
+      if (q) {
+        list = list.filter(f => 
+          f.name.toLowerCase().includes(q) || 
+          (f.code && f.code.toLowerCase().includes(q)) ||
+          (f.departments && f.departments.some(d => d.name.toLowerCase().includes(q)))
+        );
+      }
+
+      const summaryElem = document.getElementById("faculty-count-summary");
+      if (summaryElem) {
+        const totalDepts = list.reduce((acc, f) => acc + (f.departments ? f.departments.length : 0), 0);
+        summaryElem.innerText = `Showing ${list.length} Faculties (${totalDepts} Departments)`;
+      }
 
       if (list.length === 0) {
-        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 2.5rem; color: var(--ps-text-gray);">No faculties or departments matching "${escapeHtml(filterQuery)}"</div>`;
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 3rem; background: #FFF; border: 1px solid var(--ps-border-light); border-radius: var(--radius-md); color: var(--ps-text-gray);">No faculties or departments match your filter "${escapeHtml(filterQuery)}"</div>`;
         return;
       }
 
       grid.innerHTML = list.map(f => {
         const deptCount = f.departments ? f.departments.length : (f._count ? f._count.departments : 0);
+        const categoryLabel = facultyDisplayCategory[f.code] || 'ACADEMIC FACULTY';
+        
+        // Render up to 4 department preview tags
+        const deptChipsHtml = (f.departments || []).slice(0, 4).map(d => {
+          const isMatch = q && d.name.toLowerCase().includes(q);
+          return `<span class="faculty-dept-chip ${isMatch ? 'highlight' : ''}">${escapeHtml(d.name)}</span>`;
+        }).join("");
+
+        const hasMoreDepts = f.departments && f.departments.length > 4;
+
         return `
-          <div class="card" onclick="selectFacultyForCatalog('${f.id}')" style="cursor: pointer; border-top: 4px solid var(--ps-purple-primary);">
-            <div class="card-header">
-              <span class="card-badge">${f.code || 'UI'}</span>
-              <span style="font-size: 0.85rem; color: var(--ps-purple-primary); font-weight: 700;">${deptCount} Depts</span>
+          <div class="faculty-card" onclick="selectFacultyForCatalog('${f.id}')">
+            <div>
+              <div class="faculty-card-header">
+                <span class="faculty-category-tag">${categoryLabel}</span>
+                <span class="faculty-dept-pill">
+                  <span class="faculty-dept-pill-dot"></span>
+                  ${deptCount} Depts
+                </span>
+              </div>
+              <h3 class="faculty-card-title">${escapeHtml(f.name)}</h3>
+              <div class="faculty-dept-previews">
+                ${deptChipsHtml}
+                ${hasMoreDepts ? `<span class="faculty-dept-chip" style="background: transparent; border-style: dashed; color: #94A3B8;">+${f.departments.length - 4} more</span>` : ''}
+              </div>
             </div>
-            <h3 class="card-title">${escapeHtml(f.name)}</h3>
-            <p class="card-desc" style="font-size: 0.88rem;">Click to select department & view 100L course package.</p>
-            <div style="margin-top: 0.8rem; text-align: right; color: var(--ps-purple-primary); font-size: 0.88rem; font-weight: 700;">
-              Browse Packages →
+            
+            <div class="faculty-card-action">
+              <span>Inspect Departmental Packages</span>
+              <svg class="faculty-card-action-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </div>
           </div>
         `;
@@ -1196,8 +1514,9 @@
       
       if (faculty.departments && faculty.departments.length > 0) {
         deptGrid.innerHTML = faculty.departments.map(d => `
-          <button onclick="selectDepartmentForPackage('${d.id}')" style="background: var(--ps-light-card); border: 1px solid var(--ps-border-light); color: var(--ps-text-dark); padding: 0.9rem 1rem; border-radius: 10px; font-weight: 600; font-size: 0.92rem; cursor: pointer; text-align: left; transition: var(--transition);" onmouseover="this.style.borderColor='var(--ps-purple-primary)'; this.style.color='var(--ps-purple-primary)';" onmouseout="this.style.borderColor='var(--ps-border-light)'; this.style.color='var(--ps-text-dark)';">
-            🏢 ${escapeHtml(d.name)}
+          <button onclick="selectDepartmentForPackage('${d.id}')" style="background: #F8FAFC; border: 1px solid var(--ps-border-light); color: var(--ps-text-dark); padding: 0.95rem 1.1rem; border-radius: 10px; font-weight: 600; font-size: 0.92rem; cursor: pointer; text-align: left; transition: var(--transition); display: flex; align-items: center; justify-content: space-between;" onmouseover="this.style.borderColor='var(--ps-purple-primary)'; this.style.background='#FFFFFF'; this.style.color='var(--ps-purple-primary)';" onmouseout="this.style.borderColor='var(--ps-border-light)'; this.style.background='#F8FAFC'; this.style.color='var(--ps-text-dark)';">
+            <span>${escapeHtml(d.name)}</span>
+            <span style="font-size: 0.8rem; color: #94A3B8;">→</span>
           </button>
         `).join("");
       } else {
@@ -1240,9 +1559,9 @@
 
         let sharedNoticeHtml = "";
         if (dept.faculty.name === "Dentistry") {
-          sharedNoticeHtml = `<div style="background: rgba(139, 92, 246, 0.1); border: 1px solid var(--ps-purple-primary); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;">🔗 <strong>Shared Package Link:</strong> Dentistry's 100L Pre-Med package is linked directly to Clinical Sciences' Pre-Med course records.</div>`;
+          sharedNoticeHtml = `<div style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;">🔗 <strong>Shared Package Link:</strong> Dentistry's 100L Pre-Med package is linked directly to Clinical Sciences' Pre-Med course records.</div>`;
         } else if (dept.faculty.name === "Veterinary Medicine") {
-          sharedNoticeHtml = `<div style="background: rgba(139, 92, 246, 0.1); border: 1px solid var(--ps-purple-primary); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;">🔗 <strong>Shared Package Link:</strong> Veterinary Medicine's 100L Pre-Vet package is linked directly to Faculty of Science course records.</div>`;
+          sharedNoticeHtml = `<div style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;">🔗 <strong>Shared Package Link:</strong> Veterinary Medicine's 100L Pre-Vet package is linked directly to Faculty of Science course records.</div>`;
         }
 
         const sem1Dept = deptCourses.filter(c => c.semester === "1st");
@@ -1250,284 +1569,203 @@
         const sem1Ges = gesCourses.filter(c => c.semester === "1st");
         const sem2Ges = gesCourses.filter(c => c.semester === "2nd");
 
+        const renderTableRows = (courses) => {
+          if (courses.length === 0) return `<tr><td colspan="4" style="color: #94A3B8; text-align: center;">No courses listed</td></tr>`;
+          return courses.map(c => `
+            <tr>
+              <td style="font-weight: 800; font-family: 'Outfit', sans-serif;">${escapeHtml(c.courseCode)}</td>
+              <td>${escapeHtml(c.courseTitle)}</td>
+              <td style="font-weight: 700; text-align: center;">${c.units} Units</td>
+              <td><span class="badge-${c.isCompulsory ? 'compulsory' : 'required'}">${c.isCompulsory ? 'Compulsory' : 'Required'}</span></td>
+            </tr>
+          `).join("");
+        };
+
+        const renderGesRows = (courses) => {
+          if (courses.length === 0) return `<tr><td colspan="4" style="color: #94A3B8; text-align: center;">No GES courses listed</td></tr>`;
+          return courses.map(c => `
+            <tr>
+              <td style="font-weight: 800; font-family: 'Outfit', sans-serif;">${escapeHtml(c.courseCode)}</td>
+              <td>${escapeHtml(c.courseTitle)}</td>
+              <td style="font-weight: 700; text-align: center;">${c.units} Units</td>
+              <td><span class="badge-ges">University GES</span></td>
+            </tr>
+          `).join("");
+        };
+
         packageView.innerHTML = `
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.75rem; border-bottom: 1px solid var(--ps-border-light); padding-bottom: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem;">
             <div>
-              <div style="font-size: 0.85rem; color: var(--ps-purple-primary); font-weight: 700; text-transform: uppercase;">Faculty of ${escapeHtml(dept.faculty.name)}</div>
-              <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.9rem; font-weight: 800; color: var(--ps-text-dark); margin-top: 0.2rem;">Department of ${escapeHtml(dept.name)}</h2>
-              <div style="color: var(--ps-text-gray); font-size: 0.92rem; margin-top: 0.35rem;">100-Level (Freshers) Complete Course Package</div>
+              <span style="font-size: 0.8rem; font-weight: 800; color: var(--ps-purple-primary); text-transform: uppercase; letter-spacing: 0.5px;">100-LEVEL CANONICAL COURSE PACKAGE</span>
+              <h2 style="font-family: 'Outfit', sans-serif; font-size: 2.1rem; font-weight: 800; color: var(--ps-text-dark); margin-top: 0.25rem;">${escapeHtml(dept.name)}</h2>
+              <p style="color: var(--ps-text-gray); font-size: 0.95rem;">Faculty of ${escapeHtml(dept.faculty.name)}</p>
             </div>
-            <div style="display: flex; gap: 0.8rem;">
-              <div style="background: var(--ps-purple-soft); border: 1px solid rgba(139, 92, 246, 0.2); padding: 0.6rem 1.1rem; border-radius: 10px; text-align: center;">
-                <div style="font-size: 0.72rem; color: var(--ps-purple-primary); font-weight: 700;">1ST SEMESTER</div>
-                <div style="font-weight: 800; color: var(--ps-purple-primary); font-size: 1.15rem;">${units.semester1Total} Units</div>
-              </div>
-              <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); padding: 0.6rem 1.1rem; border-radius: 10px; text-align: center;">
-                <div style="font-size: 0.72rem; color: #10B981; font-weight: 700;">2ND SEMESTER</div>
-                <div style="font-weight: 800; color: #10B981; font-size: 1.15rem;">${units.semester2Total} Units</div>
-              </div>
-            </div>
+            <button onclick="document.getElementById('catalog-package-view').style.display='none';" style="background: var(--ps-light-card); border: none; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 700; cursor: pointer;">✕ Close</button>
           </div>
 
           ${sharedNoticeHtml}
 
-          <!-- SECTION 0: SHARED GES COURSES BLOCK -->
-          <div style="background: var(--ps-dark-bg); color: #FFF; border-radius: 14px; padding: 1.5rem; margin-bottom: 2.25rem;">
-            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
-              <div style="display: flex; align-items: center; gap: 0.6rem;">
-                <span style="font-size: 1.4rem;">🏛️</span>
-                <div>
-                  <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 800; color: #FFF;">University-Wide General Studies (GES / GST)</h3>
-                  <span style="font-size: 0.8rem; color: #94A3B8;">Shared 100-Level record set linked across all 17 faculties.</span>
-                </div>
-              </div>
-              <span style="background: var(--ps-purple-primary); color: #FFF; font-size: 0.72rem; font-weight: 800; padding: 0.35rem 0.8rem; border-radius: 20px; text-transform: uppercase;">Compulsory for All Freshers</span>
+          <!-- UNIT SUMMARY CARDS -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2.5rem;">
+            <div style="background: #F8FAFC; border: 1px solid var(--ps-border-light); padding: 1.15rem; border-radius: 12px;">
+              <div style="font-size: 0.78rem; color: #64748B; font-weight: 700; text-transform: uppercase;">1st Semester Units</div>
+              <div style="font-size: 1.6rem; font-weight: 800; color: var(--ps-purple-primary); font-family: 'Outfit', sans-serif;">${units.firstSemesterTotalUnits} Units</div>
+              <div style="font-size: 0.78rem; color: #94A3B8; margin-top: 0.2rem;">${units.firstSemesterDeptUnits} Dept + ${units.firstSemesterGesUnits} GES</div>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
-              <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1rem;">
-                <div style="font-size: 0.82rem; font-weight: 800; color: var(--ps-purple-light); margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.4rem;">
-                  1st Semester GES Courses (${units.semester1GesUnits} Units)
-                </div>
-                ${sem1Ges.map(c => `
-                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.45rem 0; border-bottom: 1px dashed rgba(255,255,255,0.08);">
-                    <div>
-                      <strong style="color: #FFF; font-size: 0.88rem;">${c.code}</strong> — <span style="font-size: 0.85rem; color: #CBD5E1;">${escapeHtml(c.title)}</span>
-                    </div>
-                    <span style="background: rgba(139, 92, 246, 0.3); color: var(--ps-purple-light); font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 6px;">${c.units} Units</span>
-                  </div>
-                `).join("")}
-              </div>
+            <div style="background: #F8FAFC; border: 1px solid var(--ps-border-light); padding: 1.15rem; border-radius: 12px;">
+              <div style="font-size: 0.78rem; color: #64748B; font-weight: 700; text-transform: uppercase;">2nd Semester Units</div>
+              <div style="font-size: 1.6rem; font-weight: 800; color: var(--ps-purple-primary); font-family: 'Outfit', sans-serif;">${units.secondSemesterTotalUnits} Units</div>
+              <div style="font-size: 0.78rem; color: #94A3B8; margin-top: 0.2rem;">${units.secondSemesterDeptUnits} Dept + ${units.secondSemesterGesUnits} GES</div>
+            </div>
 
-              <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1rem;">
-                <div style="font-size: 0.82rem; font-weight: 800; color: #34D399; margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.4rem;">
-                  2nd Semester GES Courses (${units.semester2GesUnits} Units)
-                </div>
-                ${sem2Ges.map(c => `
-                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.45rem 0; border-bottom: 1px dashed rgba(255,255,255,0.08);">
-                    <div>
-                      <strong style="color: #FFF; font-size: 0.88rem;">${c.code}</strong> — <span style="font-size: 0.85rem; color: #CBD5E1;">${escapeHtml(c.title)}</span>
-                    </div>
-                    <span style="background: rgba(16, 185, 129, 0.3); color: #34D399; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 6px;">${c.units} Units</span>
-                  </div>
-                `).join("")}
-              </div>
+            <div style="background: #F8FAFC; border: 1px solid var(--ps-border-light); padding: 1.15rem; border-radius: 12px;">
+              <div style="font-size: 0.78rem; color: #64748B; font-weight: 700; text-transform: uppercase;">Annual Total</div>
+              <div style="font-size: 1.6rem; font-weight: 800; color: #059669; font-family: 'Outfit', sans-serif;">${units.annualTotalUnits} Units</div>
+              <div style="font-size: 0.78rem; color: #059669; margin-top: 0.2rem; font-weight: 600;">Within 15–24 Unit Limit</div>
             </div>
           </div>
 
-          <!-- DEPARTMENTAL COURSES -->
-          <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--ps-text-dark); margin-bottom: 1.25rem;">
-            📚 Departmental 100-Level Courses — ${escapeHtml(dept.name)}
-          </h3>
+          <!-- 1ST SEMESTER -->
+          <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.35rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--ps-text-dark);">1st Semester (Harmattan)</h3>
+          <table class="course-table" style="margin-bottom: 2rem;">
+            <thead>
+              <tr>
+                <th style="width: 15%;">Course Code</th>
+                <th style="width: 55%;">Course Title</th>
+                <th style="width: 15%; text-align: center;">Units</th>
+                <th style="width: 15%;">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${renderTableRows(sem1Dept)}
+              ${renderGesRows(sem1Ges)}
+            </tbody>
+          </table>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
-            <div style="background: var(--ps-light-card); border: 1px solid var(--ps-border-light); border-radius: 12px; padding: 1.25rem;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--ps-border-light); padding-bottom: 0.6rem;">
-                <h4 style="font-family: 'Outfit', sans-serif; color: var(--ps-purple-primary); font-size: 1.1rem; font-weight: 800;">1st Semester Courses</h4>
-                <span style="font-size: 0.82rem; font-weight: 700; color: var(--ps-text-gray);">${units.semester1DeptUnits} Dept Units</span>
-              </div>
-              
-              ${sem1Dept.length > 0 ? sem1Dept.map(c => `
-                <div style="background: #FFF; border: 1px solid var(--ps-border-light); border-radius: 8px; padding: 0.85rem; margin-bottom: 0.75rem;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
-                    <span style="font-family: 'Outfit', sans-serif; font-weight: 800; color: var(--ps-text-dark); font-size: 1rem;">${c.code}</span>
-                    <span style="background: ${c.status === 'COMPULSORY' ? 'rgba(16, 185, 129, 0.15)' : c.status === 'REQUIRED' ? 'rgba(245, 158, 11, 0.15)' : 'rgba(0,0,0,0.06)'}; color: ${c.status === 'COMPULSORY' ? '#10B981' : c.status === 'REQUIRED' ? '#D97706' : 'var(--ps-text-dark)'}; font-size: 0.72rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 5px;">${c.status}</span>
-                  </div>
-                  <div style="font-size: 0.88rem; color: var(--ps-text-gray); margin-bottom: 0.4rem;">${escapeHtml(c.title)}</div>
-                  <div style="font-size: 0.78rem; color: var(--ps-purple-primary); font-weight: 700;">Units: ${c.units}</div>
-                </div>
-              `).join("") : `<p style="color: var(--ps-text-gray); font-size: 0.88rem;">No departmental courses for 1st semester.</p>`}
-            </div>
-
-            <div style="background: var(--ps-light-card); border: 1px solid var(--ps-border-light); border-radius: 12px; padding: 1.25rem;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--ps-border-light); padding-bottom: 0.6rem;">
-                <h4 style="font-family: 'Outfit', sans-serif; color: #10B981; font-size: 1.1rem; font-weight: 800;">2nd Semester Courses</h4>
-                <span style="font-size: 0.82rem; font-weight: 700; color: var(--ps-text-gray);">${units.semester2DeptUnits} Dept Units</span>
-              </div>
-
-              ${sem2Dept.length > 0 ? sem2Dept.map(c => `
-                <div style="background: #FFF; border: 1px solid var(--ps-border-light); border-radius: 8px; padding: 0.85rem; margin-bottom: 0.75rem;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
-                    <span style="font-family: 'Outfit', sans-serif; font-weight: 800; color: var(--ps-text-dark); font-size: 1rem;">${c.code}</span>
-                    <span style="background: ${c.status === 'COMPULSORY' ? 'rgba(16, 185, 129, 0.15)' : c.status === 'REQUIRED' ? 'rgba(245, 158, 11, 0.15)' : 'rgba(0,0,0,0.06)'}; color: ${c.status === 'COMPULSORY' ? '#10B981' : c.status === 'REQUIRED' ? '#D97706' : 'var(--ps-text-dark)'}; font-size: 0.72rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 5px;">${c.status}</span>
-                  </div>
-                  <div style="font-size: 0.88rem; color: var(--ps-text-gray); margin-bottom: 0.4rem;">${escapeHtml(c.title)}</div>
-                  <div style="font-size: 0.78rem; color: #10B981; font-weight: 700;">Units: ${c.units}</div>
-                </div>
-              `).join("") : `<p style="color: var(--ps-text-gray); font-size: 0.88rem;">No departmental courses for 2nd semester.</p>`}
-            </div>
-          </div>
+          <!-- 2ND SEMESTER -->
+          <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.35rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--ps-text-dark);">2nd Semester (Rain)</h3>
+          <table class="course-table">
+            <thead>
+              <tr>
+                <th style="width: 15%;">Course Code</th>
+                <th style="width: 55%;">Course Title</th>
+                <th style="width: 15%; text-align: center;">Units</th>
+                <th style="width: 15%;">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${renderTableRows(sem2Dept)}
+              ${renderGesRows(sem2Ges)}
+            </tbody>
+          </table>
         `;
       } catch (err) {
-        console.error("Error loading course package:", err);
-        packageView.innerHTML = `<div style="text-align: center; padding: 2rem; color: var(--ps-text-gray);">Error loading course package. Please try again.</div>`;
+        packageView.innerHTML = `<div style="text-align: center; padding: 2.5rem; color: #EF4444;">Failed to load course package. Please try again.</div>`;
       }
     }
 
-    function renderGuides(filteredFacultyId = "ALL") {
-      const filterContainer = document.getElementById("faculty-filter-bar");
-      if (filterContainer) {
-        let chipsHtml = `<button class="filter-chip ${filteredFacultyId === 'ALL' ? 'active' : ''}" onclick="renderGuides('ALL')">All Faculties</button>`;
-        if (appData.faculties && appData.faculties.length > 0) {
-          appData.faculties.forEach(f => {
-            chipsHtml += `<button class="filter-chip ${filteredFacultyId === f.id ? 'active' : ''}" onclick="renderGuides('${f.id}')">${escapeHtml(f.name)}</button>`;
-          });
-        }
-        filterContainer.innerHTML = chipsHtml;
-      }
-
-      let items = appData.guides || [];
-      if (filteredFacultyId !== "ALL") {
-        const matched = items.filter(g => g.facultyId === filteredFacultyId || (g.faculty && g.faculty.id === filteredFacultyId));
-        if (matched.length > 0) {
-          items = matched;
-        }
-      }
-
-      const container = document.getElementById("guides-grid");
-      if (container) {
-        if (items.length === 0) {
-          container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 2.5rem; color: var(--ps-text-gray);">No guides found.</div>`;
-        } else {
-          container.innerHTML = items.map(g => createGuideCardHtml(g)).join("");
-        }
-      }
+    function renderHome() {
+      const featured = appData.guides.slice(0, 3);
+      const container = document.getElementById("home-featured-guides");
+      if (container) container.innerHTML = featured.map(g => createGuideCardHtml(g)).join("");
     }
 
-    function createGuideCardHtml(g) {
+    function renderGuides(facultyFilter = "ALL") {
+      const grid = document.getElementById("guides-grid");
+      if (!grid) return;
+      
+      let filtered = appData.guides;
+      if (facultyFilter !== "ALL") {
+        filtered = filtered.filter(g => g.faculty && g.faculty.code === facultyFilter);
+      }
+      grid.innerHTML = filtered.map(g => createGuideCardHtml(g)).join("");
+    }
+
+    function createGuideCardHtml(guide) {
+      const facName = guide.faculty ? guide.faculty.name : "University-Wide";
       return `
         <div class="card">
           <div class="card-header">
-            <span class="card-badge">${escapeHtml(g.category || 'Guide')}</span>
-            <span style="font-size: 0.82rem; color: var(--ps-text-gray);">${escapeHtml(g.faculty ? g.faculty.name : 'University Wide')}</span>
+            <span class="card-badge">${escapeHtml(facName)}</span>
+            <span style="font-size: 0.78rem; color: #64748B; font-weight: 600;">Verified Guide</span>
           </div>
-          <h3 class="card-title">${escapeHtml(g.title)}</h3>
-          <p class="card-desc">${escapeHtml(g.summary || (g.content ? g.content.substring(0, 120) + '...' : ''))}</p>
-          <div class="provenance-bar">
-            <div class="provenance-item">📌 <span>Source: ${escapeHtml(g.source)}</span></div>
-            <div class="provenance-item">🛡️ <span>Verified: ${g.verifiedDate ? new Date(g.verifiedDate).toLocaleDateString() : 'Official'}</span></div>
-          </div>
+          <h3 class="card-title">${escapeHtml(guide.title)}</h3>
+          <p class="card-desc">${escapeHtml(guide.summary || (guide.content ? guide.content.substring(0, 110) + '...' : ''))}</p>
           <div class="card-footer">
-            <button class="action-btn" onclick="openGuideModal('${g.id}')">Read Full Guide →</button>
+            <a href="https://t.me/UI_Computing_Bot" target="_blank" rel="noopener" class="action-btn">Read on Telegram →</a>
           </div>
         </div>
       `;
     }
 
-    function renderResources(category = "ALL") {
-      const items = category === "ALL" ? appData.resources : appData.resources.filter(r => r.category === category);
-      const container = document.getElementById("resources-grid");
-      if (container) {
-        container.innerHTML = items.map(r => `
-          <div class="card">
-            <div class="card-header">
-              <span class="card-badge">${escapeHtml(r.type ? r.type.toUpperCase() : 'DOC')}</span>
-              <span style="font-size: 0.82rem; color: var(--ps-text-gray);">${escapeHtml(r.category)}</span>
-            </div>
-            <h3 class="card-title">${escapeHtml(r.title)}</h3>
-            <p class="card-desc">${escapeHtml(r.description)}</p>
-            <div class="provenance-bar">
-              <div class="provenance-item">📌 <span>Source: ${escapeHtml(r.source)}</span></div>
-              <div class="provenance-item">👑 <span>Owner: ${escapeHtml(r.owner)}</span></div>
-            </div>
-            <div class="card-footer">
-              <a href="${r.url}" target="_blank" rel="noopener" class="action-btn">Open Resource 🔗</a>
-            </div>
+    function filterResources(cat, ev) {
+      if (ev) {
+        document.querySelectorAll("#tab-resources .filter-chip").forEach(c => c.classList.remove("active"));
+        ev.target.classList.add("active");
+      }
+      let list = appData.resources;
+      if (cat !== 'ALL') list = list.filter(r => r.category === cat);
+      
+      const grid = document.getElementById("resources-grid");
+      if (!grid) return;
+      grid.innerHTML = list.map(r => `
+        <div class="card">
+          <div class="card-header">
+            <span class="card-badge">${escapeHtml(r.category || 'Resource')}</span>
+            <span style="font-size: 0.78rem; color: #10B981; font-weight: 700;">Verified Link</span>
           </div>
-        `).join("");
-      }
-    }
-
-    function filterResources(category = "ALL", event) {
-      if (event && event.target) {
-        const chips = event.target.parentElement.querySelectorAll(".filter-chip");
-        chips.forEach(c => c.classList.remove("active"));
-        event.target.classList.add("active");
-      }
-      renderResources(category);
-    }
-
-    function renderOpportunities(type = "ALL") {
-      const items = type === "ALL" ? appData.opportunities : appData.opportunities.filter(o => o.type === type);
-      const container = document.getElementById("opportunities-grid");
-      if (container) {
-        container.innerHTML = items.map(o => `
-          <div class="card">
-            <div class="card-header">
-              <span class="card-badge">${escapeHtml(o.type)}</span>
-              <span style="font-size: 0.82rem; color: #D97706; font-weight: 700;">⏳ ${o.deadline ? new Date(o.deadline).toLocaleDateString() : 'Ongoing'}</span>
-            </div>
-            <h3 class="card-title">${escapeHtml(o.title)}</h3>
-            <p class="card-desc">${escapeHtml(o.description)}</p>
-            <div class="provenance-bar">
-              <div class="provenance-item">🏢 <span>Org: ${escapeHtml(o.organization)}</span></div>
-              <div class="provenance-item">📌 <span>Source: ${escapeHtml(o.source)}</span></div>
-            </div>
-            <div class="card-footer">
-              <a href="${o.url}" target="_blank" rel="noopener" class="action-btn">Apply Now 🚀</a>
-            </div>
+          <h3 class="card-title">${escapeHtml(r.title)}</h3>
+          <p class="card-desc">${escapeHtml(r.description || '')}</p>
+          <div class="card-footer">
+            <a href="${escapeHtml(r.url)}" target="_blank" rel="noopener" class="action-btn">Open Resource →</a>
           </div>
-        `).join("");
-      }
+        </div>
+      `).join("");
     }
 
-    function filterOpportunities(type = "ALL", event) {
-      if (event && event.target) {
-        const chips = event.target.parentElement.querySelectorAll(".filter-chip");
-        chips.forEach(c => c.classList.remove("active"));
-        event.target.classList.add("active");
+    function filterOpportunities(type, ev) {
+      if (ev) {
+        document.querySelectorAll("#tab-opportunities .filter-chip").forEach(c => c.classList.remove("active"));
+        ev.target.classList.add("active");
       }
-      renderOpportunities(type);
+      let list = appData.opportunities;
+      if (type !== 'ALL') list = list.filter(o => o.type === type);
+      
+      const grid = document.getElementById("opportunities-grid");
+      if (!grid) return;
+      grid.innerHTML = list.map(o => `
+        <div class="card">
+          <div class="card-header">
+            <span class="card-badge">${escapeHtml(o.type || 'Opportunity')}</span>
+            <span style="font-size: 0.78rem; color: #64748B; font-weight: 700;">${escapeHtml(o.deadline || 'Open')}</span>
+          </div>
+          <h3 class="card-title">${escapeHtml(o.title)}</h3>
+          <p class="card-desc">${escapeHtml(o.description || '')}</p>
+          <div class="card-footer">
+            <a href="${escapeHtml(o.link)}" target="_blank" rel="noopener" class="action-btn">Apply Now →</a>
+          </div>
+        </div>
+      `).join("");
     }
 
     function renderFaqs() {
       const container = document.getElementById("faqs-list");
-      if (container) {
-        container.innerHTML = appData.faqs.map(f => `
-          <div class="faq-item" onclick="toggleFaq(this)">
-            <div class="faq-question">
-              <span>❓ ${escapeHtml(f.question)}</span>
-              <span style="color: var(--ps-purple-primary);">➕</span>
-            </div>
-            <div class="faq-answer">
-              <p>${escapeHtml(f.answer)}</p>
-              <div class="provenance-bar" style="margin-top: 1.1rem;">
-                <div class="provenance-item">📌 <span>Source: ${escapeHtml(f.source)}</span></div>
-                <div class="provenance-item">🛡️ <span>Owner: ${escapeHtml(f.owner)}</span></div>
-              </div>
-            </div>
+      if (!container) return;
+      container.innerHTML = appData.faqs.map((f, i) => `
+        <div class="faq-item" onclick="toggleFaq(${i})">
+          <div class="faq-question">
+            <span>${escapeHtml(f.question)}</span>
+            <span style="color: var(--ps-purple-primary); font-size: 1.2rem;">+</span>
           </div>
-        `).join("");
-      }
-    }
-
-    function toggleFaq(el) {
-      el.classList.toggle("open");
-    }
-
-    function openGuideModal(guideId) {
-      const guide = appData.guides.find(g => g.id === guideId);
-      if (!guide) return;
-
-      const modalBody = document.getElementById("modal-body");
-      modalBody.innerHTML = `
-        <h1 style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--ps-text-dark);">${escapeHtml(guide.title)}</h1>
-        <p style="color: var(--ps-text-gray); font-size: 0.92rem; margin-bottom: 1.5rem;">
-          Verified on ${guide.verifiedDate ? new Date(guide.verifiedDate).toLocaleDateString() : 'Official'} by ${escapeHtml(guide.owner)} (${escapeHtml(guide.source)})
-        </p>
-        <hr style="border-color: var(--ps-border-light); margin-bottom: 1.5rem;">
-        <div style="line-height: 1.7; color: var(--ps-text-dark);">${marked.parse(guide.content || '')}</div>
-        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--ps-border-light); text-align: center;">
-          <a href="${appData.studyAssistantLink.botUrl}" target="_blank" rel="noopener" class="action-btn" style="padding: 0.85rem 1.4rem;">
-            💬 Discuss this Guide with AI Mentor on Telegram →
-          </a>
+          <div class="faq-answer" id="faq-ans-${i}">${escapeHtml(f.answer)}</div>
         </div>
-      `;
-      document.getElementById("guide-modal").style.display = "flex";
+      `).join("");
     }
 
-    function closeModal() {
-      document.getElementById("guide-modal").style.display = "none";
+    function toggleFaq(index) {
+      const ans = document.getElementById(`faq-ans-${index}`);
+      if (ans) ans.classList.toggle("show");
     }
 
     function registerServiceWorker() {
