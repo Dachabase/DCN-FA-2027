@@ -297,24 +297,44 @@
     .search-hint {
       font-size: 0.85rem;
       color: #94A3B8;
-      margin-top: 0.75rem;
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem 0.6rem;
+      line-height: 1.8;
+    }
+
+    .search-hint label {
+      color: #94A3B8;
+      font-weight: 500;
+      white-space: nowrap;
+      margin-right: 0.2rem;
     }
 
     .search-hint code {
+      display: inline-block;
+      vertical-align: middle;
       background: rgba(255, 255, 255, 0.12);
       color: #E2E8F0;
-      padding: 0.25rem 0.6rem;
+      padding: 0.32rem 0.75rem;
       border-radius: 6px;
       font-size: 0.82rem;
+      font-weight: 600;
       cursor: pointer;
       transition: var(--transition);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      white-space: nowrap;
+      margin: 0.15rem 0;
+      box-sizing: border-box;
     }
 
     .search-hint code:hover {
       background: var(--ps-purple-primary);
       color: #FFFFFF;
       border-color: transparent;
+      transform: translateY(-1px);
     }
 
     .global-search-overlay {
@@ -1046,7 +1066,7 @@
           </button>
         </div>
         <div class="search-hint">
-          Popular searches: 
+          <label>Popular searches:</label> 
           <code onclick="quickSearchTag('MAT101')">MAT101</code> 
           <code onclick="quickSearchTag('Computer Science')">Computer Science</code> 
           <code onclick="quickSearchTag('CGPA Scale')">CGPA Scale</code> 
