@@ -1,0 +1,151 @@
+// Prisma schema for UI Freshers AI
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// =========================================================
+// FACULTY
+// =========================================================
+
+model Faculty {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  departments Department[]
+  users       User[]
+  bots        Bot[]
+}
+
+// =========================================================
+// BOT
+// =========================================================
+
+model Bot {
+  id String @id @default(cuid())
+
+  telegramBotId BigInt @unique
+  username      String @unique
+  name          String
+
+  facultyId String?
+  faculty   Faculty? @relation(fields: [facultyId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// =========================================================
+// DEPARTMENT
+// =========================================================
+
+model Department {
+  id   String @id @default(cuid())
+  name String
+
+  facultyId String
+  faculty   Faculty @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+
+  users User[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([facultyId, name])
+}
+
+// =========================================================
+// USER
+// =========================================================
+
+model User {
+  id         String @id @default(cuid())
+  telegramId BigInt @unique
+
+  firstName String?
+  lastName  String?
+  username  String?
+
+  facultyId String?
+  faculty   Faculty? @relation(fields: [facultyId], references: [id])
+
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id])
+
+  level Int?
+
+  onboardingStep String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  conversations Conversation[]
+  memories      Memory[]
+}
+
+// =========================================================
+// CONVERSATION
+// =========================================================
+
+model Conversation {
+  id String @id @default(cuid())
+
+  userId String
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  messages Message[]
+}
+
+// =========================================================
+// MESSAGE
+// =========================================================
+
+model Message {
+  id String @id @default(cuid())
+
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  role    MessageRole
+  content String
+
+  createdAt DateTime @default(now())
+}
+
+// =========================================================
+// MESSAGE ROLE
+// =========================================================
+
+enum MessageRole {
+  USER
+  ASSISTANT
+}
+
+// =========================================================
+// MEMORY
+// =========================================================
+
+model Memory {
+  id String @id @default(cuid())
+
+  userId String
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  type       String
+  content    String
+  importance Int   @default(1)
+  confidence Float @default(1.0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
