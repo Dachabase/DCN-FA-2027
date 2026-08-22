@@ -247,7 +247,7 @@
       width: 100%;
       background: #FFFFFF;
       border: 2px solid transparent;
-      padding: 1.15rem 1.4rem 1.15rem 3.3rem;
+      padding: 1.15rem 8rem 1.15rem 3.3rem;
       border-radius: 12px;
       color: var(--ps-text-dark);
       font-size: 1.02rem;
@@ -260,6 +260,29 @@
     .search-input:focus {
       border-color: var(--ps-purple-primary);
       box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
+    }
+
+    .search-btn {
+      position: absolute;
+      right: 0.45rem;
+      background: var(--ps-purple-primary);
+      color: #FFFFFF;
+      border: none;
+      padding: 0.75rem 1.35rem;
+      border-radius: 9px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .search-btn:hover {
+      background: var(--ps-purple-hover);
+      transform: translateY(-1px);
     }
 
     .search-icon-svg {
@@ -278,11 +301,74 @@
     }
 
     .search-hint code {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.12);
       color: #E2E8F0;
-      padding: 0.2rem 0.45rem;
-      border-radius: 4px;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
       font-size: 0.82rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .search-hint code:hover {
+      background: var(--ps-purple-primary);
+      color: #FFFFFF;
+      border-color: transparent;
+    }
+
+    .global-search-overlay {
+      background: #FFFFFF;
+      border: 1px solid var(--ps-border-light);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin-top: 1.25rem;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+      text-align: left;
+      animation: fadeIn 0.2s ease;
+      display: none;
+      position: relative;
+      z-index: 100;
+    }
+
+    .global-search-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #F1F5F9;
+    }
+
+    .global-search-category {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--ps-purple-primary);
+      margin: 1.15rem 0 0.55rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .search-result-item {
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      margin-bottom: 0.55rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .search-result-item:hover {
+      background: #F1F5F9;
+      border-color: var(--ps-purple-light);
+      transform: translateX(4px);
     }
 
     .hero-subtext {
@@ -952,11 +1038,23 @@
             id="global-search-input"
             placeholder="Search by course code, department, GST course, or venue..."
             oninput="handleGlobalSearch(this.value)"
+            onkeydown="if(event.key === 'Enter') executeGlobalSearch()"
           >
+          <button class="search-btn" id="global-search-submit-btn" onclick="executeGlobalSearch()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            Search
+          </button>
         </div>
         <div class="search-hint">
-          Popular searches: <code>MAT111</code>, <code>Computer Science</code>, <code>Senate CGPA Rules</code>, <code>GES101</code>
+          Popular searches: 
+          <code onclick="quickSearchTag('MAT101')">MAT101</code> 
+          <code onclick="quickSearchTag('Computer Science')">Computer Science</code> 
+          <code onclick="quickSearchTag('CGPA Scale')">CGPA Scale</code> 
+          <code onclick="quickSearchTag('GES107')">GES107</code>
         </div>
+
+        <!-- GLOBAL SEARCH RESULTS OVERLAY -->
+        <div id="global-search-results-overlay" class="global-search-overlay"></div>
       </div>
 
       <p class="hero-subtext">
@@ -1427,21 +1525,137 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    function quickSearchTag(tag) {
+      const input = document.getElementById("global-search-input");
+      if (input) {
+        input.value = tag;
+        executeGlobalSearch();
+      }
+    }
+
+    function executeGlobalSearch() {
+      const input = document.getElementById("global-search-input");
+      if (input && input.value) {
+        handleGlobalSearch(input.value);
+      }
+    }
+
+    function closeGlobalSearchResults() {
+      const overlay = document.getElementById("global-search-results-overlay");
+      if (overlay) overlay.style.display = "none";
+    }
+
     function handleGlobalSearch(query) {
-      if (!query.trim()) {
-        renderHome();
+      const overlay = document.getElementById("global-search-results-overlay");
+      if (!overlay) return;
+
+      if (!query || !query.trim()) {
+        overlay.style.display = "none";
         return;
       }
-      const q = query.toLowerCase();
-      const filtered = appData.guides.filter(g => 
+
+      const q = query.toLowerCase().trim();
+      let html = '';
+
+      // 1. Search Faculties & Departments
+      const matchedDepts = [];
+      (appData.faculties || []).forEach(f => {
+        (f.departments || []).forEach(d => {
+          if (d.name.toLowerCase().includes(q) || f.name.toLowerCase().includes(q) || (f.code && f.code.toLowerCase().includes(q))) {
+            matchedDepts.push({ dept: d.name, faculty: f.name, facultyId: f.id });
+          }
+        });
+      });
+
+      // 2. Search Guides & Senate Rules
+      const matchedGuides = (appData.guides || []).filter(g => 
         g.title.toLowerCase().includes(q) || 
         (g.content && g.content.toLowerCase().includes(q)) || 
-        (g.summary && g.summary.toLowerCase().includes(q))
+        (g.summary && g.summary.toLowerCase().includes(q)) ||
+        (g.category && g.category.toLowerCase().includes(q))
       );
-      const container = document.getElementById("home-featured-guides");
-      if (container) {
-        container.innerHTML = filtered.map(g => createGuideCardHtml(g)).join("");
+
+      // 3. Search Academic Resources
+      const matchedResources = (appData.resources || []).filter(r => 
+        r.title.toLowerCase().includes(q) || 
+        (r.description && r.description.toLowerCase().includes(q)) || 
+        (r.type && r.type.toLowerCase().includes(q))
+      );
+
+      const totalMatches = matchedDepts.length + matchedGuides.length + matchedResources.length;
+
+      if (totalMatches === 0) {
+        html = `
+          <div class="global-search-header">
+            <span style="font-weight: 700; color: #64748B; font-size: 0.95rem;">Search Results for "${escapeHtml(query)}"</span>
+            <button onclick="closeGlobalSearchResults()" style="background: none; border: none; font-size: 1rem; cursor: pointer; color: #94A3B8;">✕</button>
+          </div>
+          <div style="text-align: center; padding: 1.75rem; color: #64748B; font-size: 0.95rem;">
+            No exact matches found for "<strong>${escapeHtml(query)}</strong>". Try searching <code>Computer Science</code>, <code>MAT101</code>, <code>GES107</code>, or <code>CGPA Scale</code>.
+          </div>
+        `;
+      } else {
+        html = `
+          <div class="global-search-header">
+            <div>
+              <span style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--ps-text-dark);">Search Results</span>
+              <span style="font-size: 0.85rem; color: #64748B; margin-left: 0.4rem;">(${totalMatches} items found for "${escapeHtml(query)}")</span>
+            </div>
+            <button onclick="closeGlobalSearchResults()" style="background: var(--ps-light-card); border: none; font-size: 0.85rem; font-weight: 700; padding: 0.35rem 0.75rem; border-radius: 6px; cursor: pointer; color: #64748B;">✕ Close</button>
+          </div>
+        `;
+
+        // Department / Faculty Matches
+        if (matchedDepts.length > 0) {
+          html += `<div class="global-search-category">🎓 Departmental Course Packages (${matchedDepts.length})</div>`;
+          matchedDepts.slice(0, 5).forEach(m => {
+            html += `
+              <div class="search-result-item" onclick="closeGlobalSearchResults(); switchTab('catalog'); selectFacultyForCatalog('${m.facultyId}');">
+                <div>
+                  <strong style="color: var(--ps-purple-primary); font-size: 0.95rem;">${escapeHtml(m.dept)}</strong>
+                  <div style="font-size: 0.82rem; color: #64748B;">${escapeHtml(m.faculty)}</div>
+                </div>
+                <span style="font-size: 0.8rem; font-weight: 700; color: var(--ps-purple-primary);">Inspect Package →</span>
+              </div>
+            `;
+          });
+        }
+
+        // Guide Matches
+        if (matchedGuides.length > 0) {
+          html += `<div class="global-search-category">📖 Academic Guides & Regulations (${matchedGuides.length})</div>`;
+          matchedGuides.slice(0, 4).forEach(g => {
+            html += `
+              <div class="search-result-item" onclick="closeGlobalSearchResults(); switchTab('guides');">
+                <div>
+                  <strong style="color: var(--ps-text-dark); font-size: 0.95rem;">${escapeHtml(g.title)}</strong>
+                  <div style="font-size: 0.82rem; color: #64748B;">${escapeHtml(g.summary || '')}</div>
+                </div>
+                <span style="font-size: 0.8rem; font-weight: 700; color: var(--ps-purple-primary);">Read Guide →</span>
+              </div>
+            `;
+          });
+        }
+
+        // Resource Matches
+        if (matchedResources.length > 0) {
+          html += `<div class="global-search-category">📁 Study Resources & Past Questions (${matchedResources.length})</div>`;
+          matchedResources.slice(0, 4).forEach(r => {
+            html += `
+              <div class="search-result-item" onclick="closeGlobalSearchResults(); switchTab('resources');">
+                <div>
+                  <strong style="color: var(--ps-text-dark); font-size: 0.95rem;">${escapeHtml(r.title)}</strong>
+                  <div style="font-size: 0.82rem; color: #64748B;">${escapeHtml(r.description || '')}</div>
+                </div>
+                <span style="font-size: 0.8rem; font-weight: 700; color: var(--ps-purple-primary);">Access Resource →</span>
+              </div>
+            `;
+          });
+        }
       }
+
+      overlay.innerHTML = html;
+      overlay.style.display = "block";
     }
 
     function escapeHtml(str) {
