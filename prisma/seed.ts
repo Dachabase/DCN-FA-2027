@@ -39,19 +39,14 @@ async function getOrCreateCourse(
         isUniversityWide,
       },
     });
-  }
-  return course;
-}
-
-async function linkDepartmentCourse(departmentId: string, courseId: string) {
-  const existing = await prisma.departmentCourse.findUnique({
-    where: { departmentId_courseId: { departmentId, courseId } },
-  });
-  if (!existing) {
-    await prisma.departmentCourse.create({
-      data: { departmentId, courseId },
+  } else {
+    // Update fields if needed
+    course = await prisma.course.update({
+      where: { code },
+      data: { title, semester, status, units, isUniversityWide }
     });
   }
+  return course;
 }
 
 async function main() {
@@ -68,9 +63,9 @@ async function main() {
   // =========================================================
 
   const facultyData = [
-    { name: "Computing", code: "COMPUTING", depts: ["Computer Science", "Cybersecurity", "Information Technology", "Software Engineering"] },
+    { name: "Computing", code: "COMPUTING", depts: ["Computer Science", "Cybersecurity", "Information Technology", "Software Engineering", "Data Science"] },
     { name: "Science", code: "SCIENCE", depts: ["Computer Science", "Mathematics", "Statistics", "Physics", "Chemistry", "Botany", "Zoology", "Geology", "Microbiology", "Archaeology & Anthropology"] },
-    { name: "Technology", code: "TECH", depts: ["Electrical & Electronic Engineering", "Mechanical Engineering", "Civil Engineering", "Agricultural & Environmental Engineering", "Petroleum Engineering", "Industrial & Production Engineering", "Biomedical Engineering", "Food Technology"] },
+    { name: "Technology", code: "TECH", depts: ["Electrical & Electronic Engineering", "Mechanical Engineering", "Civil Engineering", "Agricultural & Environmental Engineering", "Petroleum Engineering", "Industrial & Production Engineering", "Biomedical Engineering", "Food Technology", "Automotive Engineering", "Wood Products Engineering"] },
     { name: "Clinical Sciences", code: "CLINICAL", depts: ["Medicine & Surgery (MBBS)", "Nursing Science", "Physiotherapy", "Radiography & Radiation Science"] },
     { name: "Basic Medical Sciences", code: "BASIC_MED", depts: ["Anatomy", "Physiology", "Biochemistry", "Pharmacology & Therapeutics", "Human Nutrition & Dietetics"] },
     { name: "Dentistry", code: "DENTISTRY", depts: ["Child Dental Health", "Oral & Maxillofacial Surgery", "Oral Pathology & Medicine", "Periodontology & Community Dentistry", "Restorative Dentistry"] },
@@ -82,9 +77,10 @@ async function main() {
     { name: "Renewable Natural Resources", code: "NAT_RES", depts: ["Forest Resources Management", "Wildlife & Ecotourism Management", "Aquaculture & Fisheries Management", "Social & Environmental Forestry"] },
     { name: "Economics & Management Sciences", code: "ECON_MGMT", depts: ["Economics", "Accounting", "Banking & Finance", "Marketing & Consumer Studies"] },
     { name: "The Social Sciences", code: "SOCIAL_SCI", depts: ["Political Science", "Psychology", "Sociology", "Geography"] },
-    { name: "Arts", code: "ARTS", depts: ["English Language & Literature", "History", "Theatre Arts", "Philosophy", "Linguistics & African Languages", "Communication & Language Arts (CLA)", "Classics", "Religious Studies (Islamic/Christian)", "Music"] },
+    { name: "Arts", code: "ARTS", depts: ["Arabic & Islamic Studies", "Archaeology & Anthropology", "Classics", "Communication & Language Arts", "English", "European Studies", "History", "Linguistics & African Languages", "Music", "Philosophy", "Religious Studies", "Theatre Arts"] },
     { name: "Law", code: "LAW", depts: ["Public & International Law", "Private & Property Law", "Commercial & Industrial Law", "Jurisprudence & Legal Theory"] },
-    { name: "Education", code: "EDUCATION", depts: ["Educational Management", "Guidance & Counseling", "Adult Education", "Special Education", "Science & Technology Education", "Arts & Social Sciences Education"] },
+    { name: "Education", code: "EDUCATION", depts: ["Educational Management", "Guidance & Counselling", "Adult Education", "Special Education", "Human Kinetics & Health Education", "Social Work", "Science & Technology Education", "Arts & Social Sciences Education"] },
+    { name: "Multidisciplinary Studies", code: "MDS", depts: ["Data and Information Science", "Minerals, Petroleum, Energy Economics and Law", "Sustainability Studies", "Peace, Security and Humanitarian Studies", "Bioethics and Medical Humanities"] }
   ];
 
   const facultyMap: Record<string, any> = {};
@@ -100,99 +96,106 @@ async function main() {
     }
   }
 
-  console.log("✅ 17 Faculties and 92+ Departments seeded.");
+  console.log("✅ 18 Faculties and 95+ Departments seeded.");
 
   // =========================================================
   // 2. SEED UNIVERSITY-WIDE GENERAL STUDIES (GES/GST BLOCK)
   // =========================================================
 
-  const ges101 = await getOrCreateCourse("GST 111", "Communication in English I", "1st", CourseStatus.COMPULSORY, 2, true);
-  const ges102 = await getOrCreateCourse("GST 112", "Communication in English II", "2nd", CourseStatus.COMPULSORY, 2, true);
+  const gst111 = await getOrCreateCourse("C-GST 111", "Communication in English I", "1st", CourseStatus.COMPULSORY, 2, true);
+  const gst112 = await getOrCreateCourse("C-GST 112", "Nigerian Peoples and Culture", "2nd", CourseStatus.COMPULSORY, 2, true);
+  const ges107 = await getOrCreateCourse("C-UI-GES 107", "Reproductive Health, STIs & HIV", "1st", CourseStatus.REQUIRED, 1, true);
+  const ges108 = await getOrCreateCourse("C-UI-GES 108", "Introduction to French", "2nd", CourseStatus.REQUIRED, 1, true);
   const ges103 = await getOrCreateCourse("GES 103", "Government, Society, and Economy", "1st", CourseStatus.COMPULSORY, 2, true);
   const ges106 = await getOrCreateCourse("GES 106", "Philosophy and Logic", "1st", CourseStatus.COMPULSORY, 2, true);
-  const ges107 = await getOrCreateCourse("GES 107", "Reproductive Health, STIs, and HIV/AIDS", "2nd", CourseStatus.COMPULSORY, 2, true);
-  const ges108 = await getOrCreateCourse("GES 108", "Introduction to French Language", "2nd", CourseStatus.COMPULSORY, 2, true);
-  const ges109 = await getOrCreateCourse("GES 109", "Nigerian Peoples and Culture", "2nd", CourseStatus.COMPULSORY, 2, true);
 
   console.log("✅ University-wide GES/GST course block seeded.");
 
   // =========================================================
-  // 3. SEED CORE 100-LEVEL COURSES
+  // 3. SEED CANONICAL 100-LEVEL COURSES BY FACULTY
   // =========================================================
 
-  // Computing & Science & Tech Core
-  const csc101 = await getOrCreateCourse("CSC 101", "Introduction to Computer Science", "1st", CourseStatus.COMPULSORY, 3);
-  const csc102 = await getOrCreateCourse("CSC 102", "Problem Solving & Programming", "2nd", CourseStatus.COMPULSORY, 3);
-  const mat111 = await getOrCreateCourse("MAT 111", "Algebra and Trigonometry", "1st", CourseStatus.COMPULSORY, 3);
-  const mat121 = await getOrCreateCourse("MAT 121", "Calculus I", "2nd", CourseStatus.COMPULSORY, 3);
-  const phy101 = await getOrCreateCourse("PHY 101", "General Physics I (Mechanics & Heat)", "1st", CourseStatus.COMPULSORY, 3);
-  const phy102 = await getOrCreateCourse("PHY 102", "General Physics II (Electricity & Magnetism)", "2nd", CourseStatus.COMPULSORY, 3);
-  const phy107 = await getOrCreateCourse("PHY 107", "General Physics Practical I", "1st", CourseStatus.COMPULSORY, 1);
-  const sta112 = await getOrCreateCourse("STA 112", "Introduction to Probability & Statistics", "2nd", CourseStatus.REQUIRED, 3);
+  // --- Faculty of Computing (CCMAS Unified 100L) ---
+  const cos101 = await getOrCreateCourse("C-COS 101", "Introduction to Computing Sciences", "1st", CourseStatus.COMPULSORY, 3);
+  const mth101 = await getOrCreateCourse("C-MTH 101", "Elementary Mathematics I (Algebra & Trigonometry)", "1st", CourseStatus.COMPULSORY, 2);
+  const sta111 = await getOrCreateCourse("C-STA 111", "Descriptive Statistics", "1st", CourseStatus.COMPULSORY, 3);
+  const phy101c = await getOrCreateCourse("C-PHY 101", "General Physics I (Mechanics)", "1st", CourseStatus.COMPULSORY, 2);
+  const phy107c = await getOrCreateCourse("C-PHY 107", "General Practical Physics I", "1st", CourseStatus.COMPULSORY, 1);
+  const mth103 = await getOrCreateCourse("C-MTH 103", "Elementary Mathematics III (Vectors, Geometry & Dynamics)", "1st", CourseStatus.REQUIRED, 2);
 
-  // Biology & Chemistry Core
-  const bio101 = await getOrCreateCourse("BIO 101", "Basic Biology I (Cell Biology & Genetics)", "1st", CourseStatus.COMPULSORY, 3);
-  const bio102 = await getOrCreateCourse("BIO 102", "Basic Biology II (Organismal Biology)", "2nd", CourseStatus.COMPULSORY, 3);
+  const cos102 = await getOrCreateCourse("C-COS 102", "Problem Solving", "2nd", CourseStatus.COMPULSORY, 3);
+  const mth102 = await getOrCreateCourse("C-MTH 102", "Elementary Mathematics II (Calculus)", "2nd", CourseStatus.COMPULSORY, 2);
+  const phy102c = await getOrCreateCourse("C-PHY 102", "General Physics II (Electricity & Magnetism)", "2nd", CourseStatus.COMPULSORY, 2);
+  const phy108c = await getOrCreateCourse("C-PHY 108", "General Practical Physics II", "2nd", CourseStatus.COMPULSORY, 1);
+  const sta122 = await getOrCreateCourse("C-STA 122", "Statistical Computing I", "2nd", CourseStatus.REQUIRED, 3);
+  const cos103 = await getOrCreateCourse("C-UI-COS 103", "Practical Lab I", "1st", CourseStatus.COMPULSORY, 2);
+
+  // --- Faculty of Arts ---
+  const phl101 = await getOrCreateCourse("C-PHL 101", "Introduction to Philosophy", "1st", CourseStatus.COMPULSORY, 3);
+  const phl102 = await getOrCreateCourse("C-PHL 102", "Arguments and Critical Thinking", "2nd", CourseStatus.COMPULSORY, 3);
+  const phl103 = await getOrCreateCourse("C-PHL 103", "Elementary Ethics", "1st", CourseStatus.REQUIRED, 3);
+  const phl104 = await getOrCreateCourse("C-PHL 104", "History of Philosophy", "2nd", CourseStatus.REQUIRED, 3);
+  const phl106 = await getOrCreateCourse("C-PHL 106", "Introduction to African Philosophy", "2nd", CourseStatus.COMPULSORY, 3);
+  const lin105 = await getOrCreateCourse("C-LIN 105", "Languages of the World", "1st", CourseStatus.COMPULSORY, 3);
+  const lin107 = await getOrCreateCourse("C-LIN 107", "Introduction to Grammatical Analysis I", "2nd", CourseStatus.COMPULSORY, 3);
+  const liy101 = await getOrCreateCourse("C-LIY 101", "Introduction to Yorùbá People, Language and Culture", "1st", CourseStatus.COMPULSORY, 3);
+
+  // --- Faculty of Education ---
+  const edu101 = await getOrCreateCourse("EDU 101", "Introduction to Teaching and Foundations of Education", "1st", CourseStatus.COMPULSORY, 2);
+  const edu100 = await getOrCreateCourse("UI-EDU 100", "Instructional Methods I", "2nd", CourseStatus.COMPULSORY, 2);
+  const eae101 = await getOrCreateCourse("EAE 101", "Introduction to Adult Education", "1st", CourseStatus.COMPULSORY, 3);
+  const eae102 = await getOrCreateCourse("EAE 102", "Historical Foundations of Adult Education", "2nd", CourseStatus.COMPULSORY, 3);
+  const edm101 = await getOrCreateCourse("EDM 101", "History of Educational Management in Nigeria", "1st", CourseStatus.COMPULSORY, 3);
+  const edm102 = await getOrCreateCourse("EDM 102", "Introduction to Management and Human Resources Behaviours", "2nd", CourseStatus.COMPULSORY, 3);
+  const edm104 = await getOrCreateCourse("EDM 104", "Basic Concepts in Economics of Education and Planning", "2nd", CourseStatus.COMPULSORY, 3);
+  const hee105 = await getOrCreateCourse("UI-HEE 105", "Health Care Delivery System in Nigeria", "1st", CourseStatus.COMPULSORY, 2);
+  const ehe120 = await getOrCreateCourse("EHE 120", "Introduction to Community and Public Health", "2nd", CourseStatus.COMPULSORY, 2);
+  const gce101 = await getOrCreateCourse("GCE 101", "Introduction to Guidance and Counselling", "1st", CourseStatus.COMPULSORY, 3);
+  const gce103 = await getOrCreateCourse("GCE 103", "Developmental Psychology", "2nd", CourseStatus.COMPULSORY, 3);
+  const swk111 = await getOrCreateCourse("SWK 111", "Introduction to Social Work", "1st", CourseStatus.COMPULSORY, 3);
+  const swk112 = await getOrCreateCourse("SWK 112", "Introduction to Indigenous Social Welfare", "2nd", CourseStatus.COMPULSORY, 3);
+
+  // --- Faculty of EDM (Environmental Design & Management) ---
+  const esm101 = await getOrCreateCourse("ESM 101", "Introduction to Estate Management I", "1st", CourseStatus.COMPULSORY, 2);
+  const esm102 = await getOrCreateCourse("ESM 102", "Introduction to Estate Management II", "2nd", CourseStatus.COMPULSORY, 2);
+  const esm103 = await getOrCreateCourse("ESM 103", "Principles of Land Economy", "2nd", CourseStatus.COMPULSORY, 2);
+  const esm105 = await getOrCreateCourse("ESM 105", "Introduction to Accounting for Estate Management I", "1st", CourseStatus.REQUIRED, 2);
+  const esm106 = await getOrCreateCourse("ESM 106", "Introduction to Accounting for Estate Management II", "2nd", CourseStatus.REQUIRED, 2);
+  const urp101 = await getOrCreateCourse("URP 101", "Introduction to Environmental Sciences", "1st", CourseStatus.COMPULSORY, 2);
+  const urp104 = await getOrCreateCourse("URP 104", "Basic Elements of Planning", "2nd", CourseStatus.COMPULSORY, 2);
+  const fea112 = await getOrCreateCourse("FEA 112", "Graphic Communication and Lettering I", "1st", CourseStatus.REQUIRED, 2);
+  const fea122 = await getOrCreateCourse("FEA 122", "Graphic Communication and Lettering II", "2nd", CourseStatus.REQUIRED, 2);
+  const mat101e = await getOrCreateCourse("MAT 101", "Supplementary Mathematics", "1st", CourseStatus.COMPULSORY, 3);
+  const pos114 = await getOrCreateCourse("POS 114", "The Citizen and the State", "2nd", CourseStatus.ELECTIVE, 2);
+
+  // --- Faculty of Law ---
+  const law101 = await getOrCreateCourse("LAW 101", "Legal Methods I", "1st", CourseStatus.COMPULSORY, 2);
+  const law102 = await getOrCreateCourse("LAW 102", "Legal Methods II", "2nd", CourseStatus.COMPULSORY, 2);
+
+  // --- Faculty of Pharmacy ---
+  const pcy101 = await getOrCreateCourse("PCY 101", "Introduction to Pharmacy", "1st", CourseStatus.COMPULSORY, 2);
+
+  // --- Faculty of Technology ---
+  const get111 = await getOrCreateCourse("GET 111", "Engineer in Society I", "1st", CourseStatus.COMPULSORY, 1);
+  const get112 = await getOrCreateCourse("GET 112", "Engineer in Society II", "2nd", CourseStatus.COMPULSORY, 1);
+  const tme111 = await getOrCreateCourse("TME 111", "Basic Engineering Drawing", "1st", CourseStatus.COMPULSORY, 2);
+  const tme121 = await getOrCreateCourse("TME 121", "Basic Workshop Practice", "2nd", CourseStatus.COMPULSORY, 2);
+
+  // --- Science & Pre-Med Foundations ---
+  const bio101 = await getOrCreateCourse("BIO 101", "Cell Biology & Genetics", "1st", CourseStatus.COMPULSORY, 3);
+  const bio102 = await getOrCreateCourse("BIO 102", "Organismal Biology", "2nd", CourseStatus.COMPULSORY, 3);
   const bio104 = await getOrCreateCourse("BIO 104", "Practical Biology Laboratory", "2nd", CourseStatus.COMPULSORY, 1);
   const chm101 = await getOrCreateCourse("CHM 101", "General Physical Chemistry", "1st", CourseStatus.COMPULSORY, 3);
   const chm102 = await getOrCreateCourse("CHM 102", "General Inorganic & Organic Chemistry", "2nd", CourseStatus.COMPULSORY, 3);
   const chm107 = await getOrCreateCourse("CHM 107", "General Chemistry Practical", "1st", CourseStatus.COMPULSORY, 1);
-
-  // Technology Core
-  const tch101 = await getOrCreateCourse("TCH 101", "Introduction to Engineering & Technology", "1st", CourseStatus.COMPULSORY, 2);
-  const me101 = await getOrCreateCourse("ME 101", "Engineering Drawing I", "1st", CourseStatus.COMPULSORY, 2);
-  const me102 = await getOrCreateCourse("ME 102", "Engineering Drawing II", "2nd", CourseStatus.COMPULSORY, 2);
-
-  // Medical & Health Core
-  const nut101 = await getOrCreateCourse("NUT 101", "Introduction to Human Nutrition", "1st", CourseStatus.COMPULSORY, 2);
-  const ehs101 = await getOrCreateCourse("EHS 101", "Introduction to Environmental Health", "1st", CourseStatus.COMPULSORY, 2);
-
-  // Environmental Design Core
-  const esm101 = await getOrCreateCourse("ESM 101", "Introduction to Estate Management I", "1st", CourseStatus.COMPULSORY, 2);
-  const esm102 = await getOrCreateCourse("ESM 102", "Introduction to Estate Management II", "2nd", CourseStatus.COMPULSORY, 2);
-  const urp101 = await getOrCreateCourse("URP 101", "Introduction to Environmental Sciences", "1st", CourseStatus.COMPULSORY, 2);
-  const urp104 = await getOrCreateCourse("URP 104", "Basic Elements of Planning", "2nd", CourseStatus.COMPULSORY, 2);
-  const fea112 = await getOrCreateCourse("FEA 112", "Graphic Communication & Lettering I", "1st", CourseStatus.REQUIRED, 2);
-  const fea122 = await getOrCreateCourse("FEA 122", "Graphic Communication & Lettering II", "2nd", CourseStatus.REQUIRED, 2);
-  const mat101 = await getOrCreateCourse("MAT 101", "Supplementary Mathematics", "1st", CourseStatus.COMPULSORY, 4);
-
-  // Management & Social Science Core
-  const ams101 = await getOrCreateCourse("AMS 101", "Principles of Management", "1st", CourseStatus.COMPULSORY, 3);
-  const ams102 = await getOrCreateCourse("AMS 102", "Basic Mathematics for Management", "1st", CourseStatus.COMPULSORY, 3);
-  const ams103 = await getOrCreateCourse("AMS 103", "Introduction to Computing Science", "1st", CourseStatus.COMPULSORY, 3);
-  const eco101 = await getOrCreateCourse("ECO 101", "Principles of Economics I", "1st", CourseStatus.COMPULSORY, 3);
-  const eco102 = await getOrCreateCourse("ECO 102", "Principles of Economics II", "2nd", CourseStatus.COMPULSORY, 3);
-  const acc101 = await getOrCreateCourse("ACC 101", "Introduction to Financial Accounting I", "1st", CourseStatus.COMPULSORY, 3);
-  const acc102 = await getOrCreateCourse("ACC 102", "Introduction to Financial Accounting II", "2nd", CourseStatus.COMPULSORY, 3);
-  const fin101 = await getOrCreateCourse("FIN 101", "Introduction to Finance I", "1st", CourseStatus.COMPULSORY, 3);
-  const mcs103 = await getOrCreateCourse("MCS 103", "Introduction to Business I", "1st", CourseStatus.COMPULSORY, 3);
-  const pos101 = await getOrCreateCourse("POS 101", "Introduction to Political Science", "1st", CourseStatus.COMPULSORY, 3);
-  const soc101 = await getOrCreateCourse("SOC 101", "Introduction to Sociology", "1st", CourseStatus.COMPULSORY, 3);
-  const psy101 = await getOrCreateCourse("PSY 101", "Introduction to Psychology", "1st", CourseStatus.COMPULSORY, 3);
-  const geo101 = await getOrCreateCourse("GEO 101", "Physical Geography I", "1st", CourseStatus.COMPULSORY, 3);
-
-  // Arts & Law & Education Core
-  const eng101 = await getOrCreateCourse("ENG 101", "Introduction to English Language", "1st", CourseStatus.COMPULSORY, 3);
-  const eng102 = await getOrCreateCourse("ENG 102", "Introduction to Literature in English", "2nd", CourseStatus.COMPULSORY, 3);
-  const cla101 = await getOrCreateCourse("CLA 101", "Introduction to Communication Studies", "1st", CourseStatus.COMPULSORY, 3);
-  const his101 = await getOrCreateCourse("HIS 101", "Nigeria from Earliest Times to 1800", "1st", CourseStatus.COMPULSORY, 3);
-  const tha101 = await getOrCreateCourse("THA 101", "Introduction to Drama & Theatre", "1st", CourseStatus.COMPULSORY, 3);
-  const phl101 = await getOrCreateCourse("PHL 101", "Introduction to Philosophy", "1st", CourseStatus.COMPULSORY, 3);
-  const pul101 = await getOrCreateCourse("PUL 101", "Legal Method I", "1st", CourseStatus.COMPULSORY, 3);
-  const pul102 = await getOrCreateCourse("PUL 102", "Legal Method II", "2nd", CourseStatus.COMPULSORY, 3);
-  const ppr101 = await getOrCreateCourse("PPR 101", "Nigerian Legal System I", "1st", CourseStatus.COMPULSORY, 3);
-  const ppr102 = await getOrCreateCourse("PPR 102", "Nigerian Legal System II", "2nd", CourseStatus.COMPULSORY, 3);
-  const agr101 = await getOrCreateCourse("AGR 101", "Introductory Agriculture", "1st", CourseStatus.COMPULSORY, 2);
-  const frm101 = await getOrCreateCourse("FRM 101", "Introduction to Forestry & Natural Resources", "1st", CourseStatus.COMPULSORY, 2);
-  const wem101 = await getOrCreateCourse("WEM 101", "Introduction to Wildlife & Ecotourism", "2nd", CourseStatus.COMPULSORY, 2);
-  const edu101 = await getOrCreateCourse("EDU 101", "History of Education", "1st", CourseStatus.COMPULSORY, 2);
-  const edu102 = await getOrCreateCourse("EDU 102", "Philosophical Foundations of Education", "2nd", CourseStatus.COMPULSORY, 2);
+  const eco101 = await getOrCreateCourse("ECO 101", "Introductory Economics I", "1st", CourseStatus.COMPULSORY, 3);
+  const eco102 = await getOrCreateCourse("ECO 102", "Introductory Economics II", "2nd", CourseStatus.COMPULSORY, 3);
+  const soc101 = await getOrCreateCourse("SOC 101", "Principles of Sociology", "1st", CourseStatus.ELECTIVE, 3);
 
   // =========================================================
-  // 4. LINK COURSES TO DEPARTMENTS (SHARED PACKAGES)
+  // 4. ASSIGN PACKAGES TO DEPARTMENTS
   // =========================================================
 
-  // Helper to link a list of courses to a department using batch createMany
   async function assignPackage(dept: any, courseList: any[]) {
     if (!dept || !courseList.length) return;
     const data = courseList.map((c) => ({
@@ -205,104 +208,73 @@ async function main() {
     });
   }
 
-  // Pre-Med Package (Shared between Clinical Sciences & Dentistry!)
-  const preMedPackage = [bio101, bio102, bio104, chm101, chm102, chm107, phy101, phy102, phy107];
-
-  // Science Package (Shared between Science & Veterinary Medicine Pre-Vet!)
-  const sciencePackage = [mat111, mat121, phy101, phy102, chm101, chm102, chm107, bio101, bio102, bio104];
-
-  // Assign Computing Package
-  const computingPackage = [csc101, csc102, mat111, mat121, phy101, phy102, phy107, sta112];
+  // Computing Package (CCMAS Unified)
+  const computingPkg = [gst111, cos101, mth101, sta111, phy101c, phy107c, mth103, ges107, ges108, gst112, cos102, mth102, phy102c, phy108c, sta122, cos103];
   for (const deptName of facultyData[0].depts) {
-    await assignPackage(deptMap[`Computing_${deptName}`], computingPackage);
+    await assignPackage(deptMap[`Computing_${deptName}`], computingPkg);
   }
 
-  // Assign Science Package to Science departments
-  for (const deptName of facultyData[1].depts) {
-    await assignPackage(deptMap[`Science_${deptName}`], sciencePackage);
-  }
-
-  // Assign Technology Package
-  const techPackage = [tch101, mat111, mat121, phy101, phy102, phy107, chm101, chm107, me101, me102];
-  for (const deptName of facultyData[2].depts) {
-    await assignPackage(deptMap[`Technology_${deptName}`], techPackage);
-  }
-
-  // Assign Pre-Med Package to Clinical Sciences
-  for (const deptName of facultyData[3].depts) {
-    await assignPackage(deptMap[`Clinical Sciences_${deptName}`], preMedPackage);
-  }
-
-  // LINK DENTISTRY DEPARTMENTS DIRECTLY TO CLINICAL SCIENCES PRE-MED PACKAGE (Principle 3 Shared Package!)
-  for (const deptName of facultyData[5].depts) {
-    await assignPackage(deptMap[`Dentistry_${deptName}`], preMedPackage);
-  }
-
-  // LINK VETERINARY MEDICINE DEPARTMENTS DIRECTLY TO SCIENCE PACKAGE (Principle 3 Shared Package!)
-  for (const deptName of facultyData[9].depts) {
-    await assignPackage(deptMap[`Veterinary Medicine_${deptName}`], sciencePackage);
-  }
-
-  // Assign Basic Medical Sciences
-  const basicMedPackage = [bio101, bio102, bio104, chm101, chm102, chm107, phy101, phy102, phy107, nut101];
-  for (const deptName of facultyData[4].depts) {
-    await assignPackage(deptMap[`Basic Medical Sciences_${deptName}`], basicMedPackage);
-  }
-
-  // Assign Pharmacy
-  const pharmacyPackage = [chm101, chm102, chm107, bio101, bio102, phy101, phy102, mat111];
-  for (const deptName of facultyData[7].depts) {
-    await assignPackage(deptMap[`Pharmacy_${deptName}`], pharmacyPackage);
-  }
-
-  // Assign EDM
-  const edmPackage = [esm101, esm102, urp101, urp104, fea112, fea122, mat101, eco101, eco102];
-  for (const deptName of facultyData[8].depts) {
-    await assignPackage(deptMap[`Environmental Design & Management_${deptName}`], edmPackage);
-  }
-
-  // Assign Agriculture & Natural Resources
-  const agricPackage = [agr101, bio101, bio102, chm101, chm102, phy101, phy102, mat111];
-  for (const deptName of facultyData[10].depts) {
-    await assignPackage(deptMap[`Agriculture_${deptName}`], agricPackage);
-  }
-
-  const natResPackage = [frm101, wem101, bio101, bio102, chm101, chm102, phy101, phy102];
-  for (const deptName of facultyData[11].depts) {
-    await assignPackage(deptMap[`Renewable Natural Resources_${deptName}`], natResPackage);
-  }
-
-  // Assign Econ & Mgmt
-  const econMgmtPackage = [ams101, ams102, ams103, eco101, eco102, acc101, acc102, fin101, mcs103];
-  for (const deptName of facultyData[12].depts) {
-    await assignPackage(deptMap[`Economics & Management Sciences_${deptName}`], econMgmtPackage);
-  }
-
-  // Assign Social Sciences
-  const socialSciPackage = [pos101, soc101, psy101, geo101, eco101];
-  for (const deptName of facultyData[13].depts) {
-    await assignPackage(deptMap[`The Social Sciences_${deptName}`], socialSciPackage);
-  }
-
-  // Assign Arts
-  const artsPackage = [eng101, eng102, cla101, his101, tha101, phl101];
+  // Arts Package
+  const artsPkg = [gst111, gst112, ges107, ges108, phl101, phl102, phl103, phl104, phl106, lin105, lin107, liy101];
   for (const deptName of facultyData[14].depts) {
-    await assignPackage(deptMap[`Arts_${deptName}`], artsPackage);
+    await assignPackage(deptMap[`Arts_${deptName}`], artsPkg);
   }
 
-  // Assign Law
-  const lawPackage = [pul101, pul102, ppr101, ppr102, pos101];
-  for (const deptName of facultyData[15].depts) {
-    await assignPackage(deptMap[`Law_${deptName}`], lawPackage);
-  }
-
-  // Assign Education
-  const eduPackage = [edu101, edu102, mat111, eng101, chm101];
+  // Education Package
+  const eduPkg = [gst111, gst112, edu101, edu100, eae101, eae102, edm101, edm102, edm104, hee105, ehe120, gce101, gce103, swk111, swk112];
   for (const deptName of facultyData[16].depts) {
-    await assignPackage(deptMap[`Education_${deptName}`], eduPackage);
+    await assignPackage(deptMap[`Education_${deptName}`], eduPkg);
   }
 
-  console.log("✅ All Course Packages and Shared Package Links assigned.");
+  // EDM Package
+  const edmPkg = [esm101, esm102, esm103, esm105, esm106, urp101, urp104, fea112, fea122, mat101e, eco101, eco102, soc101, pos114, gst111, ges107, ges108];
+  for (const deptName of facultyData[8].depts) {
+    await assignPackage(deptMap[`Environmental Design & Management_${deptName}`], edmPkg);
+  }
+
+  // Law Package
+  const lawPkg = [law101, law102, gst111, gst112, ges107, ges108];
+  for (const deptName of facultyData[15].depts) {
+    await assignPackage(deptMap[`Law_${deptName}`], lawPkg);
+  }
+
+  // Pharmacy Package
+  const pharmPkg = [pcy101, chm101, chm102, chm107, bio101, bio102, bio104, phy101c, phy102c, mth101, gst111, ges107, ges108];
+  for (const deptName of facultyData[7].depts) {
+    await assignPackage(deptMap[`Pharmacy_${deptName}`], pharmPkg);
+  }
+
+  // Technology Package
+  const techPkg = [get111, get112, tme111, tme121, chm101, chm102, chm107, phy101c, phy102c, mth101, mth102, cos101, sta111, gst111, gst112, ges107];
+  for (const deptName of facultyData[2].depts) {
+    await assignPackage(deptMap[`Technology_${deptName}`], techPkg);
+  }
+
+  // Pre-Med Package (Clinical Sciences & Dentistry Shared)
+  const preMedPkg = [bio101, bio102, bio104, chm101, chm102, chm107, phy101c, phy102c, phy107c, gst111, gst112, ges107];
+  for (const deptName of facultyData[3].depts) {
+    await assignPackage(deptMap[`Clinical Sciences_${deptName}`], preMedPkg);
+  }
+  for (const deptName of facultyData[5].depts) {
+    await assignPackage(deptMap[`Dentistry_${deptName}`], preMedPkg);
+  }
+
+  // Science Package (Science & Veterinary Medicine Shared)
+  const sciencePkg = [mth101, mth102, phy101c, phy102c, chm101, chm102, chm107, bio101, bio102, bio104, gst111, gst112, ges107];
+  for (const deptName of facultyData[1].depts) {
+    await assignPackage(deptMap[`Science_${deptName}`], sciencePkg);
+  }
+  for (const deptName of facultyData[9].depts) {
+    await assignPackage(deptMap[`Veterinary Medicine_${deptName}`], sciencePkg);
+  }
+
+  // Basic Medical Sciences Package
+  const basicMedPkg = [bio101, bio102, bio104, chm101, chm102, chm107, phy101c, phy102c, gst111, gst112, ges107];
+  for (const deptName of facultyData[4].depts) {
+    await assignPackage(deptMap[`Basic Medical Sciences_${deptName}`], basicMedPkg);
+  }
+
+  console.log("✅ All Course Packages and CCMAS datasets assigned.");
 
   // =========================================================
   // 5. SEED REFERENCE RULES (CREDIT LIMITS & CGPA SCALE)
