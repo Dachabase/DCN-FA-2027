@@ -1449,17 +1449,49 @@
       renderFaqs();
       registerServiceWorker();
 
-      // Initialize route from URL hash
+      registerServiceWorker();
+
+      // Ensure baseline root hash exists in history
+      if (!window.location.hash || window.location.hash === "#" || window.location.hash === "#/") {
+        history.replaceState({ tab: 'home' }, '', '#/home');
+      }
+
       handleHashRouting();
       window.addEventListener("hashchange", handleHashRouting);
+      window.addEventListener("popstate", handleHashRouting);
     });
 
     function handleHashRouting() {
-      const hash = window.location.hash.replace(/^#\/?/, '');
-      if (hash) {
-        switchTab(hash, null, false);
+      const rawHash = window.location.hash.replace(/^#\/?/, '');
+      if (!rawHash || rawHash === 'home') {
+        switchTab('home', null, false);
+        hideDepartmentSection(false);
+        closeGlobalSearchResults();
+        return;
+      }
+
+      const parts = rawHash.split('/');
+      const mainTab = parts[0];
+
+      const validTabs = ['home', 'catalog', 'guides', 'resources', 'opportunities', 'cbt', 'faqs'];
+      if (validTabs.includes(mainTab)) {
+        switchTab(mainTab, null, false);
       } else {
         switchTab('home', null, false);
+        return;
+      }
+
+      // Handle Catalog sub-routes (faculty/xyz or package/xyz)
+      if (mainTab === 'catalog') {
+        if (parts[1] === 'faculty' && parts[2]) {
+          selectFacultyForCatalog(parts[2], false);
+        } else if (parts[1] === 'package' && parts[2]) {
+          selectDepartmentForPackage(parts[2], false);
+        } else {
+          hideDepartmentSection(false);
+        }
+      } else {
+        hideDepartmentSection(false);
       }
     }
 
@@ -1477,6 +1509,8 @@
         if (facRes.success && facRes.data) {
           appData.faculties = facRes.data;
           renderFacultyCatalog();
+          // Re-trigger hash routing in case initial URL was a deep link to a faculty or department
+          handleHashRouting();
         }
         if (guiRes.success && guiRes.data && guiRes.data.length > 0) appData.guides = guiRes.data;
         if (resRes.success && resRes.data) appData.resources = resRes.data;
@@ -1519,7 +1553,7 @@
 
       // Update URL hash for single page navigation
       if (updateHash && window.location.hash !== `#/${tabId}`) {
-        history.pushState(null, '', `#/${tabId}`);
+        history.pushState({ tab: tabId }, '', `#/${tabId}`);
       }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1747,7 +1781,7 @@
       renderFacultyCatalog(val);
     }
 
-    async function selectFacultyForCatalog(facultyId) {
+    async function selectFacultyForCatalog(facultyId, pushHistory = true) {
       const faculty = appData.faculties.find(f => f.id === facultyId);
       if (!faculty) return;
 
@@ -1767,18 +1801,31 @@
 
       document.getElementById("catalog-departments-section").style.display = "block";
       document.getElementById("catalog-package-view").style.display = "none";
+
+      if (pushHistory && window.location.hash !== `#/catalog/faculty/${facultyId}`) {
+        history.pushState({ view: 'faculty', facultyId }, '', `#/catalog/faculty/${facultyId}`);
+      }
+
       document.getElementById("catalog-departments-section").scrollIntoView({ behavior: "smooth" });
     }
 
-    function hideDepartmentSection() {
+    function hideDepartmentSection(updateHash = true) {
       document.getElementById("catalog-departments-section").style.display = "none";
       document.getElementById("catalog-package-view").style.display = "none";
+      if (updateHash && window.location.hash !== '#/catalog') {
+        history.pushState({ tab: 'catalog' }, '', '#/catalog');
+      }
     }
 
-    async function selectDepartmentForPackage(departmentId) {
+    async function selectDepartmentForPackage(departmentId, pushHistory = true) {
       const packageView = document.getElementById("catalog-package-view");
       packageView.style.display = "block";
       packageView.innerHTML = `<div style="text-align: center; padding: 3rem;"><span style="font-size: 2rem;">⏳</span><p style="color: var(--ps-text-gray); margin-top: 0.5rem;">Loading 100-Level Course Package...</p></div>`;
+
+      if (pushHistory && window.location.hash !== `#/catalog/package/${departmentId}`) {
+        history.pushState({ view: 'package', departmentId }, '', `#/catalog/package/${departmentId}`);
+      }
+
       packageView.scrollIntoView({ behavior: "smooth" });
 
       try {
@@ -1842,7 +1889,7 @@
               <h2 style="font-family: 'Outfit', sans-serif; font-size: 2.1rem; font-weight: 800; color: var(--ps-text-dark); margin-top: 0.25rem;">${escapeHtml(dept.name)}</h2>
               <p style="color: var(--ps-text-gray); font-size: 0.95rem;">Faculty of ${escapeHtml(dept.faculty.name)}</p>
             </div>
-            <button onclick="document.getElementById('catalog-package-view').style.display='none';" style="background: var(--ps-light-card); border: none; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 700; cursor: pointer;">✕ Close</button>
+            <button onclick="hideDepartmentSection()" style="background: var(--ps-light-card); border: none; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 700; cursor: pointer;">✕ Close</button>
           </div>
 
           ${sharedNoticeHtml}
