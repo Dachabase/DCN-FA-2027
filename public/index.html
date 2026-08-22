@@ -1155,17 +1155,21 @@
             <p style="color: var(--ps-text-gray); font-size: 0.98rem;">Select a faculty to inspect 100-Level departmental course packages and shared GES requirements.</p>
           </div>
           <div style="font-size: 0.88rem; font-weight: 700; color: #64748B;" id="faculty-count-summary">
-            Showing 17 Faculties (94 Departments)
+            Showing 18 Faculties (95+ Departments)
           </div>
         </div>
 
         <!-- FACULTY CATEGORY FILTER CHIPS -->
         <div class="filter-bar" id="catalog-category-bar">
-          <button class="filter-chip active" onclick="filterFacultyCategory('ALL', this)">All Faculties (17)</button>
-          <button class="filter-chip" onclick="filterFacultyCategory('STEM', this)">STEM & Computing</button>
-          <button class="filter-chip" onclick="filterFacultyCategory('MEDICAL', this)">Medical & Health</button>
-          <button class="filter-chip" onclick="filterFacultyCategory('HUMANITIES', this)">Arts & Social Sciences</button>
-          <button class="filter-chip" onclick="filterFacultyCategory('LAW_EDU', this)">Law & Education</button>
+          <button class="filter-chip active" onclick="filterFacultyCategory('ALL', this)">All Faculties (18)</button>
+          <button class="filter-chip" onclick="filterFacultyCategory('STEM', this)">Computing & Sciences</button>
+          <button class="filter-chip" onclick="filterFacultyCategory('TECH', this)">Engineering & Tech</button>
+          <button class="filter-chip" onclick="filterFacultyCategory('MEDICAL', this)">Medical & Health Sciences</button>
+          <button class="filter-chip" onclick="filterFacultyCategory('AGRIC', this)">Agriculture & Resources</button>
+          <button class="filter-chip" onclick="filterFacultyCategory('ARTS', this)">Arts & Humanities</button>
+          <button class="filter-chip" onclick="filterFacultyCategory('SOCIAL', this)">Social & Management</button>
+          <button class="filter-chip" onclick="filterFacultyCategory('LAW', this)">Faculty of Law</button>
+          <button class="filter-chip" onclick="filterFacultyCategory('EDUCATION', this)">Faculty of Education</button>
         </div>
 
         <!-- FACULTY SEARCH INPUT -->
@@ -1402,9 +1406,9 @@
     const facultyCategoryMap = {
       COMPUTING: 'STEM',
       SCIENCE: 'STEM',
-      TECH: 'STEM',
-      AGRIC: 'STEM',
-      NAT_RES: 'STEM',
+      MDS: 'STEM',
+      TECH: 'TECH',
+      EDM: 'TECH',
       CLINICAL: 'MEDICAL',
       BASIC_MED: 'MEDICAL',
       DENTISTRY: 'MEDICAL',
@@ -1412,12 +1416,13 @@
       PUBLIC_HEALTH: 'MEDICAL',
       VET_MED: 'MEDICAL',
       NURSING: 'MEDICAL',
-      ARTS: 'HUMANITIES',
-      SOCIAL_SCI: 'HUMANITIES',
-      ECON_MGMT: 'HUMANITIES',
-      EDM: 'HUMANITIES',
-      LAW: 'LAW_EDU',
-      EDUCATION: 'LAW_EDU'
+      AGRIC: 'AGRIC',
+      NAT_RES: 'AGRIC',
+      ARTS: 'ARTS',
+      SOCIAL_SCI: 'SOCIAL',
+      ECON_MGMT: 'SOCIAL',
+      LAW: 'LAW',
+      EDUCATION: 'EDUCATION'
     };
 
     const facultyDisplayCategory = {
