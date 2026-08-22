@@ -1411,6 +1411,7 @@
       PHARMACY: 'MEDICAL',
       PUBLIC_HEALTH: 'MEDICAL',
       VET_MED: 'MEDICAL',
+      NURSING: 'MEDICAL',
       ARTS: 'HUMANITIES',
       SOCIAL_SCI: 'HUMANITIES',
       ECON_MGMT: 'HUMANITIES',
@@ -1431,6 +1432,7 @@
       PHARMACY: 'PHARMACEUTICAL SCIENCES',
       PUBLIC_HEALTH: 'PUBLIC HEALTH',
       VET_MED: 'VETERINARY MEDICINE',
+      NURSING: 'FACULTY OF NURSING SCIENCE',
       ARTS: 'ARTS & HUMANITIES',
       SOCIAL_SCI: 'SOCIAL SCIENCES',
       ECON_MGMT: 'ECONOMICS & MANAGEMENT',
@@ -1849,6 +1851,8 @@
         let sharedNoticeHtml = "";
         if (dept.faculty.name === "Dentistry") {
           sharedNoticeHtml = `<div style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;">🔗 <strong>Shared Package Link:</strong> Dentistry's 100L Pre-Med package is linked directly to Clinical Sciences' Pre-Med course records.</div>`;
+        } else if (dept.faculty.name === "Nursing Science") {
+          sharedNoticeHtml = `<div style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;">🔗 <strong>Shared Package Link:</strong> Nursing Science (BNSc) 100L Pre-Med package is linked directly to College of Medicine Pre-Med course records.</div>`;
         } else if (dept.faculty.name === "Veterinary Medicine") {
           sharedNoticeHtml = `<div style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;">🔗 <strong>Shared Package Link:</strong> Veterinary Medicine's 100L Pre-Vet package is linked directly to Faculty of Science course records.</div>`;
         }

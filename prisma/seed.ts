@@ -80,6 +80,7 @@ async function main() {
     { name: "Arts", code: "ARTS", depts: ["Arabic & Islamic Studies", "Archaeology & Anthropology", "Classics", "Communication & Language Arts", "English", "European Studies", "History", "Linguistics & African Languages", "Music", "Philosophy", "Religious Studies", "Theatre Arts"] },
     { name: "Law", code: "LAW", depts: ["Public & International Law", "Private & Property Law", "Commercial & Industrial Law", "Jurisprudence & Legal Theory"] },
     { name: "Education", code: "EDUCATION", depts: ["Educational Management", "Guidance & Counselling", "Adult Education", "Special Education", "Human Kinetics & Health Education", "Social Work", "Science & Technology Education", "Arts & Social Sciences Education"] },
+    { name: "Nursing Science", code: "NURSING", depts: ["Nursing Science (BNSc)", "Maternal & Child Health Nursing", "Community Health Nursing", "Medical-Surgical Nursing"] },
     { name: "Multidisciplinary Studies", code: "MDS", depts: ["Data and Information Science", "Minerals, Petroleum, Energy Economics and Law", "Sustainability Studies", "Peace, Security and Humanitarian Studies", "Bioethics and Medical Humanities"] }
   ];
 
@@ -250,13 +251,16 @@ async function main() {
     await assignPackage(deptMap[`Technology_${deptName}`], techPkg);
   }
 
-  // Pre-Med Package (Clinical Sciences & Dentistry Shared)
+  // Pre-Med Package (Clinical Sciences, Dentistry & Nursing Science Shared)
   const preMedPkg = [bio101, bio102, bio104, chm101, chm102, chm107, phy101c, phy102c, phy107c, gst111, gst112, ges107];
   for (const deptName of facultyData[3].depts) {
     await assignPackage(deptMap[`Clinical Sciences_${deptName}`], preMedPkg);
   }
   for (const deptName of facultyData[5].depts) {
     await assignPackage(deptMap[`Dentistry_${deptName}`], preMedPkg);
+  }
+  for (const deptName of facultyData[17].depts) {
+    await assignPackage(deptMap[`Nursing Science_${deptName}`], preMedPkg);
   }
 
   // Science Package (Science & Veterinary Medicine Shared)
