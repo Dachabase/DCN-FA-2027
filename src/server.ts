@@ -257,8 +257,8 @@ app.get("/api/faculties", async (req: Request, res: Response) => {
 // GET /api/faculties/:id/guides
 app.get("/api/faculties/:id/guides", async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
-    const whereClause = id === "all" ? { status: "PUBLISHED" } : { OR: [{ facultyId: id }, { facultyId: null }], status: "PUBLISHED" };
+    const facultyId = String(req.params.id);
+    const whereClause: any = facultyId === "all" ? { status: "PUBLISHED" } : { OR: [{ facultyId }, { facultyId: null }], status: "PUBLISHED" };
     const guides = await prisma.guide.findMany({
       where: whereClause,
       include: {
@@ -280,9 +280,9 @@ app.get("/api/faculties/:id/guides", async (req: Request, res: Response) => {
 // GET /api/guides/:id
 app.get("/api/guides/:id", async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const guideId = String(req.params.id);
     const guide = await prisma.guide.findUnique({
-      where: { id },
+      where: { id: guideId },
       include: {
         faculty: { select: { id: true, name: true } },
         department: { select: { id: true, name: true } },
@@ -378,7 +378,7 @@ app.get("/api/opportunities", async (req: Request, res: Response) => {
 // =========================================================
 app.get("/api/faqs", async (req: Request, res: Response) => {
   try {
-    const faqs = await prisma.faq.findMany({
+    const faqs = await prisma.fAQ.findMany({
       where: { status: "PUBLISHED" },
       include: { faculty: { select: { id: true, name: true } } },
       orderBy: { createdAt: "desc" },
@@ -441,6 +441,65 @@ app.get("/api/study-assistant-link", async (req: Request, res: Response) => {
         handoffMessage: "Chat with your personalized AI Study Assistant on Telegram!",
       },
     });
+  }
+});
+
+// =========================================================
+// OFFICIAL QUESTION BANK UPLOAD & QUERY API
+// =========================================================
+app.get("/api/questions", async (req: Request, res: Response) => {
+  try {
+    const { courseCode, topic, type } = req.query;
+    const whereClause: any = {};
+    if (courseCode) whereClause.courseCode = { equals: String(courseCode), mode: "insensitive" };
+    if (topic) whereClause.topic = { contains: String(topic), mode: "insensitive" };
+    if (type) whereClause.type = String(type);
+
+    const questions = await prisma.question.findMany({
+      where: whereClause,
+      orderBy: { createdAt: "desc" },
+    });
+
+    res.json({ success: true, count: questions.length, data: questions });
+  } catch (error) {
+    console.error("Error fetching questions:", error);
+    res.status(500).json({ success: false, error: "Failed to fetch questions" });
+  }
+});
+
+// POST /api/questions/upload (Bulk upload question bank array)
+app.post("/api/questions/upload", async (req: Request, res: Response) => {
+  try {
+    const { questions } = req.body;
+    if (!Array.isArray(questions) || questions.length === 0) {
+      return res.status(400).json({
+        success: false,
+        error: "Invalid payload. Provide an array of questions: { questions: [...] }",
+      });
+    }
+
+    const created = await prisma.question.createMany({
+      data: questions.map((q: any) => ({
+        courseCode: String(q.courseCode || "GST101"),
+        courseTitle: String(q.courseTitle || "General Studies"),
+        topic: String(q.topic || "General"),
+        type: String(q.type || "MCQ"),
+        questionText: String(q.questionText),
+        options: Array.isArray(q.options) ? q.options.map(String) : [],
+        correctAnswer: String(q.correctAnswer),
+        explanation: String(q.explanation || ""),
+        facultyId: q.facultyId ? String(q.facultyId) : null,
+      })),
+    });
+
+    res.json({
+      success: true,
+      message: `Successfully uploaded ${created.count} official questions to question bank.`,
+      count: created.count,
+    });
+  } catch (error) {
+    console.error("Error uploading question bank:", error);
+    res.status(500).json({ success: false, error: "Failed to upload question bank" });
   }
 });
 

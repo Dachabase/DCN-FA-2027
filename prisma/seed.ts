@@ -265,7 +265,7 @@ async function main() {
   }
 
   console.log("✅ FAQs seeded.");
-  console.log("🎉 Database seeding completed successfully!");
+  console.log("🎉 Database seeding completed successfully! Ready for official Question Bank upload.");
 }
 
 main()

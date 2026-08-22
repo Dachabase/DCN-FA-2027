@@ -26,6 +26,7 @@ model Faculty {
   resources     Resource[]
   opportunities Opportunity[]
   faqs          FAQ[]
+  questions     Question[]
 }
 
 // =========================================================
@@ -91,11 +92,16 @@ model User {
 
   onboardingStep String?
 
+  streakCount    Int       @default(0)
+  lastActiveDate DateTime?
+  totalPoints    Int       @default(0)
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   conversations Conversation[]
   memories      Memory[]
+  quizAttempts  QuizAttempt[]
 }
 
 // =========================================================
@@ -152,6 +158,49 @@ model Memory {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+// =========================================================
+// CBT QUESTION BANK
+// =========================================================
+
+model Question {
+  id           String   @id @default(cuid())
+  courseCode   String   // e.g. "CSC101", "MAT111", "GST101", "GES107"
+  courseTitle  String   // e.g. "Introduction to Computer Science"
+  topic        String   // e.g. "Binary Arithmetic", "Calculus", "Logic"
+  type         String   @default("MCQ") // "MCQ" or "TRUE_FALSE"
+  questionText String
+  options      String[] // ["A) Option 1", "B) Option 2", "C) Option 3", "D) Option 4"]
+  correctAnswer String  // e.g. "A" or "True"
+  explanation  String   // Detailed explanation
+
+  facultyId    String?
+  faculty      Faculty? @relation(fields: [facultyId], references: [id])
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// =========================================================
+// QUIZ ATTEMPTS & PROGRESS TRACKER
+// =========================================================
+
+model QuizAttempt {
+  id               String   @id @default(cuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  courseCode       String
+  mode             String   // "PRACTICE", "EXAM", "REVISION"
+  score            Float
+  totalQuestions   Int
+  correctCount     Int
+  wrongCount       Int
+  unansweredCount  Int
+  timeSpentSeconds Int      @default(0)
+
+  createdAt        DateTime @default(now())
 }
 
 // =========================================================
