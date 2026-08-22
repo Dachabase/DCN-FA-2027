@@ -5,73 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UI Freshers Companion | Academic Navigator & AI Mentor</title>
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#8A1B86">
+  <meta name="theme-color" content="#15131C">
+  
+  <!-- Fonts: Plus Jakarta Sans (Primary UI), Instrument Serif (Italic Emphasis), Outfit (Headings) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   
   <style>
     :root {
-      --bg-dark: #0A020B;
-      --deep-plum: #200423;
-      --core-magenta: #8A1B86;
-      --electric-violet: #C926C4;
-      --bright-magenta: #E035DC;
-      --card-bg: rgba(32, 4, 35, 0.75);
-      --card-border: rgba(201, 38, 196, 0.25);
-      --card-hover-border: rgba(224, 53, 220, 0.6);
-      --text-main: #FFFFFF;
-      --text-muted: #D9B6DA;
-      --text-subtle: #A37EA5;
-      --accent-gold: #FFB800;
-      --accent-cyan: #00E5FF;
-      --accent-pink: #FF4081;
-      --accent-emerald: #00E676;
-      --radius: 18px;
-      --radius-sm: 10px;
-      --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      /* Partstack Design Tokens */
+      --ps-dark-bg: #14121A;
+      --ps-dark-surface: #1E1B26;
+      --ps-dark-card: #181622;
+      --ps-purple-primary: #8B5CF6;
+      --ps-purple-hover: #7C3AED;
+      --ps-purple-light: #A855F7;
+      --ps-purple-soft: rgba(139, 92, 246, 0.12);
+      --ps-light-bg: #F7F8FA;
+      --ps-light-surface: #FFFFFF;
+      --ps-light-card: #F3F4F6;
+      --ps-text-dark: #0F172A;
+      --ps-text-gray: #475569;
+      --ps-text-light: #F8FAFC;
+      --ps-text-muted: #94A3B8;
+      --ps-border-dark: rgba(255, 255, 255, 0.12);
+      --ps-border-light: #E2E8F0;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
     body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
+      background-color: var(--ps-light-bg);
+      color: var(--ps-text-dark);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       overflow-x: hidden;
     }
 
-    /* Ambient Lighting Background Glow */
-    .ambient-glow-1 {
-      position: absolute;
-      top: -180px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, rgba(201, 38, 196, 0.35) 0%, rgba(138, 27, 134, 0.12) 50%, rgba(10, 2, 11, 0) 75%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .ambient-glow-2 {
-      position: absolute;
-      top: 600px;
-      right: -200px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(0, 229, 255, 0.1) 0%, rgba(10, 2, 11, 0) 70%);
-      pointer-events: none;
-      z-index: 0;
+    /* Serif Italic Emphasis (Partstack signature aesthetic) */
+    .serif-italic {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
     }
 
     /* HEADER & NAVIGATION */
@@ -79,15 +67,13 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      background: rgba(10, 2, 11, 0.85);
-      border-bottom: 1px solid var(--card-border);
-      padding: 0.9rem 1.75rem;
+      background: var(--ps-dark-bg);
+      border-bottom: 1px solid var(--ps-border-dark);
+      padding: 1rem 2rem;
     }
 
     .header-container {
-      max-width: 1240px;
+      max-width: 1280px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -97,532 +83,600 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.75rem;
       text-decoration: none;
-      color: var(--text-main);
+      color: #FFFFFF;
     }
 
     .brand-logo {
-      width: 42px;
-      height: 42px;
-      background: linear-gradient(135deg, var(--electric-violet), var(--core-magenta));
-      border-radius: 13px;
+      width: 36px;
+      height: 36px;
+      background: var(--ps-purple-primary);
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.35rem;
-      box-shadow: 0 4px 18px rgba(201, 38, 196, 0.45);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      font-size: 1.2rem;
+      color: #FFF;
+      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4);
     }
 
     .brand-title {
       font-family: 'Outfit', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       font-weight: 800;
-      letter-spacing: -0.4px;
-      background: linear-gradient(to right, #FFFFFF, var(--text-muted));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+      color: #FFFFFF;
+    }
+
+    .brand-title span {
+      color: var(--ps-purple-light);
     }
 
     .nav-links {
       display: flex;
-      gap: 0.4rem;
+      gap: 0.5rem;
+      align-items: center;
     }
 
     .nav-btn {
       background: transparent;
       border: none;
-      color: var(--text-muted);
-      padding: 0.65rem 1.15rem;
-      border-radius: 11px;
+      color: #94A3B8;
+      padding: 0.6rem 1.1rem;
+      border-radius: 8px;
       font-weight: 600;
       font-size: 0.92rem;
       cursor: pointer;
       transition: var(--transition);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
     }
 
     .nav-btn:hover {
-      color: var(--text-main);
-      background: rgba(201, 38, 196, 0.2);
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.08);
     }
 
     .nav-btn.active {
-      color: var(--text-main);
-      background: linear-gradient(135deg, var(--core-magenta), var(--deep-plum));
-      border: 1px solid var(--card-border);
-      box-shadow: 0 4px 15px rgba(201, 38, 196, 0.35);
+      color: #FFFFFF;
+      background: var(--ps-purple-primary);
+      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.35);
     }
 
-    /* MAIN CONTENT */
+    /* PARTSTACK HERO SECTION (DARK FACETED BACKGROUND) */
+    .hero-section {
+      background: var(--ps-dark-bg);
+      color: #FFFFFF;
+      padding: 4.5rem 2rem 5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--ps-border-dark);
+    }
+
+    /* Faceted Polygon Backdrop Effects */
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1000px;
+      height: 600px;
+      background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.25) 0%, rgba(20, 18, 26, 0) 70%);
+      pointer-events: none;
+    }
+
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(30, 27, 38, 0.4) 0%, transparent 60%, rgba(20, 18, 26, 0.8) 100%);
+      pointer-events: none;
+    }
+
+    .hero-container {
+      max-width: 960px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3.4rem;
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -1.2px;
+      margin-bottom: 1.75rem;
+      color: #FFFFFF;
+    }
+
+    .hero-title .serif-italic {
+      font-size: 3.8rem;
+      color: #E2E8F0;
+    }
+
+    /* SEARCH BAR (PARTSTACK STYLE - WHITE INPUT) */
+    .search-box-container {
+      max-width: 680px;
+      margin: 0 auto 1.25rem auto;
+    }
+
+    .search-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input {
+      width: 100%;
+      background: #FFFFFF;
+      border: 2px solid transparent;
+      padding: 1.15rem 1.4rem 1.15rem 3.4rem;
+      border-radius: 12px;
+      color: var(--ps-text-dark);
+      font-size: 1.05rem;
+      font-weight: 500;
+      outline: none;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      transition: var(--transition);
+    }
+
+    .search-input:focus {
+      border-color: var(--ps-purple-primary);
+      box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1.25rem;
+      font-size: 1.25rem;
+      color: #64748B;
+    }
+
+    .search-hint {
+      font-size: 0.85rem;
+      color: #94A3B8;
+      margin-top: 0.75rem;
+    }
+
+    .search-hint code {
+      background: rgba(255, 255, 255, 0.1);
+      color: #E2E8F0;
+      padding: 0.2rem 0.45rem;
+      border-radius: 4px;
+      font-size: 0.82rem;
+    }
+
+    .hero-subtext {
+      font-size: 1.05rem;
+      color: #94A3B8;
+      margin-top: 2.5rem;
+      line-height: 1.6;
+    }
+
+    /* MAIN BODY CONTENT (LIGHT BACKGROUND) */
     main {
       flex: 1;
-      max-width: 1240px;
+      max-width: 1280px;
       width: 100%;
       margin: 0 auto;
-      padding: 2.5rem 1.75rem 6rem 1.75rem;
-      position: relative;
-      z-index: 1;
+      padding: 3rem 2rem 6rem 2rem;
     }
 
     /* TAB SECTIONS */
     .tab-section {
       display: none;
-      animation: tabFadeIn 0.32s ease;
+      animation: fadeIn 0.3s ease;
     }
 
     .tab-section.active {
       display: block;
     }
 
-    @keyframes tabFadeIn {
-      from { opacity: 0; transform: translateY(12px); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* HERO BANNER */
-    .hero {
-      text-align: center;
-      padding: 3rem 1rem 3.5rem 1rem;
-      margin-bottom: 2.5rem;
-      position: relative;
+    /* PARTSTACK FEATURE OVERVIEW BANNER */
+    .partstack-feature-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
     }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(201, 38, 196, 0.2);
-      border: 1px solid var(--card-border);
-      padding: 0.45rem 1.1rem;
-      border-radius: 30px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      margin-bottom: 1.25rem;
-      letter-spacing: 0.3px;
-    }
-
-    .hero h1 {
+    .partstack-feature-title {
       font-family: 'Outfit', sans-serif;
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 1rem;
-      letter-spacing: -1.2px;
-      background: linear-gradient(to right, #FFFFFF 40%, var(--text-muted));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.8px;
+      color: var(--ps-text-dark);
+      max-width: 480px;
+      line-height: 1.18;
     }
 
-    .hero p {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      max-width: 680px;
-      margin: 0 auto 2.25rem auto;
+    .partstack-feature-desc {
+      max-width: 520px;
+      color: var(--ps-text-gray);
+      font-size: 1.05rem;
       line-height: 1.65;
     }
 
-    /* SEARCH BAR */
-    .search-box {
-      max-width: 620px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .search-input {
-      width: 100%;
-      background: rgba(32, 4, 35, 0.85);
-      border: 1px solid var(--card-border);
-      padding: 1.1rem 1.35rem 1.1rem 3.2rem;
-      border-radius: 16px;
-      color: var(--text-main);
-      font-size: 1.02rem;
-      outline: none;
-      transition: var(--transition);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-    }
-
-    .search-input:focus {
-      border-color: var(--bright-magenta);
-      box-shadow: 0 0 25px rgba(224, 53, 220, 0.35);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 1.2rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-      font-size: 1.2rem;
-    }
-
-    /* TELEGRAM HANDOFF CARD WITH PULSING STATUS */
-    .assistant-card {
-      background: linear-gradient(135deg, rgba(138, 27, 134, 0.5), rgba(32, 4, 35, 0.95));
-      border: 1px solid rgba(224, 53, 220, 0.45);
-      border-radius: var(--radius);
-      padding: 2.25rem;
-      margin-bottom: 3.25rem;
-      display: flex;
+    .partstack-primary-btn {
+      background: var(--ps-purple-primary);
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 0.9rem 1.6rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.98rem;
+      display: inline-flex;
       align-items: center;
+      gap: 0.6rem;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 1.5rem;
+      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
+    }
+
+    .partstack-primary-btn:hover {
+      background: var(--ps-purple-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
+    }
+
+    /* DUAL SHOWCASE CARDS (PARTSTACK SCREENSHOT 2) */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 4rem;
+    }
+
+    .showcase-card {
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
       justify-content: space-between;
-      gap: 2rem;
+      min-height: 280px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+      transition: var(--transition);
+      cursor: pointer;
+      text-decoration: none;
     }
 
-    .assistant-card::before {
-      content: '';
-      position: absolute;
-      top: -50px;
-      right: -50px;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(0, 229, 255, 0.18), transparent 70%);
-      pointer-events: none;
+    .showcase-card:hover {
+      transform: translateY(-4px);
     }
 
-    .assistant-info {
-      max-width: 680px;
+    .showcase-card.purple {
+      background: var(--ps-purple-primary);
+      color: #FFFFFF;
+      box-shadow: 0 12px 30px rgba(139, 92, 246, 0.3);
     }
 
-    .assistant-tag {
-      font-size: 0.82rem;
+    .showcase-card.dark {
+      background: var(--ps-dark-card);
+      color: #FFFFFF;
+      border: 1px solid var(--ps-border-dark);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .showcase-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
       font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: var(--accent-cyan);
-      margin-bottom: 0.6rem;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+    }
+
+    .showcase-arrow {
+      font-size: 1.5rem;
+      font-weight: 700;
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      margin-top: 2rem;
     }
 
-    .live-pulse {
-      width: 9px;
-      height: 9px;
-      background-color: var(--accent-emerald);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--accent-emerald);
-      animation: pulse 1.8s infinite;
+    /* KEY STATS SECTION (PARTSTACK SCREENSHOT 3 - DARK FACETED SECTION) */
+    .partstack-stats-section {
+      background: var(--ps-dark-bg);
+      color: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 3rem;
+      margin-bottom: 4rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7); }
-      70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 230, 118, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
+    .partstack-stats-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);
+      pointer-events: none;
     }
 
-    .assistant-info h3 {
+    .stats-header-title {
       font-family: 'Outfit', sans-serif;
-      font-size: 1.7rem;
+      font-size: 2.6rem;
       font-weight: 800;
-      margin-bottom: 0.6rem;
+      letter-spacing: -0.8px;
+      margin-bottom: 1rem;
     }
 
-    .assistant-info p {
-      color: var(--text-muted);
-      font-size: 1rem;
+    .stats-header-desc {
+      color: #94A3B8;
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin-bottom: 3rem;
       line-height: 1.6;
     }
 
-    .tg-cta-btn {
-      background: linear-gradient(135deg, #0088cc, #00a4e4);
-      color: #FFFFFF;
-      text-decoration: none;
-      padding: 1.05rem 1.8rem;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 1.02rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      white-space: nowrap;
-      transition: var(--transition);
-      box-shadow: 0 6px 25px rgba(0, 136, 204, 0.45);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2.5rem;
     }
 
-    .tg-cta-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 30px rgba(0, 136, 204, 0.65);
+    .stat-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: var(--ps-purple-light);
+      line-height: 1;
+      margin-bottom: 0.6rem;
+      letter-spacing: -1px;
     }
 
-    /* GRID & CARDS */
+    .stat-label {
+      color: #E2E8F0;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    /* STANDARD GRID & CARDS (LIGHT MODE CONTENT) */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-      gap: 1.6rem;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
     }
 
     .card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 1.65rem;
+      background: var(--ps-light-surface);
+      border: 1px solid var(--ps-border-light);
+      border-radius: var(--radius-md);
+      padding: 1.6rem;
       transition: var(--transition);
       display: flex;
       flex-direction: column;
-      backdrop-filter: blur(12px);
-      position: relative;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
     .card:hover {
-      border-color: var(--card-hover-border);
-      transform: translateY(-5px);
-      box-shadow: 0 14px 35px rgba(201, 38, 196, 0.22);
+      border-color: var(--ps-purple-primary);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 25px rgba(139, 92, 246, 0.15);
     }
 
     .card-header {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      margin-bottom: 1.1rem;
-      gap: 1rem;
+      margin-bottom: 1rem;
+      gap: 0.75rem;
     }
 
     .card-badge {
-      background: rgba(201, 38, 196, 0.25);
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      padding: 0.35rem 0.85rem;
-      border-radius: 9px;
-      font-size: 0.82rem;
+      background: var(--ps-purple-soft);
+      color: var(--ps-purple-primary);
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.3px;
     }
 
-    .card-badge.scholarship { background: rgba(255, 184, 0, 0.18); border-color: rgba(255, 184, 0, 0.4); color: var(--accent-gold); }
-    .card-badge.internship { background: rgba(0, 229, 255, 0.18); border-color: rgba(0, 229, 255, 0.4); color: var(--accent-cyan); }
-    .card-badge.hackathon { background: rgba(255, 64, 129, 0.18); border-color: rgba(255, 64, 129, 0.4); color: var(--accent-pink); }
-    .card-badge.cbt { background: rgba(0, 230, 118, 0.18); border-color: rgba(0, 230, 118, 0.4); color: var(--accent-emerald); }
-
     .card-title {
       font-family: 'Outfit', sans-serif;
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 700;
-      margin-bottom: 0.65rem;
+      color: var(--ps-text-dark);
+      margin-bottom: 0.6rem;
       line-height: 1.35;
     }
 
     .card-desc {
-      color: var(--text-muted);
+      color: var(--ps-text-gray);
       font-size: 0.95rem;
       line-height: 1.6;
-      margin-bottom: 1.35rem;
+      margin-bottom: 1.25rem;
       flex: 1;
     }
 
-    /* PROVENANCE BAR */
     .provenance-bar {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 0.85rem;
+      border-top: 1px solid var(--ps-border-light);
+      padding-top: 0.8rem;
       margin-top: auto;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.35rem;
       font-size: 0.8rem;
-      color: var(--text-subtle);
+      color: #64748B;
     }
 
     .provenance-item {
       display: flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.4rem;
     }
 
     .card-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 1.1rem;
-      gap: 0.5rem;
+      margin-top: 1rem;
     }
 
     .action-btn {
-      background: linear-gradient(135deg, rgba(138, 27, 134, 0.5), rgba(32, 4, 35, 0.8));
+      background: var(--ps-purple-primary);
       color: #FFFFFF;
-      border: 1px solid var(--card-border);
-      padding: 0.65rem 1.25rem;
-      border-radius: 11px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      cursor: pointer;
       text-decoration: none;
+      padding: 0.65rem 1.1rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.88rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.55rem;
+      gap: 0.4rem;
+      border: none;
+      cursor: pointer;
       transition: var(--transition);
     }
 
     .action-btn:hover {
-      background: var(--core-magenta);
-      border-color: var(--bright-magenta);
-      box-shadow: 0 4px 15px rgba(224, 53, 220, 0.35);
+      background: var(--ps-purple-hover);
     }
 
-    /* FILTER TABS BAR */
+    /* FILTER BAR & CHIPS */
     .filter-bar {
       display: flex;
-      gap: 0.75rem;
+      gap: 0.6rem;
       margin-bottom: 2rem;
-      overflow-x: auto;
-      padding-bottom: 0.5rem;
+      flex-wrap: wrap;
     }
 
     .filter-chip {
-      background: rgba(32, 4, 35, 0.7);
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      padding: 0.55rem 1.25rem;
-      border-radius: 25px;
-      font-size: 0.9rem;
+      background: var(--ps-light-surface);
+      border: 1px solid var(--ps-border-light);
+      color: var(--ps-text-gray);
+      padding: 0.55rem 1.1rem;
+      border-radius: 20px;
+      font-size: 0.88rem;
       font-weight: 600;
       cursor: pointer;
-      white-space: nowrap;
       transition: var(--transition);
     }
 
-    .filter-chip:hover, .filter-chip.active {
-      background: var(--core-magenta);
-      color: var(--text-main);
-      border-color: var(--bright-magenta);
-      box-shadow: 0 4px 12px rgba(201, 38, 196, 0.35);
+    .filter-chip:hover {
+      border-color: var(--ps-purple-primary);
+      color: var(--ps-purple-primary);
+    }
+
+    .filter-chip.active {
+      background: var(--ps-purple-primary);
+      border-color: var(--ps-purple-primary);
+      color: #FFFFFF;
     }
 
     /* FAQ ACCORDION */
     .faq-item {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      margin-bottom: 1.1rem;
-      overflow: hidden;
+      background: var(--ps-light-surface);
+      border: 1px solid var(--ps-border-light);
+      border-radius: var(--radius-md);
+      margin-bottom: 1rem;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
       transition: var(--transition);
     }
 
-    .faq-question {
-      padding: 1.35rem 1.6rem;
-      font-weight: 700;
-      font-size: 1.08rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      user-select: none;
+    .faq-item:hover {
+      border-color: var(--ps-purple-primary);
     }
 
-    .faq-question:hover {
-      background: rgba(201, 38, 196, 0.15);
+    .faq-question {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ps-text-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .faq-answer {
-      padding: 0 1.6rem 1.35rem 1.6rem;
-      color: var(--text-muted);
+      display: none;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--ps-border-light);
+      color: var(--ps-text-gray);
       font-size: 0.98rem;
       line-height: 1.65;
-      display: none;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding-top: 1.1rem;
     }
 
     .faq-item.open .faq-answer {
       display: block;
     }
 
-    .faq-item.open .faq-question {
-      color: var(--bright-magenta);
-    }
-
-    /* MODAL FOR GUIDES */
+    /* MODAL */
     .modal-overlay {
       position: fixed;
-      inset: 0;
-      background: rgba(5, 1, 6, 0.88);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(8px);
       z-index: 1000;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: 2rem;
     }
 
     .modal-content {
-      background: #19031C;
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      max-width: 820px;
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      max-width: 800px;
       width: 100%;
       max-height: 85vh;
       overflow-y: auto;
-      padding: 2.25rem;
+      padding: 2.5rem;
       position: relative;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
     }
 
     .modal-close {
       position: absolute;
-      top: 1.35rem;
-      right: 1.35rem;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #FFFFFF;
-      width: 38px;
-      height: 38px;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: var(--ps-light-card);
+      border: none;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
+      font-size: 1.1rem;
       cursor: pointer;
-      font-size: 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition);
+      color: var(--ps-text-gray);
     }
 
-    .modal-close:hover {
-      background: var(--core-magenta);
-    }
-
-    .markdown-body {
-      color: #E6D7E7;
-      line-height: 1.75;
-    }
-
-    .markdown-body h1, .markdown-body h2, .markdown-body h3 {
-      font-family: 'Outfit', sans-serif;
-      color: #FFFFFF;
-      margin: 1.6rem 0 0.9rem 0;
-    }
-
-    .markdown-body ul, .markdown-body ol {
-      margin-left: 1.6rem;
-      margin-bottom: 1.1rem;
-    }
-
-    .markdown-body code {
-      background: rgba(255, 255, 255, 0.12);
-      padding: 0.25rem 0.5rem;
-      border-radius: 6px;
-      font-size: 0.92em;
-    }
-
-    /* MOBILE NAVIGATION */
+    /* MOBILE NAVIGATION BAR */
     .mobile-nav {
       display: none;
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(10, 2, 11, 0.96);
-      border-top: 1px solid var(--card-border);
-      backdrop-filter: blur(20px);
-      padding: 0.5rem 0.25rem;
+      background: var(--ps-dark-bg);
+      border-top: 1px solid var(--ps-border-dark);
+      padding: 0.6rem 1rem;
       z-index: 100;
       justify-content: space-around;
     }
@@ -630,87 +684,137 @@
     .mobile-nav-btn {
       background: transparent;
       border: none;
-      color: var(--text-muted);
+      color: #94A3B8;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.25rem;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 600;
-      padding: 0.4rem;
       cursor: pointer;
     }
 
     .mobile-nav-btn.active {
-      color: var(--bright-magenta);
+      color: var(--ps-purple-light);
     }
 
-    @media (max-width: 820px) {
+    @media (max-width: 868px) {
       .nav-links { display: none; }
       .mobile-nav { display: flex; }
-      .hero h1 { font-size: 2.2rem; }
-      .assistant-card { flex-direction: column; text-align: center; }
-      main { padding-bottom: 6.5rem; }
+      .hero-title { font-size: 2.4rem; }
+      .hero-title .serif-italic { font-size: 2.7rem; }
+      .partstack-feature-header { flex-direction: column; gap: 1.25rem; }
+      .partstack-feature-title { font-size: 2rem; }
+      main { padding-bottom: 6rem; }
     }
   </style>
 </head>
 <body>
 
-  <div class="ambient-glow-1"></div>
-  <div class="ambient-glow-2"></div>
-
   <!-- HEADER -->
   <header>
     <div class="header-container">
-      <a href="#" class="brand" onclick="switchTab('home')">
+      <a href="#" class="brand" onclick="switchTab('home', event)">
         <div class="brand-logo">🎓</div>
-        <span class="brand-title">UI Freshers Companion</span>
+        <span class="brand-title">uifreshers<span>.</span></span>
       </a>
 
       <nav class="nav-links">
-        <button class="nav-btn active" onclick="switchTab('home')">🏠 Dashboard</button>
-        <button class="nav-btn" onclick="switchTab('catalog')">🏛️ Course Catalog</button>
-        <button class="nav-btn" onclick="switchTab('guides')">📚 Faculty Guides</button>
-        <button class="nav-btn" onclick="switchTab('resources')">📂 Resources</button>
-        <button class="nav-btn" onclick="switchTab('opportunities')">🚀 Opportunities</button>
-        <button class="nav-btn" onclick="switchTab('cbt')">🎯 CBT Practice</button>
-        <button class="nav-btn" onclick="switchTab('faqs')">❓ FAQ & AI</button>
+        <button class="nav-btn active" onclick="switchTab('home', event)">🏠 Dashboard</button>
+        <button class="nav-btn" onclick="switchTab('catalog', event)">🏛️ Course Catalog</button>
+        <button class="nav-btn" onclick="switchTab('guides', event)">📚 Faculty Guides</button>
+        <button class="nav-btn" onclick="switchTab('resources', event)">📂 Resources</button>
+        <button class="nav-btn" onclick="switchTab('opportunities', event)">🚀 Opportunities</button>
+        <button class="nav-btn" onclick="switchTab('cbt', event)">🎯 CBT Practice</button>
+        <button class="nav-btn" onclick="switchTab('faqs', event)">❓ FAQ & AI</button>
       </nav>
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
+  <!-- PARTSTACK HERO SECTION (DARK FACETED GEOMETRY) -->
+  <div class="hero-section">
+    <div class="hero-container">
+      <h1 class="hero-title">
+        The <span class="serif-italic">most trusted</span> platform for discovering, navigating, and mastering your 100-Level courses.
+      </h1>
+
+      <div class="search-box-container">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" id="global-search" placeholder="Search by course code, department, GST course, or venue..." oninput="handleGlobalSearch(this.value)">
+        </div>
+        <div class="search-hint">
+          Try an exact match search like <code>MAT111</code>, or a partial search like <code>Computer Science</code>, <code>Senate CGPA Rules</code>, or <code>GES107</code>.
+        </div>
+      </div>
+
+      <p class="hero-subtext">
+        We're an academic community platform built for today's University of Ibadan freshers, faculty, and departments.
+      </p>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT CONTAINER (LIGHT BODY BACKGROUND) -->
   <main>
     <!-- 1. HOME / DASHBOARD TAB -->
     <section id="tab-home" class="tab-section active">
-      <div class="hero">
-        <div class="hero-badge">✨ Official Student Portal & Academic Navigator</div>
-        <h1>Welcome to UI Freshers Companion</h1>
-        <p>Your verified academic guide. Discover course registration rules, download lecture slides, access scholarships, and chat 24/7 with your Telegram AI Mentor.</p>
-        
-        <div class="search-box">
-          <span class="search-icon">🔍</span>
-          <input type="text" class="search-input" id="global-search" placeholder="Search guides, CBT past questions, GST courses, clearance FAQs..." oninput="handleGlobalSearch(this.value)">
+      <!-- PARTSTACK FEATURE OVERVIEW -->
+      <div class="partstack-feature-header">
+        <div>
+          <h2 class="partstack-feature-title">Powerful search for every department</h2>
+          <button class="partstack-primary-btn" onclick="switchTab('catalog', event)">
+            📑 Explore Course Catalog
+          </button>
+        </div>
+        <div class="partstack-feature-desc">
+          Ready to experience an academic course package and student discovery platform like no other? UI Freshers Companion helps your team find the 100-Level packages, faculty rules, and study tools they need, no matter the requirement.
         </div>
       </div>
 
-      <!-- TELEGRAM STUDY ASSISTANT HANDOFF CARD -->
-      <div class="assistant-card">
-        <div class="assistant-info">
-          <span class="assistant-tag">
-            <span class="live-pulse"></span>
-            Telegram AI Study Buddy
-          </span>
-          <h3>Need Personal Course & Academic Help?</h3>
-          <p>Talk to your friendly AI Mentor on Telegram! It understands your 100L courses, UI grading policies, and remembers your progress like a supportive teacher and friend.</p>
+      <!-- DUAL SHOWCASE CARDS (PARTSTACK SCREENSHOT 2) -->
+      <div class="showcase-grid">
+        <div class="showcase-card purple" onclick="switchTab('catalog', event)">
+          <div>
+            <div style="font-size: 0.85rem; font-weight: 700; opacity: 0.9; margin-bottom: 0.75rem; text-transform: uppercase;">VERIFIED ACADEMIC PACKAGES</div>
+            <div class="showcase-title">Explore Course Catalog</div>
+          </div>
+          <div class="showcase-arrow">Select Faculty & Department →</div>
         </div>
-        <a href="https://t.me/UI_Computing_Bot" target="_blank" rel="noopener" id="home-tg-btn" class="tg-cta-btn">
-          💬 Chat on Telegram
+
+        <a href="https://t.me/UI_Computing_Bot" target="_blank" rel="noopener" class="showcase-card dark" id="home-tg-card">
+          <div>
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--ps-purple-light); margin-bottom: 0.75rem; text-transform: uppercase;">24/7 PERSONALIZED AI MENTOR</div>
+            <div class="showcase-title">Telegram AI Assistant, join the channel</div>
+          </div>
+          <div class="showcase-arrow" style="color: var(--ps-purple-light);">Launch Telegram Bot →</div>
         </a>
       </div>
 
+      <!-- KEY STATS SECTION (PARTSTACK SCREENSHOT 3 - DARK FACETED SECTION) -->
+      <div class="partstack-stats-section">
+        <h2 class="stats-header-title">UI Freshers Companion helps you navigate with ease</h2>
+        <p class="stats-header-desc">
+          We assembled the University of Ibadan's complete 100-Level academic structure and supercharged it with instant search and AI study support.
+        </p>
+
+        <div class="stats-grid">
+          <div>
+            <div class="stat-number">17 Canonical</div>
+            <div class="stat-label">UI Faculties represented</div>
+          </div>
+          <div>
+            <div class="stat-number">94+</div>
+            <div class="stat-label">Departments with 100L packages</div>
+          </div>
+          <div>
+            <div class="stat-number">100% Free</div>
+            <div class="stat-label">Open access for all UI students</div>
+          </div>
+        </div>
+      </div>
+
       <!-- FEATURED GUIDES -->
-      <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 800; margin-bottom: 1.35rem;">📌 Essential Freshers Guides</h2>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; margin-bottom: 1.5rem;">📌 Essential Freshers Guides</h2>
       <div class="grid" id="home-featured-guides">
         <!-- Rendered via JS -->
       </div>
@@ -718,60 +822,60 @@
 
     <!-- 2. ACADEMIC COURSE CATALOG TAB -->
     <section id="tab-catalog" class="tab-section">
-      <div style="background: linear-gradient(135deg, rgba(75, 13, 76, 0.4), rgba(127, 26, 123, 0.25)); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 1.75rem; margin-bottom: 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.25rem;">
+      <div style="background: var(--ps-dark-bg); color: #FFF; border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 2.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem;">
         <div>
-          <span style="background: rgba(224, 53, 220, 0.25); color: #FF80F6; font-size: 0.78rem; font-weight: 800; padding: 0.3rem 0.85rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 0.5rem;">📜 UI Academic Rules & Senate Policy</span>
-          <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.75rem; font-weight: 800; color: #FFFFFF;">Semester Credit Load & 4.0 CGPA Scale</h2>
-          <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 0.35rem; max-width: 680px;">Official University of Ibadan guidelines. Credit load is strictly 15 – 24 units per semester. Good Standing minimum CGPA is 1.50.</p>
+          <span style="background: rgba(139, 92, 246, 0.25); color: var(--ps-purple-light); font-size: 0.8rem; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 0.6rem;">📜 UI Academic Rules & Senate Policy</span>
+          <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.85rem; font-weight: 800; color: #FFFFFF;">Semester Credit Load & 4.0 CGPA Scale</h2>
+          <p style="color: #94A3B8; font-size: 0.95rem; margin-top: 0.35rem; max-width: 680px;">Official University of Ibadan guidelines. Credit load is strictly 15 – 24 units per semester. Good Standing minimum CGPA is 1.50.</p>
         </div>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <div style="background: rgba(10, 2, 11, 0.65); border: 1px solid rgba(255,255,255,0.12); padding: 0.85rem 1.15rem; border-radius: 12px; text-align: center;">
-            <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase; font-weight: 700;">Credit Limit</div>
-            <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent-cyan); font-family: 'Outfit', sans-serif;">15 – 24 Units</div>
+          <div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255,255,255,0.12); padding: 0.85rem 1.25rem; border-radius: 12px; text-align: center;">
+            <div style="font-size: 0.75rem; color: #94A3B8; text-transform: uppercase; font-weight: 700;">Credit Limit</div>
+            <div style="font-size: 1.25rem; font-weight: 800; color: var(--ps-purple-light); font-family: 'Outfit', sans-serif;">15 – 24 Units</div>
           </div>
-          <div style="background: rgba(10, 2, 11, 0.65); border: 1px solid rgba(255,255,255,0.12); padding: 0.85rem 1.15rem; border-radius: 12px; text-align: center;">
-            <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase; font-weight: 700;">Good Standing</div>
-            <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent-emerald); font-family: 'Outfit', sans-serif;">≥ 1.50 CGPA</div>
+          <div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255,255,255,0.12); padding: 0.85rem 1.25rem; border-radius: 12px; text-align: center;">
+            <div style="font-size: 0.75rem; color: #94A3B8; text-transform: uppercase; font-weight: 700;">Good Standing</div>
+            <div style="font-size: 1.25rem; font-weight: 800; color: #34D399; font-family: 'Outfit', sans-serif;">≥ 1.50 CGPA</div>
           </div>
         </div>
       </div>
 
       <div style="margin-bottom: 2rem;">
-        <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.9rem; font-weight: 800; margin-bottom: 0.5rem;">🏛️ UI Faculties & Departmental Course Packages</h2>
-        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Pick your faculty → Select your department → View 100-Level Course Package & Shared University-Wide GES Block.</p>
+        <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">🏛️ UI Faculties & Departmental Course Packages</h2>
+        <p style="color: var(--ps-text-gray); margin-bottom: 1.5rem;">Pick your faculty → Select your department → View 100-Level Course Package & Shared University-Wide GES Block.</p>
 
         <!-- SEARCH BAR FOR FACULTIES -->
         <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; max-width: 600px;">
-          <input type="text" id="faculty-search-input" placeholder="🔍 Search among 17 Faculties or 92+ Departments..." style="width: 100%; background: var(--card-bg); border: 1px solid var(--card-border); color: #FFF; padding: 0.85rem 1.25rem; border-radius: 12px; font-size: 0.95rem;" oninput="filterFacultyCatalog(this.value)">
+          <input type="text" id="faculty-search-input" placeholder="🔍 Search among 17 Faculties or 94 Departments..." style="width: 100%; background: #FFF; border: 1px solid var(--ps-border-light); color: var(--ps-text-dark); padding: 0.9rem 1.25rem; border-radius: 10px; font-size: 0.98rem;" oninput="filterFacultyCatalog(this.value)">
         </div>
 
         <!-- FACULTY CARDS GRID -->
-        <div id="catalog-faculties-grid" class="grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem;">
+        <div id="catalog-faculties-grid" class="grid" style="grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.25rem;">
           <!-- Dynamically populated -->
         </div>
       </div>
 
       <!-- DEPARTMENT SELECTION SECTION -->
-      <div id="catalog-departments-section" style="display: none; margin-bottom: 2.5rem; background: rgba(32, 4, 35, 0.5); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 1.75rem;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
-          <h3 id="selected-faculty-title" style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--electric-violet);">Select Department</h3>
-          <button onclick="hideDepartmentSection()" style="background: rgba(255,255,255,0.1); border: none; color: var(--text-muted); padding: 0.4rem 0.9rem; border-radius: 8px; cursor: pointer; font-size: 0.85rem;">✕ Close</button>
+      <div id="catalog-departments-section" style="display: none; margin-bottom: 2.5rem; background: #FFF; border: 1px solid var(--ps-border-light); border-radius: var(--radius-lg); padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+          <h3 id="selected-faculty-title" style="font-family: 'Outfit', sans-serif; font-size: 1.45rem; font-weight: 800; color: var(--ps-purple-primary);">Select Department</h3>
+          <button onclick="hideDepartmentSection()" style="background: var(--ps-light-card); border: none; color: var(--ps-text-gray); padding: 0.45rem 1rem; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.85rem;">✕ Close</button>
         </div>
-        <div id="catalog-departments-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.9rem;">
+        <div id="catalog-departments-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem;">
           <!-- Dynamically populated -->
         </div>
       </div>
 
       <!-- COURSE PACKAGE DISPLAY VIEW -->
-      <div id="catalog-package-view" style="display: none; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 2rem; position: relative;">
+      <div id="catalog-package-view" style="display: none; background: #FFF; border: 1px solid var(--ps-border-light); border-radius: var(--radius-lg); padding: 2.5rem; position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
         <!-- Dynamically rendered course package view -->
       </div>
     </section>
 
     <!-- 3. GUIDES TAB -->
     <section id="tab-guides" class="tab-section">
-      <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.9rem; font-weight: 800; margin-bottom: 0.5rem;">📚 Faculty & Departmental Guides</h2>
-      <p style="color: var(--text-muted); margin-bottom: 1.6rem;">Verified course registration rules, UI 4.0 CGPA breakdown, and lecture venue maps.</p>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">📚 Faculty & Departmental Guides</h2>
+      <p style="color: var(--ps-text-gray); margin-bottom: 1.75rem;">Verified course registration rules, UI 4.0 CGPA breakdown, and lecture venue maps.</p>
 
       <div class="filter-bar" id="faculty-filter-bar">
         <button class="filter-chip active" onclick="renderGuides('ALL')">All Faculties</button>
@@ -782,16 +886,16 @@
       </div>
     </section>
 
-    <!-- 3. RESOURCES TAB -->
+    <!-- 4. RESOURCES TAB -->
     <section id="tab-resources" class="tab-section">
-      <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.9rem; font-weight: 800; margin-bottom: 0.5rem;">📂 Academic & Library Resources</h2>
-      <p style="color: var(--text-muted); margin-bottom: 1.6rem;">Download course slides, GST past questions, academic calendar, and KDL library catalog links.</p>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">📂 Academic & Library Resources</h2>
+      <p style="color: var(--ps-text-gray); margin-bottom: 1.75rem;">Download course slides, GST past questions, academic calendar, and KDL library catalog links.</p>
 
       <div class="filter-bar">
-        <button class="filter-chip active" onclick="filterResources('ALL')">All Categories</button>
-        <button class="filter-chip" onclick="filterResources('Academic')">Academic</button>
-        <button class="filter-chip" onclick="filterResources('Administrative')">Administrative</button>
-        <button class="filter-chip" onclick="filterResources('Library')">Library</button>
+        <button class="filter-chip active" onclick="filterResources('ALL', event)">All Categories</button>
+        <button class="filter-chip" onclick="filterResources('Academic', event)">Academic</button>
+        <button class="filter-chip" onclick="filterResources('Administrative', event)">Administrative</button>
+        <button class="filter-chip" onclick="filterResources('Library', event)">Library</button>
       </div>
 
       <div class="grid" id="resources-grid">
@@ -799,16 +903,16 @@
       </div>
     </section>
 
-    <!-- 4. OPPORTUNITIES TAB -->
+    <!-- 5. OPPORTUNITIES TAB -->
     <section id="tab-opportunities" class="tab-section">
-      <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.9rem; font-weight: 800; margin-bottom: 0.5rem;">🚀 Scholarships & Student Grants</h2>
-      <p style="color: var(--text-muted); margin-bottom: 1.6rem;">Explore verified scholarships, campus work-study schemes, hackathons, and mentorship programs.</p>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">🚀 Scholarships & Student Grants</h2>
+      <p style="color: var(--ps-text-gray); margin-bottom: 1.75rem;">Explore verified scholarships, campus work-study schemes, hackathons, and mentorship programs.</p>
 
       <div class="filter-bar">
-        <button class="filter-chip active" onclick="filterOpportunities('ALL')">All Types</button>
-        <button class="filter-chip" onclick="filterOpportunities('Scholarship')">Scholarships</button>
-        <button class="filter-chip" onclick="filterOpportunities('Work-Study')">Work-Study</button>
-        <button class="filter-chip" onclick="filterOpportunities('Hackathon')">Hackathons</button>
+        <button class="filter-chip active" onclick="filterOpportunities('ALL', event)">All Types</button>
+        <button class="filter-chip" onclick="filterOpportunities('Scholarship', event)">Scholarships</button>
+        <button class="filter-chip" onclick="filterOpportunities('Work-Study', event)">Work-Study</button>
+        <button class="filter-chip" onclick="filterOpportunities('Hackathon', event)">Hackathons</button>
       </div>
 
       <div class="grid" id="opportunities-grid">
@@ -816,16 +920,16 @@
       </div>
     </section>
 
-    <!-- 5. CBT QUIZ PRACTICE TAB -->
+    <!-- 6. CBT QUIZ PRACTICE TAB -->
     <section id="tab-cbt" class="tab-section">
-      <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.9rem; font-weight: 800; margin-bottom: 0.5rem;">🎯 100L CBT Exam & Practice Simulator</h2>
-      <p style="color: var(--text-muted); margin-bottom: 1.6rem;">Practice 100L general and departmental courses matching UI CBT exam standards.</p>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">🎯 100L CBT Exam & Practice Simulator</h2>
+      <p style="color: var(--ps-text-gray); margin-bottom: 1.75rem;">Practice 100L general and departmental courses matching UI CBT exam standards.</p>
 
       <div class="grid">
         <div class="card">
           <div class="card-header">
-            <span class="card-badge cbt">CSC101</span>
-            <span style="font-size: 0.82rem; color: var(--accent-emerald);">Compulsory</span>
+            <span class="card-badge">CSC101</span>
+            <span style="font-size: 0.82rem; color: #10B981; font-weight: 700;">Compulsory</span>
           </div>
           <h3 class="card-title">CSC101: Introduction to Computer Science</h3>
           <p class="card-desc">Binary arithmetic, computer hardware, operating systems, and algorithms.</p>
@@ -836,8 +940,8 @@
 
         <div class="card">
           <div class="card-header">
-            <span class="card-badge cbt">MAT111</span>
-            <span style="font-size: 0.82rem; color: var(--accent-emerald);">Compulsory</span>
+            <span class="card-badge">MAT111</span>
+            <span style="font-size: 0.82rem; color: #10B981; font-weight: 700;">Compulsory</span>
           </div>
           <h3 class="card-title">MAT111: Algebra and Trigonometry</h3>
           <p class="card-desc">Quadratic equations, polynomials, sequences, series, and trigonometry.</p>
@@ -848,8 +952,8 @@
 
         <div class="card">
           <div class="card-header">
-            <span class="card-badge cbt">GST101</span>
-            <span style="font-size: 0.82rem; color: var(--accent-gold);">General Study</span>
+            <span class="card-badge">GST101</span>
+            <span style="font-size: 0.82rem; color: #F59E0B; font-weight: 700;">General Study</span>
           </div>
           <h3 class="card-title">GST101: Use of English I</h3>
           <p class="card-desc">Grammar, sentence structure, antonyms, vocabulary, and reading comprehension.</p>
@@ -860,8 +964,8 @@
 
         <div class="card">
           <div class="card-header">
-            <span class="card-badge cbt">GES107</span>
-            <span style="font-size: 0.82rem; color: var(--accent-gold);">General Study</span>
+            <span class="card-badge">GES107</span>
+            <span style="font-size: 0.82rem; color: #F59E0B; font-weight: 700;">General Study</span>
           </div>
           <h3 class="card-title">GES107: Nigerian Peoples and Culture</h3>
           <p class="card-desc">Nok culture, Nigerian history, ethnic groups, and cultural heritage.</p>
@@ -872,22 +976,19 @@
       </div>
     </section>
 
-    <!-- 6. FAQ & STUDY ASSISTANT TAB -->
+    <!-- 7. FAQ TAB -->
     <section id="tab-faqs" class="tab-section">
-      <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.9rem; font-weight: 800; margin-bottom: 0.5rem;">❓ Frequently Asked Questions</h2>
-      <p style="color: var(--text-muted); margin-bottom: 1.6rem;">Answers to clearance, hostel reservation, course add/drop, and school fees payments.</p>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">❓ Frequently Asked Questions</h2>
+      <p style="color: var(--ps-text-gray); margin-bottom: 1.75rem;">Answers to clearance, hostel reservation, course add/drop, and school fees payments.</p>
 
-      <div class="assistant-card" style="margin-bottom: 2rem;">
-        <div class="assistant-info">
-          <span class="assistant-tag">
-            <span class="live-pulse"></span>
-            Need Extra Guidance?
-          </span>
-          <h3>Chat with Your Friendly Teacher & Mentor</h3>
-          <p>Our Telegram AI Study Assistant is warm, knowledgeable, and always ready to answer custom questions!</p>
+      <div class="showcase-card dark" style="margin-bottom: 2.5rem;" id="faq-tg-card">
+        <div>
+          <div style="font-size: 0.85rem; font-weight: 700; color: var(--ps-purple-light); margin-bottom: 0.75rem; text-transform: uppercase;">NEED EXTRA ACADEMIC GUIDANCE?</div>
+          <div class="showcase-title">Chat with Your Friendly AI Teacher & Mentor</div>
+          <p style="color: #94A3B8; margin-top: 0.5rem; font-size: 1rem;">Our Telegram AI Study Assistant is warm, knowledgeable, and always ready to answer your questions!</p>
         </div>
-        <a href="https://t.me/UI_Computing_Bot" target="_blank" rel="noopener" id="faq-tg-btn" class="tg-cta-btn">
-          💬 Launch Telegram AI Assistant
+        <a href="https://t.me/UI_Computing_Bot" target="_blank" rel="noopener" id="faq-tg-btn" class="action-btn" style="margin-top: 1.5rem; padding: 0.85rem 1.4rem; font-size: 0.95rem;">
+          💬 Launch Telegram AI Assistant →
         </a>
       </div>
 
@@ -901,33 +1002,33 @@
   <div class="modal-overlay" id="guide-modal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal()">✕</button>
-      <div id="modal-body" class="markdown-body"></div>
+      <div id="modal-body"></div>
     </div>
   </div>
 
   <!-- MOBILE NAVIGATION BAR -->
   <nav class="mobile-nav">
-    <button class="mobile-nav-btn active" onclick="switchTab('home')">
+    <button class="mobile-nav-btn active" onclick="switchTab('home', event)">
       <span>🏠</span>
       <span>Home</span>
     </button>
-    <button class="mobile-nav-btn" onclick="switchTab('guides')">
+    <button class="mobile-nav-btn" onclick="switchTab('guides', event)">
       <span>📚</span>
       <span>Guides</span>
     </button>
-    <button class="mobile-nav-btn" onclick="switchTab('resources')">
+    <button class="mobile-nav-btn" onclick="switchTab('resources', event)">
       <span>📂</span>
       <span>Resources</span>
     </button>
-    <button class="mobile-nav-btn" onclick="switchTab('opportunities')">
+    <button class="mobile-nav-btn" onclick="switchTab('opportunities', event)">
       <span>🚀</span>
       <span>Opps</span>
     </button>
-    <button class="mobile-nav-btn" onclick="switchTab('cbt')">
+    <button class="mobile-nav-btn" onclick="switchTab('cbt', event)">
       <span>🎯</span>
       <span>CBT</span>
     </button>
-    <button class="mobile-nav-btn" onclick="switchTab('faqs')">
+    <button class="mobile-nav-btn" onclick="switchTab('faqs', event)">
       <span>❓</span>
       <span>FAQ</span>
     </button>
@@ -988,9 +1089,9 @@
     }
 
     function updateBotLinks(url) {
-      const homeBtn = document.getElementById("home-tg-btn");
+      const homeCard = document.getElementById("home-tg-card");
       const faqBtn = document.getElementById("faq-tg-btn");
-      if (homeBtn) homeBtn.href = url;
+      if (homeCard) homeCard.href = url;
       if (faqBtn) faqBtn.href = url;
     }
 
@@ -1015,12 +1116,251 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // Global Search
+    function handleGlobalSearch(query) {
+      if (!query.trim()) {
+        renderHome();
+        return;
+      }
+      const q = query.toLowerCase();
+      const filtered = appData.guides.filter(g => 
+        g.title.toLowerCase().includes(q) || 
+        (g.content && g.content.toLowerCase().includes(q)) || 
+        (g.summary && g.summary.toLowerCase().includes(q))
+      );
+      const container = document.getElementById("home-featured-guides");
+      if (container) {
+        container.innerHTML = filtered.map(g => createGuideCardHtml(g)).join("");
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/[&<>"']/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+      })[m]);
+    }
+
     // RENDERERS
     function renderHome() {
       const featured = appData.guides.slice(0, 3);
       const container = document.getElementById("home-featured-guides");
       if (container) {
         container.innerHTML = featured.map(g => createGuideCardHtml(g)).join("");
+      }
+    }
+
+    function renderFacultyCatalog(filterQuery = "") {
+      const grid = document.getElementById("catalog-faculties-grid");
+      if (!grid) return;
+
+      const q = filterQuery.toLowerCase();
+      const list = appData.faculties.filter(f => 
+        f.name.toLowerCase().includes(q) || 
+        (f.departments && f.departments.some(d => d.name.toLowerCase().includes(q)))
+      );
+
+      if (list.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 2.5rem; color: var(--ps-text-gray);">No faculties or departments matching "${escapeHtml(filterQuery)}"</div>`;
+        return;
+      }
+
+      grid.innerHTML = list.map(f => {
+        const deptCount = f.departments ? f.departments.length : (f._count ? f._count.departments : 0);
+        return `
+          <div class="card" onclick="selectFacultyForCatalog('${f.id}')" style="cursor: pointer; border-top: 4px solid var(--ps-purple-primary);">
+            <div class="card-header">
+              <span class="card-badge">${f.code || 'UI'}</span>
+              <span style="font-size: 0.85rem; color: var(--ps-purple-primary); font-weight: 700;">${deptCount} Depts</span>
+            </div>
+            <h3 class="card-title">${escapeHtml(f.name)}</h3>
+            <p class="card-desc" style="font-size: 0.88rem;">Click to select department & view 100L course package.</p>
+            <div style="margin-top: 0.8rem; text-align: right; color: var(--ps-purple-primary); font-size: 0.88rem; font-weight: 700;">
+              Browse Packages →
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function filterFacultyCatalog(val) {
+      renderFacultyCatalog(val);
+    }
+
+    async function selectFacultyForCatalog(facultyId) {
+      const faculty = appData.faculties.find(f => f.id === facultyId);
+      if (!faculty) return;
+
+      document.getElementById("selected-faculty-title").innerText = `Faculty of ${faculty.name} — Select Department`;
+      const deptGrid = document.getElementById("catalog-departments-grid");
+      
+      if (faculty.departments && faculty.departments.length > 0) {
+        deptGrid.innerHTML = faculty.departments.map(d => `
+          <button onclick="selectDepartmentForPackage('${d.id}')" style="background: var(--ps-light-card); border: 1px solid var(--ps-border-light); color: var(--ps-text-dark); padding: 0.9rem 1rem; border-radius: 10px; font-weight: 600; font-size: 0.92rem; cursor: pointer; text-align: left; transition: var(--transition);" onmouseover="this.style.borderColor='var(--ps-purple-primary)'; this.style.color='var(--ps-purple-primary)';" onmouseout="this.style.borderColor='var(--ps-border-light)'; this.style.color='var(--ps-text-dark)';">
+            🏢 ${escapeHtml(d.name)}
+          </button>
+        `).join("");
+      } else {
+        deptGrid.innerHTML = `<p style="color: var(--ps-text-gray);">No departments found for this faculty.</p>`;
+      }
+
+      document.getElementById("catalog-departments-section").style.display = "block";
+      document.getElementById("catalog-package-view").style.display = "none";
+      document.getElementById("catalog-departments-section").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function hideDepartmentSection() {
+      document.getElementById("catalog-departments-section").style.display = "none";
+      document.getElementById("catalog-package-view").style.display = "none";
+    }
+
+    async function selectDepartmentForPackage(departmentId) {
+      const packageView = document.getElementById("catalog-package-view");
+      packageView.style.display = "block";
+      packageView.innerHTML = `<div style="text-align: center; padding: 3rem;"><span style="font-size: 2rem;">⏳</span><p style="color: var(--ps-text-gray); margin-top: 0.5rem;">Loading 100-Level Course Package...</p></div>`;
+      packageView.scrollIntoView({ behavior: "smooth" });
+
+      try {
+        const res = await fetch(`/api/departments/${departmentId}/courses`).then(r => r.json());
+        if (!res.success || !res.data) {
+          packageView.innerHTML = `
+            <div style="text-align: center; padding: 2.5rem; color: var(--ps-text-gray);">
+              <h3>⚠️ Department Course Package Unavailable</h3>
+              <p>No 100-Level course package has been seeded for this department yet.</p>
+            </div>
+          `;
+          return;
+        }
+
+        const pkg = res.data;
+        const dept = pkg.department;
+        const deptCourses = pkg.departmentCourses || [];
+        const gesCourses = pkg.universityWideGesCourses || [];
+        const units = pkg.unitSummary;
+
+        let sharedNoticeHtml = "";
+        if (dept.faculty.name === "Dentistry") {
+          sharedNoticeHtml = `<div style="background: rgba(139, 92, 246, 0.1); border: 1px solid var(--ps-purple-primary); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;">🔗 <strong>Shared Package Link:</strong> Dentistry's 100L Pre-Med package is linked directly to Clinical Sciences' Pre-Med course records.</div>`;
+        } else if (dept.faculty.name === "Veterinary Medicine") {
+          sharedNoticeHtml = `<div style="background: rgba(139, 92, 246, 0.1); border: 1px solid var(--ps-purple-primary); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;">🔗 <strong>Shared Package Link:</strong> Veterinary Medicine's 100L Pre-Vet package is linked directly to Faculty of Science course records.</div>`;
+        }
+
+        const sem1Dept = deptCourses.filter(c => c.semester === "1st");
+        const sem2Dept = deptCourses.filter(c => c.semester === "2nd");
+        const sem1Ges = gesCourses.filter(c => c.semester === "1st");
+        const sem2Ges = gesCourses.filter(c => c.semester === "2nd");
+
+        packageView.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.75rem; border-bottom: 1px solid var(--ps-border-light); padding-bottom: 1.25rem;">
+            <div>
+              <div style="font-size: 0.85rem; color: var(--ps-purple-primary); font-weight: 700; text-transform: uppercase;">Faculty of ${escapeHtml(dept.faculty.name)}</div>
+              <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.9rem; font-weight: 800; color: var(--ps-text-dark); margin-top: 0.2rem;">Department of ${escapeHtml(dept.name)}</h2>
+              <div style="color: var(--ps-text-gray); font-size: 0.92rem; margin-top: 0.35rem;">100-Level (Freshers) Complete Course Package</div>
+            </div>
+            <div style="display: flex; gap: 0.8rem;">
+              <div style="background: var(--ps-purple-soft); border: 1px solid rgba(139, 92, 246, 0.2); padding: 0.6rem 1.1rem; border-radius: 10px; text-align: center;">
+                <div style="font-size: 0.72rem; color: var(--ps-purple-primary); font-weight: 700;">1ST SEMESTER</div>
+                <div style="font-weight: 800; color: var(--ps-purple-primary); font-size: 1.15rem;">${units.semester1Total} Units</div>
+              </div>
+              <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); padding: 0.6rem 1.1rem; border-radius: 10px; text-align: center;">
+                <div style="font-size: 0.72rem; color: #10B981; font-weight: 700;">2ND SEMESTER</div>
+                <div style="font-weight: 800; color: #10B981; font-size: 1.15rem;">${units.semester2Total} Units</div>
+              </div>
+            </div>
+          </div>
+
+          ${sharedNoticeHtml}
+
+          <!-- SECTION 0: SHARED GES COURSES BLOCK -->
+          <div style="background: var(--ps-dark-bg); color: #FFF; border-radius: 14px; padding: 1.5rem; margin-bottom: 2.25rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <span style="font-size: 1.4rem;">🏛️</span>
+                <div>
+                  <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 800; color: #FFF;">University-Wide General Studies (GES / GST)</h3>
+                  <span style="font-size: 0.8rem; color: #94A3B8;">Shared 100-Level record set linked across all 17 faculties.</span>
+                </div>
+              </div>
+              <span style="background: var(--ps-purple-primary); color: #FFF; font-size: 0.72rem; font-weight: 800; padding: 0.35rem 0.8rem; border-radius: 20px; text-transform: uppercase;">Compulsory for All Freshers</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+              <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1rem;">
+                <div style="font-size: 0.82rem; font-weight: 800; color: var(--ps-purple-light); margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.4rem;">
+                  1st Semester GES Courses (${units.semester1GesUnits} Units)
+                </div>
+                ${sem1Ges.map(c => `
+                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.45rem 0; border-bottom: 1px dashed rgba(255,255,255,0.08);">
+                    <div>
+                      <strong style="color: #FFF; font-size: 0.88rem;">${c.code}</strong> — <span style="font-size: 0.85rem; color: #CBD5E1;">${escapeHtml(c.title)}</span>
+                    </div>
+                    <span style="background: rgba(139, 92, 246, 0.3); color: var(--ps-purple-light); font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 6px;">${c.units} Units</span>
+                  </div>
+                `).join("")}
+              </div>
+
+              <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1rem;">
+                <div style="font-size: 0.82rem; font-weight: 800; color: #34D399; margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.4rem;">
+                  2nd Semester GES Courses (${units.semester2GesUnits} Units)
+                </div>
+                ${sem2Ges.map(c => `
+                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.45rem 0; border-bottom: 1px dashed rgba(255,255,255,0.08);">
+                    <div>
+                      <strong style="color: #FFF; font-size: 0.88rem;">${c.code}</strong> — <span style="font-size: 0.85rem; color: #CBD5E1;">${escapeHtml(c.title)}</span>
+                    </div>
+                    <span style="background: rgba(16, 185, 129, 0.3); color: #34D399; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 6px;">${c.units} Units</span>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          </div>
+
+          <!-- DEPARTMENTAL COURSES -->
+          <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--ps-text-dark); margin-bottom: 1.25rem;">
+            📚 Departmental 100-Level Courses — ${escapeHtml(dept.name)}
+          </h3>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+            <div style="background: var(--ps-light-card); border: 1px solid var(--ps-border-light); border-radius: 12px; padding: 1.25rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--ps-border-light); padding-bottom: 0.6rem;">
+                <h4 style="font-family: 'Outfit', sans-serif; color: var(--ps-purple-primary); font-size: 1.1rem; font-weight: 800;">1st Semester Courses</h4>
+                <span style="font-size: 0.82rem; font-weight: 700; color: var(--ps-text-gray);">${units.semester1DeptUnits} Dept Units</span>
+              </div>
+              
+              ${sem1Dept.length > 0 ? sem1Dept.map(c => `
+                <div style="background: #FFF; border: 1px solid var(--ps-border-light); border-radius: 8px; padding: 0.85rem; margin-bottom: 0.75rem;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
+                    <span style="font-family: 'Outfit', sans-serif; font-weight: 800; color: var(--ps-text-dark); font-size: 1rem;">${c.code}</span>
+                    <span style="background: ${c.status === 'COMPULSORY' ? 'rgba(16, 185, 129, 0.15)' : c.status === 'REQUIRED' ? 'rgba(245, 158, 11, 0.15)' : 'rgba(0,0,0,0.06)'}; color: ${c.status === 'COMPULSORY' ? '#10B981' : c.status === 'REQUIRED' ? '#D97706' : 'var(--ps-text-dark)'}; font-size: 0.72rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 5px;">${c.status}</span>
+                  </div>
+                  <div style="font-size: 0.88rem; color: var(--ps-text-gray); margin-bottom: 0.4rem;">${escapeHtml(c.title)}</div>
+                  <div style="font-size: 0.78rem; color: var(--ps-purple-primary); font-weight: 700;">Units: ${c.units}</div>
+                </div>
+              `).join("") : `<p style="color: var(--ps-text-gray); font-size: 0.88rem;">No departmental courses for 1st semester.</p>`}
+            </div>
+
+            <div style="background: var(--ps-light-card); border: 1px solid var(--ps-border-light); border-radius: 12px; padding: 1.25rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--ps-border-light); padding-bottom: 0.6rem;">
+                <h4 style="font-family: 'Outfit', sans-serif; color: #10B981; font-size: 1.1rem; font-weight: 800;">2nd Semester Courses</h4>
+                <span style="font-size: 0.82rem; font-weight: 700; color: var(--ps-text-gray);">${units.semester2DeptUnits} Dept Units</span>
+              </div>
+
+              ${sem2Dept.length > 0 ? sem2Dept.map(c => `
+                <div style="background: #FFF; border: 1px solid var(--ps-border-light); border-radius: 8px; padding: 0.85rem; margin-bottom: 0.75rem;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
+                    <span style="font-family: 'Outfit', sans-serif; font-weight: 800; color: var(--ps-text-dark); font-size: 1rem;">${c.code}</span>
+                    <span style="background: ${c.status === 'COMPULSORY' ? 'rgba(16, 185, 129, 0.15)' : c.status === 'REQUIRED' ? 'rgba(245, 158, 11, 0.15)' : 'rgba(0,0,0,0.06)'}; color: ${c.status === 'COMPULSORY' ? '#10B981' : c.status === 'REQUIRED' ? '#D97706' : 'var(--ps-text-dark)'}; font-size: 0.72rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 5px;">${c.status}</span>
+                  </div>
+                  <div style="font-size: 0.88rem; color: var(--ps-text-gray); margin-bottom: 0.4rem;">${escapeHtml(c.title)}</div>
+                  <div style="font-size: 0.78rem; color: #10B981; font-weight: 700;">Units: ${c.units}</div>
+                </div>
+              `).join("") : `<p style="color: var(--ps-text-gray); font-size: 0.88rem;">No departmental courses for 2nd semester.</p>`}
+            </div>
+          </div>
+        `;
+      } catch (err) {
+        console.error("Error loading course package:", err);
+        packageView.innerHTML = `<div style="text-align: center; padding: 2rem; color: var(--ps-text-gray);">Error loading course package. Please try again.</div>`;
       }
     }
 
@@ -1047,7 +1387,7 @@
       const container = document.getElementById("guides-grid");
       if (container) {
         if (items.length === 0) {
-          container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 2.5rem; color: var(--text-muted);">No guides found.</div>`;
+          container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 2.5rem; color: var(--ps-text-gray);">No guides found.</div>`;
         } else {
           container.innerHTML = items.map(g => createGuideCardHtml(g)).join("");
         }
@@ -1059,7 +1399,7 @@
         <div class="card">
           <div class="card-header">
             <span class="card-badge">${escapeHtml(g.category || 'Guide')}</span>
-            <span style="font-size: 0.82rem; color: var(--text-muted);">${escapeHtml(g.faculty ? g.faculty.name : 'University Wide')}</span>
+            <span style="font-size: 0.82rem; color: var(--ps-text-gray);">${escapeHtml(g.faculty ? g.faculty.name : 'University Wide')}</span>
           </div>
           <h3 class="card-title">${escapeHtml(g.title)}</h3>
           <p class="card-desc">${escapeHtml(g.summary || (g.content ? g.content.substring(0, 120) + '...' : ''))}</p>
@@ -1082,7 +1422,7 @@
           <div class="card">
             <div class="card-header">
               <span class="card-badge">${escapeHtml(r.type ? r.type.toUpperCase() : 'DOC')}</span>
-              <span style="font-size: 0.82rem; color: var(--text-muted);">${escapeHtml(r.category)}</span>
+              <span style="font-size: 0.82rem; color: var(--ps-text-gray);">${escapeHtml(r.category)}</span>
             </div>
             <h3 class="card-title">${escapeHtml(r.title)}</h3>
             <p class="card-desc">${escapeHtml(r.description)}</p>
@@ -1114,8 +1454,8 @@
         container.innerHTML = items.map(o => `
           <div class="card">
             <div class="card-header">
-              <span class="card-badge ${escapeHtml(o.type ? o.type.toLowerCase() : '')}">${escapeHtml(o.type)}</span>
-              <span style="font-size: 0.82rem; color: var(--accent-gold);">⏳ ${o.deadline ? new Date(o.deadline).toLocaleDateString() : 'Ongoing'}</span>
+              <span class="card-badge">${escapeHtml(o.type)}</span>
+              <span style="font-size: 0.82rem; color: #D97706; font-weight: 700;">⏳ ${o.deadline ? new Date(o.deadline).toLocaleDateString() : 'Ongoing'}</span>
             </div>
             <h3 class="card-title">${escapeHtml(o.title)}</h3>
             <p class="card-desc">${escapeHtml(o.description)}</p>
@@ -1142,43 +1482,44 @@
 
     function renderFaqs() {
       const container = document.getElementById("faqs-list");
-      container.innerHTML = appData.faqs.map(f => `
-        <div class="faq-item" onclick="toggleFaq(this)">
-          <div class="faq-question">
-            <span>❓ ${escapeHtml(f.question)}</span>
-            <span>➕</span>
-          </div>
-          <div class="faq-answer">
-            <p>${escapeHtml(f.answer)}</p>
-            <div class="provenance-bar" style="margin-top: 1.1rem;">
-              <div class="provenance-item">📌 <span>Source: ${escapeHtml(f.source)}</span></div>
-              <div class="provenance-item">🛡️ <span>Owner: ${escapeHtml(f.owner)}</span></div>
+      if (container) {
+        container.innerHTML = appData.faqs.map(f => `
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+              <span>❓ ${escapeHtml(f.question)}</span>
+              <span style="color: var(--ps-purple-primary);">➕</span>
+            </div>
+            <div class="faq-answer">
+              <p>${escapeHtml(f.answer)}</p>
+              <div class="provenance-bar" style="margin-top: 1.1rem;">
+                <div class="provenance-item">📌 <span>Source: ${escapeHtml(f.source)}</span></div>
+                <div class="provenance-item">🛡️ <span>Owner: ${escapeHtml(f.owner)}</span></div>
+              </div>
             </div>
           </div>
-        </div>
-      `).join("");
+        `).join("");
+      }
     }
 
     function toggleFaq(el) {
       el.classList.toggle("open");
     }
 
-    // Guide Modal
     function openGuideModal(guideId) {
       const guide = appData.guides.find(g => g.id === guideId);
       if (!guide) return;
 
       const modalBody = document.getElementById("modal-body");
       modalBody.innerHTML = `
-        <h1>${escapeHtml(guide.title)}</h1>
-        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
-          Verified on ${new Date(guide.verifiedDate).toLocaleDateString()} by ${escapeHtml(guide.owner)} (${escapeHtml(guide.source)})
+        <h1 style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--ps-text-dark);">${escapeHtml(guide.title)}</h1>
+        <p style="color: var(--ps-text-gray); font-size: 0.92rem; margin-bottom: 1.5rem;">
+          Verified on ${guide.verifiedDate ? new Date(guide.verifiedDate).toLocaleDateString() : 'Official'} by ${escapeHtml(guide.owner)} (${escapeHtml(guide.source)})
         </p>
-        <hr style="border-color: rgba(255,255,255,0.1); margin-bottom: 1.5rem;">
-        <div>${marked.parse(guide.content)}</div>
-        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
-          <a href="${appData.studyAssistantLink.botUrl}" target="_blank" rel="noopener" class="tg-cta-btn">
-            💬 Discuss this Guide with AI Mentor on Telegram
+        <hr style="border-color: var(--ps-border-light); margin-bottom: 1.5rem;">
+        <div style="line-height: 1.7; color: var(--ps-text-dark);">${marked.parse(guide.content || '')}</div>
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--ps-border-light); text-align: center;">
+          <a href="${appData.studyAssistantLink.botUrl}" target="_blank" rel="noopener" class="action-btn" style="padding: 0.85rem 1.4rem;">
+            💬 Discuss this Guide with AI Mentor on Telegram →
           </a>
         </div>
       `;
@@ -1187,250 +1528,6 @@
 
     function closeModal() {
       document.getElementById("guide-modal").style.display = "none";
-    }
-
-    // Global Search
-    function handleGlobalSearch(query) {
-      if (!query.trim()) {
-        renderHome();
-        return;
-      }
-      const q = query.toLowerCase();
-      const filtered = appData.guides.filter(g => 
-        g.title.toLowerCase().includes(q) || 
-        g.content.toLowerCase().includes(q) || 
-        g.summary.toLowerCase().includes(q)
-      );
-      document.getElementById("home-featured-guides").innerHTML = filtered.map(g => createGuideCardHtml(g)).join("");
-    }
-
-    function escapeHtml(str) {
-      if (!str) return '';
-      return str.replace(/[&<>"']/g, m => ({
-        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
-      })[m]);
-    }
-
-    // =========================================================
-    // ACADEMIC COURSE CATALOG RENDERERS & DATA ACCESS
-    // =========================================================
-    function renderFacultyCatalog(filterQuery = "") {
-      const grid = document.getElementById("catalog-faculties-grid");
-      if (!grid) return;
-
-      const q = filterQuery.toLowerCase();
-      const list = appData.faculties.filter(f => 
-        f.name.toLowerCase().includes(q) || 
-        (f.departments && f.departments.some(d => d.name.toLowerCase().includes(q)))
-      );
-
-      if (list.length === 0) {
-        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: var(--text-muted);">No faculties or departments matching "${escapeHtml(filterQuery)}"</div>`;
-        return;
-      }
-
-      grid.innerHTML = list.map(f => {
-        const deptCount = f.departments ? f.departments.length : (f._count ? f._count.departments : 0);
-        return `
-          <div class="card" onclick="selectFacultyForCatalog('${f.id}')" style="cursor: pointer; border-left: 4px solid var(--electric-violet);">
-            <div class="card-header">
-              <span class="card-badge" style="background: rgba(138, 27, 134, 0.3); color: var(--bright-magenta);">${f.code || 'UI'}</span>
-              <span style="font-size: 0.82rem; color: var(--accent-cyan); font-weight: 700;">${deptCount} Depts</span>
-            </div>
-            <h3 class="card-title" style="margin-top: 0.5rem; font-size: 1.15rem;">${escapeHtml(f.name)}</h3>
-            <p class="card-desc" style="font-size: 0.85rem;">Click to select department & view 100L course package.</p>
-            <div style="margin-top: 0.8rem; text-align: right; color: var(--electric-violet); font-size: 0.88rem; font-weight: 700;">
-              Browse Packages →
-            </div>
-          </div>
-        `;
-      }).join("");
-    }
-
-    function filterFacultyCatalog(val) {
-      renderFacultyCatalog(val);
-    }
-
-    async function selectFacultyForCatalog(facultyId) {
-      const faculty = appData.faculties.find(f => f.id === facultyId);
-      if (!faculty) return;
-
-      document.getElementById("selected-faculty-title").innerText = `Faculty of ${faculty.name} — Select Department`;
-      const deptGrid = document.getElementById("catalog-departments-grid");
-      
-      if (faculty.departments && faculty.departments.length > 0) {
-        deptGrid.innerHTML = faculty.departments.map(d => `
-          <button onclick="selectDepartmentForPackage('${d.id}')" style="background: rgba(10, 2, 11, 0.8); border: 1px solid var(--card-border); color: #FFF; padding: 0.85rem 1rem; border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; text-align: left; transition: var(--transition);" onmouseover="this.style.borderColor='var(--bright-magenta)';" onmouseout="this.style.borderColor='var(--card-border)';">
-            🏢 ${escapeHtml(d.name)}
-          </button>
-        `).join("");
-      } else {
-        deptGrid.innerHTML = `<p style="color: var(--text-muted);">No departments found for this faculty.</p>`;
-      }
-
-      document.getElementById("catalog-departments-section").style.display = "block";
-      document.getElementById("catalog-package-view").style.display = "none";
-      document.getElementById("catalog-departments-section").scrollIntoView({ behavior: "smooth" });
-    }
-
-    function hideDepartmentSection() {
-      document.getElementById("catalog-departments-section").style.display = "none";
-      document.getElementById("catalog-package-view").style.display = "none";
-    }
-
-    async function selectDepartmentForPackage(departmentId) {
-      const packageView = document.getElementById("catalog-package-view");
-      packageView.style.display = "block";
-      packageView.innerHTML = `<div style="text-align: center; padding: 3rem;"><span style="font-size: 2rem;">⏳</span><p style="color: var(--text-muted); margin-top: 0.5rem;">Loading 100-Level Course Package...</p></div>`;
-      packageView.scrollIntoView({ behavior: "smooth" });
-
-      try {
-        const res = await fetch(`/api/departments/${departmentId}/courses`).then(r => r.json());
-        if (!res.success || !res.data) {
-          packageView.innerHTML = `
-            <div style="text-align: center; padding: 2.5rem; color: var(--text-muted);">
-              <h3>⚠️ Department Course Package Unavailable</h3>
-              <p>No 100-Level course package has been seeded for this department yet.</p>
-            </div>
-          `;
-          return;
-        }
-
-        const pkg = res.data;
-        const dept = pkg.department;
-        const deptCourses = pkg.departmentCourses || [];
-        const gesCourses = pkg.universityWideGesCourses || [];
-        const units = pkg.unitSummary;
-
-        // Check if shared package (Dentistry or Vet Med)
-        let sharedNoticeHtml = "";
-        if (dept.faculty.name === "Dentistry") {
-          sharedNoticeHtml = `<div style="background: rgba(0, 229, 255, 0.12); border: 1px solid rgba(0, 229, 255, 0.35); border-radius: 12px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: #80F2FF; font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;">🔗 <strong>Shared Package Link:</strong> Dentistry's 100L Pre-Med package is linked directly to Clinical Sciences' Pre-Med course records.</div>`;
-        } else if (dept.faculty.name === "Veterinary Medicine") {
-          sharedNoticeHtml = `<div style="background: rgba(0, 229, 255, 0.12); border: 1px solid rgba(0, 229, 255, 0.35); border-radius: 12px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: #80F2FF; font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;">🔗 <strong>Shared Package Link:</strong> Veterinary Medicine's 100L Pre-Vet package is linked directly to Faculty of Science course records.</div>`;
-        }
-
-        const sem1Dept = deptCourses.filter(c => c.semester === "1st");
-        const sem2Dept = deptCourses.filter(c => c.semester === "2nd");
-        const sem1Ges = gesCourses.filter(c => c.semester === "1st");
-        const sem2Ges = gesCourses.filter(c => c.semester === "2nd");
-
-        packageView.innerHTML = `
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1.25rem;">
-            <div>
-              <div style="font-size: 0.85rem; color: var(--electric-violet); font-weight: 700; text-transform: uppercase;">Faculty of ${escapeHtml(dept.faculty.name)}</div>
-              <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.85rem; font-weight: 800; color: #FFF; margin-top: 0.2rem;">Department of ${escapeHtml(dept.name)}</h2>
-              <div style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.35rem;">100-Level (Freshers) Complete Course Package</div>
-            </div>
-            <div style="display: flex; gap: 0.8rem;">
-              <div style="background: rgba(138, 27, 134, 0.3); border: 1px solid var(--card-border); padding: 0.6rem 1rem; border-radius: 10px; text-align: center;">
-                <div style="font-size: 0.7rem; color: var(--text-subtle);">1ST SEMESTER</div>
-                <div style="font-weight: 800; color: var(--accent-cyan); font-size: 1.1rem;">${units.semester1Total} Units</div>
-              </div>
-              <div style="background: rgba(138, 27, 134, 0.3); border: 1px solid var(--card-border); padding: 0.6rem 1rem; border-radius: 10px; text-align: center;">
-                <div style="font-size: 0.7rem; color: var(--text-subtle);">2ND SEMESTER</div>
-                <div style="font-weight: 800; color: var(--accent-emerald); font-size: 1.1rem;">${units.semester2Total} Units</div>
-              </div>
-            </div>
-          </div>
-
-          ${sharedNoticeHtml}
-
-          <!-- SECTION 0: SHARED UNIVERSITY-WIDE GES/GST COURSES BLOCK (Principle 2) -->
-          <div style="background: linear-gradient(135deg, rgba(32, 4, 35, 0.9), rgba(127, 26, 123, 0.2)); border: 2px solid var(--core-magenta); border-radius: 16px; padding: 1.5rem; margin-bottom: 2.2rem; box-shadow: 0 8px 30px rgba(138, 27, 134, 0.25);">
-            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
-              <div style="display: flex; align-items: center; gap: 0.6rem;">
-                <span style="font-size: 1.4rem;">🏛️</span>
-                <div>
-                  <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 800; color: #FFF;">University-Wide General Studies (GES / GST)</h3>
-                  <span style="font-size: 0.8rem; color: var(--text-muted);">Shared 100-Level record set linked across all 17 faculties.</span>
-                </div>
-              </div>
-              <span style="background: var(--bright-magenta); color: #FFF; font-size: 0.72rem; font-weight: 800; padding: 0.35rem 0.8rem; border-radius: 20px; text-transform: uppercase;">Compulsory for All Freshers</span>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
-              <!-- GES 1st Semester -->
-              <div style="background: rgba(10, 2, 11, 0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem;">
-                <div style="font-size: 0.82rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.4rem;">
-                  1st Semester GES Courses (${units.semester1GesUnits} Units)
-                </div>
-                ${sem1Ges.map(c => `
-                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.45rem 0; border-bottom: 1px dashed rgba(255,255,255,0.06);">
-                    <div>
-                      <strong style="color: #FFF; font-size: 0.88rem;">${c.code}</strong> — <span style="font-size: 0.85rem; color: var(--text-muted);">${escapeHtml(c.title)}</span>
-                    </div>
-                    <span style="background: rgba(0, 229, 255, 0.2); color: var(--accent-cyan); font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 6px;">${c.units} Units</span>
-                  </div>
-                `).join("")}
-              </div>
-
-              <!-- GES 2nd Semester -->
-              <div style="background: rgba(10, 2, 11, 0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem;">
-                <div style="font-size: 0.82rem; font-weight: 800; color: var(--accent-emerald); margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.4rem;">
-                  2nd Semester GES Courses (${units.semester2GesUnits} Units)
-                </div>
-                ${sem2Ges.map(c => `
-                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.45rem 0; border-bottom: 1px dashed rgba(255,255,255,0.06);">
-                    <div>
-                      <strong style="color: #FFF; font-size: 0.88rem;">${c.code}</strong> — <span style="font-size: 0.85rem; color: var(--text-muted);">${escapeHtml(c.title)}</span>
-                    </div>
-                    <span style="background: rgba(0, 230, 118, 0.2); color: var(--accent-emerald); font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 6px;">${c.units} Units</span>
-                  </div>
-                `).join("")}
-              </div>
-            </div>
-          </div>
-
-          <!-- DEPARTMENTAL COURSES BY SEMESTER -->
-          <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.35rem; font-weight: 800; color: #FFF; margin-bottom: 1.1rem;">
-            📚 Departmental 100-Level Courses — ${escapeHtml(dept.name)}
-          </h3>
-
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
-            <!-- 1ST SEMESTER DEPARTMENTAL COURSES -->
-            <div style="background: rgba(10, 2, 11, 0.7); border: 1px solid var(--card-border); border-radius: 14px; padding: 1.25rem;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 0.6rem;">
-                <h4 style="font-family: 'Outfit', sans-serif; color: var(--accent-cyan); font-size: 1.1rem; font-weight: 800;">1st Semester Courses</h4>
-                <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-subtle);">${units.semester1DeptUnits} Dept Units</span>
-              </div>
-              
-              ${sem1Dept.length > 0 ? sem1Dept.map(c => `
-                <div style="background: rgba(32, 4, 35, 0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 0.85rem; margin-bottom: 0.75rem;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
-                    <span style="font-family: 'Outfit', sans-serif; font-weight: 800; color: #FFF; font-size: 1rem;">${c.code}</span>
-                    <span style="background: ${c.status === 'COMPULSORY' ? 'rgba(0, 230, 118, 0.2)' : c.status === 'REQUIRED' ? 'rgba(255, 184, 0, 0.2)' : 'rgba(255,255,255,0.1)'}; color: ${c.status === 'COMPULSORY' ? 'var(--accent-emerald)' : c.status === 'REQUIRED' ? 'var(--accent-gold)' : '#FFF'}; font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 5px;">${c.status}</span>
-                  </div>
-                  <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.4rem;">${escapeHtml(c.title)}</div>
-                  <div style="font-size: 0.78rem; color: var(--accent-cyan); font-weight: 700;">Units: ${c.units}</div>
-                </div>
-              `).join("") : `<p style="color: var(--text-muted); font-size: 0.88rem;">No departmental courses for 1st semester.</p>`}
-            </div>
-
-            <!-- 2ND SEMESTER DEPARTMENTAL COURSES -->
-            <div style="background: rgba(10, 2, 11, 0.7); border: 1px solid var(--card-border); border-radius: 14px; padding: 1.25rem;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 0.6rem;">
-                <h4 style="font-family: 'Outfit', sans-serif; color: var(--accent-emerald); font-size: 1.1rem; font-weight: 800;">2nd Semester Courses</h4>
-                <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-subtle);">${units.semester2DeptUnits} Dept Units</span>
-              </div>
-
-              ${sem2Dept.length > 0 ? sem2Dept.map(c => `
-                <div style="background: rgba(32, 4, 35, 0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 0.85rem; margin-bottom: 0.75rem;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
-                    <span style="font-family: 'Outfit', sans-serif; font-weight: 800; color: #FFF; font-size: 1rem;">${c.code}</span>
-                    <span style="background: ${c.status === 'COMPULSORY' ? 'rgba(0, 230, 118, 0.2)' : c.status === 'REQUIRED' ? 'rgba(255, 184, 0, 0.2)' : 'rgba(255,255,255,0.1)'}; color: ${c.status === 'COMPULSORY' ? 'var(--accent-emerald)' : c.status === 'REQUIRED' ? 'var(--accent-gold)' : '#FFF'}; font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 5px;">${c.status}</span>
-                  </div>
-                  <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.4rem;">${escapeHtml(c.title)}</div>
-                  <div style="font-size: 0.78rem; color: var(--accent-emerald); font-weight: 700;">Units: ${c.units}</div>
-                </div>
-              `).join("") : `<p style="color: var(--text-muted); font-size: 0.88rem;">No departmental courses for 2nd semester.</p>`}
-            </div>
-          </div>
-        `;
-      } catch (err) {
-        console.error("Error loading course package:", err);
-        packageView.innerHTML = `<div style="text-align: center; padding: 2rem; color: var(--text-muted);">Error loading course package. Please try again.</div>`;
-      }
     }
 
     function registerServiceWorker() {
