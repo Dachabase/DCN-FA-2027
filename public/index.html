@@ -904,31 +904,31 @@
       </a>
 
       <nav class="nav-links">
-        <button class="nav-btn active" onclick="switchTab('home', event)">
+        <button class="nav-btn active" data-tab="home" onclick="switchTab('home', event)">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           Dashboard
         </button>
-        <button class="nav-btn" onclick="switchTab('catalog', event)">
+        <button class="nav-btn" data-tab="catalog" onclick="switchTab('catalog', event)">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
           Course Catalog
         </button>
-        <button class="nav-btn" onclick="switchTab('guides', event)">
+        <button class="nav-btn" data-tab="guides" onclick="switchTab('guides', event)">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
           Faculty Guides
         </button>
-        <button class="nav-btn" onclick="switchTab('resources', event)">
+        <button class="nav-btn" data-tab="resources" onclick="switchTab('resources', event)">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
           Resources
         </button>
-        <button class="nav-btn" onclick="switchTab('opportunities', event)">
+        <button class="nav-btn" data-tab="opportunities" onclick="switchTab('opportunities', event)">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           Opportunities
         </button>
-        <button class="nav-btn" onclick="switchTab('cbt', event)">
+        <button class="nav-btn" data-tab="cbt" onclick="switchTab('cbt', event)">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           CBT Practice
         </button>
-        <button class="nav-btn" onclick="switchTab('faqs', event)">
+        <button class="nav-btn" data-tab="faqs" onclick="switchTab('faqs', event)">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           FAQ & AI
         </button>
@@ -1233,23 +1233,31 @@
   <!-- MOBILE NAVIGATION -->
   <div class="mobile-nav">
     <div class="mobile-nav-container">
-      <button class="mobile-nav-btn active" onclick="switchTab('home', event)">
+      <button class="mobile-nav-btn active" data-tab="home" onclick="switchTab('home', event)">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
         Home
       </button>
-      <button class="mobile-nav-btn" onclick="switchTab('catalog', event)">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg>
+      <button class="mobile-nav-btn" data-tab="catalog" onclick="switchTab('catalog', event)">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
         Catalog
       </button>
-      <button class="mobile-nav-btn" onclick="switchTab('guides', event)">
+      <button class="mobile-nav-btn" data-tab="guides" onclick="switchTab('guides', event)">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
         Guides
       </button>
-      <button class="mobile-nav-btn" onclick="switchTab('resources', event)">
+      <button class="mobile-nav-btn" data-tab="resources" onclick="switchTab('resources', event)">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
         Resources
       </button>
-      <button class="mobile-nav-btn" onclick="switchTab('faqs', event)">
+      <button class="mobile-nav-btn" data-tab="opportunities" onclick="switchTab('opportunities', event)">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Grants
+      </button>
+      <button class="mobile-nav-btn" data-tab="cbt" onclick="switchTab('cbt', event)">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        CBT
+      </button>
+      <button class="mobile-nav-btn" data-tab="faqs" onclick="switchTab('faqs', event)">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         AI Help
       </button>
@@ -1263,11 +1271,13 @@
         uifreshers<span style="color: var(--ps-purple-light);">.</span>
       </div>
       <div class="footer-links">
-        <a href="#" onclick="switchTab('home', event)">Dashboard</a>
-        <a href="#" onclick="switchTab('catalog', event)">Course Catalog</a>
-        <a href="#" onclick="switchTab('guides', event)">Faculty Guides</a>
-        <a href="#" onclick="switchTab('resources', event)">Resources</a>
-        <a href="https://t.me/UI_Computing_Bot" target="_blank" rel="noopener">Telegram Bot</a>
+        <a href="#/home" onclick="switchTab('home', event)">Dashboard</a>
+        <a href="#/catalog" onclick="switchTab('catalog', event)">Course Catalog</a>
+        <a href="#/guides" onclick="switchTab('guides', event)">Faculty Guides</a>
+        <a href="#/resources" onclick="switchTab('resources', event)">Resources</a>
+        <a href="#/opportunities" onclick="switchTab('opportunities', event)">Opportunities</a>
+        <a href="#/cbt" onclick="switchTab('cbt', event)">CBT Practice</a>
+        <a href="#/faqs" onclick="switchTab('faqs', event)">FAQ & AI</a>
       </div>
       <div style="color: var(--ps-purple-light); font-weight: 700; font-size: 0.95rem; margin-top: 0.25rem;">
         Powered by Disciples Christian Network.
@@ -1340,7 +1350,20 @@
       renderOpportunities();
       renderFaqs();
       registerServiceWorker();
+
+      // Initialize route from URL hash
+      handleHashRouting();
+      window.addEventListener("hashchange", handleHashRouting);
     });
+
+    function handleHashRouting() {
+      const hash = window.location.hash.replace(/^#\/?/, '');
+      if (hash) {
+        switchTab(hash, null, false);
+      } else {
+        switchTab('home', null, false);
+      }
+    }
 
     async function fetchAllData() {
       try {
@@ -1377,23 +1400,30 @@
       if (faqBtn) faqBtn.href = url;
     }
 
-    function switchTab(tabId, ev) {
+    function switchTab(tabId, ev, updateHash = true) {
       if (ev && ev.preventDefault) ev.preventDefault();
+      
+      const validTabs = ['home', 'catalog', 'guides', 'resources', 'opportunities', 'cbt', 'faqs'];
+      if (!validTabs.includes(tabId)) tabId = 'home';
+
+      // Deactivate all sections & buttons
       document.querySelectorAll(".tab-section").forEach(s => s.classList.remove("active"));
       document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
       document.querySelectorAll(".mobile-nav-btn").forEach(b => b.classList.remove("active"));
 
+      // Activate target section
       const targetTab = document.getElementById(`tab-${tabId}`);
       if (targetTab) targetTab.classList.add("active");
-      
-      const tabKeys = ['home', 'catalog', 'guides', 'resources', 'opportunities', 'cbt', 'faqs'];
-      const navBtnIndex = tabKeys.indexOf(tabId);
-      if (navBtnIndex !== -1) {
-        const desktopBtns = document.querySelectorAll(".nav-btn");
-        const mobileBtns = document.querySelectorAll(".mobile-nav-btn");
-        if (desktopBtns[navBtnIndex]) desktopBtns[navBtnIndex].classList.add("active");
-        if (mobileBtns[navBtnIndex]) mobileBtns[navBtnIndex].classList.add("active");
+
+      // Activate matching buttons by data-tab attribute
+      document.querySelectorAll(`.nav-btn[data-tab="${tabId}"]`).forEach(b => b.classList.add("active"));
+      document.querySelectorAll(`.mobile-nav-btn[data-tab="${tabId}"]`).forEach(b => b.classList.add("active"));
+
+      // Update URL hash for single page navigation
+      if (updateHash && window.location.hash !== `#/${tabId}`) {
+        history.pushState(null, '', `#/${tabId}`);
       }
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
