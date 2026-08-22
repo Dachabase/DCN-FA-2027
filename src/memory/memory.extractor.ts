@@ -6,17 +6,18 @@ import { saveMemory } from "./memory.service";
 // GEMINI SETUP
 // ---------------------------------------------------------
 
-const apiKey = process.env.GEMINI_API_KEY;
+let aiInstance: any = null;
 
-if (!apiKey) {
-  throw new Error(
-    "GEMINI_API_KEY is not configured. Add it to your .env file."
-  );
+function getAIClient(): any {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey || apiKey.trim() === "") {
+    return null;
+  }
+  if (!aiInstance) {
+    aiInstance = new GoogleGenAI({ apiKey: apiKey.trim() });
+  }
+  return aiInstance;
 }
-
-const ai = new GoogleGenAI({
-  apiKey,
-});
 
 const model =
   process.env.GEMINI_MODEL?.trim() || "gemini-3.7-flash";
@@ -69,7 +70,12 @@ export async function extractAndSaveMemories(
   console.log("[MEMORY] Analyzing student message...");
 
   try {
-    const response = await ai.models.generateContent({
+    const client = getAIClient();
+    if (!client) {
+      return [];
+    }
+
+    const response = await client.models.generateContent({
       model,
       contents: message,
       config: {

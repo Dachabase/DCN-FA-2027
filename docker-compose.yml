@@ -8,7 +8,7 @@ services:
     environment:
       - PORT=3000
       - DATABASE_URL=postgresql://postgres:postgres_password@db:5432/ui_freshers?schema=public
-      - DEFAULT_TELEGRAM_BOT_USERNAME=UI_Computing_Bot
+      - DEFAULT_TELEGRAM_BOT_USERNAME=UIDCNComputingFreshersBot
     depends_on:
       - db
     restart: always
