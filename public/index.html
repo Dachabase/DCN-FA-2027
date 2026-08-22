@@ -1466,6 +1466,14 @@
       EDUCATION: 'FACULTY OF EDUCATION'
     };
 
+    function renderResources() {
+      filterResources('ALL');
+    }
+
+    function renderOpportunities() {
+      filterOpportunities('ALL');
+    }
+
     document.addEventListener("DOMContentLoaded", async () => {
       await fetchAllData();
       renderHome();
@@ -1474,8 +1482,6 @@
       renderResources();
       renderOpportunities();
       renderFaqs();
-      registerServiceWorker();
-
       registerServiceWorker();
 
       // Ensure baseline root hash exists in history
@@ -1564,6 +1570,12 @@
       
       const validTabs = ['home', 'catalog', 'guides', 'resources', 'opportunities', 'cbt', 'faqs'];
       if (!validTabs.includes(tabId)) tabId = 'home';
+
+      // Toggle hero section visibility (Only visible on Home tab!)
+      const heroSection = document.querySelector(".hero-section");
+      if (heroSection) {
+        heroSection.style.display = (tabId === 'home') ? 'block' : 'none';
+      }
 
       // Deactivate all sections & buttons
       document.querySelectorAll(".tab-section").forEach(s => s.classList.remove("active"));
