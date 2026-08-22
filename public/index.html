@@ -976,21 +976,143 @@
       color: var(--ps-purple-light);
     }
 
+    html, body {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+
     @media (max-width: 768px) {
+      header {
+        padding: 0.85rem 1rem;
+      }
+
       .header-container .nav-links {
         display: none;
       }
+
       .mobile-nav {
         display: block;
       }
+
+      .hero-section {
+        padding: 3.5rem 1rem 3rem 1rem;
+      }
+
       .hero-title {
-        font-size: 2.4rem;
+        font-size: 2.1rem;
+        letter-spacing: -0.5px;
       }
+
       .hero-title .serif-italic {
-        font-size: 2.7rem;
+        font-size: 2.3rem;
       }
+
+      .search-box-container {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .search-input {
+        font-size: 0.9rem;
+        padding: 0.95rem 6.5rem 0.95rem 2.8rem;
+        border-radius: 10px;
+      }
+
+      .search-icon-svg {
+        left: 0.85rem;
+        width: 18px;
+        height: 18px;
+      }
+
+      .search-btn {
+        padding: 0.55rem 0.9rem;
+        font-size: 0.82rem;
+        right: 0.35rem;
+        border-radius: 8px;
+      }
+
+      .search-hint {
+        justify-content: flex-start;
+        text-align: left;
+        gap: 0.45rem;
+        margin-top: 0.75rem;
+      }
+
       main {
-        padding-bottom: 7rem;
+        padding: 2rem 1rem 7rem 1rem;
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+      }
+
+      .partstack-feature-title {
+        font-size: 1.8rem;
+        letter-spacing: -0.5px;
+      }
+
+      .showcase-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.25rem;
+      }
+
+      .showcase-card {
+        padding: 1.6rem 1.35rem;
+        min-height: 200px;
+      }
+
+      .showcase-title {
+        font-size: 1.65rem;
+      }
+
+      .partstack-stats-section {
+        padding: 2rem 1.25rem;
+      }
+
+      .stats-header-title {
+        font-size: 1.7rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .stat-card {
+        padding: 1.25rem 1rem;
+      }
+
+      .stat-number {
+        font-size: 2.2rem;
+      }
+
+      /* Filter chip scrolling on mobile */
+      .filter-bar {
+        display: flex;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .filter-chip {
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      /* Catalog grid mobile response */
+      #catalog-faculties-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      #catalog-departments-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .guides-grid, #resources-grid, #opportunities-grid {
+        grid-template-columns: 1fr !important;
       }
     }
   </style>
