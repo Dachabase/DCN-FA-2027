@@ -641,14 +641,23 @@ app.post("/api/questions/upload", async (req: Request, res: Response) => {
   }
 });
 
-// Serve frontend build static files
-const publicDir = path.join(__dirname, "../public");
-app.use(express.static(publicDir));
+// Serve frontend build static files with no-cache headers for HTML
+const publicDir = path.join(process.cwd(), "public");
+app.use(express.static(publicDir, {
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      res.setHeader('Pragma', 'no-cache');
+      res.setHeader('Expires', '0');
+    }
+  }
+}));
 
 app.use((req: Request, res: Response) => {
   if (req.path.startsWith("/api/")) {
     return res.status(404).json({ success: false, error: "API endpoint not found" });
   }
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.sendFile(path.join(publicDir, "index.html"), (err) => {
     if (err) {
       res.status(404).send("UI Freshers Companion Web App - API is active at /api");
