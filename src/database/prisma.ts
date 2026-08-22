@@ -1,4 +1,9 @@
 import "dotenv/config";
+import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@prisma/client";
 
-export const prisma = new PrismaClient();
+const connectionString = process.env.DATABASE_URL || "postgresql://postgres:Wackywas1@fa27.ct2ua4mes3jl.eu-north-1.rds.amazonaws.com:5432/postgres?schema=public";
+
+const adapter = new PrismaPg({ connectionString });
+
+export const prisma = new PrismaClient({ adapter });
