@@ -3,38 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UI Freshers Companion | Student Guide & Academic Navigator</title>
+  <title>UI Freshers Companion | Academic Navigator & AI Mentor</title>
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#7F1A7B">
+  <meta name="theme-color" content="#8A1B86">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   
   <style>
     :root {
-      --deep-plum: #4B0D4C;
-      --core-magenta: #7F1A7B;
-      --bright-magenta: #A824A3;
-      --muted-plum: #2A062B;
-      --card-bg: rgba(42, 6, 43, 0.7);
-      --card-border: rgba(127, 26, 123, 0.35);
-      --card-hover-border: rgba(168, 36, 163, 0.6);
-      --bg-dark: #0F0310;
+      --bg-dark: #0A020B;
+      --deep-plum: #200423;
+      --core-magenta: #8A1B86;
+      --electric-violet: #C926C4;
+      --bright-magenta: #E035DC;
+      --card-bg: rgba(32, 4, 35, 0.75);
+      --card-border: rgba(201, 38, 196, 0.25);
+      --card-hover-border: rgba(224, 53, 220, 0.6);
       --text-main: #FFFFFF;
-      --text-muted: #D1B3D2;
+      --text-muted: #D9B6DA;
+      --text-subtle: #A37EA5;
       --accent-gold: #FFB800;
       --accent-cyan: #00E5FF;
       --accent-pink: #FF4081;
-      --radius: 16px;
-      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --accent-emerald: #00E676;
+      --radius: 18px;
+      --radius-sm: 10px;
+      --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
 
     body {
@@ -46,15 +50,26 @@
       overflow-x: hidden;
     }
 
-    /* Background Radial Glow */
-    .hero-glow {
+    /* Ambient Lighting Background Glow */
+    .ambient-glow-1 {
       position: absolute;
-      top: -150px;
+      top: -180px;
       left: 50%;
       transform: translateX(-50%);
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(127, 26, 123, 0.45) 0%, rgba(75, 13, 76, 0.15) 50%, rgba(15, 3, 16, 0) 75%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(201, 38, 196, 0.35) 0%, rgba(138, 27, 134, 0.12) 50%, rgba(10, 2, 11, 0) 75%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .ambient-glow-2 {
+      position: absolute;
+      top: 600px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 229, 255, 0.1) 0%, rgba(10, 2, 11, 0) 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -64,14 +79,15 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(16px);
-      background: rgba(15, 3, 16, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(10, 2, 11, 0.85);
       border-bottom: 1px solid var(--card-border);
-      padding: 1rem 1.5rem;
+      padding: 0.9rem 1.75rem;
     }
 
     .header-container {
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -81,28 +97,29 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.85rem;
       text-decoration: none;
       color: var(--text-main);
     }
 
     .brand-logo {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, var(--core-magenta), var(--deep-plum));
-      border-radius: 12px;
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--electric-violet), var(--core-magenta));
+      border-radius: 13px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.25rem;
-      box-shadow: 0 4px 15px rgba(127, 26, 123, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 1.35rem;
+      box-shadow: 0 4px 18px rgba(201, 38, 196, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.25);
     }
 
     .brand-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.4px;
       background: linear-gradient(to right, #FFFFFF, var(--text-muted));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -110,17 +127,17 @@
 
     .nav-links {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
 
     .nav-btn {
       background: transparent;
       border: none;
       color: var(--text-muted);
-      padding: 0.6rem 1.1rem;
-      border-radius: 10px;
-      font-weight: 500;
-      font-size: 0.95rem;
+      padding: 0.65rem 1.15rem;
+      border-radius: 11px;
+      font-weight: 600;
+      font-size: 0.92rem;
       cursor: pointer;
       transition: var(--transition);
       display: flex;
@@ -130,22 +147,23 @@
 
     .nav-btn:hover {
       color: var(--text-main);
-      background: rgba(127, 26, 123, 0.25);
+      background: rgba(201, 38, 196, 0.2);
     }
 
     .nav-btn.active {
       color: var(--text-main);
-      background: var(--core-magenta);
-      box-shadow: 0 4px 12px rgba(127, 26, 123, 0.35);
+      background: linear-gradient(135deg, var(--core-magenta), var(--deep-plum));
+      border: 1px solid var(--card-border);
+      box-shadow: 0 4px 15px rgba(201, 38, 196, 0.35);
     }
 
-    /* MAIN CONTENT AREA */
+    /* MAIN CONTENT */
     main {
       flex: 1;
-      max-width: 1200px;
+      max-width: 1240px;
       width: 100%;
       margin: 0 auto;
-      padding: 2rem 1.5rem 6rem 1.5rem;
+      padding: 2.5rem 1.75rem 6rem 1.75rem;
       position: relative;
       z-index: 1;
     }
@@ -153,22 +171,22 @@
     /* TAB SECTIONS */
     .tab-section {
       display: none;
-      animation: fadeIn 0.3s ease;
+      animation: tabFadeIn 0.32s ease;
     }
 
     .tab-section.active {
       display: block;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     /* HERO BANNER */
     .hero {
       text-align: center;
-      padding: 3.5rem 1rem;
+      padding: 3rem 1rem 3.5rem 1rem;
       margin-bottom: 2.5rem;
       position: relative;
     }
@@ -177,264 +195,295 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(127, 26, 123, 0.3);
+      background: rgba(201, 38, 196, 0.2);
       border: 1px solid var(--card-border);
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
+      padding: 0.45rem 1.1rem;
+      border-radius: 30px;
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text-muted);
       margin-bottom: 1.25rem;
+      letter-spacing: 0.3px;
     }
 
     .hero h1 {
-      font-size: 2.75rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 3rem;
       font-weight: 800;
-      line-height: 1.2;
+      line-height: 1.15;
       margin-bottom: 1rem;
-      letter-spacing: -1px;
+      letter-spacing: -1.2px;
+      background: linear-gradient(to right, #FFFFFF 40%, var(--text-muted));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero p {
       font-size: 1.15rem;
       color: var(--text-muted);
-      max-width: 650px;
-      margin: 0 auto 2rem auto;
-      line-height: 1.6;
+      max-width: 680px;
+      margin: 0 auto 2.25rem auto;
+      line-height: 1.65;
     }
 
     /* SEARCH BAR */
     .search-box {
-      max-width: 580px;
+      max-width: 620px;
       margin: 0 auto;
       position: relative;
     }
 
     .search-input {
       width: 100%;
-      background: rgba(42, 6, 43, 0.8);
+      background: rgba(32, 4, 35, 0.85);
       border: 1px solid var(--card-border);
-      padding: 1rem 1.25rem 1rem 3rem;
-      border-radius: 14px;
+      padding: 1.1rem 1.35rem 1.1rem 3.2rem;
+      border-radius: 16px;
       color: var(--text-main);
-      font-size: 1rem;
+      font-size: 1.02rem;
       outline: none;
       transition: var(--transition);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     }
 
     .search-input:focus {
       border-color: var(--bright-magenta);
-      box-shadow: 0 0 20px rgba(168, 36, 163, 0.3);
+      box-shadow: 0 0 25px rgba(224, 53, 220, 0.35);
     }
 
     .search-icon {
       position: absolute;
-      left: 1.1rem;
+      left: 1.2rem;
       top: 50%;
       transform: translateY(-50%);
       color: var(--text-muted);
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
 
-    /* TELEGRAM HANDOFF CARD */
+    /* TELEGRAM HANDOFF CARD WITH PULSING STATUS */
     .assistant-card {
-      background: linear-gradient(135deg, rgba(127, 26, 123, 0.45), rgba(42, 6, 43, 0.9));
-      border: 1px solid rgba(168, 36, 163, 0.5);
+      background: linear-gradient(135deg, rgba(138, 27, 134, 0.5), rgba(32, 4, 35, 0.95));
+      border: 1px solid rgba(224, 53, 220, 0.45);
       border-radius: var(--radius);
-      padding: 2rem;
-      margin-bottom: 3rem;
+      padding: 2.25rem;
+      margin-bottom: 3.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 2rem;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
     }
 
     .assistant-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      right: 0;
-      width: 250px;
-      height: 250px;
-      background: radial-gradient(circle, rgba(0, 229, 255, 0.15), transparent 70%);
+      top: -50px;
+      right: -50px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0, 229, 255, 0.18), transparent 70%);
       pointer-events: none;
     }
 
     .assistant-info {
-      max-width: 650px;
+      max-width: 680px;
     }
 
     .assistant-tag {
-      font-size: 0.8rem;
-      font-weight: 700;
+      font-size: 0.82rem;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.2px;
       color: var(--accent-cyan);
-      margin-bottom: 0.5rem;
-      display: block;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .live-pulse {
+      width: 9px;
+      height: 9px;
+      background-color: var(--accent-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-emerald);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 230, 118, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
     }
 
     .assistant-info h3 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
     }
 
     .assistant-info p {
       color: var(--text-muted);
-      font-size: 0.98rem;
-      line-height: 1.5;
+      font-size: 1rem;
+      line-height: 1.6;
     }
 
     .tg-cta-btn {
-      background: linear-gradient(135deg, #0088cc, #00a0e9);
+      background: linear-gradient(135deg, #0088cc, #00a4e4);
       color: #FFFFFF;
       text-decoration: none;
-      padding: 0.95rem 1.6rem;
-      border-radius: 12px;
+      padding: 1.05rem 1.8rem;
+      border-radius: 14px;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 1.02rem;
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
       white-space: nowrap;
       transition: var(--transition);
-      box-shadow: 0 4px 20px rgba(0, 136, 204, 0.4);
+      box-shadow: 0 6px 25px rgba(0, 136, 204, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .tg-cta-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(0, 136, 204, 0.6);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0, 136, 204, 0.65);
     }
 
     /* GRID & CARDS */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 1.6rem;
     }
 
     .card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: var(--radius);
-      padding: 1.5rem;
+      padding: 1.65rem;
       transition: var(--transition);
       display: flex;
       flex-direction: column;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(12px);
+      position: relative;
     }
 
     .card:hover {
       border-color: var(--card-hover-border);
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 14px 35px rgba(201, 38, 196, 0.22);
     }
 
     .card-header {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      margin-bottom: 1rem;
+      margin-bottom: 1.1rem;
       gap: 1rem;
     }
 
     .card-badge {
-      background: rgba(127, 26, 123, 0.35);
+      background: rgba(201, 38, 196, 0.25);
+      border: 1px solid var(--card-border);
       color: var(--text-muted);
-      padding: 0.3rem 0.75rem;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
     }
 
-    .card-badge.scholarship { background: rgba(255, 184, 0, 0.2); color: var(--accent-gold); }
-    .card-badge.internship { background: rgba(0, 229, 255, 0.2); color: var(--accent-cyan); }
-    .card-badge.hackathon { background: rgba(255, 64, 129, 0.2); color: var(--accent-pink); }
+    .card-badge.scholarship { background: rgba(255, 184, 0, 0.18); border-color: rgba(255, 184, 0, 0.4); color: var(--accent-gold); }
+    .card-badge.internship { background: rgba(0, 229, 255, 0.18); border-color: rgba(0, 229, 255, 0.4); color: var(--accent-cyan); }
+    .card-badge.hackathon { background: rgba(255, 64, 129, 0.18); border-color: rgba(255, 64, 129, 0.4); color: var(--accent-pink); }
+    .card-badge.cbt { background: rgba(0, 230, 118, 0.18); border-color: rgba(0, 230, 118, 0.4); color: var(--accent-emerald); }
 
     .card-title {
-      font-size: 1.25rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
       font-weight: 700;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.65rem;
       line-height: 1.35;
     }
 
     .card-desc {
       color: var(--text-muted);
-      font-size: 0.92rem;
-      line-height: 1.55;
-      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.35rem;
       flex: 1;
     }
 
-    /* PROVENANCE BADGE */
+    /* PROVENANCE BAR */
     .provenance-bar {
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 0.75rem;
+      padding-top: 0.85rem;
       margin-top: auto;
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
-      font-size: 0.78rem;
-      color: rgba(255, 255, 255, 0.55);
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-subtle);
     }
 
     .provenance-item {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
     }
 
     .card-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 1rem;
+      margin-top: 1.1rem;
       gap: 0.5rem;
     }
 
     .action-btn {
-      background: rgba(127, 26, 123, 0.4);
+      background: linear-gradient(135deg, rgba(138, 27, 134, 0.5), rgba(32, 4, 35, 0.8));
       color: #FFFFFF;
       border: 1px solid var(--card-border);
-      padding: 0.6rem 1.1rem;
-      border-radius: 10px;
-      font-size: 0.88rem;
-      font-weight: 600;
+      padding: 0.65rem 1.25rem;
+      border-radius: 11px;
+      font-size: 0.9rem;
+      font-weight: 700;
       cursor: pointer;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.55rem;
       transition: var(--transition);
     }
 
     .action-btn:hover {
       background: var(--core-magenta);
       border-color: var(--bright-magenta);
+      box-shadow: 0 4px 15px rgba(224, 53, 220, 0.35);
     }
 
-    /* FILTER TABS */
+    /* FILTER TABS BAR */
     .filter-bar {
       display: flex;
       gap: 0.75rem;
-      margin-bottom: 1.75rem;
+      margin-bottom: 2rem;
       overflow-x: auto;
       padding-bottom: 0.5rem;
     }
 
     .filter-chip {
-      background: rgba(42, 6, 43, 0.6);
+      background: rgba(32, 4, 35, 0.7);
       border: 1px solid var(--card-border);
       color: var(--text-muted);
-      padding: 0.5rem 1.1rem;
-      border-radius: 20px;
-      font-size: 0.88rem;
-      font-weight: 500;
+      padding: 0.55rem 1.25rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
       transition: var(--transition);
@@ -444,22 +493,23 @@
       background: var(--core-magenta);
       color: var(--text-main);
       border-color: var(--bright-magenta);
+      box-shadow: 0 4px 12px rgba(201, 38, 196, 0.35);
     }
 
-    /* ACCORDION FAQ */
+    /* FAQ ACCORDION */
     .faq-item {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: var(--radius);
-      margin-bottom: 1rem;
+      margin-bottom: 1.1rem;
       overflow: hidden;
       transition: var(--transition);
     }
 
     .faq-question {
-      padding: 1.25rem 1.5rem;
-      font-weight: 600;
-      font-size: 1.05rem;
+      padding: 1.35rem 1.6rem;
+      font-weight: 700;
+      font-size: 1.08rem;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -469,17 +519,17 @@
     }
 
     .faq-question:hover {
-      background: rgba(127, 26, 123, 0.15);
+      background: rgba(201, 38, 196, 0.15);
     }
 
     .faq-answer {
-      padding: 0 1.5rem 1.25rem 1.5rem;
+      padding: 0 1.6rem 1.35rem 1.6rem;
       color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 0.98rem;
+      line-height: 1.65;
       display: none;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 1.1rem;
     }
 
     .faq-item.open .faq-answer {
@@ -490,12 +540,13 @@
       color: var(--bright-magenta);
     }
 
-    /* MODAL */
+    /* MODAL FOR GUIDES */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
+      background: rgba(5, 1, 6, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       z-index: 1000;
       display: none;
       align-items: center;
@@ -504,67 +555,74 @@
     }
 
     .modal-content {
-      background: #180519;
+      background: #19031C;
       border: 1px solid var(--card-border);
       border-radius: var(--radius);
-      max-width: 800px;
+      max-width: 820px;
       width: 100%;
       max-height: 85vh;
       overflow-y: auto;
-      padding: 2rem;
+      padding: 2.25rem;
       position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
     }
 
     .modal-close {
       position: absolute;
-      top: 1.25rem;
-      right: 1.25rem;
+      top: 1.35rem;
+      right: 1.35rem;
       background: rgba(255, 255, 255, 0.1);
-      border: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: #FFFFFF;
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       cursor: pointer;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      background: var(--core-magenta);
     }
 
     .markdown-body {
-      color: #E2D3E3;
-      line-height: 1.7;
+      color: #E6D7E7;
+      line-height: 1.75;
     }
 
     .markdown-body h1, .markdown-body h2, .markdown-body h3 {
+      font-family: 'Outfit', sans-serif;
       color: #FFFFFF;
-      margin: 1.5rem 0 0.8rem 0;
+      margin: 1.6rem 0 0.9rem 0;
     }
 
     .markdown-body ul, .markdown-body ol {
-      margin-left: 1.5rem;
-      margin-bottom: 1rem;
+      margin-left: 1.6rem;
+      margin-bottom: 1.1rem;
     }
 
     .markdown-body code {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 0.2rem 0.4rem;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 0.25rem 0.5rem;
       border-radius: 6px;
-      font-size: 0.9em;
+      font-size: 0.92em;
     }
 
-    /* MOBILE NAV BAR */
+    /* MOBILE NAVIGATION */
     .mobile-nav {
       display: none;
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(15, 3, 16, 0.95);
+      background: rgba(10, 2, 11, 0.96);
       border-top: 1px solid var(--card-border);
-      backdrop-filter: blur(16px);
-      padding: 0.5rem;
+      backdrop-filter: blur(20px);
+      padding: 0.5rem 0.25rem;
       z-index: 100;
       justify-content: space-around;
     }
@@ -577,8 +635,8 @@
       flex-direction: column;
       align-items: center;
       gap: 0.25rem;
-      font-size: 0.72rem;
-      font-weight: 500;
+      font-size: 0.7rem;
+      font-weight: 600;
       padding: 0.4rem;
       cursor: pointer;
     }
@@ -587,18 +645,19 @@
       color: var(--bright-magenta);
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 820px) {
       .nav-links { display: none; }
       .mobile-nav { display: flex; }
-      .hero h1 { font-size: 2rem; }
+      .hero h1 { font-size: 2.2rem; }
       .assistant-card { flex-direction: column; text-align: center; }
-      main { padding-bottom: 6rem; }
+      main { padding-bottom: 6.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <div class="hero-glow"></div>
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
 
   <!-- HEADER -->
   <header>
@@ -613,6 +672,7 @@
         <button class="nav-btn" onclick="switchTab('guides')">📚 Faculty Guides</button>
         <button class="nav-btn" onclick="switchTab('resources')">📂 Resources</button>
         <button class="nav-btn" onclick="switchTab('opportunities')">🚀 Opportunities</button>
+        <button class="nav-btn" onclick="switchTab('cbt')">🎯 CBT Practice</button>
         <button class="nav-btn" onclick="switchTab('faqs')">❓ FAQ & AI</button>
       </nav>
     </div>
@@ -623,30 +683,33 @@
     <!-- 1. HOME / DASHBOARD TAB -->
     <section id="tab-home" class="tab-section active">
       <div class="hero">
-        <div class="hero-badge">✨ University of Ibadan Student Portal</div>
+        <div class="hero-badge">✨ Official Student Portal & Academic Navigator</div>
         <h1>Welcome to UI Freshers Companion</h1>
-        <p>Your official academic navigator. Discover course guides, download past questions, access student scholarships, and connect with your Telegram AI Study Assistant.</p>
+        <p>Your verified academic guide. Discover course registration rules, download lecture slides, access scholarships, and chat 24/7 with your Telegram AI Mentor.</p>
         
         <div class="search-box">
           <span class="search-icon">🔍</span>
-          <input type="text" class="search-input" id="global-search" placeholder="Search guides, past questions, GST courses, clearance FAQs..." oninput="handleGlobalSearch(this.value)">
+          <input type="text" class="search-input" id="global-search" placeholder="Search guides, CBT past questions, GST courses, clearance FAQs..." oninput="handleGlobalSearch(this.value)">
         </div>
       </div>
 
       <!-- TELEGRAM STUDY ASSISTANT HANDOFF CARD -->
       <div class="assistant-card">
         <div class="assistant-info">
-          <span class="assistant-tag">⚡ Telegram AI Mentor Handoff</span>
+          <span class="assistant-tag">
+            <span class="live-pulse"></span>
+            Telegram AI Study Buddy
+          </span>
           <h3>Need Personal Course & Academic Help?</h3>
-          <p>Chat directly with your personalized Telegram AI Study Assistant. It remembers your faculty, department, and level to answer your specific questions 24/7!</p>
+          <p>Talk to your friendly AI Mentor on Telegram! It understands your 100L courses, UI grading policies, and remembers your progress like a supportive teacher and friend.</p>
         </div>
         <a href="https://t.me/UI_Computing_Bot" target="_blank" rel="noopener" id="home-tg-btn" class="tg-cta-btn">
           💬 Chat on Telegram
         </a>
       </div>
 
-      <!-- FEATURED FACULTY GUIDES & RESOURCES -->
-      <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.25rem;">📌 Essential Freshers Guides</h2>
+      <!-- FEATURED GUIDES -->
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 800; margin-bottom: 1.35rem;">📌 Essential Freshers Guides</h2>
       <div class="grid" id="home-featured-guides">
         <!-- Rendered via JS -->
       </div>
@@ -654,11 +717,11 @@
 
     <!-- 2. FACULTY GUIDES TAB -->
     <section id="tab-guides" class="tab-section">
-      <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">📚 Faculty & Departmental Guides</h2>
-      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Comprehensive handbooks, course registration rules, and grading guides verified by academic advisors.</p>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.9rem; font-weight: 800; margin-bottom: 0.5rem;">📚 Faculty & Departmental Guides</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.6rem;">Verified course registration rules, UI 4.0 CGPA breakdown, and lecture venue maps.</p>
 
       <div class="filter-bar" id="faculty-filter-bar">
-        <button class="filter-chip active" onclick="filterGuides('ALL')">All Faculties</button>
+        <button class="filter-chip active" onclick="renderGuides('ALL')">All Faculties</button>
       </div>
 
       <div class="grid" id="guides-grid">
@@ -668,8 +731,8 @@
 
     <!-- 3. RESOURCES TAB -->
     <section id="tab-resources" class="tab-section">
-      <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">📂 Academic & Library Resources</h2>
-      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Download course slides, GST past questions, academic calendar, and library links.</p>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.9rem; font-weight: 800; margin-bottom: 0.5rem;">📂 Academic & Library Resources</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.6rem;">Download course slides, GST past questions, academic calendar, and KDL library catalog links.</p>
 
       <div class="filter-bar">
         <button class="filter-chip active" onclick="filterResources('ALL')">All Categories</button>
@@ -685,8 +748,8 @@
 
     <!-- 4. OPPORTUNITIES TAB -->
     <section id="tab-opportunities" class="tab-section">
-      <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">🚀 Scholarships & Student Opportunities</h2>
-      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Explore verified scholarships, campus work-study schemes, hackathons, and mentorship programs.</p>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.9rem; font-weight: 800; margin-bottom: 0.5rem;">🚀 Scholarships & Student Grants</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.6rem;">Explore verified scholarships, campus work-study schemes, hackathons, and mentorship programs.</p>
 
       <div class="filter-bar">
         <button class="filter-chip active" onclick="filterOpportunities('ALL')">All Types</button>
@@ -700,16 +763,75 @@
       </div>
     </section>
 
-    <!-- 5. FAQ & STUDY ASSISTANT TAB -->
+    <!-- 5. CBT QUIZ PRACTICE TAB -->
+    <section id="tab-cbt" class="tab-section">
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.9rem; font-weight: 800; margin-bottom: 0.5rem;">🎯 100L CBT Exam & Practice Simulator</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.6rem;">Practice 100L general and departmental courses matching UI CBT exam standards.</p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-badge cbt">CSC101</span>
+            <span style="font-size: 0.82rem; color: var(--accent-emerald);">Compulsory</span>
+          </div>
+          <h3 class="card-title">CSC101: Introduction to Computer Science</h3>
+          <p class="card-desc">Binary arithmetic, computer hardware, operating systems, and algorithms.</p>
+          <div class="card-footer">
+            <a href="https://t.me/UI_Computing_Bot" target="_blank" rel="noopener" class="action-btn">Practice CBT on Telegram →</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-badge cbt">MAT111</span>
+            <span style="font-size: 0.82rem; color: var(--accent-emerald);">Compulsory</span>
+          </div>
+          <h3 class="card-title">MAT111: Algebra and Trigonometry</h3>
+          <p class="card-desc">Quadratic equations, polynomials, sequences, series, and trigonometry.</p>
+          <div class="card-footer">
+            <a href="https://t.me/UI_Computing_Bot" target="_blank" rel="noopener" class="action-btn">Practice CBT on Telegram →</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-badge cbt">GST101</span>
+            <span style="font-size: 0.82rem; color: var(--accent-gold);">General Study</span>
+          </div>
+          <h3 class="card-title">GST101: Use of English I</h3>
+          <p class="card-desc">Grammar, sentence structure, antonyms, vocabulary, and reading comprehension.</p>
+          <div class="card-footer">
+            <a href="https://t.me/UI_Computing_Bot" target="_blank" rel="noopener" class="action-btn">Practice CBT on Telegram →</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-badge cbt">GES107</span>
+            <span style="font-size: 0.82rem; color: var(--accent-gold);">General Study</span>
+          </div>
+          <h3 class="card-title">GES107: Nigerian Peoples and Culture</h3>
+          <p class="card-desc">Nok culture, Nigerian history, ethnic groups, and cultural heritage.</p>
+          <div class="card-footer">
+            <a href="https://t.me/UI_Computing_Bot" target="_blank" rel="noopener" class="action-btn">Practice CBT on Telegram →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FAQ & STUDY ASSISTANT TAB -->
     <section id="tab-faqs" class="tab-section">
-      <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">❓ Frequently Asked Questions</h2>
-      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Answers to clearance, hostel reservation, course add/drop, and school fees payments.</p>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.9rem; font-weight: 800; margin-bottom: 0.5rem;">❓ Frequently Asked Questions</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.6rem;">Answers to clearance, hostel reservation, course add/drop, and school fees payments.</p>
 
       <div class="assistant-card" style="margin-bottom: 2rem;">
         <div class="assistant-info">
-          <span class="assistant-tag">🤖 Can't find your answer?</span>
-          <h3>Ask Your Telegram Study Mentor</h3>
-          <p>Our Telegram AI Study Assistant knows UI policies, course specs, and academic guidelines inside out.</p>
+          <span class="assistant-tag">
+            <span class="live-pulse"></span>
+            Need Extra Guidance?
+          </span>
+          <h3>Chat with Your Friendly Teacher & Mentor</h3>
+          <p>Our Telegram AI Study Assistant is warm, knowledgeable, and always ready to answer custom questions!</p>
         </div>
         <a href="https://t.me/UI_Computing_Bot" target="_blank" rel="noopener" id="faq-tg-btn" class="tg-cta-btn">
           💬 Launch Telegram AI Assistant
@@ -747,6 +869,10 @@
     <button class="mobile-nav-btn" onclick="switchTab('opportunities')">
       <span>🚀</span>
       <span>Opps</span>
+    </button>
+    <button class="mobile-nav-btn" onclick="switchTab('cbt')">
+      <span>🎯</span>
+      <span>CBT</span>
     </button>
     <button class="mobile-nav-btn" onclick="switchTab('faqs')">
       <span>❓</span>
@@ -821,10 +947,11 @@
       document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
       document.querySelectorAll(".mobile-nav-btn").forEach(b => b.classList.remove("active"));
 
-      document.getElementById(`tab-${tabId}`).classList.add("active");
+      const targetTab = document.getElementById(`tab-${tabId}`);
+      if (targetTab) targetTab.classList.add("active");
       
-      // Update nav states
-      const navBtnIndex = ['home', 'guides', 'resources', 'opportunities', 'faqs'].indexOf(tabId);
+      const tabKeys = ['home', 'guides', 'resources', 'opportunities', 'cbt', 'faqs'];
+      const navBtnIndex = tabKeys.indexOf(tabId);
       if (navBtnIndex !== -1) {
         const desktopBtns = document.querySelectorAll(".nav-btn");
         const mobileBtns = document.querySelectorAll(".mobile-nav-btn");
@@ -842,7 +969,6 @@
     }
 
     function renderGuides(filteredFacultyId = "ALL") {
-      // Build Faculty filter chips
       const filterContainer = document.getElementById("faculty-filter-bar");
       let chipsHtml = `<button class="filter-chip ${filteredFacultyId === 'ALL' ? 'active' : ''}" onclick="renderGuides('ALL')">All Faculties</button>`;
       appData.faculties.forEach(f => {
@@ -862,7 +988,7 @@
         <div class="card">
           <div class="card-header">
             <span class="card-badge">${g.category || 'Guide'}</span>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">${g.faculty ? g.faculty.name : 'University Wide'}</span>
+            <span style="font-size: 0.82rem; color: var(--text-muted);">${g.faculty ? g.faculty.name : 'University Wide'}</span>
           </div>
           <h3 class="card-title">${escapeHtml(g.title)}</h3>
           <p class="card-desc">${escapeHtml(g.summary || g.content.substring(0, 120) + '...')}</p>
@@ -884,7 +1010,7 @@
         <div class="card">
           <div class="card-header">
             <span class="card-badge">${r.type.toUpperCase()}</span>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">${r.category}</span>
+            <span style="font-size: 0.82rem; color: var(--text-muted);">${r.category}</span>
           </div>
           <h3 class="card-title">${escapeHtml(r.title)}</h3>
           <p class="card-desc">${escapeHtml(r.description)}</p>
@@ -906,7 +1032,7 @@
         <div class="card">
           <div class="card-header">
             <span class="card-badge ${o.type.toLowerCase()}">${o.type}</span>
-            <span style="font-size: 0.8rem; color: var(--accent-gold);">⏳ ${o.deadline ? new Date(o.deadline).toLocaleDateString() : 'Ongoing'}</span>
+            <span style="font-size: 0.82rem; color: var(--accent-gold);">⏳ ${o.deadline ? new Date(o.deadline).toLocaleDateString() : 'Ongoing'}</span>
           </div>
           <h3 class="card-title">${escapeHtml(o.title)}</h3>
           <p class="card-desc">${escapeHtml(o.description)}</p>
@@ -931,7 +1057,7 @@
           </div>
           <div class="faq-answer">
             <p>${escapeHtml(f.answer)}</p>
-            <div class="provenance-bar" style="margin-top: 1rem;">
+            <div class="provenance-bar" style="margin-top: 1.1rem;">
               <div class="provenance-item">📌 <span>Source: ${escapeHtml(f.source)}</span></div>
               <div class="provenance-item">🛡️ <span>Owner: ${escapeHtml(f.owner)}</span></div>
             </div>
@@ -957,6 +1083,11 @@
         </p>
         <hr style="border-color: rgba(255,255,255,0.1); margin-bottom: 1.5rem;">
         <div>${marked.parse(guide.content)}</div>
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+          <a href="${appData.studyAssistantLink.botUrl}" target="_blank" rel="noopener" class="tg-cta-btn">
+            💬 Discuss this Guide with AI Mentor on Telegram
+          </a>
+        </div>
       `;
       document.getElementById("guide-modal").style.display = "flex";
     }
