@@ -234,13 +234,13 @@ app.get("/api/health", (req: Request, res: Response) => {
 // FACULTIES & GUIDES API
 // =========================================================
 
-// GET /api/faculties
-app.get("/api/faculties", async (req: Request, res: Response) => {
+// GET /faculties and /api/faculties
+const getFacultiesHandler = async (req: Request, res: Response) => {
   try {
     const faculties = await prisma.faculty.findMany({
       include: {
         departments: { select: { id: true, name: true } },
-        _count: { select: { guides: true, resources: true, opportunities: true } },
+        _count: { select: { departments: true } },
       },
       orderBy: { name: "asc" },
     });
@@ -252,7 +252,145 @@ app.get("/api/faculties", async (req: Request, res: Response) => {
     console.warn("DB connection warning, serving fallback faculties.");
   }
   res.json({ success: true, data: FALLBACK_FACULTIES });
-});
+};
+app.get("/faculties", getFacultiesHandler);
+app.get("/api/faculties", getFacultiesHandler);
+
+// GET /faculties/:id/departments and /api/faculties/:id/departments
+const getFacultyDepartmentsHandler = async (req: Request, res: Response) => {
+  try {
+    const facultyId = String(req.params.id);
+    const faculty = await prisma.faculty.findFirst({
+      where: { OR: [{ id: facultyId }, { name: { equals: facultyId, mode: "insensitive" } }] },
+      include: {
+        departments: {
+          select: { id: true, name: true, facultyId: true },
+          orderBy: { name: "asc" },
+        },
+      },
+    });
+
+    if (faculty) {
+      return res.json({ success: true, data: faculty.departments, facultyName: faculty.name });
+    }
+  } catch (error) {
+    console.warn("DB error fetching departments for faculty:", req.params.id);
+  }
+  res.status(404).json({ success: false, message: "Faculty not found", data: [] });
+};
+app.get("/faculties/:id/departments", getFacultyDepartmentsHandler);
+app.get("/api/faculties/:id/departments", getFacultyDepartmentsHandler);
+
+// GET /departments/:id/courses and /api/departments/:id/courses
+const getDepartmentCoursesHandler = async (req: Request, res: Response) => {
+  try {
+    const departmentId = String(req.params.id);
+    const department = await prisma.department.findFirst({
+      where: { OR: [{ id: departmentId }, { name: { equals: departmentId, mode: "insensitive" } }] },
+      include: {
+        faculty: { select: { id: true, name: true } },
+        courses: {
+          include: { course: true },
+          orderBy: { course: { code: "asc" } },
+        },
+      },
+    });
+
+    if (!department) {
+      return res.status(404).json({
+        success: false,
+        message: "Department not found",
+        data: null,
+      });
+    }
+
+    // Shared University-Wide GES/GST Courses (Principle 2)
+    const universityWideGes = await prisma.course.findMany({
+      where: { isUniversityWide: true },
+      orderBy: [{ semester: "asc" }, { code: "asc" }],
+    });
+
+    const deptCourses = department.courses.map((dc) => dc.course);
+
+    // Calculate sum of units per semester to verify against 15-24 unit rule (Principle 6)
+    const sem1DeptUnits = deptCourses.filter((c) => c.semester === "1st").reduce((sum, c) => sum + c.units, 0);
+    const sem2DeptUnits = deptCourses.filter((c) => c.semester === "2nd").reduce((sum, c) => sum + c.units, 0);
+    const sem1GesUnits = universityWideGes.filter((c) => c.semester === "1st").reduce((sum, c) => sum + c.units, 0);
+    const sem2GesUnits = universityWideGes.filter((c) => c.semester === "2nd").reduce((sum, c) => sum + c.units, 0);
+
+    return res.json({
+      success: true,
+      data: {
+        department: {
+          id: department.id,
+          name: department.name,
+          faculty: department.faculty,
+        },
+        departmentCourses: deptCourses,
+        universityWideGesCourses: universityWideGes,
+        unitSummary: {
+          semester1Total: sem1DeptUnits + sem1GesUnits,
+          semester2Total: sem2DeptUnits + sem2GesUnits,
+          semester1DeptUnits: sem1DeptUnits,
+          semester2DeptUnits: sem2DeptUnits,
+          semester1GesUnits: sem1GesUnits,
+          semester2GesUnits: sem2GesUnits,
+        },
+      },
+    });
+  } catch (error) {
+    console.error("DB error fetching department courses:", error);
+    res.status(500).json({ success: false, message: "Internal server error fetching course package" });
+  }
+};
+app.get("/departments/:id/courses", getDepartmentCoursesHandler);
+app.get("/api/departments/:id/courses", getDepartmentCoursesHandler);
+
+// GET /courses/university-wide and /api/courses/university-wide
+const getUniversityWideCoursesHandler = async (req: Request, res: Response) => {
+  try {
+    const gesCourses = await prisma.course.findMany({
+      where: { isUniversityWide: true },
+      orderBy: [{ semester: "asc" }, { code: "asc" }],
+    });
+
+    return res.json({
+      success: true,
+      title: "University-Wide General Studies (GES/GST)",
+      description: "Compulsory for all 100-Level students across all 17 faculties at the University of Ibadan.",
+      data: gesCourses,
+    });
+  } catch (error) {
+    console.error("DB error fetching GES courses:", error);
+    res.status(500).json({ success: false, message: "Error fetching GES courses" });
+  }
+};
+app.get("/courses/university-wide", getUniversityWideCoursesHandler);
+app.get("/api/courses/university-wide", getUniversityWideCoursesHandler);
+
+// GET /reference/credit-rules and /api/reference/credit-rules
+const getReferenceRulesHandler = async (req: Request, res: Response) => {
+  try {
+    const rules = await prisma.referenceRule.findMany({});
+    const formatted = rules.map((r) => ({
+      category: r.category,
+      title: r.title,
+      key: r.key,
+      details: JSON.parse(r.value),
+      description: r.description,
+    }));
+
+    return res.json({
+      success: true,
+      data: formatted,
+    });
+  } catch (error) {
+    console.error("DB error fetching reference rules:", error);
+    res.status(500).json({ success: false, message: "Error fetching reference rules" });
+  }
+};
+app.get("/reference/credit-rules", getReferenceRulesHandler);
+app.get("/api/reference/credit-rules", getReferenceRulesHandler);
 
 // GET /api/faculties/:id/guides
 app.get("/api/faculties/:id/guides", async (req: Request, res: Response) => {

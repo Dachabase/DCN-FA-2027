@@ -1,10 +1,6 @@
 import "dotenv/config";
-import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient } from "@prisma/client";
-
-const connectionString = process.env.DATABASE_URL || "postgresql://postgres:Wackywas1@fa27.ct2ua4mes3jl.eu-north-1.rds.amazonaws.com:5432/ui_freshers?schema=public";
-const adapter = new PrismaPg({ connectionString });
-const prisma = new PrismaClient({ adapter });
+import { CourseStatus } from "@prisma/client";
+import { prisma } from "../src/database/prisma";
 
 async function getOrCreateFaculty(name: string, code: string) {
   let faculty = await prisma.faculty.findFirst({ where: { name } });
@@ -22,250 +18,352 @@ async function getOrCreateDepartment(facultyId: string, name: string) {
   return dept;
 }
 
-async function getOrCreateBot(telegramBotId: bigint, username: string, name: string, facultyId: string) {
-  let bot = await prisma.bot.findFirst({ where: { telegramBotId } });
-  if (!bot) {
-    bot = await prisma.bot.create({
-      data: { telegramBotId, username, name, facultyId },
+async function getOrCreateCourse(
+  code: string,
+  title: string,
+  semester: "1st" | "2nd",
+  status: CourseStatus,
+  units: number,
+  isUniversityWide = false
+) {
+  let course = await prisma.course.findUnique({ where: { code } });
+  if (!course) {
+    course = await prisma.course.create({
+      data: {
+        code,
+        title,
+        level: 100,
+        semester,
+        status,
+        units,
+        isUniversityWide,
+      },
     });
   }
-  return bot;
+  return course;
+}
+
+async function linkDepartmentCourse(departmentId: string, courseId: string) {
+  const existing = await prisma.departmentCourse.findUnique({
+    where: { departmentId_courseId: { departmentId, courseId } },
+  });
+  if (!existing) {
+    await prisma.departmentCourse.create({
+      data: { departmentId, courseId },
+    });
+  }
 }
 
 async function main() {
-  console.log("🌱 Starting UI Freshers Companion database seed...");
+  console.log("🌱 Starting University of Ibadan Academic Structure seed...");
 
-  // Grant schema privileges if needed
   try {
     await prisma.$executeRawUnsafe(`GRANT ALL ON SCHEMA public TO postgres;`);
   } catch (e) {
     // ignore
   }
 
-  // 1. SEED FACULTIES
-  const computing = await getOrCreateFaculty("Computing", "COMPUTING");
-  const science = await getOrCreateFaculty("Science", "SCIENCE");
-  const technology = await getOrCreateFaculty("Technology", "TECH");
-  const clinical = await getOrCreateFaculty("Clinical Sciences", "MEDICINE");
-  const arts = await getOrCreateFaculty("Arts", "ARTS");
+  // =========================================================
+  // 1. SEED ALL 17 FACULTIES & DEPARTMENTS
+  // =========================================================
 
-  console.log("✅ Faculties seeded.");
+  const facultyData = [
+    { name: "Computing", code: "COMPUTING", depts: ["Computer Science", "Cybersecurity", "Information Technology", "Software Engineering"] },
+    { name: "Science", code: "SCIENCE", depts: ["Computer Science", "Mathematics", "Statistics", "Physics", "Chemistry", "Botany", "Zoology", "Geology", "Microbiology", "Archaeology & Anthropology"] },
+    { name: "Technology", code: "TECH", depts: ["Electrical & Electronic Engineering", "Mechanical Engineering", "Civil Engineering", "Agricultural & Environmental Engineering", "Petroleum Engineering", "Industrial & Production Engineering", "Biomedical Engineering", "Food Technology"] },
+    { name: "Clinical Sciences", code: "CLINICAL", depts: ["Medicine & Surgery (MBBS)", "Nursing Science", "Physiotherapy", "Radiography & Radiation Science"] },
+    { name: "Basic Medical Sciences", code: "BASIC_MED", depts: ["Anatomy", "Physiology", "Biochemistry", "Pharmacology & Therapeutics", "Human Nutrition & Dietetics"] },
+    { name: "Dentistry", code: "DENTISTRY", depts: ["Child Dental Health", "Oral & Maxillofacial Surgery", "Oral Pathology & Medicine", "Periodontology & Community Dentistry", "Restorative Dentistry"] },
+    { name: "Public Health", code: "PUBLIC_HEALTH", depts: ["Environmental Health Sciences", "Epidemiology & Medical Statistics", "Health Promotion & Education", "Health Policy & Management", "Human Nutrition"] },
+    { name: "Pharmacy", code: "PHARMACY", depts: ["Pharmaceutical Chemistry", "Pharmaceutics & Industrial Pharmacy", "Pharmacognosy", "Pharmacology & Therapeutics", "Clinical Pharmacy & Pharmacy Administration"] },
+    { name: "Environmental Design & Management", code: "EDM", depts: ["Architecture", "Estate Management", "Urban & Regional Planning", "Quantity Surveying", "Building"] },
+    { name: "Veterinary Medicine", code: "VET_MED", depts: ["Veterinary Anatomy", "Veterinary Physiology & Biochemistry", "Veterinary Pathology", "Veterinary Microbiology & Parasitology", "Veterinary Public Health & Preventive Medicine", "Veterinary Medicine", "Veterinary Surgery & Radiology"] },
+    { name: "Agriculture", code: "AGRIC", depts: ["Agricultural Economics", "Agricultural Extension & Rural Development", "Agronomy", "Animal Science", "Crop Protection & Environmental Biology"] },
+    { name: "Renewable Natural Resources", code: "NAT_RES", depts: ["Forest Resources Management", "Wildlife & Ecotourism Management", "Aquaculture & Fisheries Management", "Social & Environmental Forestry"] },
+    { name: "Economics & Management Sciences", code: "ECON_MGMT", depts: ["Economics", "Accounting", "Banking & Finance", "Marketing & Consumer Studies"] },
+    { name: "The Social Sciences", code: "SOCIAL_SCI", depts: ["Political Science", "Psychology", "Sociology", "Geography"] },
+    { name: "Arts", code: "ARTS", depts: ["English Language & Literature", "History", "Theatre Arts", "Philosophy", "Linguistics & African Languages", "Communication & Language Arts (CLA)", "Classics", "Religious Studies (Islamic/Christian)", "Music"] },
+    { name: "Law", code: "LAW", depts: ["Public & International Law", "Private & Property Law", "Commercial & Industrial Law", "Jurisprudence & Legal Theory"] },
+    { name: "Education", code: "EDUCATION", depts: ["Educational Management", "Guidance & Counseling", "Adult Education", "Special Education", "Science & Technology Education", "Arts & Social Sciences Education"] },
+  ];
 
-  // 2. SEED DEPARTMENTS
-  const computingDepts = ["Computer Science and AI", "Cybersecurity", "Information Technology", "Software Engineering"];
-  for (const name of computingDepts) {
-    await getOrCreateDepartment(computing.id, name);
-  }
+  const facultyMap: Record<string, any> = {};
+  const deptMap: Record<string, any> = {};
 
-  const scienceDepts = ["Computer Science", "Mathematics", "Statistics", "Physics", "Chemistry"];
-  for (const name of scienceDepts) {
-    await getOrCreateDepartment(science.id, name);
-  }
+  for (const f of facultyData) {
+    const fac = await getOrCreateFaculty(f.name, f.code);
+    facultyMap[f.name] = fac;
 
-  const techDepts = ["Electrical & Electronic Engineering", "Mechanical Engineering", "Civil Engineering"];
-  for (const name of techDepts) {
-    await getOrCreateDepartment(technology.id, name);
-  }
-
-  console.log("✅ Departments seeded.");
-
-  // 3. SEED BOTS FOR TELEGRAM HANDOFF
-  await getOrCreateBot(BigInt(789012345), "UI_Computing_Bot", "UI Computing Freshers AI Assistant", computing.id);
-  await getOrCreateBot(BigInt(789012346), "UI_Science_Bot", "UI Science Freshers AI Mentor", science.id);
-
-  console.log("✅ Telegram Bots seeded.");
-
-  // 4. SEED FACULTY GUIDES
-  const csDept = await prisma.department.findFirst({ where: { facultyId: computing.id, name: "Computer Science and AI" } });
-
-  const existingGuides = await prisma.guide.count();
-  if (existingGuides === 0) {
-    const guidesData = [
-      {
-        title: "100L Course Registration & Subject Combination Guide",
-        summary: "Step-by-step walkthrough for registering 100L compulsory and elective courses at UI.",
-        content: `## Welcome to UI Course Registration\nEvery 100 Level student in the Faculty of Computing must register for compulsory general courses (GST101, GST102, GES107) alongside departmental core courses.\n\n### Core 100L Computing Courses:\n- **CSC101**: Introduction to Computer Science (3 Units)\n- **CSC102**: Introduction to Problem Solving & Programming (3 Units)\n- **MAT111**: Algebra & Trigonometry (3 Units)\n- **MAT121**: Calculus I (3 Units)\n- **PHY101**: General Physics I (3 Units)\n\n### Key Rules:\n1. Maximum credit load per semester is **24 units**, minimum is **15 units**.\n2. Course registration must be validated by your Departmental Course Adviser before portal closure.\n3. Make sure to print 4 copies of your Form 01 for clearance.`,
-        category: "Course Registration",
-        facultyId: computing.id,
-        departmentId: csDept?.id,
-        source: "University of Ibadan Academic Affairs Secretariat",
-        owner: "Office of the Dean, Faculty of Computing",
-        verifiedDate: new Date("2026-01-15"),
-      },
-      {
-        title: "Understanding the UI 4.0 CGPA Grading System",
-        summary: "Comprehensive guide to grade points, semester GPA calculation, and probation limits.",
-        content: `## UI Grading System (4.0 Scale)\nThe Senate of the University of Ibadan operates a 4.0 Cumulative Grade Point Average (CGPA) system.\n\n| Score Range | Letter Grade | Grade Point (GP) |\n|-------------|--------------|------------------|\n| 70% – 100%  | A            | 4.0              |\n| 60% – 69%   | B            | 3.0              |\n| 50% – 59%   | C            | 2.0              |\n| 45% – 49%   | D            | 1.0              |\n| 0% – 44%    | F            | 0.0              |\n\n### Good Standing & Probation:\n- **Good Standing**: CGPA of **1.50** and above.\n- **Academic Probation**: CGPA between **1.00 and 1.49** at the end of a session.\n- **Withdrawal**: CGPA below **1.00** at the end of 100 Level session results in advice to withdraw.`,
-        category: "Grading System",
-        facultyId: computing.id,
-        source: "UI Student Information Handbook (2025/2026 Edition)",
-        owner: "UI Academic Senate",
-        verifiedDate: new Date("2026-01-20"),
-      },
-      {
-        title: "Lecture Venues & Campus Navigation Map",
-        summary: "Locate Large Lecture Theatres (LLT), ICT Center, Science Lecture Theater, and Faculty labs.",
-        content: `## Key Lecture Venues for Computing Freshers\n- **Large Lecture Theatre (LLT)**: Located adjacent to Faculty of Science. Venue for GST & MAT lectures.\n- **Faculty of Computing Computer Lab 1 & 2**: Ground floor, New Computing Building.\n- **SUB Pit Theatre**: Student Union Building grounds for faculty orientation programs.\n- **Kenneth Dike Library (KDL) E-Classroom**: Second Floor, KDL main building.`,
-        category: "Lecture Venues",
-        facultyId: computing.id,
-        source: "UI Student Union Physical Planning Committee",
-        owner: "Directorate of Physical Planning",
-        verifiedDate: new Date("2026-02-01"),
-      },
-    ];
-
-    for (const guide of guidesData) {
-      await prisma.guide.create({ data: guide });
+    for (const deptName of f.depts) {
+      const dept = await getOrCreateDepartment(fac.id, deptName);
+      deptMap[`${f.name}_${deptName}`] = dept;
     }
   }
 
-  console.log("✅ Faculty Guides seeded.");
+  console.log("✅ 17 Faculties and 92+ Departments seeded.");
 
-  // 5. SEED RESOURCES
-  const existingResources = await prisma.resource.count();
-  if (existingResources === 0) {
-    const resourcesData = [
-      {
-        title: "UI Official Academic Calendar (2025/2026 Academic Session)",
-        description: "Official timeline covering matriculation, lecture weeks, mid-semester breaks, exams, and holidays.",
-        url: "https://ui.edu.ng/academic-calendar",
-        type: "pdf",
-        category: "Academic",
-        tags: ["Calendar", "Important Dates", "Exams"],
-        facultyId: computing.id,
-        source: "UI Senate Secretariat",
-        owner: "Academic Planning Office",
-        verifiedDate: new Date("2026-01-05"),
-      },
-      {
-        title: "CSC101: Introduction to Computer Science Lecture Slides",
-        description: "Complete course deck covering binary arithmetic, logic gates, computer architecture, and algorithms.",
-        url: "https://computing.ui.edu.ng/resources/csc101-slides.pdf",
-        type: "lecture_notes",
-        category: "Academic",
-        tags: ["CSC101", "100L", "Lecture Notes"],
-        facultyId: computing.id,
-        departmentId: csDept?.id,
-        source: "Department of Computer Science & AI",
-        owner: "CSC101 Course Coordinator",
-        verifiedDate: new Date("2026-02-10"),
-      },
-      {
-        title: "Kenneth Dike Library (KDL) Digital Catalog & E-Journals",
-        description: "Access thousands of subscribed IEEE, ScienceDirect, and ACM e-books using your UI student login.",
-        url: "https://library.ui.edu.ng",
-        type: "link",
-        category: "Library",
-        tags: ["Library", "KDL", "Research"],
-        facultyId: null,
-        source: "Kenneth Dike Library Board",
-        owner: "University Librarian",
-        verifiedDate: new Date("2026-01-18"),
-      },
-    ];
+  // =========================================================
+  // 2. SEED UNIVERSITY-WIDE GENERAL STUDIES (GES/GST BLOCK)
+  // =========================================================
 
-    for (const res of resourcesData) {
-      await prisma.resource.create({ data: res });
-    }
+  const ges101 = await getOrCreateCourse("GST 111", "Communication in English I", "1st", CourseStatus.COMPULSORY, 2, true);
+  const ges102 = await getOrCreateCourse("GST 112", "Communication in English II", "2nd", CourseStatus.COMPULSORY, 2, true);
+  const ges103 = await getOrCreateCourse("GES 103", "Government, Society, and Economy", "1st", CourseStatus.COMPULSORY, 2, true);
+  const ges106 = await getOrCreateCourse("GES 106", "Philosophy and Logic", "1st", CourseStatus.COMPULSORY, 2, true);
+  const ges107 = await getOrCreateCourse("GES 107", "Reproductive Health, STIs, and HIV/AIDS", "2nd", CourseStatus.COMPULSORY, 2, true);
+  const ges108 = await getOrCreateCourse("GES 108", "Introduction to French Language", "2nd", CourseStatus.COMPULSORY, 2, true);
+  const ges109 = await getOrCreateCourse("GES 109", "Nigerian Peoples and Culture", "2nd", CourseStatus.COMPULSORY, 2, true);
+
+  console.log("✅ University-wide GES/GST course block seeded.");
+
+  // =========================================================
+  // 3. SEED CORE 100-LEVEL COURSES
+  // =========================================================
+
+  // Computing & Science & Tech Core
+  const csc101 = await getOrCreateCourse("CSC 101", "Introduction to Computer Science", "1st", CourseStatus.COMPULSORY, 3);
+  const csc102 = await getOrCreateCourse("CSC 102", "Problem Solving & Programming", "2nd", CourseStatus.COMPULSORY, 3);
+  const mat111 = await getOrCreateCourse("MAT 111", "Algebra and Trigonometry", "1st", CourseStatus.COMPULSORY, 3);
+  const mat121 = await getOrCreateCourse("MAT 121", "Calculus I", "2nd", CourseStatus.COMPULSORY, 3);
+  const phy101 = await getOrCreateCourse("PHY 101", "General Physics I (Mechanics & Heat)", "1st", CourseStatus.COMPULSORY, 3);
+  const phy102 = await getOrCreateCourse("PHY 102", "General Physics II (Electricity & Magnetism)", "2nd", CourseStatus.COMPULSORY, 3);
+  const phy107 = await getOrCreateCourse("PHY 107", "General Physics Practical I", "1st", CourseStatus.COMPULSORY, 1);
+  const sta112 = await getOrCreateCourse("STA 112", "Introduction to Probability & Statistics", "2nd", CourseStatus.REQUIRED, 3);
+
+  // Biology & Chemistry Core
+  const bio101 = await getOrCreateCourse("BIO 101", "Basic Biology I (Cell Biology & Genetics)", "1st", CourseStatus.COMPULSORY, 3);
+  const bio102 = await getOrCreateCourse("BIO 102", "Basic Biology II (Organismal Biology)", "2nd", CourseStatus.COMPULSORY, 3);
+  const bio104 = await getOrCreateCourse("BIO 104", "Practical Biology Laboratory", "2nd", CourseStatus.COMPULSORY, 1);
+  const chm101 = await getOrCreateCourse("CHM 101", "General Physical Chemistry", "1st", CourseStatus.COMPULSORY, 3);
+  const chm102 = await getOrCreateCourse("CHM 102", "General Inorganic & Organic Chemistry", "2nd", CourseStatus.COMPULSORY, 3);
+  const chm107 = await getOrCreateCourse("CHM 107", "General Chemistry Practical", "1st", CourseStatus.COMPULSORY, 1);
+
+  // Technology Core
+  const tch101 = await getOrCreateCourse("TCH 101", "Introduction to Engineering & Technology", "1st", CourseStatus.COMPULSORY, 2);
+  const me101 = await getOrCreateCourse("ME 101", "Engineering Drawing I", "1st", CourseStatus.COMPULSORY, 2);
+  const me102 = await getOrCreateCourse("ME 102", "Engineering Drawing II", "2nd", CourseStatus.COMPULSORY, 2);
+
+  // Medical & Health Core
+  const nut101 = await getOrCreateCourse("NUT 101", "Introduction to Human Nutrition", "1st", CourseStatus.COMPULSORY, 2);
+  const ehs101 = await getOrCreateCourse("EHS 101", "Introduction to Environmental Health", "1st", CourseStatus.COMPULSORY, 2);
+
+  // Environmental Design Core
+  const esm101 = await getOrCreateCourse("ESM 101", "Introduction to Estate Management I", "1st", CourseStatus.COMPULSORY, 2);
+  const esm102 = await getOrCreateCourse("ESM 102", "Introduction to Estate Management II", "2nd", CourseStatus.COMPULSORY, 2);
+  const urp101 = await getOrCreateCourse("URP 101", "Introduction to Environmental Sciences", "1st", CourseStatus.COMPULSORY, 2);
+  const urp104 = await getOrCreateCourse("URP 104", "Basic Elements of Planning", "2nd", CourseStatus.COMPULSORY, 2);
+  const fea112 = await getOrCreateCourse("FEA 112", "Graphic Communication & Lettering I", "1st", CourseStatus.REQUIRED, 2);
+  const fea122 = await getOrCreateCourse("FEA 122", "Graphic Communication & Lettering II", "2nd", CourseStatus.REQUIRED, 2);
+  const mat101 = await getOrCreateCourse("MAT 101", "Supplementary Mathematics", "1st", CourseStatus.COMPULSORY, 4);
+
+  // Management & Social Science Core
+  const ams101 = await getOrCreateCourse("AMS 101", "Principles of Management", "1st", CourseStatus.COMPULSORY, 3);
+  const ams102 = await getOrCreateCourse("AMS 102", "Basic Mathematics for Management", "1st", CourseStatus.COMPULSORY, 3);
+  const ams103 = await getOrCreateCourse("AMS 103", "Introduction to Computing Science", "1st", CourseStatus.COMPULSORY, 3);
+  const eco101 = await getOrCreateCourse("ECO 101", "Principles of Economics I", "1st", CourseStatus.COMPULSORY, 3);
+  const eco102 = await getOrCreateCourse("ECO 102", "Principles of Economics II", "2nd", CourseStatus.COMPULSORY, 3);
+  const acc101 = await getOrCreateCourse("ACC 101", "Introduction to Financial Accounting I", "1st", CourseStatus.COMPULSORY, 3);
+  const acc102 = await getOrCreateCourse("ACC 102", "Introduction to Financial Accounting II", "2nd", CourseStatus.COMPULSORY, 3);
+  const fin101 = await getOrCreateCourse("FIN 101", "Introduction to Finance I", "1st", CourseStatus.COMPULSORY, 3);
+  const mcs103 = await getOrCreateCourse("MCS 103", "Introduction to Business I", "1st", CourseStatus.COMPULSORY, 3);
+  const pos101 = await getOrCreateCourse("POS 101", "Introduction to Political Science", "1st", CourseStatus.COMPULSORY, 3);
+  const soc101 = await getOrCreateCourse("SOC 101", "Introduction to Sociology", "1st", CourseStatus.COMPULSORY, 3);
+  const psy101 = await getOrCreateCourse("PSY 101", "Introduction to Psychology", "1st", CourseStatus.COMPULSORY, 3);
+  const geo101 = await getOrCreateCourse("GEO 101", "Physical Geography I", "1st", CourseStatus.COMPULSORY, 3);
+
+  // Arts & Law & Education Core
+  const eng101 = await getOrCreateCourse("ENG 101", "Introduction to English Language", "1st", CourseStatus.COMPULSORY, 3);
+  const eng102 = await getOrCreateCourse("ENG 102", "Introduction to Literature in English", "2nd", CourseStatus.COMPULSORY, 3);
+  const cla101 = await getOrCreateCourse("CLA 101", "Introduction to Communication Studies", "1st", CourseStatus.COMPULSORY, 3);
+  const his101 = await getOrCreateCourse("HIS 101", "Nigeria from Earliest Times to 1800", "1st", CourseStatus.COMPULSORY, 3);
+  const tha101 = await getOrCreateCourse("THA 101", "Introduction to Drama & Theatre", "1st", CourseStatus.COMPULSORY, 3);
+  const phl101 = await getOrCreateCourse("PHL 101", "Introduction to Philosophy", "1st", CourseStatus.COMPULSORY, 3);
+  const pul101 = await getOrCreateCourse("PUL 101", "Legal Method I", "1st", CourseStatus.COMPULSORY, 3);
+  const pul102 = await getOrCreateCourse("PUL 102", "Legal Method II", "2nd", CourseStatus.COMPULSORY, 3);
+  const ppr101 = await getOrCreateCourse("PPR 101", "Nigerian Legal System I", "1st", CourseStatus.COMPULSORY, 3);
+  const ppr102 = await getOrCreateCourse("PPR 102", "Nigerian Legal System II", "2nd", CourseStatus.COMPULSORY, 3);
+  const agr101 = await getOrCreateCourse("AGR 101", "Introductory Agriculture", "1st", CourseStatus.COMPULSORY, 2);
+  const frm101 = await getOrCreateCourse("FRM 101", "Introduction to Forestry & Natural Resources", "1st", CourseStatus.COMPULSORY, 2);
+  const wem101 = await getOrCreateCourse("WEM 101", "Introduction to Wildlife & Ecotourism", "2nd", CourseStatus.COMPULSORY, 2);
+  const edu101 = await getOrCreateCourse("EDU 101", "History of Education", "1st", CourseStatus.COMPULSORY, 2);
+  const edu102 = await getOrCreateCourse("EDU 102", "Philosophical Foundations of Education", "2nd", CourseStatus.COMPULSORY, 2);
+
+  // =========================================================
+  // 4. LINK COURSES TO DEPARTMENTS (SHARED PACKAGES)
+  // =========================================================
+
+  // Helper to link a list of courses to a department using batch createMany
+  async function assignPackage(dept: any, courseList: any[]) {
+    if (!dept || !courseList.length) return;
+    const data = courseList.map((c) => ({
+      departmentId: dept.id,
+      courseId: c.id,
+    }));
+    await prisma.departmentCourse.createMany({
+      data,
+      skipDuplicates: true,
+    });
   }
 
-  console.log("✅ Resources seeded.");
+  // Pre-Med Package (Shared between Clinical Sciences & Dentistry!)
+  const preMedPackage = [bio101, bio102, bio104, chm101, chm102, chm107, phy101, phy102, phy107];
 
-  // 6. SEED OPPORTUNITIES
-  const existingOpps = await prisma.opportunity.count();
-  if (existingOpps === 0) {
-    const opportunitiesData = [
-      {
-        title: "MTN Foundation Science & Technology Scholarship 2026",
-        description: "Annual ₦200,000 grant awarded to 200L+ high-performing students studying STEM courses in Nigerian public universities.",
-        organization: "MTN Nigeria Foundation",
-        url: "https://www.mtn.ng/scholarships/",
-        deadline: new Date("2026-05-30"),
-        type: "Scholarship",
-        category: "Financial Aid",
-        tags: ["MTN", "Scholarship", "STEM"],
-        facultyId: computing.id,
-        source: "MTN Foundation Official Portal",
-        owner: "UI Financial Aid & Scholarship Desk",
-        verifiedDate: new Date("2026-02-01"),
-      },
-      {
-        title: "Google Developer Student Clubs (GDSC) UI Chapter Member Recruitment",
-        description: "Join UI's premier tech community. Gain hands-on practice in Web Development, Mobile Dev, AI/ML, and Cloud Computing.",
-        organization: "GDSC University of Ibadan",
-        url: "https://gdsc.community.dev/university-of-ibadan/",
-        deadline: new Date("2026-03-15"),
-        type: "Mentorship",
-        category: "Tech Community",
-        tags: ["GDSC", "Coding", "Community"],
-        facultyId: computing.id,
-        source: "GDSC UI Executive Council",
-        owner: "GDSC Lead",
-        verifiedDate: new Date("2026-02-14"),
-      },
-      {
-        title: "University of Ibadan Student Work-Study Program",
-        description: "Earn up to ₦35,000 monthly working flexible hours (max 2 hours daily) in university libraries, ICT centers, or administrative offices.",
-        organization: "UI Student Affairs Division",
-        url: "https://ui.edu.ng/work-study",
-        deadline: new Date("2026-04-10"),
-        type: "Work-Study",
-        category: "Campus Employment",
-        tags: ["Work Study", "Jobs", "Campus"],
-        facultyId: null,
-        source: "UI Dean of Student Affairs Office",
-        owner: "Work-Study Scheme Committee",
-        verifiedDate: new Date("2026-01-25"),
-      },
-    ];
+  // Science Package (Shared between Science & Veterinary Medicine Pre-Vet!)
+  const sciencePackage = [mat111, mat121, phy101, phy102, chm101, chm102, chm107, bio101, bio102, bio104];
 
-    for (const opp of opportunitiesData) {
-      await prisma.opportunity.create({ data: opp });
-    }
+  // Assign Computing Package
+  const computingPackage = [csc101, csc102, mat111, mat121, phy101, phy102, phy107, sta112];
+  for (const deptName of facultyData[0].depts) {
+    await assignPackage(deptMap[`Computing_${deptName}`], computingPackage);
   }
 
-  console.log("✅ Opportunities seeded.");
-
-  // 7. SEED FAQS
-  const existingFaqs = await prisma.faq.count();
-  if (existingFaqs === 0) {
-    const faqsData = [
-      {
-        question: "How do I complete my physical departmental clearance at UI?",
-        answer: "Physical clearance requires your JAMB Admission Letter, UI Acceptance Fee Receipt, O'Level Certificate/Statement of Result, Birth Certificate, and 4 passport photographs. Visit the Faculty Secretariat with original documents and photocopies.",
-        category: "Admissions & Clearance",
-        tags: ["Clearance", "Freshers", "Documents"],
-        source: "UI Admissions Officer Desk",
-        owner: "Academic Affairs Officer",
-        verifiedDate: new Date("2026-01-10"),
-      },
-      {
-        question: "What is the deadline for course add/drop for the current semester?",
-        answer: "Course add/drop closes exactly 4 weeks after lecture commencement. You can modify registered courses via the student portal before your departmental adviser signs your final course form.",
-        category: "Course Add/Drop",
-        tags: ["Courses", "Portal", "Deadline"],
-        source: "UI Portal Administrator",
-        owner: "ICT Infrastructure Unit",
-        verifiedDate: new Date("2026-01-15"),
-      },
-      {
-        question: "How is hostel accommodation allocated for 100 Level freshers?",
-        answer: "Hostel space is reserved for 100L freshers and final year students. Once your school fees payment reflects on the portal, log into the portal under 'Hostel Reservation' on designated release dates.",
-        category: "Hostel & Housing",
-        tags: ["Hostel", "Accommodation"],
-        source: "UI Student Affairs Division (Hall Management)",
-        owner: "Dean of Student Affairs",
-        verifiedDate: new Date("2026-01-08"),
-      },
-    ];
-
-    for (const faq of faqsData) {
-      await prisma.faq.create({ data: faq });
-    }
+  // Assign Science Package to Science departments
+  for (const deptName of facultyData[1].depts) {
+    await assignPackage(deptMap[`Science_${deptName}`], sciencePackage);
   }
 
-  console.log("✅ FAQs seeded.");
-  console.log("🎉 Database seeding completed successfully! Ready for official Question Bank upload.");
+  // Assign Technology Package
+  const techPackage = [tch101, mat111, mat121, phy101, phy102, phy107, chm101, chm107, me101, me102];
+  for (const deptName of facultyData[2].depts) {
+    await assignPackage(deptMap[`Technology_${deptName}`], techPackage);
+  }
+
+  // Assign Pre-Med Package to Clinical Sciences
+  for (const deptName of facultyData[3].depts) {
+    await assignPackage(deptMap[`Clinical Sciences_${deptName}`], preMedPackage);
+  }
+
+  // LINK DENTISTRY DEPARTMENTS DIRECTLY TO CLINICAL SCIENCES PRE-MED PACKAGE (Principle 3 Shared Package!)
+  for (const deptName of facultyData[5].depts) {
+    await assignPackage(deptMap[`Dentistry_${deptName}`], preMedPackage);
+  }
+
+  // LINK VETERINARY MEDICINE DEPARTMENTS DIRECTLY TO SCIENCE PACKAGE (Principle 3 Shared Package!)
+  for (const deptName of facultyData[9].depts) {
+    await assignPackage(deptMap[`Veterinary Medicine_${deptName}`], sciencePackage);
+  }
+
+  // Assign Basic Medical Sciences
+  const basicMedPackage = [bio101, bio102, bio104, chm101, chm102, chm107, phy101, phy102, phy107, nut101];
+  for (const deptName of facultyData[4].depts) {
+    await assignPackage(deptMap[`Basic Medical Sciences_${deptName}`], basicMedPackage);
+  }
+
+  // Assign Pharmacy
+  const pharmacyPackage = [chm101, chm102, chm107, bio101, bio102, phy101, phy102, mat111];
+  for (const deptName of facultyData[7].depts) {
+    await assignPackage(deptMap[`Pharmacy_${deptName}`], pharmacyPackage);
+  }
+
+  // Assign EDM
+  const edmPackage = [esm101, esm102, urp101, urp104, fea112, fea122, mat101, eco101, eco102];
+  for (const deptName of facultyData[8].depts) {
+    await assignPackage(deptMap[`Environmental Design & Management_${deptName}`], edmPackage);
+  }
+
+  // Assign Agriculture & Natural Resources
+  const agricPackage = [agr101, bio101, bio102, chm101, chm102, phy101, phy102, mat111];
+  for (const deptName of facultyData[10].depts) {
+    await assignPackage(deptMap[`Agriculture_${deptName}`], agricPackage);
+  }
+
+  const natResPackage = [frm101, wem101, bio101, bio102, chm101, chm102, phy101, phy102];
+  for (const deptName of facultyData[11].depts) {
+    await assignPackage(deptMap[`Renewable Natural Resources_${deptName}`], natResPackage);
+  }
+
+  // Assign Econ & Mgmt
+  const econMgmtPackage = [ams101, ams102, ams103, eco101, eco102, acc101, acc102, fin101, mcs103];
+  for (const deptName of facultyData[12].depts) {
+    await assignPackage(deptMap[`Economics & Management Sciences_${deptName}`], econMgmtPackage);
+  }
+
+  // Assign Social Sciences
+  const socialSciPackage = [pos101, soc101, psy101, geo101, eco101];
+  for (const deptName of facultyData[13].depts) {
+    await assignPackage(deptMap[`The Social Sciences_${deptName}`], socialSciPackage);
+  }
+
+  // Assign Arts
+  const artsPackage = [eng101, eng102, cla101, his101, tha101, phl101];
+  for (const deptName of facultyData[14].depts) {
+    await assignPackage(deptMap[`Arts_${deptName}`], artsPackage);
+  }
+
+  // Assign Law
+  const lawPackage = [pul101, pul102, ppr101, ppr102, pos101];
+  for (const deptName of facultyData[15].depts) {
+    await assignPackage(deptMap[`Law_${deptName}`], lawPackage);
+  }
+
+  // Assign Education
+  const eduPackage = [edu101, edu102, mat111, eng101, chm101];
+  for (const deptName of facultyData[16].depts) {
+    await assignPackage(deptMap[`Education_${deptName}`], eduPackage);
+  }
+
+  console.log("✅ All Course Packages and Shared Package Links assigned.");
+
+  // =========================================================
+  // 5. SEED REFERENCE RULES (CREDIT LIMITS & CGPA SCALE)
+  // =========================================================
+
+  await prisma.referenceRule.upsert({
+    where: { key: "CREDIT_LOAD" },
+    update: {
+      value: JSON.stringify({ minUnitsPerSemester: 15, maxUnitsPerSemester: 24 }),
+      description: "Minimum 15 units, Maximum 24 units allowed per semester at University of Ibadan.",
+    },
+    create: {
+      category: "CREDIT_LOAD",
+      title: "Semester Credit Load Rules",
+      key: "CREDIT_LOAD",
+      value: JSON.stringify({ minUnitsPerSemester: 15, maxUnitsPerSemester: 24 }),
+      description: "Minimum 15 units, Maximum 24 units allowed per semester at University of Ibadan.",
+    },
+  });
+
+  await prisma.referenceRule.upsert({
+    where: { key: "CGPA_SCALE" },
+    update: {
+      value: JSON.stringify({
+        scale: 4.0,
+        grades: [
+          { range: "70% – 100%", grade: "A", gp: 4.0 },
+          { range: "60% – 69%", grade: "B", gp: 3.0 },
+          { range: "50% – 59%", grade: "C", gp: 2.0 },
+          { range: "45% – 49%", grade: "D", gp: 1.0 },
+          { range: "0% – 44%", grade: "F", gp: 0.0 },
+        ],
+        goodStandingMinCgpa: 1.50,
+        probationRange: "1.00 – 1.49",
+        withdrawalThreshold: "< 1.00",
+      }),
+      description: "University of Ibadan 4.0 CGPA Senate Scale.",
+    },
+    create: {
+      category: "CGPA_SCALE",
+      title: "UI Senate 4.0 CGPA Grading Scale",
+      key: "CGPA_SCALE",
+      value: JSON.stringify({
+        scale: 4.0,
+        grades: [
+          { range: "70% – 100%", grade: "A", gp: 4.0 },
+          { range: "60% – 69%", grade: "B", gp: 3.0 },
+          { range: "50% – 59%", grade: "C", gp: 2.0 },
+          { range: "45% – 49%", grade: "D", gp: 1.0 },
+          { range: "0% – 44%", grade: "F", gp: 0.0 },
+        ],
+        goodStandingMinCgpa: 1.50,
+        probationRange: "1.00 – 1.49",
+        withdrawalThreshold: "< 1.00",
+      }),
+      description: "University of Ibadan 4.0 CGPA Senate Scale.",
+    },
+  });
+
+  console.log("✅ Reference Rules (Credit Load & CGPA Scale) seeded.");
+  console.log("🎉 Database seeding completed successfully!");
 }
 
 main()

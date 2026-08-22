@@ -63,11 +63,67 @@ model Department {
   resources     Resource[]
   opportunities Opportunity[]
   faqs          FAQ[]
+  courses       DepartmentCourse[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@unique([facultyId, name])
+}
+
+// =========================================================
+// COURSE & SHARED PACKAGE JOIN MODEL
+// =========================================================
+
+enum CourseStatus {
+  COMPULSORY
+  REQUIRED
+  ELECTIVE
+}
+
+model Course {
+  id               String       @id @default(cuid())
+  code             String       @unique // e.g. "CSC 101", "MAT 111", "GES 107"
+  title            String
+  level            Int          @default(100) // Extensible to 200, 300, 400 later
+  semester         String       // "1st" or "2nd"
+  status           CourseStatus @default(COMPULSORY)
+  units            Int
+  isUniversityWide Boolean      @default(false) // True for GES/GST block
+
+  departments      DepartmentCourse[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DepartmentCourse {
+  id           String     @id @default(cuid())
+  departmentId String
+  department   Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+
+  courseId     String
+  course       Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([departmentId, courseId])
+}
+
+// =========================================================
+// REFERENCE RULES (CREDIT LIMITS & CGPA SCALE)
+// =========================================================
+
+model ReferenceRule {
+  id          String   @id @default(cuid())
+  category    String   // "CREDIT_LOAD" or "CGPA_SCALE"
+  title       String
+  key         String   @unique
+  value       String   // JSON stringified rule details
+  description String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 // =========================================================
