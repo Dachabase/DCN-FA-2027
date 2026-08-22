@@ -25,12 +25,24 @@ if (!token) {
 
 export const computingBot = new Bot(token);
 
-// Persistent Reply Keyboard (MB3PrepBot Style)
+// 1. Persistent Reply Keyboard (Bottom Bar)
 const mainReplyKeyboard = new Keyboard()
   .text("🎭 Practice CBT").text("📝 Exam Mode").row()
   .text("🔄 Revision").text("📊 My Stats").row()
-  .text("🏆 Leaderboard").text("💬 Ask AI Mentor")
+  .text("🏆 Leaderboard").text("💡 Quick Prompts").row()
+  .text("💬 Ask AI Mentor")
   .resized();
+
+// 2. Interactive Quick Prompts (Inline Tap Keyboards)
+const getQuickPromptsKeyboard = () => {
+  return new InlineKeyboard()
+    .text("📋 100L Course Registration Guide", "prompt_course_reg").row()
+    .text("📊 How UI 4.0 CGPA Works", "prompt_cgpa").row()
+    .text("🏛️ Lecture Venues & Labs", "prompt_venues")
+    .text("💰 Scholarships & Jobs", "prompt_scholarships").row()
+    .text("❓ Clearance FAQs", "prompt_clearance")
+    .text("🎭 CBT Question Bank", "prompt_cbt");
+};
 
 // ---------------------------------------------------------
 // START COMMAND
@@ -39,10 +51,7 @@ const mainReplyKeyboard = new Keyboard()
 computingBot.command("start", async (ctx) => {
   try {
     const telegramUser = ctx.from;
-
-    if (!telegramUser) {
-      return;
-    }
+    if (!telegramUser) return;
 
     const user = await findOrCreateUser({
       telegramId: BigInt(telegramUser.id),
@@ -52,12 +61,11 @@ computingBot.command("start", async (ctx) => {
     });
 
     const onboardingStep = await getOnboardingStep(user.id);
-
     if (onboardingStep && onboardingStep !== "COMPLETE") {
       await ctx.reply(
         `Welcome back, ${telegramUser.first_name}! 👋\n\n` +
-          `Let's continue setting up your Computing Freshers Companion. 🎓`,
-        { reply_markup: mainReplyKeyboard }
+          `Let me know what you'd like to explore today. Tap any prompt below:`,
+        { reply_markup: getQuickPromptsKeyboard() }
       );
       return;
     }
@@ -66,21 +74,14 @@ computingBot.command("start", async (ctx) => {
       where: { id: user.facultyId ?? "" },
     });
 
-    if (faculty) {
-      await ctx.reply(
-        `👋 Welcome back, ${telegramUser.first_name}!\n\n` +
-          `You're ready to study with your ${faculty.name} Companion. 🎓\n\n` +
-          `Choose an option below or type any academic question:`,
-        { reply_markup: mainReplyKeyboard }
-      );
-      return;
-    }
+    const facultyName = faculty?.name || "Computing";
 
     await ctx.reply(
-      `Hey ${telegramUser.first_name}! 👋\n\n` +
-        `Welcome to the University of Ibadan Computing Freshers Companion. 🎓\n\n` +
-        `I'm here to help you navigate your journey as a Computing student at UI.`,
-      { reply_markup: mainReplyKeyboard }
+      `👋 *Welcome, ${telegramUser.first_name}!* 🎓\n\n` +
+        `I am your **UI ${facultyName} Freshers Companion**.\n` +
+        `I can answer academic questions, guide you through course registration, explain CGPA rules, and help you practice CBT questions!\n\n` +
+        `👇 *Tap a prompt below to get started immediately, or type any question:*`,
+      { parse_mode: "Markdown", reply_markup: getQuickPromptsKeyboard() }
     );
   } catch (error) {
     console.error("Error processing /start command:", error);
@@ -93,18 +94,120 @@ computingBot.command("start", async (ctx) => {
 });
 
 // ---------------------------------------------------------
+// INTERACTIVE PROMPT CALLBACK HANDLERS (TAP TO CHOOSE)
+// ---------------------------------------------------------
+
+computingBot.callbackQuery("prompt_course_reg", async (ctx) => {
+  await ctx.answerCallbackQuery();
+  const followUpKeyboard = new InlineKeyboard()
+    .text("📚 100L Core Courses", "prompt_core_courses")
+    .text("⏳ Add/Drop Deadline", "prompt_add_drop").row()
+    .text("🔙 Back to Main Prompts", "prompt_main_menu");
+
+  await ctx.reply(
+    `📋 *100L Course Registration Walkthrough*\n\n` +
+      `Every 100 Level student must register for compulsory general courses (**GST101, GST102, GES107**) alongside departmental core courses.\n\n` +
+      `📌 *Key Rules:*\n` +
+      `• **Max Credit Load:** 24 units per semester (Min: 15 units).\n` +
+      `• **Validation:** Must be signed by your Departmental Adviser.\n` +
+      `• **Clearance:** Print 4 copies of your Form 01.\n\n` +
+      `What would you like to check next?`,
+    { parse_mode: "Markdown", reply_markup: followUpKeyboard }
+  );
+});
+
+computingBot.callbackQuery("prompt_cgpa", async (ctx) => {
+  await ctx.answerCallbackQuery();
+  const followUpKeyboard = new InlineKeyboard()
+    .text("⚠️ Probation & Withdrawal Rules", "prompt_probation")
+    .text("🔙 Main Prompts", "prompt_main_menu");
+
+  await ctx.reply(
+    `📊 *UI 4.0 CGPA Grading System*\n\n` +
+      `The Senate of the University of Ibadan operates a **4.0 Scale**:\n\n` +
+      `• **70% - 100%**: Grade A (4.0 GP)\n` +
+      `• **60% - 69%**: Grade B (3.0 GP)\n` +
+      `• **50% - 59%**: Grade C (2.0 GP)\n` +
+      `• **45% - 49%**: Grade D (1.0 GP)\n` +
+      `• **0% - 44%**: Grade F (0.0 GP)\n\n` +
+      `• **Good Standing:** CGPA ≥ 1.50\n` +
+      `• **Probation:** CGPA between 1.00 and 1.49 at end of session.`,
+    { parse_mode: "Markdown", reply_markup: followUpKeyboard }
+  );
+});
+
+computingBot.callbackQuery("prompt_venues", async (ctx) => {
+  await ctx.answerCallbackQuery();
+  await ctx.reply(
+    `🏛️ *UI Campus Lecture Venues & Labs*\n\n` +
+      `• **Large Lecture Theatre (LLT):** Adjacent to Faculty of Science (Venue for GST & MAT lectures).\n` +
+      `• **Computing Computer Lab 1 & 2:** Ground Floor, New Computing Building.\n` +
+      `• **SUB Pit Theatre:** Student Union Building grounds.\n` +
+      `• **Kenneth Dike Library (KDL) E-Classroom:** 2nd Floor, KDL main building.`,
+    { parse_mode: "Markdown", reply_markup: getQuickPromptsKeyboard() }
+  );
+});
+
+computingBot.callbackQuery("prompt_scholarships", async (ctx) => {
+  await ctx.answerCallbackQuery();
+  await ctx.reply(
+    `💰 *Freshers Scholarships & Work-Study Opportunities*\n\n` +
+      `1. **MTN Foundation STEM Scholarship:** ₦200,000 annual grant awarded to STEM students.\n` +
+      `2. **UI Work-Study Scheme:** Earn up to ₦35,000 monthly working max 2 hours daily in campus libraries or ICT centers.\n` +
+      `3. **GDSC UI Tech Community:** Gain practical web, mobile, and AI development skills.`,
+    { parse_mode: "Markdown", reply_markup: getQuickPromptsKeyboard() }
+  );
+});
+
+computingBot.callbackQuery("prompt_clearance", async (ctx) => {
+  await ctx.answerCallbackQuery();
+  await ctx.reply(
+    `❓ *Departmental Physical Clearance Requirements*\n\n` +
+      `Bring originals and photocopies of:\n` +
+      `1. JAMB Admission Letter\n` +
+      `2. UI Acceptance Fee Receipt\n` +
+      `3. O'Level Result / Certificate\n` +
+      `4. Birth Certificate / Sworn Age Declaration\n` +
+      `5. Four (4) recent passport photographs`,
+    { parse_mode: "Markdown", reply_markup: getQuickPromptsKeyboard() }
+  );
+});
+
+computingBot.callbackQuery("prompt_core_courses", async (ctx) => {
+  await ctx.answerCallbackQuery();
+  await ctx.reply(
+    `📚 *100L Core Computing Courses*\n\n` +
+      `• **CSC101:** Intro to Computer Science (3 Units)\n` +
+      `• **CSC102:** Intro to Problem Solving & Programming (3 Units)\n` +
+      `• **MAT111:** Algebra & Trigonometry (3 Units)\n` +
+      `• **MAT121:** Calculus I (3 Units)\n` +
+      `• **PHY101:** General Physics I (3 Units)\n` +
+      `• **GST101:** Use of English I (2 Units)`,
+    { parse_mode: "Markdown", reply_markup: getQuickPromptsKeyboard() }
+  );
+});
+
+computingBot.callbackQuery("prompt_main_menu", async (ctx) => {
+  await ctx.answerCallbackQuery();
+  await ctx.reply(
+    `💡 *Choose a topic prompt below or type your custom question:*`,
+    { reply_markup: getQuickPromptsKeyboard() }
+  );
+});
+
+// ---------------------------------------------------------
 // CBT PRACTICE & STATS HANDLERS
 // ---------------------------------------------------------
 
-computingBot.hears(["🎭 Practice CBT", "📝 Exam Mode", "🔄 Revision"], async (ctx) => {
+computingBot.hears(["🎭 Practice CBT", "📝 Exam Mode", "🔄 Revision", "prompt_cbt"], async (ctx) => {
   try {
     const count = await prisma.question.count();
     if (count === 0) {
       return ctx.reply(
         `📚 *CBT Question Bank Update*\n\n` +
           `The official CBT Question Bank for 100L General & Departmental courses (GST101, MAT111, CSC101, etc.) is currently being uploaded by your department.\n\n` +
-          `💡 In the meantime, ask me any course or academic question directly and I'll explain it step-by-step!`,
-        { parse_mode: "Markdown", reply_markup: mainReplyKeyboard }
+          `💡 In the meantime, tap a quick prompt or ask me any question directly!`,
+        { parse_mode: "Markdown", reply_markup: getQuickPromptsKeyboard() }
       );
     }
 
@@ -122,6 +225,13 @@ computingBot.hears(["🎭 Practice CBT", "📝 Exam Mode", "🔄 Revision"], asy
     console.error("Error handling CBT command:", error);
     ctx.reply("Unable to load CBT courses. Please try again later.");
   }
+});
+
+computingBot.hears(["💡 Quick Prompts", "/prompts"], async (ctx) => {
+  await ctx.reply(
+    `💡 *Explore Freshers Guide Prompts:*\nTap any topic below to view instant information:`,
+    { parse_mode: "Markdown", reply_markup: getQuickPromptsKeyboard() }
+  );
 });
 
 computingBot.hears("📊 My Stats", async (ctx) => {
@@ -193,9 +303,9 @@ computingBot.on("message:text", async (ctx) => {
     const message = ctx.message.text.trim();
     if (!message) return;
 
-    if (["🎭 Practice CBT", "📝 Exam Mode", "🔄 Revision", "📊 My Stats", "🏆 Leaderboard", "💬 Ask AI Mentor"].includes(message)) {
+    if (["🎭 Practice CBT", "📝 Exam Mode", "🔄 Revision", "📊 My Stats", "🏆 Leaderboard", "💡 Quick Prompts", "💬 Ask AI Mentor"].includes(message)) {
       if (message === "💬 Ask AI Mentor") {
-        return ctx.reply("What topic or concept would you like to study today? Ask me anything!", { reply_markup: mainReplyKeyboard });
+        return ctx.reply("What topic or concept would you like to study today? Ask me anything!", { reply_markup: getQuickPromptsKeyboard() });
       }
       return;
     }
@@ -292,7 +402,8 @@ ${memories}
       },
     });
 
-    await ctx.reply(aiResponse, { reply_markup: mainReplyKeyboard });
+    // Provide response along with follow-up prompt chips so student can tap to continue
+    await ctx.reply(aiResponse, { reply_markup: getQuickPromptsKeyboard() });
 
     try {
       await extractAndSaveMemories(user.id, message);
