@@ -143,8 +143,7 @@ computingBot.callbackQuery("prompt_venues", async (ctx) => {
     `🏛️ *UI Campus Lecture Venues & Labs*\n\n` +
       `• **Large Lecture Theatre (LLT):** Adjacent to Faculty of Science (Venue for GST & MAT lectures).\n` +
       `• **Computing Computer Lab 1 & 2:** Ground Floor, New Computing Building.\n` +
-      `• **SUB Pit Theatre:** Student Union Building grounds.\n` +
-      `• **Kenneth Dike Library (KDL) E-Classroom:** 2nd Floor, KDL main building.`,
+      `• **SUB Pit Theatre:** Student Union Building grounds.`,
     { parse_mode: "Markdown", reply_markup: getQuickPromptsKeyboard() }
   );
 });

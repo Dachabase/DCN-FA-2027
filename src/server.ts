@@ -81,7 +81,7 @@ const FALLBACK_GUIDES = [
     id: "guide_venues",
     title: "Lecture Venues & Campus Navigation Map",
     summary: "Locate Large Lecture Theatres (LLT), ICT Center, Science Lecture Theater, and Faculty labs.",
-    content: `## Key Lecture Venues for Computing Freshers\n- **Large Lecture Theatre (LLT)**: Located adjacent to Faculty of Science. Venue for GST & MAT lectures.\n- **Faculty of Computing Computer Lab 1 & 2**: Ground floor, New Computing Building.\n- **SUB Pit Theatre**: Student Union Building grounds for faculty orientation programs.\n- **Kenneth Dike Library (KDL) E-Classroom**: Second Floor, KDL main building.`,
+    content: `## Key Lecture Venues for Computing Freshers\n- **Large Lecture Theatre (LLT)**: Located adjacent to Faculty of Science. Venue for GST & MAT lectures.\n- **Faculty of Computing Computer Lab 1 & 2**: Ground floor, New Computing Building.\n- **SUB Pit Theatre**: Student Union Building grounds for faculty orientation programs.`,
     category: "Lecture Venues",
     status: "PUBLISHED",
     facultyId: "fac_computing",
@@ -120,19 +120,6 @@ const FALLBACK_RESOURCES = [
     source: "Department of Computer Science & AI",
     owner: "CSC101 Course Coordinator",
     verifiedDate: "2026-02-10T00:00:00.000Z",
-  },
-  {
-    id: "res_kdl_catalog",
-    title: "Kenneth Dike Library (KDL) Digital Catalog & E-Journals",
-    description: "Access thousands of subscribed IEEE, ScienceDirect, and ACM e-books using your UI student login.",
-    url: "https://library.ui.edu.ng",
-    type: "link",
-    category: "Library",
-    tags: ["Library", "KDL", "Research"],
-    facultyId: null,
-    source: "Kenneth Dike Library Board",
-    owner: "University Librarian",
-    verifiedDate: "2026-01-18T00:00:00.000Z",
   },
 ];
 
