@@ -1,0 +1,21 @@
+{
+  "name": "UI Freshers Companion",
+  "short_name": "UI Companion",
+  "description": "Official Student Companion & Academic Navigator for University of Ibadan Freshers",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F0511",
+  "theme_color": "#7F1A7B",
+  "icons": [
+    {
+      "src": "https://api.iconify.design/lucide:graduation-cap.svg?color=%23ffffff",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "https://api.iconify.design/lucide:graduation-cap.svg?color=%23ffffff",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

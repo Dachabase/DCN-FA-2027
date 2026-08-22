@@ -1,14 +1,16 @@
 {
   "name": "ui-freshers-ai",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "UI Freshers Companion - Web App & Telegram AI Assistant Shared Backend",
+  "main": "dist/server.js",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
+    "dev": "tsx watch src/server.ts",
+    "bot:dev": "tsx watch src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js",
+    "start": "node dist/server.js",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
+    "db:seed": "tsx prisma/seed.ts",
     "db:studio": "prisma studio"
   },
   "keywords": [],
@@ -18,7 +20,9 @@
   "dependencies": {
     "@prisma/adapter-pg": "^7.9.1",
     "@prisma/client": "^7.9.1",
+    "cors": "^2.8.5",
     "dotenv": "^17.4.2",
+    "express": "^4.21.2",
     "grammy": "^1.45.1",
     "pg": "^8.23.0",
     "tsx": "^4.23.12",
@@ -26,6 +30,8 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
     "@types/node": "^26.2.0",
     "prisma": "^7.9.1"
   }

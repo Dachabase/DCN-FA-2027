@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Freshers Companion | Student Guide & Academic Navigator</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#7F1A7B">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
+  <style>
+    :root {
+      --deep-plum: #4B0D4C;
+      --core-magenta: #7F1A7B;
+      --bright-magenta: #A824A3;
+      --muted-plum: #2A062B;
+      --card-bg: rgba(42, 6, 43, 0.7);
+      --card-border: rgba(127, 26, 123, 0.35);
+      --card-hover-border: rgba(168, 36, 163, 0.6);
+      --bg-dark: #0F0310;
+      --text-main: #FFFFFF;
+      --text-muted: #D1B3D2;
+      --accent-gold: #FFB800;
+      --accent-cyan: #00E5FF;
+      --accent-pink: #FF4081;
+      --radius: 16px;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Background Radial Glow */
+    .hero-glow {
+      position: absolute;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(127, 26, 123, 0.45) 0%, rgba(75, 13, 76, 0.15) 50%, rgba(15, 3, 16, 0) 75%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* HEADER & NAVIGATION */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(15, 3, 16, 0.85);
+      border-bottom: 1px solid var(--card-border);
+      padding: 1rem 1.5rem;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--core-magenta), var(--deep-plum));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 15px rgba(127, 26, 123, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .brand-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(to right, #FFFFFF, var(--text-muted));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.6rem 1.1rem;
+      border-radius: 10px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-btn:hover {
+      color: var(--text-main);
+      background: rgba(127, 26, 123, 0.25);
+    }
+
+    .nav-btn.active {
+      color: var(--text-main);
+      background: var(--core-magenta);
+      box-shadow: 0 4px 12px rgba(127, 26, 123, 0.35);
+    }
+
+    /* MAIN CONTENT AREA */
+    main {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 6rem 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* TAB SECTIONS */
+    .tab-section {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* HERO BANNER */
+    .hero {
+      text-align: center;
+      padding: 3.5rem 1rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(127, 26, 123, 0.3);
+      border: 1px solid var(--card-border);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto 2rem auto;
+      line-height: 1.6;
+    }
+
+    /* SEARCH BAR */
+    .search-box {
+      max-width: 580px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(42, 6, 43, 0.8);
+      border: 1px solid var(--card-border);
+      padding: 1rem 1.25rem 1rem 3rem;
+      border-radius: 14px;
+      color: var(--text-main);
+      font-size: 1rem;
+      outline: none;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+
+    .search-input:focus {
+      border-color: var(--bright-magenta);
+      box-shadow: 0 0 20px rgba(168, 36, 163, 0.3);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    /* TELEGRAM HANDOFF CARD */
+    .assistant-card {
+      background: linear-gradient(135deg, rgba(127, 26, 123, 0.45), rgba(42, 6, 43, 0.9));
+      border: 1px solid rgba(168, 36, 163, 0.5);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .assistant-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(0, 229, 255, 0.15), transparent 70%);
+      pointer-events: none;
+    }
+
+    .assistant-info {
+      max-width: 650px;
+    }
+
+    .assistant-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-cyan);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .assistant-info h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .assistant-info p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
+    .tg-cta-btn {
+      background: linear-gradient(135deg, #0088cc, #00a0e9);
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 0.95rem 1.6rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      white-space: nowrap;
+      transition: var(--transition);
+      box-shadow: 0 4px 20px rgba(0, 136, 204, 0.4);
+    }
+
+    .tg-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(0, 136, 204, 0.6);
+    }
+
+    /* GRID & CARDS */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(8px);
+    }
+
+    .card:hover {
+      border-color: var(--card-hover-border);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      gap: 1rem;
+    }
+
+    .card-badge {
+      background: rgba(127, 26, 123, 0.35);
+      color: var(--text-muted);
+      padding: 0.3rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .card-badge.scholarship { background: rgba(255, 184, 0, 0.2); color: var(--accent-gold); }
+    .card-badge.internship { background: rgba(0, 229, 255, 0.2); color: var(--accent-cyan); }
+    .card-badge.hackathon { background: rgba(255, 64, 129, 0.2); color: var(--accent-pink); }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      line-height: 1.35;
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+
+    /* PROVENANCE BADGE */
+    .provenance-bar {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 0.75rem;
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .provenance-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1rem;
+      gap: 0.5rem;
+    }
+
+    .action-btn {
+      background: rgba(127, 26, 123, 0.4);
+      color: #FFFFFF;
+      border: 1px solid var(--card-border);
+      padding: 0.6rem 1.1rem;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .action-btn:hover {
+      background: var(--core-magenta);
+      border-color: var(--bright-magenta);
+    }
+
+    /* FILTER TABS */
+    .filter-bar {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+
+    .filter-chip {
+      background: rgba(42, 6, 43, 0.6);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 0.5rem 1.1rem;
+      border-radius: 20px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+
+    .filter-chip:hover, .filter-chip.active {
+      background: var(--core-magenta);
+      color: var(--text-main);
+      border-color: var(--bright-magenta);
+    }
+
+    /* ACCORDION FAQ */
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .faq-question {
+      padding: 1.25rem 1.5rem;
+      font-weight: 600;
+      font-size: 1.05rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      user-select: none;
+    }
+
+    .faq-question:hover {
+      background: rgba(127, 26, 123, 0.15);
+    }
+
+    .faq-answer {
+      padding: 0 1.5rem 1.25rem 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      display: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 1rem;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    .faq-item.open .faq-question {
+      color: var(--bright-magenta);
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .modal-content {
+      background: #180519;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      max-width: 800px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #FFFFFF;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .markdown-body {
+      color: #E2D3E3;
+      line-height: 1.7;
+    }
+
+    .markdown-body h1, .markdown-body h2, .markdown-body h3 {
+      color: #FFFFFF;
+      margin: 1.5rem 0 0.8rem 0;
+    }
+
+    .markdown-body ul, .markdown-body ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .markdown-body code {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.2rem 0.4rem;
+      border-radius: 6px;
+      font-size: 0.9em;
+    }
+
+    /* MOBILE NAV BAR */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 3, 16, 0.95);
+      border-top: 1px solid var(--card-border);
+      backdrop-filter: blur(16px);
+      padding: 0.5rem;
+      z-index: 100;
+      justify-content: space-around;
+    }
+
+    .mobile-nav-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.4rem;
+      cursor: pointer;
+    }
+
+    .mobile-nav-btn.active {
+      color: var(--bright-magenta);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-nav { display: flex; }
+      .hero h1 { font-size: 2rem; }
+      .assistant-card { flex-direction: column; text-align: center; }
+      main { padding-bottom: 6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero-glow"></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-container">
+      <a href="#" class="brand" onclick="switchTab('home')">
+        <div class="brand-logo">🎓</div>
+        <span class="brand-title">UI Freshers Companion</span>
+      </a>
+
+      <nav class="nav-links">
+        <button class="nav-btn active" onclick="switchTab('home')">🏠 Dashboard</button>
+        <button class="nav-btn" onclick="switchTab('guides')">📚 Faculty Guides</button>
+        <button class="nav-btn" onclick="switchTab('resources')">📂 Resources</button>
+        <button class="nav-btn" onclick="switchTab('opportunities')">🚀 Opportunities</button>
+        <button class="nav-btn" onclick="switchTab('faqs')">❓ FAQ & AI</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- 1. HOME / DASHBOARD TAB -->
+    <section id="tab-home" class="tab-section active">
+      <div class="hero">
+        <div class="hero-badge">✨ University of Ibadan Student Portal</div>
+        <h1>Welcome to UI Freshers Companion</h1>
+        <p>Your official academic navigator. Discover course guides, download past questions, access student scholarships, and connect with your Telegram AI Study Assistant.</p>
+        
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" id="global-search" placeholder="Search guides, past questions, GST courses, clearance FAQs..." oninput="handleGlobalSearch(this.value)">
+        </div>
+      </div>
+
+      <!-- TELEGRAM STUDY ASSISTANT HANDOFF CARD -->
+      <div class="assistant-card">
+        <div class="assistant-info">
+          <span class="assistant-tag">⚡ Telegram AI Mentor Handoff</span>
+          <h3>Need Personal Course & Academic Help?</h3>
+          <p>Chat directly with your personalized Telegram AI Study Assistant. It remembers your faculty, department, and level to answer your specific questions 24/7!</p>
+        </div>
+        <a href="https://t.me/UI_Computing_Bot" target="_blank" rel="noopener" id="home-tg-btn" class="tg-cta-btn">
+          💬 Chat on Telegram
+        </a>
+      </div>
+
+      <!-- FEATURED FACULTY GUIDES & RESOURCES -->
+      <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.25rem;">📌 Essential Freshers Guides</h2>
+      <div class="grid" id="home-featured-guides">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- 2. FACULTY GUIDES TAB -->
+    <section id="tab-guides" class="tab-section">
+      <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">📚 Faculty & Departmental Guides</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Comprehensive handbooks, course registration rules, and grading guides verified by academic advisors.</p>
+
+      <div class="filter-bar" id="faculty-filter-bar">
+        <button class="filter-chip active" onclick="filterGuides('ALL')">All Faculties</button>
+      </div>
+
+      <div class="grid" id="guides-grid">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- 3. RESOURCES TAB -->
+    <section id="tab-resources" class="tab-section">
+      <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">📂 Academic & Library Resources</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Download course slides, GST past questions, academic calendar, and library links.</p>
+
+      <div class="filter-bar">
+        <button class="filter-chip active" onclick="filterResources('ALL')">All Categories</button>
+        <button class="filter-chip" onclick="filterResources('Academic')">Academic</button>
+        <button class="filter-chip" onclick="filterResources('Administrative')">Administrative</button>
+        <button class="filter-chip" onclick="filterResources('Library')">Library</button>
+      </div>
+
+      <div class="grid" id="resources-grid">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- 4. OPPORTUNITIES TAB -->
+    <section id="tab-opportunities" class="tab-section">
+      <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">🚀 Scholarships & Student Opportunities</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Explore verified scholarships, campus work-study schemes, hackathons, and mentorship programs.</p>
+
+      <div class="filter-bar">
+        <button class="filter-chip active" onclick="filterOpportunities('ALL')">All Types</button>
+        <button class="filter-chip" onclick="filterOpportunities('Scholarship')">Scholarships</button>
+        <button class="filter-chip" onclick="filterOpportunities('Work-Study')">Work-Study</button>
+        <button class="filter-chip" onclick="filterOpportunities('Hackathon')">Hackathons</button>
+      </div>
+
+      <div class="grid" id="opportunities-grid">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- 5. FAQ & STUDY ASSISTANT TAB -->
+    <section id="tab-faqs" class="tab-section">
+      <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">❓ Frequently Asked Questions</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Answers to clearance, hostel reservation, course add/drop, and school fees payments.</p>
+
+      <div class="assistant-card" style="margin-bottom: 2rem;">
+        <div class="assistant-info">
+          <span class="assistant-tag">🤖 Can't find your answer?</span>
+          <h3>Ask Your Telegram Study Mentor</h3>
+          <p>Our Telegram AI Study Assistant knows UI policies, course specs, and academic guidelines inside out.</p>
+        </div>
+        <a href="https://t.me/UI_Computing_Bot" target="_blank" rel="noopener" id="faq-tg-btn" class="tg-cta-btn">
+          💬 Launch Telegram AI Assistant
+        </a>
+      </div>
+
+      <div id="faqs-list">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL FOR READING GUIDES -->
+  <div class="modal-overlay" id="guide-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modal-body" class="markdown-body"></div>
+    </div>
+  </div>
+
+  <!-- MOBILE NAVIGATION BAR -->
+  <nav class="mobile-nav">
+    <button class="mobile-nav-btn active" onclick="switchTab('home')">
+      <span>🏠</span>
+      <span>Home</span>
+    </button>
+    <button class="mobile-nav-btn" onclick="switchTab('guides')">
+      <span>📚</span>
+      <span>Guides</span>
+    </button>
+    <button class="mobile-nav-btn" onclick="switchTab('resources')">
+      <span>📂</span>
+      <span>Resources</span>
+    </button>
+    <button class="mobile-nav-btn" onclick="switchTab('opportunities')">
+      <span>🚀</span>
+      <span>Opps</span>
+    </button>
+    <button class="mobile-nav-btn" onclick="switchTab('faqs')">
+      <span>❓</span>
+      <span>FAQ</span>
+    </button>
+  </nav>
+
+  <script>
+    // State Store
+    let appData = {
+      faculties: [],
+      guides: [],
+      resources: [],
+      opportunities: [],
+      faqs: [],
+      studyAssistantLink: { botUrl: "https://t.me/UI_Computing_Bot", botUsername: "UI_Computing_Bot" }
+    };
+
+    // Initialize App
+    document.addEventListener("DOMContentLoaded", async () => {
+      await fetchAllData();
+      renderHome();
+      renderGuides();
+      renderResources();
+      renderOpportunities();
+      renderFaqs();
+      registerServiceWorker();
+    });
+
+    // Fetch API Data
+    async function fetchAllData() {
+      try {
+        const [facRes, guiRes, resRes, oppRes, faqRes, botRes] = await Promise.all([
+          fetch("/api/faculties").then(r => r.json()),
+          fetch("/api/faculties/all/guides").catch(() => fetch("/api/faculties")),
+          fetch("/api/resources").then(r => r.json()),
+          fetch("/api/opportunities").then(r => r.json()),
+          fetch("/api/faqs").then(r => r.json()),
+          fetch("/api/study-assistant-link").then(r => r.json())
+        ]);
+
+        if (facRes.success) appData.faculties = facRes.data;
+        if (resRes.success) appData.resources = resRes.data;
+        if (oppRes.success) appData.opportunities = oppRes.data;
+        if (faqRes.success) appData.faqs = faqRes.data;
+        if (botRes.success) {
+          appData.studyAssistantLink = botRes.data;
+          updateBotLinks(botRes.data.botUrl);
+        }
+
+        // Fetch all guides across faculties
+        if (appData.faculties.length > 0) {
+          const guidePromises = appData.faculties.map(f => fetch(`/api/faculties/${f.id}/guides`).then(r => r.json()));
+          const guideResults = await Promise.all(guidePromises);
+          const allGuides = [];
+          guideResults.forEach(r => { if (r.success) allGuides.push(...r.data); });
+          appData.guides = allGuides;
+        }
+      } catch (err) {
+        console.error("Data loading error:", err);
+      }
+    }
+
+    function updateBotLinks(url) {
+      document.getElementById("home-tg-btn").href = url;
+      document.getElementById("faq-tg-btn").href = url;
+    }
+
+    // Switch Tabs
+    function switchTab(tabId) {
+      document.querySelectorAll(".tab-section").forEach(s => s.classList.remove("active"));
+      document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".mobile-nav-btn").forEach(b => b.classList.remove("active"));
+
+      document.getElementById(`tab-${tabId}`).classList.add("active");
+      
+      // Update nav states
+      const navBtnIndex = ['home', 'guides', 'resources', 'opportunities', 'faqs'].indexOf(tabId);
+      if (navBtnIndex !== -1) {
+        const desktopBtns = document.querySelectorAll(".nav-btn");
+        const mobileBtns = document.querySelectorAll(".mobile-nav-btn");
+        if (desktopBtns[navBtnIndex]) desktopBtns[navBtnIndex].classList.add("active");
+        if (mobileBtns[navBtnIndex]) mobileBtns[navBtnIndex].classList.add("active");
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // RENDERERS
+    function renderHome() {
+      const featured = appData.guides.slice(0, 3);
+      const container = document.getElementById("home-featured-guides");
+      container.innerHTML = featured.map(g => createGuideCardHtml(g)).join("");
+    }
+
+    function renderGuides(filteredFacultyId = "ALL") {
+      // Build Faculty filter chips
+      const filterContainer = document.getElementById("faculty-filter-bar");
+      let chipsHtml = `<button class="filter-chip ${filteredFacultyId === 'ALL' ? 'active' : ''}" onclick="renderGuides('ALL')">All Faculties</button>`;
+      appData.faculties.forEach(f => {
+        chipsHtml += `<button class="filter-chip ${filteredFacultyId === f.id ? 'active' : ''}" onclick="renderGuides('${f.id}')">${f.name}</button>`;
+      });
+      filterContainer.innerHTML = chipsHtml;
+
+      const items = filteredFacultyId === "ALL" 
+        ? appData.guides 
+        : appData.guides.filter(g => g.facultyId === filteredFacultyId);
+
+      document.getElementById("guides-grid").innerHTML = items.map(g => createGuideCardHtml(g)).join("");
+    }
+
+    function createGuideCardHtml(g) {
+      return `
+        <div class="card">
+          <div class="card-header">
+            <span class="card-badge">${g.category || 'Guide'}</span>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">${g.faculty ? g.faculty.name : 'University Wide'}</span>
+          </div>
+          <h3 class="card-title">${escapeHtml(g.title)}</h3>
+          <p class="card-desc">${escapeHtml(g.summary || g.content.substring(0, 120) + '...')}</p>
+          <div class="provenance-bar">
+            <div class="provenance-item">📌 <span>Source: ${escapeHtml(g.source)}</span></div>
+            <div class="provenance-item">🛡️ <span>Verified: ${new Date(g.verifiedDate).toLocaleDateString()}</span></div>
+          </div>
+          <div class="card-footer">
+            <button class="action-btn" onclick="openGuideModal('${g.id}')">Read Full Guide →</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderResources(category = "ALL") {
+      const items = category === "ALL" ? appData.resources : appData.resources.filter(r => r.category === category);
+      const container = document.getElementById("resources-grid");
+      container.innerHTML = items.map(r => `
+        <div class="card">
+          <div class="card-header">
+            <span class="card-badge">${r.type.toUpperCase()}</span>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">${r.category}</span>
+          </div>
+          <h3 class="card-title">${escapeHtml(r.title)}</h3>
+          <p class="card-desc">${escapeHtml(r.description)}</p>
+          <div class="provenance-bar">
+            <div class="provenance-item">📌 <span>Source: ${escapeHtml(r.source)}</span></div>
+            <div class="provenance-item">👑 <span>Owner: ${escapeHtml(r.owner)}</span></div>
+          </div>
+          <div class="card-footer">
+            <a href="${r.url}" target="_blank" rel="noopener" class="action-btn">Open Resource 🔗</a>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderOpportunities(type = "ALL") {
+      const items = type === "ALL" ? appData.opportunities : appData.opportunities.filter(o => o.type === type);
+      const container = document.getElementById("opportunities-grid");
+      container.innerHTML = items.map(o => `
+        <div class="card">
+          <div class="card-header">
+            <span class="card-badge ${o.type.toLowerCase()}">${o.type}</span>
+            <span style="font-size: 0.8rem; color: var(--accent-gold);">⏳ ${o.deadline ? new Date(o.deadline).toLocaleDateString() : 'Ongoing'}</span>
+          </div>
+          <h3 class="card-title">${escapeHtml(o.title)}</h3>
+          <p class="card-desc">${escapeHtml(o.description)}</p>
+          <div class="provenance-bar">
+            <div class="provenance-item">🏢 <span>Org: ${escapeHtml(o.organization)}</span></div>
+            <div class="provenance-item">📌 <span>Source: ${escapeHtml(o.source)}</span></div>
+          </div>
+          <div class="card-footer">
+            <a href="${o.url}" target="_blank" rel="noopener" class="action-btn">Apply Now 🚀</a>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderFaqs() {
+      const container = document.getElementById("faqs-list");
+      container.innerHTML = appData.faqs.map(f => `
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span>❓ ${escapeHtml(f.question)}</span>
+            <span>➕</span>
+          </div>
+          <div class="faq-answer">
+            <p>${escapeHtml(f.answer)}</p>
+            <div class="provenance-bar" style="margin-top: 1rem;">
+              <div class="provenance-item">📌 <span>Source: ${escapeHtml(f.source)}</span></div>
+              <div class="provenance-item">🛡️ <span>Owner: ${escapeHtml(f.owner)}</span></div>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function toggleFaq(el) {
+      el.classList.toggle("open");
+    }
+
+    // Guide Modal
+    function openGuideModal(guideId) {
+      const guide = appData.guides.find(g => g.id === guideId);
+      if (!guide) return;
+
+      const modalBody = document.getElementById("modal-body");
+      modalBody.innerHTML = `
+        <h1>${escapeHtml(guide.title)}</h1>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+          Verified on ${new Date(guide.verifiedDate).toLocaleDateString()} by ${escapeHtml(guide.owner)} (${escapeHtml(guide.source)})
+        </p>
+        <hr style="border-color: rgba(255,255,255,0.1); margin-bottom: 1.5rem;">
+        <div>${marked.parse(guide.content)}</div>
+      `;
+      document.getElementById("guide-modal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("guide-modal").style.display = "none";
+    }
+
+    // Global Search
+    function handleGlobalSearch(query) {
+      if (!query.trim()) {
+        renderHome();
+        return;
+      }
+      const q = query.toLowerCase();
+      const filtered = appData.guides.filter(g => 
+        g.title.toLowerCase().includes(q) || 
+        g.content.toLowerCase().includes(q) || 
+        g.summary.toLowerCase().includes(q)
+      );
+      document.getElementById("home-featured-guides").innerHTML = filtered.map(g => createGuideCardHtml(g)).join("");
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/[&<>"']/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+      })[m]);
+    }
+
+    function registerServiceWorker() {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW Registration failed:', err));
+      }
+    }
+  </script>
+</body>
+</html>

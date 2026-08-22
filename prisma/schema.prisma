@@ -1,8 +1,7 @@
-// Prisma schema for UI Freshers AI
+// Prisma schema for UI Freshers AI (Shared between Part A Web App & Part B Telegram Bot)
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -16,12 +15,17 @@ datasource db {
 model Faculty {
   id        String   @id @default(cuid())
   name      String   @unique
+  code      String?  @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  departments Department[]
-  users       User[]
-  bots        Bot[]
+  departments   Department[]
+  users         User[]
+  bots          Bot[]
+  guides        Guide[]
+  resources     Resource[]
+  opportunities Opportunity[]
+  faqs          FAQ[]
 }
 
 // =========================================================
@@ -53,7 +57,11 @@ model Department {
   facultyId String
   faculty   Faculty @relation(fields: [facultyId], references: [id], onDelete: Cascade)
 
-  users User[]
+  users         User[]
+  guides        Guide[]
+  resources     Resource[]
+  opportunities Opportunity[]
+  faqs          FAQ[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -62,7 +70,7 @@ model Department {
 }
 
 // =========================================================
-// USER
+// USER (Telegram & Web Profile)
 // =========================================================
 
 model User {
@@ -122,10 +130,6 @@ model Message {
   createdAt DateTime @default(now())
 }
 
-// =========================================================
-// MESSAGE ROLE
-// =========================================================
-
 enum MessageRole {
   USER
   ASSISTANT
@@ -145,6 +149,120 @@ model Memory {
   content    String
   importance Int   @default(1)
   confidence Float @default(1.0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// =========================================================
+// PART A: RESOURCE
+// =========================================================
+
+model Resource {
+  id          String   @id @default(cuid())
+  type        String   // "pdf", "link", "handbook", "past_questions", "lecture_notes"
+  title       String
+  description String
+  url         String
+  category    String   // "Academic", "Administrative", "Library", "Tools"
+  tags        String[] // ["100L", "CSC101", "Registration"]
+  status      String   @default("PUBLISHED") // "PUBLISHED", "DRAFT", "ARCHIVED"
+
+  facultyId   String?
+  faculty     Faculty? @relation(fields: [facultyId], references: [id])
+
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id])
+
+  // Provenance metadata (Required for AI bot factual grounding)
+  source       String   // e.g. "UI Academic Affairs / Faculty Handbook"
+  verifiedDate DateTime @default(now())
+  owner        String   // e.g. "UI Academic Secretariat"
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// =========================================================
+// PART A: FACULTY GUIDE
+// =========================================================
+
+model Guide {
+  id          String   @id @default(cuid())
+  title       String
+  summary     String
+  content     String   // Markdown / Rich text content
+  category    String   // "Course Registration", "Grading System", "Lecture Venues", "Exams & Rules", "Campus Life"
+  status      String   @default("PUBLISHED")
+
+  facultyId   String?
+  faculty     Faculty? @relation(fields: [facultyId], references: [id])
+
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id])
+
+  // Provenance metadata
+  source       String
+  verifiedDate DateTime @default(now())
+  owner        String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// =========================================================
+// PART A: OPPORTUNITY
+// =========================================================
+
+model Opportunity {
+  id           String    @id @default(cuid())
+  title        String
+  description  String
+  organization String
+  url          String
+  deadline     DateTime?
+  type         String    // "Scholarship", "Internship", "Hackathon", "Work-Study", "Mentorship"
+  category     String    @default("General")
+  tags         String[]
+  status       String    @default("ACTIVE")
+
+  facultyId    String?
+  faculty      Faculty?  @relation(fields: [facultyId], references: [id])
+
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id])
+
+  // Provenance metadata
+  source       String
+  verifiedDate DateTime  @default(now())
+  owner        String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// =========================================================
+// PART A: FAQ
+// =========================================================
+
+model FAQ {
+  id          String   @id @default(cuid())
+  question    String
+  answer      String
+  category    String   // "Admissions & Clearance", "Fees & Payments", "Course Add/Drop", "Hostel & Housing", "Exams & Results"
+  tags        String[]
+  status      String   @default("PUBLISHED")
+
+  facultyId   String?
+  faculty     Faculty? @relation(fields: [facultyId], references: [id])
+
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id])
+
+  // Provenance metadata
+  source       String
+  verifiedDate DateTime @default(now())
+  owner        String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
