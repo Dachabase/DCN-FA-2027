@@ -37,7 +37,7 @@ const mainReplyKeyboard = new Keyboard()
 const getQuickPromptsKeyboard = () => {
   return new InlineKeyboard()
     .text("📋 100L Course Registration Guide", "prompt_course_reg").row()
-    .text("📊 How UI 4.0 CGPA Works", "prompt_cgpa").row()
+    .text("📊 How UI 5.0 CGPA Works", "prompt_cgpa").row()
     .text("🏛️ Lecture Venues & Labs", "prompt_venues")
     .text("💰 Scholarships & Jobs", "prompt_scholarships").row()
     .text("❓ Clearance FAQs", "prompt_clearance")
@@ -123,13 +123,14 @@ computingBot.callbackQuery("prompt_cgpa", async (ctx) => {
     .text("🔙 Main Prompts", "prompt_main_menu");
 
   await ctx.reply(
-    `📊 *UI 4.0 CGPA Grading System*\n\n` +
-      `The Senate of the University of Ibadan operates a **4.0 Scale**:\n\n` +
-      `• **70% - 100%**: Grade A (4.0 GP)\n` +
-      `• **60% - 69%**: Grade B (3.0 GP)\n` +
-      `• **50% - 59%**: Grade C (2.0 GP)\n` +
-      `• **45% - 49%**: Grade D (1.0 GP)\n` +
-      `• **0% - 44%**: Grade F (0.0 GP)\n\n` +
+    `📊 *UI 5.0 CGPA Grading System*\n\n` +
+      `The Senate of the University of Ibadan operates a **5.0 Scale**:\n\n` +
+      `• **70% - 100%**: Grade A (5.0 GP - First Class)\n` +
+      `• **60% - 69%**: Grade B (4.0 GP - 2nd Upper)\n` +
+      `• **50% - 59%**: Grade C (3.0 GP - 2nd Lower)\n` +
+      `• **45% - 49%**: Grade D (2.0 GP - 3rd Class)\n` +
+      `• **40% - 44%**: Grade E (1.0 GP - Pass)\n` +
+      `• **0% - 39%**: Grade F (0.0 GP - Fail)\n\n` +
       `• **Good Standing:** CGPA ≥ 1.50\n` +
       `• **Probation:** CGPA between 1.00 and 1.49 at end of session.`,
     { parse_mode: "Markdown", reply_markup: followUpKeyboard }
