@@ -354,7 +354,28 @@ async function main() {
     },
   });
 
-  console.log("✅ Reference Rules (Credit Load & CGPA Scale) seeded.");
+  // Seed Bot Record for @UIDCNComputingFreshersBot
+  const computingFac = await prisma.faculty.findFirst({ where: { code: "COMPUTING" } });
+  await prisma.bot.upsert({
+    where: { username: "UIDCNComputingFreshersBot" },
+    update: {
+      telegramBotId: BigInt(8954703429),
+      name: "UI Computing Freshers Study Buddy",
+      description: "Official 24/7 AI Mentor for University of Ibadan Freshers by Disciples Christian Network.",
+      status: "ACTIVE",
+      facultyId: computingFac ? computingFac.id : null,
+    },
+    create: {
+      telegramBotId: BigInt(8954703429),
+      username: "UIDCNComputingFreshersBot",
+      name: "UI Computing Freshers Study Buddy",
+      description: "Official 24/7 AI Mentor for University of Ibadan Freshers by Disciples Christian Network.",
+      status: "ACTIVE",
+      facultyId: computingFac ? computingFac.id : null,
+    },
+  });
+
+  console.log("✅ Reference Rules & Telegram Bot record seeded.");
   console.log("🎉 Database seeding completed successfully!");
 }
 

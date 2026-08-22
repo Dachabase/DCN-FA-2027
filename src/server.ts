@@ -3,6 +3,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import path from "path";
 import { prisma } from "./database/prisma";
+import { startComputingBot } from "./telegram/computing-bot";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -540,7 +541,7 @@ app.get("/api/study-assistant-link", async (req: Request, res: Response) => {
       });
     }
 
-    const username = bot?.username || process.env.DEFAULT_TELEGRAM_BOT_USERNAME || "UI_Computing_Bot";
+    const username = bot?.username || process.env.DEFAULT_TELEGRAM_BOT_USERNAME || "UIDCNComputingFreshersBot";
     const name = bot?.name || "UI Freshers AI Study Companion";
     const facultyName = bot?.faculty?.name || "University of Ibadan";
 
@@ -555,7 +556,7 @@ app.get("/api/study-assistant-link", async (req: Request, res: Response) => {
       },
     });
   } catch (error) {
-    const fallbackUsername = process.env.DEFAULT_TELEGRAM_BOT_USERNAME || "UI_Computing_Bot";
+    const fallbackUsername = process.env.DEFAULT_TELEGRAM_BOT_USERNAME || "UIDCNComputingFreshersBot";
     res.json({
       success: true,
       data: {
@@ -654,4 +655,7 @@ app.use((req: Request, res: Response) => {
 
 app.listen(PORT, () => {
   console.log(`🚀 UI Freshers Companion Backend API running on http://localhost:${PORT}`);
+  startComputingBot().catch((err) => {
+    console.error("⚠️ Telegram Bot failed to start:", err);
+  });
 });

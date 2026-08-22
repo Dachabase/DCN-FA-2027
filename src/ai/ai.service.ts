@@ -6,17 +6,18 @@ import { GoogleGenAI } from "@google/genai";
 // CONFIGURATION
 // ---------------------------------------------------------
 
-const apiKey = process.env.GEMINI_API_KEY;
+let aiInstance: any = null;
 
-if (!apiKey) {
-  throw new Error(
-    "GEMINI_API_KEY is not configured. Add it to your .env file."
-  );
+function getAIClient(): any {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey || apiKey.trim() === "") {
+    return null;
+  }
+  if (!aiInstance) {
+    aiInstance = new GoogleGenAI({ apiKey: apiKey.trim() });
+  }
+  return aiInstance;
 }
-
-const ai = new GoogleGenAI({
-  apiKey,
-});
 
 const primaryModel =
   process.env.GEMINI_MODEL?.trim() || "gemini-3.6-flash";
@@ -133,9 +134,12 @@ async function requestFromModel(
   const startedAt = Date.now();
 
   log(`Sending request to model: ${model}`);
-  log(`User message: ${options.userMessage}`);
+  const client = getAIClient();
+  if (!client) {
+    return "I am the UI Computing Freshers Study Buddy! 😊\n\nI can answer questions about UI 100-Level Course Packages, the 5.0 CGPA Senate Scale, CBT prep, lecture venues, and clearance guidelines. How can I help you today?";
+  }
 
-  const response = await ai.models.generateContent({
+  const response = await client.models.generateContent({
     model,
     contents: options.userMessage,
     config: {
