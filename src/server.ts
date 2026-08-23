@@ -1,15 +1,23 @@
 import "dotenv/config";
 import express, { Request, Response } from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import path from "path";
 import { prisma } from "./database/prisma";
 import { startComputingBot } from "./telegram/computing-bot";
+import { authRouter } from "./auth/auth.controller";
+import { personalizationRouter } from "./personalization/personalization.controller";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
+app.use(cookieParser());
 app.use(express.json());
+
+// Auth & Personalization Routes
+app.use("/api/auth", authRouter);
+app.use("/api", personalizationRouter);
 
 // =========================================================
 // FALLBACK DATA (For offline/testing resilience)

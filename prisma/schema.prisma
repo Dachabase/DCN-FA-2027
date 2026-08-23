@@ -126,31 +126,39 @@ model ReferenceRule {
   updatedAt DateTime @updatedAt
 }
 
-// =========================================================
-// USER (Telegram & Web Profile)
-// =========================================================
+enum UserRole {
+  CURRENT_STUDENT
+  PROSPECTIVE_UTME
+}
 
 model User {
-  id         String @id @default(cuid())
-  telegramId BigInt @unique
+  id         String   @id @default(cuid())
+  googleSub  String?  @unique
+  email      String?  @unique
+  fullName   String?
+  avatarUrl  String?
+  telegramId BigInt?  @unique
 
   firstName String?
   lastName  String?
   username  String?
 
-  facultyId String?
-  faculty   Faculty? @relation(fields: [facultyId], references: [id])
-
+  role         UserRole?
+  facultyId    String?
+  faculty      Faculty?    @relation(fields: [facultyId], references: [id])
   departmentId String?
   department   Department? @relation(fields: [departmentId], references: [id])
 
-  level Int?
-
+  level          Int?
+  utmeExamYear   Int?
   onboardingStep String?
+  onboardingCompletedAt DateTime?
 
   streakCount    Int       @default(0)
   lastActiveDate DateTime?
   totalPoints    Int       @default(0)
+  lastSeenAt     DateTime  @default(now())
+  refreshTokenHash String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -158,6 +166,26 @@ model User {
   conversations Conversation[]
   memories      Memory[]
   quizAttempts  QuizAttempt[]
+  interactions  Interaction[]
+}
+
+// =========================================================
+// INTERACTION (User Activity & Personalization Tracking)
+// =========================================================
+
+model Interaction {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  eventType  String   // e.g. "VIEW_FACULTY", "VIEW_DEPARTMENT", "VIEW_GUIDE", "DOWNLOAD_RESOURCE", "SEARCH", "EXPLORE_OPPORTUNITY"
+  resourceId String?
+  metadata   Json     @default("{}")
+
+  createdAt  DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([eventType])
 }
 
 // =========================================================
