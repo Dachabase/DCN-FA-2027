@@ -1115,6 +1115,128 @@
         grid-template-columns: 1fr !important;
       }
     }
+
+    /* PWA INSTALL UI ELEMENTS */
+    .nav-install-btn {
+      background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+      color: #FFFFFF;
+      border: none;
+      padding: 0.48rem 0.95rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.35);
+      margin-left: 0.75rem;
+    }
+
+    .nav-install-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(139, 92, 246, 0.5);
+    }
+
+    .mobile-header-install-btn {
+      display: none;
+      background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+      color: #FFFFFF;
+      border: none;
+      padding: 0.35rem 0.75rem;
+      border-radius: 16px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      align-items: center;
+      gap: 0.25rem;
+      box-shadow: 0 2px 8px rgba(139, 92, 246, 0.35);
+    }
+
+    @media (max-width: 768px) {
+      .mobile-header-install-btn {
+        display: inline-flex;
+      }
+    }
+
+    /* PWA Modal Overlay */
+    .pwa-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 13, 21, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+    }
+
+    .pwa-modal-overlay.show {
+      display: flex;
+      animation: fadeIn 0.2s ease-out;
+    }
+
+    .pwa-modal-card {
+      background: var(--ps-dark-card);
+      border: 1px solid var(--ps-border-dark);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      max-width: 480px;
+      width: 100%;
+      color: #FFFFFF;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .pwa-modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      color: #94A3B8;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .pwa-modal-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+    }
+
+    .pwa-step-box {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 0.85rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+
+    .pwa-step-num {
+      width: 26px;
+      height: 26px;
+      background: var(--ps-purple-primary);
+      color: #FFFFFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
   </style>
 </head>
 <body>
@@ -1131,36 +1253,42 @@
         </div>
       </a>
 
-      <nav class="nav-links">
-        <button class="nav-btn active" data-tab="home" onclick="switchTab('home', event)">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          Dashboard
-        </button>
-        <button class="nav-btn" data-tab="catalog" onclick="switchTab('catalog', event)">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
-          Course Catalog
-        </button>
-        <button class="nav-btn" data-tab="guides" onclick="switchTab('guides', event)">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-          Faculty Guides
-        </button>
-        <button class="nav-btn" data-tab="resources" onclick="switchTab('resources', event)">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-          Resources
-        </button>
-        <button class="nav-btn" data-tab="opportunities" onclick="switchTab('opportunities', event)">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          Opportunities
-        </button>
-        <button class="nav-btn" data-tab="cbt" onclick="switchTab('cbt', event)">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-          CBT Practice
-        </button>
-        <button class="nav-btn" data-tab="faqs" onclick="switchTab('faqs', event)">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          FAQ & AI
-        </button>
-      </nav>
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <button class="mobile-header-install-btn" onclick="triggerPWAInstall()">📲 Install App</button>
+        <nav class="nav-links">
+          <button class="nav-btn active" data-tab="home" onclick="switchTab('home', event)">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Dashboard
+          </button>
+          <button class="nav-btn" data-tab="catalog" onclick="switchTab('catalog', event)">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+            Course Catalog
+          </button>
+          <button class="nav-btn" data-tab="guides" onclick="switchTab('guides', event)">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Faculty Guides
+          </button>
+          <button class="nav-btn" data-tab="resources" onclick="switchTab('resources', event)">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            Resources
+          </button>
+          <button class="nav-btn" data-tab="opportunities" onclick="switchTab('opportunities', event)">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Opportunities
+          </button>
+          <button class="nav-btn" data-tab="cbt" onclick="switchTab('cbt', event)">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            CBT Practice
+          </button>
+          <button class="nav-btn" data-tab="faqs" onclick="switchTab('faqs', event)">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            FAQ & AI
+          </button>
+          <button class="nav-install-btn" onclick="triggerPWAInstall()">
+            📲 Install App
+          </button>
+        </nav>
+      </div>
     </div>
   </header>
 
@@ -1238,6 +1366,15 @@
           </div>
           <div class="showcase-arrow" style="color: var(--ps-purple-light);">Launch Telegram Bot →</div>
         </a>
+
+        <div class="showcase-card" style="background: linear-gradient(135deg, #161420 0%, #241A3E 100%); border: 1px solid var(--ps-purple-soft-border); color: #FFF;" onclick="triggerPWAInstall()">
+          <div>
+            <div style="font-size: 0.8rem; font-weight: 800; color: #34D399; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px;">⚡ OFFLINE CAPABLE PWA</div>
+            <div class="showcase-title">Download & Install Web App</div>
+            <p style="color: #94A3B8; font-size: 0.88rem; margin-top: 0.5rem; line-height: 1.5;">Install directly to your phone or desktop home screen for instant 1-tap offline access with zero data usage.</p>
+          </div>
+          <div class="showcase-arrow" style="color: #34D399;">Install App on Device ↓</div>
+        </div>
       </div>
 
       <div class="partstack-stats-section">
@@ -2224,11 +2361,100 @@
       if (ans) ans.classList.toggle("show");
     }
 
+    /* PWA INSTALLATION LOGIC */
+    let deferredPrompt = null;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      const nativeSection = document.getElementById('pwa-native-install-section');
+      if (nativeSection) nativeSection.style.display = 'block';
+    });
+
+    window.addEventListener('appinstalled', () => {
+      deferredPrompt = null;
+      closePWAInstallModal();
+      console.log('UI Freshers Companion was successfully installed.');
+    });
+
+    function triggerPWAInstall() {
+      const modal = document.getElementById('pwa-install-modal');
+      if (modal) modal.classList.add('show');
+    }
+
+    function executePWAInstall() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User installed the webapp');
+          }
+          deferredPrompt = null;
+          closePWAInstallModal();
+        });
+      }
+    }
+
+    function closePWAInstallModal() {
+      const modal = document.getElementById('pwa-install-modal');
+      if (modal) modal.classList.remove('show');
+    }
+
     function registerServiceWorker() {
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW Registration failed:', err));
       }
     }
   </script>
+
+  <!-- PWA INSTALL MODAL -->
+  <div id="pwa-install-modal" class="pwa-modal-overlay" onclick="if(event.target === this) closePWAInstallModal()">
+    <div class="pwa-modal-card">
+      <button class="pwa-modal-close" onclick="closePWAInstallModal()">✕</button>
+      <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem;">
+        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+          🎓
+        </div>
+        <div>
+          <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.35rem; font-weight: 800; color: #FFFFFF;">Install UI Freshers App</h3>
+          <p style="color: #94A3B8; font-size: 0.85rem;">Official Companion for University of Ibadan</p>
+        </div>
+      </div>
+
+      <p style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.5; margin-bottom: 1.25rem;">
+        Install this web app on your phone or computer to get offline access to course packages, study guides, and instant CBT practice without browser bars.
+      </p>
+
+      <div id="pwa-native-install-section" style="display: none; margin-bottom: 1.25rem;">
+        <button onclick="executePWAInstall()" style="width: 100%; background: var(--ps-purple-primary); color: #FFF; border: none; padding: 0.85rem 1.5rem; border-radius: 12px; font-weight: 700; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);">
+          📲 Install Now to Home Screen
+        </button>
+      </div>
+
+      <div id="pwa-ios-instructions">
+        <div style="font-size: 0.82rem; font-weight: 700; color: var(--ps-purple-light); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.6px;">FOR IPHONE / IPAD (SAFARI):</div>
+        <div class="pwa-step-box">
+          <div class="pwa-step-num">1</div>
+          <div style="font-size: 0.88rem; color: #E2E8F0;">Tap the <strong>Share button</strong> (box with arrow <span style="font-size: 1rem;">⎋</span>) at the bottom or top of Safari.</div>
+        </div>
+        <div class="pwa-step-box">
+          <div class="pwa-step-num">2</div>
+          <div style="font-size: 0.88rem; color: #E2E8F0;">Scroll down and tap <strong>"Add to Home Screen" <span style="font-weight: bold;">⊕</span></strong>.</div>
+        </div>
+      </div>
+
+      <div id="pwa-android-instructions" style="margin-top: 1.25rem;">
+        <div style="font-size: 0.82rem; font-weight: 700; color: #34D399; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.6px;">FOR ANDROID (CHROME / BRAVE / SAMSUNG):</div>
+        <div class="pwa-step-box">
+          <div class="pwa-step-num">1</div>
+          <div style="font-size: 0.88rem; color: #E2E8F0;">Tap the <strong>Menu (⋮)</strong> at the top right of your browser.</div>
+        </div>
+        <div class="pwa-step-box">
+          <div class="pwa-step-num">2</div>
+          <div style="font-size: 0.88rem; color: #E2E8F0;">Tap <strong>"Install app"</strong> or <strong>"Add to Home screen"</strong>.</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
