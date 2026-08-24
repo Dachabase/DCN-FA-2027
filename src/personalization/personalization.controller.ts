@@ -270,10 +270,10 @@ personalizationRouter.post(
   }
 );
 
-// GET /api/user/feed - Personalized Feed & Academic Hub
+// GET /api/user/feed - Personalized Feed & Academic Hub (Protected)
 personalizationRouter.get(
   "/user/feed",
-  optionalAuth,
+  requireAuth,
   async (req: AuthenticatedRequest, res: Response) => {
     try {
       const user = req.user;

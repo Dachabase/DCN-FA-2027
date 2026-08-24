@@ -7,6 +7,7 @@ import { prisma } from "./database/prisma";
 import { startComputingBot } from "./telegram/computing-bot";
 import { authRouter } from "./auth/auth.controller";
 import { personalizationRouter } from "./personalization/personalization.controller";
+import { requireAuth, optionalAuth } from "./auth/auth.middleware";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -230,7 +231,7 @@ app.get("/api/health", (req: Request, res: Response) => {
 // FACULTIES & GUIDES API
 // =========================================================
 
-// GET /faculties and /api/faculties
+// GET /faculties and /api/faculties (Protected)
 const getFacultiesHandler = async (req: Request, res: Response) => {
   try {
     const faculties = await prisma.faculty.findMany({
@@ -249,10 +250,10 @@ const getFacultiesHandler = async (req: Request, res: Response) => {
   }
   res.json({ success: true, data: FALLBACK_FACULTIES });
 };
-app.get("/faculties", getFacultiesHandler);
-app.get("/api/faculties", getFacultiesHandler);
+app.get("/faculties", requireAuth, getFacultiesHandler);
+app.get("/api/faculties", requireAuth, getFacultiesHandler);
 
-// GET /faculties/:id/departments and /api/faculties/:id/departments
+// GET /faculties/:id/departments and /api/faculties/:id/departments (Protected)
 const getFacultyDepartmentsHandler = async (req: Request, res: Response) => {
   try {
     const facultyId = String(req.params.id);
@@ -274,10 +275,10 @@ const getFacultyDepartmentsHandler = async (req: Request, res: Response) => {
   }
   res.status(404).json({ success: false, message: "Faculty not found", data: [] });
 };
-app.get("/faculties/:id/departments", getFacultyDepartmentsHandler);
-app.get("/api/faculties/:id/departments", getFacultyDepartmentsHandler);
+app.get("/faculties/:id/departments", requireAuth, getFacultyDepartmentsHandler);
+app.get("/api/faculties/:id/departments", requireAuth, getFacultyDepartmentsHandler);
 
-// GET /departments/:id/courses and /api/departments/:id/courses
+// GET /departments/:id/courses and /api/departments/:id/courses (Protected)
 const getDepartmentCoursesHandler = async (req: Request, res: Response) => {
   try {
     const departmentId = String(req.params.id);
@@ -300,7 +301,7 @@ const getDepartmentCoursesHandler = async (req: Request, res: Response) => {
       });
     }
 
-    // Shared University-Wide GES/GST Courses (Principle 2)
+    // Shared University-Wide GES/GST Courses
     const universityWideGes = await prisma.course.findMany({
       where: { isUniversityWide: true },
       orderBy: [{ semester: "asc" }, { code: "asc" }],
@@ -308,7 +309,7 @@ const getDepartmentCoursesHandler = async (req: Request, res: Response) => {
 
     const deptCourses = department.courses.map((dc) => dc.course);
 
-    // Calculate sum of units per semester to verify against 15-24 unit rule (Principle 6)
+    // Calculate sum of units per semester
     const sem1DeptUnits = deptCourses.filter((c) => c.semester === "1st").reduce((sum, c) => sum + c.units, 0);
     const sem2DeptUnits = deptCourses.filter((c) => c.semester === "2nd").reduce((sum, c) => sum + c.units, 0);
     const sem1GesUnits = universityWideGes.filter((c) => c.semester === "1st").reduce((sum, c) => sum + c.units, 0);
@@ -339,10 +340,10 @@ const getDepartmentCoursesHandler = async (req: Request, res: Response) => {
     res.status(500).json({ success: false, message: "Internal server error fetching course package" });
   }
 };
-app.get("/departments/:id/courses", getDepartmentCoursesHandler);
-app.get("/api/departments/:id/courses", getDepartmentCoursesHandler);
+app.get("/departments/:id/courses", requireAuth, getDepartmentCoursesHandler);
+app.get("/api/departments/:id/courses", requireAuth, getDepartmentCoursesHandler);
 
-// GET /courses/university-wide and /api/courses/university-wide
+// GET /courses/university-wide and /api/courses/university-wide (Protected)
 const getUniversityWideCoursesHandler = async (req: Request, res: Response) => {
   try {
     const gesCourses = await prisma.course.findMany({
@@ -361,10 +362,10 @@ const getUniversityWideCoursesHandler = async (req: Request, res: Response) => {
     res.status(500).json({ success: false, message: "Error fetching GES courses" });
   }
 };
-app.get("/courses/university-wide", getUniversityWideCoursesHandler);
-app.get("/api/courses/university-wide", getUniversityWideCoursesHandler);
+app.get("/courses/university-wide", requireAuth, getUniversityWideCoursesHandler);
+app.get("/api/courses/university-wide", requireAuth, getUniversityWideCoursesHandler);
 
-// GET /reference/credit-rules and /api/reference/credit-rules
+// GET /reference/credit-rules and /api/reference/credit-rules (Protected)
 const getReferenceRulesHandler = async (req: Request, res: Response) => {
   try {
     const rules = await prisma.referenceRule.findMany({});
@@ -385,11 +386,11 @@ const getReferenceRulesHandler = async (req: Request, res: Response) => {
     res.status(500).json({ success: false, message: "Error fetching reference rules" });
   }
 };
-app.get("/reference/credit-rules", getReferenceRulesHandler);
-app.get("/api/reference/credit-rules", getReferenceRulesHandler);
+app.get("/reference/credit-rules", requireAuth, getReferenceRulesHandler);
+app.get("/api/reference/credit-rules", requireAuth, getReferenceRulesHandler);
 
-// GET /api/faculties/:id/guides
-app.get("/api/faculties/:id/guides", async (req: Request, res: Response) => {
+// GET /api/faculties/:id/guides (Protected)
+app.get("/api/faculties/:id/guides", requireAuth, async (req: Request, res: Response) => {
   try {
     const facultyId = String(req.params.id);
     const whereClause: any = facultyId === "all" ? { status: "PUBLISHED" } : { OR: [{ facultyId }, { facultyId: null }], status: "PUBLISHED" };
@@ -411,8 +412,8 @@ app.get("/api/faculties/:id/guides", async (req: Request, res: Response) => {
   res.json({ success: true, data: FALLBACK_GUIDES });
 });
 
-// GET /api/guides/:id
-app.get("/api/guides/:id", async (req: Request, res: Response) => {
+// GET /api/guides/:id (Protected)
+app.get("/api/guides/:id", requireAuth, async (req: Request, res: Response) => {
   try {
     const guideId = String(req.params.id);
     const guide = await prisma.guide.findUnique({
@@ -435,9 +436,9 @@ app.get("/api/guides/:id", async (req: Request, res: Response) => {
 });
 
 // =========================================================
-// RESOURCES API
+// RESOURCES API (Protected)
 // =========================================================
-app.get("/api/resources", async (req: Request, res: Response) => {
+app.get("/api/resources", requireAuth, async (req: Request, res: Response) => {
   try {
     const { category, search } = req.query;
     const resources = await prisma.resource.findMany({
@@ -477,9 +478,9 @@ app.get("/api/resources", async (req: Request, res: Response) => {
 });
 
 // =========================================================
-// OPPORTUNITIES API
+// OPPORTUNITIES API (Protected)
 // =========================================================
-app.get("/api/opportunities", async (req: Request, res: Response) => {
+app.get("/api/opportunities", requireAuth, async (req: Request, res: Response) => {
   try {
     const opportunities = await prisma.opportunity.findMany({
       where: { status: "ACTIVE" },
@@ -508,9 +509,9 @@ app.get("/api/opportunities", async (req: Request, res: Response) => {
 });
 
 // =========================================================
-// FAQS API
+// FAQS API (Protected)
 // =========================================================
-app.get("/api/faqs", async (req: Request, res: Response) => {
+app.get("/api/faqs", requireAuth, async (req: Request, res: Response) => {
   try {
     const faqs = await prisma.fAQ.findMany({
       where: { status: "PUBLISHED" },
@@ -529,9 +530,9 @@ app.get("/api/faqs", async (req: Request, res: Response) => {
 });
 
 // =========================================================
-// STUDY ASSISTANT HANDOFF API
+// STUDY ASSISTANT HANDOFF API (Protected)
 // =========================================================
-app.get("/api/study-assistant-link", async (req: Request, res: Response) => {
+app.get("/api/study-assistant-link", requireAuth, async (req: Request, res: Response) => {
   try {
     const { facultyId } = req.query;
     let bot = null;
@@ -550,7 +551,7 @@ app.get("/api/study-assistant-link", async (req: Request, res: Response) => {
     }
 
     const username = bot?.username || process.env.DEFAULT_TELEGRAM_BOT_USERNAME || "UIDCNComputingFreshersBot";
-    const name = bot?.name || "UI Freshers AI Study Companion";
+    const name = bot?.name || "UI Freshers Study Companion";
     const facultyName = bot?.faculty?.name || "University of Ibadan";
 
     res.json({
@@ -560,7 +561,7 @@ app.get("/api/study-assistant-link", async (req: Request, res: Response) => {
         botUrl: `https://t.me/${username}`,
         botName: name,
         facultyName,
-        handoffMessage: `Chat with your personalized ${facultyName} AI Study Assistant on Telegram!`,
+        handoffMessage: `Connect with your departmental study companion on Telegram.`,
       },
     });
   } catch (error) {
@@ -570,18 +571,18 @@ app.get("/api/study-assistant-link", async (req: Request, res: Response) => {
       data: {
         botUsername: fallbackUsername,
         botUrl: `https://t.me/${fallbackUsername}`,
-        botName: "UI Freshers AI Study Companion",
+        botName: "UI Freshers Study Companion",
         facultyName: "University of Ibadan",
-        handoffMessage: "Chat with your personalized AI Study Assistant on Telegram!",
+        handoffMessage: "Connect with your departmental study companion on Telegram.",
       },
     });
   }
 });
 
 // =========================================================
-// OFFICIAL QUESTION BANK UPLOAD & QUERY API
+// OFFICIAL QUESTION BANK UPLOAD & QUERY API (Protected)
 // =========================================================
-app.get("/api/questions", async (req: Request, res: Response) => {
+app.get("/api/questions", requireAuth, async (req: Request, res: Response) => {
   try {
     const { courseCode, topic, type } = req.query;
     const whereClause: any = {};
@@ -601,8 +602,8 @@ app.get("/api/questions", async (req: Request, res: Response) => {
   }
 });
 
-// POST /api/questions/upload (Bulk upload question bank array)
-app.post("/api/questions/upload", async (req: Request, res: Response) => {
+// POST /api/questions/upload (Bulk upload question bank array - Protected)
+app.post("/api/questions/upload", requireAuth, async (req: Request, res: Response) => {
   try {
     const { questions } = req.body;
     if (!Array.isArray(questions) || questions.length === 0) {
@@ -662,8 +663,8 @@ app.use((req: Request, res: Response) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 UI Freshers Companion Backend API running on http://localhost:${PORT}`);
+  console.log(`UI Freshers Companion Backend API running on http://localhost:${PORT}`);
   startComputingBot().catch((err) => {
-    console.error("⚠️ Telegram Bot failed to start:", err);
+    console.error("Telegram Bot failed to start:", err);
   });
 });

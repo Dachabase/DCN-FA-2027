@@ -11,6 +11,16 @@ import { prisma } from "../database/prisma";
 
 export const authRouter = Router();
 
+// GET /api/auth/config - Public auth client configuration
+authRouter.get("/config", (req: Request, res: Response) => {
+  res.json({
+    success: true,
+    data: {
+      googleClientId: process.env.GOOGLE_CLIENT_ID || "",
+    },
+  });
+});
+
 // POST /api/auth/google - Authenticate with Google ID Token or Auth Code
 authRouter.post("/google", async (req: Request, res: Response) => {
   try {
