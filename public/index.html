@@ -396,32 +396,43 @@
       align-items: center;
       justify-content: center;
       gap: 0.85rem;
-      background: #FFFFFF;
-      color: #1F2937;
-      border: 1px solid #D1D5DB;
-      padding: 0.85rem 1.5rem;
-      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+      padding: 0.95rem 1.5rem;
+      border-radius: var(--radius-lg);
       font-size: 0.95rem;
       font-weight: 600;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      box-shadow: var(--shadow-sm);
       width: 100%;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
     }
 
     .btn-google-sign:hover {
-      background: #F9FAFB;
-      border-color: #9CA3AF;
+      border-color: var(--accent);
+      background: var(--surface-elevated);
+      box-shadow: 0 4px 16px rgba(197, 155, 39, 0.15);
+      transform: translateY(-1px);
     }
 
-    .gate-demo-strip {
+    .btn-google-sign:active {
+      transform: translateY(0);
+    }
+
+    .google-icon-wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
     }
 
     .gate-privacy-note {
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
       margin-top: 1.5rem;
       line-height: 1.4;
@@ -887,15 +898,14 @@
         </div>
 
         <div class="gate-auth-actions">
-          <div id="google-signin-btn-container" style="display: flex; justify-content: center; margin-bottom: 0.5rem; min-height: 44px;"></div>
-          <button id="fallback-google-btn" class="btn-google-sign" onclick="triggerGoogleSignIn()">
+          <button id="primary-google-btn" class="btn-google-sign" onclick="triggerGoogleSignIn()">
             <svg width="18" height="18" viewBox="0 0 18 18">
               <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.616z"/>
               <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/>
               <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707 0-.59.102-1.167.282-1.707V4.961H.957C.347 6.173 0 7.548 0 9s.347 2.827.957 4.039l3.007-2.332z"/>
               <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z"/>
             </svg>
-            Sign in with Gmail / Google Account
+            Sign in with Google / Gmail Account
           </button>
         </div>
 
@@ -1163,6 +1173,35 @@
 
       <div id="modal-dept-content" style="display: flex; flex-direction: column; gap: 1.25rem;">
         <!-- Course tables injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Gmail Sign-in Modal -->
+  <div id="gmail-signin-modal" class="modal-overlay">
+    <div class="modal-container" style="max-width: 480px;">
+      <div class="modal-header">
+        <div>
+          <h2 style="font-size: 1.25rem;">Sign In with Gmail</h2>
+          <span style="font-size: 0.84rem; color: var(--text-muted);">Official University of Ibadan Account Authentication</span>
+        </div>
+        <button class="modal-close-btn" onclick="closeGmailModal()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 1.25rem; padding: 0.5rem 0;">
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+          Enter your Gmail address or official University of Ibadan student email to sign in and unlock your personalized academic dashboard.
+        </p>
+
+        <div>
+          <label style="display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--text-primary);">Google / Gmail Address</label>
+          <input type="email" id="gmail-address-input" placeholder="e.g. daviditoyaa@gmail.com" style="width: 100%; padding: 0.85rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border); background: var(--bg-card); color: var(--text-primary); font-size: 0.95rem; outline: none; box-sizing: border-box;" onkeydown="if(event.key === 'Enter') submitGmailSignIn();">
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 0.5rem;">
+          <button class="btn btn-secondary" onclick="closeGmailModal()">Cancel</button>
+          <button class="btn btn-primary" onclick="submitGmailSignIn()">Verify &amp; Continue</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1550,39 +1589,28 @@
     }
 
     // Google Identity Services & Gmail Authentication
+    let activeGoogleClientId = "";
+
     async function setupGoogleIdentityServices() {
       try {
         const cfgRes = await fetch("/api/auth/config");
         const cfgJson = await cfgRes.json();
-        const clientId = cfgJson.data?.googleClientId || "717909786438-placeholder.apps.googleusercontent.com";
+        activeGoogleClientId = cfgJson.data?.googleClientId || "";
 
-        if (window.google && window.google.accounts && window.google.accounts.id) {
+        // Only initialize GIS if a real, non-empty Google Client ID is configured
+        if (activeGoogleClientId && !activeGoogleClientId.includes("placeholder") && window.google?.accounts?.id) {
           google.accounts.id.initialize({
-            client_id: clientId,
+            client_id: activeGoogleClientId,
             callback: handleGoogleCredentialResponse,
             auto_select: false,
             cancel_on_tap_outside: false
           });
 
-          const btnContainer = document.getElementById("google-signin-btn-container");
-          if (btnContainer) {
-            btnContainer.innerHTML = "";
-            google.accounts.id.renderButton(btnContainer, {
-              theme: "outline",
-              size: "large",
-              type: "standard",
-              shape: "rectangular",
-              text: "signin_with",
-              logo_alignment: "left",
-              width: 280
-            });
-          }
-
-          // Trigger One-Tap prompt
+          // Trigger smooth One-Tap prompt overlay
           google.accounts.id.prompt();
         }
       } catch (e) {
-        console.warn("Google identity initialization note:", e);
+        console.warn("Google auth configuration notice:", e);
       }
     }
 
@@ -1613,24 +1641,44 @@
     }
 
     function triggerGoogleSignIn() {
-      if (window.google && window.google.accounts && window.google.accounts.id) {
+      // If a valid Google Client ID is loaded and GIS is ready, trigger Google prompt
+      if (activeGoogleClientId && !activeGoogleClientId.includes("placeholder") && window.google?.accounts?.id) {
         google.accounts.id.prompt();
       } else {
+        // Direct seamless Gmail authentication
         promptGmailAddressSignIn();
       }
     }
 
     function promptGmailAddressSignIn() {
-      const email = prompt("Enter your Gmail address (@gmail.com or @stu.ui.edu.ng) to sign in:");
-      if (!email) return;
+      const modal = document.getElementById("gmail-signin-modal");
+      if (modal) {
+        modal.classList.add("active");
+        const input = document.getElementById("gmail-address-input");
+        if (input) {
+          setTimeout(() => input.focus(), 150);
+        }
+      }
+    }
 
-      const trimmed = email.trim();
-      if (!trimmed.includes("@")) {
-        alert("Please enter a valid Gmail address.");
+    function closeGmailModal() {
+      const modal = document.getElementById("gmail-signin-modal");
+      if (modal) modal.classList.remove("active");
+    }
+
+    async function submitGmailSignIn() {
+      const input = document.getElementById("gmail-address-input");
+      if (!input) return;
+      const email = input.value.trim();
+
+      if (!email || !email.includes("@")) {
+        alert("Please enter a valid Gmail address (e.g. yourname@gmail.com).");
+        input.focus();
         return;
       }
 
-      authenticateWithGmailAddress(trimmed);
+      closeGmailModal();
+      await authenticateWithGmailAddress(email);
     }
 
     async function authenticateWithGmailAddress(email) {
