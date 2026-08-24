@@ -21,21 +21,41 @@ authRouter.get("/config", (req: Request, res: Response) => {
   });
 });
 
-// POST /api/auth/google - Authenticate with Google ID Token or Auth Code
+// POST /api/auth/google - Authenticate with Google ID Token, Auth Code, or Gmail Address
 authRouter.post("/google", async (req: Request, res: Response) => {
   try {
-    const { credential, code } = req.body;
-    const tokenOrCode = credential || code;
+    const { credential, code, email, fullName, avatarUrl } = req.body;
 
-    if (!tokenOrCode) {
-      return res.status(400).json({
-        success: false,
-        error: "INVALID_PAYLOAD",
-        message: "Google credential token or auth code is required.",
-      });
+    let googleIdentity;
+    if (email) {
+      const cleanEmail = String(email).trim().toLowerCase();
+      if (!cleanEmail.includes("@")) {
+        return res.status(400).json({
+          success: false,
+          error: "INVALID_EMAIL",
+          message: "Please enter a valid Gmail address.",
+        });
+      }
+      const encodedSub = "gmail-" + Buffer.from(cleanEmail).toString("base64").replace(/=/g, "").slice(0, 24);
+      const name = fullName || cleanEmail.split("@")[0].replace(/[._]/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+      googleIdentity = {
+        googleSub: encodedSub,
+        email: cleanEmail,
+        fullName: name,
+        avatarUrl: avatarUrl || `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(name)}&backgroundColor=0a192f&textColor=ffffff`,
+      };
+    } else {
+      const tokenOrCode = credential || code;
+      if (!tokenOrCode) {
+        return res.status(400).json({
+          success: false,
+          error: "INVALID_PAYLOAD",
+          message: "Gmail address or Google credential is required.",
+        });
+      }
+      googleIdentity = await verifyGoogleTokenOrCode(tokenOrCode);
     }
 
-    const googleIdentity = await verifyGoogleTokenOrCode(tokenOrCode);
     const user = await syncGoogleUser(googleIdentity);
 
     // Generate JWT access and refresh token pair
