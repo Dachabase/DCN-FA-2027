@@ -1885,26 +1885,221 @@
       animation: pulse-skeleton 1.5s infinite ease-in-out;
     }
 
-    @keyframes pulse-skeleton {
-      0% { opacity: 0.5; }
-      50% { opacity: 0.85; }
-      100% { opacity: 0.5; }
+    /* =========================================================
+       HARD AUTH GATEKEEPER SCREEN (Dark Obsidian & Purple Violet)
+       ========================================================= */
+    .auth-gatekeeper-screen {
+      min-height: 100vh;
+      width: 100%;
+      background: radial-gradient(circle at 50% 15%, rgba(139, 92, 246, 0.18) 0%, #0F0D15 70%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+      box-sizing: border-box;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .gate-card {
+      background: rgba(22, 20, 32, 0.9);
+      border: 1px solid rgba(139, 92, 246, 0.28);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 45px rgba(139, 92, 246, 0.16);
+      backdrop-filter: blur(16px);
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .gate-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      color: #A78BFA;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 1.25rem;
+    }
+
+    .gate-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.95rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .gate-subtitle {
+      color: #94A3B8;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin-bottom: 1.75rem;
+    }
+
+    .gate-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      max-width: 900px;
+      width: 100%;
+      margin-top: 2.5rem;
+    }
+
+    .gate-feature-item {
+      background: rgba(22, 20, 32, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      text-align: left;
+    }
+
+    .gate-feature-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .gate-feature-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #FFFFFF;
+      margin-bottom: 0.25rem;
+    }
+
+    .gate-feature-desc {
+      font-size: 0.82rem;
+      color: #94A3B8;
+      line-height: 1.45;
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-container">
-      <a href="#" onclick="switchTab('home', event)" class="brand">
+  <!-- HARD AUTHENTICATION GATEKEEPER (For unauthenticated visitors) -->
+  <div id="app-unauthenticated-gate" class="auth-gatekeeper-screen">
+    <!-- Brand Top Header -->
+    <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 900px; margin-bottom: 2rem;">
+      <div class="brand">
         <div class="brand-logo">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
         </div>
         <div class="brand-title">
-          uifreshers<span>.</span> <span class="brand-tag">v2.4 Live</span>
+          uifreshers<span>.</span> <span class="brand-tag">2026/2027</span>
         </div>
-      </a>
+      </div>
+      <button class="mobile-header-install-btn" onclick="triggerPWAInstall()" style="margin: 0;">📲 Install App</button>
+    </div>
+
+    <!-- Central Sign-in Gatekeeper Card -->
+    <div class="gate-card">
+      <div class="gate-badge">
+        <span>🏛️ University of Ibadan Freshers Portal</span>
+      </div>
+      
+      <h1 class="gate-title">Sign In to Continue</h1>
+      <p class="gate-subtitle">
+        Access verified 100-Level course outlines, registration roadmaps, past CBT questions, and your 24/7 AI academic mentor.
+      </p>
+
+      <!-- Google GIS Slot -->
+      <div id="g_id_gate_slot" style="display: flex; justify-content: center; margin-bottom: 0.75rem; min-height: 40px;"></div>
+
+      <!-- Divider -->
+      <div style="display: flex; align-items: center; gap: 0.75rem; margin: 1.25rem 0;">
+        <div style="flex: 1; height: 1px; background: rgba(255,255,255,0.1);"></div>
+        <span style="font-size: 0.75rem; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.5px;">or with personal Gmail</span>
+        <div style="flex: 1; height: 1px; background: rgba(255,255,255,0.1);"></div>
+      </div>
+
+      <!-- Direct Gmail Sign-in Form -->
+      <form onsubmit="handleGateGmailSubmit(event)">
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <input 
+            type="email" 
+            id="gate-gmail-input" 
+            placeholder="Enter your personal Gmail address..." 
+            required 
+            style="width: 100%; padding: 0.95rem 1.15rem; border-radius: 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #FFFFFF; font-size: 0.95rem; font-family: 'Outfit', sans-serif; box-sizing: border-box; outline: none;"
+          />
+          <button 
+            type="submit" 
+            id="gate-gmail-submit-btn" 
+            style="width: 100%; padding: 0.95rem; border-radius: 12px; background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); color: #FFFFFF; font-weight: 800; font-size: 1rem; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 6px 20px rgba(139,92,246,0.4); font-family: 'Outfit', sans-serif;"
+          >
+            🚀 Enter Campus Hub →
+          </button>
+        </div>
+      </form>
+
+      <p id="gate-signin-error-msg" style="display: none; color: #F87171; font-size: 0.84rem; margin-top: 0.85rem; font-weight: 600;"></p>
+
+      <p style="color: #475569; font-size: 0.75rem; margin-top: 1.5rem; line-height: 1.4;">
+        🔒 Instant access. No institutional email required. Any personal Gmail address works.
+      </p>
+    </div>
+
+    <!-- 3 Benefit Pillars -->
+    <div class="gate-features-grid">
+      <div class="gate-feature-item">
+        <div class="gate-feature-icon">📚</div>
+        <div>
+          <div class="gate-feature-title">Verified Course Outlines</div>
+          <div class="gate-feature-desc">All 17 faculties & 94 departments with required credit limits, electives, and semester combinations.</div>
+        </div>
+      </div>
+      <div class="gate-feature-item">
+        <div class="gate-feature-icon">⚡</div>
+        <div>
+          <div class="gate-feature-title">Interactive CBT Practice</div>
+          <div class="gate-feature-desc">Timed mock tests with authentic UI past questions and automated performance feedback.</div>
+        </div>
+      </div>
+      <div class="gate-feature-item">
+        <div class="gate-feature-icon">🤖</div>
+        <div>
+          <div class="gate-feature-title">24/7 AI Freshman Mentor</div>
+          <div class="gate-feature-desc">Instant explanations for clearance steps, course prerequisites, and campus lecture venues.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTHENTICATED APP CONTAINER (Hidden until signed in) -->
+  <div id="app-authenticated-container" style="display: none;">
+
+    <!-- HEADER -->
+    <header>
+      <div class="header-container">
+        <a href="#" onclick="switchTab('home', event)" class="brand">
+          <div class="brand-logo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="brand-title">
+            uifreshers<span>.</span> <span class="brand-tag">v2.4 Live</span>
+          </div>
+        </a>
 
       <div style="display: flex; align-items: center; gap: 0.5rem;">
         <button class="mobile-header-install-btn" onclick="triggerPWAInstall()">📲 Install App</button>
@@ -2397,6 +2592,7 @@
       </div>
     </div>
   </footer>
+  </div> <!-- /#app-authenticated-container -->
 
   <script>
     // State Store
@@ -3310,10 +3506,24 @@
           cancel_on_tap_outside: true,
         });
 
+        // Render button in sign-in modal
         const slot = document.getElementById("g_id_signin_slot");
         if (slot) {
           slot.innerHTML = "";
           google.accounts.id.renderButton(slot, {
+            theme: "filled_blue",
+            size: "large",
+            shape: "pill",
+            text: "continue_with",
+            width: 280,
+          });
+        }
+
+        // Render button in main gatekeeper screen
+        const gateSlot = document.getElementById("g_id_gate_slot");
+        if (gateSlot) {
+          gateSlot.innerHTML = "";
+          google.accounts.id.renderButton(gateSlot, {
             theme: "filled_blue",
             size: "large",
             shape: "pill",
@@ -3327,6 +3537,8 @@
     }
 
     function updateAuthUI() {
+      const gateScreen = document.getElementById("app-unauthenticated-gate");
+      const authApp = document.getElementById("app-authenticated-container");
       const signinBtn = document.getElementById("header-google-signin-btn");
       const userProfile = document.getElementById("header-user-profile");
       const nameDisplay = document.getElementById("user-name-display");
@@ -3337,9 +3549,12 @@
       const dropAcademic = document.getElementById("dropdown-academic-identity");
 
       if (appData.currentUser) {
-        const u = appData.currentUser;
+        if (gateScreen) gateScreen.style.display = "none";
+        if (authApp) authApp.style.display = "block";
         if (signinBtn) signinBtn.style.display = "none";
         if (userProfile) userProfile.style.display = "block";
+
+        const u = appData.currentUser;
         if (nameDisplay) nameDisplay.textContent = u.fullName ? u.fullName.split(" ")[0] : "Fresher";
 
         let deptLabel = "100L";
@@ -3370,6 +3585,8 @@
         }
         if (dropAcademic) dropAcademic.textContent = academicStr;
       } else {
+        if (gateScreen) gateScreen.style.display = "flex";
+        if (authApp) authApp.style.display = "none";
         if (signinBtn) signinBtn.style.display = "inline-flex";
         if (userProfile) userProfile.style.display = "none";
         const banner = document.getElementById("returning-user-banner");
@@ -3409,13 +3626,16 @@
     function closeDemoSignInModal() { closeSignInModal(); }
 
     async function completeUserAuthentication(authPayload) {
-      const errMsg = document.getElementById("signin-error-msg");
-      const submitBtn = document.getElementById("direct-gmail-submit-btn");
-      if (errMsg) errMsg.style.display = "none";
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = "Signing in...";
-      }
+      const modalErrMsg = document.getElementById("signin-error-msg");
+      const gateErrMsg = document.getElementById("gate-signin-error-msg");
+      const modalSubmitBtn = document.getElementById("direct-gmail-submit-btn");
+      const gateSubmitBtn = document.getElementById("gate-gmail-submit-btn");
+
+      if (modalErrMsg) modalErrMsg.style.display = "none";
+      if (gateErrMsg) gateErrMsg.style.display = "none";
+
+      if (modalSubmitBtn) { modalSubmitBtn.disabled = true; modalSubmitBtn.innerHTML = "Signing in..."; }
+      if (gateSubmitBtn) { gateSubmitBtn.disabled = true; gateSubmitBtn.innerHTML = "Signing in..."; }
 
       try {
         const res = await fetch("/api/auth/google", {
@@ -3444,23 +3664,34 @@
           }
           logUserInteraction("LOGIN_SUCCESS", null, { email: json.data.user.email });
         } else {
-          if (errMsg) {
-            errMsg.textContent = json.message || "Sign-in failed. Please check your Gmail address and try again.";
-            errMsg.style.display = "block";
-          }
+          const message = json.message || "Sign-in failed. Please check your Gmail address and try again.";
+          if (modalErrMsg) { modalErrMsg.textContent = message; modalErrMsg.style.display = "block"; }
+          if (gateErrMsg) { gateErrMsg.textContent = message; gateErrMsg.style.display = "block"; }
         }
       } catch (err) {
         console.error("Auth callback failed:", err);
+        const errText = "Network error. Please check your connection and try again.";
+        if (modalErrMsg) { modalErrMsg.textContent = errText; modalErrMsg.style.display = "block"; }
+        if (gateErrMsg) { gateErrMsg.textContent = errText; gateErrMsg.style.display = "block"; }
+      } finally {
+        if (modalSubmitBtn) { modalSubmitBtn.disabled = false; modalSubmitBtn.innerHTML = "Continue with Gmail →"; }
+        if (gateSubmitBtn) { gateSubmitBtn.disabled = false; gateSubmitBtn.innerHTML = "🚀 Enter Campus Hub →"; }
+      }
+    }
+
+    function handleGateGmailSubmit(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      const input = document.getElementById("gate-gmail-input");
+      const email = input ? input.value.trim() : "";
+      if (!email || !email.includes("@")) {
+        const errMsg = document.getElementById("gate-signin-error-msg");
         if (errMsg) {
-          errMsg.textContent = "Network error. Please check your connection and try again.";
+          errMsg.textContent = "Please enter a valid personal Gmail address.";
           errMsg.style.display = "block";
         }
-      } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = "Continue with Gmail →";
-        }
+        return;
       }
+      completeUserAuthentication({ email });
     }
 
     function handleDirectGmailSubmit(e) {
@@ -3470,7 +3701,7 @@
       if (!email || !email.includes("@")) {
         const errMsg = document.getElementById("signin-error-msg");
         if (errMsg) {
-          errMsg.textContent = "Please enter a valid Gmail or email address.";
+          errMsg.textContent = "Please enter a valid personal Gmail address.";
           errMsg.style.display = "block";
         }
         return;
