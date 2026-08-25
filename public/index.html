@@ -2475,21 +2475,18 @@
     }
 
     document.addEventListener("DOMContentLoaded", async () => {
-      await fetchAllData();
+      // 1. Initialize auth session first
       await initAuth();
-      renderHome();
-      renderFacultyCatalog();
-      renderGuides();
-      renderResources();
-      renderOpportunities();
-      renderFaqs();
+
+      // 2. Register service worker
       registerServiceWorker();
 
-      // Ensure baseline root hash exists in history
+      // 3. Ensure baseline root hash exists in history
       if (!window.location.hash || window.location.hash === "#" || window.location.hash === "#/") {
         history.replaceState({ tab: 'home' }, '', '#/home');
       }
 
+      // 4. Handle initial routing
       handleHashRouting();
       window.addEventListener("hashchange", handleHashRouting);
       window.addEventListener("popstate", handleHashRouting);
@@ -2508,12 +2505,20 @@
       const mainTab = parts[0];
 
       const validTabs = ['home', 'catalog', 'guides', 'resources', 'opportunities', 'cbt', 'faqs'];
-      if (validTabs.includes(mainTab)) {
-        switchTab(mainTab, null, false);
-      } else {
+      if (!validTabs.includes(mainTab)) {
         switchTab('home', null, false);
         return;
       }
+
+      // HARD GATE: Protected tabs require authentication
+      if (mainTab !== 'home' && !appData.currentUser) {
+        history.replaceState({ tab: 'home' }, '', '#/home');
+        switchTab('home', null, false);
+        openSignInModal();
+        return;
+      }
+
+      switchTab(mainTab, null, false);
 
       // Handle Catalog sub-routes (faculty/xyz or package/xyz)
       if (mainTab === 'catalog') {
@@ -2532,24 +2537,34 @@
     async function fetchAllData() {
       try {
         const [facRes, guiRes, resRes, oppRes, faqRes, botRes] = await Promise.all([
-          fetch("/api/faculties").then(r => r.json()).catch(() => ({ success: false, data: [] })),
-          fetch("/api/faculties/all/guides").then(r => r.json()).catch(() => ({ success: false, data: [] })),
-          fetch("/api/resources").then(r => r.json()).catch(() => ({ success: false, data: [] })),
-          fetch("/api/opportunities").then(r => r.json()).catch(() => ({ success: false, data: [] })),
-          fetch("/api/faqs").then(r => r.json()).catch(() => ({ success: false, data: [] })),
-          fetch("/api/study-assistant-link").then(r => r.json()).catch(() => ({ success: false, data: null }))
+          fetch("/api/faculties", { credentials: "include" }).then(r => r.json()).catch(() => ({ success: false, data: [] })),
+          fetch("/api/faculties/all/guides", { credentials: "include" }).then(r => r.json()).catch(() => ({ success: false, data: [] })),
+          fetch("/api/resources", { credentials: "include" }).then(r => r.json()).catch(() => ({ success: false, data: [] })),
+          fetch("/api/opportunities", { credentials: "include" }).then(r => r.json()).catch(() => ({ success: false, data: [] })),
+          fetch("/api/faqs", { credentials: "include" }).then(r => r.json()).catch(() => ({ success: false, data: [] })),
+          fetch("/api/study-assistant-link", { credentials: "include" }).then(r => r.json()).catch(() => ({ success: false, data: null }))
         ]);
 
         if (facRes.success && facRes.data) {
           appData.faculties = facRes.data;
           renderFacultyCatalog();
-          // Re-trigger hash routing in case initial URL was a deep link to a faculty or department
-          handleHashRouting();
         }
-        if (guiRes.success && guiRes.data && guiRes.data.length > 0) appData.guides = guiRes.data;
-        if (resRes.success && resRes.data) appData.resources = resRes.data;
-        if (oppRes.success && oppRes.data) appData.opportunities = oppRes.data;
-        if (faqRes.success && faqRes.data) appData.faqs = faqRes.data;
+        if (guiRes.success && guiRes.data && guiRes.data.length > 0) {
+          appData.guides = guiRes.data;
+          renderGuides();
+        }
+        if (resRes.success && resRes.data) {
+          appData.resources = resRes.data;
+          renderResources();
+        }
+        if (oppRes.success && oppRes.data) {
+          appData.opportunities = oppRes.data;
+          renderOpportunities();
+        }
+        if (faqRes.success && faqRes.data) {
+          appData.faqs = faqRes.data;
+          renderFaqs();
+        }
         if (botRes.success && botRes.data) {
           appData.studyAssistantLink = botRes.data;
           updateBotLinks(botRes.data.botUrl);
@@ -2571,6 +2586,12 @@
       
       const validTabs = ['home', 'catalog', 'guides', 'resources', 'opportunities', 'cbt', 'faqs'];
       if (!validTabs.includes(tabId)) tabId = 'home';
+
+      // HARD GATE: All academic content tabs require sign in!
+      if (tabId !== 'home' && !appData.currentUser) {
+        openSignInModal();
+        return;
+      }
 
       // Toggle hero section visibility (Only visible on Home tab!)
       const heroSection = document.querySelector(".hero-section");
@@ -3225,7 +3246,7 @@
     }
 
     // =========================================================
-    // AUTHENTICATION & SESSION MANAGEMENT
+    // AUTHENTICATION & SESSION MANAGEMENT (Consolidated System)
     // =========================================================
     async function initAuth() {
       try {
@@ -3235,6 +3256,7 @@
         if (json.success && json.authenticated && json.data) {
           appData.currentUser = json.data;
           updateAuthUI();
+          await fetchAllData();
           renderFacultyCatalog();
           await fetchPersonalizedFeed();
 
@@ -3248,21 +3270,21 @@
               if (banner) banner.style.display = "flex";
             }
           } else {
-            // Returning user check
             checkReturningUser();
           }
         } else {
           appData.currentUser = null;
           updateAuthUI();
-          renderFacultyCatalog();
+          renderHome();
         }
       } catch (err) {
         console.warn("Auth initialization error:", err);
         appData.currentUser = null;
         updateAuthUI();
+        renderHome();
       }
       
-      // Initialize Google Identity Services One-Tap if available
+      // Initialize Google Identity Services One-Tap/Button if available
       initGoogleIdentity();
     }
 
@@ -3290,6 +3312,7 @@
 
         const slot = document.getElementById("g_id_signin_slot");
         if (slot) {
+          slot.innerHTML = "";
           google.accounts.id.renderButton(slot, {
             theme: "filled_blue",
             size: "large",
@@ -3367,7 +3390,13 @@
 
     function openSignInModal() {
       const modal = document.getElementById("signin-modal");
-      if (modal) modal.classList.add("show");
+      if (modal) {
+        modal.classList.add("show");
+        const errMsg = document.getElementById("signin-error-msg");
+        if (errMsg) errMsg.style.display = "none";
+        const input = document.getElementById("direct-gmail-input");
+        if (input) setTimeout(() => input.focus(), 150);
+      }
     }
 
     function closeSignInModal() {
@@ -3379,13 +3408,20 @@
     function openDemoSignInModal() { openSignInModal(); }
     function closeDemoSignInModal() { closeSignInModal(); }
 
-    async function handleGoogleCredentialResponse(response) {
-      if (!response.credential) return;
+    async function completeUserAuthentication(authPayload) {
+      const errMsg = document.getElementById("signin-error-msg");
+      const submitBtn = document.getElementById("direct-gmail-submit-btn");
+      if (errMsg) errMsg.style.display = "none";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "Signing in...";
+      }
+
       try {
         const res = await fetch("/api/auth/google", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ credential: response.credential }),
+          body: JSON.stringify(authPayload),
           credentials: "include",
         });
         const json = await res.json();
@@ -3393,20 +3429,58 @@
           appData.currentUser = json.data.user;
           updateAuthUI();
           closeSignInModal();
+          await fetchAllData();
           await fetchPersonalizedFeed();
+
           if (!json.data.user.isOnboarded) {
             openOnboardingModal(1);
           } else {
             renderHome();
+            renderFacultyCatalog();
+            const rawHash = window.location.hash.replace(/^#\/?/, '');
+            if (rawHash && rawHash !== 'home') {
+              handleHashRouting();
+            }
           }
-          logUserInteraction("LOGIN_GOOGLE", null, { method: "oauth2_oidc" });
+          logUserInteraction("LOGIN_SUCCESS", null, { email: json.data.user.email });
         } else {
-          const errMsg = document.getElementById("signin-error-msg");
-          if (errMsg) { errMsg.textContent = "Sign-in failed. Please try again."; errMsg.style.display = "block"; }
+          if (errMsg) {
+            errMsg.textContent = json.message || "Sign-in failed. Please check your Gmail address and try again.";
+            errMsg.style.display = "block";
+          }
         }
       } catch (err) {
-        console.error("Google auth callback failed:", err);
+        console.error("Auth callback failed:", err);
+        if (errMsg) {
+          errMsg.textContent = "Network error. Please check your connection and try again.";
+          errMsg.style.display = "block";
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = "Continue with Gmail →";
+        }
       }
+    }
+
+    function handleDirectGmailSubmit(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      const input = document.getElementById("direct-gmail-input");
+      const email = input ? input.value.trim() : "";
+      if (!email || !email.includes("@")) {
+        const errMsg = document.getElementById("signin-error-msg");
+        if (errMsg) {
+          errMsg.textContent = "Please enter a valid Gmail or email address.";
+          errMsg.style.display = "block";
+        }
+        return;
+      }
+      completeUserAuthentication({ email });
+    }
+
+    function handleGoogleCredentialResponse(response) {
+      if (!response.credential) return;
+      completeUserAuthentication({ credential: response.credential });
     }
 
     async function handleSignOut() {
@@ -3422,6 +3496,8 @@
       sessionStorage.removeItem("ui_onboarding_skipped");
       sessionStorage.removeItem("ui_ret_user_dismissed");
       updateAuthUI();
+      history.replaceState({ tab: 'home' }, '', '#/home');
+      switchTab('home', null, false);
       renderHome();
       logUserInteraction("LOGOUT", null, {});
     }
@@ -4171,7 +4247,7 @@
   <!-- SIGN-IN MODAL (Gmail / Google only) -->
   <div id="signin-modal" class="onboarding-modal-overlay">
     <div class="onboarding-card" style="max-width: 420px; text-align: center;">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
         <div style="text-align: left;">
           <span style="font-size: 0.72rem; font-weight: 800; color: #A78BFA; text-transform: uppercase; letter-spacing: 0.7px;">Academic Access</span>
           <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 800; color: #FFFFFF; margin-top: 0.15rem;">Sign in to continue</h3>
@@ -4181,16 +4257,44 @@
         </button>
       </div>
 
-      <p style="color: #94A3B8; font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.5rem; text-align: left;">
-        Use your personal Gmail to save your course combinations, track registration steps, and access department guides.
+      <p style="color: #94A3B8; font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.25rem; text-align: left;">
+        Sign in with your Gmail to unlock verified 100-Level course outlines, past question banks, and department guides.
       </p>
 
-      <div id="g_id_signin_slot" style="display: flex; justify-content: center; margin-bottom: 1rem;"></div>
+      <!-- 1. Google GIS Button (if initialized) -->
+      <div id="g_id_signin_slot" style="display: flex; justify-content: center; margin-bottom: 0.75rem; min-height: 40px;"></div>
 
-      <p id="signin-error-msg" style="display: none; color: #F87171; font-size: 0.82rem; margin-top: 0.75rem;"></p>
+      <!-- Divider -->
+      <div style="display: flex; align-items: center; gap: 0.75rem; margin: 1rem 0;">
+        <div style="flex: 1; height: 1px; background: rgba(255,255,255,0.1);"></div>
+        <span style="font-size: 0.75rem; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.5px;">or with Gmail</span>
+        <div style="flex: 1; height: 1px; background: rgba(255,255,255,0.1);"></div>
+      </div>
 
-      <p style="color: #475569; font-size: 0.75rem; margin-top: 1.25rem;">
-        No institutional email required. Any Gmail address works.
+      <!-- 2. Direct Gmail Input Flow -->
+      <form onsubmit="handleDirectGmailSubmit(event)" style="text-align: left;">
+        <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+          <input 
+            type="email" 
+            id="direct-gmail-input" 
+            placeholder="Enter your Gmail (e.g. name@gmail.com)" 
+            required 
+            style="width: 100%; padding: 0.85rem 1rem; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #FFFFFF; font-size: 0.92rem; font-family: 'Outfit', sans-serif; box-sizing: border-box; outline: none;"
+          />
+          <button 
+            type="submit" 
+            id="direct-gmail-submit-btn" 
+            style="width: 100%; padding: 0.85rem; border-radius: 10px; background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); color: #FFFFFF; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 14px rgba(139,92,246,0.35);"
+          >
+            Continue with Gmail →
+          </button>
+        </div>
+      </form>
+
+      <p id="signin-error-msg" style="display: none; color: #F87171; font-size: 0.82rem; margin-top: 0.75rem; text-align: center;"></p>
+
+      <p style="color: #475569; font-size: 0.75rem; margin-top: 1.25rem; text-align: center;">
+        No institutional email required. Any personal Gmail address works.
       </p>
     </div>
   </div>

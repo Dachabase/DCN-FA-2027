@@ -59,6 +59,31 @@ export function verifyRefreshToken(token: string): TokenPayload | null {
   }
 }
 
+export function setAuthCookies(req: any, res: any, accessToken: string, refreshToken: string) {
+  const isSecure = process.env.NODE_ENV === "production" || req.secure || req.headers["x-forwarded-proto"] === "https";
+
+  res.cookie("ui_access_token", accessToken, {
+    httpOnly: true,
+    secure: isSecure,
+    sameSite: "lax",
+    path: "/",
+    maxAge: 15 * 60 * 1000, // 15 mins
+  });
+
+  res.cookie("ui_refresh_token", refreshToken, {
+    httpOnly: true,
+    secure: isSecure,
+    sameSite: "lax",
+    path: "/",
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+  });
+}
+
+export function clearAuthCookies(res: any) {
+  res.clearCookie("ui_access_token", { path: "/" });
+  res.clearCookie("ui_refresh_token", { path: "/" });
+}
+
 export async function verifyGoogleTokenOrCode(credentialOrCode: string): Promise<{
   googleSub: string;
   email: string;

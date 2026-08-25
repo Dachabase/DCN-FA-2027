@@ -6,6 +6,7 @@ import {
   generateAccessToken,
   generateRefreshToken,
   getFallbackUser,
+  setAuthCookies,
 } from "./auth.service";
 import crypto from "crypto";
 import { User } from "@prisma/client";
@@ -23,6 +24,7 @@ export async function authenticateToken(
   const cookieAccessToken = req.cookies?.ui_access_token;
   const accessToken = headerToken || cookieAccessToken;
 
+  // Verify access token if present
   if (accessToken) {
     const payload = verifyAccessToken(accessToken);
     if (payload && payload.userId) {
@@ -39,11 +41,11 @@ export async function authenticateToken(
           return user;
         }
       } catch (e) {
-        // Fallback in-memory user
-        const fbUser = getFallbackUser(payload.userId);
-        if (fbUser) {
-          req.user = fbUser;
-          return fbUser;
+        // Fallback user store if DB unavailable
+        const fb = getFallbackUser(payload.userId);
+        if (fb) {
+          req.user = fb;
+          return fb;
         }
       }
     }
@@ -82,20 +84,7 @@ export async function authenticateToken(
               },
             });
 
-            const isProd = process.env.NODE_ENV === "production";
-            res.cookie("ui_access_token", newAccessToken, {
-              httpOnly: true,
-              secure: isProd,
-              sameSite: "lax",
-              maxAge: 15 * 60 * 1000, // 15 mins
-            });
-
-            res.cookie("ui_refresh_token", newRefreshToken, {
-              httpOnly: true,
-              secure: isProd,
-              sameSite: "lax",
-              maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-            });
+            setAuthCookies(req, res, newAccessToken, newRefreshToken);
 
             req.user = user;
             return user;

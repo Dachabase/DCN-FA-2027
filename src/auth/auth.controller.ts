@@ -5,6 +5,8 @@ import {
   generateAccessToken,
   generateRefreshToken,
   updateFallbackUser,
+  setAuthCookies,
+  clearAuthCookies,
 } from "./auth.service";
 import { AuthenticatedRequest, requireAuth, optionalAuth } from "./auth.middleware";
 import { prisma } from "../database/prisma";
@@ -75,21 +77,8 @@ authRouter.post("/google", async (req: Request, res: Response) => {
       updateFallbackUser(user.id, { refreshTokenHash: refreshHash, lastSeenAt: new Date() });
     }
 
-    // Set secure HTTP-only cookies
-    const isProd = process.env.NODE_ENV === "production";
-    res.cookie("ui_access_token", accessToken, {
-      httpOnly: true,
-      secure: isProd,
-      sameSite: "lax",
-      maxAge: 15 * 60 * 1000, // 15 mins
-    });
-
-    res.cookie("ui_refresh_token", refreshToken, {
-      httpOnly: true,
-      secure: isProd,
-      sameSite: "lax",
-      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-    });
+    // Set secure HTTP-only cookies across environments and reverse proxies
+    setAuthCookies(req, res, accessToken, refreshToken);
 
     // Fetch full user with relations
     let fullUser: any = null;
@@ -167,20 +156,8 @@ authRouter.post("/mock", async (req: Request, res: Response) => {
       updateFallbackUser(user.id, { refreshTokenHash: refreshHash, lastSeenAt: new Date() });
     }
 
-    const isProd = process.env.NODE_ENV === "production";
-    res.cookie("ui_access_token", accessToken, {
-      httpOnly: true,
-      secure: isProd,
-      sameSite: "lax",
-      maxAge: 15 * 60 * 1000,
-    });
-
-    res.cookie("ui_refresh_token", refreshToken, {
-      httpOnly: true,
-      secure: isProd,
-      sameSite: "lax",
-      maxAge: 30 * 24 * 60 * 60 * 1000,
-    });
+    // Set secure HTTP-only cookies
+    setAuthCookies(req, res, accessToken, refreshToken);
 
     let fullUser: any = null;
     try {
@@ -280,8 +257,7 @@ authRouter.post("/logout", async (req: AuthenticatedRequest, res: Response) => {
     }
   }
 
-  res.clearCookie("ui_access_token");
-  res.clearCookie("ui_refresh_token");
+  clearAuthCookies(res);
 
   return res.json({
     success: true,
