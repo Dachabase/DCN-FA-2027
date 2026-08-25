@@ -4373,7 +4373,8 @@
         if (userProfile) userProfile.style.display = "block";
 
         const u = appData.currentUser;
-        if (nameDisplay) nameDisplay.textContent = u.fullName ? u.fullName.split(" ")[0] : "Fresher";
+        const firstName = u.fullName ? u.fullName.split(" ")[0] : (u.email ? u.email.split("@")[0] : "Student");
+        if (nameDisplay) nameDisplay.textContent = firstName;
 
         let deptLabel = "100L";
         if (u.role === "PROSPECTIVE_UTME") {
@@ -4392,12 +4393,12 @@
           }
         }
 
-        if (dropName) dropName.textContent = u.fullName || "UI Student";
-        if (dropEmail) dropEmail.textContent = u.email || "student@ui.edu.ng";
+        if (dropName) dropName.textContent = u.fullName || u.email || "Student";
+        if (dropEmail) dropEmail.textContent = u.email || "";
         
         let academicStr = "University of Ibadan";
         if (u.role === "CURRENT_STUDENT") {
-          academicStr = `${u.faculty?.name || 'Computing'} • ${u.department?.name || 'Department'} (${u.level || 100}L)`;
+          academicStr = `${u.faculty?.name || 'Faculty'} • ${u.department?.name || 'Department'} (${u.level || 100}L)`;
         } else if (u.role === "PROSPECTIVE_UTME") {
           academicStr = `UTME Candidate • Target ${u.utmeExamYear || 2026} Session`;
         }

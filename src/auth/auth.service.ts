@@ -35,7 +35,11 @@ export function generateAccessToken(user: User): string {
 
 export function generateRefreshToken(user: User): { token: string; hash: string } {
   const token = jwt.sign(
-    { userId: user.id } as TokenPayload,
+    {
+      userId: user.id,
+      email: user.email,
+      googleSub: user.googleSub,
+    } as TokenPayload,
     JWT_REFRESH_SECRET,
     { expiresIn: "30d" } // 30-day refresh token
   );

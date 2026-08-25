@@ -201,7 +201,10 @@ authRouter.post("/google", async (req: Request, res: Response) => {
 // GET /api/auth/me - Get current user profile
 authRouter.get("/me", optionalAuth, async (req: AuthenticatedRequest, res: Response) => {
   const user = req.user;
-  if (!user) {
+  // Invalidate any legacy mock or test sessions without verified Google credentials
+  if (!user || !user.email || user.email === "student@ui.edu.ng" || (!user.googleSub && !user.email.includes("@"))) {
+    res.clearCookie("ui_access_token", { path: "/" });
+    res.clearCookie("ui_refresh_token", { path: "/" });
     return res.json({
       success: true,
       authenticated: false,
