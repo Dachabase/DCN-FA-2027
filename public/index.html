@@ -2942,13 +2942,31 @@
     <!-- 4. RESOURCES TAB -->
     <section id="tab-resources" class="tab-section">
       <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.5px;">Academic Resources & Library</h2>
-      <p style="color: var(--ps-text-gray); margin-bottom: 1.75rem;">Download lecture slides, GST past questions, academic calendar, and KDL catalog links.</p>
+      <p style="color: var(--ps-text-gray); margin-bottom: 1.75rem;">Access 100-Level lecture slides, GST past questions, academic calendar, and department study packs.</p>
+
+      <!-- Google Drive Vault Hero Showcase -->
+      <div class="showcase-card" style="margin-bottom: 2rem; background: #151B2E; border: 1px solid rgba(59, 130, 246, 0.35); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem;">
+          <div style="max-width: 650px;">
+            <div style="display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.76rem; font-weight: 800; color: #60A5FA; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.5rem;">
+              <span>📁 Google Drive Academic Vault</span>
+            </div>
+            <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.45rem; font-weight: 800; color: #FFFFFF; margin-bottom: 0.4rem;">Official 100-Level Study Repository</h3>
+            <p style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.5; margin: 0;">
+              All verified past questions, departmental lecture slides, textbooks, and laboratory manuals are archived in this Google Drive folder.
+            </p>
+          </div>
+          <a href="https://drive.google.com/drive/folders/1fnSakjwMMiewYKsSPc92CZVKPFe4EOQX" target="_blank" rel="noopener noreferrer" class="action-btn" style="background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); color: #FFFFFF; font-weight: 700; padding: 0.85rem 1.6rem; border-radius: 12px; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);">
+            <span>Open Google Drive Vault ↗</span>
+          </a>
+        </div>
+      </div>
 
       <div class="filter-bar">
         <button class="filter-chip active" onclick="filterResources('ALL', event)">All Categories</button>
         <button class="filter-chip" onclick="filterResources('Academic', event)">Academic</button>
+        <button class="filter-chip" onclick="filterResources('General Study', event)">General Studies (GST/GES)</button>
         <button class="filter-chip" onclick="filterResources('Administrative', event)">Administrative</button>
-        <button class="filter-chip" onclick="filterResources('Library', event)">Library</button>
       </div>
 
       <div class="grid" id="resources-grid">
@@ -2976,7 +2994,25 @@
     <!-- 6. CBT PRACTICE TAB -->
     <section id="tab-cbt" class="tab-section">
       <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.5px;">100L CBT Exam & Practice Simulator</h2>
-      <p style="color: var(--ps-text-gray); margin-bottom: 1.75rem;">Practice 100L general and departmental courses matching UI CBT exam standards.</p>
+      <p style="color: var(--ps-text-gray); margin-bottom: 1.75rem;">Practice 100L general and departmental courses matching authentic UI CBT exam standards.</p>
+
+      <!-- Telegram CBT Hero Banner -->
+      <div class="showcase-card" style="margin-bottom: 2rem; background: #1C162E; border: 1px solid rgba(139, 92, 246, 0.35); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem;">
+          <div style="max-width: 650px;">
+            <div style="display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.76rem; font-weight: 800; color: var(--ps-purple-light); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.5rem;">
+              <span>🤖 Interactive Telegram Bot Simulator</span>
+            </div>
+            <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.45rem; font-weight: 800; color: #FFFFFF; margin-bottom: 0.4rem;">Practice 100L CBT on Telegram</h3>
+            <p style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.5; margin: 0;">
+              Experience timed mock exams, automatic score calculation, instant answer explanations, and performance tracking directly in Telegram.
+            </p>
+          </div>
+          <a href="https://t.me/UIDCNComputingFreshersBot" target="_blank" rel="noopener noreferrer" class="action-btn" style="background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); color: #FFFFFF; font-weight: 700; padding: 0.85rem 1.6rem; border-radius: 12px; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4);">
+            <span>Launch CBT Bot on Telegram ⚡</span>
+          </a>
+        </div>
+      </div>
 
       <div class="grid">
         <div class="card">
@@ -2985,9 +3021,9 @@
             <span style="font-size: 0.8rem; color: #10B981; font-weight: 700;">Compulsory</span>
           </div>
           <h3 class="card-title">CSC101: Introduction to Computer Science</h3>
-          <p class="card-desc">Binary arithmetic, computer hardware, operating systems, and basic algorithms.</p>
+          <p class="card-desc">Binary arithmetic, digital logic, operating systems, hardware architecture, and algorithms.</p>
           <div class="card-footer">
-            <a href="https://t.me/UIDCNComputingFreshersBot" target="_blank" rel="noopener" class="action-btn">Practice CBT on Telegram →</a>
+            <a href="https://t.me/UIDCNComputingFreshersBot?start=cbt_csc101" target="_blank" rel="noopener noreferrer" class="action-btn">Practice CSC101 on Telegram →</a>
           </div>
         </div>
 
@@ -2997,9 +3033,9 @@
             <span style="font-size: 0.8rem; color: #10B981; font-weight: 700;">Compulsory</span>
           </div>
           <h3 class="card-title">MAT111: Algebra and Trigonometry</h3>
-          <p class="card-desc">Quadratic equations, polynomials, sequences, series, and trigonometry.</p>
+          <p class="card-desc">Quadratic equations, polynomials, mathematical induction, sequences, and trigonometry.</p>
           <div class="card-footer">
-            <a href="https://t.me/UIDCNComputingFreshersBot" target="_blank" rel="noopener" class="action-btn">Practice CBT on Telegram →</a>
+            <a href="https://t.me/UIDCNComputingFreshersBot?start=cbt_mat111" target="_blank" rel="noopener noreferrer" class="action-btn">Practice MAT111 on Telegram →</a>
           </div>
         </div>
 
@@ -3009,9 +3045,9 @@
             <span style="font-size: 0.8rem; color: #F59E0B; font-weight: 700;">General Study</span>
           </div>
           <h3 class="card-title">GST101: Use of English I</h3>
-          <p class="card-desc">Grammar, sentence structure, antonyms, vocabulary, and reading comprehension.</p>
+          <p class="card-desc">Sentence structure, grammar rules, vocabulary building, antonyms, and reading comprehension.</p>
           <div class="card-footer">
-            <a href="https://t.me/UIDCNComputingFreshersBot" target="_blank" rel="noopener" class="action-btn">Practice CBT on Telegram →</a>
+            <a href="https://t.me/UIDCNComputingFreshersBot?start=cbt_gst101" target="_blank" rel="noopener noreferrer" class="action-btn">Practice GST101 on Telegram →</a>
           </div>
         </div>
 
@@ -3021,9 +3057,33 @@
             <span style="font-size: 0.8rem; color: #F59E0B; font-weight: 700;">General Study</span>
           </div>
           <h3 class="card-title">GES107: Nigerian Peoples and Culture</h3>
-          <p class="card-desc">Nok culture, Nigerian history, ethnic groups, and cultural heritage.</p>
+          <p class="card-desc">Nok culture, Nigerian history, pre-colonial civilizations, and socio-cultural evolution.</p>
           <div class="card-footer">
-            <a href="https://t.me/UIDCNComputingFreshersBot" target="_blank" rel="noopener" class="action-btn">Practice CBT on Telegram →</a>
+            <a href="https://t.me/UIDCNComputingFreshersBot?start=cbt_ges107" target="_blank" rel="noopener noreferrer" class="action-btn">Practice GES107 on Telegram →</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-badge">PHY101</span>
+            <span style="font-size: 0.8rem; color: #10B981; font-weight: 700;">Faculty Core</span>
+          </div>
+          <h3 class="card-title">PHY101: General Physics I (Mechanics)</h3>
+          <p class="card-desc">Vectors, kinematics, Newton's laws of motion, work, energy, rotational dynamics, and gravitation.</p>
+          <div class="card-footer">
+            <a href="https://t.me/UIDCNComputingFreshersBot?start=cbt_phy101" target="_blank" rel="noopener noreferrer" class="action-btn">Practice PHY101 on Telegram →</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-badge">CHM101</span>
+            <span style="font-size: 0.8rem; color: #10B981; font-weight: 700;">Faculty Core</span>
+          </div>
+          <h3 class="card-title">CHM101: General Chemistry I</h3>
+          <p class="card-desc">Atomic theory, electronic configurations, chemical bonding, periodicity, stoichiometry, and gas laws.</p>
+          <div class="card-footer">
+            <a href="https://t.me/UIDCNComputingFreshersBot?start=cbt_chm101" target="_blank" rel="noopener noreferrer" class="action-btn">Practice CHM101 on Telegram →</a>
           </div>
         </div>
       </div>
@@ -4111,12 +4171,14 @@
         <div class="card">
           <div class="card-header">
             <span class="card-badge">${escapeHtml(r.category || 'Resource')}</span>
-            <span style="font-size: 0.78rem; color: #10B981; font-weight: 700;">Verified Link</span>
+            <span style="font-size: 0.78rem; color: #3B82F6; font-weight: 700;">Google Drive</span>
           </div>
           <h3 class="card-title">${escapeHtml(r.title)}</h3>
           <p class="card-desc">${escapeHtml(r.description || '')}</p>
           <div class="card-footer">
-            <a href="${escapeHtml(r.url)}" target="_blank" rel="noopener" class="action-btn">Open Resource →</a>
+            <a href="${escapeHtml(r.url || 'https://drive.google.com/drive/folders/1fnSakjwMMiewYKsSPc92CZVKPFe4EOQX')}" target="_blank" rel="noopener noreferrer" class="action-btn" style="display: inline-flex; align-items: center; gap: 0.4rem;">
+              <span>Open in Google Drive ↗</span>
+            </a>
           </div>
         </div>
       `).join("");
@@ -4136,12 +4198,14 @@
         <div class="card">
           <div class="card-header">
             <span class="card-badge">${escapeHtml(o.type || 'Opportunity')}</span>
-            <span style="font-size: 0.78rem; color: #64748B; font-weight: 700;">${escapeHtml(o.deadline || 'Open')}</span>
+            <span style="font-size: 0.78rem; color: #10B981; font-weight: 700;">${escapeHtml(o.deadline ? new Date(o.deadline).toLocaleDateString() : 'Open')}</span>
           </div>
           <h3 class="card-title">${escapeHtml(o.title)}</h3>
           <p class="card-desc">${escapeHtml(o.description || '')}</p>
           <div class="card-footer">
-            <a href="${escapeHtml(o.link)}" target="_blank" rel="noopener" class="action-btn">Apply Now →</a>
+            <a href="${escapeHtml(o.url || o.link || '#')}" target="_blank" rel="noopener noreferrer" class="action-btn" style="display: inline-flex; align-items: center; gap: 0.4rem;">
+              <span>Apply / View Portal ↗</span>
+            </a>
           </div>
         </div>
       `).join("");
