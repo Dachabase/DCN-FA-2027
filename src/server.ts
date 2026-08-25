@@ -21,6 +21,7 @@ app.use(express.json());
 
 // Auth & Personalization Routes
 app.use("/api/auth", authRouter);
+app.use("/auth", authRouter);
 app.use("/api", personalizationRouter);
 
 // =========================================================

@@ -2415,33 +2415,35 @@
       
       <h1 class="gate-title">Sign In to Continue</h1>
       <p class="gate-subtitle">
-        Enter your personal Gmail address to access verified 100-Level course outlines, registration roadmaps, CBT practice, and your 24/7 AI mentor.
+        Sign in with your Google account to access verified 100-Level course outlines, registration roadmaps, CBT practice, and your 24/7 AI mentor.
       </p>
 
-      <!-- Direct Gmail Sign-in Form -->
-      <form onsubmit="handleGateGmailSubmit(event)">
-        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-          <input 
-            type="email" 
-            id="gate-gmail-input" 
-            placeholder="Enter your personal Gmail address..." 
-            required 
-            style="width: 100%; padding: 0.95rem 1.15rem; border-radius: 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #FFFFFF; font-size: 0.95rem; font-family: 'Outfit', sans-serif; box-sizing: border-box; outline: none;"
-          />
-          <button 
-            type="submit" 
-            id="gate-gmail-submit-btn" 
-            style="width: 100%; padding: 0.95rem; border-radius: 12px; background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); color: #FFFFFF; font-weight: 800; font-size: 1rem; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 6px 20px rgba(139,92,246,0.4); font-family: 'Outfit', sans-serif;"
-          >
-            🚀 Enter Campus Hub →
-          </button>
-        </div>
-      </form>
+      <!-- Real Google OAuth 2.0 Action Container -->
+      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.85rem; width: 100%; margin-top: 0.75rem;">
+        <!-- Official GIS Button Slot (Rendered if GIS client is loaded) -->
+        <div id="g_id_gate_slot" style="min-height: 44px; display: flex; justify-content: center; width: 100%;"></div>
 
-      <p id="gate-signin-error-msg" style="display: none; color: #F87171; font-size: 0.84rem; margin-top: 0.85rem; font-weight: 600;"></p>
+        <!-- Direct OAuth 2.0 Sign In Button -->
+        <button 
+          type="button" 
+          id="gate-google-signin-btn" 
+          onclick="triggerGoogleOAuth()"
+          class="google-auth-btn"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          <span>Sign in with Google</span>
+        </button>
+      </div>
 
-      <p style="color: #475569; font-size: 0.75rem; margin-top: 1.5rem; line-height: 1.4;">
-        🔒 Instant access. Any personal Gmail address works.
+      <p id="gate-signin-error-msg" style="display: none; color: #F87171; font-size: 0.84rem; margin-top: 0.85rem; font-weight: 600; text-align: center;"></p>
+
+      <p style="color: #64748B; font-size: 0.78rem; margin-top: 1.25rem; line-height: 1.4; text-align: center;">
+        🔒 Secure OAuth 2.0 via Google. No passwords stored.
       </p>
     </div>
 
@@ -4177,9 +4179,26 @@
     }
 
     // =========================================================
-    // AUTHENTICATION & SESSION MANAGEMENT (Consolidated System)
+    // AUTHENTICATION & SESSION MANAGEMENT (Real Google OAuth 2.0)
     // =========================================================
+    let gisCodeClient = null;
+
     async function initAuth() {
+      // 1. Check for OAuth callback error messages in URL parameters
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const authError = urlParams.get("auth_error");
+        if (authError) {
+          const gateErrMsg = document.getElementById("gate-signin-error-msg");
+          const modalErrMsg = document.getElementById("signin-error-msg");
+          const formattedErr = `Google Sign-In: ${decodeURIComponent(authError).replace(/_/g, ' ')}`;
+          if (gateErrMsg) { gateErrMsg.textContent = formattedErr; gateErrMsg.style.display = "block"; }
+          if (modalErrMsg) { modalErrMsg.textContent = formattedErr; modalErrMsg.style.display = "block"; }
+          window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+        }
+      } catch (e) {}
+
+      // 2. Validate persistent session cookie server-side
       try {
         const res = await fetch("/api/auth/me", { credentials: "include" });
         const json = await res.json();
@@ -4215,18 +4234,21 @@
         renderHome();
       }
       
-      // Initialize Google Identity Services One-Tap/Button if available
+      // 3. Initialize Google Identity Services (GIS)
       initGoogleIdentity();
     }
 
     async function initGoogleIdentity() {
       try {
-        const cfg = await fetch("/api/auth/config").then(r => r.json());
+        const cfg = await fetch("/api/auth/config").then(r => r.json()).catch(() => ({}));
         const clientId = cfg?.data?.googleClientId;
-        if (!clientId) return;
+        if (!clientId) {
+          console.info("Google Client ID not configured on server.");
+          return;
+        }
 
         const waitForGIS = (resolve) => {
-          if (typeof google !== "undefined" && google.accounts && google.accounts.id) {
+          if (typeof google !== "undefined" && google.accounts) {
             resolve();
           } else {
             setTimeout(() => waitForGIS(resolve), 200);
@@ -4234,42 +4256,103 @@
         };
         await new Promise(waitForGIS);
 
-        google.accounts.id.initialize({
-          client_id: clientId,
-          callback: handleGoogleCredentialResponse,
-          auto_select: false,
-          cancel_on_tap_outside: true,
-        });
-
-        // Render button in sign-in modal
-        const slot = document.getElementById("g_id_signin_slot");
-        if (slot) {
-          slot.innerHTML = "";
-          google.accounts.id.renderButton(slot, {
-            theme: "filled_blue",
-            size: "large",
-            shape: "pill",
-            text: "continue_with",
-            width: 280,
+        // A. Google ID Token Flow (One-Tap & Native rendered buttons)
+        if (google.accounts.id) {
+          google.accounts.id.initialize({
+            client_id: clientId,
+            callback: handleGoogleCredentialResponse,
+            auto_select: false,
+            cancel_on_tap_outside: true,
           });
+
+          // Render official Google button in sign-in modal
+          const slot = document.getElementById("g_id_signin_slot");
+          if (slot) {
+            slot.innerHTML = "";
+            google.accounts.id.renderButton(slot, {
+              theme: "outline",
+              size: "large",
+              shape: "pill",
+              text: "signin_with",
+              width: 300,
+            });
+          }
+
+          // Render official Google button in gatekeeper screen
+          const gateSlot = document.getElementById("g_id_gate_slot");
+          if (gateSlot) {
+            gateSlot.innerHTML = "";
+            google.accounts.id.renderButton(gateSlot, {
+              theme: "outline",
+              size: "large",
+              shape: "pill",
+              text: "signin_with",
+              width: 300,
+            });
+          }
         }
 
-        // Render button in main gatekeeper screen
-        const gateSlot = document.getElementById("g_id_gate_slot");
-        if (gateSlot) {
-          gateSlot.innerHTML = "";
-          google.accounts.id.renderButton(gateSlot, {
-            theme: "filled_blue",
-            size: "large",
-            shape: "pill",
-            text: "continue_with",
-            width: 280,
+        // B. Google OAuth 2.0 Code Client for Popup Flow
+        if (google.accounts.oauth2) {
+          gisCodeClient = google.accounts.oauth2.initCodeClient({
+            client_id: clientId,
+            scope: "openid email profile",
+            callback: (response) => {
+              if (response.code) {
+                completeUserAuthentication({ code: response.code });
+              }
+            },
+            error_callback: (err) => {
+              console.warn("Google OAuth popup error:", err);
+            }
           });
         }
       } catch (e) {
         console.log("Google Identity init error:", e);
       }
     }
+
+    function triggerGoogleOAuth() {
+      // 1. If GIS Code Client popup is initialized, trigger it
+      if (gisCodeClient) {
+        gisCodeClient.requestCode();
+        return;
+      }
+
+      // 2. If GIS One-Tap prompt is available, trigger it
+      if (typeof google !== "undefined" && google.accounts && google.accounts.id) {
+        try {
+          google.accounts.id.prompt();
+          return;
+        } catch (e) {}
+      }
+
+      // 3. Fallback: Full-page standard Google OAuth 2.0 redirect
+      window.location.href = "/api/auth/google/login";
+    }
+
+    function triggerGoogleSignIn() {
+      openSignInModal();
+      triggerGoogleOAuth();
+    }
+
+    function openSignInModal() {
+      const modal = document.getElementById("signin-modal");
+      if (modal) {
+        modal.classList.add("show");
+        const errMsg = document.getElementById("signin-error-msg");
+        if (errMsg) errMsg.style.display = "none";
+      }
+    }
+
+    function closeSignInModal() {
+      const modal = document.getElementById("signin-modal");
+      if (modal) modal.classList.remove("show");
+    }
+
+    // Legacy aliases
+    function openDemoSignInModal() { openSignInModal(); }
+    function closeDemoSignInModal() { closeSignInModal(); }
 
     function updateAuthUI() {
       const gateScreen = document.getElementById("app-unauthenticated-gate");
@@ -4333,44 +4416,17 @@
       }
     }
 
-    function triggerGoogleSignIn() {
-      openSignInModal();
-      if (typeof google !== "undefined" && google.accounts && google.accounts.id) {
-        try { google.accounts.id.prompt(); } catch (e) {}
-      }
-    }
-
-    function openSignInModal() {
-      const modal = document.getElementById("signin-modal");
-      if (modal) {
-        modal.classList.add("show");
-        const errMsg = document.getElementById("signin-error-msg");
-        if (errMsg) errMsg.style.display = "none";
-        const input = document.getElementById("direct-gmail-input");
-        if (input) setTimeout(() => input.focus(), 150);
-      }
-    }
-
-    function closeSignInModal() {
-      const modal = document.getElementById("signin-modal");
-      if (modal) modal.classList.remove("show");
-    }
-
-    // Legacy alias (kept for any residual references)
-    function openDemoSignInModal() { openSignInModal(); }
-    function closeDemoSignInModal() { closeSignInModal(); }
-
     async function completeUserAuthentication(authPayload) {
       const modalErrMsg = document.getElementById("signin-error-msg");
       const gateErrMsg = document.getElementById("gate-signin-error-msg");
-      const modalSubmitBtn = document.getElementById("direct-gmail-submit-btn");
-      const gateSubmitBtn = document.getElementById("gate-gmail-submit-btn");
+      const gateBtn = document.getElementById("gate-google-signin-btn");
+      const modalBtn = document.getElementById("modal-google-signin-btn");
 
       if (modalErrMsg) modalErrMsg.style.display = "none";
       if (gateErrMsg) gateErrMsg.style.display = "none";
 
-      if (modalSubmitBtn) { modalSubmitBtn.disabled = true; modalSubmitBtn.innerHTML = "Signing in..."; }
-      if (gateSubmitBtn) { gateSubmitBtn.disabled = true; gateSubmitBtn.innerHTML = "Signing in..."; }
+      if (gateBtn) { gateBtn.disabled = true; gateBtn.style.opacity = "0.7"; }
+      if (modalBtn) { modalBtn.disabled = true; modalBtn.style.opacity = "0.7"; }
 
       try {
         const res = await fetch("/api/auth/google", {
@@ -4397,55 +4453,25 @@
               handleHashRouting();
             }
           }
-          logUserInteraction("LOGIN_SUCCESS", null, { email: json.data.user.email });
+          logUserInteraction("LOGIN_SUCCESS", null, { email: json.data.user.email, googleSub: json.data.user.googleSub });
         } else {
-          const message = json.message || "Sign-in failed. Please check your Gmail address and try again.";
+          const message = json.message || "Google authentication failed. Please try again.";
           if (modalErrMsg) { modalErrMsg.textContent = message; modalErrMsg.style.display = "block"; }
           if (gateErrMsg) { gateErrMsg.textContent = message; gateErrMsg.style.display = "block"; }
         }
       } catch (err) {
-        console.error("Auth callback failed:", err);
-        const errText = "Network error. Please check your connection and try again.";
+        console.error("Auth verification request failed:", err);
+        const errText = "Network error connecting to authentication service. Please try again.";
         if (modalErrMsg) { modalErrMsg.textContent = errText; modalErrMsg.style.display = "block"; }
         if (gateErrMsg) { gateErrMsg.textContent = errText; gateErrMsg.style.display = "block"; }
       } finally {
-        if (modalSubmitBtn) { modalSubmitBtn.disabled = false; modalSubmitBtn.innerHTML = "Continue with Gmail →"; }
-        if (gateSubmitBtn) { gateSubmitBtn.disabled = false; gateSubmitBtn.innerHTML = "🚀 Enter Campus Hub →"; }
+        if (gateBtn) { gateBtn.disabled = false; gateBtn.style.opacity = "1"; }
+        if (modalBtn) { modalBtn.disabled = false; modalBtn.style.opacity = "1"; }
       }
-    }
-
-    function handleGateGmailSubmit(e) {
-      if (e && e.preventDefault) e.preventDefault();
-      const input = document.getElementById("gate-gmail-input");
-      const email = input ? input.value.trim() : "";
-      if (!email || !email.includes("@")) {
-        const errMsg = document.getElementById("gate-signin-error-msg");
-        if (errMsg) {
-          errMsg.textContent = "Please enter a valid personal Gmail address.";
-          errMsg.style.display = "block";
-        }
-        return;
-      }
-      completeUserAuthentication({ email });
-    }
-
-    function handleDirectGmailSubmit(e) {
-      if (e && e.preventDefault) e.preventDefault();
-      const input = document.getElementById("direct-gmail-input");
-      const email = input ? input.value.trim() : "";
-      if (!email || !email.includes("@")) {
-        const errMsg = document.getElementById("signin-error-msg");
-        if (errMsg) {
-          errMsg.textContent = "Please enter a valid personal Gmail address.";
-          errMsg.style.display = "block";
-        }
-        return;
-      }
-      completeUserAuthentication({ email });
     }
 
     function handleGoogleCredentialResponse(response) {
-      if (!response.credential) return;
+      if (!response || !response.credential) return;
       completeUserAuthentication({ credential: response.credential });
     }
 
@@ -5224,33 +5250,35 @@
       </div>
 
       <p style="color: #94A3B8; font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.25rem; text-align: left;">
-        Enter your personal Gmail to unlock verified 100-Level course outlines, past question banks, and department guides.
+        Sign in with your Google account to unlock verified 100-Level course outlines, past question banks, and department guides.
       </p>
 
-      <!-- Direct Gmail Input Flow -->
-      <form onsubmit="handleDirectGmailSubmit(event)" style="text-align: left;">
-        <div style="display: flex; flex-direction: column; gap: 0.65rem;">
-          <input 
-            type="email" 
-            id="direct-gmail-input" 
-            placeholder="Enter your Gmail (e.g. name@gmail.com)" 
-            required 
-            style="width: 100%; padding: 0.85rem 1rem; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #FFFFFF; font-size: 0.92rem; font-family: 'Outfit', sans-serif; box-sizing: border-box; outline: none;"
-          />
-          <button 
-            type="submit" 
-            id="direct-gmail-submit-btn" 
-            style="width: 100%; padding: 0.85rem; border-radius: 10px; background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); color: #FFFFFF; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 14px rgba(139,92,246,0.35);"
-          >
-            Continue with Gmail →
-          </button>
-        </div>
-      </form>
+      <!-- Real Google OAuth 2.0 Action Container -->
+      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.85rem; width: 100%;">
+        <!-- Official GIS Button Slot -->
+        <div id="g_id_signin_slot" style="min-height: 44px; display: flex; justify-content: center; width: 100%;"></div>
+
+        <!-- Direct OAuth Button -->
+        <button 
+          type="button" 
+          id="modal-google-signin-btn" 
+          onclick="triggerGoogleOAuth()"
+          class="google-auth-btn"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          <span>Sign in with Google</span>
+        </button>
+      </div>
 
       <p id="signin-error-msg" style="display: none; color: #F87171; font-size: 0.82rem; margin-top: 0.75rem; text-align: center;"></p>
 
-      <p style="color: #475569; font-size: 0.75rem; margin-top: 1.25rem; text-align: center;">
-        No institutional email required. Any personal Gmail address works.
+      <p style="color: #64748B; font-size: 0.75rem; margin-top: 1.25rem; text-align: center;">
+        🔒 Secure OAuth 2.0 via Google.
       </p>
     </div>
   </div>

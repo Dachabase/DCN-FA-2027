@@ -29,7 +29,7 @@ export function generateAccessToken(user: User): string {
       googleSub: user.googleSub,
     } as TokenPayload,
     JWT_SECRET,
-    { expiresIn: "15m" }
+    { expiresIn: "7d" } // 7-day persistent access token
   );
 }
 
@@ -37,7 +37,7 @@ export function generateRefreshToken(user: User): { token: string; hash: string 
   const token = jwt.sign(
     { userId: user.id } as TokenPayload,
     JWT_REFRESH_SECRET,
-    { expiresIn: "30d" }
+    { expiresIn: "30d" } // 30-day refresh token
   );
   const hash = crypto.createHash("sha256").update(token).digest("hex");
   return { token, hash };
@@ -67,7 +67,7 @@ export function setAuthCookies(req: any, res: any, accessToken: string, refreshT
     secure: isSecure,
     sameSite: "lax",
     path: "/",
-    maxAge: 15 * 60 * 1000, // 15 mins
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   });
 
   res.cookie("ui_refresh_token", refreshToken, {
@@ -80,8 +80,9 @@ export function setAuthCookies(req: any, res: any, accessToken: string, refreshT
 }
 
 export function clearAuthCookies(res: any) {
-  res.clearCookie("ui_access_token", { path: "/" });
-  res.clearCookie("ui_refresh_token", { path: "/" });
+  const isSecure = process.env.NODE_ENV === "production";
+  res.clearCookie("ui_access_token", { path: "/", httpOnly: true, secure: isSecure, sameSite: "lax" });
+  res.clearCookie("ui_refresh_token", { path: "/", httpOnly: true, secure: isSecure, sameSite: "lax" });
 }
 
 export async function verifyGoogleTokenOrCode(credentialOrCode: string): Promise<{
@@ -90,51 +91,84 @@ export async function verifyGoogleTokenOrCode(credentialOrCode: string): Promise
   fullName: string;
   avatarUrl: string;
 }> {
-  // If it's an ID Token (JWT) from Google Identity Services
+  const googleClientId = process.env.GOOGLE_CLIENT_ID || "";
+  const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET || "";
+
+  // 1. If it's an ID Token (JWT) from Google Identity Services
   if (credentialOrCode.split(".").length === 3) {
-    try {
-      const ticket = await oauth2Client.verifyIdToken({
-        idToken: credentialOrCode,
-        audience: GOOGLE_CLIENT_ID || undefined,
-      });
-      const payload = ticket.getPayload();
-      if (!payload || !payload.sub) {
-        throw new Error("Invalid Google token payload");
-      }
-      return {
-        googleSub: payload.sub,
-        email: payload.email || "",
-        fullName: payload.name || `${payload.given_name || ""} ${payload.family_name || ""}`.trim() || "UI Fresher",
-        avatarUrl: payload.picture || "",
-      };
-    } catch (e: any) {
-      // Fallback decoding if verifyIdToken fails in offline/mock dev environment
-      const decoded: any = jwt.decode(credentialOrCode);
-      if (decoded && decoded.sub) {
-        return {
-          googleSub: decoded.sub,
-          email: decoded.email || "student@ui.edu.ng",
-          fullName: decoded.name || "UI Fresher",
-          avatarUrl: decoded.picture || "",
-        };
-      }
-      throw e;
+    const client = new OAuth2Client(googleClientId, googleClientSecret);
+    const ticket = await client.verifyIdToken({
+      idToken: credentialOrCode,
+      audience: googleClientId || undefined,
+    });
+    const payload = ticket.getPayload();
+    if (!payload || !payload.sub) {
+      throw new Error("Invalid Google token payload");
     }
+    return {
+      googleSub: payload.sub,
+      email: payload.email || "",
+      fullName: payload.name || `${payload.given_name || ""} ${payload.family_name || ""}`.trim() || "UI Fresher",
+      avatarUrl: payload.picture || "",
+    };
   }
 
-  // Otherwise, exchange authorization code for tokens
-  const { tokens } = await oauth2Client.getToken(credentialOrCode);
+  // 2. Otherwise, exchange authorization code for tokens
+  const client = new OAuth2Client(
+    googleClientId,
+    googleClientSecret,
+    "postmessage"
+  );
+  const { tokens } = await client.getToken(credentialOrCode);
   if (!tokens.id_token) {
     throw new Error("Failed to retrieve ID token from Google authorization code");
   }
 
-  const ticket = await oauth2Client.verifyIdToken({
+  const ticket = await client.verifyIdToken({
     idToken: tokens.id_token,
-    audience: GOOGLE_CLIENT_ID || undefined,
+    audience: googleClientId || undefined,
   });
   const payload = ticket.getPayload();
   if (!payload || !payload.sub) {
     throw new Error("Missing payload sub from Google auth code");
+  }
+
+  return {
+    googleSub: payload.sub,
+    email: payload.email || "",
+    fullName: payload.name || `${payload.given_name || ""} ${payload.family_name || ""}`.trim() || "UI Fresher",
+    avatarUrl: payload.picture || "",
+  };
+}
+
+export async function exchangeGoogleCode(code: string, redirectUri: string): Promise<{
+  googleSub: string;
+  email: string;
+  fullName: string;
+  avatarUrl: string;
+}> {
+  const googleClientId = process.env.GOOGLE_CLIENT_ID || "";
+  const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET || "";
+
+  const client = new OAuth2Client(
+    googleClientId,
+    googleClientSecret,
+    redirectUri
+  );
+
+  const { tokens } = await client.getToken(code);
+  if (!tokens.id_token) {
+    throw new Error("Failed to receive Google ID token from OAuth code exchange.");
+  }
+
+  const ticket = await client.verifyIdToken({
+    idToken: tokens.id_token,
+    audience: googleClientId || undefined,
+  });
+
+  const payload = ticket.getPayload();
+  if (!payload || !payload.sub) {
+    throw new Error("Invalid token payload returned from Google.");
   }
 
   return {

@@ -6,6 +6,7 @@ import {
   generateAccessToken,
   generateRefreshToken,
   getFallbackUser,
+  updateFallbackUser,
   setAuthCookies,
 } from "./auth.service";
 import crypto from "crypto";
@@ -24,7 +25,7 @@ export async function authenticateToken(
   const cookieAccessToken = req.cookies?.ui_access_token;
   const accessToken = headerToken || cookieAccessToken;
 
-  // Verify access token if present
+  // 1. Verify access token if present
   if (accessToken) {
     const payload = verifyAccessToken(accessToken);
     if (payload && payload.userId) {
@@ -41,57 +42,128 @@ export async function authenticateToken(
           return user;
         }
       } catch (e) {
-        // Fallback user store if DB unavailable
-        const fb = getFallbackUser(payload.userId);
-        if (fb) {
-          req.user = fb;
-          return fb;
-        }
+        // DB offline or table sync pending
       }
+
+      // Fallback user store
+      let fb = getFallbackUser(payload.userId);
+      if (!fb) {
+        fb = updateFallbackUser(payload.userId, {
+          id: payload.userId,
+          googleSub: payload.googleSub || null,
+          email: payload.email || null,
+          fullName: payload.email ? payload.email.split("@")[0].replace(/[._]/g, " ").replace(/\b\w/g, c => c.toUpperCase()) : "UI Fresher",
+          lastSeenAt: new Date(),
+        }) || {
+          id: payload.userId,
+          googleSub: payload.googleSub || null,
+          email: payload.email || null,
+          fullName: "UI Fresher",
+          avatarUrl: null,
+          telegramId: null,
+          firstName: null,
+          lastName: null,
+          username: null,
+          role: null,
+          facultyId: null,
+          departmentId: null,
+          level: 100,
+          utmeExamYear: null,
+          onboardingStep: null,
+          onboardingCompletedAt: new Date(),
+          streakCount: 0,
+          lastActiveDate: new Date(),
+          totalPoints: 0,
+          lastSeenAt: new Date(),
+          refreshTokenHash: null,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        };
+      }
+      req.user = fb;
+      return fb;
     }
   }
 
-  // Check refresh token in cookies
+  // 2. Check refresh token in cookies
   const cookieRefreshToken = req.cookies?.ui_refresh_token;
   if (cookieRefreshToken) {
     const refreshPayload = verifyRefreshToken(cookieRefreshToken);
     if (refreshPayload && refreshPayload.userId) {
+      let user: any = null;
       try {
-        const user = await prisma.user.findUnique({
+        user = await prisma.user.findUnique({
           where: { id: refreshPayload.userId },
           include: {
             faculty: { select: { id: true, name: true, code: true } },
             department: { select: { id: true, name: true } },
           },
         });
-
-        if (user && user.refreshTokenHash) {
-          const incomingHash = crypto
-            .createHash("sha256")
-            .update(cookieRefreshToken)
-            .digest("hex");
-
-          if (incomingHash === user.refreshTokenHash) {
-            // Rotate refresh token & issue new access token
-            const newAccessToken = generateAccessToken(user);
-            const { token: newRefreshToken, hash: newRefreshHash } = generateRefreshToken(user);
-
-            await prisma.user.update({
-              where: { id: user.id },
-              data: {
-                refreshTokenHash: newRefreshHash,
-                lastSeenAt: new Date(),
-              },
-            });
-
-            setAuthCookies(req, res, newAccessToken, newRefreshToken);
-
-            req.user = user;
-            return user;
-          }
-        }
       } catch (e) {
-        console.error("Error refreshing token:", e);
+        user = getFallbackUser(refreshPayload.userId);
+      }
+      if (!user) {
+        user = getFallbackUser(refreshPayload.userId);
+      }
+
+      const incomingHash = crypto
+        .createHash("sha256")
+        .update(cookieRefreshToken)
+        .digest("hex");
+
+      // Verify hash if stored, or if valid signed token
+      const isHashValid = !user?.refreshTokenHash || incomingHash === user.refreshTokenHash;
+
+      if (isHashValid) {
+        const effectiveUser = user || {
+          id: refreshPayload.userId,
+          googleSub: refreshPayload.googleSub || null,
+          email: refreshPayload.email || null,
+          fullName: "UI Fresher",
+          avatarUrl: null,
+          telegramId: null,
+          firstName: null,
+          lastName: null,
+          username: null,
+          role: null,
+          facultyId: null,
+          departmentId: null,
+          level: 100,
+          utmeExamYear: null,
+          onboardingStep: null,
+          onboardingCompletedAt: new Date(),
+          streakCount: 0,
+          lastActiveDate: new Date(),
+          totalPoints: 0,
+          lastSeenAt: new Date(),
+          refreshTokenHash: null,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        };
+
+        // Rotate refresh token & issue new access token
+        const newAccessToken = generateAccessToken(effectiveUser);
+        const { token: newRefreshToken, hash: newRefreshHash } = generateRefreshToken(effectiveUser);
+
+        try {
+          await prisma.user.update({
+            where: { id: effectiveUser.id },
+            data: {
+              refreshTokenHash: newRefreshHash,
+              lastSeenAt: new Date(),
+            },
+          });
+        } catch (e) {
+          updateFallbackUser(effectiveUser.id, {
+            refreshTokenHash: newRefreshHash,
+            lastSeenAt: new Date(),
+          });
+        }
+
+        setAuthCookies(req, res, newAccessToken, newRefreshToken);
+
+        req.user = effectiveUser;
+        return effectiveUser;
       }
     }
   }
