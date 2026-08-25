@@ -334,6 +334,12 @@ model Guide {
   departmentId String?
   department   Department? @relation(fields: [departmentId], references: [id])
 
+  // Multi-part series metadata
+  seriesId    String?
+  seriesTitle String?
+  seriesOrder Int?
+  seriesTotal Int?
+
   // Provenance metadata
   source       String
   verifiedDate DateTime @default(now())
