@@ -2992,20 +2992,19 @@
           </div>
         </div>
 
-        <!-- Multi-Part Series Banner (Shown if article belongs to a series) -->
+        <!-- Academic Collection Banner (Shown if article belongs to a series) -->
         <div id="guide-series-banner" class="guide-series-banner" style="display: none;">
           <div class="guide-series-info">
             <div class="series-icon-pill">📚</div>
             <div>
-              <div style="font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.5px; color: #C4B5FD; font-weight: 800;">Multi-Part Series</div>
+              <div style="font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.5px; color: #C4B5FD; font-weight: 800;">Academic Series Collection</div>
               <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.15rem;">
                 <span id="guide-series-title-text" class="series-title-text">Series Title</span>
-                <span id="guide-series-part-badge" class="series-part-badge">Part 1 of 3</span>
               </div>
             </div>
           </div>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <label for="guide-series-select" style="font-size: 0.8rem; color: #CBD5E1; font-weight: 600;">Jump to part:</label>
+            <label for="guide-series-select" style="font-size: 0.8rem; color: #CBD5E1; font-weight: 600;">Series Articles:</label>
             <select id="guide-series-select" class="series-dropdown-select" onchange="jumpToSeriesPart(this.value)">
               <!-- Options populated dynamically -->
             </select>
@@ -3017,7 +3016,6 @@
           <!-- Metadata Pill Bar -->
           <div class="guide-meta-strip">
             <span id="guide-badge-category" class="card-badge">Course Registration</span>
-            <span id="guide-badge-series" class="series-chip-badge" style="display: none;">📖 Part 1 of 3</span>
             <span id="guide-badge-verified" class="verified-pill">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
               Verified Guide
@@ -3060,12 +3058,12 @@
           <!-- Series Previous / Next Navigation -->
           <div id="guide-series-nav" class="guide-series-nav" style="display: none;">
             <div id="guide-prev-card" class="series-nav-card" style="display: none;" onclick="navigateSeriesPrev()">
-              <div class="series-nav-label">← Previous Part</div>
-              <div id="guide-prev-title" class="series-nav-title">Part Title</div>
+              <div class="series-nav-label">← Previous Article</div>
+              <div id="guide-prev-title" class="series-nav-title">Article Title</div>
             </div>
             <div id="guide-next-card" class="series-nav-card next" style="display: none;" onclick="navigateSeriesNext()">
-              <div class="series-nav-label">Next Part →</div>
-              <div id="guide-next-title" class="series-nav-title">Part Title</div>
+              <div class="series-nav-label">Next Article →</div>
+              <div id="guide-next-title" class="series-nav-title">Article Title</div>
             </div>
           </div>
 
@@ -4076,10 +4074,10 @@
     function createGuideCardHtml(guide) {
       const facName = guide.faculty ? guide.faculty.name : (guide.category || "University-Wide");
       const isVerified = guide.verified !== false && guide.status !== "DRAFT";
-      const isSeries = guide.seriesId && guide.seriesOrder;
+      const isSeries = guide.seriesTitle;
       const seriesBadgeHtml = isSeries ? `
         <span class="series-chip-badge" style="margin-bottom: 0.5rem; display: inline-flex;">
-          📖 Part ${guide.seriesOrder} of ${guide.seriesTotal || '?'}
+          📚 ${escapeHtml(guide.seriesTitle)}
         </span>
       ` : '';
 
@@ -4160,22 +4158,14 @@
       const dateEl = document.getElementById("guide-verified-date");
       if (dateEl) dateEl.textContent = `Verified for ${verifiedDateStr}`;
 
-      // Series Header & Badge Display
+      // Series Header Display
       const seriesBannerEl = document.getElementById("guide-series-banner");
-      const badgeSeriesEl = document.getElementById("guide-badge-series");
       const seriesTitleText = document.getElementById("guide-series-title-text");
-      const seriesPartBadge = document.getElementById("guide-series-part-badge");
       const seriesSelectEl = document.getElementById("guide-series-select");
 
-      if (guide.seriesId && guide.seriesOrder) {
+      if (guide.seriesId) {
         if (seriesBannerEl) seriesBannerEl.style.display = "flex";
-        if (seriesTitleText) seriesTitleText.textContent = guide.seriesTitle || "Book Series";
-        if (seriesPartBadge) seriesPartBadge.textContent = `Part ${guide.seriesOrder} of ${guide.seriesTotal || '?'}`;
-        
-        if (badgeSeriesEl) {
-          badgeSeriesEl.style.display = "inline-flex";
-          badgeSeriesEl.textContent = `📖 Part ${guide.seriesOrder} of ${guide.seriesTotal || '?'}`;
-        }
+        if (seriesTitleText) seriesTitleText.textContent = guide.seriesTitle || "Academic Series";
 
         if (seriesSelectEl) {
           const partsList = guide.seriesGuides && guide.seriesGuides.length > 0
@@ -4184,13 +4174,12 @@
           
           seriesSelectEl.innerHTML = partsList.map(p => `
             <option value="${p.id}" ${p.id === guide.id ? 'selected' : ''}>
-              Part ${p.seriesOrder}: ${escapeHtml(p.title)}
+              ${escapeHtml(p.title)}
             </option>
           `).join("");
         }
       } else {
         if (seriesBannerEl) seriesBannerEl.style.display = "none";
-        if (badgeSeriesEl) badgeSeriesEl.style.display = "none";
       }
 
       // Calculate estimate read time
@@ -4235,7 +4224,7 @@
         if (prevCard) {
           if (guide.prevGuide) {
             prevCard.style.display = "flex";
-            if (prevTitle) prevTitle.textContent = `Part ${guide.prevGuide.seriesOrder}: ${guide.prevGuide.title}`;
+            if (prevTitle) prevTitle.textContent = guide.prevGuide.title;
           } else {
             prevCard.style.display = "none";
           }
@@ -4243,7 +4232,7 @@
         if (nextCard) {
           if (guide.nextGuide) {
             nextCard.style.display = "flex";
-            if (nextTitle) nextTitle.textContent = `Part ${guide.nextGuide.seriesOrder}: ${guide.nextGuide.title}`;
+            if (nextTitle) nextTitle.textContent = guide.nextGuide.title;
           } else {
             nextCard.style.display = "none";
           }
