@@ -662,8 +662,29 @@ app.use((req: Request, res: Response) => {
   });
 });
 
+// Keep-alive cron / self-pinger to prevent Render spin-down
+function initKeepAliveService() {
+  const externalUrl = process.env.RENDER_EXTERNAL_URL || process.env.APP_URL;
+  if (!externalUrl) {
+    return;
+  }
+  const pingUrl = `${externalUrl.replace(/\/$/, "")}/api/health`;
+  const PING_INTERVAL_MS = 10 * 60 * 1000; // 10 minutes
+
+  console.log(`[KeepAlive] Scheduled heartbeat ping every 10 mins to: ${pingUrl}`);
+  setInterval(async () => {
+    try {
+      const res = await fetch(pingUrl);
+      console.log(`[KeepAlive] Heartbeat ping status: ${res.status} at ${new Date().toISOString()}`);
+    } catch (err: any) {
+      console.warn(`[KeepAlive] Heartbeat ping notice: ${err?.message || err}`);
+    }
+  }, PING_INTERVAL_MS);
+}
+
 app.listen(PORT, () => {
   console.log(`UI Freshers Companion Backend API running on http://localhost:${PORT}`);
+  initKeepAliveService();
   startComputingBot().catch((err) => {
     console.error("Telegram Bot failed to start:", err);
   });

@@ -150,6 +150,87 @@ personalizationRouter.post(
   }
 );
 
+// POST /api/user/confirm-profile - Confirm existing academic status (persists to DB)
+personalizationRouter.post(
+  "/user/confirm-profile",
+  requireAuth,
+  async (req: AuthenticatedRequest, res: Response) => {
+    try {
+      const user = req.user!;
+      let updatedUser: any = null;
+
+      try {
+        updatedUser = await prisma.user.update({
+          where: { id: user.id },
+          data: {
+            onboardingCompletedAt: new Date(),
+            onboardingStep: "CONFIRMED",
+            lastSeenAt: new Date(),
+          },
+          include: {
+            faculty: { select: { id: true, name: true, code: true } },
+            department: { select: { id: true, name: true } },
+          },
+        });
+
+        await prisma.interaction.create({
+          data: {
+            userId: user.id,
+            eventType: "PROFILE_CONFIRMED",
+            metadata: {
+              facultyId: updatedUser.facultyId,
+              departmentId: updatedUser.departmentId,
+              level: updatedUser.level,
+              confirmedAt: new Date().toISOString(),
+            },
+          },
+        });
+      } catch (dbErr) {
+        console.warn("DB offline, confirming profile in fallback store.");
+        updatedUser = updateFallbackUser(user.id, {
+          onboardingCompletedAt: new Date(),
+          onboardingStep: "CONFIRMED",
+          lastSeenAt: new Date(),
+        }) || {
+          ...user,
+          onboardingCompletedAt: new Date(),
+          onboardingStep: "CONFIRMED",
+        };
+      }
+
+      return res.json({
+        success: true,
+        message: "Academic profile confirmed successfully.",
+        data: {
+          user: {
+            id: updatedUser.id,
+            email: updatedUser.email,
+            fullName: updatedUser.fullName,
+            avatarUrl: updatedUser.avatarUrl,
+            role: updatedUser.role,
+            facultyId: updatedUser.facultyId,
+            faculty: updatedUser.faculty,
+            departmentId: updatedUser.departmentId,
+            department: updatedUser.department,
+            level: updatedUser.level,
+            utmeExamYear: updatedUser.utmeExamYear,
+            onboardingCompletedAt: updatedUser.onboardingCompletedAt,
+            lastSeenAt: updatedUser.lastSeenAt,
+            isOnboarded: true,
+          },
+        },
+      });
+    } catch (error: any) {
+      console.error("Profile confirmation error:", error);
+      return res.status(500).json({
+        success: false,
+        error: "INTERNAL_ERROR",
+        message: "Failed to confirm profile.",
+      });
+    }
+  }
+);
+
 // PATCH /api/user/profile - Update user profile settings
 personalizationRouter.patch(
   "/user/profile",

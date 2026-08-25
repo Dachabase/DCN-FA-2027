@@ -1734,6 +1734,162 @@
       gap: 1rem;
       color: #FEF3C7;
     }
+
+    /* USER ENROLLED FACULTY SPOTLIGHT (CATALOG) */
+    .user-faculty-spotlight-card {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.14) 0%, rgba(124, 58, 237, 0.05) 100%);
+      border: 1.5px solid rgba(139, 92, 246, 0.45);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 2rem;
+      margin-bottom: 2.25rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(139, 92, 246, 0.15);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .spotlight-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .spotlight-tag {
+      background: var(--ps-purple-primary);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.28rem 0.75rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+    }
+
+    .spotlight-level-tag {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #CBD5E1;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+    }
+
+    .spotlight-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.4px;
+      line-height: 1.25;
+      margin-bottom: 0.35rem;
+    }
+
+    .spotlight-desc {
+      color: #94A3B8;
+      font-size: 0.92rem;
+      line-height: 1.45;
+      max-width: 620px;
+    }
+
+    .spotlight-desc strong {
+      color: #F1EDFF;
+    }
+
+    .spotlight-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .spotlight-primary-btn {
+      background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+      color: #FFFFFF;
+      border: none;
+      padding: 0.85rem 1.6rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 16px rgba(139, 92, 246, 0.45);
+      transition: var(--transition);
+    }
+
+    .spotlight-primary-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(139, 92, 246, 0.55);
+    }
+
+    .spotlight-secondary-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #E2E8F0;
+      padding: 0.85rem 1.25rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .spotlight-secondary-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+    }
+
+    /* ENROLLED FACULTY CARD HIGHLIGHT */
+    .faculty-card.user-faculty-highlight {
+      border: 2px solid var(--ps-purple-primary);
+      background: linear-gradient(180deg, rgba(139, 92, 246, 0.05) 0%, #FFFFFF 100%);
+      box-shadow: 0 6px 24px rgba(139, 92, 246, 0.18);
+      position: relative;
+    }
+
+    .user-enrolled-badge {
+      position: absolute;
+      top: -10px;
+      right: 18px;
+      background: var(--ps-purple-primary);
+      color: #FFFFFF;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 0.2rem 0.65rem;
+      border-radius: 12px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+    }
+
+    /* SKELETON LOADING */
+    .skeleton-card {
+      background: #FFFFFF;
+      border: 1px solid var(--ps-border-light);
+      border-radius: var(--radius-md);
+      padding: 1.6rem;
+      height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      animation: pulse-skeleton 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse-skeleton {
+      0% { opacity: 0.5; }
+      50% { opacity: 0.85; }
+      100% { opacity: 0.5; }
+    }
   </style>
 </head>
 <body>
@@ -1876,18 +2032,18 @@
       <!-- RETURNING USER VERIFICATION BANNER -->
       <div id="returning-user-banner" class="verification-toast-banner" style="display: none;">
         <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <span style="font-size: 1.25rem;">👋</span>
+          <span style="font-size: 1.25rem;">🎓</span>
           <div>
-            <strong id="ret-user-name" style="color: #FFFFFF;">Welcome back!</strong>
-            <span id="ret-user-desc" style="font-size: 0.88rem; color: #CBD5E1; margin-left: 0.4rem;">Still enrolled in 100L Computer Science & AI?</span>
+            <strong id="ret-user-name" style="color: #FFFFFF;">Academic Status Confirmation:</strong>
+            <span id="ret-user-desc" style="font-size: 0.88rem; color: #CBD5E1; margin-left: 0.4rem;">Please confirm your current level and department.</span>
           </div>
         </div>
-        <div style="display: flex; gap: 0.5rem;">
-          <button onclick="dismissReturningUserBanner(true)" style="background: #10B981; color: #FFF; border: none; padding: 0.4rem 0.85rem; border-radius: 8px; font-size: 0.82rem; font-weight: 700; cursor: pointer;">
-            ✓ Yes, Keep Profile
+        <div style="display: flex; gap: 0.5rem; flex-shrink: 0;">
+          <button id="confirm-profile-btn" onclick="confirmAcademicProfile()" style="background: #10B981; color: #FFF; border: none; padding: 0.45rem 1rem; border-radius: 8px; font-size: 0.84rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem; transition: var(--transition);">
+            ✓ Confirm
           </button>
-          <button onclick="openOnboardingModal(1); dismissReturningUserBanner(false);" style="background: rgba(255,255,255,0.1); color: #FFF; border: 1px solid rgba(255,255,255,0.2); padding: 0.4rem 0.85rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer;">
-            ✏️ Update
+          <button onclick="openOnboardingModal(1); dismissReturningUserBanner(false);" style="background: rgba(255,255,255,0.1); color: #FFF; border: 1px solid rgba(255,255,255,0.2); padding: 0.45rem 0.95rem; border-radius: 8px; font-size: 0.84rem; font-weight: 600; cursor: pointer;">
+            Update Profile
           </button>
         </div>
       </div>
@@ -2000,6 +2156,9 @@
         </div>
       </div>
 
+      <!-- USER ENROLLED FACULTY SPOTLIGHT CARD (Populated dynamically when authenticated) -->
+      <div id="user-faculty-spotlight-container" style="display: none;"></div>
+
       <!-- CATALOG HEADER & CONTROLS -->
       <div style="margin-bottom: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
@@ -2008,21 +2167,17 @@
             <p style="color: var(--ps-text-gray); font-size: 0.98rem;">Select a faculty to inspect 100-Level departmental course packages and shared GES requirements.</p>
           </div>
           <div style="font-size: 0.88rem; font-weight: 700; color: #64748B;" id="faculty-count-summary">
-            Showing 18 Faculties (95+ Departments)
+            Showing 18 Faculties (111 Departments)
           </div>
         </div>
 
         <!-- FACULTY CATEGORY FILTER CHIPS -->
         <div class="filter-bar" id="catalog-category-bar">
           <button class="filter-chip active" onclick="filterFacultyCategory('ALL', this)">All Faculties (18)</button>
-          <button class="filter-chip" onclick="filterFacultyCategory('STEM', this)">Computing & Sciences</button>
-          <button class="filter-chip" onclick="filterFacultyCategory('TECH', this)">Engineering & Tech</button>
-          <button class="filter-chip" onclick="filterFacultyCategory('MEDICAL', this)">Medical & Health Sciences</button>
-          <button class="filter-chip" onclick="filterFacultyCategory('AGRIC', this)">Agriculture & Resources</button>
-          <button class="filter-chip" onclick="filterFacultyCategory('ARTS', this)">Arts & Humanities</button>
-          <button class="filter-chip" onclick="filterFacultyCategory('SOCIAL', this)">Social & Management</button>
-          <button class="filter-chip" onclick="filterFacultyCategory('LAW', this)">Faculty of Law</button>
-          <button class="filter-chip" onclick="filterFacultyCategory('EDUCATION', this)">Faculty of Education</button>
+          <button class="filter-chip" onclick="filterFacultyCategory('STEM', this)">STEM & Computing</button>
+          <button class="filter-chip" onclick="filterFacultyCategory('MEDICAL', this)">Medical & Health</button>
+          <button class="filter-chip" onclick="filterFacultyCategory('ARTS_SOCIAL', this)">Arts & Social Sciences</button>
+          <button class="filter-chip" onclick="filterFacultyCategory('LAW_EDU', this)">Law & Education</button>
         </div>
 
         <!-- FACULTY SEARCH INPUT -->
@@ -2598,11 +2753,82 @@
       if (!grid) return;
 
       const q = filterQuery.toLowerCase().trim();
-      let list = appData.faculties;
+      let list = [...(appData.faculties || [])];
+
+      // Identify user's enrolled or target faculty & department
+      const u = appData.currentUser;
+      let userFaculty = null;
+      let userDept = null;
+      if (u && (u.facultyId || u.faculty)) {
+        userFaculty = (appData.faculties || []).find(f => 
+          (u.facultyId && f.id === u.facultyId) || 
+          (u.faculty?.id && f.id === u.faculty.id) ||
+          (u.faculty?.name && f.name.toLowerCase() === u.faculty.name.toLowerCase()) ||
+          (u.faculty?.code && f.code && f.code.toUpperCase() === u.faculty.code.toUpperCase())
+        );
+        if (userFaculty) {
+          userDept = (userFaculty.departments || []).find(d => 
+            (u.departmentId && d.id === u.departmentId) || 
+            (u.department?.id && d.id === u.department.id) ||
+            (u.department?.name && d.name.toLowerCase() === u.department.name.toLowerCase())
+          );
+        }
+      }
+
+      // Render top spotlight card for the user's enrolled faculty
+      const spotlightContainer = document.getElementById("user-faculty-spotlight-container");
+      if (spotlightContainer) {
+        if (userFaculty && !q) {
+          const deptCount = userFaculty.departments ? userFaculty.departments.length : (userFaculty._count ? userFaculty._count.departments : 0);
+          const deptName = userDept ? userDept.name : (u.department?.name || '');
+          const roleLabel = u.role === 'PROSPECTIVE_UTME' ? 'UTME Candidate' : 'Verified Student';
+          const levelLabel = u.level ? `${u.level}L` : '100L';
+
+          spotlightContainer.innerHTML = `
+            <div class="user-faculty-spotlight-card">
+              <div>
+                <div class="spotlight-badge-row">
+                  <span class="spotlight-tag">⭐ Your Enrolled Faculty</span>
+                  <span class="spotlight-level-tag">${escapeHtml(levelLabel)} • ${escapeHtml(roleLabel)}</span>
+                </div>
+                <h2 class="spotlight-title">Faculty of ${escapeHtml(userFaculty.name)}</h2>
+                <p class="spotlight-desc">
+                  ${deptName ? `Department of <strong>${escapeHtml(deptName)}</strong> • ` : ''}Curriculum outlines, required 100L packages, and approved GES combinations.
+                </p>
+              </div>
+              <div class="spotlight-actions">
+                ${userDept ? `
+                  <button class="spotlight-primary-btn" onclick="selectFacultyForCatalog('${userFaculty.id}'); selectDepartmentForPackage('${userDept.id}');">
+                    <span>Inspect ${escapeHtml(deptName)} Package</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </button>
+                ` : `
+                  <button class="spotlight-primary-btn" onclick="selectFacultyForCatalog('${userFaculty.id}')">
+                    <span>Inspect Departments (${deptCount})</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </button>
+                `}
+                <button class="spotlight-secondary-btn" onclick="openOnboardingModal(1)">
+                  ✏️ Update Profile
+                </button>
+              </div>
+            </div>
+          `;
+          spotlightContainer.style.display = "block";
+        } else {
+          spotlightContainer.style.display = "none";
+        }
+      }
 
       // Filter by category chip
-      if (appData.activeCategoryFilter !== 'ALL') {
-        list = list.filter(f => facultyCategoryMap[f.code] === appData.activeCategoryFilter);
+      if (appData.activeCategoryFilter === 'STEM') {
+        list = list.filter(f => ['STEM', 'TECH'].includes(facultyCategoryMap[f.code]));
+      } else if (appData.activeCategoryFilter === 'MEDICAL') {
+        list = list.filter(f => facultyCategoryMap[f.code] === 'MEDICAL');
+      } else if (appData.activeCategoryFilter === 'ARTS_SOCIAL') {
+        list = list.filter(f => ['ARTS', 'SOCIAL', 'AGRIC'].includes(facultyCategoryMap[f.code]));
+      } else if (appData.activeCategoryFilter === 'LAW_EDU') {
+        list = list.filter(f => ['LAW', 'EDUCATION'].includes(facultyCategoryMap[f.code]));
       }
 
       // Filter by search query
@@ -2612,6 +2838,13 @@
           (f.code && f.code.toLowerCase().includes(q)) ||
           (f.departments && f.departments.some(d => d.name.toLowerCase().includes(q)))
         );
+      } else if (userFaculty && appData.activeCategoryFilter === 'ALL') {
+        // Sort user's enrolled faculty to the first position in default view
+        list = list.slice().sort((a, b) => {
+          if (a.id === userFaculty.id) return -1;
+          if (b.id === userFaculty.id) return 1;
+          return a.name.localeCompare(b.name);
+        });
       }
 
       const summaryElem = document.getElementById("faculty-count-summary");
@@ -2626,19 +2859,22 @@
       }
 
       grid.innerHTML = list.map(f => {
+        const isUserFaculty = userFaculty && f.id === userFaculty.id;
         const deptCount = f.departments ? f.departments.length : (f._count ? f._count.departments : 0);
         const categoryLabel = facultyDisplayCategory[f.code] || 'ACADEMIC FACULTY';
         
         // Render up to 4 department preview tags
         const deptChipsHtml = (f.departments || []).slice(0, 4).map(d => {
           const isMatch = q && d.name.toLowerCase().includes(q);
-          return `<span class="faculty-dept-chip ${isMatch ? 'highlight' : ''}">${escapeHtml(d.name)}</span>`;
+          const isUserDept = userDept && d.id === userDept.id;
+          return `<span class="faculty-dept-chip ${isMatch || isUserDept ? 'highlight' : ''}">${escapeHtml(d.name)}${isUserDept ? ' (Yours)' : ''}</span>`;
         }).join("");
 
         const hasMoreDepts = f.departments && f.departments.length > 4;
 
         return `
-          <div class="faculty-card" onclick="selectFacultyForCatalog('${f.id}')">
+          <div class="faculty-card ${isUserFaculty ? 'user-faculty-highlight' : ''}" onclick="selectFacultyForCatalog('${f.id}')">
+            ${isUserFaculty ? '<span class="user-enrolled-badge">⭐ Your Faculty</span>' : ''}
             <div>
               <div class="faculty-card-header">
                 <span class="faculty-category-tag">${categoryLabel}</span>
@@ -2655,7 +2891,7 @@
             </div>
             
             <div class="faculty-card-action">
-              <span>Inspect Departmental Packages</span>
+              <span>${isUserFaculty ? 'Inspect Your Department Package' : 'Inspect Departmental Packages'}</span>
               <svg class="faculty-card-action-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </div>
           </div>
@@ -2999,6 +3235,7 @@
         if (json.success && json.authenticated && json.data) {
           appData.currentUser = json.data;
           updateAuthUI();
+          renderFacultyCatalog();
           await fetchPersonalizedFeed();
 
           // Check if user has completed onboarding
@@ -3017,6 +3254,7 @@
         } else {
           appData.currentUser = null;
           updateAuthUI();
+          renderFacultyCatalog();
         }
       } catch (err) {
         console.warn("Auth initialization error:", err);
@@ -3209,23 +3447,76 @@
       const u = appData.currentUser;
       if (!u || !u.isOnboarded) return;
 
-      const isDismissed = sessionStorage.getItem("ui_ret_user_dismissed");
+      const isDismissed = sessionStorage.getItem("ui_ret_user_dismissed") || (u.id && localStorage.getItem("ui_profile_confirmed_" + u.id));
       if (isDismissed) return;
+
+      // Check if onboarding completed date is recent (< 30 days)
+      if (u.onboardingCompletedAt) {
+        const completedDate = new Date(u.onboardingCompletedAt).getTime();
+        const daysAgo = (Date.now() - completedDate) / (1000 * 60 * 60 * 24);
+        if (daysAgo < 30) {
+          return;
+        }
+      }
 
       const banner = document.getElementById("returning-user-banner");
       const nameSpan = document.getElementById("ret-user-name");
       const descSpan = document.getElementById("ret-user-desc");
 
       if (banner && nameSpan && descSpan) {
-        nameSpan.textContent = `Welcome back, ${u.fullName?.split(" ")[0] || 'Fresher'}!`;
+        nameSpan.textContent = `Academic Status Confirmation:`;
         if (u.role === "CURRENT_STUDENT" && u.department) {
-          descSpan.textContent = `Still in ${u.level || 100}L ${u.department.name}?`;
+          descSpan.textContent = `Please confirm your current level (${u.level || 100}L) and department (${u.department.name}).`;
         } else if (u.role === "PROSPECTIVE_UTME") {
-          descSpan.textContent = `Still preparing for UI ${u.utmeExamYear || 2026} admission?`;
+          descSpan.textContent = `Please confirm your target ${u.utmeExamYear || 2026} admission session.`;
         } else {
-          descSpan.textContent = `Is your academic profile still accurate?`;
+          descSpan.textContent = `Please confirm your current level and department.`;
         }
         banner.style.display = "flex";
+      }
+    }
+
+    async function confirmAcademicProfile() {
+      const confirmBtn = document.getElementById("confirm-profile-btn");
+      if (confirmBtn) {
+        confirmBtn.disabled = true;
+        confirmBtn.textContent = "Confirming...";
+      }
+
+      try {
+        const res = await fetch("/api/user/confirm-profile", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+        });
+        const json = await res.json();
+
+        if (json.success && json.data?.user) {
+          appData.currentUser = json.data.user;
+          sessionStorage.setItem("ui_ret_user_dismissed", "true");
+          if (appData.currentUser?.id) {
+            localStorage.setItem("ui_profile_confirmed_" + appData.currentUser.id, Date.now().toString());
+          }
+          const banner = document.getElementById("returning-user-banner");
+          if (banner) banner.style.display = "none";
+          
+          updateAuthUI();
+          renderFacultyCatalog();
+          await fetchPersonalizedFeed();
+        } else {
+          alert("Could not confirm profile: " + (json.message || "Please try again."));
+          if (confirmBtn) {
+            confirmBtn.disabled = false;
+            confirmBtn.textContent = "✓ Confirm";
+          }
+        }
+      } catch (err) {
+        console.error("Profile confirmation failed:", err);
+        alert("Network error confirming profile. Please try again.");
+        if (confirmBtn) {
+          confirmBtn.disabled = false;
+          confirmBtn.textContent = "✓ Confirm";
+        }
       }
     }
 
@@ -3495,6 +3786,7 @@
           const incompBanner = document.getElementById("incomplete-onboarding-banner");
           if (incompBanner) incompBanner.style.display = "none";
 
+          renderFacultyCatalog();
           await fetchPersonalizedFeed();
           renderHome();
         }
