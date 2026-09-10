@@ -1,0 +1,44 @@
+// ============================================
+// uifreshers. design tokens
+// Palette sourced directly from the logo/brand spec
+// ============================================
+
+// Primary
+$deep-purple: #7a1f7a; // headers, nav, primary buttons
+$magenta: #9b2c8f; // hero/gradient core tone
+$hot-pink: #c0399f; // hover states, highlights
+
+// Secondary / accent
+$flame-gold: #f2c14e; // CTAs, badges, streaks
+$soft-lavender: #e8d5f0; // light backgrounds, card borders/dividers
+
+// Neutrals
+$off-white: #faf7fb; // main background
+$charcoal: #2b2230; // body text
+$mid-gray: #8a8190; // secondary text, placeholders
+$white: #ffffff;
+
+// Semantic
+$success-green: #4caf6d;
+$warning-amber: #f2a93b;
+$error-red: #d94f4f;
+
+// Gradients (built from the primary trio)
+$gradient-hero: linear-gradient(135deg, $deep-purple 0%, $magenta 55%, $hot-pink 100%);
+$gradient-gold: linear-gradient(135deg, $flame-gold 0%, darken($flame-gold, 10%) 100%);
+
+// Typography
+$font-heading: "Sora", "Manrope", sans-serif;
+$font-body: "Manrope", sans-serif;
+
+// Radii & shadows (pill-button language from LearnHub, kept)
+$radius-sm: 0.5rem;
+$radius-md: 0.875rem;
+$radius-lg: 1.25rem;
+$radius-pill: 999px;
+
+$shadow-card: 0 10px 15px -3px rgba(43, 34, 48, 0.08), 0 4px 6px -2px rgba(43, 34, 48, 0.04);
+$shadow-card-hover: 0 20px 25px -5px rgba(43, 34, 48, 0.12), 0 8px 10px -6px rgba(43, 34, 48, 0.06);
+
+// Spacing scale
+$spacer: 1rem;

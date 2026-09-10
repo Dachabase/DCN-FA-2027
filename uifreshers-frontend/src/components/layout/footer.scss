@@ -1,0 +1,61 @@
+@use "../../assets/scss/variables" as *;
+
+.uif-footer {
+  background: $charcoal;
+  color: rgba($white, 0.85);
+  padding: 3.5rem 0 1.5rem;
+}
+
+.uif-footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.uif-footer__brand p {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  max-width: 260px;
+}
+
+.uif-footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  h6 {
+    color: $white;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba($white, 0.7);
+    font-size: 0.9rem;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: $flame-gold;
+    }
+  }
+}
+
+.uif-footer__bottom {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba($white, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}

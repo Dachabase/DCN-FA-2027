@@ -1,0 +1,28 @@
+@use "../../assets/scss/variables" as *;
+
+.uif-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  color: $mid-gray;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.uif-state--error {
+  color: $error-red;
+}
+
+.uif-state__spin {
+  animation: uif-spin 1s linear infinite;
+}
+
+@keyframes uif-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

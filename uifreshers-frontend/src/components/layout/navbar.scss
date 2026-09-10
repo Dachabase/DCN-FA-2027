@@ -1,0 +1,166 @@
+@use "../../assets/scss/variables" as *;
+
+.uif-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: $white;
+  border-bottom: 1px solid $soft-lavender;
+}
+
+.uif-navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.25rem;
+  gap: 1.5rem;
+}
+
+.uif-navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: $font-heading;
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: $deep-purple;
+  flex-shrink: 0;
+}
+
+.uif-navbar__dot {
+  color: $hot-pink;
+}
+
+.uif-navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  overflow-x: auto;
+  flex: 1;
+}
+
+.uif-navbar__link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: $radius-pill;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $mid-gray;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    color: $deep-purple;
+    background: $soft-lavender;
+  }
+
+  &.is-active {
+    color: $white;
+    background: $deep-purple;
+  }
+}
+
+.uif-navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.uif-navbar__install {
+  display: none;
+
+  @media (min-width: 992px) {
+    display: inline-flex;
+  }
+}
+
+.uif-navbar__profile {
+  position: relative;
+}
+
+.uif-navbar__profile-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: $soft-lavender;
+  border: none;
+  border-radius: $radius-pill;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  color: $charcoal;
+}
+
+.uif-navbar__avatar {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: $deep-purple;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.uif-navbar__level {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: $deep-purple;
+  background: $white;
+  padding: 0.1rem 0.5rem;
+  border-radius: $radius-pill;
+}
+
+.uif-navbar__dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  width: 240px;
+  background: $white;
+  border: 1px solid $soft-lavender;
+  border-radius: $radius-md;
+  box-shadow: $shadow-card-hover;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.uif-navbar__dropdown-header {
+  display: flex;
+  flex-direction: column;
+  padding: 0.4rem 0.6rem 0.75rem;
+  border-bottom: 1px solid $soft-lavender;
+  margin-bottom: 0.25rem;
+
+  span {
+    font-size: 0.8rem;
+  }
+}
+
+.uif-navbar__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  border-radius: $radius-sm;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: $charcoal;
+
+  &:hover {
+    background: $soft-lavender;
+  }
+
+  &--danger {
+    color: $error-red;
+  }
+}

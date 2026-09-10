@@ -1,0 +1,91 @@
+@use "variables" as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: $radius-pill;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease,
+    color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.btn-primary {
+  background: $deep-purple;
+  color: $white;
+
+  &:hover:not(:disabled) {
+    background: $magenta;
+  }
+}
+
+.btn-gradient {
+  background: $gradient-hero;
+  color: $white;
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 8px 20px -6px rgba(155, 44, 143, 0.5);
+  }
+}
+
+.btn-gold {
+  background: $flame-gold;
+  color: $charcoal;
+
+  &:hover:not(:disabled) {
+    background: darken($flame-gold, 6%);
+  }
+}
+
+.btn-outline {
+  background: transparent;
+  color: $deep-purple;
+  border-color: $deep-purple;
+
+  &:hover:not(:disabled) {
+    background: $soft-lavender;
+  }
+}
+
+.btn-ghost {
+  background: transparent;
+  color: $charcoal;
+
+  &:hover:not(:disabled) {
+    background: $soft-lavender;
+    color: $deep-purple;
+  }
+}
+
+.btn-sm {
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+}
+
+.btn-lg {
+  padding: 0.85rem 2rem;
+  font-size: 1.05rem;
+}
+
+.btn-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-radius: 50%;
+}

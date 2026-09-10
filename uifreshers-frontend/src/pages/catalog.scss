@@ -1,0 +1,73 @@
+@use "../assets/scss/variables" as *;
+
+.uif-catalog {
+  padding: 2.5rem 0 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.uif-catalog__search {
+  margin: 0;
+}
+
+.uif-catalog__policy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.uif-catalog__policy-figures {
+  display: flex;
+  gap: 2rem;
+  margin-top: 0.5rem;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  strong {
+    font-size: 1.1rem;
+  }
+}
+
+.uif-catalog__good {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: $success-green;
+}
+
+.uif-catalog__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.uif-catalog-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.uif-catalog-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.uif-catalog-card__category {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+}

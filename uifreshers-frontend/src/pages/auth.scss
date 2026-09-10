@@ -1,0 +1,104 @@
+@use "../assets/scss/variables" as *;
+
+.uif-auth {
+  min-height: calc(100vh - 4.25rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, $soft-lavender 0%, $off-white 60%);
+  padding: 3rem 1rem;
+}
+
+.uif-auth__card {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.uif-auth__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: $deep-purple;
+  font-weight: 800;
+  font-family: $font-heading;
+  margin-bottom: 0.5rem;
+}
+
+.uif-auth__google {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0 0.5rem;
+}
+
+.uif-auth__divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: $mid-gray;
+  font-size: 0.8rem;
+  margin: 1rem 0;
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid $soft-lavender;
+  }
+
+  span {
+    padding: 0 0.75rem;
+  }
+}
+
+.uif-auth__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.uif-auth__field {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid $soft-lavender;
+  border-radius: $radius-pill;
+  padding: 0.65rem 1.1rem;
+  color: $mid-gray;
+
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 0.95rem;
+    color: $charcoal;
+  }
+
+  &:focus-within {
+    border-color: $hot-pink;
+  }
+}
+
+.uif-auth__error {
+  color: $error-red;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.uif-auth__switch {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+
+  button {
+    background: none;
+    border: none;
+    color: $deep-purple;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0;
+  }
+}

@@ -1,0 +1,19 @@
+@use "../../assets/scss/variables" as *;
+
+.uif-pageheader {
+  padding: 2.5rem 0 1.5rem;
+  background: $soft-lavender;
+}
+
+.uif-pageheader__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.uif-hero__chip.is-active {
+  background: $deep-purple;
+  color: $white;
+  border-color: $deep-purple;
+}
