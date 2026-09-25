@@ -15,3 +15,41 @@ export const MessageRole = {
 } as const
 
 export type MessageRole = (typeof MessageRole)[keyof typeof MessageRole]
+
+
+export const KnowledgeSourceType = {
+  PDF: 'PDF',
+  POWERPOINT: 'POWERPOINT',
+  WORD_DOCUMENT: 'WORD_DOCUMENT',
+  HANDBOOK: 'HANDBOOK',
+  COURSE_MATERIAL: 'COURSE_MATERIAL',
+  COURSE_OUTLINE: 'COURSE_OUTLINE',
+  OFFICIAL_NOTICE: 'OFFICIAL_NOTICE',
+  ORIENTATION_MATERIAL: 'ORIENTATION_MATERIAL',
+  FAQ: 'FAQ',
+  WEB_PAGE: 'WEB_PAGE',
+  SCANNED_IMAGE: 'SCANNED_IMAGE',
+  OTHER: 'OTHER'
+} as const
+
+export type KnowledgeSourceType = (typeof KnowledgeSourceType)[keyof typeof KnowledgeSourceType]
+
+
+export const KnowledgeAuthority = {
+  OFFICIAL: 'OFFICIAL',
+  FACULTY: 'FACULTY',
+  DEPARTMENT: 'DEPARTMENT',
+  COURSE: 'COURSE',
+  GENERAL: 'GENERAL'
+} as const
+
+export type KnowledgeAuthority = (typeof KnowledgeAuthority)[keyof typeof KnowledgeAuthority]
+
+
+export const KnowledgeSourceStatus = {
+  ACTIVE: 'ACTIVE',
+  ARCHIVED: 'ARCHIVED',
+  EXPIRED: 'EXPIRED'
+} as const
+
+export type KnowledgeSourceStatus = (typeof KnowledgeSourceStatus)[keyof typeof KnowledgeSourceStatus]

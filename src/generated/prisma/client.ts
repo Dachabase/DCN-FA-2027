@@ -76,3 +76,13 @@ export type Message = Prisma.MessageModel
  * 
  */
 export type Memory = Prisma.MemoryModel
+/**
+ * Model KnowledgeSource
+ * 
+ */
+export type KnowledgeSource = Prisma.KnowledgeSourceModel
+/**
+ * Model KnowledgeChunk
+ * 
+ */
+export type KnowledgeChunk = Prisma.KnowledgeChunkModel

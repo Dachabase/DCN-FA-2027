@@ -1,3 +1,4 @@
+
 // Prisma schema for UI Freshers AI
 
 generator client {
@@ -22,6 +23,7 @@ model Faculty {
   departments Department[]
   users       User[]
   bots        Bot[]
+  knowledgeSources KnowledgeSource[]
 }
 
 // =========================================================
@@ -54,6 +56,8 @@ model Department {
   faculty   Faculty @relation(fields: [facultyId], references: [id], onDelete: Cascade)
 
   users User[]
+
+  knowledgeSources KnowledgeSource[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -148,4 +152,287 @@ model Memory {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+// =========================================================
+// KNOWLEDGE SOURCE
+// =========================================================
+//
+// Represents an original faculty/department information
+// source such as:
+//
+// - PDF
+// - PowerPoint
+// - Word document
+// - handbook
+// - course outline
+// - official notice
+// - orientation material
+// - academic document
+//
+// The original source is represented here while its
+// searchable pieces are stored as KnowledgeChunk records.
+//
+
+model KnowledgeSource {
+  id String @id @default(cuid())
+
+  // -------------------------------------------------------
+  // BASIC INFORMATION
+  // -------------------------------------------------------
+
+  title String
+
+  description String?
+
+  // -------------------------------------------------------
+  // SOURCE TYPE
+  // -------------------------------------------------------
+
+  type KnowledgeSourceType
+
+  // Original filename when applicable.
+  fileName String?
+
+  // Optional location/reference for the original material.
+  sourceUrl String?
+
+  // SHA-256 hash of the raw file bytes. Used to detect when
+  // the exact same file has already been ingested, so
+  // batch ingestion can be re-run safely without creating
+  // duplicate sources every time.
+  checksum String?
+
+  // SHA-256 hash of the chunked, sanitized document text
+  // (chunks joined in order). Two files can differ at the
+  // byte level (different metadata, re-export, re-save)
+  // while containing identical content — this catches that
+  // case, which the file-level checksum above cannot.
+  contentChecksum String?
+
+  // -------------------------------------------------------
+  // FACULTY SCOPE
+  // -------------------------------------------------------
+
+  facultyId String
+  faculty   Faculty @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+
+  // -------------------------------------------------------
+  // DEPARTMENT SCOPE
+  // -------------------------------------------------------
+  //
+  // Null means the source applies to the entire faculty.
+  //
+
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+
+  // -------------------------------------------------------
+  // ACADEMIC SCOPE
+  // -------------------------------------------------------
+
+  courseCode String?
+
+  courseName String?
+
+  level Int?
+
+  // -------------------------------------------------------
+  // SOURCE AUTHORITY / STATUS
+  // -------------------------------------------------------
+
+  authority KnowledgeAuthority @default(GENERAL)
+
+  status KnowledgeSourceStatus @default(ACTIVE)
+
+  // -------------------------------------------------------
+  // VERSIONING
+  // -------------------------------------------------------
+
+  version String?
+
+  publishedAt DateTime?
+
+  expiresAt DateTime?
+
+  // -------------------------------------------------------
+  // EXTRA METADATA
+  // -------------------------------------------------------
+  //
+  // Flexible metadata for information that does not deserve
+  // its own database column yet.
+  //
+  // Example:
+  //
+  // {
+  //   "semester": "First",
+  //   "session": "2026/2027",
+  //   "section": "Registration"
+  // }
+  //
+
+  metadata Json?
+
+  // -------------------------------------------------------
+  // TIMESTAMPS
+  // -------------------------------------------------------
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // -------------------------------------------------------
+  // RELATIONS
+  // -------------------------------------------------------
+
+  chunks KnowledgeChunk[]
+
+  @@index([facultyId])
+  @@index([departmentId])
+  @@index([courseCode])
+  @@index([level])
+  @@index([authority])
+  @@index([status])
+  @@index([checksum])
+  @@index([contentChecksum])
+}
+
+// =========================================================
+// KNOWLEDGE CHUNK
+// =========================================================
+//
+// A KnowledgeSource is split into smaller pieces.
+//
+// Retrieval will eventually search these chunks and provide
+// only the most relevant pieces to Gemini.
+//
+// Example:
+//
+// Source:
+// "Software Engineering Student Handbook 2026"
+//
+// Chunk:
+// "Students offering Software Engineering at 100 level
+// register for..."
+//
+// Each chunk keeps enough metadata to understand where the
+// information came from.
+//
+
+model KnowledgeChunk {
+  id String @id @default(cuid())
+
+  // -------------------------------------------------------
+  // SOURCE
+  // -------------------------------------------------------
+
+  sourceId String
+
+  source KnowledgeSource @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+
+  // -------------------------------------------------------
+  // CHUNK POSITION
+  // -------------------------------------------------------
+
+  chunkIndex Int
+
+  // -------------------------------------------------------
+  // CONTENT
+  // -------------------------------------------------------
+
+  content String
+
+  // Optional heading/section from the original document.
+  heading String?
+
+  // Optional page number for PDFs/documents.
+  pageNumber Int?
+
+  // Optional slide number for PowerPoint material.
+  slideNumber Int?
+
+  // -------------------------------------------------------
+  // SEARCH REPRESENTATION
+  // -------------------------------------------------------
+  //
+  // Semantic embedding vector (Gemini text-embedding-001,
+  // 768 dimensions via Matryoshka truncation). Empty array
+  // means "not yet embedded" — see backfill-embeddings.ts.
+  //
+  // Stored as a native Postgres float array rather than
+  // pgvector: at this corpus size (tens of thousands of
+  // chunks), brute-force cosine similarity computed in
+  // application code is fast enough, and this avoids
+  // depending on the pgvector extension being available on
+  // whatever Postgres host this deploys to. Revisit with
+  // pgvector + an ANN index if the corpus grows an order of
+  // magnitude or query latency becomes a problem.
+  //
+
+  embedding Float[] @default([])
+
+  // -------------------------------------------------------
+  // METADATA
+  // -------------------------------------------------------
+
+  metadata Json?
+
+  // -------------------------------------------------------
+  // TIMESTAMPS
+  // -------------------------------------------------------
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // -------------------------------------------------------
+  // CONSTRAINTS / INDEXES
+  // -------------------------------------------------------
+
+  @@unique([sourceId, chunkIndex])
+  @@index([sourceId])
+}
+
+// =========================================================
+// KNOWLEDGE SOURCE TYPE
+// =========================================================
+
+enum KnowledgeSourceType {
+  PDF
+  POWERPOINT
+  WORD_DOCUMENT
+  HANDBOOK
+  COURSE_MATERIAL
+  COURSE_OUTLINE
+  OFFICIAL_NOTICE
+  ORIENTATION_MATERIAL
+  FAQ
+  WEB_PAGE
+  SCANNED_IMAGE
+  OTHER
+}
+
+// =========================================================
+// KNOWLEDGE AUTHORITY
+// =========================================================
+//
+// Determines how much trust retrieval should place in a
+// particular source when multiple sources contain related
+// information.
+//
+
+enum KnowledgeAuthority {
+  OFFICIAL
+  FACULTY
+  DEPARTMENT
+  COURSE
+  GENERAL
+}
+
+// =========================================================
+// KNOWLEDGE SOURCE STATUS
+// =========================================================
+
+enum KnowledgeSourceStatus {
+  ACTIVE
+  ARCHIVED
+  EXPIRED
 }

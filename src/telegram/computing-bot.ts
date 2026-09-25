@@ -10,6 +10,7 @@ import {
 
 import {
   getOnboardingStep,
+  setOnboardingStep,
 } from "../onboarding/onboarding.service";
 
 import {
@@ -39,6 +40,7 @@ import {
 
 import {
   formatTelegramResponse,
+  splitTelegramResponse,
 } from "./response-formatter";
 
 // ---------------------------------------------------------
@@ -58,6 +60,48 @@ export const computingBot =
   new Bot(token);
 
 // ---------------------------------------------------------
+// BOT FACULTY
+// ---------------------------------------------------------
+
+/**
+ * The Telegram bot itself determines the faculty it represents.
+ *
+ * We do NOT immediately assign this faculty to a student.
+ *
+ * A student may have opened the wrong faculty bot, so the
+ * faculty is treated as a candidate until the student confirms it.
+ */
+async function getComputingBotFaculty() {
+  const botInfo =
+    await computingBot.api.getMe();
+
+  const botRecord =
+    await prisma.bot.findUnique({
+      where: {
+        telegramBotId: BigInt(botInfo.id),
+      },
+
+      include: {
+        faculty: true,
+      },
+    });
+
+  if (!botRecord) {
+    throw new Error(
+      `No database record found for Telegram bot ${botInfo.id} (@${botInfo.username ?? "unknown"}).`
+    );
+  }
+
+  if (!botRecord.faculty) {
+    throw new Error(
+      `Telegram bot @${botInfo.username ?? "unknown"} is not assigned to a faculty in the database.`
+    );
+  }
+
+  return botRecord.faculty;
+}
+
+// ---------------------------------------------------------
 // START COMMAND
 // ---------------------------------------------------------
 
@@ -71,6 +115,17 @@ computingBot.command(
       if (!telegramUser) {
         return;
       }
+
+      console.log(
+        "[BOT] Resolving faculty represented by this bot..."
+      );
+
+      const botFaculty =
+        await getComputingBotFaculty();
+
+      console.log(
+        `[BOT] Bot faculty: ${botFaculty.name} (${botFaculty.id})`
+      );
 
       const user =
         await findOrCreateUser({
@@ -87,70 +142,185 @@ computingBot.command(
             telegramUser.username,
         });
 
+      console.log(
+        `[BOT] User loaded: ${user.id}`
+      );
+
       const onboardingStep =
         await getOnboardingStep(
           user.id
         );
 
+      // // ---------------------------------------------------
+      // // ONBOARDING ALREADY IN PROGRESS
+      // // ---------------------------------------------------
+
+      // if (
+      //   onboardingStep &&
+      //   onboardingStep !== "COMPLETE"
+      // ) {
+      //   /**
+      //    * If the user is already in onboarding, continue the
+      //    * existing onboarding flow rather than silently changing
+      //    * their faculty.
+      //    */
+      //   if (
+      //     onboardingStep ===
+      //     "FACULTY_CONFIRMATION"
+      //   ) {
+      //     await ctx.reply(
+      //       `Welcome back, ${telegramUser.first_name}! 👋\n\n` +
+      //         `Before we continue, I just need to confirm something.\n\n` +
+      //         `Are you a ${botFaculty.name} student?\n\n` +
+      //         `Please reply with "Yes" or "No".`
+      //     );
+
+      //     return;
+      //   }
+
+      //   await ctx.reply(
+      //     `Welcome back, ${telegramUser.first_name}! 👋\n\n` +
+      //       `Let's continue setting up your Computing Freshers Companion. 🎓`
+      //   );
+
+      //   return;
+      // }
+
+           
       // ---------------------------------------------------
-      // ONBOARDING NOT COMPLETE
+      // ONBOARDING ALREADY IN PROGRESS
       // ---------------------------------------------------
 
       if (
         onboardingStep &&
         onboardingStep !== "COMPLETE"
       ) {
+        /**
+         * /start acts as a resume command.
+         *
+         * We do not restart onboarding or modify the user's
+         * faculty. We simply remind the student what information
+         * is currently required.
+         */
+
+        if (
+          onboardingStep ===
+          "FACULTY_CONFIRMATION"
+        ) {
+          await ctx.reply(
+            `Welcome back, ${telegramUser.first_name}! 👋\n\n` +
+              `Are you a ${botFaculty.name} student?\n\n` +
+              `Just reply "Yes" or "No".`
+          );
+
+          return;
+        }
+
+        if (
+          onboardingStep ===
+          "DEPARTMENT"
+        ) {
+          await ctx.reply(
+            `Welcome back, ${telegramUser.first_name}! 👋\n\n` +
+              `What department are you in?\n\n` +
+              `Just tell me the name of your department.`
+          );
+
+          return;
+        }
+
+        if (
+          onboardingStep ===
+          "LEVEL"
+        ) {
+          await ctx.reply(
+            `Welcome back, ${telegramUser.first_name}! 👋\n\n` +
+              `What level are you entering?\n\n` +
+              `You can simply say "100" or "100 level".`
+          );
+
+          return;
+        }
+      }
+
+      // ---------------------------------------------------
+      // USER HAS NO FACULTY
+      // ---------------------------------------------------
+
+      if (!user.facultyId) {
+        console.log(
+          "[BOT] User has no faculty assigned."
+        );
+
+        console.log(
+          "[BOT] Starting faculty confirmation."
+        );
+
+        await setOnboardingStep(
+          user.id,
+          "FACULTY_CONFIRMATION"
+        );
+
         await ctx.reply(
-          `Welcome back, ${telegramUser.first_name}! 👋\n\n` +
-            `Let's continue setting up your Computing Freshers Companion. 🎓`
+          `Hey ${telegramUser.first_name}! 👋\n\n` +
+            `Welcome to the University of Ibadan ${botFaculty.name} Freshers Companion. 🎓\n\n` +
+            `Before we get you set up, I just need to confirm something:\n\n` +
+            `Are you a ${botFaculty.name} student?\n\n` +
+            `Please reply with "Yes" or "No".`
         );
 
         return;
       }
 
       // ---------------------------------------------------
-      // CHECK WHETHER USER ALREADY HAS A CONVERSATION
+      // USER ALREADY HAS A FACULTY
       // ---------------------------------------------------
 
-      const existingConversation =
-        await prisma.conversation.findFirst({
+      const userFaculty =
+        await prisma.faculty.findUnique({
           where: {
-            userId: user.id,
-          },
-          include: {
-            messages: {
-              take: 1,
-            },
-          },
-          orderBy: {
-            updatedAt: "desc",
+            id: user.facultyId,
           },
         });
 
       // ---------------------------------------------------
-      // COMPLETELY NEW STUDENT
+      // USER'S FACULTY MATCHES THIS BOT
       // ---------------------------------------------------
 
       if (
-        !existingConversation ||
-        existingConversation.messages.length === 0
+        userFaculty &&
+        userFaculty.id === botFaculty.id
       ) {
+        console.log(
+          `[BOT] User is already registered under ${botFaculty.name}.`
+        );
+
         await ctx.reply(
-          `Hey ${telegramUser.first_name}! 👋\n\n` +
-            `Welcome to the University of Ibadan Computing Freshers Companion. 🎓\n\n` +
-            `I'm here to help you navigate your journey as a Computing student at UI.`
+          `Welcome back, ${telegramUser.first_name}! 👋\n\n` +
+            `You're already registered as a ${botFaculty.name} student. 🎓\n\n` +
+            `What can I help you with?`
         );
 
         return;
       }
 
       // ---------------------------------------------------
-      // EXISTING STUDENT
+      // USER BELONGS TO A DIFFERENT FACULTY
       // ---------------------------------------------------
 
+      console.log(
+        `[BOT] User already belongs to another faculty: ${
+          userFaculty?.name ?? user.facultyId
+        }`
+      );
+
       await ctx.reply(
-        `You're already registered as a Computing student. 🎓\n\n` +
-          `What can I help you with?`
+        `Hey ${telegramUser.first_name}! 👋\n\n` +
+          `I can see that your account is currently registered under ${
+            userFaculty?.name ?? "another faculty"
+          }.\n\n` +
+          `This bot is for ${botFaculty.name} students.\n\n` +
+          `If you believe your faculty should be changed, please contact the Freshers Companion support team rather than creating conflicting faculty records.`
       );
     } catch (error) {
       console.error(
@@ -203,6 +373,21 @@ computingBot.on(
       );
 
       // ---------------------------------------------------
+      // RESOLVE BOT FACULTY
+      // ---------------------------------------------------
+
+      console.log(
+        "[BOT] Resolving faculty represented by this bot..."
+      );
+
+      const botFaculty =
+        await getComputingBotFaculty();
+
+      console.log(
+        `[BOT] Bot faculty: ${botFaculty.name} (${botFaculty.id})`
+      );
+
+      // ---------------------------------------------------
       // LOAD USER
       // ---------------------------------------------------
 
@@ -237,7 +422,7 @@ computingBot.on(
         "[BOT] Checking onboarding state..."
       );
 
-      const onboardingStep =
+      let onboardingStep =
         await getOnboardingStep(
           user.id
         );
@@ -248,8 +433,37 @@ computingBot.on(
         }`
       );
 
-      // Only unfinished onboarding steps should
-      // be handled by the onboarding handler.
+      // ---------------------------------------------------
+      // FIRST CONTACT WITHOUT FACULTY
+      // ---------------------------------------------------
+
+      /**
+       * A user can send a message without pressing /start.
+       *
+       * If they have no faculty yet, the bot must establish
+       * the bot's faculty before allowing normal AI interaction.
+       */
+      if (
+        !user.facultyId &&
+        !onboardingStep
+      ) {
+        console.log(
+          "[BOT] User has no faculty. Starting faculty confirmation."
+        );
+
+        await setOnboardingStep(
+          user.id,
+          "FACULTY_CONFIRMATION"
+        );
+
+        onboardingStep =
+          "FACULTY_CONFIRMATION";
+      }
+
+      // ---------------------------------------------------
+      // ONBOARDING ACTIVE
+      // ---------------------------------------------------
+
       if (
         onboardingStep &&
         onboardingStep !== "COMPLETE"
@@ -258,15 +472,49 @@ computingBot.on(
           "[BOT] Onboarding is still active. Routing message to onboarding handler."
         );
 
-        await handleOnboardingMessage(
-          ctx
+        const handled =
+          await handleOnboardingMessage(
+            ctx,
+            botFaculty.id
+          );
+
+        if (handled) {
+          return;
+        }
+      }
+
+      // ---------------------------------------------------
+      // SAFETY CHECK
+      // ---------------------------------------------------
+
+      /**
+       * If the user still has no faculty after onboarding,
+       * do not send the message to the AI without faculty
+       * context.
+       */
+      const refreshedUser =
+        await prisma.user.findUnique({
+          where: {
+            id: user.id,
+          },
+        });
+
+      if (!refreshedUser) {
+        throw new Error(
+          "User disappeared while processing message."
+        );
+      }
+
+      if (!refreshedUser.facultyId) {
+        console.log(
+          "[BOT] Faculty has not been established. Stopping before AI."
         );
 
         return;
       }
 
       console.log(
-        "[BOT] Onboarding complete. Continuing to AI..."
+        "[BOT] Faculty established. Continuing to AI..."
       );
 
       // ---------------------------------------------------
@@ -385,6 +633,39 @@ computingBot.on(
       }
 
       // ---------------------------------------------------
+      // SPLIT RESPONSE FOR TELEGRAM
+      // ---------------------------------------------------
+
+      console.log(
+        "[BOT] Preparing Telegram response chunks..."
+      );
+
+      const responseChunks =
+        splitTelegramResponse(
+          formattedResponse
+        );
+
+      if (
+        responseChunks.length === 0
+      ) {
+        throw new Error(
+          "AI response produced no Telegram message chunks."
+        );
+      }
+
+      console.log(
+        `[BOT] Telegram response split into ${responseChunks.length} message(s).`
+      );
+
+      responseChunks.forEach(
+        (chunk, index) => {
+          console.log(
+            `[BOT] Chunk ${index + 1}/${responseChunks.length}: ${chunk.length} characters.`
+          );
+        }
+      );
+
+      // ---------------------------------------------------
       // SEND RESPONSE
       // ---------------------------------------------------
 
@@ -392,12 +673,26 @@ computingBot.on(
         "[BOT] Sending AI response to Telegram..."
       );
 
-      await ctx.reply(
-        formattedResponse,
-        {
-          parse_mode: "HTML",
-        }
-      );
+      for (
+        let index = 0;
+        index <
+        responseChunks.length;
+        index += 1
+      ) {
+        const chunk =
+          responseChunks[index];
+
+        console.log(
+          `[BOT] Sending response chunk ${index + 1}/${responseChunks.length}...`
+        );
+
+        await ctx.reply(
+          chunk,
+          {
+            parse_mode: "HTML",
+          }
+        );
+      }
 
       console.log(
         "[BOT] Response successfully sent."
@@ -408,8 +703,6 @@ computingBot.on(
       // ---------------------------------------------------
 
       /**
-       * IMPORTANT:
-       *
        * Memory extraction happens AFTER the student's
        * response has already been sent to Telegram.
        *
@@ -417,12 +710,7 @@ computingBot.on(
        *
        * This means memory extraction can never add
        * latency to the student's response.
-       *
-       * The memory extractor itself also contains a
-       * lightweight candidate filter, so ordinary
-       * questions do not need another Gemini request.
        */
-
       console.log(
         "[BOT] Starting background memory check..."
       );
@@ -441,14 +729,6 @@ computingBot.on(
         )
         .catch(
           (memoryError) => {
-            /**
-             * Memory extraction is intentionally isolated
-             * from the main conversation flow.
-             *
-             * A memory failure must NEVER cause the
-             * student's successfully generated response
-             * to be treated as a failed message.
-             */
             console.error(
               "[BOT] Background memory extraction failed:",
               memoryError

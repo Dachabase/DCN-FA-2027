@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 import { GoogleGenAI } from "@google/genai";
 
 import { saveMemory } from "./memory.service";
@@ -22,8 +24,9 @@ const ai =
 
 const model =
   process.env.GEMINI_MEMORY_MODEL?.trim() ||
+  process.env.GEMINI_PRIMARY_MODEL?.trim() ||
   process.env.GEMINI_MODEL?.trim() ||
-  "gemini-3.7-flash";
+  "gemini-2.5-flash-lite";
 
 // ---------------------------------------------------------
 // TYPES

@@ -177,6 +177,7 @@ export type FacultyWhereInput = {
   departments?: Prisma.DepartmentListRelationFilter
   users?: Prisma.UserListRelationFilter
   bots?: Prisma.BotListRelationFilter
+  knowledgeSources?: Prisma.KnowledgeSourceListRelationFilter
 }
 
 export type FacultyOrderByWithRelationInput = {
@@ -187,6 +188,7 @@ export type FacultyOrderByWithRelationInput = {
   departments?: Prisma.DepartmentOrderByRelationAggregateInput
   users?: Prisma.UserOrderByRelationAggregateInput
   bots?: Prisma.BotOrderByRelationAggregateInput
+  knowledgeSources?: Prisma.KnowledgeSourceOrderByRelationAggregateInput
 }
 
 export type FacultyWhereUniqueInput = Prisma.AtLeast<{
@@ -200,6 +202,7 @@ export type FacultyWhereUniqueInput = Prisma.AtLeast<{
   departments?: Prisma.DepartmentListRelationFilter
   users?: Prisma.UserListRelationFilter
   bots?: Prisma.BotListRelationFilter
+  knowledgeSources?: Prisma.KnowledgeSourceListRelationFilter
 }, "id" | "name">
 
 export type FacultyOrderByWithAggregationInput = {
@@ -230,6 +233,7 @@ export type FacultyCreateInput = {
   departments?: Prisma.DepartmentCreateNestedManyWithoutFacultyInput
   users?: Prisma.UserCreateNestedManyWithoutFacultyInput
   bots?: Prisma.BotCreateNestedManyWithoutFacultyInput
+  knowledgeSources?: Prisma.KnowledgeSourceCreateNestedManyWithoutFacultyInput
 }
 
 export type FacultyUncheckedCreateInput = {
@@ -240,6 +244,7 @@ export type FacultyUncheckedCreateInput = {
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFacultyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutFacultyInput
   bots?: Prisma.BotUncheckedCreateNestedManyWithoutFacultyInput
+  knowledgeSources?: Prisma.KnowledgeSourceUncheckedCreateNestedManyWithoutFacultyInput
 }
 
 export type FacultyUpdateInput = {
@@ -250,6 +255,7 @@ export type FacultyUpdateInput = {
   departments?: Prisma.DepartmentUpdateManyWithoutFacultyNestedInput
   users?: Prisma.UserUpdateManyWithoutFacultyNestedInput
   bots?: Prisma.BotUpdateManyWithoutFacultyNestedInput
+  knowledgeSources?: Prisma.KnowledgeSourceUpdateManyWithoutFacultyNestedInput
 }
 
 export type FacultyUncheckedUpdateInput = {
@@ -260,6 +266,7 @@ export type FacultyUncheckedUpdateInput = {
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFacultyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutFacultyNestedInput
   bots?: Prisma.BotUncheckedUpdateManyWithoutFacultyNestedInput
+  knowledgeSources?: Prisma.KnowledgeSourceUncheckedUpdateManyWithoutFacultyNestedInput
 }
 
 export type FacultyCreateManyInput = {
@@ -368,6 +375,20 @@ export type FacultyUpdateOneWithoutUsersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.FacultyUpdateToOneWithWhereWithoutUsersInput, Prisma.FacultyUpdateWithoutUsersInput>, Prisma.FacultyUncheckedUpdateWithoutUsersInput>
 }
 
+export type FacultyCreateNestedOneWithoutKnowledgeSourcesInput = {
+  create?: Prisma.XOR<Prisma.FacultyCreateWithoutKnowledgeSourcesInput, Prisma.FacultyUncheckedCreateWithoutKnowledgeSourcesInput>
+  connectOrCreate?: Prisma.FacultyCreateOrConnectWithoutKnowledgeSourcesInput
+  connect?: Prisma.FacultyWhereUniqueInput
+}
+
+export type FacultyUpdateOneRequiredWithoutKnowledgeSourcesNestedInput = {
+  create?: Prisma.XOR<Prisma.FacultyCreateWithoutKnowledgeSourcesInput, Prisma.FacultyUncheckedCreateWithoutKnowledgeSourcesInput>
+  connectOrCreate?: Prisma.FacultyCreateOrConnectWithoutKnowledgeSourcesInput
+  upsert?: Prisma.FacultyUpsertWithoutKnowledgeSourcesInput
+  connect?: Prisma.FacultyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.FacultyUpdateToOneWithWhereWithoutKnowledgeSourcesInput, Prisma.FacultyUpdateWithoutKnowledgeSourcesInput>, Prisma.FacultyUncheckedUpdateWithoutKnowledgeSourcesInput>
+}
+
 export type FacultyCreateWithoutBotsInput = {
   id?: string
   name: string
@@ -375,6 +396,7 @@ export type FacultyCreateWithoutBotsInput = {
   updatedAt?: Date | string
   departments?: Prisma.DepartmentCreateNestedManyWithoutFacultyInput
   users?: Prisma.UserCreateNestedManyWithoutFacultyInput
+  knowledgeSources?: Prisma.KnowledgeSourceCreateNestedManyWithoutFacultyInput
 }
 
 export type FacultyUncheckedCreateWithoutBotsInput = {
@@ -384,6 +406,7 @@ export type FacultyUncheckedCreateWithoutBotsInput = {
   updatedAt?: Date | string
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFacultyInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutFacultyInput
+  knowledgeSources?: Prisma.KnowledgeSourceUncheckedCreateNestedManyWithoutFacultyInput
 }
 
 export type FacultyCreateOrConnectWithoutBotsInput = {
@@ -409,6 +432,7 @@ export type FacultyUpdateWithoutBotsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   departments?: Prisma.DepartmentUpdateManyWithoutFacultyNestedInput
   users?: Prisma.UserUpdateManyWithoutFacultyNestedInput
+  knowledgeSources?: Prisma.KnowledgeSourceUpdateManyWithoutFacultyNestedInput
 }
 
 export type FacultyUncheckedUpdateWithoutBotsInput = {
@@ -418,6 +442,7 @@ export type FacultyUncheckedUpdateWithoutBotsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFacultyNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutFacultyNestedInput
+  knowledgeSources?: Prisma.KnowledgeSourceUncheckedUpdateManyWithoutFacultyNestedInput
 }
 
 export type FacultyCreateWithoutDepartmentsInput = {
@@ -427,6 +452,7 @@ export type FacultyCreateWithoutDepartmentsInput = {
   updatedAt?: Date | string
   users?: Prisma.UserCreateNestedManyWithoutFacultyInput
   bots?: Prisma.BotCreateNestedManyWithoutFacultyInput
+  knowledgeSources?: Prisma.KnowledgeSourceCreateNestedManyWithoutFacultyInput
 }
 
 export type FacultyUncheckedCreateWithoutDepartmentsInput = {
@@ -436,6 +462,7 @@ export type FacultyUncheckedCreateWithoutDepartmentsInput = {
   updatedAt?: Date | string
   users?: Prisma.UserUncheckedCreateNestedManyWithoutFacultyInput
   bots?: Prisma.BotUncheckedCreateNestedManyWithoutFacultyInput
+  knowledgeSources?: Prisma.KnowledgeSourceUncheckedCreateNestedManyWithoutFacultyInput
 }
 
 export type FacultyCreateOrConnectWithoutDepartmentsInput = {
@@ -461,6 +488,7 @@ export type FacultyUpdateWithoutDepartmentsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUpdateManyWithoutFacultyNestedInput
   bots?: Prisma.BotUpdateManyWithoutFacultyNestedInput
+  knowledgeSources?: Prisma.KnowledgeSourceUpdateManyWithoutFacultyNestedInput
 }
 
 export type FacultyUncheckedUpdateWithoutDepartmentsInput = {
@@ -470,6 +498,7 @@ export type FacultyUncheckedUpdateWithoutDepartmentsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUncheckedUpdateManyWithoutFacultyNestedInput
   bots?: Prisma.BotUncheckedUpdateManyWithoutFacultyNestedInput
+  knowledgeSources?: Prisma.KnowledgeSourceUncheckedUpdateManyWithoutFacultyNestedInput
 }
 
 export type FacultyCreateWithoutUsersInput = {
@@ -479,6 +508,7 @@ export type FacultyCreateWithoutUsersInput = {
   updatedAt?: Date | string
   departments?: Prisma.DepartmentCreateNestedManyWithoutFacultyInput
   bots?: Prisma.BotCreateNestedManyWithoutFacultyInput
+  knowledgeSources?: Prisma.KnowledgeSourceCreateNestedManyWithoutFacultyInput
 }
 
 export type FacultyUncheckedCreateWithoutUsersInput = {
@@ -488,6 +518,7 @@ export type FacultyUncheckedCreateWithoutUsersInput = {
   updatedAt?: Date | string
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFacultyInput
   bots?: Prisma.BotUncheckedCreateNestedManyWithoutFacultyInput
+  knowledgeSources?: Prisma.KnowledgeSourceUncheckedCreateNestedManyWithoutFacultyInput
 }
 
 export type FacultyCreateOrConnectWithoutUsersInput = {
@@ -513,6 +544,7 @@ export type FacultyUpdateWithoutUsersInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   departments?: Prisma.DepartmentUpdateManyWithoutFacultyNestedInput
   bots?: Prisma.BotUpdateManyWithoutFacultyNestedInput
+  knowledgeSources?: Prisma.KnowledgeSourceUpdateManyWithoutFacultyNestedInput
 }
 
 export type FacultyUncheckedUpdateWithoutUsersInput = {
@@ -521,6 +553,63 @@ export type FacultyUncheckedUpdateWithoutUsersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFacultyNestedInput
+  bots?: Prisma.BotUncheckedUpdateManyWithoutFacultyNestedInput
+  knowledgeSources?: Prisma.KnowledgeSourceUncheckedUpdateManyWithoutFacultyNestedInput
+}
+
+export type FacultyCreateWithoutKnowledgeSourcesInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  departments?: Prisma.DepartmentCreateNestedManyWithoutFacultyInput
+  users?: Prisma.UserCreateNestedManyWithoutFacultyInput
+  bots?: Prisma.BotCreateNestedManyWithoutFacultyInput
+}
+
+export type FacultyUncheckedCreateWithoutKnowledgeSourcesInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutFacultyInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutFacultyInput
+  bots?: Prisma.BotUncheckedCreateNestedManyWithoutFacultyInput
+}
+
+export type FacultyCreateOrConnectWithoutKnowledgeSourcesInput = {
+  where: Prisma.FacultyWhereUniqueInput
+  create: Prisma.XOR<Prisma.FacultyCreateWithoutKnowledgeSourcesInput, Prisma.FacultyUncheckedCreateWithoutKnowledgeSourcesInput>
+}
+
+export type FacultyUpsertWithoutKnowledgeSourcesInput = {
+  update: Prisma.XOR<Prisma.FacultyUpdateWithoutKnowledgeSourcesInput, Prisma.FacultyUncheckedUpdateWithoutKnowledgeSourcesInput>
+  create: Prisma.XOR<Prisma.FacultyCreateWithoutKnowledgeSourcesInput, Prisma.FacultyUncheckedCreateWithoutKnowledgeSourcesInput>
+  where?: Prisma.FacultyWhereInput
+}
+
+export type FacultyUpdateToOneWithWhereWithoutKnowledgeSourcesInput = {
+  where?: Prisma.FacultyWhereInput
+  data: Prisma.XOR<Prisma.FacultyUpdateWithoutKnowledgeSourcesInput, Prisma.FacultyUncheckedUpdateWithoutKnowledgeSourcesInput>
+}
+
+export type FacultyUpdateWithoutKnowledgeSourcesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  departments?: Prisma.DepartmentUpdateManyWithoutFacultyNestedInput
+  users?: Prisma.UserUpdateManyWithoutFacultyNestedInput
+  bots?: Prisma.BotUpdateManyWithoutFacultyNestedInput
+}
+
+export type FacultyUncheckedUpdateWithoutKnowledgeSourcesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutFacultyNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutFacultyNestedInput
   bots?: Prisma.BotUncheckedUpdateManyWithoutFacultyNestedInput
 }
 
@@ -533,12 +622,14 @@ export type FacultyCountOutputType = {
   departments: number
   users: number
   bots: number
+  knowledgeSources: number
 }
 
 export type FacultyCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   departments?: boolean | FacultyCountOutputTypeCountDepartmentsArgs
   users?: boolean | FacultyCountOutputTypeCountUsersArgs
   bots?: boolean | FacultyCountOutputTypeCountBotsArgs
+  knowledgeSources?: boolean | FacultyCountOutputTypeCountKnowledgeSourcesArgs
 }
 
 /**
@@ -572,6 +663,13 @@ export type FacultyCountOutputTypeCountBotsArgs<ExtArgs extends runtime.Types.Ex
   where?: Prisma.BotWhereInput
 }
 
+/**
+ * FacultyCountOutputType without action
+ */
+export type FacultyCountOutputTypeCountKnowledgeSourcesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.KnowledgeSourceWhereInput
+}
+
 
 export type FacultySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -581,6 +679,7 @@ export type FacultySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   departments?: boolean | Prisma.Faculty$departmentsArgs<ExtArgs>
   users?: boolean | Prisma.Faculty$usersArgs<ExtArgs>
   bots?: boolean | Prisma.Faculty$botsArgs<ExtArgs>
+  knowledgeSources?: boolean | Prisma.Faculty$knowledgeSourcesArgs<ExtArgs>
   _count?: boolean | Prisma.FacultyCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["faculty"]>
 
@@ -610,6 +709,7 @@ export type FacultyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   departments?: boolean | Prisma.Faculty$departmentsArgs<ExtArgs>
   users?: boolean | Prisma.Faculty$usersArgs<ExtArgs>
   bots?: boolean | Prisma.Faculty$botsArgs<ExtArgs>
+  knowledgeSources?: boolean | Prisma.Faculty$knowledgeSourcesArgs<ExtArgs>
   _count?: boolean | Prisma.FacultyCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type FacultyIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -621,6 +721,7 @@ export type $FacultyPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     departments: Prisma.$DepartmentPayload<ExtArgs>[]
     users: Prisma.$UserPayload<ExtArgs>[]
     bots: Prisma.$BotPayload<ExtArgs>[]
+    knowledgeSources: Prisma.$KnowledgeSourcePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1024,6 +1125,7 @@ export interface Prisma__FacultyClient<T, Null = never, ExtArgs extends runtime.
   departments<T extends Prisma.Faculty$departmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Faculty$departmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   users<T extends Prisma.Faculty$usersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Faculty$usersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   bots<T extends Prisma.Faculty$botsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Faculty$botsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  knowledgeSources<T extends Prisma.Faculty$knowledgeSourcesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Faculty$knowledgeSourcesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$KnowledgeSourcePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1519,6 +1621,30 @@ export type Faculty$botsArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.BotScalarFieldEnum | Prisma.BotScalarFieldEnum[]
+}
+
+/**
+ * Faculty.knowledgeSources
+ */
+export type Faculty$knowledgeSourcesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the KnowledgeSource
+   */
+  select?: Prisma.KnowledgeSourceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the KnowledgeSource
+   */
+  omit?: Prisma.KnowledgeSourceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.KnowledgeSourceInclude<ExtArgs> | null
+  where?: Prisma.KnowledgeSourceWhereInput
+  orderBy?: Prisma.KnowledgeSourceOrderByWithRelationInput | Prisma.KnowledgeSourceOrderByWithRelationInput[]
+  cursor?: Prisma.KnowledgeSourceWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.KnowledgeSourceScalarFieldEnum | Prisma.KnowledgeSourceScalarFieldEnum[]
 }
 
 /**

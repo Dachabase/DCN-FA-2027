@@ -26,22 +26,36 @@ const ai = new GoogleGenAI({
   apiKey,
 });
 
+// ---------------------------------------------------------
+// MODEL CONFIGURATION
+// ---------------------------------------------------------
+
 const primaryModel =
+  process.env.GEMINI_PRIMARY_MODEL?.trim() ||
   process.env.GEMINI_MODEL?.trim() ||
-  "gemini-3.7-flash";
+  "gemini-2.5-flash-lite";
+
+const configuredFallbackModels =
+  process.env.GEMINI_FALLBACK_MODEL?.trim() ||
+  process.env.GEMINI_FALLBACK_MODELS?.trim() ||
+  "gemini-2.5-flash";
 
 const fallbackModels =
-  (process.env.GEMINI_FALLBACK_MODELS ?? "")
+  configuredFallbackModels
     .split(",")
-    .map((model) => model.trim())
+    .map(
+      (model) =>
+        model.trim()
+    )
     .filter(Boolean);
 
-const models = Array.from(
-  new Set([
-    primaryModel,
-    ...fallbackModels,
-  ])
-);
+const models =
+  Array.from(
+    new Set([
+      primaryModel,
+      ...fallbackModels,
+    ])
+  );
 
 // ---------------------------------------------------------
 // RETRY CONFIGURATION
@@ -67,6 +81,7 @@ const retryDelayMs = 2000;
 
 export interface GenerateAIResponseOptions {
   systemInstruction?: string;
+
   userMessage: string;
 }
 
@@ -116,7 +131,8 @@ function sleep(
   ms: number
 ): Promise<void> {
   return new Promise(
-    (resolve) => setTimeout(resolve, ms)
+    (resolve) =>
+      setTimeout(resolve, ms)
   );
 }
 
@@ -170,7 +186,9 @@ function isRetryableOnSameModel(
   errorValue: unknown
 ): boolean {
   const status =
-    getErrorStatus(errorValue);
+    getErrorStatus(
+      errorValue
+    );
 
   if (
     status === 500 ||
@@ -184,15 +202,29 @@ function isRetryableOnSameModel(
   const message =
     errorValue instanceof Error
       ? errorValue.message.toLowerCase()
-      : String(errorValue).toLowerCase();
+      : String(
+          errorValue
+        ).toLowerCase();
 
   return (
-    message.includes("timeout") ||
-    message.includes("timed out") ||
-    message.includes("econnreset") ||
-    message.includes("econnrefused") ||
-    message.includes("network") ||
-    message.includes("fetch failed") ||
+    message.includes(
+      "timeout"
+    ) ||
+    message.includes(
+      "timed out"
+    ) ||
+    message.includes(
+      "econnreset"
+    ) ||
+    message.includes(
+      "econnrefused"
+    ) ||
+    message.includes(
+      "network"
+    ) ||
+    message.includes(
+      "fetch failed"
+    ) ||
     message.includes(
       "temporarily unavailable"
     ) ||
@@ -209,7 +241,9 @@ function isRateLimitError(
   errorValue: unknown
 ): boolean {
   return (
-    getErrorStatus(errorValue) === 429
+    getErrorStatus(
+      errorValue
+    ) === 429
   );
 }
 
@@ -243,6 +277,7 @@ function estimateContextSize(
   context: AIContext
 ): {
   characters: number;
+
   estimatedTokens: number;
 } {
   const conversationText =
@@ -261,10 +296,24 @@ function estimateContextSize(
       )
       .join("\n");
 
+  const knowledgeText =
+    context.knowledge
+      .map(
+        (knowledge) =>
+          [
+            knowledge.source.title,
+            knowledge.source.authority,
+            knowledge.content,
+          ].join("\n")
+      )
+      .join("\n");
+
   const combined =
     conversationText +
     "\n" +
     memoryText +
+    "\n" +
+    knowledgeText +
     "\n" +
     context.currentMessage;
 
@@ -273,8 +322,148 @@ function estimateContextSize(
       combined.length,
 
     estimatedTokens:
-      estimateTokens(combined),
+      estimateTokens(
+        combined
+      ),
   };
+}
+
+// ---------------------------------------------------------
+// KNOWLEDGE CONTEXT
+// ---------------------------------------------------------
+
+function buildKnowledgeInstruction(
+  context: AIContext
+): string {
+  if (
+    context.knowledge.length === 0
+  ) {
+    return `
+RELEVANT UNIVERSITY KNOWLEDGE:
+
+No relevant knowledge was retrieved for this question.
+
+Do not invent University of Ibadan-specific facts.
+If the student asks for official information that you
+do not have, clearly tell them that you do not have enough
+verified information to answer it confidently.
+`.trim();
+  }
+
+  const knowledgeEntries =
+    context.knowledge
+      .map(
+        (knowledge, index) => {
+          const source =
+            knowledge.source;
+
+          const department =
+            source.departmentId
+              ? source.departmentId
+              : "Faculty-wide";
+
+          const course =
+            source.courseCode ||
+            source.courseName
+              ? `${source.courseCode ?? ""}${
+                  source.courseCode &&
+                  source.courseName
+                    ? " - "
+                    : ""
+                }${source.courseName ?? ""}`
+              : "Not specified";
+
+          const level =
+            source.level !== null
+              ? String(
+                  source.level
+                )
+              : "All levels";
+
+          const location =
+            knowledge.pageNumber !== null
+              ? `Page ${knowledge.pageNumber}`
+              : knowledge.slideNumber !== null
+                ? `Slide ${knowledge.slideNumber}`
+                : "Location not specified";
+
+          return `
+KNOWLEDGE ITEM ${index + 1}
+
+Source:
+${source.title}
+
+Authority:
+${source.authority}
+
+Type:
+${source.type}
+
+Department:
+${department}
+
+Course:
+${course}
+
+Level:
+${level}
+
+Location:
+${location}
+
+Relevance score:
+${knowledge.score}
+
+Content:
+${knowledge.content}
+`.trim();
+        }
+      )
+      .join("\n\n");
+
+  return `
+RELEVANT UNIVERSITY KNOWLEDGE
+
+The following information was retrieved from the
+University of Ibadan knowledge base because it is
+relevant to the student's current question.
+
+Use this information when it is relevant.
+
+IMPORTANT KNOWLEDGE RULES:
+
+- Treat the retrieved knowledge as supporting information.
+- Do not mention the knowledge retrieval system to the student.
+- Do not say "the knowledge base says".
+- Do not expose internal relevance scores.
+- Do not expose internal chunk IDs.
+- Do not invent facts that are not supported by the
+  retrieved information.
+- If the retrieved information does not answer the
+  student's question, do not pretend that it does.
+- If the information appears to concern official
+  University of Ibadan matters, do not silently turn
+  uncertain information into an official claim.
+- If the student asks something outside the retrieved
+  information, you may use your general knowledge for
+  educational explanations, but clearly distinguish
+  University-specific facts from general knowledge when
+  necessary.
+- Prefer higher-authority sources when multiple retrieved
+  sources contain conflicting information.
+- Faculty-wide information can apply broadly within the
+  faculty.
+- Department-specific information should be treated as
+  relevant primarily to students in that department.
+- Course-specific information should be treated as
+  relevant primarily to that course.
+- Level-specific information should be treated as
+  relevant primarily to that level.
+
+RETRIEVED INFORMATION:
+
+${knowledgeEntries}
+`.trim();
 }
 
 // ---------------------------------------------------------
@@ -298,7 +487,9 @@ function buildSystemInstruction(
 
   const level =
     context.user.level !== null
-      ? String(context.user.level)
+      ? String(
+          context.user.level
+        )
       : "Not yet specified";
 
   const memories =
@@ -315,6 +506,7 @@ function buildSystemInstruction(
     context.isFirstMessage
       ? `
 GREETING STATE:
+
 This is the student's first message in this conversation.
 
 You may greet the student naturally if it fits the response.
@@ -324,6 +516,7 @@ Do not make the greeting unnecessarily long.
 `
       : `
 GREETING STATE:
+
 This is an ongoing conversation.
 
 DO NOT greet the student again.
@@ -334,6 +527,11 @@ DO NOT repeat the student's name unnecessarily.
 
 Continue naturally from the existing conversation.
 `;
+
+  const knowledgeInstruction =
+    buildKnowledgeInstruction(
+      context
+    );
 
   return `
 You are the University of Ibadan Computing Freshers Companion.
@@ -444,8 +642,18 @@ MEMORY RULES:
 - If the student corrects an old fact, follow the latest statement.
 - Do not invent additional personal information.
 
+${knowledgeInstruction}
+
+FINAL RESPONSE RULE:
+
 The student's current message is the most important thing
 to answer.
+
+Use the student's profile, memories, conversation history,
+and retrieved knowledge to produce the most useful response.
+
+Do not explain your internal reasoning or context-building
+process to the student.
 `.trim();
 }
 
@@ -466,7 +674,8 @@ function buildConversationContents(
 
         parts: [
           {
-            text: message.content,
+            text:
+              message.content,
           },
         ],
       })
@@ -474,9 +683,11 @@ function buildConversationContents(
 
   contents.push({
     role: "user",
+
     parts: [
       {
-        text: context.currentMessage,
+        text:
+          context.currentMessage,
       },
     ],
   });
@@ -518,7 +729,8 @@ async function requestFromModel(
     });
 
   const elapsedMs =
-    Date.now() - startedAt;
+    Date.now() -
+    startedAt;
 
   const text =
     response.text?.trim();
@@ -577,6 +789,29 @@ async function requestFromModelWithContext(
   log(
     `Current message: ${context.currentMessage}`
   );
+
+  log(
+    `Memories supplied: ${context.memories.length}`
+  );
+
+  log(
+    `Knowledge chunks supplied: ${context.knowledge.length}`
+  );
+
+  if (
+    context.knowledge.length > 0
+  ) {
+    log(
+      `Knowledge sources: ${Array.from(
+        new Set(
+          context.knowledge.map(
+            (knowledge) =>
+              knowledge.source.title
+          )
+        )
+      ).join(", ")}`
+    );
+  }
 
   log(
     `Estimated context size: ${contextSize.characters} chars / ~${contextSize.estimatedTokens} tokens`
@@ -690,7 +925,8 @@ export async function generateAIResponse(
           );
 
         const totalElapsedMs =
-          Date.now() - startedAt;
+          Date.now() -
+          startedAt;
 
         log(
           `AI generation successful using ${model}. Total time: ${totalElapsedMs}ms`
@@ -798,7 +1034,9 @@ export async function generateAIResponse(
       models.length - 1
     ) {
       const nextModel =
-        models[modelIndex + 1];
+        models[
+          modelIndex + 1
+        ];
 
       warn(
         `Failing over from ${model} → ${nextModel}`
@@ -813,7 +1051,8 @@ export async function generateAIResponse(
   }
 
   const totalElapsedMs =
-    Date.now() - startedAt;
+    Date.now() -
+    startedAt;
 
   error(
     `All Gemini models failed after ${totalElapsedMs}ms.`
@@ -871,6 +1110,10 @@ export async function generateAIResponseFromContext(
   );
 
   log(
+    `Knowledge chunks available: ${context.knowledge.length}`
+  );
+
+  log(
     "========================================"
   );
 
@@ -910,7 +1153,8 @@ export async function generateAIResponseFromContext(
           );
 
         const totalElapsedMs =
-          Date.now() - startedAt;
+          Date.now() -
+          startedAt;
 
         log(
           `Contextual AI generation successful using ${model}. Total time: ${totalElapsedMs}ms`
@@ -1018,7 +1262,9 @@ export async function generateAIResponseFromContext(
       models.length - 1
     ) {
       const nextModel =
-        models[modelIndex + 1];
+        models[
+          modelIndex + 1
+        ];
 
       warn(
         `Failing over from ${model} → ${nextModel}`
@@ -1033,7 +1279,8 @@ export async function generateAIResponseFromContext(
   }
 
   const totalElapsedMs =
-    Date.now() - startedAt;
+    Date.now() -
+    startedAt;
 
   error(
     `All Gemini models failed after ${totalElapsedMs}ms.`

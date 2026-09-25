@@ -4,6 +4,10 @@ import {
   getRecentMessages,
 } from "../conversations/message.service";
 
+import {
+  retrieveKnowledgeHybrid,
+} from "../knowledge/knowledge.retrieval";
+
 import type {
   AIContext,
 } from "./ai.provider";
@@ -15,6 +19,8 @@ import type {
 const RECENT_MESSAGE_LIMIT = 20;
 
 const MEMORY_LIMIT = 20;
+
+const KNOWLEDGE_LIMIT = 6;
 
 // ---------------------------------------------------------
 // BUILD AI CONTEXT
@@ -37,6 +43,7 @@ export async function buildAIContext(
 
       include: {
         faculty: true,
+
         department: true,
 
         memories: {
@@ -77,9 +84,6 @@ export async function buildAIContext(
    *
    * means this is genuinely the first message in
    * the conversation.
-   *
-   * The current message is supplied separately through
-   * `currentMessage`.
    */
 
   const messages =
@@ -94,6 +98,102 @@ export async function buildAIContext(
 
   const isFirstMessage =
     messages.length === 0;
+
+  // -------------------------------------------------------
+  // RETRIEVE RELEVANT KNOWLEDGE
+  // -------------------------------------------------------
+
+  let knowledge: AIContext["knowledge"] = [];
+
+  if (user.facultyId) {
+    console.log(
+      "========================================"
+    );
+
+    console.log(
+      "[CONTEXT] Starting knowledge retrieval..."
+    );
+
+    console.log(
+      `[CONTEXT] Faculty ID: ${user.facultyId}`
+    );
+
+    console.log(
+      `[CONTEXT] Department ID: ${
+        user.departmentId ?? "Not specified"
+      }`
+    );
+
+    console.log(
+      `[CONTEXT] Level: ${
+        user.level ?? "Not specified"
+      }`
+    );
+
+    console.log(
+      `[CONTEXT] Query: ${currentMessage}`
+    );
+
+    try {
+      knowledge =
+        await retrieveKnowledgeHybrid({
+          query:
+            currentMessage,
+
+          facultyId:
+            user.facultyId,
+
+          departmentId:
+            user.departmentId,
+
+          level:
+            user.level,
+
+          limit:
+            KNOWLEDGE_LIMIT,
+        });
+
+      console.log(
+        `[CONTEXT] Retrieved ${knowledge.length} knowledge chunk(s).`
+      );
+
+      for (
+        let index = 0;
+        index < knowledge.length;
+        index++
+      ) {
+        const item =
+          knowledge[index];
+
+        console.log(
+          `[CONTEXT] Knowledge ${index + 1}: ${item.source.title} | score=${item.score}`
+        );
+      }
+    } catch (retrievalError) {
+      /**
+       * Knowledge retrieval should not prevent the AI
+       * from responding completely.
+       *
+       * If retrieval fails, we continue with an empty
+       * knowledge context.
+       */
+
+      console.error(
+        "[CONTEXT] Knowledge retrieval failed:",
+        retrievalError
+      );
+
+      knowledge = [];
+    }
+
+    console.log(
+      "========================================"
+    );
+  } else {
+    console.log(
+      "[CONTEXT] User has no faculty assigned. Skipping knowledge retrieval."
+    );
+  }
 
   // -------------------------------------------------------
   // BUILD CONTEXT
@@ -140,6 +240,12 @@ export async function buildAIContext(
             memory.confidence,
         })
       ),
+
+    // -----------------------------------------------------
+    // RETRIEVED KNOWLEDGE
+    // -----------------------------------------------------
+
+    knowledge,
 
     // -----------------------------------------------------
     // RECENT CONVERSATION

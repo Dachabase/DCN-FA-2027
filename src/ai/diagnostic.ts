@@ -11,11 +11,16 @@ if (!apiKey) {
 }
 
 const primaryModel =
-  process.env.GEMINI_MODEL?.trim() || "gemini-3.7-flash";
+  process.env.GEMINI_PRIMARY_MODEL?.trim() ||
+  process.env.GEMINI_MODEL?.trim() ||
+  "gemini-2.5-flash-lite";
 
-const fallbackModels = (
-  process.env.GEMINI_FALLBACK_MODELS?.trim() || "gemini-3.6-flash"
-)
+const configuredFallbackModels =
+  process.env.GEMINI_FALLBACK_MODEL?.trim() ||
+  process.env.GEMINI_FALLBACK_MODELS?.trim() ||
+  "gemini-2.5-flash";
+
+const fallbackModels = configuredFallbackModels
   .split(",")
   .map((model) => model.trim())
   .filter(Boolean);

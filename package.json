@@ -9,7 +9,13 @@
     "start": "node dist/index.js",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "ingest:dry-run": "tsx src/knowledge/ingest-all.ts --dry-run",
+    "ingest:all": "tsx src/knowledge/ingest-all.ts",
+    "cleanup:orphans": "tsx src/knowledge/cleanup-orphans.ts",
+    "dedupe:content": "tsx src/knowledge/dedupe-content.ts",
+    "backfill:embeddings": "tsx src/knowledge/backfill-embeddings.ts",
+    "test:retrieval": "tsx src/knowledge/test-retrieval-quality.ts"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +27,11 @@
     "@prisma/client": "^7.9.1",
     "dotenv": "^17.4.2",
     "grammy": "^1.45.1",
+    "jszip": "^3.10.1",
+    "mammoth": "^1.12.2",
+    "pdf-parse": "^2.4.5",
     "pg": "^8.23.0",
+    "tesseract.js": "^5.1.1",
     "tsx": "^4.23.12",
     "typescript": "^7.0.2",
     "zod": "^4.4.3"
