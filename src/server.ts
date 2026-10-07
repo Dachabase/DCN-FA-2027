@@ -424,18 +424,48 @@ const getReferenceRulesHandler = async (req: Request, res: Response) => {
 app.get("/reference/credit-rules", requireAuth, getReferenceRulesHandler);
 app.get("/api/reference/credit-rules", requireAuth, getReferenceRulesHandler);
 
-// GET /api/faculties/:id/guides and /api/guides (Protected)
+// Metadata enrichment map for articles and guides
+const metaMap = new Map<string, any>();
+for (const item of FALLBACK_GUIDES) {
+  if (item.id) metaMap.set(item.id, item);
+  if ((item as any).slug) metaMap.set((item as any).slug, item);
+  if (item.title) metaMap.set(item.title.toLowerCase().trim(), item);
+}
+
+const enrichGuide = (g: any) => {
+  const cleanId = (g.id || "").replace(/^guide_/, "");
+  const enriched = metaMap.get(g.id) ||
+                   metaMap.get(`guide_${cleanId}`) ||
+                   metaMap.get(cleanId) ||
+                   metaMap.get((g.title || "").toLowerCase().trim()) || {};
+  return {
+    ...g,
+    body: g.content || g.body,
+    verified: g.status === "PUBLISHED",
+    author: (enriched as any).author || g.owner || "UI Academic Adviser Desk",
+    authorRole: (enriched as any).authorRole || "Campus Survival & Academic Contributor",
+    readTime: (enriched as any).readTime || "5 min read",
+    slug: (enriched as any).slug || cleanId,
+    featuredImage: (enriched as any).featuredImage || null,
+    faq: (enriched as any).faq || (enriched as any).faqs || [],
+    faqs: (enriched as any).faqs || (enriched as any).faq || [],
+    tags: (enriched as any).tags || [],
+  };
+};
+
+// GET /api/faculties/:id/guides and /api/guides (Public / Optional Auth)
 const getGuidesHandler = async (req: Request, res: Response) => {
+  const facultyId = req.params.id ? String(req.params.id) : (req.query.facultyId ? String(req.query.facultyId) : "all");
+  const category = req.query.category ? String(req.query.category) : null;
+  const search = req.query.search ? String(req.query.search).toLowerCase() : null;
+
   try {
-    const facultyId = req.params.id ? String(req.params.id) : (req.query.facultyId ? String(req.query.facultyId) : "all");
-    const category = req.query.category ? String(req.query.category) : null;
-    
     const whereClause: any = { status: "PUBLISHED" };
     if (facultyId !== "all") {
       whereClause.OR = [{ facultyId }, { facultyId: null }];
     }
     if (category && category !== "ALL") {
-      whereClause.category = category;
+      whereClause.category = { equals: category, mode: "insensitive" };
     }
 
     const guides = await prisma.guide.findMany({
@@ -448,36 +478,48 @@ const getGuidesHandler = async (req: Request, res: Response) => {
     });
 
     if (guides.length > 0) {
-      const formatted = guides.map(g => ({
-        ...g,
-        body: g.content,
-        verified: g.status === "PUBLISHED",
-      }));
+      let formatted = guides.map(g => enrichGuide(g));
+      if (search) {
+        formatted = formatted.filter(g =>
+          g.title.toLowerCase().includes(search) ||
+          g.summary.toLowerCase().includes(search) ||
+          (g.content && g.content.toLowerCase().includes(search))
+        );
+      }
       return res.json({ success: true, data: formatted });
     }
   } catch (error) {
     console.warn("DB error, serving fallback guides.");
   }
 
-  const facultyId = req.params.id ? String(req.params.id) : "all";
   let fallbackList = FALLBACK_GUIDES;
   if (facultyId !== "all") {
-    fallbackList = FALLBACK_GUIDES.filter(g => !g.facultyId || g.facultyId === facultyId || g.faculty?.id === facultyId);
+    fallbackList = fallbackList.filter(g => !g.facultyId || g.facultyId === facultyId || g.faculty?.id === facultyId);
   }
-  const formatted = fallbackList.map(g => ({
-    ...g,
-    body: g.content,
-    verified: g.status === "PUBLISHED",
-  }));
+  if (category && category !== "ALL") {
+    fallbackList = fallbackList.filter(g =>
+      g.category?.toLowerCase() === category.toLowerCase() ||
+      (g as any).rawCategory?.toLowerCase() === category.toLowerCase()
+    );
+  }
+  if (search) {
+    fallbackList = fallbackList.filter(g =>
+      g.title.toLowerCase().includes(search) ||
+      g.summary.toLowerCase().includes(search) ||
+      (g.content && g.content.toLowerCase().includes(search))
+    );
+  }
+  const formatted = fallbackList.map(g => enrichGuide(g));
   res.json({ success: true, data: formatted });
 };
 
-app.get("/api/faculties/:id/guides", requireAuth, getGuidesHandler);
-app.get("/api/guides", requireAuth, getGuidesHandler);
+app.get("/api/faculties/:id/guides", optionalAuth, getGuidesHandler);
+app.get("/api/guides", optionalAuth, getGuidesHandler);
 
-// GET /api/guides/:id (Protected)
-app.get("/api/guides/:id", requireAuth, async (req: Request, res: Response) => {
+// GET /api/guides/:id (Public / Optional Auth)
+app.get("/api/guides/:id", optionalAuth, async (req: Request, res: Response) => {
   const guideId = String(req.params.id);
+  const cleanId = guideId.replace(/^guide_/, "");
   
   // Helper to compute series navigation
   const attachSeriesNavigation = (g: any, allList: any[]) => {
@@ -514,8 +556,14 @@ app.get("/api/guides/:id", requireAuth, async (req: Request, res: Response) => {
   };
 
   try {
-    const guide = await prisma.guide.findUnique({
-      where: { id: guideId },
+    const guide = await prisma.guide.findFirst({
+      where: {
+        OR: [
+          { id: guideId },
+          { id: `guide_${cleanId}` },
+          { id: cleanId },
+        ]
+      },
       include: {
         faculty: { select: { id: true, name: true, code: true } },
         department: { select: { id: true, name: true } },
@@ -544,19 +592,26 @@ app.get("/api/guides/:id", requireAuth, async (req: Request, res: Response) => {
 
       return res.json({
         success: true,
-        data: attachSeriesNavigation(guide, allSeries.length > 0 ? allSeries : FALLBACK_GUIDES),
+        data: enrichGuide(attachSeriesNavigation(guide, allSeries.length > 0 ? allSeries : FALLBACK_GUIDES)),
       });
     }
   } catch (error) {
     console.warn("DB error fetching guide.");
   }
 
-  const fallbackGuide = FALLBACK_GUIDES.find(g => g.id === guideId) || FALLBACK_GUIDES[0];
+  const fallbackGuide = FALLBACK_GUIDES.find(g =>
+    g.id === guideId ||
+    g.id === `guide_${cleanId}` ||
+    g.id === cleanId ||
+    (g as any).slug === cleanId
+  ) || FALLBACK_GUIDES[0];
+
   res.json({
     success: true,
-    data: attachSeriesNavigation(fallbackGuide, FALLBACK_GUIDES),
+    data: enrichGuide(attachSeriesNavigation(fallbackGuide, FALLBACK_GUIDES)),
   });
 });
+
 
 // =========================================================
 // RESOURCES API (Protected)
@@ -759,6 +814,12 @@ app.post("/api/questions/upload", requireAuth, async (req: Request, res: Respons
     console.error("Error uploading question bank:", error);
     res.status(500).json({ success: false, error: "Failed to upload question bank" });
   }
+});
+
+// Direct blog URL redirection support for links like /blog/finances/batch-cooking-food-saving-campus/
+app.get(["/blog/:category/:slug", "/blog/:slug"], (req: Request, res: Response) => {
+  const slug = req.params.slug || req.params.category;
+  res.redirect(`/#/guides/guide_${slug}`);
 });
 
 // Serve frontend build static files with no-cache headers for HTML

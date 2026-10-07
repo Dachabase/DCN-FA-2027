@@ -2948,22 +2948,25 @@
       </div>
     </section>
 
-    <!-- 3. GUIDES TAB -->
+    <!-- 3. GUIDES & ARTICLES TAB -->
     <section id="tab-guides" class="tab-section">
-      <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.5px;">Faculty & Clearance Guides</h2>
-      <p style="color: var(--ps-text-gray); margin-bottom: 1.75rem;">Verified course registration rules, UI 5.0 CGPA breakdown, and lecture venue maps.</p>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem;">
+        <div>
+          <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.5px;">Guides & Campus Articles</h2>
+          <p style="color: var(--ps-text-gray);">247 verified academic survival blueprints, campus guides, student finance strategies, and housing playbooks.</p>
+        </div>
+      </div>
 
       <div class="filter-bar" id="guides-filter-bar">
-        <button class="filter-chip active" onclick="filterGuidesCategory('ALL', event)">All Guides</button>
-        <button class="filter-chip" onclick="filterGuidesCategory('Faculty Guides', event)">Faculty Guides</button>
-        <button class="filter-chip" onclick="filterGuidesCategory('Academic Mastery', event)">Academic Mastery</button>
-        <button class="filter-chip" onclick="filterGuidesCategory('Exam Preparation', event)">Exam Prep</button>
-        <button class="filter-chip" onclick="filterGuidesCategory('Study Strategy', event)">Study Strategy</button>
-        <button class="filter-chip" onclick="filterGuidesCategory('Student Life & Entrepreneurship', event)">Student Life & Business</button>
-        <button class="filter-chip" onclick="filterGuidesCategory('Productivity & Mindset', event)">Productivity & Mindset</button>
-        <button class="filter-chip" onclick="filterGuidesCategory('Course Registration', event)">Course Registration</button>
-        <button class="filter-chip" onclick="filterGuidesCategory('Grading System', event)">Grading System</button>
-        <button class="filter-chip" onclick="filterGuidesCategory('Campus Navigation', event)">Campus Navigation</button>
+        <button class="filter-chip active" onclick="filterGuidesCategory('ALL', event)">All Guides & Articles</button>
+        <button class="filter-chip" onclick="filterGuidesCategory('Academics', event)">🎓 Academics</button>
+        <button class="filter-chip" onclick="filterGuidesCategory('Finances', event)">💰 Finances</button>
+        <button class="filter-chip" onclick="filterGuidesCategory('Hostel & Housing', event)">🏠 Hostel & Housing</button>
+        <button class="filter-chip" onclick="filterGuidesCategory('Mental Health', event)">🧠 Mental Health</button>
+        <button class="filter-chip" onclick="filterGuidesCategory('Work & School', event)">💼 Work & School</button>
+        <button class="filter-chip" onclick="filterGuidesCategory('Faculty Guides', event)">🏛️ Faculty Survival</button>
+        <button class="filter-chip" onclick="filterGuidesCategory('Course Registration', event)">📝 Course Registration</button>
+        <button class="filter-chip" onclick="filterGuidesCategory('Grading System', event)">📊 Grading System</button>
       </div>
 
       <div class="grid" id="guides-grid">
@@ -3054,6 +3057,14 @@
           <article id="guide-article-body" class="guide-article-body">
             <!-- Rendered via marked.parse() -->
           </article>
+
+          <!-- In-Article FAQ Accordion Section -->
+          <div id="guide-article-faq-container" style="display: none; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08);">
+            <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; color: #FFFFFF; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>❓ Frequently Asked Questions</span>
+            </h3>
+            <div id="guide-article-faq-list" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
+          </div>
 
           <!-- Series Previous / Next Navigation -->
           <div id="guide-series-nav" class="guide-series-nav" style="display: none;">
@@ -3435,7 +3446,7 @@
       const parts = rawHash.split('/');
       const mainTab = parts[0];
 
-      const validTabs = ['home', 'catalog', 'guides', 'guide-detail', 'resources', 'opportunities', 'cbt', 'faqs'];
+      const validTabs = ['home', 'catalog', 'guides', 'guide-detail', 'blog', 'resources', 'opportunities', 'cbt', 'faqs'];
       if (!validTabs.includes(mainTab)) {
         switchTab('home', null, false);
         return;
@@ -3453,6 +3464,12 @@
       if (mainTab === 'guides' && parts[1]) {
         openGuideDetail(parts[1], false);
         return;
+      } else if (mainTab === 'blog') {
+        const targetSlug = parts[parts.length - 1];
+        if (targetSlug) {
+          openGuideDetail(targetSlug, false);
+          return;
+        }
       } else {
         const readerSection = document.getElementById("tab-guide-detail");
         if (readerSection && mainTab !== 'guide-detail') readerSection.style.display = "none";
@@ -4063,18 +4080,41 @@
       
       let filtered = appData.guides || [];
       if (categoryFilter !== "ALL") {
-        filtered = filtered.filter(g => 
-          g.category === categoryFilter || 
-          (g.faculty && (g.faculty.name === categoryFilter || g.faculty.code === categoryFilter))
-        );
+        const catLow = categoryFilter.toLowerCase();
+        filtered = filtered.filter(g => {
+          const gCat = (g.category || "").toLowerCase();
+          const gRawCat = (g.rawCategory || "").toLowerCase();
+          if (catLow === "academics") {
+            return gCat === "academics" || gCat === "academic mastery" || gRawCat === "academics" || gCat === "exam preparation" || gCat === "study strategy";
+          }
+          if (catLow === "finances") {
+            return gCat === "finances" || gRawCat === "finances" || gCat.includes("finance");
+          }
+          if (catLow === "hostel & housing") {
+            return gCat === "hostel & housing" || gRawCat === "hostel-and-accommodation" || gCat.includes("hostel") || gCat.includes("housing");
+          }
+          if (catLow === "mental health") {
+            return gCat === "mental health" || gRawCat === "mental-health";
+          }
+          if (catLow === "work & school") {
+            return gCat === "work & school" || gRawCat === "balancing-work-and-school" || gCat === "student life & entrepreneurship" || gCat === "productivity & mindset";
+          }
+          if (catLow === "faculty guides") {
+            return gCat === "faculty guides" || !!g.faculty;
+          }
+          return gCat === catLow || gRawCat === catLow || (g.faculty && (g.faculty.name.toLowerCase() === catLow || g.faculty.code?.toLowerCase() === catLow));
+        });
       }
       grid.innerHTML = filtered.map(g => createGuideCardHtml(g)).join("");
     }
 
     function createGuideCardHtml(guide) {
-      const facName = guide.faculty ? guide.faculty.name : (guide.category || "University-Wide");
+      const facName = guide.faculty ? guide.faculty.name : (guide.category || "Campus Guide");
       const isVerified = guide.verified !== false && guide.status !== "DRAFT";
       const isSeries = guide.seriesTitle;
+      const readTime = guide.readTime || "8 min read";
+      const authorName = guide.author ? guide.author : (guide.source || "UI Academic Directorate");
+      
       const seriesBadgeHtml = isSeries ? `
         <span class="series-chip-badge" style="margin-bottom: 0.5rem; display: inline-flex;">
           📚 ${escapeHtml(guide.seriesTitle)}
@@ -4082,19 +4122,24 @@
       ` : '';
 
       return `
-        <div class="card" onclick="openGuideDetail('${guide.id}')" style="cursor: pointer;">
-          <div class="card-header">
-            <span class="card-badge">${escapeHtml(facName)}</span>
-            <span style="font-size: 0.76rem; color: #10B981; font-weight: 700; display: inline-flex; align-items: center; gap: 0.25rem;">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-              ${isVerified ? 'Verified Guide' : 'Guide'}
-            </span>
+        <div class="card" onclick="openGuideDetail('${guide.id}')" style="cursor: pointer; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="card-header" style="margin-bottom: 0.75rem;">
+              <span class="card-badge">${escapeHtml(facName)}</span>
+              <span style="font-size: 0.76rem; color: #10B981; font-weight: 700; display: inline-flex; align-items: center; gap: 0.25rem;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                ${isVerified ? 'Verified Guide' : 'Guide'}
+              </span>
+            </div>
+            ${seriesBadgeHtml}
+            <h3 class="card-title" style="margin-bottom: 0.6rem;">${escapeHtml(guide.title)}</h3>
+            <p class="card-desc" style="margin-bottom: 1.25rem;">${escapeHtml(guide.summary || (guide.content ? guide.content.substring(0, 115) + '...' : ''))}</p>
           </div>
-          ${seriesBadgeHtml}
-          <h3 class="card-title">${escapeHtml(guide.title)}</h3>
-          <p class="card-desc">${escapeHtml(guide.summary || (guide.content ? guide.content.substring(0, 115) + '...' : ''))}</p>
-          <div class="card-footer">
-            <button class="action-btn" onclick="event.stopPropagation(); openGuideDetail('${guide.id}')">Read Guide →</button>
+          <div class="card-footer" style="padding-top: 0.75rem; border-top: 1px solid var(--ps-border-light); display: flex; align-items: center; justify-content: space-between;">
+            <div style="font-size: 0.78rem; color: var(--ps-text-muted); font-weight: 600;">
+              <span>⏱️ ${escapeHtml(readTime)}</span>
+            </div>
+            <button class="action-btn" onclick="event.stopPropagation(); openGuideDetail('${guide.id}')">Read Article →</button>
           </div>
         </div>
       `;
@@ -4112,7 +4157,14 @@
         return;
       }
 
-      let guide = (appData.guides || []).find(g => g.id === guideId);
+      const cleanId = String(guideId).replace(/^guide_/, '');
+      let guide = (appData.guides || []).find(g =>
+        g.id === guideId ||
+        g.id === `guide_${cleanId}` ||
+        g.id === cleanId ||
+        g.slug === cleanId ||
+        g.slug === guideId
+      );
       
       // Always fetch detailed endpoint to get full markdown & series navigation links
       try {
@@ -4152,7 +4204,11 @@
       if (titleEl) titleEl.textContent = guide.title;
 
       const authorEl = document.getElementById("guide-author-name");
-      if (authorEl) authorEl.textContent = guide.source || guide.owner || "UI Academic Affairs Secretariat";
+      if (authorEl) {
+        authorEl.textContent = guide.author
+          ? `${guide.author} (${guide.authorRole || 'Founder & Academic Strategist'})`
+          : (guide.source || guide.owner || "UI Academic Affairs Secretariat");
+      }
 
       const verifiedDateStr = guide.verifiedDate ? new Date(guide.verifiedDate).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : "2025/2026 Session";
       const dateEl = document.getElementById("guide-verified-date");
@@ -4183,11 +4239,14 @@
       }
 
       // Calculate estimate read time
-      const rawText = (guide.content || guide.body || guide.summary || "");
-      const wordCount = rawText.trim().split(/\s+/).length;
-      const readMinutes = Math.max(1, Math.ceil(wordCount / 180));
+      const readTimeStr = guide.readTime || (() => {
+        const rawText = (guide.content || guide.body || guide.summary || "");
+        const wordCount = rawText.trim().split(/\s+/).length;
+        const readMinutes = Math.max(1, Math.ceil(wordCount / 180));
+        return `${readMinutes} min read`;
+      })();
       const readTimeEl = document.getElementById("guide-read-time");
-      if (readTimeEl) readTimeEl.textContent = `⏱️ ${readMinutes} min read`;
+      if (readTimeEl) readTimeEl.textContent = `⏱️ ${readTimeStr}`;
 
       // Render summary lead
       const summaryEl = document.getElementById("guide-article-summary");
@@ -4210,7 +4269,49 @@
         } else {
           bodyEl.innerHTML = renderSimpleMarkdown(rawContent);
         }
+
+        // INTERCEPT INTERNAL BLOG & GUIDE LINKS!
+        // Enables smooth in-app navigation between interconnected articles
+        bodyEl.querySelectorAll("a").forEach(link => {
+          const href = link.getAttribute("href");
+          if (href && (href.startsWith("/blog/") || href.startsWith("https://uifreshers.com/blog/") || href.startsWith("/guides/"))) {
+            link.addEventListener("click", (evt) => {
+              evt.preventDefault();
+              const cleanHref = href.replace(/https?:\/\/[^\/]+/, '').replace(/\/$/, '');
+              const segments = cleanHref.split('/');
+              const targetSlug = segments[segments.length - 1];
+              if (targetSlug && targetSlug !== 'blog' && targetSlug !== 'guides') {
+                openGuideDetail(targetSlug);
+              }
+            });
+          }
+        });
       }
+
+      // Render In-Article FAQ Accordion if present
+      const faqContainer = document.getElementById("guide-article-faq-container");
+      const faqList = document.getElementById("guide-article-faq-list");
+      if (faqContainer && faqList) {
+        const articleFaqs = (guide.faqs && Array.isArray(guide.faqs) && guide.faqs.length > 0) ? guide.faqs : ((guide.faq && Array.isArray(guide.faq) && guide.faq.length > 0) ? guide.faq : []);
+        if (articleFaqs.length > 0) {
+          faqContainer.style.display = "block";
+          faqList.innerHTML = articleFaqs.map((faq, idx) => `
+            <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; overflow: hidden;">
+              <button onclick="toggleArticleFaq(${idx})" style="width: 100%; text-align: left; background: none; border: none; padding: 1rem 1.25rem; font-weight: 700; color: #FFFFFF; font-size: 0.95rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                <span>${escapeHtml(faq.question)}</span>
+                <span id="article-faq-icon-${idx}" style="color: var(--ps-purple-light); font-size: 1.1rem; transition: transform 0.2s;">+</span>
+              </button>
+              <div id="article-faq-ans-${idx}" style="display: none; padding: 0 1.25rem 1.1rem 1.25rem; color: #CBD5E1; font-size: 0.92rem; line-height: 1.6;">
+                ${escapeHtml(faq.answer)}
+              </div>
+            </div>
+          `).join("");
+        } else {
+          faqContainer.style.display = "none";
+          faqList.innerHTML = "";
+        }
+      }
+
 
       // Render Next / Previous Series Navigation Cards
       const seriesNavEl = document.getElementById("guide-series-nav");
@@ -4299,6 +4400,16 @@
       const readerSection = document.getElementById("tab-guide-detail");
       if (readerSection) readerSection.style.display = "none";
       switchTab('guides', null, true);
+    }
+
+    function toggleArticleFaq(idx) {
+      const ansEl = document.getElementById(`article-faq-ans-${idx}`);
+      const iconEl = document.getElementById(`article-faq-icon-${idx}`);
+      if (ansEl) {
+        const isOpen = ansEl.style.display === "block";
+        ansEl.style.display = isOpen ? "none" : "block";
+        if (iconEl) iconEl.textContent = isOpen ? "+" : "−";
+      }
     }
 
     function renderRelatedGuides(activeGuide) {
