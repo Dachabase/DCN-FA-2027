@@ -1,0 +1,86 @@
+[
+  {
+    "filename": "CHEMISTRY-JAMB-Past-Questions.pdf",
+    "txtPath": "C:\\Users\\david\\OneDrive\\Desktop\\DCN FA27\\data\\extracted_txt\\CHEMISTRY-JAMB-Past-Questions.txt",
+    "totalPages": 70,
+    "totalChars": 213483,
+    "status": "extracted"
+  },
+  {
+    "filename": "COMMERCE-JAMB-Past-Questions.pdf",
+    "txtPath": "C:\\Users\\david\\OneDrive\\Desktop\\DCN FA27\\data\\extracted_txt\\COMMERCE-JAMB-Past-Questions.txt",
+    "totalPages": 29,
+    "totalChars": 111328,
+    "status": "extracted"
+  },
+  {
+    "filename": "CRK-JAMB-Past-Questions.pdf",
+    "txtPath": "C:\\Users\\david\\OneDrive\\Desktop\\DCN FA27\\data\\extracted_txt\\CRK-JAMB-Past-Questions.txt",
+    "totalPages": 59,
+    "totalChars": 236313,
+    "status": "extracted"
+  },
+  {
+    "filename": "Government-JAMB-Past-Questions-And-Answers.pdf",
+    "txtPath": "C:\\Users\\david\\OneDrive\\Desktop\\DCN FA27\\data\\extracted_txt\\Government-JAMB-Past-Questions-And-Answers.txt",
+    "totalPages": 210,
+    "totalChars": 430428,
+    "status": "extracted"
+  },
+  {
+    "filename": "JAMB-Biology-Past-Questions-and-Answers.pdf",
+    "txtPath": "C:\\Users\\david\\OneDrive\\Desktop\\DCN FA27\\data\\extracted_txt\\JAMB-Biology-Past-Questions-and-Answers.txt",
+    "totalPages": 53,
+    "totalChars": 79536,
+    "status": "extracted"
+  },
+  {
+    "filename": "JAMB-Brochure-University-Specific-Entry-Requirements.pdf",
+    "txtPath": "C:\\Users\\david\\OneDrive\\Desktop\\DCN FA27\\data\\extracted_txt\\JAMB-Brochure-University-Specific-Entry-Requirements.txt",
+    "totalPages": 25,
+    "totalChars": 63657,
+    "status": "extracted"
+  },
+  {
+    "filename": "JAMB-Economics-Past-Questions-and-Answers.pdf",
+    "txtPath": "C:\\Users\\david\\OneDrive\\Desktop\\DCN FA27\\data\\extracted_txt\\JAMB-Economics-Past-Questions-and-Answers.txt",
+    "totalPages": 51,
+    "totalChars": 86525,
+    "status": "extracted"
+  },
+  {
+    "filename": "Literature-In-English-JAMB-Past-Questions-and-Answers.pdf",
+    "txtPath": "C:\\Users\\david\\OneDrive\\Desktop\\DCN FA27\\data\\extracted_txt\\Literature-In-English-JAMB-Past-Questions-and-Answers.txt",
+    "totalPages": 66,
+    "totalChars": 94846,
+    "status": "extracted"
+  },
+  {
+    "filename": "MATHEMATICS-JAMB-Past-Questions.pdf",
+    "txtPath": "C:\\Users\\david\\OneDrive\\Desktop\\DCN FA27\\data\\extracted_txt\\MATHEMATICS-JAMB-Past-Questions.txt",
+    "totalPages": 64,
+    "totalChars": 167146,
+    "status": "extracted"
+  },
+  {
+    "filename": "Physics-JAMB-Past-Questions.pdf",
+    "txtPath": "C:\\Users\\david\\OneDrive\\Desktop\\DCN FA27\\data\\extracted_txt\\Physics-JAMB-Past-Questions.txt",
+    "totalPages": 97,
+    "totalChars": 246862,
+    "status": "extracted"
+  },
+  {
+    "filename": "Principles-of-Accounts-JAMB-Past-Questions.pdf",
+    "txtPath": "C:\\Users\\david\\OneDrive\\Desktop\\DCN FA27\\data\\extracted_txt\\Principles-of-Accounts-JAMB-Past-Questions.txt",
+    "totalPages": 38,
+    "totalChars": 139026,
+    "status": "extracted"
+  },
+  {
+    "filename": "Use-of-English-JAMB-Past-Questions-And-Answers.pdf",
+    "txtPath": "C:\\Users\\david\\OneDrive\\Desktop\\DCN FA27\\data\\extracted_txt\\Use-of-English-JAMB-Past-Questions-And-Answers.txt",
+    "totalPages": 694,
+    "totalChars": 1010980,
+    "status": "extracted"
+  }
+]

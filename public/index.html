@@ -3531,6 +3531,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="/utme.css">
 </head>
 <body>
 
@@ -3652,7 +3653,7 @@
           </button>
           <button class="nav-btn" data-tab="cbt" onclick="switchTab('cbt', event)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            CBT Practice
+            UTME Mock Exam
           </button>
           <button class="nav-btn" data-tab="faqs" onclick="switchTab('faqs', event)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -3960,6 +3961,17 @@
       </div>
 
       <div class="showcase-grid">
+        <div class="showcase-card utme-hero-card" onclick="switchTab('cbt', event)" style="cursor: pointer; background: linear-gradient(135deg, rgba(30, 27, 75, 0.92) 0%, rgba(15, 23, 42, 0.98) 100%); border: 1px solid rgba(139, 92, 246, 0.4); box-shadow: 0 10px 30px rgba(124, 58, 237, 0.25); border-radius: 16px; padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s ease;">
+          <div>
+            <div style="font-size: 0.8rem; font-weight: 800; color: #38BDF8; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px; display: flex; align-items: center; gap: 0.4rem;">
+              <span>🎯 OFFICIAL UTME EXAM ENGINE</span>
+            </div>
+            <div class="showcase-title" style="color: #FFFFFF; font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem;">UTME Mock Examination</div>
+            <p style="color: #CBD5E1; font-size: 0.88rem; line-height: 1.5; margin: 0;">Choose your course, confirm your subjects, take a realistic mock examination, and review detailed explanations for every question.</p>
+          </div>
+          <div class="showcase-arrow" style="color: #C084FC; font-weight: 700; margin-top: 1.25rem;">Start Official UTME Mock Exam →</div>
+        </div>
+
         <div class="showcase-card purple" onclick="switchTab('catalog', event)">
           <div>
             <div style="font-size: 0.8rem; font-weight: 800; opacity: 0.9; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px;">VERIFIED ACADEMIC PACKAGES</div>
@@ -4306,8 +4318,13 @@
 
     <!-- 6. CBT PRACTICE TAB -->
     <section id="tab-cbt" class="tab-section">
-      <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.5px;">100L CBT Exam & Practice Simulator</h2>
-      <p style="color: var(--ps-text-gray); margin-bottom: 1.75rem;">Practice 100L general and departmental courses matching authentic UI CBT exam standards.</p>
+      <!-- Main UTME Mock Application Root Mount -->
+      <div id="utme-app-root"></div>
+
+      <!-- Secondary 100L Telegram CBT Simulator (Preserved below) -->
+      <div style="margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--ps-border-light);">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--ps-text-gray);">100L Undergraduate Departmental Practice</h3>
+        <p style="color: var(--ps-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Looking for 100-Level University of Ibadan semester course tests? Practice with the interactive bot simulator:</p>
 
       <!-- Telegram CBT Hero Banner -->
       <div class="cbt-simulator-banner">
@@ -4691,7 +4708,7 @@
       if (!validTabs.includes(tabId)) tabId = 'home';
 
       // HARD GATE: All academic content tabs require sign in!
-      if (tabId !== 'home' && !appData.currentUser) {
+      if (tabId !== 'home' && tabId !== 'cbt' && !appData.currentUser) {
         openSignInModal();
         return;
       }
@@ -4713,6 +4730,7 @@
           } else {
             headerEl.classList.remove('header-over-hero');
             headerEl.classList.remove('scrolled');
+            if (typeof pauseCarouselTimer === 'function') pauseCarouselTimer();
           }
         }
       }
@@ -7001,5 +7019,6 @@
     </div>
   </div>
 
-  </body>
+    <script src="/utme.js" defer></script>
+</body>
 </html>

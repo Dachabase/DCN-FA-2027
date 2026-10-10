@@ -167,6 +167,7 @@ model User {
   memories      Memory[]
   quizAttempts  QuizAttempt[]
   interactions  Interaction[]
+  utmeAttempts  UtmeExamAttempt[]
 }
 
 // =========================================================
@@ -406,3 +407,162 @@ model FAQ {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+// =========================================================
+// UTME PREPARATION & MOCK EXAMINATION SYSTEM
+// =========================================================
+
+model UtmeSubject {
+  id              String         @id @default(cuid())
+  code            String         @unique // e.g. "ENG", "MTH", "CHM", "PHY", "BIO", "ECO", "GOV", "LIT", "COM", "ACC", "CRK"
+  name            String         @unique // e.g. "Use of English", "Mathematics"
+  description     String?
+  icon            String?
+  questionCount   Int            @default(40) // 60 for English, 40 for others
+  durationMinutes Int            @default(30)
+  isCompulsory    Boolean        @default(false)
+  syllabusTopics  String[]       @default([])
+
+  questions       UtmeQuestion[]
+
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+}
+
+model UtmeCourseCombination {
+  id                  String    @id @default(cuid())
+  courseName          String    // e.g. "Medicine and Surgery"
+  slug                String    @unique // e.g. "medicine-and-surgery"
+  facultyName         String    // e.g. "Clinical Sciences"
+  degreeType          String    // e.g. "MBBS", "B.Sc.", "LL.B", "B.Eng"
+  compulsorySubjects  String[]  // e.g. ["Use of English", "Biology", "Chemistry", "Physics"]
+  alternativeSubjects String[]  @default([])
+  subjectCodes        String[]  // e.g. ["ENG", "BIO", "CHM", "PHY"]
+  notes               String?
+  institutionNotes    String?   // University-specific requirements (e.g. UI, UNILAG, OAU)
+  officialSource      String    // e.g. "JAMB Official Brochure (UI Specific Requirements Section 2.2.02)"
+  verifiedDate        DateTime  @default(now())
+
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+}
+
+enum UtmeVerificationStatus {
+  AI_GENERATED
+  SOURCE_MATCH
+  INDEPENDENTLY_SOLVED
+  HUMAN_REVIEWED
+  APPROVED_FOR_PUBLICATION
+  NEEDS_REVIEW
+  REJECTED
+}
+
+enum UtmePublicationStatus {
+  PUBLISHED
+  DRAFT
+  FLAGGED
+  ARCHIVED
+}
+
+model UtmeQuestion {
+  id                     String                 @id @default(cuid())
+  subjectCode            String                 // e.g. "BIO", "ENG", "MTH", "PHY", "CHM"
+  subjectName            String                 // e.g. "Biology"
+  subjectId              String?
+  subject                UtmeSubject?           @relation(fields: [subjectId], references: [id])
+  topic                  String                 // e.g. "Cell Biology & Cytology"
+  subtopic               String?
+  examYear               Int                    // e.g. 2018, 2015, 2010, 2004
+  sourceDocument         String                 // e.g. "JAMB-Biology-Past-Questions-and-Answers.pdf"
+  sourcePage             Int                    // e.g. 2
+  originalQuestionNumber Int                    // e.g. 2
+  questionText           String
+  passage                String?                // Reading passage for comprehension/literature
+  options                String[]               // ["A. cytoplasm...", "B. nucleus...", "C. cell wall...", "D. ..."]
+  correctAnswer          String                 // "A", "B", "C", "D"
+  explanation            String                 // Detailed secondary-school student explanation
+  whyOthersIncorrect     String?                // Educational breakdown of distractors
+  verificationStatus     UtmeVerificationStatus @default(APPROVED_FOR_PUBLICATION)
+  verificationNotes      String?
+  extractionConfidence   Float                  @default(1.0)
+  hasImage               Boolean                @default(false)
+  imageUrl               String?
+  syllabusTopic          String?
+  publicationStatus      UtmePublicationStatus  @default(PUBLISHED)
+
+  createdAt              DateTime               @default(now())
+  updatedAt              DateTime               @updatedAt
+
+  @@index([subjectCode, examYear])
+  @@index([publicationStatus, verificationStatus])
+  @@index([topic])
+}
+
+enum ExamMode {
+  FULL_UTME_SIMULATION
+  PRACTICE_MODE
+  TOPIC_REVISION
+}
+
+enum ExamAttemptStatus {
+  IN_PROGRESS
+  SUBMITTED
+  TIMED_OUT
+  ABANDONED
+}
+
+model UtmeExamAttempt {
+  id                 String            @id @default(cuid())
+  userId             String?
+  user               User?             @relation(fields: [userId], references: [id], onDelete: SetNull)
+  guestSessionId     String?
+  courseName         String            // e.g. "Medicine and Surgery"
+  institutionName    String?           @default("University of Ibadan (UI)")
+  mode               ExamMode          @default(FULL_UTME_SIMULATION)
+  subjectCodes       String[]          // ["ENG", "BIO", "CHM", "PHY"]
+  totalQuestions     Int               @default(180)
+  durationMinutes    Int               @default(120)
+  startedAt          DateTime          @default(now())
+  expiresAt          DateTime
+  submittedAt        DateTime?
+  status             ExamAttemptStatus @default(IN_PROGRESS)
+
+  // Scores (computed server-side upon submission)
+  scoreTotal         Float?            // Raw correct count
+  scoreAggregate     Float?            // Scaled score out of 400 (JAMB aggregate)
+  accuracyPercentage Float?
+  correctCount       Int?              @default(0)
+  incorrectCount     Int?              @default(0)
+  unansweredCount    Int?              @default(0)
+  timeSpentSeconds   Int               @default(0)
+
+  subjectScores      Json              @default("{}") // Breakdown per subject { "ENG": { score: 72, correct: 43, total: 60 }, ... }
+  topicPerformance   Json              @default("{}") // Topic breakdown { "Cell Biology": { correct: 4, total: 5 }, ... }
+  questionsSnapshot  Json              // Immutable snapshot of presented questions (without revealing answers before submit)
+
+  responses          UtmeExamResponse[]
+
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+
+  @@index([userId, status])
+  @@index([guestSessionId, status])
+}
+
+model UtmeExamResponse {
+  id                String          @id @default(cuid())
+  attemptId         String
+  attempt           UtmeExamAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  questionId        String
+  subjectCode       String
+  selectedOption    String?         // "A", "B", "C", "D" or null
+  isMarkedForReview Boolean         @default(false)
+  isCorrect         Boolean?        // Evaluated server-side on submission
+  timeSpentSeconds  Int             @default(0)
+
+  answeredAt        DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+
+  @@unique([attemptId, questionId])
+  @@index([attemptId, subjectCode])
+}
