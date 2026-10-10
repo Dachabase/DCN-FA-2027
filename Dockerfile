@@ -2,15 +2,15 @@ FROM node:22-alpine
 
 WORKDIR /app
 
-# Copy dependency files
+# Copy dependency and database schema files
 COPY package.json package-lock.json* ./
+COPY prisma ./prisma/
+COPY prisma.config.ts ./
 
 # Install dependencies
 RUN npm install
 
-# Copy configuration, prisma, source code, and public web assets
-COPY prisma ./prisma/
-COPY prisma.config.ts ./
+# Copy configuration, source code, and public web assets
 COPY tsconfig.json ./
 COPY src ./src/
 COPY public ./public/
