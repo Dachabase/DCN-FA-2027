@@ -38,6 +38,16 @@
 
     // Admin
     adminStats: null,
+
+    // On-Screen JAMB Calculator (Problem 4)
+    calc: {
+      isOpen: false,
+      display: "0",
+      prevOperand: null,
+      operation: null,
+      subDisplay: "",
+      shouldResetDisplay: false,
+    },
   };
 
   // =========================================================
@@ -416,6 +426,10 @@
 
               <!-- Timer, Palette & Actions -->
               <div class="utme-topbar-right">
+                <button class="utme-calc-toggle-btn" onclick="window.UTME.toggleCalculator()" aria-label="Open Official Calculator">
+                  <span>🧮</span> <span>Calculator</span>
+                </button>
+
                 <button class="utme-mobile-palette-toggle-btn" onclick="window.UTME.toggleMobilePalette()" aria-label="Open Question Palette">
                   📋 Palette (${answeredCount}/${totalQ})
                 </button>
@@ -460,16 +474,46 @@
                   <span class="utme-topic-tag">${escapeHtml(currentQ.topic || 'General')}</span>
                 </div>
 
+                ${(currentQ.sectionName || currentQ.skillTag) ? `
+                  <div class="utme-eng-section-badge">
+                    <span class="utme-badge-label">English Language</span>
+                    <span class="utme-badge-sep">•</span>
+                    <span class="utme-badge-sec">${escapeHtml(currentQ.sectionName || 'Section')}</span>
+                    ${currentQ.skillTag ? `
+                      <span class="utme-badge-sep">•</span>
+                      <span class="utme-badge-skill">${escapeHtml(currentQ.skillTag)}</span>
+                    ` : ''}
+                  </div>
+                ` : ''}
+
                 ${currentQ.passage ? `
                   <div class="utme-passage-card">
-                    <div style="font-weight: 800; font-size: 0.78rem; text-transform: uppercase; color: var(--ps-purple-hover); margin-bottom: 0.3rem;">Reading Passage:</div>
-                    ${escapeHtml(currentQ.passage)}
+                    <div class="utme-passage-header">
+                      <div class="utme-passage-title-row">
+                        <span style="font-size: 1.1rem;">📖</span>
+                        <span class="utme-passage-title">${escapeHtml(currentQ.sectionName || 'Reading Passage / Context')}</span>
+                      </div>
+                      <span style="font-size: 0.75rem; color: #64748B; font-weight: 700;">Read carefully to answer question</span>
+                    </div>
+                    <div class="utme-passage-body">${escapeHtml(currentQ.passage)}</div>
                   </div>
                 ` : ''}
 
                 <div class="utme-q-text">
                   ${escapeHtml(currentQ.questionText)}
                 </div>
+
+                ${currentQ.imageUrl ? `
+                  <div class="utme-diagram-wrap">
+                    <div class="utme-diagram-header">
+                      <span>📊 Examination Figure / Diagram</span>
+                      <a href="${currentQ.imageUrl}" target="_blank" rel="noopener noreferrer" class="utme-diagram-zoom-link">
+                        🔍 Enlarge Diagram
+                      </a>
+                    </div>
+                    <img src="${currentQ.imageUrl}" alt="Official Examination Figure" class="utme-q-diagram-img" loading="lazy" />
+                  </div>
+                ` : ''}
 
                 <!-- Options List -->
                 <div class="utme-options-list">
@@ -653,17 +697,243 @@
             </div>
           </div>
         </div>
+
+        <!-- On-Screen Calculator Widget & Modal (Problem 4) -->
+        <div id="utme-calc-backdrop" class="utme-calc-modal-backdrop ${state.calc.isOpen ? 'open' : ''}" onclick="window.UTME.toggleCalculator(false)"></div>
+        <div id="utme-calc-widget" class="utme-calc-widget ${state.calc.isOpen ? 'open' : ''}" role="dialog" aria-label="JAMB Examination Calculator">
+          <div class="utme-calc-header">
+            <div class="utme-calc-title">
+              <span>🧮</span>
+              <span>JAMB Calculator</span>
+              <span class="utme-calc-badge">OFFICIAL 8-DIGIT STANDARD</span>
+            </div>
+            <button class="utme-calc-close-btn" onclick="window.UTME.toggleCalculator(false)" aria-label="Close Calculator">✕</button>
+          </div>
+          <div class="utme-calc-display-box">
+            <div id="utme-calc-sub" class="utme-calc-subdisplay">${escapeHtml(state.calc.subDisplay)}</div>
+            <div id="utme-calc-main" class="utme-calc-maindisplay">${escapeHtml(state.calc.display)}</div>
+          </div>
+          <div class="utme-calc-keypad">
+            <button class="utme-calc-btn action" onclick="window.UTME.calcAction('C')" aria-label="Clear">C</button>
+            <button class="utme-calc-btn action" onclick="window.UTME.calcAction('BACKSPACE')" aria-label="Backspace">⌫</button>
+            <button class="utme-calc-btn action" onclick="window.UTME.calcAction('SQRT')" aria-label="Square Root">√</button>
+            <button class="utme-calc-btn op" onclick="window.UTME.calcAction('/')" aria-label="Divide">÷</button>
+
+            <button class="utme-calc-btn action" onclick="window.UTME.calcAction('PERCENT')" aria-label="Percent">%</button>
+            <button class="utme-calc-btn action" onclick="window.UTME.calcAction('SIGN')" aria-label="Toggle Sign">±</button>
+            <button class="utme-calc-btn" style="visibility: hidden;"></button>
+            <button class="utme-calc-btn op" onclick="window.UTME.calcAction('*')" aria-label="Multiply">×</button>
+
+            <button class="utme-calc-btn" onclick="window.UTME.calcDigit('7')">7</button>
+            <button class="utme-calc-btn" onclick="window.UTME.calcDigit('8')">8</button>
+            <button class="utme-calc-btn" onclick="window.UTME.calcDigit('9')">9</button>
+            <button class="utme-calc-btn op" onclick="window.UTME.calcAction('-')" aria-label="Subtract">−</button>
+
+            <button class="utme-calc-btn" onclick="window.UTME.calcDigit('4')">4</button>
+            <button class="utme-calc-btn" onclick="window.UTME.calcDigit('5')">5</button>
+            <button class="utme-calc-btn" onclick="window.UTME.calcDigit('6')">6</button>
+            <button class="utme-calc-btn op" onclick="window.UTME.calcAction('+')" aria-label="Add">+</button>
+
+            <button class="utme-calc-btn" onclick="window.UTME.calcDigit('1')">1</button>
+            <button class="utme-calc-btn" onclick="window.UTME.calcDigit('2')">2</button>
+            <button class="utme-calc-btn" onclick="window.UTME.calcDigit('3')">3</button>
+            <button class="utme-calc-btn" style="visibility: hidden;"></button>
+
+            <button class="utme-calc-btn" onclick="window.UTME.calcDigit('0')" style="grid-column: span 2;">0</button>
+            <button class="utme-calc-btn" onclick="window.UTME.calcDecimal()">.</button>
+            <button class="utme-calc-btn equals" onclick="window.UTME.calcAction('=')" aria-label="Equals">=</button>
+          </div>
+        </div>
       </div>
     `;
   }
 
+  // =========================================================
+  // ON-SCREEN CALCULATOR LOGIC (Problem 4)
+  // Complies with official Joint Admissions and Matriculation Board (JAMB) CBT rules
+  // 8-digit basic arithmetic, percentage, square root, no eval/CAS
+  // =========================================================
+  function calcInputDigit(digit) {
+    if (state.calc.display === "Error" || state.calc.shouldResetDisplay) {
+      state.calc.display = String(digit);
+      state.calc.shouldResetDisplay = false;
+    } else {
+      if (state.calc.display === "0") {
+        state.calc.display = String(digit);
+      } else if (state.calc.display.length < 12) {
+        state.calc.display += String(digit);
+      }
+    }
+    updateCalcUI();
+  }
+
+  function calcInputDecimal() {
+    if (state.calc.display === "Error" || state.calc.shouldResetDisplay) {
+      state.calc.display = "0.";
+      state.calc.shouldResetDisplay = false;
+    } else if (!state.calc.display.includes(".")) {
+      state.calc.display += ".";
+    }
+    updateCalcUI();
+  }
+
+  function calcInputOperator(op) {
+    if (state.calc.display === "Error") return;
+    if (state.calc.prevOperand !== null && state.calc.operation && !state.calc.shouldResetDisplay) {
+      calcCompute();
+    } else {
+      state.calc.prevOperand = parseFloat(state.calc.display) || 0;
+    }
+    state.calc.operation = op;
+    const symbolMap = { "+": "+", "-": "−", "*": "×", "/": "÷" };
+    state.calc.subDisplay = `${state.calc.prevOperand} ${symbolMap[op] || op}`;
+    state.calc.shouldResetDisplay = true;
+    updateCalcUI();
+  }
+
+  function calcCompute() {
+    if (state.calc.prevOperand === null || !state.calc.operation) return;
+    const prev = state.calc.prevOperand;
+    const current = parseFloat(state.calc.display) || 0;
+    let res = 0;
+
+    if (state.calc.operation === "+") {
+      res = prev + current;
+    } else if (state.calc.operation === "-") {
+      res = prev - current;
+    } else if (state.calc.operation === "*") {
+      res = prev * current;
+    } else if (state.calc.operation === "/") {
+      if (current === 0) {
+        state.calc.display = "Error";
+        state.calc.subDisplay = "Cannot divide by zero";
+        state.calc.prevOperand = null;
+        state.calc.operation = null;
+        state.calc.shouldResetDisplay = true;
+        updateCalcUI();
+        return;
+      }
+      res = prev / current;
+    }
+
+    // Standard precision trimming (avoid float 0.1+0.2=0.30000000000000004)
+    res = Math.round(res * 100000000) / 100000000;
+    const symbolMap = { "+": "+", "-": "−", "*": "×", "/": "÷" };
+    state.calc.subDisplay = `${prev} ${symbolMap[state.calc.operation] || state.calc.operation} ${current} =`;
+    state.calc.display = String(res);
+    state.calc.prevOperand = res;
+    state.calc.operation = null;
+    state.calc.shouldResetDisplay = true;
+    updateCalcUI();
+  }
+
+  function calcSqrt() {
+    if (state.calc.display === "Error") return;
+    const val = parseFloat(state.calc.display) || 0;
+    if (val < 0) {
+      state.calc.display = "Error";
+      state.calc.subDisplay = "Invalid input (√ negative)";
+    } else {
+      const res = Math.round(Math.sqrt(val) * 100000000) / 100000000;
+      state.calc.subDisplay = `√(${val})`;
+      state.calc.display = String(res);
+    }
+    state.calc.shouldResetDisplay = true;
+    updateCalcUI();
+  }
+
+  function calcPercent() {
+    if (state.calc.display === "Error") return;
+    const val = parseFloat(state.calc.display) || 0;
+    const res = Math.round((val / 100) * 100000000) / 100000000;
+    state.calc.subDisplay = `${val}%`;
+    state.calc.display = String(res);
+    state.calc.shouldResetDisplay = true;
+    updateCalcUI();
+  }
+
+  function calcToggleSign() {
+    if (state.calc.display === "Error" || state.calc.display === "0") return;
+    if (state.calc.display.startsWith("-")) {
+      state.calc.display = state.calc.display.substring(1);
+    } else {
+      state.calc.display = "-" + state.calc.display;
+    }
+    updateCalcUI();
+  }
+
+  function calcClear() {
+    state.calc.display = "0";
+    state.calc.subDisplay = "";
+    state.calc.prevOperand = null;
+    state.calc.operation = null;
+    state.calc.shouldResetDisplay = false;
+    updateCalcUI();
+  }
+
+  function calcBackspace() {
+    if (state.calc.display === "Error" || state.calc.shouldResetDisplay) {
+      state.calc.display = "0";
+      state.calc.shouldResetDisplay = false;
+    } else {
+      if (state.calc.display.length > 1) {
+        state.calc.display = state.calc.display.slice(0, -1);
+      } else {
+        state.calc.display = "0";
+      }
+    }
+    updateCalcUI();
+  }
+
+  function updateCalcUI() {
+    const main = document.getElementById("utme-calc-main");
+    const sub = document.getElementById("utme-calc-sub");
+    if (main) main.textContent = state.calc.display;
+    if (sub) sub.textContent = state.calc.subDisplay;
+  }
+
   function attachExamHallEvents() {
-    // Controlled keyboard input (A, B, C, D only - arrow keys do NOT change questions)
+    // Controlled keyboard input (Desktop accessibility & non-interfering shortcuts)
     window.onkeydown = (e) => {
       if (state.currentView !== "EXAM") return;
-      if (e.repeat) return; // Prevent key hold repetition
       if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")) return;
       if (e.ctrlKey || e.altKey || e.metaKey) return;
+
+      // When calculator is open, route numbers and math operators directly to calculator
+      if (state.calc.isOpen) {
+        if (e.key >= "0" && e.key <= "9") {
+          e.preventDefault();
+          window.UTME.calcDigit(e.key);
+          return;
+        }
+        if (e.key === ".") {
+          e.preventDefault();
+          window.UTME.calcDecimal();
+          return;
+        }
+        if (["+", "-", "*", "/"].includes(e.key)) {
+          e.preventDefault();
+          window.UTME.calcAction(e.key);
+          return;
+        }
+        if (e.key === "Enter" || e.key === "=") {
+          e.preventDefault();
+          window.UTME.calcAction("=");
+          return;
+        }
+        if (e.key === "Backspace") {
+          e.preventDefault();
+          window.UTME.calcAction("BACKSPACE");
+          return;
+        }
+        if (e.key === "Escape") {
+          e.preventDefault();
+          window.UTME.toggleCalculator(false);
+          return;
+        }
+      }
+
+      if (e.repeat) return; // Prevent key hold repetition
 
       const key = e.key.toUpperCase();
       if (["A", "B", "C", "D"].includes(key)) {
@@ -786,6 +1056,63 @@
           }).join('')}
         </div>
 
+        ${res.englishAnalytics ? `
+          <div class="utme-eng-analytics-card">
+            <div class="utme-eng-analytics-header">
+              <div>
+                <div class="utme-eng-analytics-title">📚 English Language Section & Skill Performance</div>
+                <div style="font-size: 0.85rem; color: #64748B; margin-top: 0.2rem;">
+                  Diagnostic performance analysis across syllabus sections and assessed skill areas.
+                </div>
+              </div>
+              <span class="utme-badge-tag" style="background: #EEF2FF; color: #4338CA; border: 1px solid #C7D2FE;">
+                Total English Questions: ${res.englishAnalytics.totalQuestions || 60}
+              </span>
+            </div>
+
+            <div class="utme-eng-grid">
+              ${(res.englishAnalytics.sections || []).map(sec => {
+                const pct = sec.percentage || 0;
+                const color = pct >= 70 ? '#10B981' : (pct >= 50 ? '#3B82F6' : '#EF4444');
+                return `
+                  <div class="utme-eng-section-item">
+                    <div class="utme-eng-sec-title">${escapeHtml(sec.sectionName)}</div>
+                    <div class="utme-eng-sec-stats">
+                      <span>${sec.correct} / ${sec.total} Correct</span>
+                      <strong style="color: ${color};">${pct}%</strong>
+                    </div>
+                    <div class="utme-progress-bar-bg">
+                      <div class="utme-progress-bar-fill" style="width: ${pct}%; background: ${color};"></div>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+
+            ${(res.englishAnalytics.skills && res.englishAnalytics.skills.length > 0) ? `
+              <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px dashed #E2E8F0;">
+                <div style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; color: #475569; margin-bottom: 0.65rem;">
+                  Specific Assessed Skill Areas:
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                  ${res.englishAnalytics.skills.map(sk => {
+                    const pct = sk.percentage || 0;
+                    const badgeBg = pct >= 70 ? '#ECFDF5' : (pct >= 50 ? '#EFF6FF' : '#FEF2F2');
+                    const badgeBorder = pct >= 70 ? '#10B981' : (pct >= 50 ? '#3B82F6' : '#EF4444');
+                    const badgeColor = pct >= 70 ? '#065F46' : (pct >= 50 ? '#1E40AF' : '#991B1B');
+                    return `
+                      <div style="background: ${badgeBg}; border: 1px solid ${badgeBorder}; color: ${badgeColor}; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; display: flex; align-items: center; gap: 0.4rem;">
+                        <span style="font-weight: 700;">${escapeHtml(sk.skillTag)}:</span>
+                        <span>${sk.correct}/${sk.total} (${pct}%)</span>
+                      </div>
+                    `;
+                  }).join('')}
+                </div>
+              </div>
+            ` : ''}
+          </div>
+        ` : ''}
+
         <!-- Action Buttons -->
         <div class="utme-results-actions" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
           <button onclick="window.UTME.loadReview()" class="utme-course-action-btn" style="flex: 1; padding: 1rem; font-size: 1.05rem;">
@@ -851,9 +1178,45 @@
                   ${statusBadge}
                 </div>
 
+                ${(q.sectionName || q.skillTag) ? `
+                  <div class="utme-eng-section-badge" style="margin-bottom: 0.75rem;">
+                    <span class="utme-badge-label">English Language</span>
+                    <span class="utme-badge-sep">•</span>
+                    <span class="utme-badge-sec">${escapeHtml(q.sectionName || 'Section')}</span>
+                    ${q.skillTag ? `
+                      <span class="utme-badge-sep">•</span>
+                      <span class="utme-badge-skill">${escapeHtml(q.skillTag)}</span>
+                    ` : ''}
+                  </div>
+                ` : ''}
+
+                ${q.passage ? `
+                  <div class="utme-passage-card" style="margin-bottom: 1rem;">
+                    <div class="utme-passage-header">
+                      <div class="utme-passage-title-row">
+                        <span style="font-size: 1rem;">📖</span>
+                        <span class="utme-passage-title">${escapeHtml(q.sectionName || 'Reading Passage / Context')}</span>
+                      </div>
+                    </div>
+                    <div class="utme-passage-body">${escapeHtml(q.passage)}</div>
+                  </div>
+                ` : ''}
+
                 <div style="font-size: 1.1rem; font-weight: 600; color: #0F172A; line-height: 1.5; margin-bottom: 1rem;">
                   ${escapeHtml(q.questionText)}
                 </div>
+
+                ${q.imageUrl ? `
+                  <div class="utme-diagram-wrap" style="margin-bottom: 1.25rem;">
+                    <div class="utme-diagram-header">
+                      <span>📊 Examination Figure / Diagram</span>
+                      <a href="${q.imageUrl}" target="_blank" rel="noopener noreferrer" class="utme-diagram-zoom-link">
+                        🔍 Enlarge Diagram
+                      </a>
+                    </div>
+                    <img src="${q.imageUrl}" alt="Official Examination Figure" class="utme-q-diagram-img" loading="lazy" />
+                  </div>
+                ` : ''}
 
                 <!-- Options -->
                 <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem;">
@@ -1293,6 +1656,32 @@
       }
       state.currentView = "ADMIN";
       render();
+    },
+    toggleCalculator(forcedState) {
+      if (typeof forcedState === "boolean") {
+        state.calc.isOpen = forcedState;
+      } else {
+        state.calc.isOpen = !state.calc.isOpen;
+      }
+      const backdrop = document.getElementById("utme-calc-backdrop");
+      const widget = document.getElementById("utme-calc-widget");
+      if (backdrop) backdrop.classList.toggle("open", state.calc.isOpen);
+      if (widget) widget.classList.toggle("open", state.calc.isOpen);
+    },
+    calcDigit(digit) {
+      calcInputDigit(digit);
+    },
+    calcDecimal() {
+      calcInputDecimal();
+    },
+    calcAction(act) {
+      if (act === "C") calcClear();
+      else if (act === "BACKSPACE") calcBackspace();
+      else if (act === "SQRT") calcSqrt();
+      else if (act === "PERCENT") calcPercent();
+      else if (act === "SIGN") calcToggleSign();
+      else if (["+", "-", "*", "/"].includes(act)) calcInputOperator(act);
+      else if (act === "=") calcCompute();
     }
   };
 

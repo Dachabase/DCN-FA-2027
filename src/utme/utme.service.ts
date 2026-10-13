@@ -95,42 +95,158 @@ export class UtmeService {
     const questionsList: any[] = [];
     const questionsSnapshot: any[] = [];
 
+    // Robust deduplication tracker across the entire mock examination
+    const selectedQuestionIds = new Set<string>();
+    const selectedNormalizedTexts = new Set<string>();
+
+    const normalizeText = (txt: string): string => {
+      return (txt || "")
+        .toLowerCase()
+        .replace(/[\u2018\u2019]/g, "'")
+        .replace(/[\u201C\u201D]/g, '"')
+        .replace(/\s+/g, " ")
+        .trim();
+    };
+
+    // Recency tracking: query questions candidate saw in their last 3 attempts
+    const recentSeenIds = new Set<string>();
+    try {
+      if (options.userId || options.guestSessionId) {
+        const pastAttempts = await prisma.utmeExamAttempt.findMany({
+          where: {
+            OR: [
+              options.userId ? { userId: options.userId } : {},
+              options.guestSessionId ? { guestSessionId: options.guestSessionId } : {},
+            ],
+          },
+          select: { questionsSnapshot: true },
+          take: 3,
+          orderBy: { createdAt: "desc" },
+        });
+
+        for (const pa of pastAttempts) {
+          const snaps = (pa.questionsSnapshot as any[]) || [];
+          for (const sq of snaps) {
+            if (sq.id) recentSeenIds.add(sq.id);
+          }
+        }
+      }
+    } catch (e) {
+      // Non-blocking fallback
+    }
+
     for (const code of subjectCodes) {
       const targetCount = isFull ? (code === "ENG" ? 60 : 40) : (code === "ENG" ? 15 : 10);
+      const subjectSelected: any[] = [];
 
-      // Fetch randomized questions for this subject
-      // To ensure high quality, only published questions
-      const pool = await prisma.utmeQuestion.findMany({
-        where: {
-          subjectCode: code,
-          publicationStatus: "PUBLISHED",
-          ...(options.topic ? { topic: { contains: options.topic, mode: "insensitive" } } : {}),
-        },
-        select: {
-          id: true,
-          subjectCode: true,
-          subjectName: true,
-          topic: true,
-          examYear: true,
-          questionText: true,
-          passage: true,
-          options: true,
-          correctAnswer: true,
-          explanation: true,
-          whyOthersIncorrect: true,
-          hasImage: true,
-          imageUrl: true,
-          sourceDocument: true,
-          sourcePage: true,
-          originalQuestionNumber: true,
-        },
-      });
+      if (code === "ENG") {
+        // =========================================================
+        // ENGLISH LANGUAGE: GROUP-AWARE STRUCTURED SELECTION
+        // Preserves shared passages, question groups & logical ordering
+        // =========================================================
+        const compTarget = isFull ? 10 : 5; // 2 passages (10 Qs) for full, 1 passage (5 Qs) for practice
+        let compCount = 0;
 
-      // Controlled shuffle
-      const shuffled = pool.sort(() => Math.random() - 0.5).slice(0, targetCount);
+        // Fetch published comprehension groups with reading passages
+        const compGroups = await prisma.utmeQuestionGroup.findMany({
+          where: {
+            subjectCode: "ENG",
+            sectionType: "COMPREHENSION",
+            passage: { not: null },
+          },
+          include: {
+            questions: {
+              where: { publicationStatus: "PUBLISHED" },
+              orderBy: [{ groupOrder: "asc" }, { originalQuestionNumber: "asc" }],
+            },
+          },
+        });
 
-      for (let idx = 0; idx < shuffled.length; idx++) {
-        const q = shuffled[idx];
+        // Shuffle groups
+        const shuffledGroups = compGroups.sort(() => Math.random() - 0.5);
+
+        for (const group of shuffledGroups) {
+          if (compCount >= compTarget) break;
+          const groupQs = group.questions.filter((q) => {
+            const norm = normalizeText(q.questionText);
+            return !selectedQuestionIds.has(q.id) && !selectedNormalizedTexts.has(norm);
+          });
+
+          if (groupQs.length >= 3) {
+            // Keep the group questions together in original sequential order
+            for (const q of groupQs) {
+              if (compCount >= compTarget) break;
+              const norm = normalizeText(q.questionText);
+              selectedQuestionIds.add(q.id);
+              selectedNormalizedTexts.add(norm);
+              subjectSelected.push(q);
+              compCount++;
+            }
+          }
+        }
+
+        // Fill remaining English target count with structured Lexis, Synonyms, Antonyms & Oral English
+        const remainingNeeded = targetCount - subjectSelected.length;
+        if (remainingNeeded > 0) {
+          const pool = await prisma.utmeQuestion.findMany({
+            where: {
+              subjectCode: "ENG",
+              publicationStatus: "PUBLISHED",
+              id: { notIn: Array.from(selectedQuestionIds) },
+            },
+          });
+
+          // Filter duplicates and prioritize unseen
+          const available = pool.filter((q) => !selectedNormalizedTexts.has(normalizeText(q.questionText)));
+          const unseen = available.filter((q) => !recentSeenIds.has(q.id));
+          const candidatePool = unseen.length >= remainingNeeded ? unseen : available;
+          const shuffledOther = candidatePool.sort(() => Math.random() - 0.5);
+
+          for (const q of shuffledOther) {
+            if (subjectSelected.length >= targetCount) break;
+            const norm = normalizeText(q.questionText);
+            if (!selectedQuestionIds.has(q.id) && !selectedNormalizedTexts.has(norm)) {
+              selectedQuestionIds.add(q.id);
+              selectedNormalizedTexts.add(norm);
+              subjectSelected.push(q);
+            }
+          }
+        }
+      } else {
+        // =========================================================
+        // OTHER SUBJECTS (Math, Physics, Chemistry, Biology, etc.)
+        // Distinct randomized selection with deduplication & recency
+        // =========================================================
+        const pool = await prisma.utmeQuestion.findMany({
+          where: {
+            subjectCode: code,
+            publicationStatus: "PUBLISHED",
+            id: { notIn: Array.from(selectedQuestionIds) },
+            ...(options.topic ? { topic: { contains: options.topic, mode: "insensitive" } } : {}),
+          },
+        });
+
+        // Deduplicate against already selected texts
+        const distinctPool = pool.filter((q) => !selectedNormalizedTexts.has(normalizeText(q.questionText)));
+
+        // Prioritize unseen questions if pool is sufficient
+        const unseen = distinctPool.filter((q) => !recentSeenIds.has(q.id));
+        const candidatePool = unseen.length >= targetCount ? unseen : distinctPool;
+        const shuffled = candidatePool.sort(() => Math.random() - 0.5);
+
+        for (const q of shuffled) {
+          if (subjectSelected.length >= targetCount) break;
+          const norm = normalizeText(q.questionText);
+          if (!selectedQuestionIds.has(q.id) && !selectedNormalizedTexts.has(norm)) {
+            selectedQuestionIds.add(q.id);
+            selectedNormalizedTexts.add(norm);
+            subjectSelected.push(q);
+          }
+        }
+      }
+
+      // Add to overall exam list and snapshot with full visual and grouping metadata
+      for (const q of subjectSelected) {
         const studentView = {
           id: q.id,
           subjectCode: q.subjectCode,
@@ -138,10 +254,13 @@ export class UtmeService {
           topic: q.topic,
           examYear: q.examYear,
           questionText: q.questionText,
-          passage: q.passage,
+          passage: q.passage || null,
+          sectionName: q.sectionName || null,
+          sectionType: q.sectionType || null,
+          skillTag: q.skillTag || null,
           options: q.options,
-          hasImage: q.hasImage,
-          imageUrl: q.imageUrl,
+          hasImage: q.hasImage || false,
+          imageUrl: q.imageUrl || null,
           orderIndex: questionsList.length + 1,
         };
         questionsList.push(studentView);
@@ -154,11 +273,16 @@ export class UtmeService {
           topic: q.topic,
           examYear: q.examYear,
           questionText: q.questionText,
-          passage: q.passage,
+          passage: q.passage || null,
+          sectionName: q.sectionName || null,
+          sectionType: q.sectionType || null,
+          skillTag: q.skillTag || null,
           options: q.options,
           correctAnswer: q.correctAnswer,
           explanation: q.explanation,
           whyOthersIncorrect: q.whyOthersIncorrect,
+          hasImage: q.hasImage || false,
+          imageUrl: q.imageUrl || null,
           sourceDocument: q.sourceDocument,
           sourcePage: q.sourcePage,
           originalQuestionNumber: q.originalQuestionNumber,
@@ -267,10 +391,13 @@ export class UtmeService {
       topic: q.topic,
       examYear: q.examYear,
       questionText: q.questionText,
-      passage: q.passage,
+      passage: q.passage || null,
+      sectionName: q.sectionName || null,
+      sectionType: q.sectionType || null,
+      skillTag: q.skillTag || null,
       options: q.options,
-      hasImage: q.hasImage,
-      imageUrl: q.imageUrl,
+      hasImage: q.hasImage || false,
+      imageUrl: q.imageUrl || null,
       orderIndex: q.orderIndex,
     }));
 
@@ -324,8 +451,10 @@ export class UtmeService {
     let incorrectCount = 0;
     let unansweredCount = 0;
 
-    const subjectStats: Record<string, { subjectName: string; total: number; correct: number; incorrect: number; unanswered: number; scaledScore: number }> = {};
+    const subjectStats: Record<string, { subjectName: string; total: number; correct: number; incorrect: number; unanswered: number; scaledScore: number; englishAnalytics?: any }> = {};
     const topicStats: Record<string, { total: number; correct: number }> = {};
+    const englishSectionStats: Record<string, { total: number; correct: number; percentage: number }> = {};
+    const englishSkillStats: Record<string, { total: number; correct: number; percentage: number }> = {};
 
     // Initialize subject buckets
     for (const code of attempt.subjectCodes) {
@@ -356,6 +485,16 @@ export class UtmeService {
       subjectStats[code].total += 1;
       topicStats[topic].total += 1;
 
+      // English section and skill metrics
+      if (code === "ENG") {
+        const sec = q.sectionName || "Section B: Lexis and Structure";
+        const skill = q.skillTag || "General English Proficiency";
+        if (!englishSectionStats[sec]) englishSectionStats[sec] = { total: 0, correct: 0, percentage: 0 };
+        if (!englishSkillStats[skill]) englishSkillStats[skill] = { total: 0, correct: 0, percentage: 0 };
+        englishSectionStats[sec].total += 1;
+        englishSkillStats[skill].total += 1;
+      }
+
       const isCorrect = selected !== null && selected.trim().toUpperCase() === q.correctAnswer.trim().toUpperCase();
 
       if (selected === null || selected === "") {
@@ -365,13 +504,26 @@ export class UtmeService {
         correctCount += 1;
         subjectStats[code].correct += 1;
         topicStats[topic].correct += 1;
+        if (code === "ENG") {
+          const sec = q.sectionName || "Section B: Lexis and Structure";
+          const skill = q.skillTag || "General English Proficiency";
+          englishSectionStats[sec].correct += 1;
+          englishSkillStats[skill].correct += 1;
+        }
       } else {
         incorrectCount += 1;
         subjectStats[code].incorrect += 1;
       }
 
-      // Update response record in DB with correctness flag
-      await prisma.utmeExamResponse.upsert({
+      // Collect response evaluations
+    }
+
+    // Update response records in DB in parallel chunks for maximum speed
+    const responseOps = snapshot.map((q) => {
+      const code = q.subjectCode;
+      const selected = responseMap.get(q.id) || null;
+      const isCorrect = selected !== null && selected.trim().toUpperCase() === q.correctAnswer.trim().toUpperCase();
+      return prisma.utmeExamResponse.upsert({
         where: {
           attemptId_questionId: {
             attemptId,
@@ -389,6 +541,10 @@ export class UtmeService {
           isCorrect,
         },
       });
+    });
+
+    for (let i = 0; i < responseOps.length; i += 25) {
+      await Promise.all(responseOps.slice(i, i + 25));
     }
 
     // Scale subject scores to official JAMB 100-mark scale per subject (Max 400 total)
@@ -398,6 +554,34 @@ export class UtmeService {
       const scaled = s.total > 0 ? Math.round((s.correct / s.total) * 100) : 0;
       s.scaledScore = scaled;
       aggregateScore += scaled;
+    }
+
+    // Finalize English Analytics percentages and structure as arrays
+    for (const k in englishSectionStats) {
+      const st = englishSectionStats[k];
+      st.percentage = st.total > 0 ? Math.round((st.correct / st.total) * 100) : 0;
+    }
+    for (const k in englishSkillStats) {
+      const sk = englishSkillStats[k];
+      sk.percentage = sk.total > 0 ? Math.round((sk.correct / sk.total) * 100) : 0;
+    }
+
+    if (subjectStats["ENG"]) {
+      subjectStats["ENG"].englishAnalytics = {
+        totalQuestions: subjectStats["ENG"].total,
+        sections: Object.entries(englishSectionStats).map(([sectionName, st]) => ({
+          sectionName,
+          total: st.total,
+          correct: st.correct,
+          percentage: st.percentage,
+        })),
+        skills: Object.entries(englishSkillStats).map(([skillTag, sk]) => ({
+          skillTag,
+          total: sk.total,
+          correct: sk.correct,
+          percentage: sk.percentage,
+        })),
+      };
     }
 
     const accuracyPercentage = snapshot.length > 0 ? Math.round((correctCount / snapshot.length) * 100) : 0;
@@ -438,6 +622,8 @@ export class UtmeService {
       throw new Error("Exam attempt not found");
     }
 
+    const subScores = (attempt.subjectScores as any) || {};
+
     return {
       attemptId: attempt.id,
       courseName: attempt.courseName,
@@ -458,6 +644,7 @@ export class UtmeService {
       accuracyPercentage: attempt.accuracyPercentage || 0,
       subjectScores: attempt.subjectScores,
       topicPerformance: attempt.topicPerformance,
+      englishAnalytics: subScores["ENG"]?.englishAnalytics || null,
     };
   }
 
@@ -502,7 +689,12 @@ export class UtmeService {
         sourcePage: q.sourcePage,
         originalQuestionNumber: q.originalQuestionNumber,
         questionText: q.questionText,
-        passage: q.passage,
+        passage: q.passage || null,
+        sectionName: q.sectionName || null,
+        sectionType: q.sectionType || null,
+        skillTag: q.skillTag || null,
+        hasImage: q.hasImage || false,
+        imageUrl: q.imageUrl || null,
         options: q.options,
         studentAnswer,
         correctAnswer: q.correctAnswer,

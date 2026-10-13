@@ -490,12 +490,41 @@ model UtmeQuestion {
   syllabusTopic          String?
   publicationStatus      UtmePublicationStatus  @default(PUBLISHED)
 
+  groupId                String?
+  group                  UtmeQuestionGroup?     @relation(fields: [groupId], references: [id], onDelete: SetNull)
+  sectionName            String?
+  sectionType            String?
+  skillTag               String?
+  groupOrder             Int?
+
   createdAt              DateTime               @default(now())
   updatedAt              DateTime               @updatedAt
 
   @@index([subjectCode, examYear])
   @@index([publicationStatus, verificationStatus])
   @@index([topic])
+  @@index([groupId])
+}
+
+model UtmeQuestionGroup {
+  id             String         @id @default(cuid())
+  subjectCode    String         @default("ENG")
+  sectionName    String         // e.g. "Section A: Comprehension Passages", "Section B: Lexis and Structure"
+  sectionType    String         // "COMPREHENSION", "CLOZE", "LEXIS_AND_STRUCTURE", "SYNONYMS", "ANTONYMS", "ORAL_ENGLISH"
+  title          String?        // e.g. "Passage A: Population & Nature"
+  instructions   String?        // e.g. "Read each passage carefully and answer the questions that follow it."
+  passage        String?        // Shared passage text
+  examYear       Int
+  sourceDocument String
+  sourcePage     Int?
+  orderIndex     Int            @default(0)
+
+  questions      UtmeQuestion[]
+
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  @@index([subjectCode, examYear])
 }
 
 enum ExamMode {
