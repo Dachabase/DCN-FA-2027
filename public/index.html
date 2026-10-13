@@ -13,11 +13,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- Google Identity Services (OAuth 2.0 / OpenID Connect) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="/lucide.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   
   <style>
     :root {
-      /* Ultra-Premium Design System Tokens */
+      
+    /* =========================================================
+       PREMIUM LUCIDE VECTOR ICON SYSTEM (UNIFIED TOKENS)
+       ========================================================= */
+    .app-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: -0.15em;
+      flex-shrink: 0;
+      color: currentColor;
+      line-height: 1;
+    }
+    .app-icon svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .app-icon-mr {
+      margin-right: 0.45rem;
+    }
+    .app-icon-ml {
+      margin-left: 0.45rem;
+    }
+    .app-icon--sm { width: 14px; height: 14px; }
+    .app-icon--md { width: 18px; height: 18px; }
+    .app-icon--lg { width: 22px; height: 22px; }
+    .app-icon--xl { width: 28px; height: 28px; }
+
+    @keyframes appIconSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .app-icon-spin {
+      animation: appIconSpin 1s linear infinite;
+    }
+
+    /* Ultra-Premium Design System Tokens */
       --ps-dark-bg: #0F0D15;
       --ps-dark-surface: #161420;
       --ps-dark-card: #1A1826;
@@ -3547,13 +3585,13 @@
           uifreshers<span>.</span> <span class="brand-tag">2026/2027</span>
         </div>
       </div>
-      <button class="mobile-header-install-btn" onclick="triggerPWAInstall()" style="margin: 0;">📲 Install App</button>
+      <button class="mobile-header-install-btn" onclick="triggerPWAInstall()" style="margin: 0;"><svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Install App</button>
     </div>
 
     <!-- Central Sign-in Gatekeeper Card -->
     <div class="gate-card">
       <div class="gate-badge">
-        <span>🏛️ University of Ibadan Freshers Portal</span>
+        <span><svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>University of Ibadan Freshers Portal</span>
       </div>
       
       <h1 class="gate-title">Sign In to Continue</h1>
@@ -3583,28 +3621,28 @@
       <p id="gate-signin-error-msg" style="display: none; color: #F87171; font-size: 0.84rem; margin-top: 0.85rem; font-weight: 600; text-align: center;"></p>
 
       <p style="color: #64748B; font-size: 0.78rem; margin-top: 1.25rem; line-height: 1.4; text-align: center;">
-        🔒 Secure OAuth 2.0 via Google. No passwords stored.
+        <svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>Secure OAuth 2.0 via Google. No passwords stored.
       </p>
     </div>
 
     <!-- 3 Benefit Pillars -->
     <div class="gate-features-grid">
       <div class="gate-feature-item">
-        <div class="gate-feature-icon">📚</div>
+        <div class="gate-feature-icon"><svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></div>
         <div>
           <div class="gate-feature-title">Verified Course Outlines</div>
           <div class="gate-feature-desc">All 17 faculties & 94 departments with required credit limits, electives, and semester combinations.</div>
         </div>
       </div>
       <div class="gate-feature-item">
-        <div class="gate-feature-icon">⚡</div>
+        <div class="gate-feature-icon"><svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
         <div>
           <div class="gate-feature-title">Interactive CBT Practice</div>
           <div class="gate-feature-desc">Timed mock tests with authentic UI past questions and automated performance feedback.</div>
         </div>
       </div>
       <div class="gate-feature-item">
-        <div class="gate-feature-icon">🤖</div>
+        <div class="gate-feature-icon"><svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg></div>
         <div>
           <div class="gate-feature-title">24/7 AI Freshman Mentor</div>
           <div class="gate-feature-desc">Instant explanations for clearance steps, course prerequisites, and campus lecture venues.</div>
@@ -3629,7 +3667,7 @@
         </a>
 
       <div style="display: flex; align-items: center; gap: 0.5rem;">
-        <button class="mobile-header-install-btn" onclick="triggerPWAInstall()">📲 Install App</button>
+        <button class="mobile-header-install-btn" onclick="triggerPWAInstall()"><svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Install App</button>
         <nav class="nav-links">
           <button class="nav-btn active" data-tab="home" onclick="switchTab('home', event)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -3660,7 +3698,7 @@
             FAQ & AI
           </button>
           <button class="nav-install-btn" onclick="triggerPWAInstall()">
-            📲 Install App
+            <svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Install App
           </button>
         </nav>
 
@@ -3691,13 +3729,13 @@
                 <div style="font-size: 0.75rem; color: var(--ps-purple-light); font-weight: 700; margin-top: 0.25rem;" id="dropdown-academic-identity">Computing • 100L</div>
               </div>
               <button class="dropdown-item-btn" onclick="openOnboardingModal(1); toggleUserDropdown();">
-                ✏️ Edit Academic Profile
+                <svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>Edit Academic Profile
               </button>
               <button class="dropdown-item-btn" onclick="showInteractionsModal(); toggleUserDropdown();">
-                📊 Activity & Preferences
+                <svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>Activity & Preferences
               </button>
               <button class="dropdown-item-btn" style="color: #F87171;" onclick="handleSignOut(); toggleUserDropdown();">
-                🚪 Sign out
+                <svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>Sign out
               </button>
             </div>
           </div>
@@ -3778,7 +3816,7 @@
 
         <!-- Theme Tag -->
         <div class="fa-hero-theme-tag">
-          <span class="fa-theme-icon">⚡</span>
+          <span class="fa-theme-icon"><svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
           <span class="fa-theme-text">Theme: <strong>Locked In — The First-Class Mindset</strong></span>
         </div>
 
@@ -3790,21 +3828,21 @@
         <!-- Quick Meta Matrix -->
         <div class="fa-hero-meta-matrix">
           <div class="fa-meta-pill">
-            <div class="fa-meta-icon">📍</div>
+            <div class="fa-meta-icon"><svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></div>
             <div class="fa-meta-info">
               <span class="fa-meta-label">Venue</span>
               <span class="fa-meta-val">ICC, University of Ibadan</span>
             </div>
           </div>
           <div class="fa-meta-pill">
-            <div class="fa-meta-icon">🎓</div>
+            <div class="fa-meta-icon"><svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
             <div class="fa-meta-info">
               <span class="fa-meta-label">Audience</span>
               <span class="fa-meta-val">All 100L &amp; DE Freshers</span>
             </div>
           </div>
           <div class="fa-meta-pill">
-            <div class="fa-meta-icon">🎟️</div>
+            <div class="fa-meta-icon"><svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg></div>
             <div class="fa-meta-info">
               <span class="fa-meta-label">Admission</span>
               <span class="fa-meta-val">100% Free Entry</span>
@@ -3912,7 +3950,7 @@
       <!-- RETURNING USER VERIFICATION BANNER -->
       <div id="returning-user-banner" class="verification-toast-banner" style="display: none;">
         <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <span style="font-size: 1.25rem;">🎓</span>
+          <span style="font-size: 1.25rem; display: inline-flex; align-items: center;"><svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>
           <div>
             <strong id="ret-user-name" style="color: #FFFFFF;">Academic Status Confirmation:</strong>
             <span id="ret-user-desc" style="font-size: 0.88rem; color: #CBD5E1; margin-left: 0.4rem;">Please confirm your current level and department.</span>
@@ -3920,7 +3958,7 @@
         </div>
         <div style="display: flex; gap: 0.5rem; flex-shrink: 0;">
           <button id="confirm-profile-btn" onclick="confirmAcademicProfile()" style="background: var(--grad-status-emerald); color: #FFF; border: 1px solid rgba(255,255,255,0.25); padding: 0.45rem 1rem; border-radius: 8px; font-size: 0.84rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem; transition: var(--transition); box-shadow: var(--gloss-specular-brand), 0 2px 8px rgba(16, 185, 129, 0.35);">
-            ✓ Confirm
+            <svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Confirm
           </button>
           <button onclick="openOnboardingModal(1); dismissReturningUserBanner(false);" style="background: rgba(255,255,255,0.1); color: #FFF; border: 1px solid rgba(255,255,255,0.2); padding: 0.45rem 0.95rem; border-radius: 8px; font-size: 0.84rem; font-weight: 600; cursor: pointer;">
             Update Profile
@@ -3931,7 +3969,7 @@
       <!-- INCOMPLETE ONBOARDING PROMPT BANNER -->
       <div id="incomplete-onboarding-banner" class="incomplete-onboarding-banner" style="display: none;">
         <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <span style="font-size: 1.25rem;">🎓</span>
+          <span style="font-size: 1.25rem; display: inline-flex; align-items: center;"><svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>
           <div>
             <strong style="color: #FBBF24;">Personalize your UI Fresher experience</strong>
             <span style="font-size: 0.88rem; color: #FDE68A; margin-left: 0.4rem;">Select your faculty and department to get tailored 100L course packages.</span>
@@ -3964,7 +4002,7 @@
         <div class="showcase-card utme-hero-card" onclick="switchTab('cbt', event)" style="cursor: pointer; background: linear-gradient(135deg, rgba(30, 27, 75, 0.92) 0%, rgba(15, 23, 42, 0.98) 100%); border: 1px solid rgba(139, 92, 246, 0.4); box-shadow: 0 10px 30px rgba(124, 58, 237, 0.25); border-radius: 16px; padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s ease;">
           <div>
             <div style="font-size: 0.8rem; font-weight: 800; color: #38BDF8; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px; display: flex; align-items: center; gap: 0.4rem;">
-              <span>🎯 OFFICIAL UTME EXAM ENGINE</span>
+              <span><svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>OFFICIAL UTME EXAM ENGINE</span>
             </div>
             <div class="showcase-title" style="color: #FFFFFF; font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem;">UTME Mock Examination</div>
             <p style="color: #CBD5E1; font-size: 0.88rem; line-height: 1.5; margin: 0;">Choose your course, confirm your subjects, take a realistic mock examination, and review detailed explanations for every question.</p>
@@ -3990,7 +4028,7 @@
 
         <div class="showcase-card offline-pwa" onclick="triggerPWAInstall()">
           <div>
-            <div style="font-size: 0.8rem; font-weight: 800; color: #34D399; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px;">⚡ OFFLINE CAPABLE PWA</div>
+            <div style="font-size: 0.8rem; font-weight: 800; color: #34D399; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px;"><svg class="app-icon app-icon-mr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>OFFLINE CAPABLE PWA</div>
             <div class="showcase-title">Download & Install Web App</div>
             <p style="color: #94A3B8; font-size: 0.88rem; margin-top: 0.5rem; line-height: 1.5;">Install directly to your phone or desktop home screen for instant 1-tap offline access with zero data usage.</p>
           </div>
@@ -4031,7 +4069,7 @@
       <!-- SENATE RULE CALLOUT BANNER -->
       <div class="academic-policy-banner">
         <div>
-          <span style="background: rgba(139, 92, 246, 0.2); color: var(--ps-purple-light); font-size: 0.78rem; font-weight: 800; padding: 0.3rem 0.8rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.6px; display: inline-block; margin-bottom: 0.6rem;">📜 UI Academic Policy</span>
+          <span style="background: rgba(139, 92, 246, 0.2); color: var(--ps-purple-light); font-size: 0.78rem; font-weight: 800; padding: 0.3rem 0.8rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.6px; display: inline-block; margin-bottom: 0.6rem;"><svg class="app-icon app-icon-mr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>UI Academic Policy</span>
           <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.85rem; font-weight: 800; color: #FFFFFF; letter-spacing: -0.5px;">Semester Credit Load & 5.0 CGPA Scale</h2>
           <p style="color: #94A3B8; font-size: 0.95rem; margin-top: 0.35rem; max-width: 680px;">Official Senate rules: Credit load is strictly 15 – 24 units per semester. Good Standing minimum CGPA is 1.50.</p>
         </div>
@@ -4092,7 +4130,7 @@
       <div id="catalog-departments-section" style="display: none; margin-bottom: 2.5rem; background: #FFF; border: 1px solid var(--ps-border-light); border-radius: var(--radius-lg); padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
           <h3 id="selected-faculty-title" style="font-family: 'Outfit', sans-serif; font-size: 1.45rem; font-weight: 800; color: var(--ps-purple-primary);">Select Department</h3>
-          <button onclick="hideDepartmentSection()" style="background: var(--ps-light-card); border: none; color: var(--ps-text-gray); padding: 0.45rem 1rem; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.85rem;">✕ Close</button>
+          <button onclick="hideDepartmentSection()" style="background: var(--ps-light-card); border: none; color: var(--ps-text-gray); padding: 0.45rem 1rem; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.85rem;"><svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Close</button>
         </div>
         <div id="catalog-departments-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.85rem;">
           <!-- Dynamically populated -->
@@ -4116,14 +4154,14 @@
 
       <div class="filter-bar" id="guides-filter-bar">
         <button class="filter-chip active" onclick="filterGuidesCategory('ALL', event)">All Guides & Articles</button>
-        <button class="filter-chip" onclick="filterGuidesCategory('Academics', event)">🎓 Academics</button>
-        <button class="filter-chip" onclick="filterGuidesCategory('Finances', event)">💰 Finances</button>
-        <button class="filter-chip" onclick="filterGuidesCategory('Hostel & Housing', event)">🏠 Hostel & Housing</button>
-        <button class="filter-chip" onclick="filterGuidesCategory('Mental Health', event)">🧠 Mental Health</button>
-        <button class="filter-chip" onclick="filterGuidesCategory('Work & School', event)">💼 Work & School</button>
-        <button class="filter-chip" onclick="filterGuidesCategory('Faculty Guides', event)">🏛️ Faculty Survival</button>
-        <button class="filter-chip" onclick="filterGuidesCategory('Course Registration', event)">📝 Course Registration</button>
-        <button class="filter-chip" onclick="filterGuidesCategory('Grading System', event)">📊 Grading System</button>
+        <button class="filter-chip" onclick="filterGuidesCategory('Academics', event)"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>Academics</button>
+        <button class="filter-chip" onclick="filterGuidesCategory('Finances', event)"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="m7 6 2 2-2 2"/><path d="m14 13 2 2-2 2"/></svg>Finances</button>
+        <button class="filter-chip" onclick="filterGuidesCategory('Hostel & Housing', event)"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Hostel & Housing</button>
+        <button class="filter-chip" onclick="filterGuidesCategory('Mental Health', event)"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>Mental Health</button>
+        <button class="filter-chip" onclick="filterGuidesCategory('Work & School', event)"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Work & School</button>
+        <button class="filter-chip" onclick="filterGuidesCategory('Faculty Guides', event)"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>Faculty Survival</button>
+        <button class="filter-chip" onclick="filterGuidesCategory('Course Registration', event)"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>Course Registration</button>
+        <button class="filter-chip" onclick="filterGuidesCategory('Grading System', event)"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>Grading System</button>
       </div>
 
       <div class="grid" id="guides-grid">
@@ -4155,7 +4193,7 @@
         <!-- Academic Collection Banner (Shown if article belongs to a series) -->
         <div id="guide-series-banner" class="guide-series-banner" style="display: none;">
           <div class="guide-series-info">
-            <div class="series-icon-pill">📚</div>
+            <div class="series-icon-pill"><svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></div>
             <div>
               <div style="font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.5px; color: #C4B5FD; font-weight: 800;">Academic Series Collection</div>
               <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.15rem;">
@@ -4180,8 +4218,8 @@
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
               Verified Guide
             </span>
-            <span id="guide-read-time" class="guide-meta-item">⏱️ 4 min read</span>
-            <span id="guide-badge-faculty" class="guide-meta-item" style="color: #A78BFA;">🏛️ University-Wide</span>
+            <span id="guide-read-time" class="guide-meta-item"><svg class="app-icon app-icon-mr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4 min read</span>
+            <span id="guide-badge-faculty" class="guide-meta-item" style="color: #A78BFA;"><svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>University-Wide</span>
           </div>
 
           <!-- Article Title -->
@@ -4190,7 +4228,7 @@
           <!-- Author / Provenance Header -->
           <div class="guide-provenance-box">
             <div style="display: flex; align-items: center; gap: 0.75rem;">
-              <div class="guide-author-avatar">🏛️</div>
+              <div class="guide-author-avatar"><svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></div>
               <div>
                 <div id="guide-author-name" style="font-weight: 700; color: #FFFFFF; font-size: 0.95rem;">UI Academic Affairs Secretariat</div>
                 <div id="guide-verified-date" style="font-size: 0.8rem; color: #94A3B8;">Verified for 2025/2026 Academic Session</div>
@@ -4218,7 +4256,7 @@
           <!-- In-Article FAQ Accordion Section -->
           <div id="guide-article-faq-container" style="display: none; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08);">
             <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; color: #FFFFFF; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
-              <span>❓ Frequently Asked Questions</span>
+              <span><svg class="app-icon app-icon-mr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Frequently Asked Questions</span>
             </h3>
             <div id="guide-article-faq-list" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
           </div>
@@ -4242,8 +4280,8 @@
               <div style="font-size: 0.8rem; color: #94A3B8; margin-top: 0.15rem;">Your feedback keeps freshers guides up to date.</div>
             </div>
             <div class="feedback-actions">
-              <button class="feedback-btn" onclick="rateGuideHelpful(true)">👍 Yes, helpful</button>
-              <button class="feedback-btn" onclick="rateGuideHelpful(false)">👎 Needs update</button>
+              <button class="feedback-btn" onclick="rateGuideHelpful(true)"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg>Yes, helpful</button>
+              <button class="feedback-btn" onclick="rateGuideHelpful(false)"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 14V2"/><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z"/></svg>Needs update</button>
             </div>
           </div>
         </div>
@@ -4274,7 +4312,7 @@
         <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem;">
           <div style="max-width: 650px;">
             <div style="display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.76rem; font-weight: 800; color: #60A5FA; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.5rem;">
-              <span>📁 Google Drive Academic Vault</span>
+              <span><svg class="app-icon app-icon-mr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>Google Drive Academic Vault</span>
             </div>
             <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.45rem; font-weight: 800; color: #FFFFFF; margin-bottom: 0.4rem;">Official 100-Level Study Repository</h3>
             <p style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.5; margin: 0;">
@@ -4331,7 +4369,7 @@
         <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem;">
           <div style="max-width: 650px;">
             <div style="display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.76rem; font-weight: 800; color: var(--ps-purple-light); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.5rem;">
-              <span>🤖 Interactive Telegram Bot Simulator</span>
+              <span><svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>Interactive Telegram Bot Simulator</span>
             </div>
             <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.45rem; font-weight: 800; color: #FFFFFF; margin-bottom: 0.4rem;">Practice 100L CBT on Telegram</h3>
             <p style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.5; margin: 0;">
@@ -4339,7 +4377,7 @@
             </p>
           </div>
           <a href="https://t.me/UIDCNComputingFreshersBot" target="_blank" rel="noopener noreferrer" class="action-btn" style="background: var(--grad-brand-primary); color: #FFFFFF; font-weight: 700; padding: 0.85rem 1.6rem; border-radius: 12px; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; box-shadow: var(--glow-brand-sm), var(--gloss-specular-brand); border: 1px solid rgba(255, 255, 255, 0.25);">
-            <span>Launch CBT Bot on Telegram ⚡</span>
+            <span>Launch CBT Bot on Telegram <svg class="app-icon app-icon-ml" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
           </a>
         </div>
       </div>
@@ -4431,7 +4469,7 @@
           <p style="color: #94A3B8; margin-top: 0.5rem; font-size: 1rem;">Our Telegram AI Study Assistant is warm, knowledgeable, and always ready to answer your questions!</p>
         </div>
         <a href="https://t.me/UIDCNComputingFreshersBot" target="_blank" rel="noopener" id="faq-tg-btn" class="action-btn" style="margin-top: 1.5rem; padding: 0.85rem 1.4rem; font-size: 0.95rem;">
-          💬 Launch Telegram AI Assistant →
+          <svg class="app-icon app-icon-mr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Launch Telegram AI Assistant →
         </a>
       </div>
 
@@ -4939,7 +4977,7 @@
         html = `
           <div class="global-search-header">
             <span style="font-weight: 700; color: #64748B; font-size: 0.95rem;">Search Results for "${escapeHtml(query)}"</span>
-            <button onclick="closeGlobalSearchResults()" style="background: none; border: none; font-size: 1rem; cursor: pointer; color: #94A3B8;">✕</button>
+            <button onclick="closeGlobalSearchResults()" style="background: none; border: none; font-size: 1rem; cursor: pointer; color: #94A3B8;"><svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
           </div>
           <div style="text-align: center; padding: 1.75rem; color: #64748B; font-size: 0.95rem;">
             No exact matches found for "<strong>${escapeHtml(query)}</strong>". Try searching <code>Computer Science</code>, <code>MAT101</code>, <code>GES107</code>, or <code>CGPA Scale</code>.
@@ -4952,13 +4990,13 @@
               <span style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--ps-text-dark);">Search Results</span>
               <span style="font-size: 0.85rem; color: #64748B; margin-left: 0.4rem;">(${totalMatches} items found for "${escapeHtml(query)}")</span>
             </div>
-            <button onclick="closeGlobalSearchResults()" style="background: var(--ps-light-card); border: none; font-size: 0.85rem; font-weight: 700; padding: 0.35rem 0.75rem; border-radius: 6px; cursor: pointer; color: #64748B;">✕ Close</button>
+            <button onclick="closeGlobalSearchResults()" style="background: var(--ps-light-card); border: none; font-size: 0.85rem; font-weight: 700; padding: 0.35rem 0.75rem; border-radius: 6px; cursor: pointer; color: #64748B;"><svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Close</button>
           </div>
         `;
 
         // Department / Faculty Matches
         if (matchedDepts.length > 0) {
-          html += `<div class="global-search-category">🎓 Departmental Course Packages (${matchedDepts.length})</div>`;
+          html += `<div class="global-search-category"><svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg> Departmental Course Packages (${matchedDepts.length})</div>`;
           matchedDepts.slice(0, 5).forEach(m => {
             html += `
               <div class="search-result-item" onclick="closeGlobalSearchResults(); switchTab('catalog'); selectFacultyForCatalog('${m.facultyId}');">
@@ -4974,7 +5012,7 @@
 
         // Guide Matches
         if (matchedGuides.length > 0) {
-          html += `<div class="global-search-category">📖 Academic Guides & Regulations (${matchedGuides.length})</div>`;
+          html += `<div class="global-search-category"><svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg> Academic Guides & Regulations (${matchedGuides.length})</div>`;
           matchedGuides.slice(0, 4).forEach(g => {
             html += `
               <div class="search-result-item" onclick="closeGlobalSearchResults(); openGuideDetail('${g.id}');">
@@ -4990,7 +5028,7 @@
 
         // Resource Matches
         if (matchedResources.length > 0) {
-          html += `<div class="global-search-category">📁 Study Resources & Past Questions (${matchedResources.length})</div>`;
+          html += `<div class="global-search-category"><svg class="app-icon app-icon-mr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg> Study Resources & Past Questions (${matchedResources.length})</div>`;
           matchedResources.slice(0, 4).forEach(r => {
             html += `
               <div class="search-result-item" onclick="closeGlobalSearchResults(); switchTab('resources');">
@@ -5064,7 +5102,7 @@
             <div class="user-faculty-spotlight-card">
               <div>
                 <div class="spotlight-badge-row">
-                  <span class="spotlight-tag">⭐ Your Enrolled Faculty</span>
+                  <span class="spotlight-tag"><svg class="app-icon app-icon-mr" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Your Enrolled Faculty</span>
                   <span class="spotlight-level-tag">${escapeHtml(levelLabel)} • ${escapeHtml(roleLabel)}</span>
                 </div>
                 <h2 class="spotlight-title">Faculty of ${escapeHtml(userFaculty.name)}</h2>
@@ -5085,7 +5123,7 @@
                   </button>
                 `}
                 <button class="spotlight-secondary-btn" onclick="openOnboardingModal(1)">
-                  ✏️ Update Profile
+                  <svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>Update Profile
                 </button>
               </div>
             </div>
@@ -5150,7 +5188,7 @@
 
         return `
           <div class="faculty-card ${isUserFaculty ? 'user-faculty-highlight' : ''}" onclick="selectFacultyForCatalog('${f.id}')">
-            ${isUserFaculty ? '<span class="user-enrolled-badge">⭐ Your Faculty</span>' : ''}
+            ${isUserFaculty ? '<span class="user-enrolled-badge"><svg class="app-icon app-icon-mr" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Your Faculty</span>' : ''}
             <div>
               <div class="faculty-card-header">
                 <span class="faculty-category-tag">${categoryLabel}</span>
@@ -5218,7 +5256,7 @@
     async function selectDepartmentForPackage(departmentId, pushHistory = true) {
       const packageView = document.getElementById("catalog-package-view");
       packageView.style.display = "block";
-      packageView.innerHTML = `<div style="text-align: center; padding: 3rem;"><span style="font-size: 2rem;">⏳</span><p style="color: var(--ps-text-gray); margin-top: 0.5rem;">Loading 100-Level Course Package...</p></div>`;
+      packageView.innerHTML = `<div style="text-align: center; padding: 3rem;"><div class="app-icon-spin" style="display: inline-block; margin-bottom: 0.5rem;"><svg class="app-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--ps-purple-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg></div><p style="color: var(--ps-text-gray); margin-top: 0.5rem;">Loading 100-Level Course Package...</p></div>`;
 
       if (pushHistory && window.location.hash !== `#/catalog/package/${departmentId}`) {
         history.pushState({ view: 'package', departmentId }, '', `#/catalog/package/${departmentId}`);
@@ -5231,7 +5269,7 @@
         if (!res.success || !res.data) {
           packageView.innerHTML = `
             <div style="text-align: center; padding: 2.5rem; color: var(--ps-text-gray);">
-              <h3>⚠️ Department Course Package Unavailable</h3>
+              <h3><svg class="app-icon app-icon-mr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Department Course Package Unavailable</h3>
               <p>No 100-Level course package has been seeded for this department yet.</p>
             </div>
           `;
@@ -5246,11 +5284,11 @@
 
         let sharedNoticeHtml = "";
         if (dept.faculty.name === "Dentistry") {
-          sharedNoticeHtml = `<div style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;">🔗 <strong>Shared Package Link:</strong> Dentistry's 100L Pre-Med package is linked directly to Clinical Sciences' Pre-Med course records.</div>`;
+          sharedNoticeHtml = `<div style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg><strong>Shared Package Link:</strong> Dentistry's 100L Pre-Med package is linked directly to Clinical Sciences' Pre-Med course records.</div>`;
         } else if (dept.faculty.name === "Nursing Science") {
-          sharedNoticeHtml = `<div style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;">🔗 <strong>Shared Package Link:</strong> Nursing Science (BNSc) 100L Pre-Med package is linked directly to College of Medicine Pre-Med course records.</div>`;
+          sharedNoticeHtml = `<div style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg><strong>Shared Package Link:</strong> Nursing Science (BNSc) 100L Pre-Med package is linked directly to College of Medicine Pre-Med course records.</div>`;
         } else if (dept.faculty.name === "Veterinary Medicine") {
-          sharedNoticeHtml = `<div style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;">🔗 <strong>Shared Package Link:</strong> Veterinary Medicine's 100L Pre-Vet package is linked directly to Faculty of Science course records.</div>`;
+          sharedNoticeHtml = `<div style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg><strong>Shared Package Link:</strong> Veterinary Medicine's 100L Pre-Vet package is linked directly to Faculty of Science course records.</div>`;
         }
 
         const sem1Dept = deptCourses.filter(c => c.semester === "1st");
@@ -5289,7 +5327,7 @@
               <h2 style="font-family: 'Outfit', sans-serif; font-size: 2.1rem; font-weight: 800; color: var(--ps-text-dark); margin-top: 0.25rem;">${escapeHtml(dept.name)}</h2>
               <p style="color: var(--ps-text-gray); font-size: 0.95rem;">Faculty of ${escapeHtml(dept.faculty.name)}</p>
             </div>
-            <button onclick="hideDepartmentSection()" style="background: var(--ps-light-card); border: none; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 700; cursor: pointer;">✕ Close</button>
+            <button onclick="hideDepartmentSection()" style="background: var(--ps-light-card); border: none; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 700; cursor: pointer;"><svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Close</button>
           </div>
 
           ${sharedNoticeHtml}
@@ -5415,7 +5453,7 @@
       
       const seriesBadgeHtml = isSeries ? `
         <span class="series-chip-badge" style="margin-bottom: 0.5rem; display: inline-flex;">
-          📚 ${escapeHtml(guide.seriesTitle)}
+          <svg class="app-icon app-icon-mr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>${escapeHtml(guide.seriesTitle)}
         </span>
       ` : '';
 
@@ -5435,7 +5473,7 @@
           </div>
           <div class="card-footer" style="padding-top: 0.75rem; border-top: 1px solid var(--ps-border-light); display: flex; align-items: center; justify-content: space-between;">
             <div style="font-size: 0.78rem; color: var(--ps-text-muted); font-weight: 600;">
-              <span>⏱️ ${escapeHtml(readTime)}</span>
+              <span><svg class="app-icon app-icon-mr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${escapeHtml(readTime)}</span>
             </div>
             <button class="action-btn" onclick="event.stopPropagation(); openGuideDetail('${guide.id}')">Read Article →</button>
           </div>
@@ -5496,7 +5534,7 @@
       if (badgeCat) badgeCat.textContent = catName;
 
       const badgeFac = document.getElementById("guide-badge-faculty");
-      if (badgeFac) badgeFac.textContent = `🏛️ ${facName}`;
+      if (badgeFac) badgeFac.innerHTML = `<svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>${escapeHtml(facName)}`;
 
       const titleEl = document.getElementById("guide-article-title");
       if (titleEl) titleEl.textContent = guide.title;
@@ -5544,7 +5582,7 @@
         return `${readMinutes} min read`;
       })();
       const readTimeEl = document.getElementById("guide-read-time");
-      if (readTimeEl) readTimeEl.textContent = `⏱️ ${readTimeStr}`;
+      if (readTimeEl) readTimeEl.innerHTML = `<svg class="app-icon app-icon-mr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${escapeHtml(readTimeStr)}`;
 
       // Render summary lead
       const summaryEl = document.getElementById("guide-article-summary");
@@ -5732,7 +5770,7 @@
       const shareUrl = window.location.href;
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(shareUrl).then(() => {
-          showAppToast("🔗 Link copied to clipboard!");
+          showAppToast("<svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg>Link copied to clipboard!");
         }).catch(() => {
           showAppToast("Link: " + shareUrl);
         });
@@ -5743,9 +5781,9 @@
 
     function rateGuideHelpful(isHelpful) {
       if (isHelpful) {
-        showAppToast("❤️ Thank you for your feedback!");
+        showAppToast("<svg class=\"app-icon app-icon-mr\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z\"/></svg>Thank you for your feedback!");
       } else {
-        showAppToast("📝 Thanks! We'll review and update this guide.");
+        showAppToast("<svg class="app-icon app-icon-mr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>Thanks! We'll review and update this guide.");
       }
       if (currentActiveGuide) {
         logUserInteraction("RATE_GUIDE", currentActiveGuide.id, { helpful: isHelpful });
@@ -6287,7 +6325,7 @@
           alert("Could not confirm profile: " + (json.message || "Please try again."));
           if (confirmBtn) {
             confirmBtn.disabled = false;
-            confirmBtn.textContent = "✓ Confirm";
+            confirmBtn.textContent = "<svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Confirm";
           }
         }
       } catch (err) {
@@ -6295,7 +6333,7 @@
         alert("Network error confirming profile. Please try again.");
         if (confirmBtn) {
           confirmBtn.disabled = false;
-          confirmBtn.textContent = "✓ Confirm";
+          confirmBtn.textContent = "<svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Confirm";
         }
       }
     }
@@ -6573,7 +6611,7 @@
       } catch (err) {
         console.error("Failed to save onboarding:", err);
       } finally {
-        if (saveBtn) saveBtn.textContent = "🚀 Launch My Campus Hub";
+        if (saveBtn) saveBtn.innerHTML = `<svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>Launch My Campus Hub`;
       }
     }
 
@@ -6615,7 +6653,7 @@
           <div class="hub-header-flex">
             <div>
               <span class="hub-badge-pill">
-                <span>🎯</span> Your Personalized Department Hub
+                <span><svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span> Your Personalized Department Hub
               </span>
               <h2 class="hub-title">
                 ${isStudent ? escapeHtml(deptName) : 'UI Aspirant Hub: ' + escapeHtml(facultyName)}
@@ -6638,17 +6676,17 @@
           <div class="hub-actions-bar">
             ${u.departmentId ? `
               <button class="hub-quick-btn" onclick="openDepartmentPackageFromHub('${u.departmentId}')">
-                📚 Open ${escapeHtml(deptName.split(' ')[0])} Course Package →
+                <svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg> Open ${escapeHtml(deptName.split(' ')[0])} Course Package →
               </button>
             ` : ''}
             <button class="hub-quick-btn" onclick="switchTab('guides', event)">
-              📖 ${escapeHtml(facultyName)} Guides
+              <svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg> ${escapeHtml(facultyName)} Guides
             </button>
             <a href="https://t.me/UIDCNComputingFreshersBot" target="_blank" rel="noopener" class="hub-quick-btn" style="background: rgba(139, 92, 246, 0.3); border-color: var(--ps-purple-primary);">
-              🤖 Ask Faculty Bot on TG
+              <svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg> Ask Faculty Bot on TG
             </a>
             <button class="hub-quick-btn" onclick="openOnboardingModal(1)" style="background: transparent; border-color: rgba(255,255,255,0.15);">
-              ⚙️ Preferences
+              <svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Preferences
             </button>
           </div>
         </div>
@@ -6732,10 +6770,10 @@
   <!-- PWA INSTALL MODAL -->
   <div id="pwa-install-modal" class="pwa-modal-overlay" onclick="if(event.target === this) closePWAInstallModal()">
     <div class="pwa-modal-card">
-      <button class="pwa-modal-close" onclick="closePWAInstallModal()">✕</button>
+      <button class="pwa-modal-close" onclick="closePWAInstallModal()"><svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem;">
         <div class="pwa-app-icon-badge">
-          🎓
+          <svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
         </div>
         <div>
           <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.35rem; font-weight: 800; color: #FFFFFF;">Install UI Freshers App</h3>
@@ -6749,7 +6787,7 @@
 
       <div id="pwa-native-install-section" style="display: none; margin-bottom: 1.25rem;">
         <button onclick="executePWAInstall()" class="pwa-install-exec-btn">
-          📲 Install Now to Home Screen
+          <svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Install Now to Home Screen
         </button>
       </div>
 
@@ -6786,7 +6824,7 @@
           <span style="font-size: 0.75rem; font-weight: 800; color: var(--ps-purple-light); text-transform: uppercase; letter-spacing: 0.6px;">Academic Identity Setup</span>
           <h2 id="wizard-main-title" style="font-family: 'Outfit', sans-serif; font-size: 1.45rem; font-weight: 800; color: #FFFFFF; margin-top: 0.15rem;">Tell us about yourself</h2>
         </div>
-        <button class="pwa-modal-close" style="position: static;" onclick="closeOnboardingModal(true)">✕</button>
+        <button class="pwa-modal-close" style="position: static;" onclick="closeOnboardingModal(true)"><svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
 
       <!-- PROGRESS STEPPER -->
@@ -6806,7 +6844,7 @@
         </p>
 
         <div class="role-option-card selected" id="role-card-student" onclick="selectRole('CURRENT_STUDENT')">
-          <div class="role-icon-box">🎓</div>
+          <div class="role-icon-box"><svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
           <div>
             <div class="role-title">I'm a current student at UI</div>
             <div class="role-desc">Enrolled in 100L–600L undergraduate or direct entry programs across UI faculties.</div>
@@ -6814,7 +6852,7 @@
         </div>
 
         <div class="role-option-card" id="role-card-utme" onclick="selectRole('PROSPECTIVE_UTME')">
-          <div class="role-icon-box">🎯</div>
+          <div class="role-icon-box"><svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
           <div>
             <div class="role-title">I'm preparing for UTME / seeking admission</div>
             <div class="role-desc">Aspiring for admission into UI, exploring department subject combos & cutoff rules.</div>
@@ -6941,7 +6979,7 @@
             ← Edit
           </button>
           <button id="save-onboarding-btn" onclick="saveOnboardingProfile(false)" class="wizard-launch-btn">
-            🚀 Launch My Campus Hub
+            <svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>Launch My Campus Hub
           </button>
         </div>
       </div>
@@ -6987,7 +7025,7 @@
       <p id="signin-error-msg" style="display: none; color: #F87171; font-size: 0.82rem; margin-top: 0.75rem; text-align: center;"></p>
 
       <p style="color: #64748B; font-size: 0.75rem; margin-top: 1.25rem; text-align: center;">
-        🔒 Secure OAuth 2.0 via Google.
+        <svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>Secure OAuth 2.0 via Google.
       </p>
     </div>
   </div>
@@ -7000,7 +7038,7 @@
           <span style="font-size: 0.75rem; font-weight: 800; color: #34D399; text-transform: uppercase; letter-spacing: 0.6px;">Privacy & Personalization</span>
           <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.35rem; font-weight: 800; color: #FFFFFF; margin-top: 0.15rem;">Your Activity History</h3>
         </div>
-        <button class="pwa-modal-close" style="position: static;" onclick="closeInteractionsModal()">✕</button>
+        <button class="pwa-modal-close" style="position: static;" onclick="closeInteractionsModal()"><svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
 
       <p style="color: #CBD5E1; font-size: 0.88rem; line-height: 1.45; margin-bottom: 1rem;">

@@ -173,7 +173,7 @@
         <!-- Hero Header -->
         <div class="utme-hero-banner">
           <div class="utme-badge-tag">
-            <span>🏛️ Official Joint Admissions and Matriculation Board (JAMB) Standards</span>
+            <span><svg class="utme-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.4rem;" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>Official Joint Admissions and Matriculation Board (JAMB) Standards</span>
           </div>
           <h1 class="utme-hero-title">UTME CBT Mock Examination Simulator</h1>
           <p class="utme-hero-desc">
@@ -195,7 +195,7 @@
             </div>
             <div class="utme-stat-pill" style="margin-left: auto;">
               <button onclick="window.UTME.openAdmin()" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #FFF; padding: 0.35rem 0.85rem; border-radius: 8px; font-size: 0.82rem; font-weight: 700; cursor: pointer;">
-                ⚙️ Content Admin & Audit Bank
+                <svg class="utme-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Content Admin & Audit Bank
               </button>
             </div>
           </div>
@@ -264,19 +264,19 @@
                   <div class="utme-subject-pills">
                     ${c.compulsorySubjects.map((s, idx) => `
                       <span class="utme-subject-pill ${idx === 0 ? 'compulsory' : ''}">
-                        ${idx === 0 ? '★ ' : ''}${escapeHtml(s)}
+                        ${idx === 0 ? '<svg class="utme-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" style="vertical-align:-0.1em;margin-right:0.25rem;" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>' : ''}${escapeHtml(s)}
                       </span>
                     `).join('')}
                   </div>
 
                   ${c.institutionNotes ? `
                     <div class="utme-course-notes">
-                      <strong>🏛️ Institution Note:</strong> ${escapeHtml(c.institutionNotes)}
+                      <strong><svg class="utme-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>Institution Note:</strong> ${escapeHtml(c.institutionNotes)}
                     </div>
                   ` : ''}
 
                   <div class="utme-source-citation">
-                    <span>📜 ${escapeHtml(c.officialSource)}</span>
+                    <span><svg class="utme-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>${escapeHtml(c.officialSource)}</span>
                   </div>
                 </div>
 
@@ -378,7 +378,7 @@
 
           <div style="display: flex; gap: 1rem;">
             <button onclick="window.UTME.startExamAction()" class="utme-course-action-btn" style="padding: 1rem; font-size: 1.05rem;">
-              <span>Begin Examination Now (Start Timer) ⚡</span>
+              <span>Begin Examination Now (Start Timer) <svg class="utme-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-left:0.35rem;" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
             </button>
           </div>
         </div>
@@ -427,20 +427,20 @@
               <!-- Timer, Palette & Actions -->
               <div class="utme-topbar-right">
                 <button class="utme-calc-toggle-btn" onclick="window.UTME.toggleCalculator()" aria-label="Open Official Calculator">
-                  <span>🧮</span> <span>Calculator</span>
+                  <span class="utme-btn-icon" style="display:inline-flex;align-items:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg></span> <span>Calculator</span>
                 </button>
 
                 <button class="utme-mobile-palette-toggle-btn" onclick="window.UTME.toggleMobilePalette()" aria-label="Open Question Palette">
-                  📋 Palette (${answeredCount}/${totalQ})
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>Palette (${answeredCount}/${totalQ})
                 </button>
 
                 <div id="utme-timer-el" class="utme-timer-badge ${timerClass}">
-                  <span>⏱</span>
+                  <span style="display:inline-flex;align-items:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
                   <span>${timeFormatted}</span>
                 </div>
 
                 <button class="utme-topbar-submit-btn" onclick="window.UTME.promptSubmit()">
-                  Submit ✓
+                  Submit <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-left:0.35rem;" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
                 </button>
               </div>
             </div>
@@ -490,7 +490,7 @@
                   <div class="utme-passage-card">
                     <div class="utme-passage-header">
                       <div class="utme-passage-title-row">
-                        <span style="font-size: 1.1rem;">📖</span>
+                        <span style="display:inline-flex;align-items:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></span>
                         <span class="utme-passage-title">${escapeHtml(currentQ.sectionName || 'Reading Passage / Context')}</span>
                       </div>
                       <span style="font-size: 0.75rem; color: #64748B; font-weight: 700;">Read carefully to answer question</span>
@@ -506,9 +506,9 @@
                 ${currentQ.imageUrl ? `
                   <div class="utme-diagram-wrap">
                     <div class="utme-diagram-header">
-                      <span>📊 Examination Figure / Diagram</span>
+                      <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>Examination Figure / Diagram</span>
                       <a href="${currentQ.imageUrl}" target="_blank" rel="noopener noreferrer" class="utme-diagram-zoom-link">
-                        🔍 Enlarge Diagram
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/><line x1="11" x2="11" y1="8" y2="14"/><line x1="8" x2="14" y1="11" y2="11"/></svg>Enlarge Diagram
                       </a>
                     </div>
                     <img src="${currentQ.imageUrl}" alt="Official Examination Figure" class="utme-q-diagram-img" loading="lazy" />
@@ -539,7 +539,7 @@
                     ← Prev
                   </button>
                   <button class="utme-flag-btn ${savedResp.isMarkedForReview ? 'flagged' : ''}" onclick="window.UTME.toggleReviewFlag()">
-                    <span>${savedResp.isMarkedForReview ? '🚩 Marked' : '🏳️ Mark'}</span>
+                    <span>${savedResp.isMarkedForReview ? '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg>Marked' : '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg>Mark'}</span>
                   </button>
                   ${savedResp.selectedOption ? `
                     <button id="utme-clear-choice-btn" class="utme-clear-btn" onclick="window.UTME.clearOption()">
@@ -550,7 +550,7 @@
 
                 <div class="utme-nav-center">
                   <button class="utme-mobile-nav-palette-btn" onclick="window.UTME.toggleMobilePalette()" aria-label="Open Question Palette">
-                    <span>📋</span> <span>${answeredCount}/${totalQ}</span>
+                    <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg></span> <span>${answeredCount}/${totalQ}</span>
                   </button>
                 </div>
 
@@ -610,7 +610,7 @@
               </div>
 
               <button class="utme-submit-trigger-btn" onclick="window.UTME.promptSubmit()">
-                Submit Complete Exam 📝
+                Submit Complete Exam <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-left:0.4rem;" aria-hidden="true"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
               </button>
             </div>
           </div>
@@ -626,7 +626,7 @@
                 </div>
               </div>
               <button class="utme-drawer-close-btn" onclick="window.UTME.closeMobilePalette()" aria-label="Close Palette">
-                ✕ Close
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Close
               </button>
             </div>
 
@@ -692,7 +692,7 @@
             <!-- Drawer Submit Complete Exam -->
             <div style="padding-top: 0.75rem; border-top: 1px solid #E2E8F0;">
               <button class="utme-submit-trigger-btn" onclick="window.UTME.promptSubmit()">
-                Submit Complete Exam 📝
+                Submit Complete Exam <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-left:0.4rem;" aria-hidden="true"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
               </button>
             </div>
           </div>
@@ -703,11 +703,11 @@
         <div id="utme-calc-widget" class="utme-calc-widget ${state.calc.isOpen ? 'open' : ''}" role="dialog" aria-label="JAMB Examination Calculator">
           <div class="utme-calc-header">
             <div class="utme-calc-title">
-              <span>🧮</span>
+              <span style="display:inline-flex;align-items:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg></span>
               <span>JAMB Calculator</span>
               <span class="utme-calc-badge">OFFICIAL 8-DIGIT STANDARD</span>
             </div>
-            <button class="utme-calc-close-btn" onclick="window.UTME.toggleCalculator(false)" aria-label="Close Calculator">✕</button>
+            <button class="utme-calc-close-btn" onclick="window.UTME.toggleCalculator(false)" aria-label="Close Calculator"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
           </div>
           <div class="utme-calc-display-box">
             <div id="utme-calc-sub" class="utme-calc-subdisplay">${escapeHtml(state.calc.subDisplay)}</div>
@@ -953,7 +953,7 @@
       if (timerEl) {
         const m = Math.floor(state.remainingSeconds / 60);
         const s = state.remainingSeconds % 60;
-        timerEl.innerHTML = `<span>⏱</span><span>${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}</span>`;
+        timerEl.innerHTML = `<span style="display:inline-flex;align-items:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span>${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}</span>`;
 
         if (state.remainingSeconds < 300) {
           timerEl.className = "utme-timer-badge danger";
@@ -1060,7 +1060,7 @@
           <div class="utme-eng-analytics-card">
             <div class="utme-eng-analytics-header">
               <div>
-                <div class="utme-eng-analytics-title">📚 English Language Section & Skill Performance</div>
+                <div class="utme-eng-analytics-title" style="display:flex;align-items:center;gap:0.5rem;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg> English Language Section & Skill Performance</div>
                 <div style="font-size: 0.85rem; color: #64748B; margin-top: 0.2rem;">
                   Diagnostic performance analysis across syllabus sections and assessed skill areas.
                 </div>
@@ -1116,10 +1116,10 @@
         <!-- Action Buttons -->
         <div class="utme-results-actions" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
           <button onclick="window.UTME.loadReview()" class="utme-course-action-btn" style="flex: 1; padding: 1rem; font-size: 1.05rem;">
-            <span>📖 Review All Answers & Step-by-Step Explanations →</span>
+            <span style="display:inline-flex;align-items:center;gap:0.4rem;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg> Review All Answers & Step-by-Step Explanations →</span>
           </button>
           <button onclick="window.UTME.startAnotherExam()" style="background: #FFFFFF; border: 2px solid var(--ps-border-light); color: #1E293B; font-weight: 800; padding: 1rem 1.5rem; border-radius: var(--radius-sm); cursor: pointer;">
-            🔄 Retake Another Mock Exam
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>Retake Another Mock Exam
           </button>
         </div>
       </div>
@@ -1164,10 +1164,10 @@
           ${questions.map((q, idx) => {
             const statusClass = q.isCorrect ? "is-correct" : (q.isUnanswered ? "is-unanswered" : "is-incorrect");
             const statusBadge = q.isCorrect
-              ? `<span style="background: #D1FAE5; color: #065F46; font-weight: 800; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 6px;">✓ Correct</span>`
+              ? `<span style="background: #D1FAE5; color: #065F46; font-weight: 800; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 6px;" style="display:inline-flex;align-items:center;gap:0.3rem;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Correct</span>`
               : (q.isUnanswered
                 ? `<span style="background: #F1F5F9; color: #475569; font-weight: 800; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 6px;">○ Unanswered</span>`
-                : `<span style="background: #FEE2E2; color: #991B1B; font-weight: 800; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 6px;">✕ Incorrect</span>`);
+                : `<span style="background: #FEE2E2; color: #991B1B; font-weight: 800; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 6px;" style="display:inline-flex;align-items:center;gap:0.3rem;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Incorrect</span>`);
 
             return `
               <div class="utme-review-item ${statusClass}">
@@ -1194,7 +1194,7 @@
                   <div class="utme-passage-card" style="margin-bottom: 1rem;">
                     <div class="utme-passage-header">
                       <div class="utme-passage-title-row">
-                        <span style="font-size: 1rem;">📖</span>
+                        <span style="display:inline-flex;align-items:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></span>
                         <span class="utme-passage-title">${escapeHtml(q.sectionName || 'Reading Passage / Context')}</span>
                       </div>
                     </div>
@@ -1209,9 +1209,9 @@
                 ${q.imageUrl ? `
                   <div class="utme-diagram-wrap" style="margin-bottom: 1.25rem;">
                     <div class="utme-diagram-header">
-                      <span>📊 Examination Figure / Diagram</span>
+                      <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>Examination Figure / Diagram</span>
                       <a href="${q.imageUrl}" target="_blank" rel="noopener noreferrer" class="utme-diagram-zoom-link">
-                        🔍 Enlarge Diagram
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/><line x1="11" x2="11" y1="8" y2="14"/><line x1="8" x2="14" y1="11" y2="11"/></svg>Enlarge Diagram
                       </a>
                     </div>
                     <img src="${q.imageUrl}" alt="Official Examination Figure" class="utme-q-diagram-img" loading="lazy" />
@@ -1243,7 +1243,7 @@
                     return `
                       <div style="padding: 0.65rem 1rem; border-radius: 8px; border: 1.5px solid ${border}; background: ${bg}; color: ${color}; font-weight: ${isCorrectOpt || isStudentOpt ? '700' : '500'}; display: flex; align-items: center; justify-content: space-between;">
                         <span><strong>${letter}.</strong> ${escapeHtml(text)}</span>
-                        ${isCorrectOpt ? '<span style="font-size: 0.8rem; font-weight: 800;">✓ Correct Answer</span>' : (isStudentOpt ? '<span style="font-size: 0.8rem; font-weight: 800;">Your Choice</span>' : '')}
+                        ${isCorrectOpt ? '<span style="font-size: 0.8rem; font-weight: 800;" style="display:inline-flex;align-items:center;gap:0.35rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Correct Answer</span>' : (isStudentOpt ? '<span style="font-size: 0.8rem; font-weight: 800;">Your Choice</span>' : '')}
                       </div>
                     `;
                   }).join('')}
@@ -1252,7 +1252,7 @@
                 <!-- Step-by-Step Educational Explanation -->
                 <div class="utme-explanation-box">
                   <div class="utme-explanation-header">
-                    <span>💡 Step-by-Step Educational Explanation:</span>
+                    <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>Step-by-Step Educational Explanation:</span>
                   </div>
                   <div style="margin-bottom: 0.75rem;">
                     ${escapeHtml(q.explanation)}
@@ -1265,8 +1265,8 @@
                   ` : ''}
 
                   <div style="display: flex; gap: 1rem; font-size: 0.78rem; color: #94A3B8; margin-top: 0.75rem;">
-                    <span>📌 Syllabus Topic: <strong>${escapeHtml(q.topic)}</strong></span>
-                    <span>📄 Source: Page ${q.sourcePage || 1}, Q${q.originalQuestionNumber || idx + 1}</span>
+                    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>Syllabus Topic: <strong>${escapeHtml(q.topic)}</strong></span>
+                    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>Source: Page ${q.sourcePage || 1}, Q${q.originalQuestionNumber || idx + 1}</span>
                   </div>
                 </div>
               </div>
@@ -1286,7 +1286,7 @@
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
           <div>
             <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.85rem; font-weight: 800;">
-              ⚙️ Question Bank Administration & Audit Dashboard
+              <svg class="utme-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Question Bank Administration & Audit Dashboard
             </h2>
             <p style="color: #64748B;">Inspect all imported questions, verification metrics, and document provenance.</p>
           </div>
@@ -1510,7 +1510,7 @@
       const answeredCount = Object.values(state.responses).filter(r => r.selectedOption !== null && r.selectedOption !== "").length;
       const totalQ = state.examData.questions.length;
       document.querySelectorAll(".utme-palette-title span:last-child").forEach(el => el.textContent = `${answeredCount}/${totalQ} Answered`);
-      document.querySelectorAll(".utme-mobile-palette-toggle-btn").forEach(el => el.textContent = `📋 Palette (${answeredCount}/${totalQ})`);
+      document.querySelectorAll(".utme-mobile-palette-toggle-btn").forEach(el => el.textContent = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>Palette (${answeredCount}/${totalQ})`);
       const palBadge = document.querySelector(".utme-mobile-nav-palette-btn span:last-child");
       if (palBadge) palBadge.textContent = `${answeredCount}/${totalQ}`;
 
@@ -1545,7 +1545,7 @@
       const answeredCount = Object.values(state.responses).filter(r => r.selectedOption !== null && r.selectedOption !== "").length;
       const totalQ = state.examData.questions.length;
       document.querySelectorAll(".utme-palette-title span:last-child").forEach(el => el.textContent = `${answeredCount}/${totalQ} Answered`);
-      document.querySelectorAll(".utme-mobile-palette-toggle-btn").forEach(el => el.textContent = `📋 Palette (${answeredCount}/${totalQ})`);
+      document.querySelectorAll(".utme-mobile-palette-toggle-btn").forEach(el => el.textContent = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>Palette (${answeredCount}/${totalQ})`);
       const palBadge = document.querySelector(".utme-mobile-nav-palette-btn span:last-child");
       if (palBadge) palBadge.textContent = `${answeredCount}/${totalQ}`;
 
@@ -1567,10 +1567,10 @@
       if (flagBtn) {
         if (currentResp.isMarkedForReview) {
           flagBtn.classList.add("flagged");
-          flagBtn.innerHTML = "<span>🚩 Marked</span>";
+          flagBtn.innerHTML = `<span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg>Marked</span>`;
         } else {
           flagBtn.classList.remove("flagged");
-          flagBtn.innerHTML = "<span>🏳️ Mark</span>";
+          flagBtn.innerHTML = `<span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg>Mark</span>`;
         }
       }
 
