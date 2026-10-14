@@ -203,17 +203,37 @@
 
     .header-container {
       max-width: 1400px;
+      width: 100%;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 0.75rem;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .header-left-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+      min-width: 0;
+    }
+
+    .header-right-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: 0;
+      flex-shrink: 1;
+      justify-content: flex-end;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
       text-decoration: none;
       color: #FFFFFF;
       flex-shrink: 0;
@@ -232,6 +252,7 @@
       color: #FFF;
       box-shadow: var(--glow-brand-sm), var(--gloss-specular-brand);
       border: 1px solid rgba(255, 255, 255, 0.25);
+      flex-shrink: 0;
     }
 
     .brand-title {
@@ -269,21 +290,32 @@
       gap: 0.25rem;
       align-items: center;
       flex-shrink: 1;
+      min-width: 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-links::-webkit-scrollbar {
+      display: none;
     }
 
     .nav-btn {
       background: transparent;
       border: 1px solid transparent;
       color: #94A3B8;
-      padding: 0.48rem 0.85rem;
+      padding: 0.45rem 0.75rem;
       border-radius: 8px;
       font-weight: 600;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       cursor: pointer;
       transition: var(--transition);
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
       white-space: nowrap;
       flex-shrink: 0;
     }
@@ -1731,19 +1763,114 @@
       overflow-x: hidden;
     }
 
-    @media (max-width: 768px) {
+    /* RESPONSIVE SCALING & FLUID NAVIGATION (Tiers: >1280px, 1025-1280px, <=1024px, <=768px, <=480px) */
+    @media (max-width: 1280px) {
       header {
-        padding: 0.85rem 1rem;
+        padding: 0.75rem 1.25rem;
+      }
+
+      .brand-tag {
+        display: none !important;
+      }
+
+      .nav-install-btn {
+        display: none !important;
+      }
+
+      .nav-links {
+        gap: 0.18rem;
+      }
+
+      .nav-btn {
+        padding: 0.36rem 0.52rem;
+        font-size: 0.81rem;
+        gap: 0.28rem;
+      }
+
+      .audience-toggle-btn {
+        padding: 0.32rem 0.7rem;
+        font-size: 0.78rem;
+        gap: 0.35rem;
+      }
+    }
+
+    /* TABLET & RESIZED WINDOW BREAKPOINT (<= 1024px) */
+    @media (max-width: 1024px) {
+      header {
+        padding: 0.75rem 1rem;
       }
 
       .header-container .nav-links {
-        display: none;
+        display: none !important;
       }
 
       .mobile-nav {
-        display: block;
+        display: block !important;
       }
 
+      .mobile-header-install-btn {
+        display: inline-flex !important;
+      }
+
+      main {
+        padding-bottom: 7rem !important;
+      }
+    }
+
+    /* MOBILE EXTRA COMPACTION (<= 560px) */
+    @media (max-width: 560px) {
+      .mobile-header-install-btn .install-btn-text {
+        display: none;
+      }
+
+      .mobile-header-install-btn {
+        padding: 0.35rem 0.55rem;
+        gap: 0;
+      }
+
+      .mobile-header-install-btn .app-icon-mr {
+        margin-right: 0 !important;
+      }
+    }
+
+    /* ULTRA-COMPACT MOBILE BREAKPOINT (<= 480px) */
+    @media (max-width: 480px) {
+      header {
+        padding: 0.6rem 0.75rem;
+      }
+
+      .header-left-group {
+        gap: 0.45rem;
+      }
+
+      .header-right-group {
+        gap: 0.35rem;
+      }
+
+      .brand-title {
+        font-size: 1.15rem;
+      }
+
+      .brand-logo {
+        width: 30px;
+        height: 30px;
+        font-size: 0.95rem;
+      }
+
+      .audience-toggle-btn {
+        padding: 0.28rem 0.5rem;
+        font-size: 0.72rem;
+        gap: 0.3rem;
+        height: 30px;
+      }
+
+      .google-signin-btn, .user-profile-pill {
+        padding: 0.32rem 0.6rem !important;
+        font-size: 0.78rem !important;
+      }
+    }
+
+    @media (max-width: 768px) {
       .hero-section {
         padding: 3rem 1.15rem 2.5rem 1.15rem;
       }
@@ -1976,7 +2103,7 @@
       box-shadow: var(--focus-ring);
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       .mobile-header-install-btn {
         display: inline-flex;
       }
@@ -2068,6 +2195,7 @@
       display: flex;
       align-items: center;
       gap: 0.65rem;
+      flex-shrink: 0;
     }
 
     .google-signin-btn {
@@ -4493,7 +4621,7 @@
           uifreshers<span>.</span> <span class="brand-tag">2026/2027</span>
         </div>
       </div>
-      <button class="mobile-header-install-btn" onclick="triggerPWAInstall()" style="margin: 0;"><svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Install App</button>
+      <button class="mobile-header-install-btn" onclick="triggerPWAInstall()" style="margin: 0;"><svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg><span class="install-btn-text">Install App</span></button>
     </div>
 
     <!-- Central Sign-in Gatekeeper Card -->
@@ -4565,7 +4693,7 @@
     <!-- HEADER -->
     <header class="header-over-hero">
       <div class="header-container">
-        <div style="display: flex; align-items: center; gap: 0.85rem; flex-shrink: 0;">
+        <div class="header-left-group">
           <a href="#" onclick="switchTab('home', event)" class="brand">
             <div class="brand-logo">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
@@ -4585,9 +4713,9 @@
           </div>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <div class="header-right-group">
 
-        <button class="mobile-header-install-btn" onclick="triggerPWAInstall()"><svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Install App</button>
+        <button class="mobile-header-install-btn" onclick="triggerPWAInstall()"><svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg><span class="install-btn-text">Install App</span></button>
         <nav class="nav-links" id="main-nav-links">
           <button class="nav-btn active" data-tab="home" onclick="switchTab('home', event)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
