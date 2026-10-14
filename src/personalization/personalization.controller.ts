@@ -4,12 +4,22 @@ import { prisma } from "../database/prisma";
 import { updateFallbackUser, getFallbackUser } from "../auth/auth.service";
 import { UserRole } from "@prisma/client";
 import { z } from "zod";
+import { resolveAudienceFromRequest, normalizeAudience } from "./audience.helper";
 
 export const personalizationRouter = Router();
 
 // Zod validation schemas
 const onboardingSchema = z.object({
-  role: z.enum(["CURRENT_STUDENT", "PROSPECTIVE_UTME", "current_student", "prospective_utme"]),
+  role: z.enum([
+    "CURRENT_STUDENT",
+    "PROSPECTIVE_UTME",
+    "current_student",
+    "prospective_utme",
+    "UTME_STUDENT",
+    "UI_100_LEVEL_STUDENT",
+    "utme_student",
+    "ui_100_level_student",
+  ]),
   facultyId: z.string().nullable().optional(),
   departmentId: z.string().nullable().optional(),
   level: z.union([z.number(), z.string().regex(/^\d+/)]).nullable().optional(),
@@ -44,8 +54,9 @@ personalizationRouter.post(
       const { role, facultyId, departmentId, level, utmeExamYear, skip } = parseResult.data;
 
       // Normalize role
+      const roleUpper = role.toUpperCase();
       const normalizedRole: UserRole =
-        role.toUpperCase() === "CURRENT_STUDENT"
+        roleUpper === "CURRENT_STUDENT" || roleUpper === "UI_100_LEVEL_STUDENT"
           ? UserRole.CURRENT_STUDENT
           : UserRole.PROSPECTIVE_UTME;
 
@@ -258,8 +269,9 @@ personalizationRouter.patch(
           : null;
       }
       if (role) {
+        const roleUpper = String(role).toUpperCase();
         dataToUpdate.role =
-          role.toUpperCase() === "CURRENT_STUDENT"
+          roleUpper === "CURRENT_STUDENT" || roleUpper === "UI_100_LEVEL_STUDENT"
             ? UserRole.CURRENT_STUDENT
             : UserRole.PROSPECTIVE_UTME;
       }
@@ -363,10 +375,16 @@ personalizationRouter.get(
       const userRole = user?.role || null;
       const userLevel = user?.level || 100;
 
-      // 1. Guides: Prioritize user faculty/department + general university guides
+      // Determine target audience (supports switching via query/header or falls back to profile role)
+      const targetAudience =
+        resolveAudienceFromRequest(req) ||
+        (userRole === "PROSPECTIVE_UTME" ? "UTME_STUDENT" : "UI_100_LEVEL_STUDENT");
+
+      // 1. Guides: Prioritize user faculty/department + audience filter
       const guides = await prisma.guide.findMany({
         where: {
           status: "PUBLISHED",
+          audience: { has: targetAudience },
           OR: [
             ...(userDeptId ? [{ departmentId: userDeptId }] : []),
             ...(userFacultyId ? [{ facultyId: userFacultyId }] : []),
@@ -381,10 +399,11 @@ personalizationRouter.get(
         take: 10,
       });
 
-      // 2. Resources: Target user's faculty & level
+      // 2. Resources: Target user's faculty & level + audience filter
       const resources = await prisma.resource.findMany({
         where: {
           status: "PUBLISHED",
+          audience: { has: targetAudience },
           OR: [
             ...(userDeptId ? [{ departmentId: userDeptId }] : []),
             ...(userFacultyId ? [{ facultyId: userFacultyId }] : []),
@@ -399,10 +418,11 @@ personalizationRouter.get(
         take: 12,
       });
 
-      // 3. Opportunities: Prioritize active scholarships & tech grants
+      // 3. Opportunities: Prioritize active scholarships & tech grants + audience filter
       const opportunities = await prisma.opportunity.findMany({
         where: {
           status: "ACTIVE",
+          audience: { has: targetAudience },
           OR: [
             ...(userFacultyId ? [{ facultyId: userFacultyId }] : []),
             { facultyId: null },
@@ -416,10 +436,11 @@ personalizationRouter.get(
         take: 8,
       });
 
-      // 4. FAQs: Filter relevant clearance / admission / exam queries
+      // 4. FAQs: Filter relevant clearance / admission / exam queries + audience filter
       const faqs = await prisma.fAQ.findMany({
         where: {
           status: "PUBLISHED",
+          audience: { has: targetAudience },
           OR: [
             ...(userFacultyId ? [{ facultyId: userFacultyId }] : []),
             { facultyId: null },
@@ -429,9 +450,9 @@ personalizationRouter.get(
         orderBy: { createdAt: "desc" },
       });
 
-      // 5. Department Courses & GES General Courses (if student has department)
+      // 5. Department Courses & GES General Courses (for 100-Level students)
       let courses: any[] = [];
-      if (userDeptId) {
+      if (targetAudience === "UI_100_LEVEL_STUDENT" && userDeptId) {
         const deptWithCourses = await prisma.department.findUnique({
           where: { id: userDeptId },
           include: {
@@ -450,9 +471,31 @@ personalizationRouter.get(
         courses = [...core, ...gesCourses];
       }
 
+      // 6. UTME Mock Exam History & Diagnostic Stats (for UTME students)
+      let utmeMockAttempts: any[] = [];
+      if (user?.id) {
+        utmeMockAttempts = await prisma.utmeExamAttempt.findMany({
+          where: { userId: user.id },
+          orderBy: { createdAt: "desc" },
+          take: 6,
+          select: {
+            id: true,
+            courseTitle: true,
+            totalScore: true,
+            maxPossibleScore: true,
+            percentage: true,
+            completedAt: true,
+            durationSeconds: true,
+            status: true,
+            createdAt: true,
+          },
+        });
+      }
+
       return res.json({
         success: true,
         data: {
+          targetAudience,
           isPersonalized: !!user,
           user: user
             ? {
@@ -467,11 +510,13 @@ personalizationRouter.get(
               }
             : null,
           feed: {
+            targetAudience,
             guides,
             resources,
             opportunities,
             faqs,
             courses,
+            utmeMockAttempts,
           },
         },
       });

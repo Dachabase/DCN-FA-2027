@@ -10,6 +10,7 @@ import { personalizationRouter } from "./personalization/personalization.control
 import { utmeRouter } from "./utme/utme.controller";
 import { requireAuth, optionalAuth } from "./auth/auth.middleware";
 import { ALL_GUIDES } from "./data/guides-data";
+import { resolveAudienceFromRequest, normalizeAudience } from "./personalization/audience.helper";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -460,6 +461,7 @@ const getGuidesHandler = async (req: Request, res: Response) => {
   const facultyId = req.params.id ? String(req.params.id) : (req.query.facultyId ? String(req.query.facultyId) : "all");
   const category = req.query.category ? String(req.query.category) : null;
   const search = req.query.search ? String(req.query.search).toLowerCase() : null;
+  const targetAudience = resolveAudienceFromRequest(req);
 
   try {
     const whereClause: any = { status: "PUBLISHED" };
@@ -468,6 +470,9 @@ const getGuidesHandler = async (req: Request, res: Response) => {
     }
     if (category && category !== "ALL") {
       whereClause.category = { equals: category, mode: "insensitive" };
+    }
+    if (targetAudience) {
+      whereClause.audience = { has: targetAudience };
     }
 
     const guides = await prisma.guide.findMany({
@@ -495,6 +500,9 @@ const getGuidesHandler = async (req: Request, res: Response) => {
   }
 
   let fallbackList = FALLBACK_GUIDES;
+  if (targetAudience) {
+    fallbackList = fallbackList.filter(g => !(g as any).audience || (g as any).audience.includes(targetAudience));
+  }
   if (facultyId !== "all") {
     fallbackList = fallbackList.filter(g => !g.facultyId || g.facultyId === facultyId || g.faculty?.id === facultyId);
   }
@@ -616,13 +624,19 @@ app.get("/api/guides/:id", optionalAuth, async (req: Request, res: Response) => 
 
 
 // =========================================================
-// RESOURCES API (Protected)
+// RESOURCES API (Audience-Aware, Optional Auth)
 // =========================================================
-app.get("/api/resources", requireAuth, async (req: Request, res: Response) => {
+app.get("/api/resources", optionalAuth, async (req: Request, res: Response) => {
   try {
     const { category, search } = req.query;
+    const targetAudience = resolveAudienceFromRequest(req);
+    const whereClause: any = { status: "PUBLISHED" };
+    if (targetAudience) {
+      whereClause.audience = { has: targetAudience };
+    }
+
     const resources = await prisma.resource.findMany({
-      where: { status: "PUBLISHED" },
+      where: whereClause,
       include: {
         faculty: { select: { id: true, name: true } },
         department: { select: { id: true, name: true } },
@@ -646,6 +660,10 @@ app.get("/api/resources", requireAuth, async (req: Request, res: Response) => {
   }
 
   let filteredFallback = FALLBACK_RESOURCES;
+  const targetAudience = resolveAudienceFromRequest(req);
+  if (targetAudience) {
+    filteredFallback = filteredFallback.filter(r => !(r as any).audience || (r as any).audience.includes(targetAudience));
+  }
   const { category, search } = req.query;
   if (category && category !== "ALL") {
     filteredFallback = filteredFallback.filter(r => r.category === category);
@@ -658,12 +676,18 @@ app.get("/api/resources", requireAuth, async (req: Request, res: Response) => {
 });
 
 // =========================================================
-// OPPORTUNITIES API (Protected)
+// OPPORTUNITIES API (Audience-Aware, Optional Auth)
 // =========================================================
-app.get("/api/opportunities", requireAuth, async (req: Request, res: Response) => {
+app.get("/api/opportunities", optionalAuth, async (req: Request, res: Response) => {
   try {
+    const targetAudience = resolveAudienceFromRequest(req);
+    const whereClause: any = { status: "ACTIVE" };
+    if (targetAudience) {
+      whereClause.audience = { has: targetAudience };
+    }
+
     const opportunities = await prisma.opportunity.findMany({
-      where: { status: "ACTIVE" },
+      where: whereClause,
       include: { faculty: { select: { id: true, name: true } } },
       orderBy: { createdAt: "desc" },
     });
@@ -681,6 +705,10 @@ app.get("/api/opportunities", requireAuth, async (req: Request, res: Response) =
   }
 
   let filteredFallback = FALLBACK_OPPORTUNITIES;
+  const targetAudience = resolveAudienceFromRequest(req);
+  if (targetAudience) {
+    filteredFallback = filteredFallback.filter(o => !(o as any).audience || (o as any).audience.includes(targetAudience));
+  }
   const { type } = req.query;
   if (type && type !== "ALL") {
     filteredFallback = filteredFallback.filter(o => o.type === type);
@@ -689,12 +717,18 @@ app.get("/api/opportunities", requireAuth, async (req: Request, res: Response) =
 });
 
 // =========================================================
-// FAQS API (Protected)
+// FAQS API (Audience-Aware, Optional Auth)
 // =========================================================
-app.get("/api/faqs", requireAuth, async (req: Request, res: Response) => {
+app.get("/api/faqs", optionalAuth, async (req: Request, res: Response) => {
   try {
+    const targetAudience = resolveAudienceFromRequest(req);
+    const whereClause: any = { status: "PUBLISHED" };
+    if (targetAudience) {
+      whereClause.audience = { has: targetAudience };
+    }
+
     const faqs = await prisma.fAQ.findMany({
-      where: { status: "PUBLISHED" },
+      where: whereClause,
       include: { faculty: { select: { id: true, name: true } } },
       orderBy: { createdAt: "desc" },
     });
@@ -706,7 +740,227 @@ app.get("/api/faqs", requireAuth, async (req: Request, res: Response) => {
     console.warn("DB error fetching FAQs, using fallback.");
   }
 
-  res.json({ success: true, data: FALLBACK_FAQS });
+  let filteredFallback = FALLBACK_FAQS;
+  const targetAudience = resolveAudienceFromRequest(req);
+  if (targetAudience) {
+    filteredFallback = filteredFallback.filter(f => !(f as any).audience || (f as any).audience.includes(targetAudience));
+  }
+  res.json({ success: true, data: filteredFallback });
+});
+
+// =========================================================
+// ADMIN AUDIENCE CLASSIFICATION & INVENTORY APIS
+// =========================================================
+app.get("/api/admin/content-inventory", optionalAuth, async (req: Request, res: Response) => {
+  try {
+    const filterAudience = req.query.audience ? normalizeAudience(String(req.query.audience)) : null;
+    const filterType = req.query.type ? String(req.query.type).toLowerCase() : "all";
+    const search = req.query.search ? String(req.query.search).toLowerCase() : "";
+
+    const [guides, resources, opportunities, faqs] = await Promise.all([
+      prisma.guide.findMany({
+        where: filterAudience ? { audience: { has: filterAudience } } : {},
+        select: { id: true, title: true, category: true, audience: true, status: true, source: true, owner: true, createdAt: true },
+        orderBy: { createdAt: "desc" },
+      }),
+      prisma.resource.findMany({
+        where: filterAudience ? { audience: { has: filterAudience } } : {},
+        select: { id: true, title: true, category: true, type: true, audience: true, status: true, url: true, source: true, createdAt: true },
+        orderBy: { createdAt: "desc" },
+      }),
+      prisma.opportunity.findMany({
+        where: filterAudience ? { audience: { has: filterAudience } } : {},
+        select: { id: true, title: true, category: true, type: true, audience: true, status: true, url: true, deadline: true, createdAt: true },
+        orderBy: { createdAt: "desc" },
+      }),
+      prisma.fAQ.findMany({
+        where: filterAudience ? { audience: { has: filterAudience } } : {},
+        select: { id: true, question: true, category: true, audience: true, status: true, createdAt: true },
+        orderBy: { createdAt: "desc" },
+      }),
+    ]);
+
+    let items: any[] = [];
+    if (filterType === "all" || filterType === "guide") {
+      items.push(...guides.map(g => ({
+        id: g.id,
+        title: g.title,
+        type: "Guide / Article",
+        model: "guide",
+        category: g.category,
+        audience: g.audience,
+        status: g.status,
+        source: g.source,
+        owner: g.owner,
+        isShared: g.audience.length > 1,
+        isUncertain: g.audience.length === 0,
+      })));
+    }
+    if (filterType === "all" || filterType === "resource") {
+      items.push(...resources.map(r => ({
+        id: r.id,
+        title: r.title,
+        type: `Resource (${r.type})`,
+        model: "resource",
+        category: r.category,
+        audience: r.audience,
+        status: r.status,
+        url: r.url,
+        isShared: r.audience.length > 1,
+        isUncertain: r.audience.length === 0,
+      })));
+    }
+    if (filterType === "all" || filterType === "opportunity") {
+      items.push(...opportunities.map(o => ({
+        id: o.id,
+        title: o.title,
+        type: `Opportunity (${o.type})`,
+        model: "opportunity",
+        category: o.category,
+        audience: o.audience,
+        status: o.status,
+        url: o.url,
+        isShared: o.audience.length > 1,
+        isUncertain: o.audience.length === 0,
+      })));
+    }
+    if (filterType === "all" || filterType === "faq") {
+      items.push(...faqs.map(f => ({
+        id: f.id,
+        title: f.question,
+        type: "FAQ",
+        model: "faq",
+        category: f.category,
+        audience: f.audience,
+        status: f.status,
+        isShared: f.audience.length > 1,
+        isUncertain: f.audience.length === 0,
+      })));
+    }
+
+    if (search) {
+      items = items.filter(i =>
+        i.title.toLowerCase().includes(search) ||
+        (i.category && i.category.toLowerCase().includes(search)) ||
+        i.id.toLowerCase().includes(search)
+      );
+    }
+
+    const totalAudited = items.length;
+    const utmeOnly = items.filter(i => i.audience.length === 1 && i.audience.includes("UTME_STUDENT")).length;
+    const ui100LOnly = items.filter(i => i.audience.length === 1 && i.audience.includes("UI_100_LEVEL_STUDENT")).length;
+    const shared = items.filter(i => i.audience.length > 1).length;
+    const unclassifiedOrReview = items.filter(i => i.audience.length === 0).length;
+
+    res.json({
+      success: true,
+      summary: {
+        totalAudited,
+        utmeOnly,
+        ui100LOnly,
+        shared,
+        unclassifiedOrReview,
+      },
+      data: items,
+    });
+  } catch (error: any) {
+    console.error("Error fetching content inventory:", error);
+    res.status(500).json({ success: false, error: "Failed to load content inventory" });
+  }
+});
+
+// PATCH /api/admin/classify-item - Single item classification update
+app.patch("/api/admin/classify-item", optionalAuth, async (req: Request, res: Response) => {
+  try {
+    const { model, id, audience } = req.body;
+    if (!model || !id || !Array.isArray(audience)) {
+      return res.status(400).json({ success: false, error: "Missing required fields: model, id, audience (array)" });
+    }
+
+    const validAudiences = audience.map((a: string) => normalizeAudience(a)).filter(Boolean) as string[];
+    if (validAudiences.length === 0 && audience.length > 0) {
+      return res.status(400).json({ success: false, error: "Invalid audience tags provided." });
+    }
+
+    let updated: any = null;
+    if (model === "guide") {
+      updated = await prisma.guide.update({ where: { id }, data: { audience: validAudiences } });
+    } else if (model === "resource") {
+      updated = await prisma.resource.update({ where: { id }, data: { audience: validAudiences } });
+    } else if (model === "opportunity") {
+      updated = await prisma.opportunity.update({ where: { id }, data: { audience: validAudiences } });
+    } else if (model === "faq") {
+      updated = await prisma.fAQ.update({ where: { id }, data: { audience: validAudiences } });
+    } else {
+      return res.status(400).json({ success: false, error: `Unsupported content model: ${model}` });
+    }
+
+    res.json({
+      success: true,
+      message: `Successfully classified ${model} [${id}] to audience: [${validAudiences.join(", ")}]`,
+      data: updated,
+    });
+  } catch (error: any) {
+    console.error("Error classifying item:", error);
+    res.status(500).json({ success: false, error: "Failed to update audience classification" });
+  }
+});
+
+// POST /api/admin/bulk-classify - Bulk classification with validation & preview
+app.post("/api/admin/bulk-classify", optionalAuth, async (req: Request, res: Response) => {
+  try {
+    const { updates, dryRun } = req.body;
+    if (!Array.isArray(updates) || updates.length === 0) {
+      return res.status(400).json({ success: false, error: "Provide array of updates: [{ model, id, audience: [] }]" });
+    }
+
+    const validatedUpdates = updates.map((u: any) => ({
+      model: String(u.model).toLowerCase(),
+      id: String(u.id),
+      audience: Array.isArray(u.audience)
+        ? (u.audience.map((a: string) => normalizeAudience(a)).filter(Boolean) as string[])
+        : [],
+    }));
+
+    if (dryRun) {
+      return res.json({
+        success: true,
+        dryRun: true,
+        previewCount: validatedUpdates.length,
+        proposedUpdates: validatedUpdates,
+      });
+    }
+
+    let successCount = 0;
+    const errors: any[] = [];
+
+    for (const item of validatedUpdates) {
+      try {
+        if (item.model === "guide") {
+          await prisma.guide.update({ where: { id: item.id }, data: { audience: item.audience } });
+        } else if (item.model === "resource") {
+          await prisma.resource.update({ where: { id: item.id }, data: { audience: item.audience } });
+        } else if (item.model === "opportunity") {
+          await prisma.opportunity.update({ where: { id: item.id }, data: { audience: item.audience } });
+        } else if (item.model === "faq") {
+          await prisma.fAQ.update({ where: { id: item.id }, data: { audience: item.audience } });
+        }
+        successCount++;
+      } catch (err: any) {
+        errors.push({ id: item.id, model: item.model, error: err.message });
+      }
+    }
+
+    res.json({
+      success: true,
+      message: `Bulk classification applied: ${successCount} updated successfully, ${errors.length} errors.`,
+      successCount,
+      errors,
+    });
+  } catch (error: any) {
+    console.error("Bulk classification error:", error);
+    res.status(500).json({ success: false, error: "Bulk classification failed" });
+  }
 });
 
 // =========================================================

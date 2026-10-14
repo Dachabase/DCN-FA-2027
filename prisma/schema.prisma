@@ -300,6 +300,7 @@ model Resource {
   url         String
   category    String   // "Academic", "Administrative", "Library", "Tools"
   tags        String[] // ["100L", "CSC101", "Registration"]
+  audience    String[] @default(["UI_100_LEVEL_STUDENT"]) // ["UTME_STUDENT"], ["UI_100_LEVEL_STUDENT"], or both for SHARED
   status      String   @default("PUBLISHED") // "PUBLISHED", "DRAFT", "ARCHIVED"
 
   facultyId   String?
@@ -327,6 +328,7 @@ model Guide {
   summary     String
   content     String   // Markdown / Rich text content
   category    String   // "Course Registration", "Grading System", "Lecture Venues", "Exams & Rules", "Campus Life"
+  audience    String[] @default(["UI_100_LEVEL_STUDENT"]) // ["UTME_STUDENT"], ["UI_100_LEVEL_STUDENT"], or both
   status      String   @default("PUBLISHED")
 
   facultyId   String?
@@ -364,6 +366,7 @@ model Opportunity {
   type         String    // "Scholarship", "Internship", "Hackathon", "Work-Study", "Mentorship"
   category     String    @default("General")
   tags         String[]
+  audience     String[]  @default(["UI_100_LEVEL_STUDENT", "UTME_STUDENT"])
   status       String    @default("ACTIVE")
 
   facultyId    String?
@@ -391,6 +394,7 @@ model FAQ {
   answer      String
   category    String   // "Admissions & Clearance", "Fees & Payments", "Course Add/Drop", "Hostel & Housing", "Exams & Results"
   tags        String[]
+  audience    String[] @default(["UI_100_LEVEL_STUDENT"])
   status      String   @default("PUBLISHED")
 
   facultyId   String?

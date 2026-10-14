@@ -3564,9 +3564,139 @@
       .fa-floating-student-card {
         animation: none !important;
       }
-      .fa-hero-ambient-glow {
-        animation: none !important;
-      }
+    /* =========================================================
+       AUDIENCE MODE SEGMENTATION & SWITCHER SYSTEM
+       ========================================================= */
+    .audience-mode-switcher-container {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 0.5rem;
+    }
+
+    .audience-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.42rem 0.85rem;
+      border-radius: 24px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.06);
+      color: #FFFFFF;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .audience-toggle-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    }
+
+    .audience-toggle--utme {
+      background: linear-gradient(135deg, rgba(217, 119, 6, 0.2) 0%, rgba(180, 83, 9, 0.28) 100%);
+      border-color: rgba(245, 158, 11, 0.45);
+      color: #FDE68A;
+    }
+
+    .audience-toggle--utme:hover {
+      border-color: rgba(245, 158, 11, 0.7);
+      background: linear-gradient(135deg, rgba(217, 119, 6, 0.3) 0%, rgba(180, 83, 9, 0.4) 100%);
+    }
+
+    .audience-toggle--100l {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.18) 0%, rgba(109, 40, 217, 0.26) 100%);
+      border-color: rgba(168, 85, 247, 0.45);
+      color: #DDD6FE;
+    }
+
+    .audience-toggle--100l:hover {
+      border-color: rgba(168, 85, 247, 0.7);
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.28) 0%, rgba(109, 40, 217, 0.38) 100%);
+    }
+
+    .audience-badge-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .audience-badge-chip--utme {
+      background: rgba(245, 158, 11, 0.15);
+      color: #FBBF24;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+
+    .audience-badge-chip--100l {
+      background: rgba(139, 92, 246, 0.15);
+      color: #C084FC;
+      border: 1px solid rgba(139, 92, 246, 0.35);
+    }
+
+    .audience-badge-chip--shared {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34D399;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+    }
+
+    .audience-switch-option-card {
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 14px;
+      padding: 1.25rem;
+      margin-bottom: 0.85rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .audience-switch-option-card:hover {
+      border-color: rgba(139, 92, 246, 0.4);
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-2px);
+    }
+
+    .audience-switch-option-card.selected {
+      border-color: var(--ps-purple-primary);
+      background: rgba(139, 92, 246, 0.12);
+      box-shadow: 0 0 0 1px var(--ps-purple-primary), var(--glow-brand-sm);
+    }
+
+    .admin-inventory-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    .admin-inventory-table th {
+      text-align: left;
+      padding: 0.65rem 0.75rem;
+      background: rgba(255, 255, 255, 0.05);
+      color: #94A3B8;
+      font-weight: 700;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .admin-inventory-table td {
+      padding: 0.65rem 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #CBD5E1;
+      vertical-align: middle;
+    }
+
+    .admin-inventory-table tr:hover td {
+      background: rgba(255, 255, 255, 0.03);
     }
   </style>
   <link rel="stylesheet" href="/utme.css">
@@ -3667,8 +3797,17 @@
         </a>
 
       <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <!-- AUDIENCE MODE TOGGLE BUTTON (1-Click Switcher) -->
+        <div class="audience-mode-switcher-container">
+          <button class="audience-toggle-btn audience-toggle--100l" id="audience-toggle-btn" onclick="openAudienceSwitchModal()" title="Switch student audience experience">
+            <span id="audience-badge-indicator"><svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+            <span id="audience-badge-label">UI 100-Level</span>
+            <svg class="app-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+
         <button class="mobile-header-install-btn" onclick="triggerPWAInstall()"><svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Install App</button>
-        <nav class="nav-links">
+        <nav class="nav-links" id="main-nav-links">
           <button class="nav-btn active" data-tab="home" onclick="switchTab('home', event)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             Dashboard
@@ -3728,6 +3867,12 @@
                 <div style="font-size: 0.75rem; color: #94A3B8;" id="dropdown-user-email">email@ui.edu.ng</div>
                 <div style="font-size: 0.75rem; color: var(--ps-purple-light); font-weight: 700; margin-top: 0.25rem;" id="dropdown-academic-identity">Computing • 100L</div>
               </div>
+              <button class="dropdown-item-btn" onclick="openAudienceSwitchModal(); toggleUserDropdown();">
+                <svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>Switch Student Audience
+              </button>
+              <button class="dropdown-item-btn" onclick="openAdminContentModal(); toggleUserDropdown();">
+                <svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Audience & Content Manager
+              </button>
               <button class="dropdown-item-btn" onclick="openOnboardingModal(1); toggleUserDropdown();">
                 <svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>Edit Academic Profile
               </button>
@@ -4552,6 +4697,10 @@
       personalizedFeed: null,
       personalizedViewActive: true,
       currentWizardStep: 1,
+      currentAudience: localStorage.getItem('dcn_active_audience') || 'UI_100_LEVEL_STUDENT',
+      adminInventory: [],
+      adminMetrics: null,
+      adminActiveFilter: 'all',
       onboardingForm: {
         role: 'CURRENT_STUDENT',
         facultyId: '',
@@ -4615,8 +4764,10 @@
     }
 
     document.addEventListener("DOMContentLoaded", async () => {
+      // 0. Initialize audience UI immediately from stored preference
+      updateAudienceUI();
       initHeroCarousel();
-            // 1. Initialize auth session first
+      // 1. Initialize auth session first
       await initAuth();
 
       // 2. Register service worker
@@ -4694,20 +4845,23 @@
 
     async function fetchAllData() {
       try {
+        const targetAudience = getActiveAudience();
+        const audParam = `?audience=${encodeURIComponent(targetAudience)}`;
+        const reqHeaders = { "x-target-audience": targetAudience };
         const [facRes, guiRes, resRes, oppRes, faqRes, botRes] = await Promise.all([
-          fetch("/api/faculties", { credentials: "include" }).then(r => r.json()).catch(() => ({ success: false, data: [] })),
-          fetch("/api/faculties/all/guides", { credentials: "include" }).then(r => r.json()).catch(() => ({ success: false, data: [] })),
-          fetch("/api/resources", { credentials: "include" }).then(r => r.json()).catch(() => ({ success: false, data: [] })),
-          fetch("/api/opportunities", { credentials: "include" }).then(r => r.json()).catch(() => ({ success: false, data: [] })),
-          fetch("/api/faqs", { credentials: "include" }).then(r => r.json()).catch(() => ({ success: false, data: [] })),
-          fetch("/api/study-assistant-link", { credentials: "include" }).then(r => r.json()).catch(() => ({ success: false, data: null }))
+          fetch("/api/faculties", { credentials: "include", headers: reqHeaders }).then(r => r.json()).catch(() => ({ success: false, data: [] })),
+          fetch(`/api/faculties/all/guides${audParam}`, { credentials: "include", headers: reqHeaders }).then(r => r.json()).catch(() => ({ success: false, data: [] })),
+          fetch(`/api/resources${audParam}`, { credentials: "include", headers: reqHeaders }).then(r => r.json()).catch(() => ({ success: false, data: [] })),
+          fetch(`/api/opportunities${audParam}`, { credentials: "include", headers: reqHeaders }).then(r => r.json()).catch(() => ({ success: false, data: [] })),
+          fetch(`/api/faqs${audParam}`, { credentials: "include", headers: reqHeaders }).then(r => r.json()).catch(() => ({ success: false, data: [] })),
+          fetch("/api/study-assistant-link", { credentials: "include", headers: reqHeaders }).then(r => r.json()).catch(() => ({ success: false, data: null }))
         ]);
 
         if (facRes.success && facRes.data) {
           appData.faculties = facRes.data;
           renderFacultyCatalog();
         }
-        if (guiRes.success && guiRes.data && guiRes.data.length > 0) {
+        if (guiRes.success && guiRes.data) {
           appData.guides = guiRes.data;
           renderGuides();
         }
@@ -4944,6 +5098,7 @@
       }
 
       const q = query.toLowerCase().trim();
+      const targetAud = getActiveAudience();
       let html = '';
 
       // 1. Search Faculties & Departments
@@ -4956,22 +5111,59 @@
         });
       });
 
-      // 2. Search Guides & Senate Rules
-      const matchedGuides = (appData.guides || []).filter(g => 
+      // 2. Search UTME Subjects & Mock Practice
+      const utmeSubjects = [
+        { code: "ENG", name: "Use of English", keywords: "english jamb comprehension lexis structure utme" },
+        { code: "MAT", name: "Mathematics", keywords: "mathematics maths algebra calculus geometry utme" },
+        { code: "PHY", name: "Physics", keywords: "physics mechanics waves electricity magnetism utme" },
+        { code: "CHM", name: "Chemistry", keywords: "chemistry organic physical inorganic stoichiometry utme" },
+        { code: "BIO", name: "Biology", keywords: "biology cell genetics ecology physiology utme" },
+        { code: "ECN", name: "Economics", keywords: "economics micro macro market demand inflation utme" },
+        { code: "GOV", name: "Government", keywords: "government constitution democracy politics sovereignty utme" },
+        { code: "LIT", name: "Literature in English", keywords: "literature prose drama poetry shakespeare utme" },
+        { code: "CRS", name: "Christian Religious Studies", keywords: "crs religion bible gospels faith utme" },
+        { code: "IRS", name: "Islamic Studies", keywords: "irs islamic quran hadith tawhid fiqh utme" },
+        { code: "ACC", name: "Principles of Accounts", keywords: "accounts bookkeeping ledger journal financial utme" }
+      ];
+      const matchedUtme = utmeSubjects.filter(s => 
+        s.name.toLowerCase().includes(q) || 
+        s.code.toLowerCase().includes(q) || 
+        s.keywords.includes(q)
+      );
+
+      // 3. Search Guides & Senate Rules
+      let matchedGuides = (appData.guides || []).filter(g => 
         g.title.toLowerCase().includes(q) || 
         (g.content && g.content.toLowerCase().includes(q)) || 
         (g.summary && g.summary.toLowerCase().includes(q)) ||
         (g.category && g.category.toLowerCase().includes(q))
       );
 
-      // 3. Search Academic Resources
-      const matchedResources = (appData.resources || []).filter(r => 
+      // 4. Search Academic Resources
+      let matchedResources = (appData.resources || []).filter(r => 
         r.title.toLowerCase().includes(q) || 
         (r.description && r.description.toLowerCase().includes(q)) || 
         (r.type && r.type.toLowerCase().includes(q))
       );
 
-      const totalMatches = matchedDepts.length + matchedGuides.length + matchedResources.length;
+      // Sort guides and resources to prioritize the active audience
+      matchedGuides.sort((a, b) => {
+        const aHas = (a.audience || []).includes(targetAud);
+        const bHas = (b.audience || []).includes(targetAud);
+        if (aHas && !bHas) return -1;
+        if (!aHas && bHas) return 1;
+        return 0;
+      });
+
+      matchedResources.sort((a, b) => {
+        const aHas = (a.audience || []).includes(targetAud);
+        const bHas = (b.audience || []).includes(targetAud);
+        if (aHas && !bHas) return -1;
+        if (!aHas && bHas) return 1;
+        return 0;
+      });
+
+      const totalMatches = matchedDepts.length + matchedUtme.length + matchedGuides.length + matchedResources.length;
 
       if (totalMatches === 0) {
         html = `
@@ -4980,7 +5172,7 @@
             <button onclick="closeGlobalSearchResults()" style="background: none; border: none; font-size: 1rem; cursor: pointer; color: #94A3B8;"><svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
           </div>
           <div style="text-align: center; padding: 1.75rem; color: #64748B; font-size: 0.95rem;">
-            No exact matches found for "<strong>${escapeHtml(query)}</strong>". Try searching <code>Computer Science</code>, <code>MAT101</code>, <code>GES107</code>, or <code>CGPA Scale</code>.
+            No exact matches found for "<strong>${escapeHtml(query)}</strong>". Try searching <code>Biology</code>, <code>English UTME</code>, <code>MAT101</code>, <code>GES107</code>, or <code>Cutoff</code>.
           </div>
         `;
       } else {
@@ -4994,6 +5186,25 @@
           </div>
         `;
 
+        // UTME Subject Matches (prioritized in UTME mode)
+        if (matchedUtme.length > 0) {
+          html += `<div class="global-search-category"><svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> UTME Subjects & Mock CBT (${matchedUtme.length})</div>`;
+          matchedUtme.forEach(s => {
+            html += `
+              <div class="search-result-item" onclick="closeGlobalSearchResults(); switchTab('cbt');">
+                <div>
+                  <div style="display: flex; align-items: center; gap: 0.4rem;">
+                    <strong style="color: #F59E0B; font-size: 0.95rem;">${escapeHtml(s.name)} (${s.code})</strong>
+                    <span class="audience-badge-chip audience-badge-chip--utme">UTME Exam</span>
+                  </div>
+                  <div style="font-size: 0.82rem; color: #64748B;">Official JAMB UTME Subject • Real Mock Practice & Instant Scoring</div>
+                </div>
+                <span style="font-size: 0.8rem; font-weight: 700; color: #F59E0B;">Start Mock Test →</span>
+              </div>
+            `;
+          });
+        }
+
         // Department / Faculty Matches
         if (matchedDepts.length > 0) {
           html += `<div class="global-search-category"><svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg> Departmental Course Packages (${matchedDepts.length})</div>`;
@@ -5001,7 +5212,10 @@
             html += `
               <div class="search-result-item" onclick="closeGlobalSearchResults(); switchTab('catalog'); selectFacultyForCatalog('${m.facultyId}');">
                 <div>
-                  <strong style="color: var(--ps-purple-primary); font-size: 0.95rem;">${escapeHtml(m.dept)}</strong>
+                  <div style="display: flex; align-items: center; gap: 0.4rem;">
+                    <strong style="color: var(--ps-purple-primary); font-size: 0.95rem;">${escapeHtml(m.dept)}</strong>
+                    <span class="audience-badge-chip audience-badge-chip--100l">100-Level</span>
+                  </div>
                   <div style="font-size: 0.82rem; color: #64748B;">${escapeHtml(m.faculty)}</div>
                 </div>
                 <span style="font-size: 0.8rem; font-weight: 700; color: var(--ps-purple-primary);">Inspect Package →</span>
@@ -5013,11 +5227,20 @@
         // Guide Matches
         if (matchedGuides.length > 0) {
           html += `<div class="global-search-category"><svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg> Academic Guides & Regulations (${matchedGuides.length})</div>`;
-          matchedGuides.slice(0, 4).forEach(g => {
+          matchedGuides.slice(0, 5).forEach(g => {
+            const auds = g.audience || [];
+            const isUtme = auds.includes('UTME_STUDENT');
+            const is100l = auds.includes('UI_100_LEVEL_STUDENT');
+            const chipClass = (isUtme && is100l) ? 'audience-badge-chip--shared' : (isUtme ? 'audience-badge-chip--utme' : 'audience-badge-chip--100l');
+            const chipLabel = (isUtme && is100l) ? 'Shared' : (isUtme ? 'UTME' : '100L');
+
             html += `
               <div class="search-result-item" onclick="closeGlobalSearchResults(); openGuideDetail('${g.id}');">
                 <div>
-                  <strong style="color: var(--ps-text-dark); font-size: 0.95rem;">${escapeHtml(g.title)}</strong>
+                  <div style="display: flex; align-items: center; gap: 0.4rem;">
+                    <strong style="color: var(--ps-text-dark); font-size: 0.95rem;">${escapeHtml(g.title)}</strong>
+                    <span class="audience-badge-chip ${chipClass}">${chipLabel}</span>
+                  </div>
                   <div style="font-size: 0.82rem; color: #64748B;">${escapeHtml(g.summary || '')}</div>
                 </div>
                 <span style="font-size: 0.8rem; font-weight: 700; color: var(--ps-purple-primary);">Read Guide →</span>
@@ -5030,10 +5253,19 @@
         if (matchedResources.length > 0) {
           html += `<div class="global-search-category"><svg class="app-icon app-icon-mr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg> Study Resources & Past Questions (${matchedResources.length})</div>`;
           matchedResources.slice(0, 4).forEach(r => {
+            const auds = r.audience || [];
+            const isUtme = auds.includes('UTME_STUDENT');
+            const is100l = auds.includes('UI_100_LEVEL_STUDENT');
+            const chipClass = (isUtme && is100l) ? 'audience-badge-chip--shared' : (isUtme ? 'audience-badge-chip--utme' : 'audience-badge-chip--100l');
+            const chipLabel = (isUtme && is100l) ? 'Shared' : (isUtme ? 'UTME' : '100L');
+
             html += `
               <div class="search-result-item" onclick="closeGlobalSearchResults(); switchTab('resources');">
                 <div>
-                  <strong style="color: var(--ps-text-dark); font-size: 0.95rem;">${escapeHtml(r.title)}</strong>
+                  <div style="display: flex; align-items: center; gap: 0.4rem;">
+                    <strong style="color: var(--ps-text-dark); font-size: 0.95rem;">${escapeHtml(r.title)}</strong>
+                    <span class="audience-badge-chip ${chipClass}">${chipLabel}</span>
+                  </div>
                   <div style="font-size: 0.82rem; color: #64748B;">${escapeHtml(r.description || '')}</div>
                 </div>
                 <span style="font-size: 0.8rem; font-weight: 700; color: var(--ps-purple-primary);">Access Resource →</span>
@@ -5451,6 +5683,13 @@
       const readTime = guide.readTime || "8 min read";
       const authorName = guide.author ? guide.author : (guide.source || "UI Academic Directorate");
       
+      const auds = guide.audience || [];
+      const isUtme = auds.includes('UTME_STUDENT');
+      const is100l = auds.includes('UI_100_LEVEL_STUDENT');
+      const audBadge = (isUtme && is100l) 
+        ? `<span class="audience-badge-chip audience-badge-chip--shared">Shared</span>`
+        : (isUtme ? `<span class="audience-badge-chip audience-badge-chip--utme">UTME</span>` : `<span class="audience-badge-chip audience-badge-chip--100l">100-Level</span>`);
+
       const seriesBadgeHtml = isSeries ? `
         <span class="series-chip-badge" style="margin-bottom: 0.5rem; display: inline-flex;">
           <svg class="app-icon app-icon-mr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>${escapeHtml(guide.seriesTitle)}
@@ -5461,7 +5700,10 @@
         <div class="card" onclick="openGuideDetail('${guide.id}')" style="cursor: pointer; display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div class="card-header" style="margin-bottom: 0.75rem;">
-              <span class="card-badge">${escapeHtml(facName)}</span>
+              <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
+                <span class="card-badge">${escapeHtml(facName)}</span>
+                ${audBadge}
+              </div>
               <span style="font-size: 0.76rem; color: #10B981; font-weight: 700; display: inline-flex; align-items: center; gap: 0.25rem;">
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
                 ${isVerified ? 'Verified Guide' : 'Guide'}
@@ -5850,10 +6092,20 @@
       
       const grid = document.getElementById("resources-grid");
       if (!grid) return;
-      grid.innerHTML = list.map(r => `
+      grid.innerHTML = list.map(r => {
+        const auds = r.audience || [];
+        const isUtme = auds.includes('UTME_STUDENT');
+        const is100l = auds.includes('UI_100_LEVEL_STUDENT');
+        const chipClass = (isUtme && is100l) ? 'audience-badge-chip--shared' : (isUtme ? 'audience-badge-chip--utme' : 'audience-badge-chip--100l');
+        const chipLabel = (isUtme && is100l) ? 'Shared' : (isUtme ? 'UTME' : '100-Level');
+
+        return `
         <div class="card">
           <div class="card-header">
-            <span class="card-badge">${escapeHtml(r.category || 'Resource')}</span>
+            <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
+              <span class="card-badge">${escapeHtml(r.category || 'Resource')}</span>
+              <span class="audience-badge-chip ${chipClass}">${chipLabel}</span>
+            </div>
             <span style="font-size: 0.78rem; color: #3B82F6; font-weight: 700;">Google Drive</span>
           </div>
           <h3 class="card-title">${escapeHtml(r.title)}</h3>
@@ -5864,7 +6116,7 @@
             </a>
           </div>
         </div>
-      `).join("");
+      `;}).join("");
     }
 
     function filterOpportunities(type, ev) {
@@ -5877,10 +6129,20 @@
       
       const grid = document.getElementById("opportunities-grid");
       if (!grid) return;
-      grid.innerHTML = list.map(o => `
+      grid.innerHTML = list.map(o => {
+        const auds = o.audience || [];
+        const isUtme = auds.includes('UTME_STUDENT');
+        const is100l = auds.includes('UI_100_LEVEL_STUDENT');
+        const chipClass = (isUtme && is100l) ? 'audience-badge-chip--shared' : (isUtme ? 'audience-badge-chip--utme' : 'audience-badge-chip--100l');
+        const chipLabel = (isUtme && is100l) ? 'Shared' : (isUtme ? 'UTME' : '100-Level');
+
+        return `
         <div class="card">
           <div class="card-header">
-            <span class="card-badge">${escapeHtml(o.type || 'Opportunity')}</span>
+            <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
+              <span class="card-badge">${escapeHtml(o.type || 'Opportunity')}</span>
+              <span class="audience-badge-chip ${chipClass}">${chipLabel}</span>
+            </div>
             <span style="font-size: 0.78rem; color: #10B981; font-weight: 700;">${escapeHtml(o.deadline ? new Date(o.deadline).toLocaleDateString() : 'Open')}</span>
           </div>
           <h3 class="card-title">${escapeHtml(o.title)}</h3>
@@ -5891,21 +6153,31 @@
             </a>
           </div>
         </div>
-      `).join("");
+      `;}).join("");
     }
 
     function renderFaqs() {
       const container = document.getElementById("faqs-list");
       if (!container) return;
-      container.innerHTML = appData.faqs.map((f, i) => `
+      container.innerHTML = appData.faqs.map((f, i) => {
+        const auds = f.audience || [];
+        const isUtme = auds.includes('UTME_STUDENT');
+        const is100l = auds.includes('UI_100_LEVEL_STUDENT');
+        const chipClass = (isUtme && is100l) ? 'audience-badge-chip--shared' : (isUtme ? 'audience-badge-chip--utme' : 'audience-badge-chip--100l');
+        const chipLabel = (isUtme && is100l) ? 'Shared' : (isUtme ? 'UTME' : '100-Level');
+
+        return `
         <div class="faq-item" onclick="toggleFaq(${i})">
           <div class="faq-question">
-            <span>${escapeHtml(f.question)}</span>
+            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+              <span>${escapeHtml(f.question)}</span>
+              <span class="audience-badge-chip ${chipClass}">${chipLabel}</span>
+            </div>
             <span style="color: var(--ps-purple-primary); font-size: 1.2rem;">+</span>
           </div>
           <div class="faq-answer" id="faq-ans-${i}">${escapeHtml(f.answer)}</div>
         </div>
-      `).join("");
+      `;}).join("");
     }
 
     function toggleFaq(index) {
@@ -5979,6 +6251,17 @@
         
         if (json.success && json.authenticated && json.data) {
           appData.currentUser = json.data;
+          const storedAud = localStorage.getItem('dcn_active_audience');
+          if (!storedAud) {
+            const canonicalAud = (json.data.role === 'PROSPECTIVE_UTME' || json.data.role === 'UTME_STUDENT')
+              ? 'UTME_STUDENT'
+              : 'UI_100_LEVEL_STUDENT';
+            localStorage.setItem('dcn_active_audience', canonicalAud);
+            appData.currentAudience = canonicalAud;
+          } else {
+            appData.currentAudience = storedAud;
+          }
+          updateAudienceUI();
           updateAuthUI();
           await fetchAllData();
           renderFacultyCatalog();
@@ -6196,6 +6479,17 @@
         const json = await res.json();
         if (json.success && json.data?.user) {
           appData.currentUser = json.data.user;
+          const storedAud = localStorage.getItem('dcn_active_audience');
+          if (!storedAud) {
+            const canonicalAud = (json.data.user.role === 'PROSPECTIVE_UTME' || json.data.user.role === 'UTME_STUDENT')
+              ? 'UTME_STUDENT'
+              : 'UI_100_LEVEL_STUDENT';
+            localStorage.setItem('dcn_active_audience', canonicalAud);
+            appData.currentAudience = canonicalAud;
+          } else {
+            appData.currentAudience = storedAud;
+          }
+          updateAudienceUI();
           updateAuthUI();
           closeSignInModal();
           await fetchAllData();
@@ -6606,6 +6900,12 @@
 
         if (json.success && json.data?.user) {
           appData.currentUser = json.data.user;
+          const canonicalAud = (json.data.user.role === 'PROSPECTIVE_UTME' || json.data.user.role === 'UTME_STUDENT')
+            ? 'UTME_STUDENT'
+            : 'UI_100_LEVEL_STUDENT';
+          localStorage.setItem('dcn_active_audience', canonicalAud);
+          appData.currentAudience = canonicalAud;
+          updateAudienceUI();
           updateAuthUI();
           closeOnboardingModal(false);
           sessionStorage.removeItem("ui_onboarding_skipped");
@@ -6613,6 +6913,7 @@
           if (incompBanner) incompBanner.style.display = "none";
 
           renderFacultyCatalog();
+          await fetchAllData();
           await fetchPersonalizedFeed();
           renderHome();
         }
@@ -6773,6 +7074,488 @@
         navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW Registration failed:', err));
       }
     }
+
+    // =========================================================
+    // AUDIENCE SEGMENTATION & EXPERIENCE SWITCHING
+    // =========================================================
+    function getActiveAudience() {
+      if (appData.currentAudience) return appData.currentAudience;
+      const stored = localStorage.getItem('dcn_active_audience');
+      if (stored === 'UTME_STUDENT' || stored === 'UI_100_LEVEL_STUDENT') {
+        appData.currentAudience = stored;
+        return stored;
+      }
+      if (appData.currentUser?.role === 'PROSPECTIVE_UTME' || appData.currentUser?.role === 'UTME_STUDENT') {
+        return 'UTME_STUDENT';
+      }
+      return 'UI_100_LEVEL_STUDENT';
+    }
+
+    async function setAudience(newAudience) {
+      if (newAudience !== 'UTME_STUDENT' && newAudience !== 'UI_100_LEVEL_STUDENT') {
+        newAudience = 'UI_100_LEVEL_STUDENT';
+      }
+      appData.currentAudience = newAudience;
+      localStorage.setItem('dcn_active_audience', newAudience);
+
+      // Persist to user profile if authenticated
+      if (appData.currentUser) {
+        try {
+          const roleMapping = newAudience === 'UTME_STUDENT' ? 'PROSPECTIVE_UTME' : 'CURRENT_STUDENT';
+          await fetch("/api/user/profile", {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ role: roleMapping }),
+            credentials: "include"
+          });
+          if (appData.currentUser) {
+            appData.currentUser.role = roleMapping;
+          }
+        } catch (e) {
+          console.warn("Could not sync audience switch to profile:", e);
+        }
+      }
+
+      updateAudienceUI();
+      await fetchAllData();
+      if (appData.currentUser) {
+        await fetchPersonalizedFeed();
+      }
+      renderHome();
+      renderFacultyCatalog();
+
+      const audLabel = newAudience === 'UTME_STUDENT' ? 'UTME Examination' : 'UI 100-Level';
+      showAppToast(`Switched student experience to ${audLabel}`);
+      logUserInteraction("AUDIENCE_SWITCH", newAudience, { audience: newAudience });
+    }
+
+    function openAudienceSwitchModal() {
+      const modal = document.getElementById("audience-switch-modal");
+      if (!modal) return;
+      const cur = getActiveAudience();
+      appData._pendingAudience = cur;
+      selectAudienceOption(cur);
+      modal.classList.add("show");
+    }
+
+    function closeAudienceSwitchModal() {
+      const modal = document.getElementById("audience-switch-modal");
+      if (modal) modal.classList.remove("show");
+    }
+
+    function selectAudienceOption(aud) {
+      appData._pendingAudience = aud;
+      const utmeCard = document.getElementById("switch-card-utme");
+      const uiCard = document.getElementById("switch-card-100l");
+      if (aud === 'UTME_STUDENT') {
+        if (utmeCard) utmeCard.classList.add("selected");
+        if (uiCard) uiCard.classList.remove("selected");
+      } else {
+        if (uiCard) uiCard.classList.add("selected");
+        if (utmeCard) utmeCard.classList.remove("selected");
+      }
+    }
+
+    function applyAudienceSwitchFromModal() {
+      const selected = appData._pendingAudience || 'UI_100_LEVEL_STUDENT';
+      closeAudienceSwitchModal();
+      setAudience(selected);
+    }
+
+    function updateAudienceUI() {
+      const aud = getActiveAudience();
+      const isUtme = aud === 'UTME_STUDENT';
+
+      // 1. Header Mode Switcher Button
+      const toggleBtn = document.getElementById("audience-toggle-btn");
+      const badgeIndicator = document.getElementById("audience-badge-indicator");
+      const badgeLabel = document.getElementById("audience-badge-label");
+
+      if (toggleBtn) {
+        toggleBtn.className = "audience-toggle-btn " + (isUtme ? "audience-toggle--utme" : "audience-toggle--100l");
+      }
+      if (badgeLabel) {
+        badgeLabel.textContent = isUtme ? "UTME Prep" : "UI 100-Level";
+      }
+      if (badgeIndicator) {
+        badgeIndicator.innerHTML = isUtme
+          ? `<svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>`
+          : `<svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`;
+      }
+
+      // 2. Main Navigation Links
+      const navContainer = document.getElementById("main-nav-links");
+      if (navContainer) {
+        const activeTab = document.querySelector(".tab-section.active")?.id?.replace("tab-", "") || "home";
+        if (isUtme) {
+          navContainer.innerHTML = `
+            <button class="nav-btn ${activeTab === 'home' ? 'active' : ''}" data-tab="home" onclick="switchTab('home', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              Dashboard
+            </button>
+            <button class="nav-btn ${activeTab === 'cbt' ? 'active' : ''}" data-tab="cbt" onclick="switchTab('cbt', event)" style="color: #FBBF24; font-weight: 700;">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              UTME Mock CBT
+            </button>
+            <button class="nav-btn ${activeTab === 'guides' ? 'active' : ''}" data-tab="guides" onclick="switchTab('guides', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Admission Guides
+            </button>
+            <button class="nav-btn ${activeTab === 'resources' ? 'active' : ''}" data-tab="resources" onclick="switchTab('resources', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              Study Vault
+            </button>
+            <button class="nav-btn ${activeTab === 'opportunities' ? 'active' : ''}" data-tab="opportunities" onclick="switchTab('opportunities', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Opportunities
+            </button>
+            <button class="nav-btn ${activeTab === 'catalog' ? 'active' : ''}" data-tab="catalog" onclick="switchTab('catalog', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+              Course Combos
+            </button>
+            <button class="nav-btn ${activeTab === 'faqs' ? 'active' : ''}" data-tab="faqs" onclick="switchTab('faqs', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              FAQ & AI
+            </button>
+            <button class="nav-install-btn" onclick="triggerPWAInstall()">
+              <svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Install App
+            </button>
+          `;
+        } else {
+          navContainer.innerHTML = `
+            <button class="nav-btn ${activeTab === 'home' ? 'active' : ''}" data-tab="home" onclick="switchTab('home', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              Dashboard
+            </button>
+            <button class="nav-btn ${activeTab === 'catalog' ? 'active' : ''}" data-tab="catalog" onclick="switchTab('catalog', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+              Course Catalog
+            </button>
+            <button class="nav-btn ${activeTab === 'guides' ? 'active' : ''}" data-tab="guides" onclick="switchTab('guides', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Faculty Guides
+            </button>
+            <button class="nav-btn ${activeTab === 'resources' ? 'active' : ''}" data-tab="resources" onclick="switchTab('resources', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              Lecture Drives
+            </button>
+            <button class="nav-btn ${activeTab === 'opportunities' ? 'active' : ''}" data-tab="opportunities" onclick="switchTab('opportunities', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Opportunities
+            </button>
+            <button class="nav-btn ${activeTab === 'cbt' ? 'active' : ''}" data-tab="cbt" onclick="switchTab('cbt', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              CBT Practice
+            </button>
+            <button class="nav-btn ${activeTab === 'faqs' ? 'active' : ''}" data-tab="faqs" onclick="switchTab('faqs', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              FAQ & AI
+            </button>
+            <button class="nav-install-btn" onclick="triggerPWAInstall()">
+              <svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Install App
+            </button>
+          `;
+        }
+      }
+
+      // 3. Mobile Navigation Links
+      const mobileNav = document.querySelector(".mobile-nav-container");
+      if (mobileNav) {
+        const activeTab = document.querySelector(".tab-section.active")?.id?.replace("tab-", "") || "home";
+        if (isUtme) {
+          mobileNav.innerHTML = `
+            <button class="mobile-nav-btn ${activeTab === 'home' ? 'active' : ''}" data-tab="home" onclick="switchTab('home', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              Home
+            </button>
+            <button class="mobile-nav-btn ${activeTab === 'cbt' ? 'active' : ''}" data-tab="cbt" onclick="switchTab('cbt', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              Mock CBT
+            </button>
+            <button class="mobile-nav-btn ${activeTab === 'guides' ? 'active' : ''}" data-tab="guides" onclick="switchTab('guides', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
+              Guides
+            </button>
+            <button class="mobile-nav-btn ${activeTab === 'resources' ? 'active' : ''}" data-tab="resources" onclick="switchTab('resources', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              Vault
+            </button>
+            <button class="mobile-nav-btn ${activeTab === 'catalog' ? 'active' : ''}" data-tab="catalog" onclick="switchTab('catalog', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg>
+              Combos
+            </button>
+            <button class="mobile-nav-btn ${activeTab === 'faqs' ? 'active' : ''}" data-tab="faqs" onclick="switchTab('faqs', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              AI Help
+            </button>
+          `;
+        } else {
+          mobileNav.innerHTML = `
+            <button class="mobile-nav-btn ${activeTab === 'home' ? 'active' : ''}" data-tab="home" onclick="switchTab('home', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              Home
+            </button>
+            <button class="mobile-nav-btn ${activeTab === 'catalog' ? 'active' : ''}" data-tab="catalog" onclick="switchTab('catalog', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+              Catalog
+            </button>
+            <button class="mobile-nav-btn ${activeTab === 'guides' ? 'active' : ''}" data-tab="guides" onclick="switchTab('guides', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
+              Guides
+            </button>
+            <button class="mobile-nav-btn ${activeTab === 'resources' ? 'active' : ''}" data-tab="resources" onclick="switchTab('resources', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              Resources
+            </button>
+            <button class="mobile-nav-btn ${activeTab === 'cbt' ? 'active' : ''}" data-tab="cbt" onclick="switchTab('cbt', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              CBT
+            </button>
+            <button class="mobile-nav-btn ${activeTab === 'faqs' ? 'active' : ''}" data-tab="faqs" onclick="switchTab('faqs', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              AI Help
+            </button>
+          `;
+        }
+      }
+
+      // 4. Update Home Feature Headers & Stats
+      const featureTitle = document.querySelector(".partstack-feature-title");
+      const featureDesc = document.querySelector(".partstack-feature-desc");
+      const featureBtn = document.querySelector(".partstack-primary-btn");
+      const searchPlaceholder = document.getElementById("global-search-input");
+      const statsGrid = document.querySelector(".stats-grid");
+
+      if (isUtme) {
+        if (featureTitle) featureTitle.textContent = "Joint Admissions & Matriculation Board (UTME) Preparation";
+        if (featureDesc) featureDesc.textContent = "Prepare for your UTME examination with timed computer-based mock tests, verified syllabus coverage, university admission cutoffs, and AI-powered step-by-step solutions.";
+        if (featureBtn) {
+          featureBtn.innerHTML = `Launch UTME Mock Exam <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+          featureBtn.onclick = (e) => switchTab('cbt', e);
+        }
+        if (searchPlaceholder) {
+          searchPlaceholder.placeholder = "Search UTME subjects (e.g. English, Biology, Physics, Govt) or admission guides...";
+        }
+        if (statsGrid) {
+          statsGrid.innerHTML = `
+            <div>
+              <div class="stat-number">10,555+</div>
+              <div class="stat-label">UTME Questions in Bank</div>
+            </div>
+            <div>
+              <div class="stat-number">11 Subjects</div>
+              <div class="stat-label">JAMB UTME syllabus covered</div>
+            </div>
+            <div>
+              <div class="stat-number">100% Free</div>
+              <div class="stat-label">Timed CBT mock simulations</div>
+            </div>
+          `;
+        }
+      } else {
+        if (featureTitle) featureTitle.textContent = "Powerful search for every department";
+        if (featureDesc) featureDesc.textContent = "Ready to inspect course registration requirements and academic guidelines? UI Freshers Companion gives you direct access to 100-Level course packages, credit rules, and study tools for all 94 departments.";
+        if (featureBtn) {
+          featureBtn.innerHTML = `Explore Course Catalog <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+          featureBtn.onclick = (e) => switchTab('catalog', e);
+        }
+        if (searchPlaceholder) {
+          searchPlaceholder.placeholder = "Search by course code (e.g. MAT101, GES107), department, or venue...";
+        }
+        if (statsGrid) {
+          statsGrid.innerHTML = `
+            <div>
+              <div class="stat-number">17 Canonical</div>
+              <div class="stat-label">UI Faculties represented</div>
+            </div>
+            <div>
+              <div class="stat-number">94+</div>
+              <div class="stat-label">Departments with 100L packages</div>
+            </div>
+            <div>
+              <div class="stat-number">100% Free</div>
+              <div class="stat-label">Grounded in UI Senate regulations</div>
+            </div>
+          `;
+        }
+      }
+    }
+
+    // =========================================================
+    // ADMIN CONTENT AUDIT & AUDIENCE CLASSIFICATION MANAGER
+    // =========================================================
+    async function openAdminContentModal() {
+      const modal = document.getElementById("admin-content-modal");
+      if (!modal) return;
+      modal.classList.add("show");
+      await loadAdminInventory();
+    }
+
+    function closeAdminContentModal() {
+      const modal = document.getElementById("admin-content-modal");
+      if (modal) modal.classList.remove("show");
+    }
+
+    async function loadAdminInventory() {
+      const tbody = document.getElementById("admin-inventory-table-body");
+      if (tbody) {
+        tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #94A3B8; padding: 2rem;">Loading content inventory from server...</td></tr>`;
+      }
+
+      try {
+        const res = await fetch("/api/admin/content-inventory", { credentials: "include" });
+        const json = await res.json();
+
+        if (json.success && json.data) {
+          appData.adminInventory = json.data.items || [];
+          appData.adminMetrics = json.data.metrics || null;
+
+          // Update live metric count displays
+          if (json.data.metrics) {
+            const m = json.data.metrics;
+            const elTotal = document.getElementById("admin-stat-total");
+            const elUtme = document.getElementById("admin-stat-utme");
+            const el100l = document.getElementById("admin-stat-100l");
+            const elShared = document.getElementById("admin-stat-shared");
+            const elReview = document.getElementById("admin-stat-review");
+
+            if (elTotal) elTotal.textContent = m.totalAudited;
+            if (elUtme) elUtme.textContent = m.utmeOnly;
+            if (el100l) el100l.textContent = m.ui100lOnly;
+            if (elShared) elShared.textContent = m.sharedBoth;
+            if (elReview) elReview.textContent = m.awaitingReview;
+          }
+
+          renderAdminInventoryTable();
+        } else {
+          if (tbody) tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #EF4444; padding: 2rem;">Access Denied or Failed to Load Inventory: ${escapeHtml(json.message || '')}</td></tr>`;
+        }
+      } catch (err) {
+        if (tbody) tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #EF4444; padding: 2rem;">Network error fetching content inventory.</td></tr>`;
+      }
+    }
+
+    function setAdminFilter(filterName, ev) {
+      appData.adminActiveFilter = filterName;
+      document.querySelectorAll("#admin-content-modal .filter-chip").forEach(c => c.classList.remove("active"));
+      if (ev && ev.target) ev.target.classList.add("active");
+      renderAdminInventoryTable();
+    }
+
+    function filterAdminInventory() {
+      renderAdminInventoryTable();
+    }
+
+    function renderAdminInventoryTable() {
+      const tbody = document.getElementById("admin-inventory-table-body");
+      if (!tbody) return;
+
+      const searchInput = document.getElementById("admin-search-input");
+      const q = searchInput ? searchInput.value.toLowerCase().trim() : "";
+      const filter = appData.adminActiveFilter || "all";
+
+      let items = appData.adminInventory || [];
+
+      // Filter by audience
+      if (filter === "utme") {
+        items = items.filter(i => (i.audience || []).includes("UTME_STUDENT") && !(i.audience || []).includes("UI_100_LEVEL_STUDENT"));
+      } else if (filter === "100l") {
+        items = items.filter(i => (i.audience || []).includes("UI_100_LEVEL_STUDENT") && !(i.audience || []).includes("UTME_STUDENT"));
+      } else if (filter === "shared") {
+        items = items.filter(i => (i.audience || []).includes("UTME_STUDENT") && (i.audience || []).includes("UI_100_LEVEL_STUDENT"));
+      }
+
+      // Keyword search
+      if (q) {
+        items = items.filter(i => 
+          (i.title && i.title.toLowerCase().includes(q)) ||
+          (i.category && i.category.toLowerCase().includes(q)) ||
+          (i.type && i.type.toLowerCase().includes(q)) ||
+          (i.id && i.id.toLowerCase().includes(q))
+        );
+      }
+
+      if (items.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #94A3B8; padding: 2rem;">No educational items match filter "${escapeHtml(filter)}" and query "${escapeHtml(q)}".</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = items.map(item => {
+        const auds = item.audience || [];
+        const isUtme = auds.includes("UTME_STUDENT");
+        const is100l = auds.includes("UI_100_LEVEL_STUDENT");
+        const isShared = isUtme && is100l;
+        const isReview = auds.length === 0;
+
+        let badgeHtml = "";
+        if (isReview) {
+          badgeHtml = `<span class="audience-badge-chip" style="background: rgba(239, 68, 68, 0.2); color: #F87171; border: 1px solid rgba(239, 68, 68, 0.4);">Needs Review</span>`;
+        } else if (isShared) {
+          badgeHtml = `<span class="audience-badge-chip audience-badge-chip--shared">Shared Both</span>`;
+        } else if (isUtme) {
+          badgeHtml = `<span class="audience-badge-chip audience-badge-chip--utme">UTME Only</span>`;
+        } else {
+          badgeHtml = `<span class="audience-badge-chip audience-badge-chip--100l">UI 100L Only</span>`;
+        }
+
+        const model = item.model || "guide";
+        const id = item.id;
+
+        return `
+          <tr>
+            <td>
+              <div style="font-weight: 700; color: #FFFFFF; font-size: 0.9rem;">${escapeHtml(item.title)}</div>
+              <div style="font-size: 0.74rem; color: #64748B; font-family: monospace;">${escapeHtml(id)}</div>
+            </td>
+            <td>
+              <span style="font-size: 0.78rem; color: #CBD5E1;">${escapeHtml(item.category || item.type || model)}</span>
+              <span style="font-size: 0.7rem; color: #94A3B8; display: block; text-transform: uppercase;">${escapeHtml(model)}</span>
+            </td>
+            <td>${badgeHtml}</td>
+            <td>
+              <div style="display: flex; gap: 0.35rem; align-items: center;">
+                <button class="action-btn" style="padding: 0.25rem 0.5rem; font-size: 0.72rem; ${isUtme && !is100l ? 'opacity: 0.5;' : ''}" onclick="reclassifyItem('${model}', '${id}', 'UTME_STUDENT')">UTME</button>
+                <button class="action-btn" style="padding: 0.25rem 0.5rem; font-size: 0.72rem; ${is100l && !isUtme ? 'opacity: 0.5;' : ''}" onclick="reclassifyItem('${model}', '${id}', 'UI_100_LEVEL_STUDENT')">100L</button>
+                <button class="action-btn" style="padding: 0.25rem 0.5rem; font-size: 0.72rem; ${isShared ? 'opacity: 0.5;' : ''}" onclick="reclassifyItem('${model}', '${id}', 'SHARED')">Both</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    async function reclassifyItem(model, id, targetOption) {
+      let audienceArray = [];
+      if (targetOption === 'UTME_STUDENT') {
+        audienceArray = ['UTME_STUDENT'];
+      } else if (targetOption === 'UI_100_LEVEL_STUDENT') {
+        audienceArray = ['UI_100_LEVEL_STUDENT'];
+      } else if (targetOption === 'SHARED') {
+        audienceArray = ['UTME_STUDENT', 'UI_100_LEVEL_STUDENT'];
+      }
+
+      try {
+        const res = await fetch("/api/admin/classify-item", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ model, id, audience: audienceArray }),
+          credentials: "include"
+        });
+        const json = await res.json();
+        if (json.success) {
+          showAppToast("Updated classification successfully");
+          const found = (appData.adminInventory || []).find(i => i.id === id);
+          if (found) {
+            found.audience = audienceArray;
+          }
+          await loadAdminInventory();
+        } else {
+          alert("Classification error: " + (json.message || "Failed"));
+        }
+      } catch (err) {
+        alert("Network error updating classification: " + err.message);
+      }
+    }
   </script>
 
   <!-- PWA INSTALL MODAL -->
@@ -6845,25 +7628,26 @@
         <div class="wizard-step-dot" id="wizard-step-3-dot">3</div>
       </div>
 
-      <!-- STEP 1: WHO ARE YOU? -->
+      <!-- STEP 1: WHAT ARE YOU CURRENTLY PREPARING FOR? -->
       <div id="wizard-step-1" class="wizard-step-content">
-        <p style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.45; margin-bottom: 1.25rem;">
-          Select your status at the University of Ibadan so we can customize your course packages and notifications.
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 800; color: #FFFFFF; margin-bottom: 0.35rem;">What are you currently preparing for?</h3>
+        <p style="color: #CBD5E1; font-size: 0.9rem; line-height: 1.45; margin-bottom: 1.25rem;">
+          Select your current student audience so we can personalize your dashboard, study materials, and examination resources.
         </p>
 
-        <div class="role-option-card selected" id="role-card-student" onclick="selectRole('CURRENT_STUDENT')">
-          <div class="role-icon-box"><svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
+        <div class="role-option-card" id="role-card-utme" onclick="selectRole('PROSPECTIVE_UTME')">
+          <div class="role-icon-box"><svg class="app-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
           <div>
-            <div class="role-title">I'm a current student at UI</div>
-            <div class="role-desc">Enrolled in 100L–600L undergraduate or direct entry programs across UI faculties.</div>
+            <div class="role-title">Option 1: UTME Preparation</div>
+            <div class="role-desc">For students preparing for the UTME examination and university admission.</div>
           </div>
         </div>
 
-        <div class="role-option-card" id="role-card-utme" onclick="selectRole('PROSPECTIVE_UTME')">
-          <div class="role-icon-box"><svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <div class="role-option-card selected" id="role-card-student" onclick="selectRole('CURRENT_STUDENT')">
+          <div class="role-icon-box"><svg class="app-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
           <div>
-            <div class="role-title">I'm preparing for UTME / seeking admission</div>
-            <div class="role-desc">Aspiring for admission into UI, exploring department subject combos & cutoff rules.</div>
+            <div class="role-title">Option 2: University of Ibadan 100-Level</div>
+            <div class="role-desc">For students currently studying 100-level courses at the University of Ibadan.</div>
           </div>
         </div>
 
@@ -7065,6 +7849,130 @@
     </div>
   </div>
 
-    <script src="/utme.js" defer></script>
+  <!-- AUDIENCE SWITCH MODAL (Instant audience segment toggling) -->
+  <div id="audience-switch-modal" class="onboarding-modal-overlay">
+    <div class="onboarding-card" style="max-width: 520px;">
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1.25rem;">
+        <div>
+          <span style="font-size: 0.74rem; font-weight: 800; color: var(--ps-purple-light); text-transform: uppercase; letter-spacing: 0.6px;">Audience Customization</span>
+          <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; color: #FFFFFF; margin-top: 0.15rem;">Select Student Experience</h2>
+        </div>
+        <button class="pwa-modal-close" style="position: static;" onclick="closeAudienceSwitchModal()"><svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+
+      <p style="color: #CBD5E1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.25rem;">
+        Choose your educational path. The website's navigation, study resources, mock tests, and dashboard will immediately reconfigure to match your focus.
+      </p>
+
+      <!-- Option A: UTME -->
+      <div class="audience-switch-option-card" id="switch-card-utme" onclick="selectAudienceOption('UTME_STUDENT')">
+        <div style="background: rgba(245, 158, 11, 0.2); color: #FBBF24; padding: 0.75rem; border-radius: 12px; flex-shrink: 0;">
+          <svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        </div>
+        <div style="flex: 1;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+            <div style="font-size: 1.05rem; font-weight: 800; color: #FFFFFF; font-family: 'Outfit', sans-serif;">Audience A: UTME Preparation</div>
+            <span class="audience-badge-chip audience-badge-chip--utme">Aspirants</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #94A3B8; line-height: 1.45;">
+            Candidates preparing for JAMB UTME examination and university admissions. Access CBT simulations, syllabus guides, question banks, and UI cut-off calculators.
+          </div>
+        </div>
+      </div>
+
+      <!-- Option B: UI 100L -->
+      <div class="audience-switch-option-card" id="switch-card-100l" onclick="selectAudienceOption('UI_100_LEVEL_STUDENT')">
+        <div style="background: rgba(139, 92, 246, 0.2); color: #C084FC; padding: 0.75rem; border-radius: 12px; flex-shrink: 0;">
+          <svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div style="flex: 1;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+            <div style="font-size: 1.05rem; font-weight: 800; color: #FFFFFF; font-family: 'Outfit', sans-serif;">Audience B: UI 100-Level</div>
+            <span class="audience-badge-chip audience-badge-chip--100l">Undergraduates</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #94A3B8; line-height: 1.45;">
+            Enrolled University of Ibadan first-year students. Access departmental course packages across 17 faculties, lecture note drive vaults, CGPA guidelines, and clearance handbooks.
+          </div>
+        </div>
+      </div>
+
+      <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 0.75rem 0.95rem; margin-top: 1rem; display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: #94A3B8;">
+        <svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span>Your account credentials, mock examination attempts, and saved courses remain 100% preserved.</span>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 1.5rem;">
+        <button onclick="closeAudienceSwitchModal()" style="background: transparent; border: none; color: #94A3B8; font-size: 0.88rem; font-weight: 600; cursor: pointer;">Cancel</button>
+        <button id="apply-audience-switch-btn" onclick="applyAudienceSwitchFromModal()" class="wizard-launch-btn">Apply & Switch Experience →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN CONTENT CLASSIFICATION & INVENTORY MODAL -->
+  <div id="admin-content-modal" class="onboarding-modal-overlay">
+    <div class="onboarding-card" style="max-width: 900px; max-height: 90vh; display: flex; flex-direction: column;">
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1rem; flex-shrink: 0;">
+        <div>
+          <span style="font-size: 0.74rem; font-weight: 800; color: #10B981; text-transform: uppercase; letter-spacing: 0.6px;">Staff Administrative Console</span>
+          <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.45rem; font-weight: 800; color: #FFFFFF; margin-top: 0.15rem;">Educational Material Audience Manager</h2>
+        </div>
+        <button class="pwa-modal-close" style="position: static;" onclick="closeAdminContentModal()"><svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+
+      <!-- Live Metric Badges -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; flex-shrink: 0;" id="admin-metrics-container">
+        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 0.65rem; border-radius: 10px; text-align: center;">
+          <div style="font-size: 0.72rem; color: #94A3B8; font-weight: 700;">Total Audited</div>
+          <div style="font-size: 1.2rem; font-weight: 800; color: #FFF;" id="admin-stat-total">--</div>
+        </div>
+        <div style="background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.25); padding: 0.65rem; border-radius: 10px; text-align: center;">
+          <div style="font-size: 0.72rem; color: #FBBF24; font-weight: 700;">UTME Only</div>
+          <div style="font-size: 1.2rem; font-weight: 800; color: #FDE68A;" id="admin-stat-utme">--</div>
+        </div>
+        <div style="background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.25); padding: 0.65rem; border-radius: 10px; text-align: center;">
+          <div style="font-size: 0.72rem; color: #A78BFA; font-weight: 700;">UI 100L Only</div>
+          <div style="font-size: 1.2rem; font-weight: 800; color: #DDD6FE;" id="admin-stat-100l">--</div>
+        </div>
+        <div style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.25); padding: 0.65rem; border-radius: 10px; text-align: center;">
+          <div style="font-size: 0.72rem; color: #34D399; font-weight: 700;">Shared Both</div>
+          <div style="font-size: 1.2rem; font-weight: 800; color: #A7F3D0;" id="admin-stat-shared">--</div>
+        </div>
+        <div style="background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25); padding: 0.65rem; border-radius: 10px; text-align: center;">
+          <div style="font-size: 0.72rem; color: #F87171; font-weight: 700;">Needs Review</div>
+          <div style="font-size: 1.2rem; font-weight: 800; color: #FECACA;" id="admin-stat-review">--</div>
+        </div>
+      </div>
+
+      <!-- Filters & Search Toolbar -->
+      <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.85rem; flex-wrap: wrap; flex-shrink: 0;">
+        <input type="text" id="admin-search-input" placeholder="Search by title, category, ID..." oninput="filterAdminInventory()" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 0.5rem 0.85rem; color: #FFF; font-size: 0.85rem; flex: 1; min-width: 200px;" />
+        <div style="display: flex; gap: 0.35rem;">
+          <button class="filter-chip active" id="admin-btn-all" onclick="setAdminFilter('all', event)">All</button>
+          <button class="filter-chip" id="admin-btn-utme" onclick="setAdminFilter('utme', event)">UTME</button>
+          <button class="filter-chip" id="admin-btn-100l" onclick="setAdminFilter('100l', event)">100L</button>
+          <button class="filter-chip" id="admin-btn-shared" onclick="setAdminFilter('shared', event)">Shared</button>
+        </div>
+      </div>
+
+      <!-- Items Table Container (Scrollable) -->
+      <div style="overflow-y: auto; flex: 1; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; min-height: 250px;">
+        <table class="admin-inventory-table">
+          <thead>
+            <tr>
+              <th>Title / Resource</th>
+              <th>Category / Type</th>
+              <th>Current Audience</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-inventory-table-body">
+            <tr><td colspan="4" style="text-align: center; color: #94A3B8; padding: 2rem;">Loading content inventory...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="/utme.js" defer></script>
 </body>
 </html>
