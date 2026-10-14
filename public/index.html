@@ -3670,28 +3670,62 @@
     }
 
     .audience-switch-option-card {
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 14px;
-      padding: 1.25rem;
-      margin-bottom: 0.85rem;
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 16px;
+      padding: 1.15rem 1.25rem;
+      margin-bottom: 0.95rem;
       cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
+      transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex !important;
+      flex-direction: row !important;
+      gap: 1rem !important;
+      align-items: center !important;
+      box-sizing: border-box !important;
+      width: 100% !important;
+      position: relative;
+      user-select: none;
     }
 
     .audience-switch-option-card:hover {
-      border-color: rgba(139, 92, 246, 0.4);
-      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.07);
       transform: translateY(-2px);
     }
 
-    .audience-switch-option-card.selected {
-      border-color: var(--ps-purple-primary);
-      background: rgba(139, 92, 246, 0.12);
-      box-shadow: 0 0 0 1px var(--ps-purple-primary), var(--glow-brand-sm);
+    .audience-switch-option-card.card-utme.selected {
+      border-color: #F59E0B !important;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.14) 0%, rgba(217, 119, 6, 0.22) 100%) !important;
+      box-shadow: 0 0 24px rgba(245, 158, 11, 0.28), 0 0 0 1px #F59E0B !important;
+    }
+
+    .audience-switch-option-card.card-100l.selected {
+      border-color: #8B5CF6 !important;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.14) 0%, rgba(109, 40, 217, 0.24) 100%) !important;
+      box-shadow: 0 0 24px rgba(139, 92, 246, 0.28), 0 0 0 1px #8B5CF6 !important;
+    }
+
+    .audience-switch-radio {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .audience-switch-option-card.card-utme.selected .audience-switch-radio {
+      border-color: #F59E0B;
+      background: rgba(245, 158, 11, 0.2);
+    }
+
+    .audience-switch-option-card.card-100l.selected .audience-switch-radio {
+      border-color: #8B5CF6;
+      background: rgba(139, 92, 246, 0.2);
     }
 
     .admin-inventory-table {
@@ -5010,8 +5044,9 @@
       carousel.addEventListener("mouseenter", pauseCarouselTimer);
       carousel.addEventListener("mouseleave", startCarouselTimer);
 
-      // Keyboard arrow navigation
+      // Keyboard arrow & modal escape navigation
       window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeAudienceSwitchModal();
         if (e.key === "ArrowLeft") prevHeroSlide();
         if (e.key === "ArrowRight") nextHeroSlide();
       });
@@ -7174,19 +7209,57 @@
       appData._pendingAudience = aud;
       const utmeCard = document.getElementById("switch-card-utme");
       const uiCard = document.getElementById("switch-card-100l");
+      const utmeRadio = document.getElementById("switch-radio-utme");
+      const uiRadio = document.getElementById("switch-radio-100l");
+
       if (aud === 'UTME_STUDENT') {
-        if (utmeCard) utmeCard.classList.add("selected");
-        if (uiCard) uiCard.classList.remove("selected");
+        if (utmeCard) {
+          utmeCard.classList.add("selected");
+          utmeCard.setAttribute("aria-checked", "true");
+        }
+        if (uiCard) {
+          uiCard.classList.remove("selected");
+          uiCard.setAttribute("aria-checked", "false");
+        }
+        if (utmeRadio) utmeRadio.innerHTML = `<div style="width: 10px; height: 10px; border-radius: 50%; background: #F59E0B; box-shadow: 0 0 8px #F59E0B;"></div>`;
+        if (uiRadio) uiRadio.innerHTML = '';
       } else {
-        if (uiCard) uiCard.classList.add("selected");
-        if (utmeCard) utmeCard.classList.remove("selected");
+        if (uiCard) {
+          uiCard.classList.add("selected");
+          uiCard.setAttribute("aria-checked", "true");
+        }
+        if (utmeCard) {
+          utmeCard.classList.remove("selected");
+          utmeCard.setAttribute("aria-checked", "false");
+        }
+        if (uiRadio) uiRadio.innerHTML = `<div style="width: 10px; height: 10px; border-radius: 50%; background: #8B5CF6; box-shadow: 0 0 8px #8B5CF6;"></div>`;
+        if (utmeRadio) utmeRadio.innerHTML = '';
       }
     }
 
-    function applyAudienceSwitchFromModal() {
+    async function applyAudienceSwitchFromModal() {
       const selected = appData._pendingAudience || 'UI_100_LEVEL_STUDENT';
+      const btn = document.getElementById("apply-audience-switch-btn");
+      if (btn) {
+        btn.textContent = "Switching Experience...";
+        btn.disabled = true;
+      }
       closeAudienceSwitchModal();
-      setAudience(selected);
+
+      // Immediately switch tab and scroll up so the transition is instant
+      if (selected === 'UTME_STUDENT') {
+        switchTab('cbt');
+      } else {
+        switchTab('home');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      await setAudience(selected);
+
+      if (btn) {
+        btn.textContent = "Apply & Switch Experience →";
+        btn.disabled = false;
+      }
     }
 
     function updateAudienceUI() {
@@ -7877,14 +7950,14 @@
   </div>
 
   <!-- AUDIENCE SWITCH MODAL (Instant audience segment toggling) -->
-  <div id="audience-switch-modal" class="onboarding-modal-overlay">
-    <div class="onboarding-card" style="max-width: 520px;">
+  <div id="audience-switch-modal" class="onboarding-modal-overlay" onclick="if(event.target === this) closeAudienceSwitchModal()">
+    <div class="onboarding-card" style="max-width: 520px;" role="dialog" aria-modal="true" aria-labelledby="audience-switch-title">
       <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1.25rem;">
         <div>
           <span style="font-size: 0.74rem; font-weight: 800; color: var(--ps-purple-light); text-transform: uppercase; letter-spacing: 0.6px;">Audience Customization</span>
-          <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; color: #FFFFFF; margin-top: 0.15rem;">Select Student Experience</h2>
+          <h2 id="audience-switch-title" style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; color: #FFFFFF; margin-top: 0.15rem;">Select Student Experience</h2>
         </div>
-        <button class="pwa-modal-close" style="position: static;" onclick="closeAudienceSwitchModal()"><svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        <button class="pwa-modal-close" style="position: static;" onclick="closeAudienceSwitchModal()" aria-label="Close modal"><svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
 
       <p style="color: #CBD5E1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.25rem;">
@@ -7892,35 +7965,37 @@
       </p>
 
       <!-- Option A: UTME -->
-      <div class="audience-switch-option-card" id="switch-card-utme" onclick="selectAudienceOption('UTME_STUDENT')">
-        <div style="background: rgba(245, 158, 11, 0.2); color: #FBBF24; padding: 0.75rem; border-radius: 12px; flex-shrink: 0;">
+      <div class="audience-switch-option-card card-utme" id="switch-card-utme" role="radio" aria-checked="false" tabindex="0" onclick="selectAudienceOption('UTME_STUDENT')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectAudienceOption('UTME_STUDENT'); }">
+        <div style="width: 44px; height: 44px; background: rgba(245, 158, 11, 0.2); color: #FBBF24; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(245, 158, 11, 0.35);">
           <svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
         </div>
-        <div style="flex: 1;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+        <div style="flex: 1; min-width: 0;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
             <div style="font-size: 1.05rem; font-weight: 800; color: #FFFFFF; font-family: 'Outfit', sans-serif;">Audience A: UTME Preparation</div>
             <span class="audience-badge-chip audience-badge-chip--utme">Aspirants</span>
           </div>
-          <div style="font-size: 0.85rem; color: #94A3B8; line-height: 1.45;">
+          <div style="font-size: 0.84rem; color: #94A3B8; line-height: 1.45;">
             Candidates preparing for JAMB UTME examination and university admissions. Access CBT simulations, syllabus guides, question banks, and UI cut-off calculators.
           </div>
         </div>
+        <div class="audience-switch-radio" id="switch-radio-utme"></div>
       </div>
 
       <!-- Option B: UI 100L -->
-      <div class="audience-switch-option-card" id="switch-card-100l" onclick="selectAudienceOption('UI_100_LEVEL_STUDENT')">
-        <div style="background: rgba(139, 92, 246, 0.2); color: #C084FC; padding: 0.75rem; border-radius: 12px; flex-shrink: 0;">
+      <div class="audience-switch-option-card card-100l" id="switch-card-100l" role="radio" aria-checked="false" tabindex="0" onclick="selectAudienceOption('UI_100_LEVEL_STUDENT')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectAudienceOption('UI_100_LEVEL_STUDENT'); }">
+        <div style="width: 44px; height: 44px; background: rgba(139, 92, 246, 0.2); color: #C084FC; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(139, 92, 246, 0.35);">
           <svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
         </div>
-        <div style="flex: 1;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+        <div style="flex: 1; min-width: 0;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
             <div style="font-size: 1.05rem; font-weight: 800; color: #FFFFFF; font-family: 'Outfit', sans-serif;">Audience B: UI 100-Level</div>
             <span class="audience-badge-chip audience-badge-chip--100l">Undergraduates</span>
           </div>
-          <div style="font-size: 0.85rem; color: #94A3B8; line-height: 1.45;">
+          <div style="font-size: 0.84rem; color: #94A3B8; line-height: 1.45;">
             Enrolled University of Ibadan first-year students. Access departmental course packages across 17 faculties, lecture note drive vaults, CGPA guidelines, and clearance handbooks.
           </div>
         </div>
+        <div class="audience-switch-radio" id="switch-radio-100l"></div>
       </div>
 
       <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 0.75rem 0.95rem; margin-top: 1rem; display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: #94A3B8;">
@@ -7929,7 +8004,7 @@
       </div>
 
       <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 1.5rem;">
-        <button onclick="closeAudienceSwitchModal()" style="background: transparent; border: none; color: #94A3B8; font-size: 0.88rem; font-weight: 600; cursor: pointer;">Cancel</button>
+        <button onclick="closeAudienceSwitchModal()" style="background: transparent; border: none; color: #94A3B8; font-size: 0.88rem; font-weight: 600; cursor: pointer; padding: 0.6rem 1rem; border-radius: 8px; transition: color 0.15s ease;" onmouseover="this.style.color='#FFFFFF'" onmouseout="this.style.color='#94A3B8'">Cancel</button>
         <button id="apply-audience-switch-btn" onclick="applyAudienceSwitchFromModal()" class="wizard-launch-btn">Apply & Switch Experience →</button>
       </div>
     </div>
