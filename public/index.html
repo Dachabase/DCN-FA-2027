@@ -5770,7 +5770,7 @@
       const shareUrl = window.location.href;
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(shareUrl).then(() => {
-          showAppToast("<svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg>Link copied to clipboard!");
+          showAppToast('<svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg>Link copied to clipboard!');
         }).catch(() => {
           showAppToast("Link: " + shareUrl);
         });
@@ -5781,9 +5781,9 @@
 
     function rateGuideHelpful(isHelpful) {
       if (isHelpful) {
-        showAppToast("<svg class=\"app-icon app-icon-mr\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z\"/></svg>Thank you for your feedback!");
+        showAppToast('<svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>Thank you for your feedback!');
       } else {
-        showAppToast("<svg class="app-icon app-icon-mr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>Thanks! We'll review and update this guide.");
+        showAppToast('<svg class="app-icon app-icon-mr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>Thanks! We\'ll review and update this guide.');
       }
       if (currentActiveGuide) {
         logUserInteraction("RATE_GUIDE", currentActiveGuide.id, { helpful: isHelpful });
@@ -6021,14 +6021,21 @@
           return;
         }
 
+        let attempts = 0;
         const waitForGIS = (resolve) => {
           if (typeof google !== "undefined" && google.accounts) {
-            resolve();
-          } else {
+            resolve(true);
+          } else if (attempts++ < 25) { // poll up to 5 seconds
             setTimeout(() => waitForGIS(resolve), 200);
+          } else {
+            resolve(false);
           }
         };
-        await new Promise(waitForGIS);
+        const gisLoaded = await new Promise(waitForGIS);
+        if (!gisLoaded) {
+          console.info("Google Identity Services script unavailable or blocked; full page OAuth will be used.");
+          return;
+        }
 
         // A. Google ID Token Flow (One-Tap & Native rendered buttons)
         if (google.accounts.id) {
@@ -6051,7 +6058,8 @@
               }
             },
             error_callback: (err) => {
-              console.warn("Google OAuth popup error:", err);
+              console.warn("Google OAuth popup error, falling back to full-page redirect:", err);
+              window.location.href = "/api/auth/google/login";
             }
           });
         }
@@ -6325,7 +6333,7 @@
           alert("Could not confirm profile: " + (json.message || "Please try again."));
           if (confirmBtn) {
             confirmBtn.disabled = false;
-            confirmBtn.textContent = "<svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Confirm";
+            confirmBtn.innerHTML = '<svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Confirm';
           }
         }
       } catch (err) {
@@ -6333,7 +6341,7 @@
         alert("Network error confirming profile. Please try again.");
         if (confirmBtn) {
           confirmBtn.disabled = false;
-          confirmBtn.textContent = "<svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Confirm";
+          confirmBtn.innerHTML = '<svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Confirm';
         }
       }
     }

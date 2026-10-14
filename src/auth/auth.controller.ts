@@ -25,15 +25,27 @@ authRouter.get("/config", (req: Request, res: Response) => {
   });
 });
 
+function getRedirectUri(req: Request): string {
+  const forwardedProto = req.headers["x-forwarded-proto"];
+  let protocol = "https";
+  if (typeof forwardedProto === "string") {
+    protocol = forwardedProto.split(",")[0].trim();
+  } else if (Array.isArray(forwardedProto) && forwardedProto.length > 0) {
+    protocol = String(forwardedProto[0]).split(",")[0].trim();
+  } else if (req.protocol) {
+    protocol = req.protocol;
+  }
+  const host = req.get("host");
+  return `${protocol}://${host}/api/auth/callback/google`;
+}
+
 // GET /api/auth/google/login - Standard Google OAuth 2.0 Redirect Authorization Flow
 authRouter.get("/google/login", (req: Request, res: Response) => {
   const googleClientId = process.env.GOOGLE_CLIENT_ID;
-  const protocol = req.headers["x-forwarded-proto"] || req.protocol;
-  const host = req.get("host");
-  const redirectUri = `${protocol}://${host}/api/auth/callback/google`;
+  const redirectUri = getRedirectUri(req);
 
-  // If live Google credentials exist, redirect directly to Google OAuth 2.0
-  if (googleClientId && process.env.GOOGLE_CLIENT_SECRET) {
+  // If live Google credentials exist, redirect directly to Google OAuth 2.0 unless chooser=1 requested
+  if (req.query.chooser !== "1" && googleClientId && process.env.GOOGLE_CLIENT_SECRET) {
     const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?` + new URLSearchParams({
       client_id: googleClientId,
       redirect_uri: redirectUri,
@@ -328,9 +340,7 @@ authRouter.get("/callback/google", async (req: Request, res: Response) => {
       return res.redirect("/#/home?auth_error=missing_authorization_code");
     }
 
-    const protocol = req.headers["x-forwarded-proto"] || req.protocol;
-    const host = req.get("host");
-    const redirectUri = `${protocol}://${host}/api/auth/callback/google`;
+    const redirectUri = getRedirectUri(req);
 
     const googleIdentity = await exchangeGoogleCode(String(code), redirectUri);
     const user = await syncGoogleUser(googleIdentity);
