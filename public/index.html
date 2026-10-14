@@ -3561,6 +3561,729 @@
       gap: 0.25rem;
     }
 
+    /* =========================================================
+       READER THEMES & CONTROLS (LIGHT, SEPIA, DARK) FOR ARTICLE PAGES
+       ========================================================= */
+    body.reader-light-mode {
+      background: #F8FAFC !important;
+      color: #0F172A !important;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    body.reader-light-mode header {
+      background: rgba(255, 255, 255, 0.94) !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+      backdrop-filter: blur(14px) !important;
+      -webkit-backdrop-filter: blur(14px) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+    }
+
+    body.reader-light-mode header .brand {
+      color: #0F172A !important;
+    }
+
+    body.reader-light-mode header .nav-btn {
+      color: #475569 !important;
+    }
+
+    body.reader-light-mode header .nav-btn:hover {
+      color: #7C3AED !important;
+      background: rgba(124, 58, 237, 0.06) !important;
+    }
+
+    body.reader-light-mode header .nav-btn.active {
+      color: #7C3AED !important;
+      background: rgba(124, 58, 237, 0.1) !important;
+    }
+
+    body.reader-light-mode .audience-toggle-btn {
+      background: #FFFFFF !important;
+      border: 1px solid #CBD5E1 !important;
+      color: #0F172A !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+    }
+
+    body.reader-light-mode .audience-toggle--100l {
+      border-color: rgba(139, 92, 246, 0.4) !important;
+      color: #6D28D9 !important;
+    }
+
+    body.reader-light-mode .audience-toggle--utme {
+      border-color: rgba(245, 158, 11, 0.45) !important;
+      color: #B45309 !important;
+    }
+
+    body.reader-light-mode .header-profile-btn {
+      background: #FFFFFF !important;
+      border: 1px solid #CBD5E1 !important;
+      color: #0F172A !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+    }
+
+    body.reader-light-mode .profile-badge-chip {
+      background: #F3E8FF !important;
+      color: #6D28D9 !important;
+      border: 1px solid #DDD6FE !important;
+    }
+
+    /* Sepia Global Accents */
+    body.reader-sepia-mode {
+      background: #FBF0D9 !important;
+      color: #2D2319 !important;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    body.reader-sepia-mode header {
+      background: rgba(251, 240, 217, 0.95) !important;
+      border-bottom: 1px solid rgba(138, 102, 53, 0.16) !important;
+      backdrop-filter: blur(14px) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+    }
+
+    body.reader-sepia-mode header .brand {
+      color: #2D2319 !important;
+    }
+
+    body.reader-sepia-mode header .nav-btn {
+      color: #634C32 !important;
+    }
+
+    body.reader-sepia-mode header .nav-btn:hover,
+    body.reader-sepia-mode header .nav-btn.active {
+      color: #92400E !important;
+      background: rgba(146, 64, 14, 0.08) !important;
+    }
+
+    body.reader-sepia-mode .audience-toggle-btn {
+      background: #F5EEE0 !important;
+      border: 1px solid #DBCDB2 !important;
+      color: #2D2319 !important;
+    }
+
+    body.reader-sepia-mode .header-profile-btn {
+      background: #F5EEE0 !important;
+      border: 1px solid #DBCDB2 !important;
+      color: #2D2319 !important;
+    }
+
+    /* Reader Header Toolbar */
+    .reader-toolbar-group {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-left: auto;
+      flex-wrap: wrap;
+    }
+
+    .reader-theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      padding: 3px;
+      gap: 2px;
+      transition: all 0.2s ease;
+    }
+
+    body.reader-light-mode .reader-theme-toggle {
+      background: #E2E8F0;
+      border-color: #CBD5E1;
+    }
+
+    body.reader-sepia-mode .reader-theme-toggle {
+      background: #EFE4CC;
+      border-color: #DECDB0;
+    }
+
+    .reader-theme-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: transparent;
+      border: none;
+      color: #94A3B8;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.32rem 0.65rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      font-family: 'Outfit', sans-serif;
+      user-select: none;
+    }
+
+    .reader-theme-btn:hover {
+      color: #FFFFFF;
+    }
+
+    body.reader-light-mode .reader-theme-btn {
+      color: #64748B;
+    }
+
+    body.reader-light-mode .reader-theme-btn:hover {
+      color: #0F172A;
+    }
+
+    body.reader-sepia-mode .reader-theme-btn {
+      color: #786248;
+    }
+
+    body.reader-sepia-mode .reader-theme-btn:hover {
+      color: #2D2319;
+    }
+
+    .reader-theme-btn.active {
+      background: #FFFFFF;
+      color: #0F172A !important;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+    }
+
+    #btn-theme-dark.active {
+      background: #1E192D;
+      color: #FFFFFF !important;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+    }
+
+    #btn-theme-sepia.active {
+      background: #FDF6E2;
+      color: #5C3E14 !important;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    .sepia-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #D97706;
+      display: inline-block;
+    }
+
+    .reader-font-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      padding: 3px;
+    }
+
+    body.reader-light-mode .reader-font-controls {
+      background: #E2E8F0;
+      border-color: #CBD5E1;
+    }
+
+    body.reader-sepia-mode .reader-font-controls {
+      background: #EFE4CC;
+      border-color: #DECDB0;
+    }
+
+    .reader-font-btn {
+      background: transparent;
+      border: none;
+      color: #94A3B8;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 0.32rem 0.55rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .reader-font-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+    }
+
+    body.reader-light-mode .reader-font-btn {
+      color: #64748B;
+    }
+
+    body.reader-light-mode .reader-font-btn:hover {
+      background: #FFFFFF;
+      color: #0F172A;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    body.reader-sepia-mode .reader-font-btn {
+      color: #786248;
+    }
+
+    body.reader-sepia-mode .reader-font-btn:hover {
+      background: #FDF6E2;
+      color: #2D2319;
+    }
+
+    /* ---------------------------------------------------------
+       LIGHT MODE SPECIFICS FOR #tab-guide-detail
+       --------------------------------------------------------- */
+    #tab-guide-detail[data-reader-theme="light"] .guide-back-pill {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      color: #334155;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-back-pill:hover {
+      background: #F1F5F9;
+      color: #0F172A;
+      border-color: #94A3B8;
+      transform: translateX(-2px);
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-breadcrumb .crumb-link {
+      color: #7C3AED;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-breadcrumb .crumb-sep {
+      color: #94A3B8;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-breadcrumb .crumb-active {
+      color: #0F172A;
+      font-weight: 600;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 12px 36px -4px rgba(15, 23, 42, 0.06), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-title {
+      color: #0F172A;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-meta-item {
+      color: #64748B;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .verified-pill {
+      background: #ECFDF5;
+      color: #047857;
+      border: 1px solid #A7F3D0;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .card-badge {
+      background: #F3E8FF;
+      color: #6D28D9;
+      border: 1px solid #DDD6FE;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-provenance-box {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-author-avatar {
+      background: #EDE9FE;
+      border: 1px solid #DDD6FE;
+      color: #7C3AED;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] #guide-author-name {
+      color: #0F172A !important;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] #guide-verified-date {
+      color: #64748B !important;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-share-btn {
+      background: #F5F3FF;
+      border: 1px solid #DDD6FE;
+      color: #6D28D9;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-share-btn:hover {
+      background: #7C3AED;
+      color: #FFFFFF;
+      border-color: #7C3AED;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-lead {
+      background: #F8FAFC;
+      border-left: 4px solid #7C3AED;
+      color: #334155;
+      border-radius: 0 10px 10px 0;
+      padding: 1.15rem 1.35rem;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-divider {
+      background: #E2E8F0 !important;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-body {
+      color: #334155;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-body p {
+      color: #334155;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-body h2 {
+      color: #0F172A;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-body h3 {
+      color: #1E293B;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-body ul,
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-body ol {
+      color: #334155;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-body strong {
+      color: #0F172A;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-body blockquote {
+      background: #F8FAFC;
+      border-left: 4px solid #7C3AED;
+      color: #1E293B;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-body code {
+      background: #F1F5F9;
+      color: #BE185D;
+      border: 1px solid #E2E8F0;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-body pre {
+      background: #0F172A;
+      border: 1px solid #1E293B;
+      color: #E2E8F0;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-body pre code {
+      background: transparent;
+      border: none;
+      color: #DDD6FE;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-body table {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-body th {
+      background: #F8FAFC;
+      color: #475569;
+      border-bottom: 2px solid #E2E8F0;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-body td {
+      color: #334155;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-body tr:nth-child(even) td {
+      background: #FAFAFA;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-article-body hr {
+      background: #E2E8F0;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-series-banner {
+      background: #F5F3FF;
+      border: 1px solid #DDD6FE;
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.06);
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .series-icon-pill {
+      background: #EDE9FE;
+      color: #7C3AED;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .series-title-text {
+      color: #5B21B6;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .series-dropdown-select {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      color: #0F172A;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .series-nav-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .series-nav-card:hover {
+      border-color: #7C3AED;
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.08);
+      transform: translateY(-2px);
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .series-nav-label {
+      color: #7C3AED;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .series-nav-title {
+      color: #0F172A;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] #guide-article-faq-container {
+      border-top: 1px solid #E2E8F0 !important;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] #guide-article-faq-container h3 {
+      color: #0F172A !important;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] #guide-article-faq-list > div {
+      background: #FFFFFF !important;
+      border: 1px solid #E2E8F0 !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] #guide-article-faq-list button {
+      color: #0F172A !important;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] #guide-article-faq-list div[id^="article-faq-ans-"] {
+      color: #475569 !important;
+      border-top: 1px solid #F1F5F9;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-footer-feedback {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      color: #475569;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-footer-feedback > div > div:first-child {
+      color: #0F172A !important;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-footer-feedback > div > div:last-child {
+      color: #64748B !important;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .feedback-btn {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      color: #334155;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .feedback-btn:hover {
+      background: #EDE9FE;
+      border-color: #7C3AED;
+      color: #6D28D9;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-related-header h3 {
+      color: #0F172A !important;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-related-header p {
+      color: #64748B !important;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .guide-view-all-btn {
+      color: #7C3AED;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .card {
+      background: #FFFFFF !important;
+      border: 1px solid #E2E8F0 !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03) !important;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .card:hover {
+      border-color: #7C3AED !important;
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.08) !important;
+      transform: translateY(-2px);
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .card-title {
+      color: #0F172A !important;
+    }
+
+    #tab-guide-detail[data-reader-theme="light"] .card-desc {
+      color: #64748B !important;
+    }
+
+    /* ---------------------------------------------------------
+       SEPIA MODE SPECIFICS FOR #tab-guide-detail
+       --------------------------------------------------------- */
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-back-pill {
+      background: #FDF6E2;
+      border: 1px solid #DBCDB2;
+      color: #4A3B29;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-back-pill:hover {
+      background: #F5EEE0;
+      color: #2D2319;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-breadcrumb .crumb-link {
+      color: #B45309;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-breadcrumb .crumb-sep {
+      color: #A38E75;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-breadcrumb .crumb-active {
+      color: #2D2319;
+      font-weight: 600;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-article-card {
+      background: #FDF7EB;
+      border: 1px solid #E8DCBE;
+      box-shadow: 0 10px 30px -5px rgba(84, 56, 18, 0.06);
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-article-title {
+      color: #2D2319;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-meta-item {
+      color: #786248;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .verified-pill {
+      background: #F3EBD9;
+      color: #065F46;
+      border: 1px solid #CBDDC8;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .card-badge {
+      background: #F3E4CA;
+      color: #854D0E;
+      border: 1px solid #DFCC9C;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-provenance-box {
+      background: #F5EEE0;
+      border: 1px solid #E2D5BE;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] #guide-author-name {
+      color: #2D2319 !important;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] #guide-verified-date {
+      color: #786248 !important;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-share-btn {
+      background: #EFE4CC;
+      border: 1px solid #DECDB0;
+      color: #78350F;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-article-lead {
+      background: #F5EEE0;
+      border-left: 4px solid #B45309;
+      color: #3F3427;
+      border-radius: 0 10px 10px 0;
+      padding: 1.15rem 1.35rem;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-divider {
+      background: #E6DBC5 !important;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-article-body {
+      color: #3F3427;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-article-body p {
+      color: #3F3427;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-article-body h2 {
+      color: #2D2319;
+      border-bottom: 1px solid #E6DBC5;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-article-body h3 {
+      color: #3F3427;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-article-body strong {
+      color: #1F170F;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-article-body blockquote {
+      background: #F5EEE0;
+      border-left: 4px solid #B45309;
+      color: #2D2319;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-article-body code {
+      background: #EFE4CC;
+      color: #9A3412;
+      border: 1px solid #DECDB0;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-article-body table {
+      background: #FDF7EB;
+      border: 1px solid #E6DBC5;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-article-body th {
+      background: #F5EEE0;
+      color: #634C32;
+      border-bottom: 2px solid #E6DBC5;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-article-body td {
+      color: #3F3427;
+      border-bottom: 1px solid #E6DBC5;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .guide-series-banner {
+      background: #F7EBD3;
+      border: 1px solid #E0CFA9;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .series-icon-pill {
+      background: #EFE4CC;
+      color: #92400E;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .series-title-text {
+      color: #78350F;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .series-nav-card {
+      background: #FDF7EB;
+      border: 1px solid #E6DBC5;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .series-nav-label {
+      color: #B45309;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .series-nav-title {
+      color: #2D2319;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .card {
+      background: #FDF7EB !important;
+      border: 1px solid #E6DBC5 !important;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .card-title {
+      color: #2D2319 !important;
+    }
+
+    #tab-guide-detail[data-reader-theme="sepia"] .card-desc {
+      color: #786248 !important;
+    }
+
     /* REDUCED MOTION PREFERENCES & ACCESSIBILITY */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
@@ -4378,18 +5101,42 @@
       <div id="guide-reading-progress-bar" class="guide-reading-progress-bar"></div>
 
       <div class="guide-reader-container">
-        <!-- Navigation Header -->
+        <!-- Navigation Header & Reader Controls -->
         <div class="guide-nav-header">
-          <button class="guide-back-pill" onclick="closeGuideDetail()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            Back to Guides
-          </button>
-          <div class="guide-breadcrumb">
-            <span class="crumb-link" onclick="switchTab('guides')">Guides</span>
-            <span class="crumb-sep">/</span>
-            <span id="guide-crumb-category">Academic</span>
-            <span class="crumb-sep">/</span>
-            <span id="guide-crumb-title" class="crumb-active">Article</span>
+          <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+            <button class="guide-back-pill" onclick="closeGuideDetail()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              Back to Guides
+            </button>
+            <div class="guide-breadcrumb">
+              <span class="crumb-link" onclick="switchTab('guides')">Guides</span>
+              <span class="crumb-sep">/</span>
+              <span id="guide-crumb-category">Academic</span>
+              <span class="crumb-sep">/</span>
+              <span id="guide-crumb-title" class="crumb-active">Article</span>
+            </div>
+          </div>
+
+          <!-- Reader Controls Toolbar: Light, Sepia, Dark & Font Resizing -->
+          <div class="reader-toolbar-group">
+            <div class="reader-theme-toggle" role="radiogroup" aria-label="Reading Mode Theme">
+              <button class="reader-theme-btn active" id="btn-theme-light" onclick="setReaderTheme('light')" title="Clean light reading mode">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                <span>Light</span>
+              </button>
+              <button class="reader-theme-btn" id="btn-theme-sepia" onclick="setReaderTheme('sepia')" title="Warm eye-care sepia">
+                <span class="sepia-dot"></span>
+                <span>Sepia</span>
+              </button>
+              <button class="reader-theme-btn" id="btn-theme-dark" onclick="setReaderTheme('dark')" title="Midnight dark mode">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <span>Dark</span>
+              </button>
+            </div>
+            <div class="reader-font-controls">
+              <button class="reader-font-btn" onclick="adjustReaderFontSize(-1)" title="Smaller text">A−</button>
+              <button class="reader-font-btn" onclick="adjustReaderFontSize(1)" title="Larger text">A+</button>
+            </div>
           </div>
         </div>
 
@@ -4449,7 +5196,7 @@
           </div>
 
           <!-- Divider -->
-          <div style="height: 1px; background: rgba(255,255,255,0.08); margin: 2rem 0;"></div>
+          <div class="guide-divider" style="height: 1px; background: rgba(255,255,255,0.08); margin: 2rem 0;"></div>
 
           <!-- Markdown Content Body -->
           <article id="guide-article-body" class="guide-article-body">
@@ -4992,6 +5739,7 @@
       document.querySelectorAll(".tab-section").forEach(s => s.classList.remove("active"));
       document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
       document.querySelectorAll(".mobile-nav-btn").forEach(b => b.classList.remove("active"));
+      document.body.classList.remove('reader-light-mode', 'reader-sepia-mode');
 
       // Activate target section
       const targetTab = document.getElementById(`tab-${tabId}`);
@@ -6012,6 +6760,9 @@
         history.pushState({ tab: 'guides', guideId: guide.id }, '', `#/guides/${guide.id}`);
       }
 
+      // Apply reader theme (defaulting to light mode for reading pages)
+      setReaderTheme(getReaderTheme());
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
       // Track interaction telemetry
@@ -6036,9 +6787,61 @@
       }
     }
 
+    /* READER MODE THEME CONTROLLER (Light, Sepia, Dark & Font Scale) */
+    function getReaderTheme() {
+      return localStorage.getItem('dcn_reader_theme') || 'light';
+    }
+
+    function setReaderTheme(theme) {
+      if (!theme || (theme !== 'light' && theme !== 'sepia' && theme !== 'dark')) {
+        theme = 'light';
+      }
+      localStorage.setItem('dcn_reader_theme', theme);
+
+      const readerSection = document.getElementById("tab-guide-detail");
+      if (readerSection) {
+        readerSection.setAttribute("data-reader-theme", theme);
+      }
+
+      // Sync document body class for global background & header transition
+      document.body.classList.remove('reader-light-mode', 'reader-sepia-mode');
+      if (readerSection && readerSection.style.display !== 'none') {
+        if (theme === 'light') {
+          document.body.classList.add('reader-light-mode');
+        } else if (theme === 'sepia') {
+          document.body.classList.add('reader-sepia-mode');
+        }
+      }
+
+      // Update button active state
+      ['light', 'sepia', 'dark'].forEach(t => {
+        const btn = document.getElementById(`btn-theme-${t}`);
+        if (btn) {
+          if (t === theme) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        }
+      });
+    }
+
+    let currentReaderFontScale = 1.0;
+    function adjustReaderFontSize(direction) {
+      currentReaderFontScale += direction * 0.08;
+      if (currentReaderFontScale < 0.88) currentReaderFontScale = 0.88;
+      if (currentReaderFontScale > 1.35) currentReaderFontScale = 1.35;
+      
+      const bodyEl = document.getElementById("guide-article-body");
+      if (bodyEl) {
+        bodyEl.style.fontSize = `${(1.05 * currentReaderFontScale).toFixed(2)}rem`;
+      }
+    }
+
     function closeGuideDetail() {
       const readerSection = document.getElementById("tab-guide-detail");
       if (readerSection) readerSection.style.display = "none";
+      document.body.classList.remove('reader-light-mode', 'reader-sepia-mode');
       switchTab('guides', null, true);
     }
 
