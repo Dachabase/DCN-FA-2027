@@ -6,9 +6,14 @@ export interface StartExamOptions {
   guestSessionId?: string | null;
   courseSlug?: string;
   customSubjectCodes?: string[];
-  mode?: "FULL_UTME_SIMULATION" | "PRACTICE_MODE" | "TOPIC_REVISION";
+  mode?: "FULL_UTME_SIMULATION" | "PRACTICE_MODE" | "TOPIC_REVISION" | "QUICK_DRILL" | "CUSTOM";
+  durationMinutes?: number;
+  questionCount?: number;
   institutionName?: string;
   topic?: string;
+  difficulty?: string;
+  isInstantFeedback?: boolean;
+  examType?: string;
 }
 
 export class UtmeService {
@@ -49,7 +54,7 @@ export class UtmeService {
     }));
   }
 
-  // 3. Start a Mock Exam (Full Simulation or Practice Mode)
+  // 3. Start a Mock Exam (Full Simulation, Flexible Practice, or Quick Drill)
   async startMockExam(options: StartExamOptions) {
     const mode = options.mode || "FULL_UTME_SIMULATION";
     let subjectCodes: string[] = [];
@@ -60,17 +65,17 @@ export class UtmeService {
         where: { slug: options.courseSlug },
       });
       if (courseComb) {
-        subjectCodes = courseComb.subjectCodes;
+        subjectCodes = [...courseComb.subjectCodes];
         courseName = courseComb.courseName;
       }
     }
 
     if (options.customSubjectCodes && options.customSubjectCodes.length > 0) {
-      subjectCodes = options.customSubjectCodes;
+      subjectCodes = [...options.customSubjectCodes];
     }
 
-    // Default UTME standard: ENG is always compulsory
-    if (!subjectCodes.includes("ENG")) {
+    // Default UTME standard: ENG is compulsory for full simulations
+    if (mode === "FULL_UTME_SIMULATION" && !subjectCodes.includes("ENG")) {
       subjectCodes.unshift("ENG");
     }
 
@@ -85,12 +90,53 @@ export class UtmeService {
       }
     }
 
-    // Determine question counts and time
-    // Standard UTME: ENG has 60 questions, others 40 questions = 180 questions, 120 minutes.
-    // Practice mode: ENG has 15 questions, others 10 questions = 45 questions, 35 minutes.
+    // Default fallback if no subject selected
+    if (subjectCodes.length === 0) {
+      subjectCodes = ["ENG", "BIO", "CHM", "PHY"];
+    }
+
+    // Determine duration: 15m, 30m, 45m, 60m, 120m, or custom
     const isFull = mode === "FULL_UTME_SIMULATION";
-    const durationMinutes = isFull ? 120 : 35;
+    let durationMinutes = options.durationMinutes || (isFull ? 120 : (mode === "QUICK_DRILL" ? 15 : 35));
+    if (durationMinutes < 1) durationMinutes = 15;
     const expiresAt = new Date(Date.now() + durationMinutes * 60 * 1000);
+
+    // Determine target question count matching selected duration or explicit configuration
+    let totalTargetQuestions = options.questionCount;
+    if (!totalTargetQuestions) {
+      if (isFull) {
+        totalTargetQuestions = 180;
+      } else if (durationMinutes <= 15) {
+        totalTargetQuestions = subjectCodes.length === 1 ? 15 : 20;
+      } else if (durationMinutes <= 30) {
+        totalTargetQuestions = subjectCodes.length === 1 ? 30 : 40;
+      } else if (durationMinutes <= 45) {
+        totalTargetQuestions = 60;
+      } else if (durationMinutes <= 60) {
+        totalTargetQuestions = 90;
+      } else {
+        totalTargetQuestions = 180;
+      }
+    }
+
+    // Allocate question targets per subject
+    const subjectTargets: Record<string, number> = {};
+    if (subjectCodes.length === 1) {
+      subjectTargets[subjectCodes[0]] = totalTargetQuestions;
+    } else if (isFull && subjectCodes.includes("ENG") && totalTargetQuestions === 180) {
+      subjectTargets["ENG"] = 60;
+      const otherCount = Math.floor(120 / (subjectCodes.length - 1));
+      for (const c of subjectCodes) {
+        if (c !== "ENG") subjectTargets[c] = otherCount;
+      }
+    } else {
+      const basePerSub = Math.floor(totalTargetQuestions / subjectCodes.length);
+      let remainder = totalTargetQuestions % subjectCodes.length;
+      for (const c of subjectCodes) {
+        subjectTargets[c] = basePerSub + (remainder > 0 ? 1 : 0);
+        if (remainder > 0) remainder--;
+      }
+    }
 
     const questionsList: any[] = [];
     const questionsSnapshot: any[] = [];
@@ -98,6 +144,7 @@ export class UtmeService {
     // Robust deduplication tracker across the entire mock examination
     const selectedQuestionIds = new Set<string>();
     const selectedNormalizedTexts = new Set<string>();
+    const selectedGroupIds = new Set<string>();
 
     const normalizeText = (txt: string): string => {
       return (txt || "")
@@ -136,7 +183,7 @@ export class UtmeService {
     }
 
     for (const code of subjectCodes) {
-      const targetCount = isFull ? (code === "ENG" ? 60 : 40) : (code === "ENG" ? 15 : 10);
+      const targetCount = subjectTargets[code] || 10;
       const subjectSelected: any[] = [];
 
       if (code === "ENG") {
@@ -144,25 +191,29 @@ export class UtmeService {
         // ENGLISH LANGUAGE: GROUP-AWARE STRUCTURED SELECTION
         // Preserves shared passages, question groups & logical ordering
         // =========================================================
-        const compTarget = isFull ? 10 : 5; // 2 passages (10 Qs) for full, 1 passage (5 Qs) for practice
+        const compTarget = Math.max(1, Math.min(Math.floor(targetCount * 0.35), 15));
         let compCount = 0;
 
-        // Fetch published comprehension groups with reading passages
+        // Fetch published comprehension groups with reading passages (excluding unverified/flagged)
         const compGroups = await prisma.utmeQuestionGroup.findMany({
           where: {
             subjectCode: "ENG",
             sectionType: "COMPREHENSION",
             passage: { not: null },
+            id: { notIn: Array.from(selectedGroupIds) },
           },
           include: {
             questions: {
-              where: { publicationStatus: "PUBLISHED" },
+              where: {
+                publicationStatus: "PUBLISHED",
+                verificationStatus: { not: "NEEDS_REVIEW" },
+              },
               orderBy: [{ groupOrder: "asc" }, { originalQuestionNumber: "asc" }],
             },
           },
         });
 
-        // Shuffle groups
+        // Shuffle groups as cohesive units
         const shuffledGroups = compGroups.sort(() => Math.random() - 0.5);
 
         for (const group of shuffledGroups) {
@@ -172,7 +223,8 @@ export class UtmeService {
             return !selectedQuestionIds.has(q.id) && !selectedNormalizedTexts.has(norm);
           });
 
-          if (groupQs.length >= 3) {
+          if (groupQs.length >= 2) {
+            selectedGroupIds.add(group.id);
             // Keep the group questions together in original sequential order
             for (const q of groupQs) {
               if (compCount >= compTarget) break;
@@ -192,6 +244,9 @@ export class UtmeService {
             where: {
               subjectCode: "ENG",
               publicationStatus: "PUBLISHED",
+              verificationStatus: { not: "NEEDS_REVIEW" },
+              groupId: null,
+              passage: null,
               id: { notIn: Array.from(selectedQuestionIds) },
             },
           });
@@ -221,8 +276,9 @@ export class UtmeService {
           where: {
             subjectCode: code,
             publicationStatus: "PUBLISHED",
+            verificationStatus: { not: "NEEDS_REVIEW" },
             id: { notIn: Array.from(selectedQuestionIds) },
-            ...(options.topic ? { topic: { contains: options.topic, mode: "insensitive" } } : {}),
+            ...(options.topic && options.topic !== "ALL" ? { topic: { contains: options.topic, mode: "insensitive" } } : {}),
           },
         });
 
@@ -247,7 +303,7 @@ export class UtmeService {
 
       // Add to overall exam list and snapshot with full visual and grouping metadata
       for (const q of subjectSelected) {
-        const studentView = {
+        const studentView: any = {
           id: q.id,
           subjectCode: q.subjectCode,
           subjectName: q.subjectName,
@@ -263,6 +319,10 @@ export class UtmeService {
           imageUrl: q.imageUrl || null,
           orderIndex: questionsList.length + 1,
         };
+        if (options.isInstantFeedback) {
+          studentView.correctAnswer = q.correctAnswer;
+          studentView.explanation = q.explanation;
+        }
         questionsList.push(studentView);
 
         // Immutable server snapshot with answers securely stored
@@ -300,12 +360,15 @@ export class UtmeService {
         guestSessionId: options.guestSessionId || `guest_${crypto.randomBytes(8).toString("hex")}`,
         courseName,
         institutionName: options.institutionName || "University of Ibadan (UI)",
-        mode: mode as any,
+        mode: (mode === "FULL_UTME_SIMULATION" ? "FULL_UTME_SIMULATION" : (mode === "TOPIC_REVISION" ? "TOPIC_REVISION" : "PRACTICE_MODE")) as any,
         subjectCodes,
         totalQuestions,
         durationMinutes,
         expiresAt,
         status: "IN_PROGRESS",
+        currentQuestionIndex: 0,
+        isInstantFeedback: options.isInstantFeedback || false,
+        examType: options.examType || (isFull ? "MOCK_SIMULATION" : mode === "QUICK_DRILL" ? "QUICK_DRILL" : "PRACTICE"),
         questionsSnapshot,
       },
     });
@@ -316,6 +379,9 @@ export class UtmeService {
       courseName: attempt.courseName,
       institutionName: attempt.institutionName,
       mode: attempt.mode,
+      examType: attempt.examType,
+      isInstantFeedback: attempt.isInstantFeedback,
+      currentQuestionIndex: 0,
       subjectCodes: attempt.subjectCodes,
       totalQuestions: attempt.totalQuestions,
       durationMinutes: attempt.durationMinutes,
@@ -382,24 +448,31 @@ export class UtmeService {
     const now = Date.now();
     const remainingSeconds = Math.max(0, Math.floor((attempt.expiresAt.getTime() - now) / 1000));
 
-    // Return student view questions (strip answers from snapshot)
+    // Return student view questions (strip answers from snapshot unless instant feedback mode)
     const snapshot = (attempt.questionsSnapshot as any[]) || [];
-    const sanitizedQuestions = snapshot.map((q) => ({
-      id: q.id,
-      subjectCode: q.subjectCode,
-      subjectName: q.subjectName,
-      topic: q.topic,
-      examYear: q.examYear,
-      questionText: q.questionText,
-      passage: q.passage || null,
-      sectionName: q.sectionName || null,
-      sectionType: q.sectionType || null,
-      skillTag: q.skillTag || null,
-      options: q.options,
-      hasImage: q.hasImage || false,
-      imageUrl: q.imageUrl || null,
-      orderIndex: q.orderIndex,
-    }));
+    const sanitizedQuestions = snapshot.map((q) => {
+      const item: any = {
+        id: q.id,
+        subjectCode: q.subjectCode,
+        subjectName: q.subjectName,
+        topic: q.topic,
+        examYear: q.examYear,
+        questionText: q.questionText,
+        passage: q.passage || null,
+        sectionName: q.sectionName || null,
+        sectionType: q.sectionType || null,
+        skillTag: q.skillTag || null,
+        options: q.options,
+        hasImage: q.hasImage || false,
+        imageUrl: q.imageUrl || null,
+        orderIndex: q.orderIndex,
+      };
+      if (attempt.isInstantFeedback) {
+        item.correctAnswer = q.correctAnswer;
+        item.explanation = q.explanation;
+      }
+      return item;
+    });
 
     const responsesMap: Record<string, { selectedOption: string | null; isMarkedForReview: boolean }> = {};
     for (const r of attempt.responses) {
@@ -418,12 +491,23 @@ export class UtmeService {
       subjectCodes: attempt.subjectCodes,
       totalQuestions: attempt.totalQuestions,
       durationMinutes: attempt.durationMinutes,
+      currentQuestionIndex: attempt.currentQuestionIndex || 0,
+      isInstantFeedback: attempt.isInstantFeedback || false,
+      examType: attempt.examType || "MOCK_SIMULATION",
       startedAt: attempt.startedAt,
       expiresAt: attempt.expiresAt,
       remainingSeconds,
       questions: sanitizedQuestions,
       savedResponses: responsesMap,
     };
+  }
+
+  // 5b. Save Current Question Index / Position (App-switch & reload recovery)
+  async savePosition(attemptId: string, currentQuestionIndex: number) {
+    return await prisma.utmeExamAttempt.update({
+      where: { id: attemptId },
+      data: { currentQuestionIndex: Math.max(0, currentQuestionIndex) },
+    });
   }
 
   // 6. Submit Exam & Grade Server-Side (Phase 8 & Phase 10)
@@ -771,6 +855,251 @@ export class UtmeService {
         acc[curr.publicationStatus] = curr._count;
         return acc;
       }, {} as Record<string, number>),
+    };
+  }
+
+  // =========================================================
+  // 10. FLASHCARDS SYSTEM (Active Recall by Subject & Topic)
+  // =========================================================
+  async getFlashcardsDeck(options: {
+    subjectCode?: string;
+    topic?: string;
+    filter?: "ALL" | "KNOWN" | "NEEDS_REVISION";
+    limit?: number;
+    userId?: string | null;
+  }) {
+    const limit = options.limit || 30;
+    const subjectCode = options.subjectCode || "BIO";
+
+    // Query published verified questions with no long reading passage for concise active recall
+    const questions = await prisma.utmeQuestion.findMany({
+      where: {
+        subjectCode,
+        publicationStatus: "PUBLISHED",
+        verificationStatus: { not: "NEEDS_REVIEW" },
+        passage: null,
+        ...(options.topic && options.topic !== "ALL" ? { topic: { contains: options.topic, mode: "insensitive" } } : {}),
+      },
+      take: 120, // generous pool for randomizing
+      orderBy: { id: "asc" },
+    });
+
+    // Shuffle questions
+    const shuffled = questions.sort(() => Math.random() - 0.5);
+
+    // If candidate is logged in, attach their flashcard progress
+    const progressMap = new Map<string, { status: string; timesReviewed: number }>();
+    if (options.userId) {
+      const progresses = await prisma.utmeFlashcardProgress.findMany({
+        where: {
+          userId: options.userId,
+          questionId: { in: shuffled.map((q) => q.id) },
+        },
+      });
+      for (const p of progresses) {
+        progressMap.set(p.questionId, { status: p.status, timesReviewed: p.timesReviewed });
+      }
+    }
+
+    const cards = shuffled.map((q) => {
+      const prog = progressMap.get(q.id);
+      const status = prog ? prog.status : "NEEDS_REVISION";
+      const timesReviewed = prog ? prog.timesReviewed : 0;
+
+      // Extract text of correct option
+      let optText = "";
+      for (const opt of q.options) {
+        if (opt.startsWith(q.correctAnswer)) {
+          optText = opt.substring(opt.indexOf(".") + 1).trim();
+          break;
+        }
+      }
+
+      return {
+        id: q.id,
+        subjectCode: q.subjectCode,
+        subjectName: q.subjectName,
+        topic: q.topic,
+        examYear: q.examYear,
+        front: q.questionText,
+        options: q.options,
+        correctAnswer: q.correctAnswer,
+        correctAnswerText: optText,
+        back: `Correct Answer: Option ${q.correctAnswer} (${optText})\n\n${q.explanation || ""}`,
+        hasImage: q.hasImage,
+        imageUrl: q.imageUrl,
+        status,
+        timesReviewed,
+      };
+    });
+
+    let filteredCards = cards;
+    if (options.filter === "KNOWN") {
+      filteredCards = cards.filter((c) => c.status === "KNOWN");
+    } else if (options.filter === "NEEDS_REVISION") {
+      filteredCards = cards.filter((c) => c.status === "NEEDS_REVISION");
+    }
+
+    return filteredCards.slice(0, limit);
+  }
+
+  // 11. Rate Flashcard (Known vs Needs Revision)
+  async rateFlashcard(options: {
+    userId: string;
+    questionId: string;
+    status: "KNOWN" | "NEEDS_REVISION";
+    subjectCode: string;
+    topic?: string;
+  }) {
+    return await prisma.utmeFlashcardProgress.upsert({
+      where: {
+        userId_questionId: {
+          userId: options.userId,
+          questionId: options.questionId,
+        },
+      },
+      update: {
+        status: options.status,
+        timesReviewed: { increment: 1 },
+        lastReviewedAt: new Date(),
+      },
+      create: {
+        userId: options.userId,
+        questionId: options.questionId,
+        subjectCode: options.subjectCode,
+        topic: options.topic,
+        status: options.status,
+        timesReviewed: 1,
+        lastReviewedAt: new Date(),
+      },
+    });
+  }
+
+  // 12. Flashcard Progress Metrics
+  async getFlashcardProgress(userId: string, subjectCode?: string) {
+    const where: any = { userId };
+    if (subjectCode && subjectCode !== "ALL") {
+      where.subjectCode = subjectCode;
+    }
+
+    const total = await prisma.utmeFlashcardProgress.count({ where });
+    const known = await prisma.utmeFlashcardProgress.count({ where: { ...where, status: "KNOWN" } });
+    const needsRevision = await prisma.utmeFlashcardProgress.count({ where: { ...where, status: "NEEDS_REVISION" } });
+
+    return {
+      totalCardsStudied: total,
+      knownCards: known,
+      needsRevisionCards: needsRevision,
+      masteryRate: total > 0 ? Math.round((known / total) * 100) : 0,
+    };
+  }
+
+  // =========================================================
+  // 13. PROGRESS DASHBOARD & LONG-TERM PERFORMANCE TRACKING
+  // =========================================================
+  async getProgressDashboard(userId: string) {
+    const attempts = await prisma.utmeExamAttempt.findMany({
+      where: {
+        userId,
+        status: "SUBMITTED",
+      },
+      orderBy: { submittedAt: "desc" },
+    });
+
+    const totalAttempts = attempts.length;
+    let totalQuestionsAnswered = 0;
+    let totalCorrectAnswers = 0;
+    let aggregateScoreSum = 0;
+    let fullSimulationCount = 0;
+
+    const subjectAggregates: Record<string, { totalQuestions: number; correct: number; subjectName?: string }> = {};
+    const topicAggregates: Record<string, { total: number; correct: number }> = {};
+
+    const historyItems = attempts.map((att) => {
+      totalQuestionsAnswered += att.totalQuestions || 0;
+      totalCorrectAnswers += att.correctCount || 0;
+      if (att.mode === "FULL_UTME_SIMULATION") {
+        aggregateScoreSum += att.scoreAggregate || 0;
+        fullSimulationCount++;
+      }
+
+      // Aggregate subject scores
+      const sScores = (att.subjectScores as any) || {};
+      for (const code in sScores) {
+        if (!subjectAggregates[code]) {
+          subjectAggregates[code] = { totalQuestions: 0, correct: 0 };
+        }
+        subjectAggregates[code].totalQuestions += sScores[code].total || 0;
+        subjectAggregates[code].correct += sScores[code].correct || 0;
+      }
+
+      // Aggregate topic scores
+      const tPerf = (att.topicPerformance as any) || {};
+      for (const topic in tPerf) {
+        if (!topicAggregates[topic]) {
+          topicAggregates[topic] = { total: 0, correct: 0 };
+        }
+        topicAggregates[topic].total += tPerf[topic].total || 0;
+        topicAggregates[topic].correct += tPerf[topic].correct || 0;
+      }
+
+      return {
+        id: att.id,
+        courseName: att.courseName,
+        mode: att.mode,
+        examType: att.examType || "MOCK_SIMULATION",
+        totalQuestions: att.totalQuestions,
+        correctCount: att.correctCount,
+        scoreTotal: att.scoreTotal,
+        scoreAggregate: att.scoreAggregate,
+        maxScore: att.subjectCodes.length * 100,
+        accuracyPercentage: att.accuracyPercentage,
+        durationMinutes: att.durationMinutes,
+        timeSpentSeconds: att.timeSpentSeconds,
+        submittedAt: att.submittedAt,
+        subjectCodes: att.subjectCodes,
+      };
+    });
+
+    const overallAccuracy = totalQuestionsAnswered > 0 ? Math.round((totalCorrectAnswers / totalQuestionsAnswered) * 100) : 0;
+    const averageScore400 = fullSimulationCount > 0 ? Math.round(aggregateScoreSum / fullSimulationCount) : 0;
+
+    const subjectBreakdown = Object.entries(subjectAggregates).map(([code, data]) => ({
+      subjectCode: code,
+      totalQuestions: data.totalQuestions,
+      correct: data.correct,
+      accuracyPercentage: data.totalQuestions > 0 ? Math.round((data.correct / data.totalQuestions) * 100) : 0,
+    }));
+
+    const topicItems = Object.entries(topicAggregates).map(([topic, data]) => ({
+      topic,
+      total: data.total,
+      correct: data.correct,
+      accuracyPercentage: data.total > 0 ? Math.round((data.correct / data.total) * 100) : 0,
+    }));
+
+    const strengths = topicItems
+      .filter((t) => t.total >= 3 && t.accuracyPercentage >= 75)
+      .sort((a, b) => b.accuracyPercentage - a.accuracyPercentage);
+    const weaknesses = topicItems
+      .filter((t) => t.total >= 3 && t.accuracyPercentage < 50)
+      .sort((a, b) => a.accuracyPercentage - b.accuracyPercentage);
+
+    // Get Flashcards summary
+    const flashcardMetrics = await this.getFlashcardProgress(userId);
+
+    return {
+      totalAttempts,
+      totalQuestionsAnswered,
+      totalCorrectAnswers,
+      overallAccuracy,
+      averageScore400,
+      fullSimulationCount,
+      subjectBreakdown,
+      strengths: strengths.slice(0, 8),
+      weaknesses: weaknesses.slice(0, 8),
+      history: historyItems,
+      flashcardMetrics,
     };
   }
 }

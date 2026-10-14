@@ -4773,8 +4773,11 @@
       // 2. Register service worker
       registerServiceWorker();
 
-      // 3. Ensure baseline root hash exists in history
-      if (!window.location.hash || window.location.hash === "#" || window.location.hash === "#/") {
+      // 3. Ensure baseline root hash exists in history (prioritize active CBT attempt if resuming)
+      const hasActiveCbtAttempt = !!localStorage.getItem("utme_active_attempt_id");
+      if (hasActiveCbtAttempt && (!window.location.hash || window.location.hash === "#" || window.location.hash === "#/" || window.location.hash === "#/home")) {
+        history.replaceState({ tab: 'cbt' }, '', '#/cbt');
+      } else if (!window.location.hash || window.location.hash === "#" || window.location.hash === "#/") {
         history.replaceState({ tab: 'home' }, '', '#/home');
       }
 
@@ -4804,8 +4807,8 @@
         return;
       }
 
-      // HARD GATE: Protected tabs require authentication
-      if (mainTab !== 'home' && !appData.currentUser) {
+      // HARD GATE: Protected academic tabs require authentication (CBT is accessible for practice & active exam sessions)
+      if (mainTab !== 'home' && mainTab !== 'cbt' && !appData.currentUser) {
         history.replaceState({ tab: 'home' }, '', '#/home');
         switchTab('home', null, false);
         openSignInModal();

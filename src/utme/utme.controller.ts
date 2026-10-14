@@ -50,12 +50,24 @@ utmeRouter.get("/subjects", async (req: Request, res: Response) => {
 });
 
 // =========================================================
-// 3. START MOCK EXAMINATION (Full Simulation or Practice)
+// 3. START MOCK EXAMINATION (Full Simulation, Flexible Practice, or Quick Drill)
 // =========================================================
 utmeRouter.post("/exam/start", optionalAuth, async (req: Request, res: Response) => {
   try {
     const user = (req as any).user;
-    const { courseSlug, customSubjectCodes, mode, institutionName, topic, guestSessionId } = req.body;
+    const {
+      courseSlug,
+      customSubjectCodes,
+      mode,
+      institutionName,
+      topic,
+      difficulty,
+      durationMinutes,
+      questionCount,
+      isInstantFeedback,
+      examType,
+      guestSessionId,
+    } = req.body;
 
     const examData = await utmeService.startMockExam({
       userId: user?.id || null,
@@ -65,11 +77,16 @@ utmeRouter.post("/exam/start", optionalAuth, async (req: Request, res: Response)
       mode,
       institutionName,
       topic,
+      difficulty,
+      durationMinutes: durationMinutes ? Number(durationMinutes) : undefined,
+      questionCount: questionCount ? Number(questionCount) : undefined,
+      isInstantFeedback: Boolean(isInstantFeedback),
+      examType,
     });
 
     res.json({
       success: true,
-      message: "UTME Mock Examination started successfully.",
+      message: "UTME Examination started successfully.",
       data: examData,
     });
   } catch (error: any) {
@@ -109,6 +126,21 @@ utmeRouter.post("/exam/:id/save-answer", optionalAuth, async (req: Request, res:
   } catch (error: any) {
     console.error("Error saving exam answer:", error);
     res.status(400).json({ success: false, error: error.message || "Failed to save response" });
+  }
+});
+
+// =========================================================
+// 5b. SAVE ACTIVE QUESTION POSITION (Reload & App-Switch Recovery)
+// =========================================================
+utmeRouter.post("/exam/:id/position", optionalAuth, async (req: Request, res: Response) => {
+  try {
+    const attemptId = String(req.params.id);
+    const { currentQuestionIndex } = req.body;
+    await utmeService.savePosition(attemptId, Number(currentQuestionIndex) || 0);
+    res.json({ success: true });
+  } catch (error: any) {
+    console.error("Error saving exam position:", error);
+    res.status(500).json({ success: false, error: "Failed to save position" });
   }
 });
 
@@ -158,6 +190,95 @@ utmeRouter.get("/exam/:id/review", optionalAuth, async (req: Request, res: Respo
   } catch (error: any) {
     console.error("Error fetching review:", error);
     res.status(400).json({ success: false, error: error.message || "Failed to load review" });
+  }
+});
+
+// =========================================================
+// 8b. FLASHCARDS API
+// =========================================================
+utmeRouter.get("/flashcards/deck", optionalAuth, async (req: Request, res: Response) => {
+  try {
+    const user = (req as any).user;
+    const { subjectCode, topic, filter, limit } = req.query;
+    const deck = await utmeService.getFlashcardsDeck({
+      subjectCode: subjectCode ? String(subjectCode) : undefined,
+      topic: topic ? String(topic) : undefined,
+      filter: (filter as any) || "ALL",
+      limit: limit ? Number(limit) : 30,
+      userId: user?.id || null,
+    });
+    res.json({ success: true, count: deck.length, data: deck });
+  } catch (error: any) {
+    console.error("Error fetching flashcards:", error);
+    res.status(500).json({ success: false, error: "Failed to load flashcard deck" });
+  }
+});
+
+utmeRouter.post("/flashcards/rate", requireAuth, async (req: Request, res: Response) => {
+  try {
+    const user = (req as any).user;
+    const { questionId, status, subjectCode, topic } = req.body;
+    if (!questionId || !status || !subjectCode) {
+      return res.status(400).json({ success: false, error: "Missing required fields" });
+    }
+    const result = await utmeService.rateFlashcard({
+      userId: user.id,
+      questionId: String(questionId),
+      status: status === "KNOWN" ? "KNOWN" : "NEEDS_REVISION",
+      subjectCode: String(subjectCode),
+      topic: topic ? String(topic) : undefined,
+    });
+    res.json({ success: true, data: result });
+  } catch (error: any) {
+    console.error("Error rating flashcard:", error);
+    res.status(500).json({ success: false, error: "Failed to save flashcard rating" });
+  }
+});
+
+utmeRouter.get("/flashcards/progress", optionalAuth, async (req: Request, res: Response) => {
+  try {
+    const user = (req as any).user;
+    if (!user) {
+      return res.json({ success: true, data: { totalCardsStudied: 0, knownCards: 0, needsRevisionCards: 0, masteryRate: 0 } });
+    }
+    const subjectCode = req.query.subjectCode ? String(req.query.subjectCode) : undefined;
+    const progress = await utmeService.getFlashcardProgress(user.id, subjectCode);
+    res.json({ success: true, data: progress });
+  } catch (error: any) {
+    console.error("Error fetching flashcard progress:", error);
+    res.status(500).json({ success: false, error: "Failed to load flashcard progress" });
+  }
+});
+
+// =========================================================
+// 8c. PROGRESS DASHBOARD & LONG-TERM PERFORMANCE API
+// =========================================================
+utmeRouter.get("/progress/dashboard", optionalAuth, async (req: Request, res: Response) => {
+  try {
+    const user = (req as any).user;
+    if (!user) {
+      return res.json({
+        success: true,
+        data: {
+          isGuest: true,
+          totalAttempts: 0,
+          totalQuestionsAnswered: 0,
+          totalCorrectAnswers: 0,
+          overallAccuracy: 0,
+          averageScore400: 0,
+          subjectBreakdown: [],
+          strengths: [],
+          weaknesses: [],
+          history: [],
+          flashcardMetrics: { totalCardsStudied: 0, knownCards: 0, needsRevisionCards: 0, masteryRate: 0 },
+        },
+      });
+    }
+    const dashboard = await utmeService.getProgressDashboard(user.id);
+    res.json({ success: true, data: { ...dashboard, isGuest: false } });
+  } catch (error: any) {
+    console.error("Error fetching progress dashboard:", error);
+    res.status(500).json({ success: false, error: "Failed to load progress dashboard" });
   }
 });
 

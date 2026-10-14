@@ -168,6 +168,7 @@ model User {
   quizAttempts  QuizAttempt[]
   interactions  Interaction[]
   utmeAttempts  UtmeExamAttempt[]
+  flashcardProgress UtmeFlashcardProgress[]
 }
 
 // =========================================================
@@ -501,6 +502,9 @@ model UtmeQuestion {
   skillTag               String?
   groupOrder             Int?
 
+  audits                 UtmeQuestionAudit[]
+  flashcardProgress      UtmeFlashcardProgress[]
+
   createdAt              DateTime               @default(now())
   updatedAt              DateTime               @updatedAt
 
@@ -555,6 +559,9 @@ model UtmeExamAttempt {
   subjectCodes       String[]          // ["ENG", "BIO", "CHM", "PHY"]
   totalQuestions     Int               @default(180)
   durationMinutes    Int               @default(120)
+  currentQuestionIndex Int               @default(0)
+  isInstantFeedback  Boolean           @default(false)
+  examType           String            @default("MOCK_SIMULATION") // "MOCK_SIMULATION" | "QUICK_DRILL" | "FLEX_PRACTICE"
   startedAt          DateTime          @default(now())
   expiresAt          DateTime
   submittedAt        DateTime?
@@ -598,4 +605,49 @@ model UtmeExamResponse {
 
   @@unique([attemptId, questionId])
   @@index([attemptId, subjectCode])
+}
+
+// =========================================================
+// UTME ACCURACY AUDIT TRAIL
+// =========================================================
+
+model UtmeQuestionAudit {
+  id                  String                 @id @default(cuid())
+  questionId          String
+  question            UtmeQuestion           @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  originalAnswer      String
+  verifiedAnswer      String
+  originalExplanation String?
+  verifiedExplanation String?
+  verificationStatus  UtmeVerificationStatus @default(APPROVED_FOR_PUBLICATION)
+  sourceReference     String?                // e.g. "JAMB Physics 2004 Q14 / Official Answer Key"
+  auditNotes          String?
+  isDisputed          Boolean                @default(false)
+  auditedBy           String                 @default("AUTOMATED_AUDITOR_WITH_EXPERT_VERIFICATION")
+  createdAt           DateTime               @default(now())
+
+  @@index([questionId])
+  @@index([verificationStatus])
+}
+
+// =========================================================
+// UTME FLASHCARD PROGRESS TRACKING
+// =========================================================
+
+model UtmeFlashcardProgress {
+  id            String       @id @default(cuid())
+  userId        String
+  user          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questionId    String
+  question      UtmeQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  subjectCode   String
+  topic         String?
+  status        String       @default("NEEDS_REVISION") // "KNOWN" | "NEEDS_REVISION"
+  timesReviewed Int          @default(1)
+  lastReviewedAt DateTime    @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  @@unique([userId, questionId])
+  @@index([userId, subjectCode])
+  @@index([userId, status])
 }
