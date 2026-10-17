@@ -1411,20 +1411,21 @@
                 ` : ''}
 
                 <div class="cbt-question-text">
-                  ${escapeHtml(q.questionText)}
+                  ${escapeHtml(cleanCbtText(q.questionText))}
                 </div>
 
                 <!-- Options -->
                 <div class="cbt-options-list">
                   ${(q.options || []).map((opt) => {
-                    const optKey = opt.trim().charAt(0).toUpperCase();
+                    const cleanOpt = cleanCbtText(opt);
+                    const optKey = cleanOpt.trim().charAt(0).toUpperCase();
                     const isSelected = selectedOption === optKey;
                     return `
                       <button class="cbt-option-btn ${isSelected ? 'selected' : ''}" onclick="UI100L.selectCbtAnswer('${q.id}', '${optKey}')">
                         <span style="display: inline-flex; width: 26px; height: 26px; border-radius: 50%; background: ${isSelected ? '#8B5CF6' : 'rgba(255,255,255,0.1)'}; color: #FFF; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem;">
                           ${optKey}
                         </span>
-                        <span>${escapeHtml(opt)}</span>
+                        <span>${escapeHtml(cleanOpt)}</span>
                       </button>
                     `;
                   }).join("")}
@@ -1677,13 +1678,14 @@
                   </div>
 
                   <div style="font-size: 1.05rem; line-height: 1.55; color: #FFFFFF; margin-bottom: 1rem;">
-                    ${escapeHtml(q.questionText)}
+                    ${escapeHtml(cleanCbtText(q.questionText))}
                   </div>
 
                   <!-- Options list -->
                   <div style="display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.25rem;">
                     ${(q.options || []).map((opt) => {
-                      const optKey = opt.trim().charAt(0).toUpperCase();
+                      const cleanOpt = cleanCbtText(opt);
+                      const optKey = cleanOpt.trim().charAt(0).toUpperCase();
                       const isUserChoice = q.selectedAnswer === optKey;
                       const isRealAnswer = q.correctAnswer === optKey || q.correctAnswer.startsWith(optKey);
 
@@ -1697,7 +1699,7 @@
                       return `
                         <div style="${style} padding: 0.65rem 1rem; border-radius: 8px; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem;">
                           <strong>${optKey}</strong>
-                          <span>${escapeHtml(opt)}</span>
+                          <span>${escapeHtml(cleanOpt)}</span>
                           ${isRealAnswer ? `<span style="margin-left: auto; font-size: 0.75rem; font-weight: 800; color: #34D399;">✓ Correct Answer</span>` : ''}
                           ${isUserChoice && !isCorrect ? `<span style="margin-left: auto; font-size: 0.75rem; font-weight: 800; color: #F87171;">Your Choice</span>` : ''}
                         </div>
@@ -1708,7 +1710,7 @@
                   <!-- Explanation Box -->
                   <div style="background: rgba(139,92,246,0.08); border-left: 3px solid #8B5CF6; padding: 0.85rem 1.15rem; border-radius: 6px; font-size: 0.88rem; line-height: 1.5; color: #E2E8F0;">
                     <div style="font-weight: 800; color: #DDD6FE; font-size: 0.78rem; text-transform: uppercase; margin-bottom: 0.35rem;">VERIFIED EXPLANATION:</div>
-                    ${escapeHtml(q.explanation || 'Verified according to University of Ibadan departmental course curriculum.')}
+                    ${escapeHtml(cleanCbtText(q.explanation || 'Verified according to University of Ibadan departmental course curriculum.'))}
                     <div style="font-size: 0.75rem; color: #94A3B8; margin-top: 0.5rem;">
                       Source: ${escapeHtml(q.sourceDocument || 'Official Past Questions')}${q.sourcePage ? `, Page ${q.sourcePage}` : ''}
                     </div>
@@ -1750,6 +1752,36 @@
     } catch (e) {
       alert("Failed to fetch admin inventory report.");
     }
+  }
+
+  function cleanCbtText(str) {
+    if (!str || typeof str !== 'string') return '';
+    str = str.trim();
+    if (!str.includes("' '") && !/'[a-zA-Z0-9]'/.test(str)) {
+      return str;
+    }
+    const optMatch = str.match(/^(\(?[A-Ea-e][\.\)]\s*)(.*)$/);
+    if (optMatch) {
+      return optMatch[1] + cleanCbtText(optMatch[2]);
+    }
+    if (str.length >= 3 && str.startsWith("'") && str.endsWith("'") && str.length % 2 === 1) {
+      let allEven = true;
+      for (let i = 0; i < str.length; i += 2) {
+        if (str[i] !== "'") {
+          allEven = false;
+          break;
+        }
+      }
+      if (allEven) {
+        const chars = [];
+        for (let i = 1; i < str.length; i += 2) {
+          chars.push(str[i]);
+        }
+        return chars.join('').trim();
+      }
+    }
+    let cleaned = str.replace(/'([^'])'/g, '$1');
+    return cleaned.replace(/^'|'$/g, '').replace(/''/g, "'").replace(/\s+/g, ' ').trim();
   }
 
   function escapeHtml(str) {

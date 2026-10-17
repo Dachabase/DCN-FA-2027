@@ -9,6 +9,50 @@ function toWinLongPath(p: string): string {
   return process.platform === "win32" && !abs.startsWith("\\\\?\\") ? "\\\\?\\" + abs : abs;
 }
 
+/**
+ * Unquotes corrupted text where single quotes were inadvertently inserted around characters.
+ */
+export function unquoteCorruptedText(str: string | null | undefined): string {
+  if (!str || typeof str !== "string") return "";
+  str = str.trim();
+  if (!str.includes("' '") && !/'[a-zA-Z0-9]'/.test(str)) {
+    return str;
+  }
+
+  const optMatch = str.match(/^(\(?[A-Ea-e][\.\)]\s*)(.*)$/);
+  if (optMatch) {
+    const prefix = optMatch[1];
+    const rest = optMatch[2].trim();
+    return prefix + unquoteCorruptedText(rest);
+  }
+
+  if (str.length >= 3 && str.startsWith("'") && str.endsWith("'") && str.length % 2 === 1) {
+    let allEven = true;
+    for (let i = 0; i < str.length; i += 2) {
+      if (str[i] !== "'") {
+        allEven = false;
+        break;
+      }
+    }
+    if (allEven) {
+      const chars: string[] = [];
+      for (let i = 1; i < str.length; i += 2) {
+        chars.push(str[i]);
+      }
+      return chars.join("").trim();
+    }
+  }
+
+  let cleaned = str.replace(/'([^'])'/g, "$1");
+  cleaned = cleaned.replace(/^'|'$/g, "").replace(/''/g, "'").replace(/\s+/g, " ").trim();
+  return cleaned;
+}
+
+export function sanitizeQuestionOptions(options: any): string[] {
+  if (!Array.isArray(options)) return [];
+  return options.map((opt) => unquoteCorruptedText(String(opt)));
+}
+
 export class Academic100lService {
   /**
    * 1. GET /api/vault/materials
@@ -581,18 +625,18 @@ export class Academic100lService {
       },
     });
 
-    // Sanitize questions: strip `correctAnswer` and `explanation`
+    // Sanitize questions: strip `correctAnswer` and `explanation`, unquote text
     const sanitizedQuestions = selectedQuestions.map((q, idx) => ({
       id: q.id,
       index: idx + 1,
       courseCode: q.courseCode,
       topic: q.topic,
       type: q.type,
-      questionText: q.questionText,
-      options: q.options,
+      questionText: unquoteCorruptedText(q.questionText),
+      options: sanitizeQuestionOptions(q.options),
       examYear: q.examYear,
       semester: q.semester,
-      passage: q.passage,
+      passage: q.passage ? unquoteCorruptedText(q.passage) : null,
       hasImage: q.hasImage,
       imageUrl: q.imageUrl,
       sourceDocument: q.sourceDocument,
@@ -674,13 +718,13 @@ export class Academic100lService {
         id: q.id,
         courseCode: q.courseCode,
         topic: q.topic,
-        questionText: q.questionText,
-        options: q.options,
+        questionText: unquoteCorruptedText(q.questionText),
+        options: sanitizeQuestionOptions(q.options),
         selectedAnswer: selected || null,
         correctAnswer: correct,
         isCorrect,
         isUnanswered,
-        explanation: q.explanation,
+        explanation: q.explanation ? unquoteCorruptedText(q.explanation) : null,
         examYear: q.examYear,
         sourceDocument: q.sourceDocument,
         sourcePage: q.sourcePage,

@@ -53,7 +53,7 @@ def clean_str(s):
     if not s:
         return ""
     # Normalize unicode quotes and dashes
-    s = s.replace("", "'").replace("’", "'").replace("‘", "'").replace("“", '"').replace("”", '"')
+    s = s.replace("’", "'").replace("‘", "'").replace("`", "'").replace("“", '"').replace("”", '"')
     s = re.sub(r'\s+', ' ', s).strip()
     return s
 
