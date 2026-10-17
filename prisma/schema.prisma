@@ -27,6 +27,7 @@ model Faculty {
   opportunities Opportunity[]
   faqs          FAQ[]
   questions     Question[]
+  courses       Course[]
 }
 
 // =========================================================
@@ -90,8 +91,16 @@ model Course {
   status           CourseStatus @default(COMPULSORY)
   units            Int
   isUniversityWide Boolean      @default(false) // True for GES/GST block
+  description      String?
+
+  facultyId        String?
+  faculty          Faculty?     @relation(fields: [facultyId], references: [id])
 
   departments      DepartmentCourse[]
+  resources        Resource[]
+  questions        Question[]
+  flashcards       CourseFlashcard[]
+  quizAttempts     QuizAttempt[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -169,6 +178,7 @@ model User {
   interactions  Interaction[]
   utmeAttempts  UtmeExamAttempt[]
   flashcardProgress UtmeFlashcardProgress[]
+  courseFlashcardProgress CourseFlashcardProgress[]
 }
 
 // =========================================================
@@ -247,6 +257,7 @@ model Memory {
 }
 
 // =========================================================
+// =========================================================
 // CBT QUESTION BANK
 // =========================================================
 
@@ -254,6 +265,8 @@ model Question {
   id           String   @id @default(cuid())
   courseCode   String   // e.g. "CSC101", "MAT111", "GST101", "GES107"
   courseTitle  String   // e.g. "Introduction to Computer Science"
+  courseId     String?
+  course       Course?  @relation(fields: [courseId], references: [id])
   topic        String   // e.g. "Binary Arithmetic", "Calculus", "Logic"
   type         String   @default("MCQ") // "MCQ" or "TRUE_FALSE"
   questionText String
@@ -261,11 +274,29 @@ model Question {
   correctAnswer String  // e.g. "A" or "True"
   explanation  String   // Detailed explanation
 
+  examYear               Int?
+  semester               String?
+  academicSession        String?
+  sourceDocument         String?
+  sourcePage             Int?
+  originalQuestionNumber Int?
+  passage                String?
+  hasImage               Boolean  @default(false)
+  imageUrl               String?
+  verificationStatus     String   @default("VERIFIED") // "VERIFIED", "NEEDS_REVIEW", "OFFICIAL_KEY"
+  verificationNotes      String?
+  answerProvenance       String?
+  difficulty             String?  @default("MEDIUM")
+
   facultyId    String?
   faculty      Faculty? @relation(fields: [facultyId], references: [id])
 
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+
+  @@index([courseCode, examYear])
+  @@index([courseId])
+  @@index([topic])
 }
 
 // =========================================================
@@ -274,11 +305,15 @@ model Question {
 
 model QuizAttempt {
   id               String   @id @default(cuid())
-  userId           String
-  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId           String?
+  user             User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  guestSessionId   String?
 
   courseCode       String
-  mode             String   // "PRACTICE", "EXAM", "REVISION"
+  courseTitle      String?
+  courseId         String?
+  course           Course?  @relation(fields: [courseId], references: [id])
+  mode             String   // "PRACTICE", "EXAM", "REVISION", "TOPIC", "QUICK", "MIXED"
   score            Float
   totalQuestions   Int
   correctCount     Int
@@ -286,7 +321,63 @@ model QuizAttempt {
   unansweredCount  Int
   timeSpentSeconds Int      @default(0)
 
+  examYear           Int?
+  semester           String?
+  accuracyPercentage Float?
+  status             String   @default("SUBMITTED") // "IN_PROGRESS", "SUBMITTED", "TIMED_OUT"
+  questionsSnapshot  Json?
+  selectedAnswers    Json?
+  topicPerformance   Json?
+  timeAllowedSeconds Int?
+  submittedAt        DateTime?
+
   createdAt        DateTime @default(now())
+
+  @@index([courseCode])
+  @@index([userId, courseCode])
+}
+
+// =========================================================
+// 100L COURSE FLASHCARDS & STUDY PROGRESS
+// =========================================================
+
+model CourseFlashcard {
+  id                 String   @id @default(cuid())
+  courseCode         String
+  courseTitle        String
+  courseId           String?
+  course             Course?  @relation(fields: [courseId], references: [id])
+  topic              String
+  front              String   // Question, formula, definition prompt
+  back               String   // Answer, explanation, meaning
+  explanation        String?
+  sourceDocument     String?
+  sourcePage         Int?
+  verificationStatus String   @default("VERIFIED")
+  difficulty         String   @default("MEDIUM")
+
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  progress           CourseFlashcardProgress[]
+
+  @@index([courseCode])
+  @@index([topic])
+}
+
+model CourseFlashcardProgress {
+  id             String          @id @default(cuid())
+  userId         String
+  user           User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cardId         String
+  card           CourseFlashcard @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  status         String          @default("NEEDS_REVISION") // "KNOWN" | "NEEDS_REVISION"
+  timesReviewed  Int             @default(1)
+  lastReviewedAt DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  @@unique([userId, cardId])
+  @@index([userId, status])
 }
 
 // =========================================================
@@ -310,6 +401,19 @@ model Resource {
   departmentId String?
   department   Department? @relation(fields: [departmentId], references: [id])
 
+  courseId        String?
+  course          Course?  @relation(fields: [courseId], references: [id])
+  courseCode      String?
+  fileSize        Int?
+  filePath        String?
+  fileHash        String?
+  fileFormat      String?
+  pageCount       Int?
+  semester        String?
+  academicSession String?
+  isScanned       Boolean  @default(false)
+  hasQuestions    Boolean  @default(false)
+
   // Provenance metadata (Required for AI bot factual grounding)
   source       String   // e.g. "UI Academic Affairs / Faculty Handbook"
   verifiedDate DateTime @default(now())
@@ -317,6 +421,10 @@ model Resource {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@index([courseCode])
+  @@index([category])
+  @@index([facultyId])
 }
 
 // =========================================================

@@ -11,6 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/utme.css">
+  <link rel="stylesheet" href="/academic100l.css">
   <!-- Google Identity Services (OAuth 2.0 / OpenID Connect) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script src="/lucide.min.js"></script>
@@ -8979,11 +8981,12 @@
       <!-- Filters & Search Toolbar -->
       <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.85rem; flex-wrap: wrap; flex-shrink: 0;">
         <input type="text" id="admin-search-input" placeholder="Search by title, category, ID..." oninput="filterAdminInventory()" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 0.5rem 0.85rem; color: #FFF; font-size: 0.85rem; flex: 1; min-width: 200px;" />
-        <div style="display: flex; gap: 0.35rem;">
+        <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
           <button class="filter-chip active" id="admin-btn-all" onclick="setAdminFilter('all', event)">All</button>
           <button class="filter-chip" id="admin-btn-utme" onclick="setAdminFilter('utme', event)">UTME</button>
           <button class="filter-chip" id="admin-btn-100l" onclick="setAdminFilter('100l', event)">100L</button>
           <button class="filter-chip" id="admin-btn-shared" onclick="setAdminFilter('shared', event)">Shared</button>
+          <button class="filter-chip" onclick="UI100L.openAdminVaultReport()" style="background: rgba(139,92,246,0.2); border-color: #8B5CF6; color: #DDD6FE;">📊 100L Vault &amp; CBT Audit</button>
         </div>
       </div>
 
@@ -9007,5 +9010,6 @@
   </div>
 
   <script src="/utme.js" defer></script>
+  <script src="/academic100l.js" defer></script>
 </body>
 </html>

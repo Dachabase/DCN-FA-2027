@@ -8,6 +8,7 @@ import { startComputingBot } from "./telegram/computing-bot";
 import { authRouter } from "./auth/auth.controller";
 import { personalizationRouter } from "./personalization/personalization.controller";
 import { utmeRouter } from "./utme/utme.controller";
+import { academic100lRouter, vaultRouter } from "./academic100l/academic100l.controller";
 import { requireAuth, optionalAuth } from "./auth/auth.middleware";
 import { ALL_GUIDES } from "./data/guides-data";
 import { resolveAudienceFromRequest, normalizeAudience } from "./personalization/audience.helper";
@@ -28,6 +29,8 @@ app.use("/api/auth", authRouter);
 app.use("/auth", authRouter);
 app.use("/api", personalizationRouter);
 app.use("/api/utme", utmeRouter);
+app.use("/api/100l", academic100lRouter);
+app.use("/api/vault", vaultRouter);
 
 // =========================================================
 // FALLBACK DATA (For offline/testing resilience)
