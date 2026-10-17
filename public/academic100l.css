@@ -526,7 +526,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1.15rem 1.35rem;
+  padding: 0.9rem 1.25rem;
   background: rgba(255, 255, 255, 0.03);
   border: 1.5px solid transparent;
   border-radius: 14px;
@@ -602,19 +602,6 @@
   letter-spacing: -0.2px;
 }
 
-.cbt-mode-subtitle {
-  font-size: 0.82rem;
-  line-height: 1.4;
-  color: #94A3B8;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.cbt-mode-tab-btn.active .cbt-mode-subtitle {
-  color: #CBD5E1;
-}
 
 .cbt-mode-badge {
   font-size: 0.72rem;
