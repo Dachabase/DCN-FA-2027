@@ -7,8 +7,8 @@
 .vault-header-hero {
   background: linear-gradient(135deg, rgba(26, 24, 38, 0.95) 0%, rgba(15, 13, 21, 0.98) 100%);
   border: 1px solid rgba(139, 92, 246, 0.25);
-  border-radius: var(--radius-lg, 16px);
-  padding: 1.75rem 2rem;
+  border-radius: var(--radius-slab, clamp(20px, 2.2vw, 32px));
+  padding: clamp(1.5rem, 2.2vw, 2.4rem);
   margin-bottom: 2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   position: relative;
@@ -33,10 +33,10 @@
 .vault-stat-box {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 0.85rem 1rem;
   text-align: center;
-  transition: all 0.2s ease;
+  transition: all 0.25s var(--ease, cubic-bezier(0.2, 0.7, 0.1, 1));
 }
 .vault-stat-box:hover {
   background: rgba(139, 92, 246, 0.08);
@@ -48,6 +48,7 @@
   font-size: 1.45rem;
   font-weight: 800;
   color: #FFFFFF;
+  font-variant-numeric: tabular-nums;
 }
 .vault-stat-label {
   font-size: 0.72rem;
@@ -59,12 +60,66 @@
 }
 
 /* --- Filter & Search Toolbar --- */
+.vault-chip-section {
+  margin-bottom: 0.85rem;
+}
+.vault-chip-label {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.vault-chip-strip {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.45rem;
+  margin-bottom: 0.85rem;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+.vault-category-chip,
+.vault-quick-chip {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  color: #334155;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.42rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.vault-category-chip:hover,
+.vault-quick-chip:hover {
+  border-color: #8B5CF6;
+  color: #8B5CF6;
+  background: rgba(139, 92, 246, 0.05);
+  transform: translateY(-1px);
+}
+.vault-category-chip.active,
+.vault-quick-chip.active {
+  background: #8B5CF6;
+  color: #FFFFFF;
+  border-color: #8B5CF6;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+}
+
 .vault-toolbar {
   background: #FFFFFF;
   border: 1px solid var(--ps-border-light, #E2E8F0);
   border-radius: var(--radius-lg, 16px);
   padding: 1.25rem 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 .vault-search-row {
@@ -73,13 +128,25 @@
   margin-bottom: 1rem;
   flex-wrap: wrap;
 }
-.vault-search-input {
+.vault-search-wrapper {
+  position: relative;
   flex: 1;
   min-width: 250px;
+  display: flex;
+  align-items: center;
+}
+.vault-search-icon {
+  position: absolute;
+  left: 14px;
+  color: #94A3B8;
+  pointer-events: none;
+}
+.vault-search-input {
+  width: 100%;
   background: #F8FAFC;
   border: 1px solid #CBD5E1;
   border-radius: 10px;
-  padding: 0.75rem 1.15rem;
+  padding: 0.75rem 2.4rem 0.75rem 2.6rem;
   font-size: 0.95rem;
   color: var(--ps-text-dark, #0F172A);
   outline: none;
@@ -90,9 +157,30 @@
   background: #FFFFFF;
   box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
 }
+.vault-search-clear-btn {
+  position: absolute;
+  right: 12px;
+  background: rgba(148, 163, 184, 0.2);
+  border: none;
+  color: #64748B;
+  font-size: 0.8rem;
+  font-weight: 800;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.vault-search-clear-btn:hover {
+  background: #EF4444;
+  color: #FFFFFF;
+}
 .vault-dropdown-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 0.75rem;
 }
 .vault-select {
@@ -109,6 +197,101 @@
 }
 .vault-select:focus {
   border-color: var(--ps-purple-primary, #8B5CF6);
+}
+
+/* --- Active Filters Indicator Bar --- */
+.vault-active-filters-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+  padding: 0.65rem 1rem;
+  background: rgba(139, 92, 246, 0.04);
+  border: 1px dashed rgba(139, 92, 246, 0.35);
+  border-radius: 12px;
+}
+.vault-filter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  color: #0F172A;
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.vault-clear-all-btn {
+  margin-left: auto;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #DC2626;
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.vault-clear-all-btn:hover {
+  background: #DC2626;
+  color: #FFFFFF;
+}
+
+/* --- Results Header & View Switcher --- */
+.vault-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.vault-controls-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.vault-limit-select {
+  background: #F8FAFC;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #475569;
+  outline: none;
+  cursor: pointer;
+}
+.vault-view-toggle {
+  display: inline-flex;
+  background: #F1F5F9;
+  border-radius: 8px;
+  padding: 2px;
+  border: 1px solid #E2E8F0;
+}
+.vault-view-btn {
+  border: none;
+  background: transparent;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #64748B;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 0.18s ease;
+}
+.vault-view-btn.active {
+  background: #FFFFFF;
+  color: #7C3AED;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  font-weight: 800;
 }
 
 /* --- Material Vault Grid --- */
@@ -149,6 +332,21 @@
   padding: 0.25rem 0.65rem;
   border-radius: 6px;
   letter-spacing: 0.5px;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.vault-course-chip.interactive {
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.vault-course-chip.interactive:hover {
+  background: var(--ps-purple-primary, #8B5CF6);
+  color: #FFFFFF;
+  border-color: var(--ps-purple-primary, #8B5CF6);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(139, 92, 246, 0.3);
 }
 .vault-format-badge {
   font-size: 0.7rem;
@@ -244,24 +442,84 @@
   color: #0F172A;
 }
 
+/* --- Material Vault Compact List View --- */
+.vault-materials-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 2rem;
+}
+.vault-list-row {
+  background: #FFFFFF;
+  border: 1px solid var(--ps-border-light, #E2E8F0);
+  border-radius: var(--radius-md, 12px);
+  padding: 0.85rem 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: all 0.18s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+.vault-list-row:hover {
+  border-color: var(--ps-purple-light, #A855F7);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(139, 92, 246, 0.08);
+}
+.vault-list-main {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex: 1;
+  min-width: 0;
+}
+.vault-list-title-wrap {
+  min-width: 0;
+  flex: 1;
+}
+.vault-list-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--ps-text-dark, #0F172A);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.vault-list-sub {
+  font-size: 0.75rem;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.2rem;
+}
+.vault-list-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
 /* --- Pagination Controls --- */
 .vault-pagination {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.35rem;
+  flex-wrap: wrap;
   margin: 2rem 0;
 }
 .vault-page-btn {
   background: #FFFFFF;
   border: 1px solid #CBD5E1;
   color: var(--ps-text-dark, #0F172A);
-  padding: 0.55rem 1.15rem;
+  padding: 0.5rem 1rem;
   border-radius: 8px;
   font-size: 0.85rem;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.18s ease;
 }
 .vault-page-btn:hover:not(:disabled) {
   border-color: var(--ps-purple-primary, #8B5CF6);
@@ -270,6 +528,38 @@
 .vault-page-btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+.vault-page-number-btn {
+  min-width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  color: #334155;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.vault-page-number-btn:hover {
+  border-color: #8B5CF6;
+  color: #8B5CF6;
+  background: rgba(139, 92, 246, 0.05);
+}
+.vault-page-number-btn.active {
+  background: #8B5CF6;
+  color: #FFFFFF;
+  border-color: #8B5CF6;
+  box-shadow: 0 3px 10px rgba(139, 92, 246, 0.25);
+}
+.vault-page-ellipsis {
+  padding: 0 0.35rem;
+  color: #94A3B8;
+  font-weight: 800;
+  font-size: 0.95rem;
 }
 
 /* --- Course Directory & Detail View --- */
@@ -1318,29 +1608,37 @@
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
   margin-top: 0.75rem;
-}
-
-.cbt-launch-btn-primary {
+}.cbt-launch-btn-primary {
   background: var(--grad-brand-primary, linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%));
   color: #FFFFFF;
   font-weight: 800;
-  font-size: 0.82rem;
-  padding: 0.65rem 0.65rem;
-  border-radius: 8px;
+  font-size: 0.84rem;
+  padding: 0.7rem 1.25rem;
+  border-radius: 999px;
   border: none;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
+  gap: 0.45rem;
   box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
-  transition: all 0.2s ease;
+  transition: all 0.25s var(--ease, cubic-bezier(0.2, 0.7, 0.1, 1));
+}
+
+.cbt-launch-btn-primary .app-icon,
+.cbt-launch-btn-primary svg {
+  transition: transform 0.25s var(--ease, cubic-bezier(0.2, 0.7, 0.1, 1));
 }
 
 .cbt-launch-btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(139, 92, 246, 0.35);
+  box-shadow: 0 8px 22px rgba(139, 92, 246, 0.38);
   filter: brightness(1.08);
+}
+
+.cbt-launch-btn-primary:hover .app-icon,
+.cbt-launch-btn-primary:hover svg {
+  transform: translateX(3px);
 }
 
 /* Home Dashboard CBT Launchpad — Redesigned World-Class Light Architecture */
@@ -1352,8 +1650,8 @@
 .home-dashboard-banner {
   background: #FFFFFF;
   border: 1px solid var(--ps-border-light, #E2E8F0);
-  border-radius: var(--radius-lg, 16px);
-  padding: 1.5rem 1.75rem;
+  border-radius: var(--radius-slab, clamp(20px, 2.2vw, 32px));
+  padding: clamp(1.4rem, 2vw, 2rem);
   margin-bottom: 2rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
   display: flex;
@@ -1366,8 +1664,8 @@
 .home-primary-hero-card {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
   border: 1.5px solid rgba(139, 92, 246, 0.35);
-  border-radius: 18px;
-  padding: 2.25rem 2rem;
+  border-radius: var(--radius-slab, clamp(20px, 2.2vw, 32px));
+  padding: clamp(1.75rem, 2.4vw, 2.5rem);
   margin-bottom: 2rem;
   box-shadow: 0 10px 32px rgba(139, 92, 246, 0.1);
   position: relative;

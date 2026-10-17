@@ -23,6 +23,13 @@
       totalPages: 1,
       totalCount: 0,
       isLoading: false,
+      viewMode: (function () {
+        try {
+          return localStorage.getItem("ui100l_vault_view") || "grid";
+        } catch (e) {
+          return "grid";
+        }
+      })(),
     },
     courses: {
       items: [],
@@ -75,6 +82,13 @@
     switchVaultPage,
     filterVault,
     searchVault,
+    filterVaultByCategory,
+    filterVaultByCourse,
+    clearVaultSearch,
+    resetVaultFilters,
+    removeVaultFilter,
+    setVaultViewMode,
+    changeVaultLimit,
     openCourseDetail,
     closeCourseDetail,
     switchCourseTab,
@@ -196,7 +210,7 @@
       </div>
 
       <!-- Navigation Switcher: Materials Vault vs Course Hub -->
-      <div style="display: flex; gap: 0.5rem; margin-bottom: 1.75rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 0.5rem;">
+      <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 0.5rem;">
         <button id="vault-tab-btn-materials" class="filter-chip active" onclick="UI100L.filterVault('VIEW_MATERIALS')" style="font-size: 0.95rem; padding: 0.55rem 1.25rem;">
           <svg class="app-icon app-icon-mr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
           Browse All Materials (1,866)
@@ -209,18 +223,72 @@
 
       <!-- VIEW 1: MATERIALS BROWSER -->
       <div id="vault-materials-view-container">
+
+        <!-- Quick 1-Tap Category Filter Strip -->
+        <div class="vault-chip-section">
+          <div class="vault-chip-label">
+            <svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
+            QUICK CATEGORY FILTER:
+          </div>
+          <div class="vault-chip-strip" id="vault-category-chips-strip">
+            <button type="button" class="vault-category-chip active" data-cat="ALL" onclick="UI100L.filterVaultByCategory('ALL', this)">All Materials (1,866)</button>
+            <button type="button" class="vault-category-chip" data-cat="Lecture Notes" onclick="UI100L.filterVaultByCategory('Lecture Notes', this)">📝 Lecture Notes</button>
+            <button type="button" class="vault-category-chip" data-cat="Past Questions" onclick="UI100L.filterVaultByCategory('Past Questions', this)">📜 Past Examination Questions</button>
+            <button type="button" class="vault-category-chip" data-cat="Academic" onclick="UI100L.filterVaultByCategory('Academic', this)">📘 Textbooks &amp; Packs</button>
+            <button type="button" class="vault-category-chip" data-cat="Practical Manual" onclick="UI100L.filterVaultByCategory('Practical Manual', this)">🔬 Practical &amp; Lab Manuals</button>
+            <button type="button" class="vault-category-chip" data-cat="Tutorial Sheet" onclick="UI100L.filterVaultByCategory('Tutorial Sheet', this)">🎯 Tutorial &amp; Problem Sets</button>
+            <button type="button" class="vault-category-chip" data-cat="Syllabus" onclick="UI100L.filterVaultByCategory('Syllabus', this)">📋 Syllabi &amp; Curriculum</button>
+          </div>
+        </div>
+
+        <!-- Popular 100L Courses Quick-Filter Strip -->
+        <div class="vault-chip-section" style="margin-top: -0.25rem;">
+          <div class="vault-chip-label">
+            <svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            POPULAR 100L COURSES (1-TAP MATERIAL FILTER):
+          </div>
+          <div class="vault-chip-strip" id="vault-courses-chips-strip">
+            <button type="button" class="vault-quick-chip active" data-course="ALL" onclick="UI100L.filterVaultByCourse('ALL', this)">All Courses</button>
+            <button type="button" class="vault-quick-chip" data-course="COS 101" onclick="UI100L.filterVaultByCourse('COS 101', this)">COS 101</button>
+            <button type="button" class="vault-quick-chip" data-course="CHE 126" onclick="UI100L.filterVaultByCourse('CHE 126', this)">CHE 126</button>
+            <button type="button" class="vault-quick-chip" data-course="ECO 102" onclick="UI100L.filterVaultByCourse('ECO 102', this)">ECO 102</button>
+            <button type="button" class="vault-quick-chip" data-course="PHY 102" onclick="UI100L.filterVaultByCourse('PHY 102', this)">PHY 102</button>
+            <button type="button" class="vault-quick-chip" data-course="MTH 101" onclick="UI100L.filterVaultByCourse('MTH 101', this)">MTH 101</button>
+            <button type="button" class="vault-quick-chip" data-course="BIO 102" onclick="UI100L.filterVaultByCourse('BIO 102', this)">BIO 102</button>
+            <button type="button" class="vault-quick-chip" data-course="GES 107" onclick="UI100L.filterVaultByCourse('GES 107', this)">GES 107</button>
+            <button type="button" class="vault-quick-chip" data-course="STA 114" onclick="UI100L.filterVaultByCourse('STA 114', this)">STA 114</button>
+            <button type="button" class="vault-quick-chip" data-course="ZOO 114" onclick="UI100L.filterVaultByCourse('ZOO 114', this)">ZOO 114</button>
+            <button type="button" class="vault-quick-chip" data-course="MAT 111" onclick="UI100L.filterVaultByCourse('MAT 111', this)">MAT 111</button>
+            <button type="button" class="vault-quick-chip" data-course="CLA 101" onclick="UI100L.filterVaultByCourse('CLA 101', this)">CLA 101</button>
+          </div>
+        </div>
+
         <!-- Search & Filter Controls -->
         <div class="vault-toolbar">
           <div class="vault-search-row">
-            <input 
-              type="text" 
-              id="vault-search-input" 
-              class="vault-search-input" 
-              placeholder="Search materials by title, course code (e.g. COS 101, MTH 101, BIO 102), topic, or session..." 
-              oninput="UI100L.searchVault(this.value)"
-            />
+            <div class="vault-search-wrapper">
+              <svg class="vault-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input 
+                type="text" 
+                id="vault-search-input" 
+                class="vault-search-input" 
+                placeholder="Search materials by title, course code (e.g. COS 101, MTH 101, BIO 102), topic, or session..." 
+                oninput="UI100L.searchVault(this.value)"
+              />
+              <button 
+                type="button" 
+                id="vault-search-clear-btn" 
+                class="vault-search-clear-btn" 
+                style="display: none;" 
+                onclick="UI100L.clearVaultSearch()" 
+                title="Clear search query"
+              >✕</button>
+            </div>
           </div>
           <div class="vault-dropdown-row">
+            <select id="vault-filter-course" class="vault-select" onchange="UI100L.filterVault()">
+              <option value="ALL">All Courses (147)</option>
+            </select>
             <select id="vault-filter-faculty" class="vault-select" onchange="UI100L.filterVault()">
               <option value="ALL">All Faculties</option>
             </select>
@@ -249,16 +317,41 @@
           </div>
         </div>
 
-        <!-- Materials Count Badge -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+        <!-- Active Filters Indicator Bar -->
+        <div id="vault-active-filters-bar" class="vault-active-filters-bar" style="display: none;"></div>
+
+        <!-- Materials Count Badge & View Mode Controls -->
+        <div class="vault-results-header">
           <div id="vault-results-summary" style="font-size: 0.9rem; font-weight: 700; color: #64748B;">
             Loading academic materials...
           </div>
+          <div class="vault-controls-group">
+            <div style="display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; font-weight: 700; color: #64748B;">
+              <span>Show:</span>
+              <select id="vault-limit-select" class="vault-limit-select" onchange="UI100L.changeVaultLimit(this.value)">
+                <option value="18">18</option>
+                <option value="36">36</option>
+                <option value="54">54</option>
+              </select>
+            </div>
+            <div class="vault-view-toggle">
+              <button type="button" id="vault-view-btn-grid" class="vault-view-btn ${state.vault.viewMode === 'grid' ? 'active' : ''}" onclick="UI100L.setVaultViewMode('grid')" title="Card Grid View">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                Grid
+              </button>
+              <button type="button" id="vault-view-btn-list" class="vault-view-btn ${state.vault.viewMode === 'list' ? 'active' : ''}" onclick="UI100L.setVaultViewMode('list')" title="Compact List View">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                List
+              </button>
+            </div>
+          </div>
         </div>
 
-        <!-- Grid -->
-        <div id="vault-materials-grid" class="vault-materials-grid">
-          <!-- Populated dynamically -->
+        <!-- Materials Display Container (Grid or List) -->
+        <div id="vault-materials-container">
+          <div id="vault-materials-grid" class="vault-materials-grid">
+            <!-- Populated dynamically -->
+          </div>
         </div>
 
         <!-- Pagination -->
@@ -331,6 +424,7 @@
         v.totalCount = json.pagination.total || 0;
         renderVaultMaterials();
         renderVaultPagination();
+        renderVaultActiveFilters();
       }
     } catch (err) {
       console.error("[UI100L] Error loading materials:", err);
@@ -340,12 +434,12 @@
   }
 
   /**
-   * Render Material Cards Grid
+   * Render Material Cards or Compact List View
    */
   function renderVaultMaterials() {
-    const grid = document.getElementById("vault-materials-grid");
+    const container = document.getElementById("vault-materials-container");
     const summaryEl = document.getElementById("vault-results-summary");
-    if (!grid) return;
+    if (!container) return;
 
     const v = state.vault;
 
@@ -354,57 +448,114 @@
     }
 
     if (v.items.length === 0) {
-      grid.innerHTML = `
-        <div style="grid-column: 1/-1; text-align: center; padding: 3rem 1.5rem; background: #FFF; border-radius: 12px; border: 1px solid #E2E8F0;">
+      container.innerHTML = `
+        <div style="text-align: center; padding: 3rem 1.5rem; background: #FFF; border-radius: 12px; border: 1px solid #E2E8F0; margin-bottom: 2rem;">
           <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 800; color: #0F172A; margin-bottom: 0.5rem;">No matching materials found</h3>
-          <p style="color: #64748B; font-size: 0.9rem;">Try broadening your search term or clearing faculty/category filters.</p>
+          <p style="color: #64748B; font-size: 0.9rem; margin-bottom: 1.25rem;">Try clearing your active filters or searching by another course code.</p>
+          <button type="button" class="action-btn" onclick="UI100L.resetVaultFilters()" style="padding: 0.6rem 1.25rem; font-size: 0.85rem;">✕ Reset All Filters</button>
         </div>
       `;
       return;
     }
 
-    grid.innerHTML = v.items.map((item) => {
-      const ext = (item.fileFormat || "pdf").toLowerCase().replace(".", "");
-      const formatBadgeClass = ext === "pdf" ? "pdf" : ext === "docx" || ext === "doc" ? "docx" : ext.includes("ppt") ? "pptx" : "";
-      const sizeStr = item.fileSize ? `${(item.fileSize / (1024 * 1024)).toFixed(1)} MB` : "Available";
-      const pagesStr = item.pageCount ? `${item.pageCount} pages` : "Complete";
-      const courseStr = item.courseCode || "UI 100L";
-      const facultyName = item.faculty ? item.faculty.name : "University of Ibadan";
+    // Render COMPACT LIST VIEW
+    if (v.viewMode === "list") {
+      container.innerHTML = `
+        <div class="vault-materials-list">
+          ${v.items.map((item) => {
+            const ext = (item.fileFormat || "pdf").toLowerCase().replace(".", "");
+            const formatBadgeClass = ext === "pdf" ? "pdf" : ext === "docx" || ext === "doc" ? "docx" : ext.includes("ppt") ? "pptx" : "";
+            const sizeStr = item.fileSize ? `${(item.fileSize / (1024 * 1024)).toFixed(1)} MB` : "Available";
+            const pagesStr = item.pageCount ? `${item.pageCount} pages` : "Complete";
+            const courseStr = item.courseCode || "UI 100L";
+            const categoryStr = item.category || "Academic Resource";
 
-      return `
-        <div class="vault-card">
-          <div>
-            <div class="vault-card-header">
-              <span class="vault-course-chip">${escapeHtml(courseStr)}</span>
-              <span class="vault-format-badge ${formatBadgeClass}">.${escapeHtml(ext)}</span>
-            </div>
-            <h3 class="vault-card-title" title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</h3>
-            <p class="vault-card-desc">${escapeHtml(item.description || "Official University of Ibadan verified academic resource.")}</p>
-          </div>
-          <div>
-            <div class="vault-card-meta">
-              <span><svg class="app-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg> ${escapeHtml(item.category || "Academic")}</span>
-              <span><svg class="app-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ${pagesStr}</span>
-              <span>${sizeStr}</span>
-            </div>
-            <div class="vault-card-actions">
-              <a href="${escapeHtml(item.fileViewUrl)}" target="_blank" rel="noopener" class="vault-btn-view">
-                <svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                View Document
-              </a>
-              <a href="${escapeHtml(item.fileDownloadUrl)}" class="vault-btn-download" title="Download original file">
-                <svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-                Download
-              </a>
-            </div>
-          </div>
+            return `
+              <div class="vault-list-row">
+                <div class="vault-list-main">
+                  <button type="button" class="vault-course-chip interactive" onclick="UI100L.filterVaultByCourse('${escapeHtml(courseStr)}')" title="Filter materials by ${escapeHtml(courseStr)}">
+                    ${escapeHtml(courseStr)}
+                  </button>
+                  <div class="vault-list-title-wrap">
+                    <div class="vault-list-title" title="${escapeHtml(item.title)}">
+                      ${escapeHtml(item.title)}
+                    </div>
+                    <div class="vault-list-sub">
+                      <span>${escapeHtml(categoryStr)}</span>
+                      <span>•</span>
+                      <span>${pagesStr}</span>
+                      <span>•</span>
+                      <span>${sizeStr}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="vault-list-actions">
+                  <span class="vault-format-badge ${formatBadgeClass}">.${escapeHtml(ext)}</span>
+                  <a href="${escapeHtml(item.fileViewUrl)}" target="_blank" rel="noopener" class="vault-btn-view" style="padding: 0.45rem 0.75rem; font-size: 0.8rem;">
+                    <svg class="app-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                    View
+                  </a>
+                  <a href="${escapeHtml(item.fileDownloadUrl)}" class="vault-btn-download" title="Download original file" style="padding: 0.45rem 0.75rem; font-size: 0.8rem;">
+                    <svg class="app-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                    Download
+                  </a>
+                </div>
+              </div>
+            `;
+          }).join("")}
         </div>
       `;
-    }).join("");
+      return;
+    }
+
+    // Render GRID CARDS VIEW
+    container.innerHTML = `
+      <div id="vault-materials-grid" class="vault-materials-grid">
+        ${v.items.map((item) => {
+          const ext = (item.fileFormat || "pdf").toLowerCase().replace(".", "");
+          const formatBadgeClass = ext === "pdf" ? "pdf" : ext === "docx" || ext === "doc" ? "docx" : ext.includes("ppt") ? "pptx" : "";
+          const sizeStr = item.fileSize ? `${(item.fileSize / (1024 * 1024)).toFixed(1)} MB` : "Available";
+          const pagesStr = item.pageCount ? `${item.pageCount} pages` : "Complete";
+          const courseStr = item.courseCode || "UI 100L";
+
+          return `
+            <div class="vault-card">
+              <div>
+                <div class="vault-card-header">
+                  <button type="button" class="vault-course-chip interactive" onclick="UI100L.filterVaultByCourse('${escapeHtml(courseStr)}')" title="Filter materials by ${escapeHtml(courseStr)}">
+                    ${escapeHtml(courseStr)}
+                  </button>
+                  <span class="vault-format-badge ${formatBadgeClass}">.${escapeHtml(ext)}</span>
+                </div>
+                <h3 class="vault-card-title" title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</h3>
+                <p class="vault-card-desc">${escapeHtml(item.description || "Official University of Ibadan verified academic resource.")}</p>
+              </div>
+              <div>
+                <div class="vault-card-meta">
+                  <span><svg class="app-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg> ${escapeHtml(item.category || "Academic")}</span>
+                  <span><svg class="app-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ${pagesStr}</span>
+                  <span>${sizeStr}</span>
+                </div>
+                <div class="vault-card-actions">
+                  <a href="${escapeHtml(item.fileViewUrl)}" target="_blank" rel="noopener" class="vault-btn-view">
+                    <svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                    View Document
+                  </a>
+                  <a href="${escapeHtml(item.fileDownloadUrl)}" class="vault-btn-download" title="Download original file">
+                    <svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                    Download
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join("")}
+      </div>
+    `;
   }
 
   /**
-   * Render Pagination
+   * Render Smart Numeric Pagination
    */
   function renderVaultPagination() {
     const container = document.getElementById("vault-pagination-container");
@@ -416,34 +567,260 @@
       return;
     }
 
-    container.innerHTML = `
-      <button class="vault-page-btn" ${v.page <= 1 ? "disabled" : ""} onclick="UI100L.switchVaultPage(${v.page - 1})">
+    const currentPage = v.page;
+    const totalPages = v.totalPages;
+
+    let pages = [];
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      pages.push(1);
+      if (currentPage > 3) pages.push("...");
+      const start = Math.max(2, currentPage - 1);
+      const end = Math.min(totalPages - 1, currentPage + 1);
+      for (let i = start; i <= end; i++) pages.push(i);
+      if (currentPage < totalPages - 2) pages.push("...");
+      pages.push(totalPages);
+    }
+
+    let html = `
+      <button type="button" class="vault-page-btn" ${currentPage <= 1 ? "disabled" : ""} onclick="UI100L.switchVaultPage(${currentPage - 1})">
         ← Previous
       </button>
-      <span style="font-weight: 700; color: #475569; font-size: 0.9rem; padding: 0 0.5rem;">
-        Page ${v.page} of ${v.totalPages}
-      </span>
-      <button class="vault-page-btn" ${v.page >= v.totalPages ? "disabled" : ""} onclick="UI100L.switchVaultPage(${v.page + 1})">
+    `;
+
+    pages.forEach((p) => {
+      if (p === "...") {
+        html += `<span class="vault-page-ellipsis">…</span>`;
+      } else {
+        html += `
+          <button type="button" class="vault-page-number-btn ${p === currentPage ? "active" : ""}" onclick="UI100L.switchVaultPage(${p})">
+            ${p}
+          </button>
+        `;
+      }
+    });
+
+    html += `
+      <button type="button" class="vault-page-btn" ${currentPage >= totalPages ? "disabled" : ""} onclick="UI100L.switchVaultPage(${currentPage + 1})">
         Next →
       </button>
     `;
+
+    container.innerHTML = html;
   }
 
   function switchVaultPage(p) {
     if (p < 1 || p > state.vault.totalPages) return;
     state.vault.page = p;
     loadVaultMaterials();
-    window.scrollTo({ top: 300, behavior: "smooth" });
+    const target = document.getElementById("vault-results-summary") || document.getElementById("vault-materials-container");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }
 
   let searchDebounceTimer = null;
   function searchVault(q) {
+    const clearBtn = document.getElementById("vault-search-clear-btn");
+    if (clearBtn) {
+      clearBtn.style.display = q && q.trim().length > 0 ? "inline-flex" : "none";
+    }
     clearTimeout(searchDebounceTimer);
     searchDebounceTimer = setTimeout(() => {
       state.vault.searchQuery = q.trim();
       state.vault.page = 1;
+      renderVaultActiveFilters();
       loadVaultMaterials();
     }, 300);
+  }
+
+  function clearVaultSearch() {
+    state.vault.searchQuery = "";
+    state.vault.page = 1;
+    const searchInput = document.getElementById("vault-search-input");
+    if (searchInput) searchInput.value = "";
+    const clearBtn = document.getElementById("vault-search-clear-btn");
+    if (clearBtn) clearBtn.style.display = "none";
+    renderVaultActiveFilters();
+    loadVaultMaterials();
+  }
+
+  function filterVaultByCategory(category, btnEl) {
+    state.vault.selectedCategory = category;
+    state.vault.page = 1;
+
+    document.querySelectorAll(".vault-category-chip").forEach((c) => {
+      c.classList.toggle("active", c.getAttribute("data-cat") === category);
+    });
+
+    const catSelect = document.getElementById("vault-filter-category");
+    if (catSelect) catSelect.value = category;
+
+    renderVaultActiveFilters();
+    loadVaultMaterials();
+  }
+
+  function filterVaultByCourse(courseCode, btnEl) {
+    state.vault.selectedCourse = courseCode;
+    state.vault.page = 1;
+
+    const materialsTabBtn = document.getElementById("vault-tab-btn-materials");
+    if (materialsTabBtn && !materialsTabBtn.classList.contains("active")) {
+      filterVault("VIEW_MATERIALS");
+    }
+
+    document.querySelectorAll(".vault-quick-chip").forEach((c) => {
+      c.classList.toggle("active", c.getAttribute("data-course") === courseCode);
+    });
+
+    const courseSelect = document.getElementById("vault-filter-course");
+    if (courseSelect) courseSelect.value = courseCode;
+
+    renderVaultActiveFilters();
+    loadVaultMaterials();
+
+    const summary = document.getElementById("vault-results-summary");
+    if (summary) {
+      summary.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  function removeVaultFilter(filterType) {
+    if (filterType === "category") {
+      filterVaultByCategory("ALL");
+    } else if (filterType === "course") {
+      filterVaultByCourse("ALL");
+    } else if (filterType === "faculty") {
+      state.vault.selectedFaculty = "ALL";
+      const sel = document.getElementById("vault-filter-faculty");
+      if (sel) sel.value = "ALL";
+      state.vault.page = 1;
+      renderVaultActiveFilters();
+      loadVaultMaterials();
+    } else if (filterType === "format") {
+      state.vault.selectedFormat = "ALL";
+      const sel = document.getElementById("vault-filter-format");
+      if (sel) sel.value = "ALL";
+      state.vault.page = 1;
+      renderVaultActiveFilters();
+      loadVaultMaterials();
+    } else if (filterType === "semester") {
+      state.vault.selectedSemester = "ALL";
+      const sel = document.getElementById("vault-filter-semester");
+      if (sel) sel.value = "ALL";
+      state.vault.page = 1;
+      renderVaultActiveFilters();
+      loadVaultMaterials();
+    }
+  }
+
+  function resetVaultFilters() {
+    state.vault.selectedCategory = "ALL";
+    state.vault.selectedCourse = "ALL";
+    state.vault.selectedFaculty = "ALL";
+    state.vault.selectedFormat = "ALL";
+    state.vault.selectedSemester = "ALL";
+    state.vault.searchQuery = "";
+    state.vault.page = 1;
+
+    const searchInput = document.getElementById("vault-search-input");
+    if (searchInput) searchInput.value = "";
+    const searchClear = document.getElementById("vault-search-clear-btn");
+    if (searchClear) searchClear.style.display = "none";
+
+    const courseSelect = document.getElementById("vault-filter-course");
+    if (courseSelect) courseSelect.value = "ALL";
+    const facSelect = document.getElementById("vault-filter-faculty");
+    if (facSelect) facSelect.value = "ALL";
+    const catSelect = document.getElementById("vault-filter-category");
+    if (catSelect) catSelect.value = "ALL";
+    const fmtSelect = document.getElementById("vault-filter-format");
+    if (fmtSelect) fmtSelect.value = "ALL";
+    const semSelect = document.getElementById("vault-filter-semester");
+    if (semSelect) semSelect.value = "ALL";
+
+    document.querySelectorAll(".vault-category-chip").forEach((c) => {
+      c.classList.toggle("active", c.getAttribute("data-cat") === "ALL");
+    });
+    document.querySelectorAll(".vault-quick-chip").forEach((c) => {
+      c.classList.toggle("active", c.getAttribute("data-course") === "ALL");
+    });
+
+    renderVaultActiveFilters();
+    loadVaultMaterials();
+  }
+
+  function renderVaultActiveFilters() {
+    const bar = document.getElementById("vault-active-filters-bar");
+    if (!bar) return;
+
+    const v = state.vault;
+    const tags = [];
+
+    if (v.selectedCategory !== "ALL") {
+      tags.push({ label: `Category: ${v.selectedCategory}`, action: "UI100L.removeVaultFilter('category')" });
+    }
+    if (v.selectedCourse !== "ALL") {
+      tags.push({ label: `Course: ${v.selectedCourse}`, action: "UI100L.removeVaultFilter('course')" });
+    }
+    if (v.selectedFaculty !== "ALL") {
+      const facName = document.getElementById("vault-filter-faculty")?.selectedOptions?.[0]?.text || "Faculty Filter";
+      tags.push({ label: `Faculty: ${facName}`, action: "UI100L.removeVaultFilter('faculty')" });
+    }
+    if (v.selectedFormat !== "ALL") {
+      tags.push({ label: `Format: .${v.selectedFormat.toUpperCase()}`, action: "UI100L.removeVaultFilter('format')" });
+    }
+    if (v.selectedSemester !== "ALL") {
+      tags.push({ label: `Semester: ${v.selectedSemester}`, action: "UI100L.removeVaultFilter('semester')" });
+    }
+    if (v.searchQuery) {
+      tags.push({ label: `Search: "${v.searchQuery}"`, action: "UI100L.clearVaultSearch()" });
+    }
+
+    if (tags.length === 0) {
+      bar.style.display = "none";
+      bar.innerHTML = "";
+      return;
+    }
+
+    bar.style.display = "flex";
+    bar.innerHTML = `
+      <span style="font-weight: 800; color: #7C3AED; display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8rem;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+        Active Filters (${tags.length}):
+      </span>
+      ${tags.map((t) => `
+        <span class="vault-filter-tag">
+          <span>${escapeHtml(t.label)}</span>
+          <button type="button" onclick="${t.action}" title="Remove filter" style="background: none; border: none; color: #EF4444; font-weight: 800; cursor: pointer; padding: 0 0 0 0.25rem; font-size: 0.85rem; line-height: 1;">✕</button>
+        </span>
+      `).join("")}
+      <button type="button" class="vault-clear-all-btn" onclick="UI100L.resetVaultFilters()">
+        ✕ Clear All Filters
+      </button>
+    `;
+  }
+
+  function setVaultViewMode(mode) {
+    state.vault.viewMode = mode;
+    try {
+      localStorage.setItem("ui100l_vault_view", mode);
+    } catch (e) {}
+
+    const btnGrid = document.getElementById("vault-view-btn-grid");
+    const btnList = document.getElementById("vault-view-btn-list");
+    if (btnGrid) btnGrid.classList.toggle("active", mode === "grid");
+    if (btnList) btnList.classList.toggle("active", mode === "list");
+
+    renderVaultMaterials();
+  }
+
+  function changeVaultLimit(limit) {
+    const num = parseInt(limit, 10) || 18;
+    state.vault.limit = num;
+    state.vault.page = 1;
+    loadVaultMaterials();
   }
 
   function filterVault(action, payload) {
@@ -463,17 +840,30 @@
       return;
     }
 
+    const courseEl = document.getElementById("vault-filter-course");
     const facEl = document.getElementById("vault-filter-faculty");
     const catEl = document.getElementById("vault-filter-category");
     const fmtEl = document.getElementById("vault-filter-format");
     const semEl = document.getElementById("vault-filter-semester");
 
+    if (courseEl) {
+      state.vault.selectedCourse = courseEl.value;
+      document.querySelectorAll(".vault-quick-chip").forEach((c) => {
+        c.classList.toggle("active", c.getAttribute("data-course") === courseEl.value);
+      });
+    }
     if (facEl) state.vault.selectedFaculty = facEl.value;
-    if (catEl) state.vault.selectedCategory = catEl.value;
+    if (catEl) {
+      state.vault.selectedCategory = catEl.value;
+      document.querySelectorAll(".vault-category-chip").forEach((c) => {
+        c.classList.toggle("active", c.getAttribute("data-cat") === catEl.value);
+      });
+    }
     if (fmtEl) state.vault.selectedFormat = fmtEl.value;
     if (semEl) state.vault.selectedSemester = semEl.value;
 
     state.vault.page = 1;
+    renderVaultActiveFilters();
     loadVaultMaterials();
   }
 
@@ -502,6 +892,17 @@
         if (facSelect1) facSelect1.innerHTML = `<option value="ALL">All Faculties</option>${optHtml}`;
         if (facSelect2) facSelect2.innerHTML = `<option value="ALL">All Faculties</option>${optHtml}`;
         if (facSelectCbt) facSelectCbt.innerHTML = `<option value="ALL">All Faculties</option>${optHtml}`;
+
+        // Populate course filter dropdown
+        const courseSelect = document.getElementById("vault-filter-course");
+        if (courseSelect && json.data) {
+          const sortedCourses = [...json.data].sort((a, b) => a.code.localeCompare(b.code));
+          const courseOpts = sortedCourses.map((c) => `<option value="${escapeHtml(c.code)}">${escapeHtml(c.code)} - ${escapeHtml(c.title)}</option>`).join("");
+          courseSelect.innerHTML = `<option value="ALL">All Courses (${sortedCourses.length})</option>${courseOpts}`;
+          if (state.vault.selectedCourse !== "ALL") {
+            courseSelect.value = state.vault.selectedCourse;
+          }
+        }
 
         render100lCourses();
         renderCbtPortalCourses();
