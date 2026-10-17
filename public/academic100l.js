@@ -88,6 +88,9 @@
     searchCbtPortal,
     filterCbtPortal,
     open100lCbtTab,
+    renderHomeCbtLaunchpad,
+    exitCbtHall,
+    getCourses: () => state.courses.items || [],
   };
 
   /**
@@ -97,9 +100,14 @@
     console.log("[UI100L] Initializing 100-Level Academic System...");
     ensureGlobalOverlay();
     enhanceResourcesTab();
-    await loadVaultMaterials();
-    await load100lCourses();
     render100lCbtPortal();
+    renderHomeCbtLaunchpad();
+    await Promise.all([
+      load100lCourses(),
+      loadVaultMaterials(),
+    ]);
+    render100lCbtPortal();
+    renderHomeCbtLaunchpad();
   }
 
   function open100lCbtTab() {
@@ -465,6 +473,7 @@
    * 2. Load 100-Level Courses Directory
    */
   async function load100lCourses() {
+    state.courses.isLoading = true;
     try {
       const res = await fetch("/api/100l/courses");
       const json = await res.json();
@@ -476,15 +485,24 @@
         for (const c of json.data) {
           if (c.faculty) facultiesMap.set(c.faculty.id, c.faculty.name);
         }
+        const optHtml = Array.from(facFacs(facultiesMap)).map(([id, name]) => `<option value="${id}">${escapeHtml(name)}</option>`).join("");
+
         const facSelect1 = document.getElementById("vault-filter-faculty");
         const facSelect2 = document.getElementById("courses-filter-faculty");
-        const optHtml = Array.from(facFacs(facultiesMap)).map(([id, name]) => `<option value="${id}">${escapeHtml(name)}</option>`).join("");
+        const facSelectCbt = document.getElementById("cbt-filter-faculty");
 
         if (facSelect1) facSelect1.innerHTML = `<option value="ALL">All Faculties</option>${optHtml}`;
         if (facSelect2) facSelect2.innerHTML = `<option value="ALL">All Faculties</option>${optHtml}`;
+        if (facSelectCbt) facSelectCbt.innerHTML = `<option value="ALL">All Faculties</option>${optHtml}`;
+
+        render100lCourses();
+        renderCbtPortalCourses();
+        renderHomeCbtLaunchpad();
       }
     } catch (err) {
       console.error("[UI100L] Error loading courses:", err);
+    } finally {
+      state.courses.isLoading = false;
     }
   }
 
@@ -669,14 +687,22 @@
       items = items.filter((c) => (c.questionsCount || 0) > 0);
     }
 
-    // Filter by search query
+    // Filter by search query (handle spaces & hyphens flexibly)
     if (p.searchQuery) {
-      const q = p.searchQuery.toLowerCase();
-      items = items.filter((c) =>
-        c.code.toLowerCase().includes(q) ||
-        c.title.toLowerCase().includes(q) ||
-        (c.faculty && c.faculty.name.toLowerCase().includes(q))
-      );
+      const q = p.searchQuery.toLowerCase().trim();
+      const qClean = q.replace(/[\s\-]/g, "");
+      items = items.filter((c) => {
+        const codeNorm = c.code.toLowerCase();
+        const codeClean = codeNorm.replace(/[\s\-]/g, "");
+        const titleNorm = c.title.toLowerCase();
+        const facNorm = c.faculty ? c.faculty.name.toLowerCase() : "";
+        return (
+          codeNorm.includes(q) ||
+          codeClean.includes(qClean) ||
+          titleNorm.includes(q) ||
+          facNorm.includes(q)
+        );
+      });
     }
 
     // Filter by faculty
@@ -702,6 +728,15 @@
     }
 
     if (items.length === 0) {
+      if (state.courses.isLoading) {
+        grid.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 3rem 1.5rem; background: #FFF; border-radius: 14px; border: 1px solid #E2E8F0;">
+            <div class="app-icon-spin" style="margin-bottom: 0.5rem;"><svg class="app-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--ps-purple-primary)" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg></div>
+            <p style="color: #64748B; font-weight: 600;">Loading 100-Level CBT Course Directory...</p>
+          </div>
+        `;
+        return;
+      }
       grid.innerHTML = `
         <div style="grid-column: 1/-1; text-align: center; padding: 3rem 1.5rem; background: #FFF; border-radius: 14px; border: 1px solid #E2E8F0;">
           <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 800; color: #0F172A; margin-bottom: 0.5rem;">No matching 100L CBT courses found</h3>
@@ -761,6 +796,58 @@
                 📚 View Course Outline &amp; Vault Materials →
               </button>
             `}
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  /**
+   * Render Home Dashboard CBT Launchpad Cards
+   */
+  function renderHomeCbtLaunchpad() {
+    const grid = document.getElementById("home-cbt-cards-grid");
+    if (!grid) return;
+
+    let items = (state.courses.items || []).filter((c) => (c.questionsCount || 0) > 0);
+    if (items.length === 0) return; // preserve pre-rendered static cards
+
+    // Sort by question count descending
+    items.sort((a, b) => (b.questionsCount || 0) - (a.questionsCount || 0));
+    const topCourses = items.slice(0, 8);
+
+    grid.innerHTML = topCourses.map((c) => {
+      const facName = c.faculty ? c.faculty.name : "University of Ibadan";
+      return `
+        <div class="home-cbt-card" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 14px; padding: 1.35rem; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s ease;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="vault-course-chip" style="font-size: 0.88rem; font-weight: 800; padding: 0.35rem 0.75rem; border-radius: 8px;">${escapeHtml(c.code)}</span>
+              <span style="font-size: 0.76rem; font-weight: 700; color: #94A3B8;">${escapeHtml(c.semester || '1st')} Sem • ${c.units || 3} Units</span>
+            </div>
+            <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 800; color: #FFFFFF; margin: 0.35rem 0 0.25rem 0; line-height: 1.35;">${escapeHtml(c.title)}</h3>
+            <div style="font-size: 0.78rem; color: #94A3B8; margin-bottom: 0.85rem;">Faculty of ${escapeHtml(facName)}</div>
+            
+            <div style="margin-bottom: 1rem;">
+              <span class="course-stat-badge questions" style="font-size: 0.82rem; padding: 0.35rem 0.75rem; background: rgba(16, 185, 129, 0.18); color: #34D399; font-weight: 800; border: 1px solid rgba(52, 211, 153, 0.3);">
+                <svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                ${(c.questionsCount || 0).toLocaleString()} Verified Questions
+              </span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.45rem; margin-top: 0.75rem; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 0.85rem;">
+            <div class="cbt-course-actions-grid">
+              <button class="cbt-launch-btn-primary" onclick="UI100L.startCbt('${escapeHtml(c.code)}', 'FULL_CBT')">
+                ⚡ Full Exam (30m)
+              </button>
+              <button class="vault-btn-view" style="font-size: 0.82rem; padding: 0.65rem 0.5rem; justify-content: center; border-radius: 8px; background: rgba(255,255,255,0.08); color: #FFF; border-color: rgba(255,255,255,0.18);" onclick="UI100L.startCbt('${escapeHtml(c.code)}', 'QUICK_DRILL')">
+                ⏱️ 10-Q Drill
+              </button>
+            </div>
+            <button class="vault-btn-download" style="width: 100%; justify-content: center; font-size: 0.8rem; padding: 0.55rem 0.75rem; border-radius: 8px; background: transparent; color: #C084FC; border-color: rgba(192, 132, 252, 0.3);" onclick="UI100L.openCourseDetail('${escapeHtml(c.code)}', 'cbt')">
+              📖 Past Papers &amp; Hub →
+            </button>
           </div>
         </div>
       `;
@@ -1297,6 +1384,9 @@
               <button onclick="UI100L.confirmSubmitCbt()" class="action-btn" style="background: var(--grad-status-emerald); padding: 0.65rem 1.25rem;">
                 Submit Exam ✓
               </button>
+              <button onclick="UI100L.exitCbtHall()" class="vault-btn-view" style="border-color: rgba(239, 68, 68, 0.4); color: #F87171; background: rgba(239, 68, 68, 0.12); padding: 0.65rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.85rem;">
+                ✕ Exit Hall
+              </button>
             </div>
           </div>
 
@@ -1470,6 +1560,14 @@
       console.error("[UI100L] CBT submission error:", err);
       alert("Network error submitting exam.");
       closeCourseDetail();
+    }
+  }
+
+  function exitCbtHall() {
+    if (confirm("Are you sure you want to exit the examination hall? Any unsaved answers will be discarded.")) {
+      clearInterval(state.cbt.timerInterval);
+      const overlay = document.getElementById("course-hub-overlay");
+      if (overlay) overlay.style.display = "none";
     }
   }
 

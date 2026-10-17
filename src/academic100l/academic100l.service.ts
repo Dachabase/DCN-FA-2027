@@ -191,23 +191,47 @@ export class Academic100lService {
       },
     });
 
+    const questionCountsByCode = await prisma.question.groupBy({
+      by: ["courseCode"],
+      _count: { id: true },
+    });
+    const qCountMap = new Map<string, number>();
+    for (const q of questionCountsByCode) {
+      if (q.courseCode) {
+        const cNorm = q.courseCode.toUpperCase().trim();
+        const cClean = cNorm.replace(/\s+/g, "");
+        qCountMap.set(cNorm, (qCountMap.get(cNorm) || 0) + q._count.id);
+        qCountMap.set(cClean, (qCountMap.get(cClean) || 0) + q._count.id);
+      }
+    }
+
     // Also account for questions and resources linked via courseCode string match
-    return courses.map((c) => ({
-      id: c.id,
-      code: c.code,
-      title: c.title,
-      level: c.level,
-      semester: c.semester,
-      units: c.units,
-      status: c.status,
-      isUniversityWide: c.isUniversityWide,
-      faculty: c.faculty,
-      materialsCount: c._count.resources,
-      questionsCount: c._count.questions,
-      flashcardsCount: c._count.flashcards,
-      hasCbt: c._count.questions > 0,
-      hasFlashcards: c._count.flashcards > 0,
-    }));
+    return courses.map((c) => {
+      const cNorm = c.code.toUpperCase().trim();
+      const cClean = cNorm.replace(/\s+/g, "");
+      const cUnpre = cNorm.replace(/^C-/, "").trim();
+      const cUnpreClean = cUnpre.replace(/\s+/g, "");
+
+      const qByCode = qCountMap.get(cNorm) || qCountMap.get(cClean) || qCountMap.get(cUnpre) || qCountMap.get(cUnpreClean) || 0;
+      const finalQuestionsCount = Math.max(c._count.questions, qByCode);
+
+      return {
+        id: c.id,
+        code: c.code,
+        title: c.title,
+        level: c.level,
+        semester: c.semester,
+        units: c.units,
+        status: c.status,
+        isUniversityWide: c.isUniversityWide,
+        faculty: c.faculty,
+        materialsCount: c._count.resources,
+        questionsCount: finalQuestionsCount,
+        flashcardsCount: c._count.flashcards,
+        hasCbt: finalQuestionsCount > 0,
+        hasFlashcards: c._count.flashcards > 0,
+      };
+    });
   }
 
   /**
@@ -360,18 +384,52 @@ export class Academic100lService {
   }
 
   /**
+   * Helper to resolve course code variations (e.g. C-COS 101, COS 101, COS101)
+   */
+  async resolveCourseCandidates(courseCode: string) {
+    const norm = courseCode.toUpperCase().trim();
+    const cleanCode = norm.replace(/\s+/g, "");
+    const unprefixed = norm.replace(/^C-/, "").trim();
+    const unprefixedClean = unprefixed.replace(/\s+/g, "");
+
+    const course = await prisma.course.findFirst({
+      where: {
+        OR: [
+          { code: norm },
+          { code: cleanCode },
+          { code: unprefixed },
+          { code: unprefixedClean },
+          { code: { contains: unprefixedClean, mode: "insensitive" } },
+        ],
+      },
+      select: { id: true, code: true, title: true },
+    });
+
+    const candidateCodes = Array.from(new Set([
+      norm,
+      cleanCode,
+      unprefixed,
+      unprefixedClean,
+      course?.code,
+      course?.code?.replace(/^C-/, ""),
+      course?.code?.replace(/\s+/g, ""),
+    ].filter(Boolean) as string[]));
+
+    return { norm, cleanCode, unprefixed, course, candidateCodes };
+  }
+
+  /**
    * 5. GET /api/100l/cbt/config/:courseCode
    * Returns valid exam configuration parameters for course CBT.
    */
   async getCbtConfig(courseCode: string) {
-    const norm = courseCode.toUpperCase().trim();
-    const cleanCode = norm.replace(/\s+/g, "");
+    const { norm, course, candidateCodes } = await this.resolveCourseCandidates(courseCode);
 
     const questions = await prisma.question.findMany({
       where: {
         OR: [
-          { courseCode: { equals: norm, mode: "insensitive" } },
-          { courseCode: { equals: cleanCode, mode: "insensitive" } },
+          { courseCode: { in: candidateCodes, mode: "insensitive" } },
+          ...(course?.id ? [{ courseId: course.id }] : []),
         ],
       },
       select: {
@@ -459,13 +517,12 @@ export class Academic100lService {
     userId?: string;
     guestSessionId?: string;
   }) {
-    const norm = params.courseCode.toUpperCase().trim();
-    const cleanCode = norm.replace(/\s+/g, "");
+    const { norm, course, candidateCodes } = await this.resolveCourseCandidates(params.courseCode);
 
     const where: any = {
       OR: [
-        { courseCode: { equals: norm, mode: "insensitive" } },
-        { courseCode: { equals: cleanCode, mode: "insensitive" } },
+        { courseCode: { in: candidateCodes, mode: "insensitive" } },
+        ...(course?.id ? [{ courseId: course.id }] : []),
       ],
     };
 
@@ -500,12 +557,7 @@ export class Academic100lService {
     const durationMinutes = Number(params.durationMinutes) || (countToTake <= 10 ? 10 : countToTake <= 20 ? 15 : 30);
     const timeAllowedSeconds = durationMinutes * 60;
 
-    // Course record resolution for FK
-    const course = await prisma.course.findFirst({
-      where: {
-        OR: [{ code: norm }, { code: cleanCode }],
-      },
-    });
+    // Course record resolution for FK (resolved above)
 
     // Create QuizAttempt record in progress
     const attempt = await prisma.quizAttempt.create({
