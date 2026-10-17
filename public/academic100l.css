@@ -495,3 +495,216 @@
   color: #FFFFFF;
   transform: rotateY(180deg);
 }
+
+/* =========================================================
+   DUAL-MODE CBT SWITCHER & 100L CBT PORTAL ENHANCEMENTS
+   ========================================================= */
+
+.cbt-dual-mode-header {
+  margin-bottom: 2rem;
+}
+
+.cbt-mode-nav-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  background: rgba(15, 13, 21, 0.75);
+  padding: 0.65rem;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 768px) {
+  .cbt-mode-nav-container {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+}
+
+.cbt-mode-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.15rem 1.35rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1.5px solid transparent;
+  border-radius: 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #94A3B8;
+  position: relative;
+  width: 100%;
+}
+
+.cbt-mode-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.cbt-mode-tab-btn.active {
+  background: linear-gradient(135deg, rgba(30, 27, 75, 0.95) 0%, rgba(20, 18, 35, 0.98) 100%);
+  border-color: #8B5CF6;
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.25);
+}
+
+.cbt-mode-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.cbt-icon--100l {
+  background: rgba(139, 92, 246, 0.2);
+  color: #C084FC;
+  border: 1px solid rgba(139, 92, 246, 0.4);
+}
+
+.cbt-mode-tab-btn.active .cbt-icon--100l {
+  background: #8B5CF6;
+  color: #FFFFFF;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+}
+
+.cbt-icon--utme {
+  background: rgba(245, 158, 11, 0.18);
+  color: #FBBF24;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.cbt-mode-tab-btn.active .cbt-icon--utme {
+  background: #F59E0B;
+  color: #FFFFFF;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+}
+
+.cbt-mode-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cbt-mode-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.2px;
+}
+
+.cbt-mode-subtitle {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: #94A3B8;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cbt-mode-tab-btn.active .cbt-mode-subtitle {
+  color: #CBD5E1;
+}
+
+.cbt-mode-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  flex-shrink: 0;
+}
+
+.cbt-badge--100l {
+  background: rgba(139, 92, 246, 0.25);
+  color: #DDD6FE;
+  border: 1px solid rgba(139, 92, 246, 0.4);
+}
+
+.cbt-badge--utme {
+  background: rgba(245, 158, 11, 0.2);
+  color: #FDE68A;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+/* Quick course filtering chips */
+.cbt-chip-strip {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.65rem;
+  margin-bottom: 1.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cbt-quick-chip {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  color: #334155;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cbt-quick-chip:hover {
+  border-color: #8B5CF6;
+  color: #8B5CF6;
+  background: rgba(139, 92, 246, 0.05);
+  transform: translateY(-1px);
+}
+
+.cbt-quick-chip.active {
+  background: #8B5CF6;
+  color: #FFFFFF;
+  border-color: #8B5CF6;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+}
+
+.cbt-course-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.cbt-launch-btn-primary {
+  background: var(--grad-brand-primary, linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%));
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 0.82rem;
+  padding: 0.65rem 0.65rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+  transition: all 0.2s ease;
+}
+
+.cbt-launch-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(139, 92, 246, 0.35);
+  filter: brightness(1.08);
+}
+

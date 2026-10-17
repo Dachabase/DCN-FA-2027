@@ -53,6 +53,13 @@
       revisionCount: 0,
       isLoading: false,
     },
+    cbtPortal: {
+      searchQuery: "",
+      selectedFaculty: "ALL",
+      selectedSemester: "ALL",
+      filterWithQuestionsOnly: true,
+      selectedPopularChip: "ALL",
+    },
   };
 
   // Expose global controller
@@ -77,6 +84,10 @@
     markFlashcard,
     shuffleFlashcards,
     openAdminVaultReport,
+    renderCbtPortal: render100lCbtPortal,
+    searchCbtPortal,
+    filterCbtPortal,
+    open100lCbtTab,
   };
 
   /**
@@ -84,9 +95,33 @@
    */
   async function initAcademic100L() {
     console.log("[UI100L] Initializing 100-Level Academic System...");
+    ensureGlobalOverlay();
     enhanceResourcesTab();
     await loadVaultMaterials();
     await load100lCourses();
+    render100lCbtPortal();
+  }
+
+  function open100lCbtTab() {
+    if (typeof window.switchTab === "function") {
+      window.switchTab("cbt");
+    }
+    if (typeof window.switchCbtMode === "function") {
+      window.switchCbtMode("100L");
+    }
+    render100lCbtPortal();
+  }
+
+  function ensureGlobalOverlay() {
+    let overlay = document.getElementById("course-hub-overlay");
+    if (!overlay) {
+      overlay = document.createElement("div");
+      overlay.id = "course-hub-overlay";
+      overlay.style.display = "none";
+      document.body.appendChild(overlay);
+    } else if (overlay.parentElement !== document.body) {
+      document.body.appendChild(overlay);
+    }
   }
 
   /**
@@ -498,11 +533,319 @@
   }
 
   /**
+   * Render 100-Level CBT Examination Portal inside #cbt-100l-portal-root
+   */
+  function render100lCbtPortal() {
+    const root = document.getElementById("cbt-100l-portal-root");
+    if (!root) return;
+
+    // Check if the shell is already rendered
+    let coursesGrid = document.getElementById("cbt-portal-courses-grid");
+    if (!coursesGrid) {
+      // Build faculties options
+      const facultiesMap = new Map();
+      for (const c of (state.courses.items || [])) {
+        if (c.faculty) facultiesMap.set(c.faculty.id, c.faculty.name);
+      }
+      const facOptions = Array.from(facultiesMap.entries())
+        .map(([id, name]) => `<option value="${id}">${escapeHtml(name)}</option>`)
+        .join("");
+
+      root.innerHTML = `
+        <!-- 100L CBT Hero Header -->
+        <div class="vault-header-hero" style="background: linear-gradient(135deg, rgba(30, 27, 75, 0.96) 0%, rgba(15, 13, 21, 0.98) 100%); border-color: rgba(168, 85, 247, 0.35); margin-bottom: 2rem;">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem;">
+            <div style="max-width: 680px;">
+              <div style="display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; font-weight: 800; color: #C084FC; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.45rem;">
+                <svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                OFFICIAL UNIVERSITY OF IBADAN SEMESTER CBT
+              </div>
+              <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.95rem; font-weight: 900; color: #FFFFFF; margin: 0 0 0.5rem 0; letter-spacing: -0.5px;">100-Level CBT Examination Engine</h2>
+              <p style="color: #CBD5E1; font-size: 0.95rem; line-height: 1.55; margin: 0;">
+                Over 3,826 authentic University of Ibadan past examination questions verified against official marking schemes. Practise timed exams under real UI hall conditions, tackle past papers by academic session, or take fast 10-question drills.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button onclick="UI100L.filterCbtPortal('QUESTIONS_ONLY')" id="cbt-filter-toggle-btn" class="action-btn" style="background: rgba(139, 92, 246, 0.25); border: 1px solid #8B5CF6; color: #FFF; font-weight: 700; padding: 0.65rem 1.15rem; border-radius: 10px; font-size: 0.85rem;">
+                <span>Active CBT Courses (67)</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="vault-stats-matrix">
+            <div class="vault-stat-box">
+              <div class="vault-stat-val">3,826</div>
+              <div class="vault-stat-label">CBT Questions</div>
+            </div>
+            <div class="vault-stat-box">
+              <div class="vault-stat-val">67</div>
+              <div class="vault-stat-label">Active 100L Courses</div>
+            </div>
+            <div class="vault-stat-box">
+              <div class="vault-stat-val">100%</div>
+              <div class="vault-stat-label">Verified Past Papers</div>
+            </div>
+            <div class="vault-stat-box">
+              <div class="vault-stat-val">Instant</div>
+              <div class="vault-stat-label">Grading &amp; Explanations</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Popular High-Demand Courses Strip -->
+        <div style="margin-bottom: 1.5rem;">
+          <div style="font-size: 0.78rem; font-weight: 800; color: #64748B; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 0.6rem;">
+            ⚡ POPULAR 100L CBT COURSES (TAP TO DRILL):
+          </div>
+          <div class="cbt-chip-strip">
+            <button class="cbt-quick-chip active" onclick="UI100L.filterCbtPortal('CHIP', 'ALL', this)">All Courses (67)</button>
+            <button class="cbt-quick-chip" onclick="UI100L.filterCbtPortal('CHIP', 'COS 101', this)">COS 101 (1,011 Qs)</button>
+            <button class="cbt-quick-chip" onclick="UI100L.filterCbtPortal('CHIP', 'CHE 126', this)">CHE 126 (273 Qs)</button>
+            <button class="cbt-quick-chip" onclick="UI100L.filterCbtPortal('CHIP', 'ECO 102', this)">ECO 102 (181 Qs)</button>
+            <button class="cbt-quick-chip" onclick="UI100L.filterCbtPortal('CHIP', 'MTH 101', this)">MTH 101</button>
+            <button class="cbt-quick-chip" onclick="UI100L.filterCbtPortal('CHIP', 'PHY 101', this)">PHY 101</button>
+            <button class="cbt-quick-chip" onclick="UI100L.filterCbtPortal('CHIP', 'BIO 101', this)">BIO 101</button>
+            <button class="cbt-quick-chip" onclick="UI100L.filterCbtPortal('CHIP', 'GES 107', this)">GES 107</button>
+            <button class="cbt-quick-chip" onclick="UI100L.filterCbtPortal('CHIP', 'ZOO 114', this)">ZOO 114</button>
+            <button class="cbt-quick-chip" onclick="UI100L.filterCbtPortal('CHIP', 'MAT 111', this)">MAT 111</button>
+            <button class="cbt-quick-chip" onclick="UI100L.filterCbtPortal('CHIP', 'CLA 101', this)">CLA 101</button>
+          </div>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="vault-toolbar">
+          <div class="vault-search-row">
+            <input 
+              type="text" 
+              id="cbt-search-input" 
+              class="vault-search-input" 
+              placeholder="Search 100L courses by code (e.g. COS 101, MTH 101, BIO 101, CHE 126, PHY 101, GES 107) or title..." 
+              oninput="UI100L.searchCbtPortal(this.value)"
+            />
+          </div>
+          <div class="vault-dropdown-row">
+            <select id="cbt-filter-faculty" class="vault-select" onchange="UI100L.filterCbtPortal('FILTER')">
+              <option value="ALL">All Faculties</option>
+              ${facOptions}
+            </select>
+            <select id="cbt-filter-semester" class="vault-select" onchange="UI100L.filterCbtPortal('FILTER')">
+              <option value="ALL">All Semesters</option>
+              <option value="1st">1st Semester</option>
+              <option value="2nd">2nd Semester</option>
+            </select>
+            <select id="cbt-filter-has-questions" class="vault-select" onchange="UI100L.filterCbtPortal('FILTER')">
+              <option value="YES">Courses with CBT Questions (Recommended)</option>
+              <option value="ALL">Show All 147 100L Courses</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+          <div id="cbt-results-summary" style="font-size: 0.9rem; font-weight: 700; color: #64748B;">
+            Loading 100-Level CBT Courses...
+          </div>
+        </div>
+
+        <!-- Courses Grid -->
+        <div id="cbt-portal-courses-grid" class="courses-grid-100l">
+          <!-- Rendered via renderCbtPortalCourses() -->
+        </div>
+      `;
+    }
+
+    renderCbtPortalCourses();
+  }
+
+  function renderCbtPortalCourses() {
+    const grid = document.getElementById("cbt-portal-courses-grid");
+    const summary = document.getElementById("cbt-results-summary");
+    if (!grid) return;
+
+    let items = state.courses.items || [];
+    const p = state.cbtPortal;
+
+    // Filter by questions only (default true)
+    if (p.filterWithQuestionsOnly) {
+      items = items.filter((c) => (c.questionsCount || 0) > 0);
+    }
+
+    // Filter by search query
+    if (p.searchQuery) {
+      const q = p.searchQuery.toLowerCase();
+      items = items.filter((c) =>
+        c.code.toLowerCase().includes(q) ||
+        c.title.toLowerCase().includes(q) ||
+        (c.faculty && c.faculty.name.toLowerCase().includes(q))
+      );
+    }
+
+    // Filter by faculty
+    if (p.selectedFaculty && p.selectedFaculty !== "ALL") {
+      items = items.filter((c) => c.faculty && c.faculty.id === p.selectedFaculty);
+    }
+
+    // Filter by semester
+    if (p.selectedSemester && p.selectedSemester !== "ALL") {
+      items = items.filter((c) => (c.semester || "").toLowerCase().includes(p.selectedSemester.toLowerCase()));
+    }
+
+    // Sort: courses with most questions first, then by code
+    items = items.slice().sort((a, b) => {
+      const qDiff = (b.questionsCount || 0) - (a.questionsCount || 0);
+      if (qDiff !== 0) return qDiff;
+      return a.code.localeCompare(b.code);
+    });
+
+    if (summary) {
+      const totalQs = items.reduce((sum, c) => sum + (c.questionsCount || 0), 0);
+      summary.innerHTML = `Showing <strong>${items.length} courses</strong> with <strong>${totalQs.toLocaleString()} verified questions</strong>`;
+    }
+
+    if (items.length === 0) {
+      grid.innerHTML = `
+        <div style="grid-column: 1/-1; text-align: center; padding: 3rem 1.5rem; background: #FFF; border-radius: 14px; border: 1px solid #E2E8F0;">
+          <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 800; color: #0F172A; margin-bottom: 0.5rem;">No matching 100L CBT courses found</h3>
+          <p style="color: #64748B; font-size: 0.9rem; margin-bottom: 1.25rem;">Try clearing your search query or switching to show all courses.</p>
+          <button class="action-btn" onclick="UI100L.filterCbtPortal('RESET')" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">Reset Filters</button>
+        </div>
+      `;
+      return;
+    }
+
+    grid.innerHTML = items.map((c) => {
+      const facName = c.faculty ? c.faculty.name : "University of Ibadan";
+      const hasQuestions = (c.questionsCount || 0) > 0;
+
+      return `
+        <div class="course-card-100l" style="border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; background: #FFFFFF; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="vault-course-chip" style="font-size: 0.92rem; font-weight: 800; padding: 0.35rem 0.8rem; border-radius: 8px;">${escapeHtml(c.code)}</span>
+              <span style="font-size: 0.78rem; font-weight: 700; color: #64748B;">${escapeHtml(c.semester)} Sem • ${c.units} Units</span>
+            </div>
+            <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 800; color: #0F172A; margin: 0.35rem 0 0.3rem 0; line-height: 1.35;">${escapeHtml(c.title)}</h3>
+            <div style="font-size: 0.8rem; color: #64748B; margin-bottom: 0.75rem;">Faculty of ${escapeHtml(facName)}</div>
+            
+            <div class="course-stats-badges" style="margin-bottom: 1rem;">
+              ${hasQuestions ? `
+                <span class="course-stat-badge questions" style="font-size: 0.82rem; padding: 0.35rem 0.75rem; background: rgba(16, 185, 129, 0.12); color: #059669; font-weight: 800;">
+                  <svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                  ${c.questionsCount.toLocaleString()} Questions Ready
+                </span>
+              ` : `
+                <span class="course-stat-badge" style="font-size: 0.78rem; padding: 0.3rem 0.6rem; background: #F1F5F9; color: #64748B;">
+                  ⏳ Question Bank Indexing
+                </span>
+              `}
+              <span class="course-stat-badge materials" style="font-size: 0.78rem; padding: 0.3rem 0.6rem;">
+                ${c.materialsCount} Docs
+              </span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.75rem; border-top: 1px solid #F1F5F9; padding-top: 1rem;">
+            ${hasQuestions ? `
+              <div class="cbt-course-actions-grid">
+                <button class="cbt-launch-btn-primary" onclick="UI100L.startCbt('${escapeHtml(c.code)}', 'FULL_CBT')">
+                  ⚡ Full Exam (30m)
+                </button>
+                <button class="vault-btn-view" style="font-size: 0.82rem; padding: 0.65rem 0.5rem; justify-content: center; border-radius: 8px;" onclick="UI100L.startCbt('${escapeHtml(c.code)}', 'QUICK_DRILL')">
+                  ⏱️ 10-Q Drill
+                </button>
+              </div>
+              <button class="vault-btn-download" style="width: 100%; justify-content: center; font-size: 0.82rem; padding: 0.6rem 0.75rem; border-radius: 8px;" onclick="UI100L.openCourseDetail('${escapeHtml(c.code)}', 'cbt')">
+                📖 Past Papers by Year &amp; Materials →
+              </button>
+            ` : `
+              <button class="vault-btn-view" style="width: 100%; justify-content: center; font-size: 0.82rem; padding: 0.7rem 0.85rem; border-radius: 8px;" onclick="UI100L.openCourseDetail('${escapeHtml(c.code)}', 'materials')">
+                📚 View Course Outline &amp; Vault Materials →
+              </button>
+            `}
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  let cbtSearchDebounceTimer = null;
+  function searchCbtPortal(q) {
+    clearTimeout(cbtSearchDebounceTimer);
+    cbtSearchDebounceTimer = setTimeout(() => {
+      state.cbtPortal.searchQuery = q.trim();
+      renderCbtPortalCourses();
+    }, 200);
+  }
+
+  function filterCbtPortal(action, val, btnEl) {
+    if (action === "CHIP") {
+      document.querySelectorAll(".cbt-quick-chip").forEach((c) => c.classList.remove("active"));
+      if (btnEl) btnEl.classList.add("active");
+      if (val === "ALL") {
+        state.cbtPortal.searchQuery = "";
+        const searchInput = document.getElementById("cbt-search-input");
+        if (searchInput) searchInput.value = "";
+      } else {
+        state.cbtPortal.searchQuery = val;
+        const searchInput = document.getElementById("cbt-search-input");
+        if (searchInput) searchInput.value = val;
+      }
+      renderCbtPortalCourses();
+      return;
+    }
+
+    if (action === "QUESTIONS_ONLY") {
+      state.cbtPortal.filterWithQuestionsOnly = !state.cbtPortal.filterWithQuestionsOnly;
+      const toggleBtn = document.getElementById("cbt-filter-toggle-btn");
+      if (toggleBtn) {
+        toggleBtn.innerHTML = `<span>${state.cbtPortal.filterWithQuestionsOnly ? "Active CBT Courses (67)" : "All Courses (147)"}</span>`;
+      }
+      const selectQ = document.getElementById("cbt-filter-has-questions");
+      if (selectQ) selectQ.value = state.cbtPortal.filterWithQuestionsOnly ? "YES" : "ALL";
+      renderCbtPortalCourses();
+      return;
+    }
+
+    if (action === "RESET") {
+      state.cbtPortal.searchQuery = "";
+      state.cbtPortal.selectedFaculty = "ALL";
+      state.cbtPortal.selectedSemester = "ALL";
+      state.cbtPortal.filterWithQuestionsOnly = true;
+      const searchInput = document.getElementById("cbt-search-input");
+      if (searchInput) searchInput.value = "";
+      const facSelect = document.getElementById("cbt-filter-faculty");
+      if (facSelect) facSelect.value = "ALL";
+      const semSelect = document.getElementById("cbt-filter-semester");
+      if (semSelect) semSelect.value = "ALL";
+      const qSelect = document.getElementById("cbt-filter-has-questions");
+      if (qSelect) qSelect.value = "YES";
+      renderCbtPortalCourses();
+      return;
+    }
+
+    const facEl = document.getElementById("cbt-filter-faculty");
+    const semEl = document.getElementById("cbt-filter-semester");
+    const qEl = document.getElementById("cbt-filter-has-questions");
+
+    if (facEl) state.cbtPortal.selectedFaculty = facEl.value;
+    if (semEl) state.cbtPortal.selectedSemester = semEl.value;
+    if (qEl) state.cbtPortal.filterWithQuestionsOnly = qEl.value === "YES";
+
+    renderCbtPortalCourses();
+  }
+
+  /**
    * 3. Open Detailed Course Hub
    */
-  async function openCourseDetail(courseCode) {
+  async function openCourseDetail(courseCode, preferredTab = null) {
+    ensureGlobalOverlay();
     const overlay = document.getElementById("course-hub-overlay");
     if (!overlay) return;
+
+    if (preferredTab) {
+      state.activeCourseTab = preferredTab;
+    } else {
+      state.activeCourseTab = "materials";
+    }
 
     overlay.style.display = "block";
     overlay.innerHTML = `
@@ -840,6 +1183,7 @@
    * 5. Interactive CBT Examination Engine
    */
   async function startCbt(courseCode, mode, options = {}) {
+    ensureGlobalOverlay();
     closeCourseDetail();
 
     const overlay = document.getElementById("course-hub-overlay");

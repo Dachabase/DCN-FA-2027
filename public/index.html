@@ -4741,7 +4741,7 @@
           </button>
           <button class="nav-btn" data-tab="cbt" onclick="switchTab('cbt', event)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            UTME Mock Exam
+            100L CBT Exams
           </button>
           <button class="nav-btn" data-tab="faqs" onclick="switchTab('faqs', event)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -5055,7 +5055,21 @@
       </div>
 
       <div class="showcase-grid">
-        <div class="showcase-card utme-hero-card" onclick="switchTab('cbt', event)" style="cursor: pointer; background: linear-gradient(135deg, rgba(30, 27, 75, 0.92) 0%, rgba(15, 23, 42, 0.98) 100%); border: 1px solid rgba(139, 92, 246, 0.4); box-shadow: 0 10px 30px rgba(124, 58, 237, 0.25); border-radius: 16px; padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s ease;">
+        <!-- 100-LEVEL SEMESTER CBT ENGINE -->
+        <div class="showcase-card cbt-100l-hero-card" onclick="switchTab('cbt', event); switchCbtMode('100L');" style="cursor: pointer; background: linear-gradient(135deg, rgba(30, 27, 75, 0.96) 0%, rgba(15, 23, 42, 0.98) 100%); border: 1.5px solid rgba(168, 85, 247, 0.55); box-shadow: 0 10px 30px rgba(139, 92, 246, 0.28); border-radius: 16px; padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s ease;">
+          <div>
+            <div style="font-size: 0.8rem; font-weight: 800; color: #C084FC; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px; display: flex; align-items: center; gap: 0.45rem;">
+              <svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              <span>OFFICIAL 100L SEMESTER CBT ENGINE</span>
+            </div>
+            <div class="showcase-title" style="color: #FFFFFF; font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem;">100-Level CBT Exam Portal</div>
+            <p style="color: #CBD5E1; font-size: 0.88rem; line-height: 1.5; margin: 0;">Over 3,826 authentic past examination questions across 67 courses (COS 101, MTH 101, BIO 101, CHE 126, PHY 101, GES 107). Practise timed exams under genuine UI hall conditions with instant scoring and explanations.</p>
+          </div>
+          <div class="showcase-arrow" style="color: #C084FC; font-weight: 800; margin-top: 1.25rem;">Start 100L CBT Practice (3,826 Qs) →</div>
+        </div>
+
+        <!-- UTME MOCK EXAMINATION -->
+        <div class="showcase-card utme-hero-card" onclick="switchTab('cbt', event); switchCbtMode('UTME');" style="cursor: pointer; background: linear-gradient(135deg, rgba(30, 27, 75, 0.92) 0%, rgba(15, 23, 42, 0.98) 100%); border: 1px solid rgba(139, 92, 246, 0.4); box-shadow: 0 10px 30px rgba(124, 58, 237, 0.25); border-radius: 16px; padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s ease;">
           <div>
             <div style="font-size: 0.8rem; font-weight: 800; color: #38BDF8; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px; display: flex; align-items: center; gap: 0.4rem;">
               <span><svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>OFFICIAL UTME EXAM ENGINE</span>
@@ -5063,7 +5077,7 @@
             <div class="showcase-title" style="color: #FFFFFF; font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem;">UTME Mock Examination</div>
             <p style="color: #CBD5E1; font-size: 0.88rem; line-height: 1.5; margin: 0;">Choose your course, confirm your subjects, take a realistic mock examination, and review detailed explanations for every question.</p>
           </div>
-          <div class="showcase-arrow" style="color: #C084FC; font-weight: 700; margin-top: 1.25rem;">Start Official UTME Mock Exam →</div>
+          <div class="showcase-arrow" style="color: #38BDF8; font-weight: 700; margin-top: 1.25rem;">Start Official UTME Mock Exam →</div>
         </div>
 
         <div class="showcase-card purple" onclick="switchTab('catalog', event)">
@@ -5436,8 +5450,40 @@
 
     <!-- 6. CBT PRACTICE TAB -->
     <section id="tab-cbt" class="tab-section">
-      <!-- Main UTME Mock Application Root Mount -->
-      <div id="utme-app-root"></div>
+      <!-- DUAL-MODE CBT SWITCHER: 100L SEMESTER CBT vs UTME MOCK EXAM -->
+      <div class="cbt-dual-mode-header">
+        <div class="cbt-mode-nav-container" role="tablist" aria-label="CBT Mode Switcher">
+          <button id="cbt-tab-btn-100l" class="cbt-mode-tab-btn active" onclick="switchCbtMode('100L')" role="tab" aria-selected="true" aria-controls="cbt-100l-portal-root">
+            <span class="cbt-mode-icon-circle cbt-icon--100l">
+              <svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </span>
+            <span class="cbt-mode-info">
+              <span class="cbt-mode-title">UI 100-Level CBT Examination</span>
+              <span class="cbt-mode-subtitle">3,826+ Authentic Semester Questions • 67 Courses (COS 101, MTH 101, CHE 126...)</span>
+            </span>
+            <span class="cbt-mode-badge cbt-badge--100l">100L Semester</span>
+          </button>
+
+          <button id="cbt-tab-btn-utme" class="cbt-mode-tab-btn" onclick="switchCbtMode('UTME')" role="tab" aria-selected="false" aria-controls="utme-app-root">
+            <span class="cbt-mode-icon-circle cbt-icon--utme">
+              <svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </span>
+            <span class="cbt-mode-info">
+              <span class="cbt-mode-title">JAMB UTME Mock Examination</span>
+              <span class="cbt-mode-subtitle">10,555+ Questions • 11 Subjects • Real JAMB Timer &amp; Interface</span>
+            </span>
+            <span class="cbt-mode-badge cbt-badge--utme">JAMB / Aspirants</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- VIEW 1: 100-LEVEL CBT EXAMINATION PORTAL -->
+      <div id="cbt-100l-portal-root">
+        <!-- Rendered dynamically by UI100L.renderCbtPortal() -->
+      </div>
+
+      <!-- VIEW 2: UTME MOCK APPLICATION ROOT -->
+      <div id="utme-app-root" style="display: none;"></div>
 
       <!-- Secondary 100L Telegram CBT Simulator (Preserved below) -->
       <div style="margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--ps-border-light);">
@@ -5584,7 +5630,7 @@
       </button>
       <button class="mobile-nav-btn" data-tab="cbt" onclick="switchTab('cbt', event)">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        CBT
+        100L CBT
       </button>
       <button class="mobile-nav-btn" data-tab="faqs" onclick="switchTab('faqs', event)">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -5879,6 +5925,17 @@
       document.querySelectorAll(`.nav-btn[data-tab="${tabId}"]`).forEach(b => b.classList.add("active"));
       document.querySelectorAll(`.mobile-nav-btn[data-tab="${tabId}"]`).forEach(b => b.classList.add("active"));
 
+      // Special handler for CBT tab: activate the correct sub-mode (100L vs UTME)
+      if (tabId === 'cbt') {
+        const currentAud = typeof getActiveAudience === 'function' ? getActiveAudience() : (appData.currentAudience || 'UI_100_LEVEL_STUDENT');
+        const hasActiveUtme = !!localStorage.getItem("utme_active_attempt_id");
+        if (currentAud === 'UTME_STUDENT' || hasActiveUtme) {
+          switchCbtMode('UTME');
+        } else {
+          switchCbtMode('100L');
+        }
+      }
+
       // Update URL hash for single page navigation
       if (updateHash && window.location.hash !== `#/${tabId}`) {
         history.pushState({ tab: tabId }, '', `#/${tabId}`);
@@ -5887,6 +5944,41 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
       logUserInteraction("TAB_NAVIGATION", tabId, { tab: tabId });
     }
+
+    function switchCbtMode(mode) {
+      const root100l = document.getElementById("cbt-100l-portal-root");
+      const rootUtme = document.getElementById("utme-app-root");
+      const btn100l = document.getElementById("cbt-tab-btn-100l");
+      const btnUtme = document.getElementById("cbt-tab-btn-utme");
+
+      if (mode === '100L') {
+        if (root100l) root100l.style.display = "block";
+        if (rootUtme) rootUtme.style.display = "none";
+        if (btn100l) {
+          btn100l.classList.add("active");
+          btn100l.setAttribute("aria-selected", "true");
+        }
+        if (btnUtme) {
+          btnUtme.classList.remove("active");
+          btnUtme.setAttribute("aria-selected", "false");
+        }
+        if (window.UI100L && typeof window.UI100L.renderCbtPortal === 'function') {
+          window.UI100L.renderCbtPortal();
+        }
+      } else {
+        if (root100l) root100l.style.display = "none";
+        if (rootUtme) rootUtme.style.display = "block";
+        if (btnUtme) {
+          btnUtme.classList.add("active");
+          btnUtme.setAttribute("aria-selected", "true");
+        }
+        if (btn100l) {
+          btn100l.classList.remove("active");
+          btn100l.setAttribute("aria-selected", "false");
+        }
+      }
+    }
+    window.switchCbtMode = switchCbtMode;
 
     
         /* =========================================================
@@ -8278,7 +8370,7 @@
             </button>
             <button class="nav-btn ${activeTab === 'cbt' ? 'active' : ''}" data-tab="cbt" onclick="switchTab('cbt', event)">
               <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-              CBT Practice
+              100L CBT Exams
             </button>
             <button class="nav-btn ${activeTab === 'faqs' ? 'active' : ''}" data-tab="faqs" onclick="switchTab('faqs', event)">
               <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -8342,7 +8434,7 @@
             </button>
             <button class="mobile-nav-btn ${activeTab === 'cbt' ? 'active' : ''}" data-tab="cbt" onclick="switchTab('cbt', event)">
               <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-              CBT
+              100L CBT
             </button>
             <button class="mobile-nav-btn ${activeTab === 'faqs' ? 'active' : ''}" data-tab="faqs" onclick="switchTab('faqs', event)">
               <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -9008,6 +9100,9 @@
       </div>
     </div>
   </div>
+
+  <!-- Global 100L Course Hub & CBT Hall Modal Overlay Mount -->
+  <div id="course-hub-overlay" style="display: none;"></div>
 
   <script src="/utme.js" defer></script>
   <script src="/academic100l.js" defer></script>
