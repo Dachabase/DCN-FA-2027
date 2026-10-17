@@ -34,6 +34,13 @@
     activeCourse: null,
     activeCourseTab: "materials", // materials | cbt | flashcards | history
     cbt: {
+      theme: (function () {
+        try {
+          return localStorage.getItem("ui100l_cbt_theme") || "light";
+        } catch (e) {
+          return "light";
+        }
+      })(),
       config: null,
       attempt: null,
       currentQuestionIndex: 0,
@@ -90,6 +97,7 @@
     open100lCbtTab,
     renderHomeCbtLaunchpad,
     exitCbtHall,
+    toggleCbtTheme,
     getCourses: () => state.courses.items || [],
   };
 
@@ -1349,6 +1357,46 @@
     }, 1000);
   }
 
+  function parseCbtOption(rawOpt, fallbackIdx) {
+    const clean = cleanCbtText(rawOpt || "").trim();
+    const match = clean.match(/^(\(?([A-Ea-e])[\.\)\:\-]\s*)(.*)$/);
+    if (match) {
+      return {
+        key: match[2].toUpperCase(),
+        text: match[3].trim() || clean,
+      };
+    }
+    const fallbackKey = String.fromCharCode(65 + (fallbackIdx || 0));
+    return {
+      key: fallbackKey,
+      text: clean,
+    };
+  }
+
+  function toggleCbtTheme() {
+    state.cbt.theme = state.cbt.theme === "dark" ? "light" : "dark";
+    try {
+      localStorage.setItem("ui100l_cbt_theme", state.cbt.theme);
+    } catch (e) {}
+
+    const overlayRoot = document.getElementById("cbt-hall-overlay-root");
+    if (overlayRoot) {
+      overlayRoot.className = `cbt-hall-overlay ${state.cbt.theme}`;
+      const toggleBtn = document.getElementById("cbt-theme-toggle-btn");
+      if (toggleBtn) {
+        toggleBtn.innerHTML = state.cbt.theme === "dark" 
+          ? `☀️ <span>Light Mode</span>` 
+          : `🌙 <span>Dark Mode</span>`;
+      }
+    } else {
+      if (state.cbt.result) {
+        renderCbtResultsView();
+      } else if (state.cbt.attempt) {
+        renderCbtInterface();
+      }
+    }
+  }
+
   function renderCbtInterface() {
     const overlay = document.getElementById("course-hub-overlay");
     if (!overlay || !state.cbt.attempt) return;
@@ -1364,27 +1412,31 @@
 
     const selectedOption = state.cbt.selectedAnswers[q.id] || "";
     const isFlagged = state.cbt.flaggedQuestions.has(q.id);
+    const theme = state.cbt.theme || "light";
 
     overlay.innerHTML = `
-      <div style="position: fixed; inset: 0; background: #0F0D15; z-index: 10000; overflow-y: auto; padding: 1.5rem;">
-        <div style="max-width: 1080px; margin: 0 auto;">
+      <div id="cbt-hall-overlay-root" class="cbt-hall-overlay ${theme}">
+        <div class="cbt-hall-content-wrap">
           
           <!-- CBT Top Header -->
           <div class="cbt-header-bar">
             <div>
-              <span class="vault-course-chip" style="font-size: 0.85rem; padding: 0.35rem 0.8rem; margin-right: 0.5rem;">${escapeHtml(att.courseCode)}</span>
-              <strong style="color: #FFFFFF; font-size: 1.1rem; font-family: 'Outfit', sans-serif;">${escapeHtml(att.courseTitle)}</strong>
-              <div style="color: #94A3B8; font-size: 0.82rem; margin-top: 0.2rem;">Authentic University of Ibadan CBT Simulation Engine</div>
+              <span class="cbt-course-chip">${escapeHtml(att.courseCode)}</span>
+              <span class="cbt-course-title">${escapeHtml(att.courseTitle)}</span>
+              <div class="cbt-course-sub">Authentic University of Ibadan CBT Simulation Engine</div>
             </div>
-            <div style="display: flex; align-items: center; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+              <button id="cbt-theme-toggle-btn" onclick="UI100L.toggleCbtTheme()" class="cbt-theme-toggle" title="Switch Theme">
+                ${theme === 'dark' ? '☀️ <span>Light Mode</span>' : '🌙 <span>Dark Mode</span>'}
+              </button>
               <div class="cbt-timer-badge">
                 <svg class="app-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 <span id="cbt-live-timer">${timeStr}</span>
               </div>
-              <button onclick="UI100L.confirmSubmitCbt()" class="action-btn" style="background: var(--grad-status-emerald); padding: 0.65rem 1.25rem;">
+              <button onclick="UI100L.confirmSubmitCbt()" class="cbt-submit-btn">
                 Submit Exam ✓
               </button>
-              <button onclick="UI100L.exitCbtHall()" class="vault-btn-view" style="border-color: rgba(239, 68, 68, 0.4); color: #F87171; background: rgba(239, 68, 68, 0.12); padding: 0.65rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.85rem;">
+              <button onclick="UI100L.exitCbtHall()" class="cbt-exit-btn">
                 ✕ Exit Hall
               </button>
             </div>
@@ -1396,16 +1448,16 @@
             <!-- Left: Question & Options -->
             <div>
               <div class="cbt-question-card">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.75rem;">
-                  <span style="font-weight: 800; color: #DDD6FE; font-size: 1rem;">Question ${qIndex + 1} of ${att.questions.length}</span>
+                <div class="cbt-q-header">
+                  <span class="cbt-q-number">Question ${qIndex + 1} of ${att.questions.length}</span>
                   <div style="display: flex; gap: 0.5rem; align-items: center;">
-                    <span style="font-size: 0.78rem; color: #94A3B8;">Topic: ${escapeHtml(q.topic || 'General')}</span>
-                    ${q.examYear ? `<span class="vault-format-badge" style="background: rgba(139,92,246,0.15); color: #C4B5FD;">${q.examYear}</span>` : ''}
+                    <span class="cbt-q-topic">Topic: ${escapeHtml(q.topic || 'General Concepts')}</span>
+                    ${q.examYear ? `<span class="cbt-year-chip">${escapeHtml(String(q.examYear))}</span>` : ''}
                   </div>
                 </div>
 
                 ${q.passage ? `
-                  <div style="background: rgba(255,255,255,0.04); border-left: 3px solid #8B5CF6; padding: 1rem; border-radius: 6px; margin-bottom: 1.25rem; font-size: 0.92rem; line-height: 1.55; color: #CBD5E1;">
+                  <div class="cbt-passage-box">
                     ${escapeHtml(q.passage)}
                   </div>
                 ` : ''}
@@ -1416,16 +1468,15 @@
 
                 <!-- Options -->
                 <div class="cbt-options-list">
-                  ${(q.options || []).map((opt) => {
-                    const cleanOpt = cleanCbtText(opt);
-                    const optKey = cleanOpt.trim().charAt(0).toUpperCase();
-                    const isSelected = selectedOption === optKey;
+                  ${(q.options || []).map((opt, optIdx) => {
+                    const parsed = parseCbtOption(opt, optIdx);
+                    const isSelected = selectedOption === parsed.key;
                     return `
-                      <button class="cbt-option-btn ${isSelected ? 'selected' : ''}" onclick="UI100L.selectCbtAnswer('${q.id}', '${optKey}')">
-                        <span style="display: inline-flex; width: 26px; height: 26px; border-radius: 50%; background: ${isSelected ? '#8B5CF6' : 'rgba(255,255,255,0.1)'}; color: #FFF; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem;">
-                          ${optKey}
+                      <button class="cbt-option-btn ${isSelected ? 'selected' : ''}" onclick="UI100L.selectCbtAnswer('${q.id}', '${parsed.key}')">
+                        <span class="cbt-option-badge">
+                          ${parsed.key}
                         </span>
-                        <span>${escapeHtml(cleanOpt)}</span>
+                        <span style="flex: 1;">${escapeHtml(parsed.text)}</span>
                       </button>
                     `;
                   }).join("")}
@@ -1433,14 +1484,14 @@
               </div>
 
               <!-- Question Nav Bar -->
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
-                <button class="vault-page-btn" ${qIndex === 0 ? 'disabled' : ''} onclick="UI100L.navigateCbtQuestion(${qIndex - 1})">
+              <div class="cbt-nav-bar">
+                <button class="cbt-nav-btn" ${qIndex === 0 ? 'disabled' : ''} onclick="UI100L.navigateCbtQuestion(${qIndex - 1})">
                   ← Previous
                 </button>
-                <button class="vault-btn-download" onclick="UI100L.toggleFlagCbtQuestion('${q.id}')" style="background: ${isFlagged ? 'rgba(245,158,11,0.2)' : '#1E1B2E'}; color: ${isFlagged ? '#FDE68A' : '#FFF'}; border-color: ${isFlagged ? '#F59E0B' : 'rgba(255,255,255,0.15)'};">
+                <button class="cbt-flag-btn ${isFlagged ? 'flagged' : ''}" onclick="UI100L.toggleFlagCbtQuestion('${q.id}')">
                   ${isFlagged ? '🚩 Flagged' : '🏳️ Flag for Review'}
                 </button>
-                <button class="vault-page-btn" ${qIndex === att.questions.length - 1 ? 'disabled' : ''} onclick="UI100L.navigateCbtQuestion(${qIndex + 1})">
+                <button class="cbt-nav-btn" ${qIndex === att.questions.length - 1 ? 'disabled' : ''} onclick="UI100L.navigateCbtQuestion(${qIndex + 1})">
                   Next →
                 </button>
               </div>
@@ -1448,8 +1499,8 @@
 
             <!-- Right: Question Palette Matrix -->
             <div>
-              <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1.25rem;">
-                <h4 style="font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 800; color: #FFFFFF; margin: 0 0 1rem 0;">Question Navigator</h4>
+              <div class="cbt-sidebar-card">
+                <h4 class="cbt-sidebar-title">Question Navigator</h4>
                 <div class="cbt-palette-grid">
                   ${att.questions.map((quest, idx) => {
                     const isAnswered = !!state.cbt.selectedAnswers[quest.id];
@@ -1469,10 +1520,10 @@
                   }).join("")}
                 </div>
 
-                <div style="margin-top: 1.25rem; font-size: 0.76rem; color: #94A3B8; display: flex; flex-direction: column; gap: 0.4rem;">
-                  <div><span style="display:inline-block; width:10px; height:10px; background:#8B5CF6; border-radius:2px; margin-right:5px;"></span> Answered</div>
-                  <div><span style="display:inline-block; width:10px; height:10px; background:rgba(245,158,11,0.5); border-radius:2px; margin-right:5px;"></span> Flagged for review</div>
-                  <div><span style="display:inline-block; width:10px; height:10px; background:rgba(255,255,255,0.1); border-radius:2px; margin-right:5px;"></span> Unanswered</div>
+                <div style="margin-top: 1.25rem; font-size: 0.78rem; display: flex; flex-direction: column; gap: 0.45rem; opacity: 0.85;">
+                  <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="display:inline-block; width:12px; height:12px; background:#7C3AED; border-radius:3px;"></span> Answered</div>
+                  <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="display:inline-block; width:12px; height:12px; background:#F59E0B; border-radius:3px;"></span> Flagged for review</div>
+                  <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="display:inline-block; width:12px; height:12px; background:#E2E8F0; border: 1px solid #CBD5E1; border-radius:3px;"></span> Unanswered</div>
                 </div>
               </div>
             </div>
@@ -1522,12 +1573,15 @@
 
     const overlay = document.getElementById("course-hub-overlay");
     if (overlay) {
+      const theme = state.cbt.theme || "light";
       overlay.innerHTML = `
-        <div style="position: fixed; inset: 0; background: #0F0D15; z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 2rem;">
-          <div style="text-align: center; color: #FFF;">
-            <div class="app-icon-spin" style="font-size: 2.5rem; margin-bottom: 1rem;"><svg class="app-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg></div>
-            <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.85rem; font-weight: 800;">Grading Examination...</h2>
-            <p style="color: #94A3B8;">Evaluating answers against official University of Ibadan marking schemes.</p>
+        <div class="cbt-hall-overlay ${theme}" style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
+          <div style="text-align: center; max-width: 450px; padding: 2rem;">
+            <div class="app-icon-spin" style="font-size: 2.5rem; margin-bottom: 1.25rem; color: #7C3AED;">
+              <svg class="app-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+            </div>
+            <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem;">Grading Examination...</h2>
+            <p style="opacity: 0.75; font-size: 0.95rem;">Evaluating answers against official University of Ibadan marking schemes.</p>
           </div>
         </div>
       `;
@@ -1581,6 +1635,7 @@
 
     const r = state.cbt.result;
     const scoreVal = r.score;
+    const theme = state.cbt.theme || "light";
     let gradeLabel = "Grade A (First Class / Distinction)";
     let gradeColor = "#10B981";
 
@@ -1599,119 +1654,130 @@
     }
 
     overlay.innerHTML = `
-      <div style="position: fixed; inset: 0; background: #0F0D15; z-index: 10000; overflow-y: auto; padding: 2rem 1rem;">
-        <div style="max-width: 900px; margin: 0 auto; background: #161420; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; overflow: hidden; padding: 2.5rem; color: #FFFFFF;">
+      <div id="cbt-hall-overlay-root" class="cbt-hall-overlay ${theme}">
+        <div class="cbt-hall-content-wrap" style="max-width: 920px;">
           
-          <!-- Top Results Banner -->
-          <div style="text-align: center; margin-bottom: 2.5rem;">
-            <span class="vault-course-chip" style="font-size: 0.85rem; padding: 0.35rem 0.85rem; margin-bottom: 0.5rem; display: inline-block;">${escapeHtml(r.courseCode)} OFFICIAL CBT REPORT</span>
-            <div style="font-family: 'Outfit', sans-serif; font-size: 3.5rem; font-weight: 900; color: ${gradeColor}; margin: 0.5rem 0;">
-              ${scoreVal}%
-            </div>
-            <div style="font-size: 1.15rem; font-weight: 700; color: #FFFFFF;">${gradeLabel}</div>
-            <div style="font-size: 0.85rem; color: #94A3B8; margin-top: 0.35rem;">Time Spent: ${Math.floor(r.timeSpentSeconds / 60)}m ${r.timeSpentSeconds % 60}s</div>
+          <!-- CBT Result Header with Theme Toggle -->
+          <div style="display: flex; justify-content: flex-end; margin-bottom: 1.25rem;">
+            <button id="cbt-theme-toggle-btn" onclick="UI100L.toggleCbtTheme()" class="cbt-theme-toggle" title="Switch Theme">
+              ${theme === 'dark' ? '☀️ <span>Light Mode</span>' : '🌙 <span>Dark Mode</span>'}
+            </button>
           </div>
 
-          <!-- Score Breakdown Matrix -->
-          <div class="vault-stats-matrix" style="margin-bottom: 2.5rem;">
-            <div class="vault-stat-box" style="border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.08);">
-              <div class="vault-stat-val" style="color: #34D399;">${r.correctCount}</div>
-              <div class="vault-stat-label">Correct Answers</div>
+          <!-- Hero Result Card -->
+          <div class="cbt-result-hero" style="margin-bottom: 2rem;">
+            <div style="text-align: center;">
+              <span class="cbt-course-chip" style="font-size: 0.88rem; padding: 0.4rem 0.9rem; margin-bottom: 0.75rem; display: inline-block;">${escapeHtml(r.courseCode)} OFFICIAL CBT REPORT</span>
+              <div style="font-family: 'Outfit', sans-serif; font-size: 3.8rem; font-weight: 900; color: ${gradeColor}; margin: 0.25rem 0;">
+                ${scoreVal}%
+              </div>
+              <div class="cbt-result-title" style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.4rem;">${gradeLabel}</div>
+              <div style="font-size: 0.88rem; opacity: 0.75;">Time Spent: ${Math.floor(r.timeSpentSeconds / 60)}m ${r.timeSpentSeconds % 60}s</div>
             </div>
-            <div class="vault-stat-box" style="border-color: rgba(239,68,68,0.3); background: rgba(239,68,68,0.08);">
-              <div class="vault-stat-val" style="color: #F87171;">${r.wrongCount}</div>
-              <div class="vault-stat-label">Wrong Answers</div>
-            </div>
-            <div class="vault-stat-box" style="border-color: rgba(148,163,184,0.3);">
-              <div class="vault-stat-val" style="color: #CBD5E1;">${r.unansweredCount}</div>
-              <div class="vault-stat-label">Unanswered</div>
-            </div>
-            <div class="vault-stat-box">
-              <div class="vault-stat-val">${r.totalQuestions}</div>
-              <div class="vault-stat-label">Total Questions</div>
-            </div>
-          </div>
 
-          <!-- Topic Mastery Breakdown -->
-          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1.5rem; margin-bottom: 2.5rem;">
-            <h4 style="font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 800; color: #FFFFFF; margin: 0 0 1rem 0;">Topic Mastery Breakdown</h4>
-            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
-              ${Object.entries(r.topicPerformance || {}).map(([topic, data]) => `
-                <div>
-                  <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.25rem;">
-                    <span>${escapeHtml(topic)}</span>
-                    <span style="color: ${data.percentage >= 70 ? '#34D399' : data.percentage >= 50 ? '#FBBF24' : '#F87171'};">${data.correct}/${data.total} (${data.percentage}%)</span>
+            <!-- Score Breakdown Matrix -->
+            <div class="vault-stats-matrix" style="margin: 2.25rem 0 1.5rem 0;">
+              <div class="vault-stat-box" style="border-color: rgba(16,185,129,0.35); background: ${theme === 'dark' ? 'rgba(16,185,129,0.08)' : '#ECFDF5'};">
+                <div class="vault-stat-val" style="color: #10B981;">${r.correctCount}</div>
+                <div class="vault-stat-label">Correct Answers</div>
+              </div>
+              <div class="vault-stat-box" style="border-color: rgba(239,68,68,0.35); background: ${theme === 'dark' ? 'rgba(239,68,68,0.08)' : '#FEF2F2'};">
+                <div class="vault-stat-val" style="color: #EF4444;">${r.wrongCount}</div>
+                <div class="vault-stat-label">Wrong Answers</div>
+              </div>
+              <div class="vault-stat-box">
+                <div class="vault-stat-val">${r.unansweredCount}</div>
+                <div class="vault-stat-label">Unanswered</div>
+              </div>
+              <div class="vault-stat-box">
+                <div class="vault-stat-val">${r.totalQuestions}</div>
+                <div class="vault-stat-label">Total Questions</div>
+              </div>
+            </div>
+
+            <!-- Topic Mastery Breakdown -->
+            <div style="margin-top: 2rem; border-top: 1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.08)' : '#E2E8F0'}; padding-top: 1.5rem;">
+              <h4 style="font-family: 'Outfit', sans-serif; font-size: 1.05rem; font-weight: 800; margin: 0 0 1.25rem 0;">Topic Mastery Breakdown</h4>
+              <div style="display: flex; flex-direction: column; gap: 0.95rem;">
+                ${Object.entries(r.topicPerformance || {}).map(([topic, data]) => `
+                  <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.35rem;">
+                      <span>${escapeHtml(topic)}</span>
+                      <span style="color: ${data.percentage >= 70 ? '#10B981' : data.percentage >= 50 ? '#F59E0B' : '#EF4444'};">${data.correct}/${data.total} (${data.percentage}%)</span>
+                    </div>
+                    <div style="height: 7px; background: ${theme === 'dark' ? 'rgba(255,255,255,0.1)' : '#E2E8F0'}; border-radius: 999px; overflow: hidden;">
+                      <div style="width: ${data.percentage}%; height: 100%; background: ${data.percentage >= 70 ? '#10B981' : data.percentage >= 50 ? '#F59E0B' : '#EF4444'};"></div>
+                    </div>
                   </div>
-                  <div style="height: 6px; background: rgba(255,255,255,0.1); border-radius: 999px; overflow: hidden;">
-                    <div style="width: ${data.percentage}%; height: 100%; background: ${data.percentage >= 70 ? '#10B981' : data.percentage >= 50 ? '#F59E0B' : '#EF4444'};"></div>
-                  </div>
-                </div>
-              `).join("")}
+                `).join("")}
+              </div>
             </div>
-          </div>
 
-          <!-- Actions -->
-          <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 3rem;">
-            <button class="action-btn" onclick="UI100L.retakeCbt()">Retake Examination ↻</button>
-            <button class="vault-btn-download" onclick="UI100L.closeCourseDetail()">Back to Course Hub →</button>
+            <!-- Actions -->
+            <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2.25rem; flex-wrap: wrap;">
+              <button class="cbt-submit-btn" onclick="UI100L.retakeCbt()">Retake Examination ↻</button>
+              <button class="cbt-nav-btn" onclick="UI100L.closeCourseDetail()">Back to Course Hub →</button>
+            </div>
           </div>
 
           <!-- Step-by-Step Question Review & Explanations -->
-          <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.45rem; font-weight: 800; color: #FFFFFF; margin-bottom: 1.5rem;">Detailed Question Explanations &amp; Marking Provenance</h3>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin: 2.5rem 0 1.25rem 0;">
+            <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; margin: 0;">Detailed Question Explanations &amp; Marking Provenance</h3>
+            <span style="font-size: 0.85rem; opacity: 0.7;">${r.review ? r.review.length : 0} Questions Evaluated</span>
+          </div>
           
-          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+          <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 3rem;">
             ${(r.review || []).map((q, idx) => {
               const isCorrect = q.isCorrect;
               const isSkipped = q.isUnanswered;
               const statusBadge = isCorrect 
-                ? `<span style="background: rgba(16,185,129,0.2); color: #34D399; font-weight: 800; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 6px;">✓ Correct</span>`
-                : (isSkipped ? `<span style="background: rgba(148,163,184,0.2); color: #94A3B8; font-weight: 800; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 6px;">○ Skipped</span>` : `<span style="background: rgba(239,68,68,0.2); color: #F87171; font-weight: 800; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 6px;">✕ Incorrect</span>`);
+                ? `<span style="background: rgba(16,185,129,0.15); border: 1px solid #10B981; color: #10B981; font-weight: 800; font-size: 0.78rem; padding: 0.25rem 0.65rem; border-radius: 6px;">✓ Correct</span>`
+                : (isSkipped ? `<span style="background: rgba(148,163,184,0.15); border: 1px solid #94A3B8; color: #64748B; font-weight: 800; font-size: 0.78rem; padding: 0.25rem 0.65rem; border-radius: 6px;">○ Skipped</span>` : `<span style="background: rgba(239,68,68,0.15); border: 1px solid #EF4444; color: #EF4444; font-weight: 800; font-size: 0.78rem; padding: 0.25rem 0.65rem; border-radius: 6px;">✕ Incorrect</span>`);
 
               return `
-                <div style="background: rgba(255,255,255,0.03); border: 1px solid ${isCorrect ? 'rgba(16,185,129,0.3)' : 'rgba(239,68,68,0.3)'}; border-radius: 12px; padding: 1.5rem;">
+                <div class="cbt-review-card">
                   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-                    <span style="font-weight: 800; font-size: 0.95rem; color: #DDD6FE;">Question ${idx + 1}</span>
+                    <span class="cbt-review-q-num">Question ${idx + 1}</span>
                     <div style="display: flex; gap: 0.5rem; align-items: center;">
                       ${statusBadge}
-                      ${q.examYear ? `<span class="vault-format-badge">${q.examYear}</span>` : ''}
+                      ${q.examYear ? `<span class="cbt-year-chip">${q.examYear}</span>` : ''}
                     </div>
                   </div>
 
-                  <div style="font-size: 1.05rem; line-height: 1.55; color: #FFFFFF; margin-bottom: 1rem;">
+                  <div class="cbt-review-q-text">
                     ${escapeHtml(cleanCbtText(q.questionText))}
                   </div>
 
                   <!-- Options list -->
-                  <div style="display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.25rem;">
-                    ${(q.options || []).map((opt) => {
-                      const cleanOpt = cleanCbtText(opt);
-                      const optKey = cleanOpt.trim().charAt(0).toUpperCase();
-                      const isUserChoice = q.selectedAnswer === optKey;
-                      const isRealAnswer = q.correctAnswer === optKey || q.correctAnswer.startsWith(optKey);
+                  <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem;">
+                    ${(q.options || []).map((opt, optIdx) => {
+                      const parsed = parseCbtOption(opt, optIdx);
+                      const isUserChoice = q.selectedAnswer === parsed.key;
+                      const isRealAnswer = q.correctAnswer === parsed.key || q.correctAnswer.startsWith(parsed.key);
 
-                      let style = "background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);";
+                      let itemCls = "cbt-review-opt-item";
                       if (isRealAnswer) {
-                        style = "background: rgba(16,185,129,0.15); border: 1px solid #10B981; color: #A7F3D0;";
+                        itemCls += " correct";
                       } else if (isUserChoice && !isCorrect) {
-                        style = "background: rgba(239,68,68,0.15); border: 1px solid #EF4444; color: #FECACA;";
+                        itemCls += " wrong-choice";
                       }
 
                       return `
-                        <div style="${style} padding: 0.65rem 1rem; border-radius: 8px; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem;">
-                          <strong>${optKey}</strong>
-                          <span>${escapeHtml(cleanOpt)}</span>
-                          ${isRealAnswer ? `<span style="margin-left: auto; font-size: 0.75rem; font-weight: 800; color: #34D399;">✓ Correct Answer</span>` : ''}
-                          ${isUserChoice && !isCorrect ? `<span style="margin-left: auto; font-size: 0.75rem; font-weight: 800; color: #F87171;">Your Choice</span>` : ''}
+                        <div class="${itemCls}">
+                          <strong style="width: 24px; text-align: center;">${parsed.key}.</strong>
+                          <span style="flex: 1;">${escapeHtml(parsed.text)}</span>
+                          ${isRealAnswer ? `<span style="font-size: 0.78rem; font-weight: 800; color: #10B981; margin-left: auto;">✓ Official Correct Answer</span>` : ''}
+                          ${isUserChoice && !isCorrect ? `<span style="font-size: 0.78rem; font-weight: 800; color: #EF4444; margin-left: auto;">Your Selected Answer</span>` : ''}
                         </div>
                       `;
                     }).join("")}
                   </div>
 
                   <!-- Explanation Box -->
-                  <div style="background: rgba(139,92,246,0.08); border-left: 3px solid #8B5CF6; padding: 0.85rem 1.15rem; border-radius: 6px; font-size: 0.88rem; line-height: 1.5; color: #E2E8F0;">
-                    <div style="font-weight: 800; color: #DDD6FE; font-size: 0.78rem; text-transform: uppercase; margin-bottom: 0.35rem;">VERIFIED EXPLANATION:</div>
-                    ${escapeHtml(cleanCbtText(q.explanation || 'Verified according to University of Ibadan departmental course curriculum.'))}
-                    <div style="font-size: 0.75rem; color: #94A3B8; margin-top: 0.5rem;">
+                  <div class="cbt-explanation-box">
+                    <div style="font-weight: 800; color: #7C3AED; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.4rem; letter-spacing: 0.05em;">VERIFIED EXPLANATION:</div>
+                    <div style="line-height: 1.6;">${escapeHtml(cleanCbtText(q.explanation || 'Verified according to University of Ibadan departmental course curriculum.'))}</div>
+                    <div style="font-size: 0.78rem; opacity: 0.75; margin-top: 0.65rem;">
                       Source: ${escapeHtml(q.sourceDocument || 'Official Past Questions')}${q.sourcePage ? `, Page ${q.sourcePage}` : ''}
                     </div>
                   </div>

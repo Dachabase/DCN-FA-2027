@@ -670,19 +670,33 @@ export class Academic100lService {
     userId?: string;
     guestSessionId?: string;
   }) {
-    const questionIds = Object.keys(params.selectedAnswers || {});
+    let questionIds = Object.keys(params.selectedAnswers || {});
+    let attemptRecord: any = null;
+    if (params.attemptId) {
+      attemptRecord = await prisma.quizAttempt.findUnique({
+        where: { id: params.attemptId },
+      });
+      if (attemptRecord && Array.isArray(attemptRecord.questionsSnapshot) && attemptRecord.questionsSnapshot.length > 0) {
+        questionIds = attemptRecord.questionsSnapshot as string[];
+      }
+    }
+
     if (questionIds.length === 0) {
       throw new Error("No questions submitted for grading.");
     }
 
     // Fetch the ground-truth questions from DB
-    const questions = await prisma.question.findMany({
+    const rawQuestions = await prisma.question.findMany({
       where: { id: { in: questionIds } },
     });
 
-    if (questions.length === 0) {
+    if (rawQuestions.length === 0) {
       throw new Error("Questions submitted could not be located in database.");
     }
+
+    // Preserve the original order from questionsSnapshot
+    const qMap = new Map(rawQuestions.map((q) => [q.id, q]));
+    const questions = questionIds.map((id) => qMap.get(id)).filter(Boolean) as typeof rawQuestions;
 
     let correctCount = 0;
     let wrongCount = 0;
@@ -691,10 +705,12 @@ export class Academic100lService {
 
     const gradedQuestions = questions.map((q) => {
       const selected = (params.selectedAnswers[q.id] || "").trim().toUpperCase();
-      const correct = (q.correctAnswer || "A").trim().toUpperCase();
+      const rawCorrect = (q.correctAnswer || "A").trim().toUpperCase();
+      const normSelected = selected ? selected.charAt(0) : "";
+      const normCorrect = rawCorrect ? rawCorrect.charAt(0) : "";
 
-      const isUnanswered = !selected;
-      const isCorrect = !isUnanswered && (selected === correct || selected.startsWith(correct));
+      const isUnanswered = !normSelected;
+      const isCorrect = !isUnanswered && normSelected === normCorrect;
 
       if (isUnanswered) {
         unansweredCount++;
@@ -720,8 +736,8 @@ export class Academic100lService {
         topic: q.topic,
         questionText: unquoteCorruptedText(q.questionText),
         options: sanitizeQuestionOptions(q.options),
-        selectedAnswer: selected || null,
-        correctAnswer: correct,
+        selectedAnswer: normSelected || null,
+        correctAnswer: normCorrect || rawCorrect,
         isCorrect,
         isUnanswered,
         explanation: q.explanation ? unquoteCorruptedText(q.explanation) : null,
