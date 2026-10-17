@@ -827,34 +827,34 @@
     grid.innerHTML = topCourses.map((c) => {
       const facName = c.faculty ? c.faculty.name : "University of Ibadan";
       return `
-        <div class="home-cbt-card" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 14px; padding: 1.35rem; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s ease;">
+        <div class="home-cbt-card">
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-              <span class="vault-course-chip" style="font-size: 0.88rem; font-weight: 800; padding: 0.35rem 0.75rem; border-radius: 8px;">${escapeHtml(c.code)}</span>
-              <span style="font-size: 0.76rem; font-weight: 700; color: #94A3B8;">${escapeHtml(c.semester || '1st')} Sem • ${c.units || 3} Units</span>
+              <span class="vault-course-chip">${escapeHtml(c.code)}</span>
+              <span style="font-size: 0.76rem; font-weight: 700; color: #64748B;">${escapeHtml(c.semester || '1st')} Sem • ${c.units || 3} Units</span>
             </div>
-            <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 800; color: #FFFFFF; margin: 0.35rem 0 0.25rem 0; line-height: 1.35;">${escapeHtml(c.title)}</h3>
-            <div style="font-size: 0.78rem; color: #94A3B8; margin-bottom: 0.85rem;">Faculty of ${escapeHtml(facName)}</div>
+            <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 800; color: #0F172A; margin: 0.35rem 0 0.25rem 0; line-height: 1.35;">${escapeHtml(c.title)}</h3>
+            <div style="font-size: 0.78rem; color: #64748B; margin-bottom: 0.85rem;">Faculty of ${escapeHtml(facName)}</div>
             
             <div style="margin-bottom: 1rem;">
-              <span class="course-stat-badge questions" style="font-size: 0.82rem; padding: 0.35rem 0.75rem; background: rgba(16, 185, 129, 0.18); color: #34D399; font-weight: 800; border: 1px solid rgba(52, 211, 153, 0.3);">
+              <span class="course-stat-badge questions" style="font-size: 0.82rem; padding: 0.35rem 0.75rem; background: #ECFDF5; color: #059669; font-weight: 800; border: 1px solid #A7F3D0; border-radius: 8px; display: inline-flex; align-items: center; gap: 0.35rem;">
                 <svg class="app-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                 ${(c.questionsCount || 0).toLocaleString()} Verified Questions
               </span>
             </div>
           </div>
 
-          <div style="display: flex; flex-direction: column; gap: 0.45rem; margin-top: 0.75rem; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 0.85rem;">
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.75rem; border-top: 1px solid #F1F5F9; padding-top: 0.85rem;">
             <div class="cbt-course-actions-grid">
               <button class="cbt-launch-btn-primary" onclick="UI100L.startCbt('${escapeHtml(c.code)}', 'FULL_CBT')">
-                ⚡ Full Exam (30m)
+                Full Exam (30m)
               </button>
-              <button class="vault-btn-view" style="font-size: 0.82rem; padding: 0.65rem 0.5rem; justify-content: center; border-radius: 8px; background: rgba(255,255,255,0.08); color: #FFF; border-color: rgba(255,255,255,0.18);" onclick="UI100L.startCbt('${escapeHtml(c.code)}', 'QUICK_DRILL')">
-                ⏱️ 10-Q Drill
+              <button class="vault-btn-view" style="font-size: 0.82rem; padding: 0.65rem 0.5rem; justify-content: center; border-radius: 8px; background: #F8FAFC; color: #0F172A; border-color: #E2E8F0;" onclick="UI100L.startCbt('${escapeHtml(c.code)}', 'QUICK_DRILL')">
+                10-Q Drill
               </button>
             </div>
-            <button class="vault-btn-download" style="width: 100%; justify-content: center; font-size: 0.8rem; padding: 0.55rem 0.75rem; border-radius: 8px; background: transparent; color: #C084FC; border-color: rgba(192, 132, 252, 0.3);" onclick="UI100L.openCourseDetail('${escapeHtml(c.code)}', 'cbt')">
-              📖 Past Papers &amp; Hub →
+            <button class="vault-btn-download" style="width: 100%; justify-content: center; font-size: 0.8rem; padding: 0.55rem 0.75rem; border-radius: 8px; background: #F8FAFC; color: #7C3AED; border-color: #E2E8F0;" onclick="UI100L.openCourseDetail('${escapeHtml(c.code)}', 'cbt')">
+              Past Papers &amp; Hub →
             </button>
           </div>
         </div>

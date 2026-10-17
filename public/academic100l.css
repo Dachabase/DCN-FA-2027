@@ -1343,28 +1343,162 @@
   filter: brightness(1.08);
 }
 
-/* Home Dashboard CBT Launchpad */
+/* Home Dashboard CBT Launchpad — Redesigned World-Class Light Architecture */
 .home-cbt-launchpad-wrap {
   position: relative;
   width: 100%;
 }
 
+.home-dashboard-banner {
+  background: #FFFFFF;
+  border: 1px solid var(--ps-border-light, #E2E8F0);
+  border-radius: var(--radius-lg, 16px);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.home-primary-hero-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
+  border: 1.5px solid rgba(139, 92, 246, 0.35);
+  border-radius: 18px;
+  padding: 2.25rem 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 32px rgba(139, 92, 246, 0.1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+}
+
+.home-primary-hero-card::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.home-primary-hero-card.utme-hero {
+  border-color: rgba(245, 158, 11, 0.4);
+  box-shadow: 0 10px 32px rgba(245, 158, 11, 0.1);
+}
+
+.home-quick-launchpad-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.25rem;
+}
+
+.home-quick-launch-card {
+  background: #FFFFFF;
+  border: 1px solid var(--ps-border-light, #E2E8F0);
+  border-radius: 14px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+}
+
+.home-quick-launch-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--ps-purple-light, #A855F7);
+  box-shadow: 0 12px 28px rgba(139, 92, 246, 0.14);
+}
+
 .home-cbt-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #FFFFFF;
+  border: 1px solid var(--ps-border-light, #E2E8F0);
   border-radius: 14px;
   padding: 1.35rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(8px);
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
 .home-cbt-card:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(168, 85, 247, 0.6);
+  background: #FFFFFF;
+  border-color: rgba(168, 85, 247, 0.5);
   transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(139, 92, 246, 0.22);
+  box-shadow: 0 10px 24px rgba(139, 92, 246, 0.12);
 }
+
+.home-cbt-card .vault-course-chip {
+  background: rgba(139, 92, 246, 0.1);
+  color: var(--ps-purple-primary, #8B5CF6);
+  font-weight: 800;
+  font-size: 0.84rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+}
+
+.home-cbt-card h3 {
+  color: #0F172A;
+}
+
+.home-cbt-card .course-subtitle {
+  color: #64748B;
+  font-size: 0.78rem;
+  margin-bottom: 0.85rem;
+}
+
+.home-cbt-card .course-stat-badge.questions {
+  background: #ECFDF5;
+  color: #059669;
+  border: 1px solid #A7F3D0;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.35rem 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* 4-Item Streamlined Mobile Navigation Ergonomics */
+@media (max-width: 768px) {
+  .mobile-nav-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.25rem;
+    padding: 0 0.25rem;
+  }
+
+  .mobile-nav-btn {
+    min-height: 48px;
+    padding: 0.45rem 0.2rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-nav-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mobile-nav-btn.active {
+    color: #7C3AED;
+    background: rgba(124, 58, 237, 0.08);
+  }
+}
+
 
