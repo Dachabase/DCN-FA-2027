@@ -1272,6 +1272,18 @@
       box-shadow: 0 18px 42px rgba(0, 0, 0, 0.5), 0 0 25px rgba(16, 185, 129, 0.2);
     }
 
+    .showcase-card.blue {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #FFFFFF;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+    }
+
+    .showcase-card.blue:hover {
+      border-color: rgba(56, 189, 248, 0.6);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.5), 0 0 25px rgba(56, 189, 248, 0.2);
+    }
+
     .showcase-title {
       font-family: 'Outfit', sans-serif;
       font-size: 2.1rem;
@@ -4772,7 +4784,7 @@
           </button>
           <button class="nav-btn" data-tab="guides" onclick="switchTab('guides', event)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-            Campus &amp; Guides
+            Campus Survival Guides
           </button>
           <button class="nav-install-btn" onclick="triggerPWAInstall()">
             <svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Install App
@@ -5016,10 +5028,11 @@
       <div class="search-hint">
         <label>Popular searches:</label> 
         <code onclick="quickSearchTag('MAT101')">MAT101</code> 
-        <code onclick="quickSearchTag('Computer Science')">Computer Science</code> 
+        <code onclick="quickSearchTag('Active Recall')">Active Recall</code>
         <code onclick="quickSearchTag('CGPA Scale')">CGPA Scale</code> 
+        <code onclick="quickSearchTag('Study Habits')">Study Habits</code>
         <code onclick="quickSearchTag('GES107')">GES107</code>
-        <code onclick="quickSearchTag('PHY101')">PHY101</code>
+        <code onclick="quickSearchTag('Hostel Guide')">Hostel Guide</code>
       </div>
 
       <!-- GLOBAL SEARCH RESULTS OVERLAY -->
@@ -5303,6 +5316,15 @@
           <div class="showcase-arrow">Select Faculty &amp; Department →</div>
         </div>
 
+        <div class="showcase-card blue" onclick="switchTab('guides', event)">
+          <div>
+            <div style="font-size: 0.8rem; font-weight: 800; color: #38BDF8; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px;"><svg class="app-icon app-icon-mr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>247 VERIFIED SURVIVAL BLUEPRINTS</div>
+            <div class="showcase-title">Campus Survival Guides</div>
+            <p style="color: #94A3B8; font-size: 0.88rem; margin-top: 0.5rem; line-height: 1.5;">Proven study strategies, CGPA math, accommodation survival, student finance, mental wellness, and 100L transition playbooks.</p>
+          </div>
+          <div class="showcase-arrow" style="color: #38BDF8;">Browse All 247 Survival Guides →</div>
+        </div>
+
         <div class="showcase-card offline-pwa" onclick="triggerPWAInstall()">
           <div>
             <div style="font-size: 0.8rem; font-weight: 800; color: #059669; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px;"><svg class="app-icon app-icon-mr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>OFFLINE CAPABLE PWA</div>
@@ -5335,7 +5357,15 @@
         </div>
       </div>
 
-      <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.5px;">Essential Freshers Guides</h2>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; margin-top: 0.5rem;">
+        <div>
+          <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; margin: 0; letter-spacing: -0.5px;">Campus Survival Guides</h2>
+          <p style="color: var(--ps-text-gray); margin: 0.35rem 0 0 0; font-size: 0.95rem;">247 verified academic survival blueprints, campus guides, student finance strategies, and housing playbooks.</p>
+        </div>
+        <button class="cbt-launch-btn-primary" onclick="switchTab('guides', event)" style="padding: 0.65rem 1.35rem; font-size: 0.88rem; border-radius: 10px; text-decoration: none;">
+          <span>Explore All 247 Survival Guides →</span>
+        </button>
+      </div>
       <div class="grid" id="home-featured-guides">
         <!-- Rendered via JS -->
       </div>
@@ -5420,17 +5450,17 @@
       </div>
     </section>
 
-    <!-- 3. GUIDES & ARTICLES TAB -->
+    <!-- 3. CAMPUS SURVIVAL GUIDES TAB -->
     <section id="tab-guides" class="tab-section">
       <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem;">
         <div>
-          <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.5px;">Guides & Campus Articles</h2>
+          <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.5px;">Campus Survival Guides</h2>
           <p style="color: var(--ps-text-gray);">247 verified academic survival blueprints, campus guides, student finance strategies, and housing playbooks.</p>
         </div>
       </div>
 
       <div class="filter-bar" id="guides-filter-bar">
-        <button class="filter-chip active" onclick="filterGuidesCategory('ALL', event)">All Guides & Articles</button>
+        <button class="filter-chip active" onclick="filterGuidesCategory('ALL', event)">All Survival Guides</button>
         <button class="filter-chip" onclick="filterGuidesCategory('Academics', event)"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>Academics</button>
         <button class="filter-chip" onclick="filterGuidesCategory('Finances', event)"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="m7 6 2 2-2 2"/><path d="m14 13 2 2-2 2"/></svg>Finances</button>
         <button class="filter-chip" onclick="filterGuidesCategory('Hostel & Housing', event)"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Hostel & Housing</button>
@@ -5924,7 +5954,7 @@
       </button>
       <button class="mobile-nav-btn" data-tab="guides" onclick="switchTab('guides', event)">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
-        Guides
+        Survival Guides
       </button>
     </div>
   </div>
@@ -5938,7 +5968,7 @@
       <div class="footer-links">
         <a href="#/home" onclick="switchTab('home', event)">Dashboard</a>
         <a href="#/catalog" onclick="switchTab('catalog', event)">Course Catalog</a>
-        <a href="#/guides" onclick="switchTab('guides', event)">Faculty Guides</a>
+        <a href="#/guides" onclick="switchTab('guides', event)">Campus Survival Guides</a>
         <a href="#/resources" onclick="switchTab('resources', event)">Resources</a>
         <a href="#/opportunities" onclick="switchTab('opportunities', event)">Opportunities</a>
         <a href="#/cbt" onclick="switchTab('cbt', event)">CBT Practice</a>
@@ -6072,28 +6102,34 @@
       const parts = rawHash.split('/');
       const mainTab = parts[0];
 
-      const validTabs = ['home', 'catalog', 'guides', 'guide-detail', 'blog', 'resources', 'opportunities', 'cbt', 'faqs'];
+      const validTabs = ['home', 'catalog', 'guides', 'articles', 'survival-guides', 'guide-detail', 'blog', 'resources', 'opportunities', 'cbt', 'faqs'];
       if (!validTabs.includes(mainTab)) {
         switchTab('home', null, false);
         return;
       }
 
-      // HARD GATE: Protected academic tabs require authentication (CBT is accessible for practice & active exam sessions)
-      if (mainTab !== 'home' && mainTab !== 'cbt' && !appData.currentUser) {
+      // Public tabs: home, cbt, guides, articles, survival-guides, blog, guide-detail, and faqs are freely accessible to all students and visitors
+      if (mainTab !== 'home' && mainTab !== 'cbt' && mainTab !== 'guides' && mainTab !== 'articles' && mainTab !== 'survival-guides' && mainTab !== 'blog' && mainTab !== 'guide-detail' && mainTab !== 'faqs' && !appData.currentUser) {
         history.replaceState({ tab: 'home' }, '', '#/home');
         switchTab('home', null, false);
         openSignInModal();
         return;
       }
 
-      // Handle Guides sub-routes (e.g. #/guides/guide_100l_reg)
-      if (mainTab === 'guides' && parts[1]) {
+      // Handle Guides & Articles sub-routes (e.g. #/guides/slug, #/survival-guides/slug, #/articles/slug)
+      if ((mainTab === 'guides' || mainTab === 'articles' || mainTab === 'survival-guides') && parts[1]) {
         openGuideDetail(parts[1], false);
+        return;
+      } else if (mainTab === 'articles' || mainTab === 'survival-guides') {
+        switchTab('guides', null, false);
         return;
       } else if (mainTab === 'blog') {
         const targetSlug = parts[parts.length - 1];
         if (targetSlug) {
           openGuideDetail(targetSlug, false);
+          return;
+        } else {
+          switchTab('guides', null, false);
           return;
         }
       } else {
@@ -6170,11 +6206,13 @@
     function switchTab(tabId, ev, updateHash = true) {
       if (ev && ev.preventDefault) ev.preventDefault();
       
-      const validTabs = ['home', 'catalog', 'guides', 'resources', 'opportunities', 'cbt', 'faqs'];
+      if (tabId === 'articles' || tabId === 'survival-guides' || tabId === 'blog') tabId = 'guides';
+
+      const validTabs = ['home', 'catalog', 'guides', 'articles', 'survival-guides', 'resources', 'opportunities', 'cbt', 'faqs'];
       if (!validTabs.includes(tabId)) tabId = 'home';
 
-      // HARD GATE: All academic content tabs require sign in!
-      if (tabId !== 'home' && tabId !== 'cbt' && !appData.currentUser) {
+      // Public tabs: home, cbt, guides, articles, survival-guides, faqs are accessible without gate
+      if (tabId !== 'home' && tabId !== 'cbt' && tabId !== 'guides' && tabId !== 'articles' && tabId !== 'survival-guides' && tabId !== 'faqs' && !appData.currentUser) {
         openSignInModal();
         return;
       }
@@ -7105,12 +7143,6 @@
     let currentActiveGuide = null;
 
     async function openGuideDetail(guideId, updateHash = true) {
-      // Gate check
-      if (!appData.currentUser) {
-        openSignInModal();
-        return;
-      }
-
       const cleanId = String(guideId).replace(/^guide_/, '');
       let guide = (appData.guides || []).find(g =>
         g.id === guideId ||
@@ -8674,6 +8706,10 @@
               <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
               Study Vault
             </button>
+            <button class="nav-btn ${activeTab === 'guides' ? 'active' : ''}" data-tab="guides" onclick="switchTab('guides', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Campus Survival Guides
+            </button>
             <button class="nav-install-btn" onclick="triggerPWAInstall()">
               <svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Install App
             </button>
@@ -8694,7 +8730,7 @@
             </button>
             <button class="nav-btn ${activeTab === 'guides' ? 'active' : ''}" data-tab="guides" onclick="switchTab('guides', event)">
               <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-              Campus &amp; Guides
+              Campus Survival Guides
             </button>
             <button class="nav-install-btn" onclick="triggerPWAInstall()">
               <svg class="app-icon app-icon-mr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Install App
@@ -8725,6 +8761,10 @@
               <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
               Vault
             </button>
+            <button class="mobile-nav-btn ${activeTab === 'guides' ? 'active' : ''}" data-tab="guides" onclick="switchTab('guides', event)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
+              Survival Guides
+            </button>
           `;
         } else {
           mobileNav.innerHTML = `
@@ -8742,7 +8782,7 @@
             </button>
             <button class="mobile-nav-btn ${activeTab === 'guides' ? 'active' : ''}" data-tab="guides" onclick="switchTab('guides', event)">
               <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
-              Guides
+              Survival Guides
             </button>
           `;
         }

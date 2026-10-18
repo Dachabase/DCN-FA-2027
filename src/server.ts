@@ -1075,10 +1075,21 @@ app.post("/api/questions/upload", requireAuth, async (req: Request, res: Respons
   }
 });
 
-// Direct blog URL redirection support for links like /blog/finances/batch-cooking-food-saving-campus/
-app.get(["/blog/:category/:slug", "/blog/:slug"], (req: Request, res: Response) => {
+// Direct blog, articles & survival guides URL redirection support
+app.get(["/articles", "/blog", "/survival-guides", "/campus-survival-guides"], (req: Request, res: Response) => {
+  res.redirect("/#/guides");
+});
+
+app.get([
+  "/articles/:category/:slug",
+  "/articles/:slug",
+  "/blog/:category/:slug",
+  "/blog/:slug",
+  "/survival-guides/:slug",
+  "/campus-survival-guides/:slug"
+], (req: Request, res: Response) => {
   const slug = req.params.slug || req.params.category;
-  res.redirect(`/#/guides/guide_${slug}`);
+  res.redirect(`/#/guides/${slug}`);
 });
 
 // Serve frontend build static files with no-cache headers for HTML
