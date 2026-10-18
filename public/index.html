@@ -5187,7 +5187,7 @@
             
             <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
               <button onclick="switchTab('cbt', event); switchCbtMode('100L');" class="cbt-launch-btn-primary" id="home-explore-all-btn" style="padding: 0.75rem 1.4rem; font-size: 0.88rem; border-radius: 10px;">
-                <span>Explore All 67 Courses →</span>
+                <span>View all courses →</span>
               </button>
             </div>
           </div>
@@ -5318,11 +5318,11 @@
 
         <div class="showcase-card blue" onclick="switchTab('guides', event)">
           <div>
-            <div style="font-size: 0.8rem; font-weight: 800; color: #38BDF8; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px;"><svg class="app-icon app-icon-mr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>247 VERIFIED SURVIVAL BLUEPRINTS</div>
+            <div style="font-size: 0.8rem; font-weight: 800; color: #38BDF8; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px;"><svg class="app-icon app-icon-mr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>STUDENT GUIDES</div>
             <div class="showcase-title">Campus Survival Guides</div>
-            <p style="color: #94A3B8; font-size: 0.88rem; margin-top: 0.5rem; line-height: 1.5;">Proven study strategies, CGPA math, accommodation survival, student finance, mental wellness, and 100L transition playbooks.</p>
+            <p style="color: #94A3B8; font-size: 0.88rem; margin-top: 0.5rem; line-height: 1.5;">Practical advice on course registration, study tips, accommodation, and campus navigation.</p>
           </div>
-          <div class="showcase-arrow" style="color: #38BDF8;">Browse All 247 Survival Guides →</div>
+          <div class="showcase-arrow" style="color: #38BDF8;">View guides →</div>
         </div>
 
         <div class="showcase-card offline-pwa" onclick="triggerPWAInstall()">
@@ -5360,10 +5360,10 @@
       <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; margin-top: 0.5rem;">
         <div>
           <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; margin: 0; letter-spacing: -0.5px;">Campus Survival Guides</h2>
-          <p style="color: var(--ps-text-gray); margin: 0.35rem 0 0 0; font-size: 0.95rem;">247 verified academic survival blueprints, campus guides, student finance strategies, and housing playbooks.</p>
+          <p style="color: var(--ps-text-gray); margin: 0.35rem 0 0 0; font-size: 0.95rem;">Practical advice on course registration, study habits, housing, and campus life.</p>
         </div>
         <button class="cbt-launch-btn-primary" onclick="switchTab('guides', event)" style="padding: 0.65rem 1.35rem; font-size: 0.88rem; border-radius: 10px; text-decoration: none;">
-          <span>Explore All 247 Survival Guides →</span>
+          <span>View all guides →</span>
         </button>
       </div>
       <div class="grid" id="home-featured-guides">
@@ -5455,12 +5455,12 @@
       <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem;">
         <div>
           <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.5px;">Campus Survival Guides</h2>
-          <p style="color: var(--ps-text-gray);">247 verified academic survival blueprints, campus guides, student finance strategies, and housing playbooks.</p>
+          <p style="color: var(--ps-text-gray);">Practical advice on course registration, academics, housing, and campus life.</p>
         </div>
       </div>
 
       <div class="filter-bar" id="guides-filter-bar">
-        <button class="filter-chip active" onclick="filterGuidesCategory('ALL', event)">All Survival Guides</button>
+        <button class="filter-chip active" onclick="filterGuidesCategory('ALL', event)">All Guides</button>
         <button class="filter-chip" onclick="filterGuidesCategory('Academics', event)"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>Academics</button>
         <button class="filter-chip" onclick="filterGuidesCategory('Finances', event)"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="m7 6 2 2-2 2"/><path d="m14 13 2 2-2 2"/></svg>Finances</button>
         <button class="filter-chip" onclick="filterGuidesCategory('Hostel & Housing', event)"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Hostel & Housing</button>
@@ -8842,7 +8842,7 @@
         if (homePracticeHeading) homePracticeHeading.textContent = "Core UTME Subjects";
         if (homePracticeDesc) homePracticeDesc.textContent = "Select any subject to take high-yield practice drills from over 10,555+ verified past questions.";
         if (homeExploreAllBtn) {
-          homeExploreAllBtn.innerHTML = `<span>Explore All 11 Subjects →</span>`;
+          homeExploreAllBtn.innerHTML = `<span>View all subjects →</span>`;
           homeExploreAllBtn.onclick = (e) => { switchTab('cbt', e); switchCbtMode('UTME'); };
         }
 
@@ -8931,7 +8931,7 @@
         if (homePracticeHeading) homePracticeHeading.textContent = "High-Yield Practice Courses";
         if (homePracticeDesc) homePracticeDesc.textContent = "Practise over 3,826 authentic past examination questions under genuine UI computer hall conditions. Immediate automated grading and marking scheme rationales. Select any course to start!";
         if (homeExploreAllBtn) {
-          homeExploreAllBtn.innerHTML = `<span>Explore All 67 Courses →</span>`;
+          homeExploreAllBtn.innerHTML = `<span>View all courses →</span>`;
           homeExploreAllBtn.onclick = (e) => { switchTab('cbt', e); switchCbtMode('100L'); };
         }
 
