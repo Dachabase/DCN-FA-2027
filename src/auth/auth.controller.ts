@@ -12,8 +12,10 @@ import {
 } from "./auth.service";
 import { AuthenticatedRequest, requireAuth, optionalAuth } from "./auth.middleware";
 import { prisma } from "../database/prisma";
+import { emailAuthRouter } from "./emailAuth";
 
 export const authRouter = Router();
+authRouter.use("/email", emailAuthRouter); // passwordless 4-digit email code sign-in
 
 // GET /api/auth/config - Public auth client configuration
 authRouter.get("/config", (req: Request, res: Response) => {
