@@ -449,7 +449,7 @@ export class Academic100lService {
       select: { id: true, code: true, title: true },
     });
 
-    const candidateCodes = Array.from(new Set([
+    const candidateSet = new Set<string>([
       norm,
       cleanCode,
       unprefixed,
@@ -457,8 +457,31 @@ export class Academic100lService {
       course?.code,
       course?.code?.replace(/^C-/, ""),
       course?.code?.replace(/\s+/g, ""),
-    ].filter(Boolean) as string[]));
+    ].filter(Boolean) as string[]);
 
+    // Alias mapping for faculty and inter-departmental variations
+    if (cleanCode.includes("VMD") || cleanCode.includes("FVM") || cleanCode.includes("VET")) {
+      candidateSet.add("VMD 101");
+      candidateSet.add("VMD101");
+      candidateSet.add("FVM 101");
+      candidateSet.add("FVM101");
+    } else if (cleanCode.includes("VAN")) {
+      candidateSet.add("VAN 101");
+      candidateSet.add("VAN101");
+      candidateSet.add("VMD 101");
+    } else if (cleanCode.includes("CHE") || cleanCode.includes("CHM")) {
+      candidateSet.add("CHM 101");
+      candidateSet.add("CHE 156");
+      candidateSet.add("CHM 102");
+      candidateSet.add("CHE 176");
+    } else if (cleanCode.includes("ZOO") || cleanCode.includes("BIO")) {
+      candidateSet.add("BIO 101");
+      candidateSet.add("ZOO 101");
+      candidateSet.add("BIO 102");
+      candidateSet.add("ZOO 102");
+    }
+
+    const candidateCodes = Array.from(candidateSet);
     return { norm, cleanCode, unprefixed, course, candidateCodes };
   }
 

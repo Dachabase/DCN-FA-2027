@@ -15,10 +15,18 @@ export interface QuizQuestion {
 export class QuizService {
   // 1. Fetch questions for a course
   async getQuestionsByCourse(courseCode: string, limit = 10): Promise<QuizQuestion[]> {
+    const norm = courseCode.toUpperCase().trim();
+    const clean = norm.replace(/\s+/g, "");
+    const aliases = [norm, clean];
+    if (clean.includes("VMD") || clean.includes("FVM") || clean.includes("VET")) {
+      aliases.push("VMD 101", "VMD101", "FVM 101", "FVM101");
+    }
+
     const questions = await prisma.question.findMany({
       where: {
         OR: [
-          { courseCode: { equals: courseCode, mode: "insensitive" } },
+          { courseCode: { in: aliases, mode: "insensitive" } },
+          { courseCode: { contains: clean, mode: "insensitive" } },
           { courseCode: "GST101" }, // fallback to general GST if empty
         ],
       },
