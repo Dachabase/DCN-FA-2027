@@ -175,6 +175,11 @@
     const container = document.getElementById("utme-app-root");
     if (!container) return;
 
+    const activeEl = document.activeElement;
+    const isSearchFocused = activeEl && activeEl.id === "utme-course-search";
+    const cursorStart = isSearchFocused ? activeEl.selectionStart : null;
+    const cursorEnd = isSearchFocused ? activeEl.selectionEnd : null;
+
     // Distraction-free mobile & desktop exam mode
     if (document.body) {
       document.body.classList.toggle("utme-in-exam", state.currentView === "EXAM");
@@ -184,6 +189,15 @@
       case "SELECT":
         container.innerHTML = renderCourseSelectView();
         attachCourseSelectEvents();
+        if (isSearchFocused) {
+          const restoredInput = document.getElementById("utme-course-search");
+          if (restoredInput) {
+            restoredInput.focus();
+            if (cursorStart !== null && cursorEnd !== null) {
+              try { restoredInput.setSelectionRange(cursorStart, cursorEnd); } catch (_) {}
+            }
+          }
+        }
         break;
       case "INSTRUCTIONS":
         container.innerHTML = renderInstructionsView();
@@ -280,6 +294,47 @@
     `;
   }
 
+  function renderCoursesGridItems() {
+    if (!state.filteredCourses || state.filteredCourses.length === 0) {
+      return `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1.5rem; background: #FFFFFF; border-radius: var(--radius-lg); border: 1.5px dashed var(--ps-border-light);">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</div>
+          <h4 style="font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 800; color: #0F172A; margin-bottom: 0.25rem;">No Courses Match Your Query</h4>
+          <p style="color: var(--ps-text-gray); font-size: 0.9rem;">Try adjusting your keywords or select "All Faculties" above to browse all supported degree programmes.</p>
+        </div>
+      `;
+    }
+
+    return state.filteredCourses.map(c => `
+      <div class="utme-course-card ${state.selectedCourse?.slug === c.slug ? 'selected' : ''}" onclick="window.UTME.selectCourse('${c.slug}')">
+        <div>
+          <div class="utme-course-header">
+            <h3 class="utme-course-title">${escapeHtml(c.courseName)}</h3>
+            <span class="utme-degree-badge">${escapeHtml(c.degreeType)}</span>
+          </div>
+          <div class="utme-faculty-label">Faculty of ${escapeHtml(c.facultyName)}</div>
+
+          <div class="utme-subjects-pills-label">Required UTME Subjects (4):</div>
+          <div class="utme-subject-pills">
+            ${c.compulsorySubjects.map((s, idx) => `
+              <span class="utme-subject-pill ${idx === 0 ? 'compulsory' : ''}">
+                ${idx === 0 ? '<svg class="utme-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" style="vertical-align:-0.1em;margin-right:0.25rem;" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>' : ''}${escapeHtml(s)}
+              </span>
+            `).join('')}
+          </div>
+
+          <div class="utme-source-citation">
+            <span><svg class="utme-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>${escapeHtml(c.officialSource)}</span>
+          </div>
+        </div>
+
+        <button class="utme-course-action-btn" onclick="window.UTME.proceedToInstructions('${c.slug}', event)">
+          <span>Start Mock Exam for ${escapeHtml(c.courseName)} →</span>
+        </button>
+      </div>
+    `).join('');
+  }
+
   function renderSimulationCourseView() {
     const faculties = ["ALL", "Clinical Sciences", "Computing", "Technology", "Law", "Economics and Management Sciences", "The Social Sciences", "Arts", "Basic Medical Sciences", "Agriculture", "Environmental Design and Management"];
 
@@ -333,35 +388,8 @@
         </div>
 
         <!-- Courses Grid -->
-        <div class="utme-courses-grid">
-          ${state.filteredCourses.map(c => `
-            <div class="utme-course-card ${state.selectedCourse?.slug === c.slug ? 'selected' : ''}" onclick="window.UTME.selectCourse('${c.slug}')">
-              <div>
-                <div class="utme-course-header">
-                  <h3 class="utme-course-title">${escapeHtml(c.courseName)}</h3>
-                  <span class="utme-degree-badge">${escapeHtml(c.degreeType)}</span>
-                </div>
-                <div class="utme-faculty-label">Faculty of ${escapeHtml(c.facultyName)}</div>
-
-                <div class="utme-subjects-pills-label">Required UTME Subjects (4):</div>
-                <div class="utme-subject-pills">
-                  ${c.compulsorySubjects.map((s, idx) => `
-                    <span class="utme-subject-pill ${idx === 0 ? 'compulsory' : ''}">
-                      ${idx === 0 ? '<svg class="utme-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" style="vertical-align:-0.1em;margin-right:0.25rem;" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>' : ''}${escapeHtml(s)}
-                    </span>
-                  `).join('')}
-                </div>
-
-                <div class="utme-source-citation">
-                  <span><svg class="utme-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.15em;margin-right:0.35rem;" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>${escapeHtml(c.officialSource)}</span>
-                </div>
-              </div>
-
-              <button class="utme-course-action-btn" onclick="window.UTME.proceedToInstructions('${c.slug}', event)">
-                <span>Start Mock Exam for ${escapeHtml(c.courseName)} →</span>
-              </button>
-            </div>
-          `).join('')}
+        <div class="utme-courses-grid" id="utme-courses-grid">
+          ${renderCoursesGridItems()}
         </div>
       </div>
     `;
@@ -766,25 +794,34 @@
   }
   function attachCourseSelectEvents() {
     const searchInput = document.getElementById("utme-course-search");
-    if (searchInput) {
+    if (searchInput && !searchInput._boundUtmeInput) {
+      searchInput._boundUtmeInput = true;
       searchInput.addEventListener("input", (e) => {
-        state.searchQuery = e.target.value.toLowerCase().trim();
+        state.searchQuery = e.target.value;
         applyCourseFilters();
       });
     }
   }
 
   function applyCourseFilters() {
+    const q = (state.searchQuery || "").trim().toLowerCase();
     state.filteredCourses = state.courses.filter(c => {
-      const matchSearch = !state.searchQuery ||
-        c.courseName.toLowerCase().includes(state.searchQuery) ||
-        c.facultyName.toLowerCase().includes(state.searchQuery) ||
-        c.compulsorySubjects.some(s => s.toLowerCase().includes(state.searchQuery));
+      const matchSearch = !q ||
+        (c.courseName && c.courseName.toLowerCase().includes(q)) ||
+        (c.facultyName && c.facultyName.toLowerCase().includes(q)) ||
+        (c.compulsorySubjects && c.compulsorySubjects.some(s => s.toLowerCase().includes(q)));
       
-      const matchFaculty = state.selectedFaculty === "ALL" || c.facultyName.toLowerCase().includes(state.selectedFaculty.toLowerCase());
+      const matchFaculty = state.selectedFaculty === "ALL" || 
+        (c.facultyName && c.facultyName.toLowerCase().includes(state.selectedFaculty.toLowerCase()));
       return matchSearch && matchFaculty;
     });
-    render();
+
+    const gridEl = document.getElementById("utme-courses-grid");
+    if (gridEl) {
+      gridEl.innerHTML = renderCoursesGridItems();
+    } else {
+      render();
+    }
   }
 
   // =========================================================
@@ -1862,15 +1899,39 @@
     },
     setMode(m) {
       state.selectedMode = m;
-      render();
+      const modeCards = document.querySelectorAll(".utme-mode-card");
+      if (modeCards.length > 0) {
+        modeCards.forEach(card => {
+          const onclickAttr = card.getAttribute("onclick") || "";
+          card.classList.toggle("active", onclickAttr.includes(`'${m}'`));
+        });
+      } else {
+        render();
+      }
     },
     filterFaculty(f) {
       state.selectedFaculty = f;
+      const chipContainer = document.querySelector(".utme-filter-chips");
+      if (chipContainer) {
+        chipContainer.querySelectorAll(".utme-chip").forEach(btn => {
+          const isAll = f === "ALL" && btn.textContent.trim().startsWith("All");
+          const isMatch = btn.textContent.trim() === f || isAll;
+          btn.classList.toggle("active", isMatch);
+        });
+      }
       applyCourseFilters();
     },
     selectCourse(slug) {
       state.selectedCourse = state.courses.find(c => c.slug === slug);
-      render();
+      const cards = document.querySelectorAll(".utme-course-card");
+      if (cards.length > 0) {
+        cards.forEach(card => {
+          const onclickAttr = card.getAttribute("onclick") || "";
+          card.classList.toggle("selected", onclickAttr.includes(`'${slug}'`));
+        });
+      } else {
+        render();
+      }
     },
     proceedToInstructions(slug, event) {
       if (event) event.stopPropagation();
