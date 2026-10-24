@@ -1,9 +1,12 @@
 import "dotenv/config";
 import { Pool } from "pg";
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || "postgresql://postgres:Wackywas1@fa27.ct2ua4mes3jl.eu-north-1.rds.amazonaws.com:5432/ui_freshers",
-});
+const connectionString = process.env.DATABASE_URL;
+if (!connectionString) {
+  throw new Error("DATABASE_URL environment variable is required to run test_seed.ts");
+}
+const pool = new Pool({ connectionString });
+
 
 async function main() {
   console.log("Checking DB connection via pg pool...");

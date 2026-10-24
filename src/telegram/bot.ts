@@ -1,4 +1,4 @@
 import { Bot } from "grammy";
-import { env } from "../config/env.js";
+import { env } from "../config/env";
 
-export const bot = new Bot(env.TELEGRAM_BOT_TOKEN);
+export const bot = new Bot(env.TELEGRAM_COMPUTING_BOT_TOKEN || "");

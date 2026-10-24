@@ -4,7 +4,12 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@prisma/client";
 
 function getConnectionString(): string {
-  const rawUrl = process.env.DATABASE_URL || "postgresql://postgres:Wackywas1@fa27.ct2ua4mes3jl.eu-north-1.rds.amazonaws.com:5432/ui_freshers";
+  const rawUrl = process.env.DATABASE_URL;
+  if (!rawUrl || rawUrl.trim() === "") {
+    throw new Error(
+      "DATABASE_URL environment variable is required. Ensure it is defined in your environment or .env file."
+    );
+  }
   if (!rawUrl.includes("sslmode=")) {
     // In production or AWS RDS environments, default to require
     return process.env.NODE_ENV === "production" ? `${rawUrl}?sslmode=require` : `${rawUrl}?sslmode=no-verify`;
@@ -28,3 +33,4 @@ const pool = new Pool({
 const adapter = new PrismaPg(pool);
 
 export const prisma = new PrismaClient({ adapter });
+

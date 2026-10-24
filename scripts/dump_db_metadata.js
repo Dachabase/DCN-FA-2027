@@ -1,7 +1,13 @@
+require('dotenv').config();
 const { Pool } = require('pg');
 const fs = require('fs');
 
-const pool = new Pool({ connectionString: 'postgresql://postgres:Wackywas1@fa27.ct2ua4mes3jl.eu-north-1.rds.amazonaws.com:5432/ui_freshers?sslmode=no-verify' });
+const connectionString = process.env.DATABASE_URL;
+if (!connectionString) {
+  throw new Error("DATABASE_URL environment variable is required.");
+}
+const pool = new Pool({ connectionString });
+
 
 async function dump() {
   const coursesRes = await pool.query('SELECT * FROM "Course" ORDER BY code');

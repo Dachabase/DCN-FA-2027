@@ -26,12 +26,12 @@ else
 fi
 
 # 5. Configure Production Environment Variables (.env)
-cat << 'EOF' > .env
-DATABASE_URL="postgresql://postgres:Wackywas1@fa27.ct2ua4mes3jl.eu-north-1.rds.amazonaws.com:5432/ui_freshers?sslmode=no-verify"
-PORT=3000
-TELEGRAM_COMPUTING_BOT_TOKEN="8954703429:AAG2b0hH0-OVNU3wu8Mx8TEscL9gtpNxSk8"
-DEFAULT_TELEGRAM_BOT_USERNAME="UIDCNComputingFreshersBot"
-EOF
+if [ ! -f .env ]; then
+  echo "⚠️ .env file not found. Copying template from .env.example..."
+  cp .env.example .env
+  echo "👉 Please edit .env with your production credentials before running the service."
+fi
+
 
 # 6. Install dependencies, generate Prisma, and build
 npm install

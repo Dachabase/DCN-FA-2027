@@ -6,8 +6,31 @@ import { User } from "@prisma/client";
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || "";
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || "";
-const JWT_SECRET = process.env.JWT_SECRET || "ui-freshers-secure-jwt-secret-2026-fallback";
-const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || "ui-freshers-refresh-jwt-secret-2026-fallback";
+function getJwtSecret(): string {
+  const secret = process.env.JWT_SECRET;
+  if (!secret || secret.trim() === "") {
+    if (process.env.NODE_ENV === "production") {
+      throw new Error("JWT_SECRET environment variable is required in production mode.");
+    }
+    return "dev-only-jwt-secret-do-not-use-in-production";
+  }
+  return secret;
+}
+
+function getJwtRefreshSecret(): string {
+  const secret = process.env.JWT_REFRESH_SECRET;
+  if (!secret || secret.trim() === "") {
+    if (process.env.NODE_ENV === "production") {
+      throw new Error("JWT_REFRESH_SECRET environment variable is required in production mode.");
+    }
+    return "dev-only-refresh-jwt-secret-do-not-use-in-production";
+  }
+  return secret;
+}
+
+const JWT_SECRET = getJwtSecret();
+const JWT_REFRESH_SECRET = getJwtRefreshSecret();
+
 
 const oauth2Client = new OAuth2Client(
   GOOGLE_CLIENT_ID,

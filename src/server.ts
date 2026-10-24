@@ -12,6 +12,7 @@ import { academic100lRouter, vaultRouter } from "./academic100l/academic100l.con
 import { requireAuth, optionalAuth } from "./auth/auth.middleware";
 import { ALL_GUIDES } from "./data/guides-data";
 import { resolveAudienceFromRequest, normalizeAudience } from "./personalization/audience.helper";
+import { createCorsOptions } from "./config/cors";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,8 +20,9 @@ const PORT = process.env.PORT || 3000;
 // Trust reverse proxies (Render, AWS ALB/CloudFront) for secure HTTPS cookies
 app.set("trust proxy", 1);
 
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors(createCorsOptions()));
 app.use(cookieParser());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

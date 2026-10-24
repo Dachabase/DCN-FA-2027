@@ -10,10 +10,16 @@ services:
       - key: PORT
         value: 3000
       - key: DATABASE_URL
-        value: postgresql://postgres:Wackywas1@fa27.ct2ua4mes3jl.eu-north-1.rds.amazonaws.com:5432/ui_freshers?sslmode=no-verify
+        sync: false
       - key: TELEGRAM_COMPUTING_BOT_TOKEN
-        value: 8954703429:AAG2b0hH0-OVNU3wu8Mx8TEscL9gtpNxSk8
+        sync: false
       - key: DEFAULT_TELEGRAM_BOT_USERNAME
         value: UIDCNComputingFreshersBot
       - key: GEMINI_API_KEY
         sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true

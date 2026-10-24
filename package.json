@@ -8,6 +8,7 @@
     "bot:dev": "tsx watch src/index.ts",
     "build": "tsc",
     "start": "node dist/server.js",
+    "test": "tsx --test tests/**/*.test.ts",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",

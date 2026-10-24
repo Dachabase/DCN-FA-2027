@@ -14,7 +14,19 @@ import { generateAccessToken, generateRefreshToken, setAuthCookies } from "./aut
  */
 export const emailAuthRouter = Router();
 
-const SECRET = process.env.JWT_SECRET || "ui-freshers-secure-jwt-secret-2026-fallback";
+function getEmailAuthSecret(): string {
+  const secret = process.env.JWT_SECRET;
+  if (!secret || secret.trim() === "") {
+    if (process.env.NODE_ENV === "production") {
+      throw new Error("JWT_SECRET environment variable is required in production mode.");
+    }
+    return "dev-only-jwt-secret-do-not-use-in-production";
+  }
+  return secret;
+}
+
+const SECRET = getEmailAuthSecret();
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const lastSent = new Map<string, number>();   // email -> timestamp (1 code per 45s)
