@@ -8,7 +8,7 @@ export function normalizeOrigin(origin: string): string {
 }
 
 /**
- * Returns a list of default allowed origins for local development.
+ * Returns a list of default allowed origins including production canonical domain and local dev.
  */
 export function getDefaultAllowedOrigins(): string[] {
   return [
@@ -18,6 +18,9 @@ export function getDefaultAllowedOrigins(): string[] {
     "http://127.0.0.1:5173",
     "http://localhost:4173",
     "http://127.0.0.1:4173",
+    "https://blastexams.app",
+    "https://www.blastexams.app",
+    "https://dcn-fa-2027.onrender.com",
   ];
 }
 

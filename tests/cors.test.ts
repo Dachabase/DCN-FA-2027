@@ -15,12 +15,15 @@ describe("CORS Configuration & Allowlist", () => {
     assert.equal(normalizeOrigin("https://sub.domain.org"), "https://sub.domain.org");
   });
 
-  it("includes default local development origins", () => {
+  it("includes default local development and canonical production origins", () => {
     const defaults = getDefaultAllowedOrigins();
     assert.ok(defaults.includes("http://localhost:3000"));
     assert.ok(defaults.includes("http://localhost:5173"));
     assert.ok(defaults.includes("http://127.0.0.1:3000"));
     assert.ok(defaults.includes("http://127.0.0.1:5173"));
+    assert.ok(defaults.includes("https://blastexams.app"));
+    assert.ok(defaults.includes("https://www.blastexams.app"));
+    assert.ok(defaults.includes("https://dcn-fa-2027.onrender.com"));
   });
 
   it("parses custom comma-separated origins from CORS_ALLOWED_ORIGINS", () => {

@@ -9,6 +9,8 @@ services:
     envVars:
       - key: PORT
         value: 3000
+      - key: APP_URL
+        value: https://blastexams.app
       - key: DATABASE_URL
         sync: false
       - key: TELEGRAM_COMPUTING_BOT_TOKEN

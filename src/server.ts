@@ -17,8 +17,34 @@ import { createCorsOptions } from "./config/cors";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Trust reverse proxies (Render, AWS ALB/CloudFront) for secure HTTPS cookies
+// Trust reverse proxies (Render, Cloudflare, AWS ALB/CloudFront) for secure HTTPS cookies
 app.set("trust proxy", 1);
+
+// =========================================================
+// CANONICAL DOMAIN 301 PERMANENT REDIRECT MIDDLEWARE
+// Redirects legacy Render domain and www subdomain to preferred apex https://blastexams.app
+// =========================================================
+app.use((req: Request, res: Response, next) => {
+  const host = (req.headers.host || "").split(":")[0].toLowerCase();
+
+  // Exclude local development and automated local test runners
+  if (host === "localhost" || host === "127.0.0.1" || host === "0.0.0.0") {
+    return next();
+  }
+
+  // Redirect legacy Render hostname, www subdomain, or any non-canonical Render host to apex
+  if (
+    host === "dcn-fa-2027.onrender.com" ||
+    host === "www.blastexams.app" ||
+    (process.env.NODE_ENV === "production" && host.endsWith(".onrender.com") && host !== "blastexams.app")
+  ) {
+    const targetUrl = `https://blastexams.app${req.originalUrl}`;
+    res.setHeader("Cache-Control", "public, max-age=31536000"); // 1-year cache for 301 permanent redirect
+    return res.redirect(301, targetUrl);
+  }
+
+  next();
+});
 
 app.use(cors(createCorsOptions()));
 app.use(cookieParser());
@@ -1120,7 +1146,7 @@ app.use((req: Request, res: Response) => {
 
 // Keep-alive cron / self-pinger to prevent Render spin-down
 function initKeepAliveService() {
-  const externalUrl = process.env.RENDER_EXTERNAL_URL || process.env.APP_URL;
+  const externalUrl = process.env.APP_URL || process.env.RENDER_EXTERNAL_URL || (process.env.NODE_ENV === "production" ? "https://blastexams.app" : "");
   if (!externalUrl) {
     return;
   }

@@ -28,6 +28,15 @@ authRouter.get("/config", (req: Request, res: Response) => {
 });
 
 function getRedirectUri(req: Request): string {
+  // In production, prioritize canonical APP_URL if set (e.g. https://blastexams.app)
+  const configuredAppUrl = process.env.APP_URL ? process.env.APP_URL.replace(/\/+$/, "") : null;
+  const host = req.get("host") || "";
+  const isLocal = host.startsWith("localhost") || host.startsWith("127.0.0.1");
+
+  if (!isLocal && configuredAppUrl) {
+    return `${configuredAppUrl}/api/auth/callback/google`;
+  }
+
   const forwardedProto = req.headers["x-forwarded-proto"];
   let protocol = "https";
   if (typeof forwardedProto === "string") {
@@ -37,7 +46,6 @@ function getRedirectUri(req: Request): string {
   } else if (req.protocol) {
     protocol = req.protocol;
   }
-  const host = req.get("host");
   return `${protocol}://${host}/api/auth/callback/google`;
 }
 

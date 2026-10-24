@@ -13,13 +13,13 @@ jobs:
     steps:
       - name: Send HTTP Heartbeat
         run: |
-          TARGET_URL="${{ secrets.RENDER_APP_URL || vars.RENDER_APP_URL || 'https://dcn-fa-2027.onrender.com' }}"
+          TARGET_URL="${{ secrets.RENDER_APP_URL || vars.RENDER_APP_URL || 'https://blastexams.app' }}"
           echo "Sending keep-alive ping to: ${TARGET_URL}/api/health"
-          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "${TARGET_URL}/api/health" || echo "000")
+          HTTP_STATUS=$(curl -s -L -o /dev/null -w "%{http_code}" "${TARGET_URL}/api/health" || echo "000")
           echo "HTTP Status Code: ${HTTP_STATUS}"
           if [ "${HTTP_STATUS}" = "200" ]; then
             echo "Render service is awake and healthy."
           else
             echo "Service may be waking up or URL needs configuration. Pinging root..."
-            curl -s -m 15 -I "${TARGET_URL}" | head -n 5 || true
+            curl -s -L -m 15 -I "${TARGET_URL}" | head -n 5 || true
           fi

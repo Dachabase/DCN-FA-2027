@@ -1,11 +1,7 @@
 import "dotenv/config";
 
 import { PrismaPg } from "@prisma/adapter-pg";
-<<<<<<< HEAD
-import { PrismaClient } from "../src/generated/prisma/client";
-=======
 import { PrismaClient } from "../generated/prisma/client";
->>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 import { Bot } from "grammy";
 
 const databaseUrl = process.env.DATABASE_URL;

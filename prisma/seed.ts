@@ -1,56 +1,3 @@
-<<<<<<< HEAD
-import "dotenv/config";
-
-import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient } from "../src/generated/prisma/client";
-
-const connectionString = process.env.DATABASE_URL;
-
-if (!connectionString) {
-  throw new Error("DATABASE_URL is not defined");
-}
-
-const adapter = new PrismaPg({
-  connectionString,
-});
-
-const prisma = new PrismaClient({
-  adapter,
-});
-
-async function main() {
-  console.log("Starting database seed...");
-
-  const computing = await prisma.faculty.upsert({
-    where: {
-      name: "Computing",
-    },
-    update: {},
-    create: {
-      name: "Computing",
-    },
-  });
-
-  const departments = [
-    "Computer Science and AI",
-    "Cybersecurity",
-    "Information Technology",
-    "Software Engineering",
-  ];
-
-  for (const name of departments) {
-    await prisma.department.upsert({
-      where: {
-        facultyId_name: {
-          facultyId: computing.id,
-          name,
-        },
-      },
-      update: {},
-      create: {
-        name,
-        facultyId: computing.id,
-=======
 import { ALL_GUIDES } from "../src/data/guides-data";
 import "dotenv/config";
 import { CourseStatus } from "@prisma/client";
@@ -465,22 +412,10 @@ async function main() {
         seriesTitle: g.seriesTitle || null,
         seriesOrder: g.seriesOrder || null,
         seriesTotal: g.seriesTotal || null,
->>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
       },
     });
   }
 
-<<<<<<< HEAD
-  console.log("Computing faculty seeded successfully.");
-  console.log(`Departments: ${departments.length}`);
-}
-
-main()
-  .catch((error) => {
-    console.error("❌ Seed failed:");
-    console.error(error);
-    process.exitCode = 1;
-=======
   console.log(`✅ ${ALL_GUIDES.length} In-App Academic & Clearance Guides seeded.`);
   console.log("✅ Reference Rules & Telegram Bot record seeded.");
   console.log("🎉 Database seeding completed successfully!");
@@ -490,7 +425,6 @@ main()
   .catch((e) => {
     console.error("❌ Seeding failed:", e);
     process.exit(1);
->>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
   })
   .finally(async () => {
     await prisma.$disconnect();
