@@ -130,7 +130,7 @@ personalizationRouter.post(
         success: true,
         message: skip
           ? "Onboarding preferences saved for later."
-          : "Onboarding successfully completed! Welcome to UI Freshers Companion.",
+          : "Onboarding successfully completed! Welcome to BlastExams.",
         data: {
           user: {
             id: updatedUser.id,

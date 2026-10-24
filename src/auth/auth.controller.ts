@@ -232,7 +232,7 @@ authRouter.get("/google/login", (req: Request, res: Response) => {
             <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
           </svg>
           <h1 class="google-title">Choose an account</h1>
-          <p class="google-subtitle">to continue to <strong>UI Freshers Companion</strong></p>
+          <p class="google-subtitle">to continue to <strong>BlastExams</strong></p>
         </div>
 
         <!-- Pre-populated Quick Select Options -->
@@ -273,7 +273,7 @@ authRouter.get("/google/login", (req: Request, res: Response) => {
         </div>
 
         <p class="google-footer">
-          To continue, Google will share your name, email address, and profile picture with UI Freshers Companion.
+          To continue, Google will share your name, email address, and profile picture with BlastExams.
         </p>
       </div>
     </body>

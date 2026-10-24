@@ -1,4 +1,4 @@
-const CACHE_NAME = "ui-companion-v2";
+const CACHE_NAME = "blastexams-v3";
 
 self.addEventListener("install", (event) => {
   self.skipWaiting();

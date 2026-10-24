@@ -263,7 +263,7 @@ const FALLBACK_FAQS = [
 app.get("/api/health", (req: Request, res: Response) => {
   res.json({
     status: "ok",
-    app: "UI Freshers Companion Web API",
+    app: "BlastExams Web API",
     timestamp: new Date().toISOString(),
   });
 });
@@ -1111,7 +1111,7 @@ app.use((req: Request, res: Response) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.sendFile(path.join(publicDir, "index.html"), (err) => {
     if (err) {
-      res.status(404).send("UI Freshers Companion Web App - API is active at /api");
+      res.status(404).send("BlastExams Web App - API is active at /api");
     }
   });
 });
@@ -1137,7 +1137,7 @@ function initKeepAliveService() {
 }
 
 app.listen(PORT, () => {
-  console.log(`UI Freshers Companion Backend API running on http://localhost:${PORT}`);
+  console.log(`BlastExams Backend API running on http://localhost:${PORT}`);
   initKeepAliveService();
   startComputingBot().catch((err) => {
     console.error("Telegram Bot failed to start:", err);

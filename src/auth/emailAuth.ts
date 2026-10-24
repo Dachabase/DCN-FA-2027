@@ -34,11 +34,11 @@ async function sendEmail(to: string, code: string): Promise<boolean> {
     method: "POST",
     headers: { "api-key": apiKey, "Content-Type": "application/json", accept: "application/json" },
     body: JSON.stringify({
-      sender: { email: fromEmail, name: process.env.MAIL_FROM_NAME || "UI Freshers Companion" },
+      sender: { email: fromEmail, name: process.env.MAIL_FROM_NAME || "BlastExams" },
       to: [{ email: to }],
-      subject: `Your UI Freshers verification code: ${code}`,
+      subject: `Your BlastExams verification code: ${code}`,
       htmlContent: `<div style="font-family:Arial,sans-serif;max-width:420px;margin:auto;padding:24px">
-        <h2 style="color:#830074">UI Freshers Companion</h2>
+        <h2 style="color:#830074">BlastExams</h2>
         <p>Your verification code is:</p>
         <p style="font-size:36px;font-weight:bold;letter-spacing:10px;color:#1A0518">${code}</p>
         <p style="color:#6b5c6b">It expires in 10 minutes. If you did not request it, ignore this email.</p></div>`,

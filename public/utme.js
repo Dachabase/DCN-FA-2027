@@ -2,7 +2,7 @@
  * =========================================================
  * UTME PREPARATION & MOCK EXAMINATION ENGINE
  * Official Joint Admissions and Matriculation Board Simulation
- * UI Freshers Companion Integration
+ * BlastExams Platform Integration
  * =========================================================
  */
 

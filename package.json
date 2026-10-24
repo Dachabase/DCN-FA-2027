@@ -1,7 +1,7 @@
 {
   "name": "ui-freshers-ai",
   "version": "1.0.0",
-  "description": "UI Freshers Companion - Web App & Telegram AI Assistant Shared Backend",
+  "description": "BlastExams - Web App & Academic Exam Preparation Engine",
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
