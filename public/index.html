@@ -20,7 +20,9 @@
   <meta name="twitter:title" content="BlastExams | Academic Navigator & CBT Exam Engine">
   <meta name="twitter:description" content="Official Student Academic Navigator, Course Packages, UTME & 100-Level CBT Exam Engine. Built for academic excellence.">
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#0F0D15">
+  <meta name="theme-color" content="#830074">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIgMzMpIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxMSkiPjxyZWN0IHg9Ii0yMSIgeT0iLTIzIiB3aWR0aD0iNDIiIGhlaWdodD0iNDYiIHJ4PSIxMyIgZmlsbD0iIzgzMDA3NCIvPjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgtMTYpIj48cmVjdCB4PSItMjEiIHk9Ii0yNCIgd2lkdGg9IjQyIiBoZWlnaHQ9IjQ4IiByeD0iMTMiIGZpbGw9IiNmYWYwZjAiIHN0cm9rZT0iIzgzMDA3NCIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvZz48dGV4dCB4PSIzMiIgeT0iNDQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjayxBcmlhbCxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjMzIiBmaWxsPSIjODMwMDc0Ij5zPC90ZXh0Pjwvc3ZnPg==">
+  <link rel="stylesheet" href="/blastexams-theme.css">
   
   <!-- Fonts: Plus Jakarta Sans (Body), Playfair Display (Editorial Display), Outfit (Headings) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,14 +75,14 @@
     }
 
     /* Ultra-Premium Design System Tokens */
-      --ps-dark-bg: #0F0D15;
-      --ps-dark-surface: #161420;
-      --ps-dark-card: #1A1826;
-      --ps-purple-primary: #8B5CF6;
-      --ps-purple-hover: #7C3AED;
-      --ps-purple-light: #A855F7;
-      --ps-purple-soft: rgba(139, 92, 246, 0.08);
-      --ps-purple-soft-border: rgba(139, 92, 246, 0.2);
+      --ps-dark-bg: #0F0012;
+      --ps-dark-surface: #1A0518;
+      --ps-dark-card: #200B1E;
+      --ps-purple-primary: #830074;
+      --ps-purple-hover: #6E0061;
+      --ps-purple-light: #C030A8;
+      --ps-purple-soft: #F5E3F4;
+      --ps-purple-soft-border: #EAC7E9;
       --ps-light-bg: #F8FAFC;
       --ps-light-surface: #FFFFFF;
       --ps-light-card: #F1F5F9;
@@ -89,7 +91,7 @@
       --ps-text-light: #F8FAFC;
       --ps-text-muted: #94A3B8;
       --ps-border-dark: rgba(255, 255, 255, 0.1);
-      --ps-border-light: #E2E8F0;
+      --ps-border-light: #F0E8F0;
       --radius-lg: 16px;
       --radius-md: 12px;
       --radius-sm: 8px;
@@ -102,15 +104,15 @@
          COHESIVE GRADIENT DESIGN TOKENS (ANCHORED IN BRAND PALETTE)
          ========================================================= */
       /* Brand Luminous Gradients */
-      --grad-brand-primary: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 52%, #6D28D9 100%);
-      --grad-brand-hover: linear-gradient(135deg, #9D6EFF 0%, #8B5CF6 52%, #7C3AED 100%);
-      --grad-brand-active: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
-      --grad-brand-subtle: linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(124, 58, 237, 0.05) 100%);
-      --grad-brand-glow: radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, rgba(124, 58, 237, 0.12) 60%, transparent 80%);
+      --grad-brand-primary: linear-gradient(135deg, #830074 0%, #830074 52%, #6E0061 100%);
+      --grad-brand-hover: linear-gradient(135deg, #9D6EFF 0%, #830074 52%, #830074 100%);
+      --grad-brand-active: linear-gradient(135deg, #830074 0%, #6E0061 100%);
+      --grad-brand-subtle: linear-gradient(135deg, rgba(131, 0, 116, 0.12) 0%, rgba(110, 0, 97, 0.05) 100%);
+      --grad-brand-glow: radial-gradient(circle, rgba(131, 0, 116, 0.35) 0%, rgba(110, 0, 97, 0.12) 60%, transparent 80%);
       --grad-brand-sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
       
       /* Typography Gradients */
-      --grad-text-brand: linear-gradient(135deg, #DDD6FE 0%, #C084FC 50%, #A855F7 100%);
+      --grad-text-brand: linear-gradient(135deg, #EAC7E9 0%, #C030A8 50%, #C030A8 100%);
       --grad-text-heading: linear-gradient(135deg, #0F172A 0%, #334155 100%);
       --grad-text-light: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 100%);
       --grad-text-gold: linear-gradient(135deg, #FDE68A 0%, #F59E0B 100%);
@@ -125,17 +127,17 @@
       --grad-surface-light: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
       --grad-card-light: linear-gradient(180deg, #FFFFFF 0%, #FAFBFC 100%);
       --grad-card-light-hover: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
-      --grad-card-light-accent: linear-gradient(180deg, rgba(139, 92, 246, 0.04) 0%, #FFFFFF 100%);
+      --grad-card-light-accent: linear-gradient(180deg, rgba(131, 0, 116, 0.04) 0%, #FFFFFF 100%);
 
       /* Luminous Glossy Highlights & Shadows */
       --gloss-specular: inset 0 1px 0 rgba(255, 255, 255, 0.12);
       --gloss-specular-brand: inset 0 1px 0 rgba(255, 255, 255, 0.35);
       --gloss-specular-dark: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-      --glow-brand-sm: 0 4px 14px rgba(139, 92, 246, 0.32);
-      --glow-brand-md: 0 8px 24px rgba(139, 92, 246, 0.4);
-      --glow-brand-lg: 0 16px 40px rgba(124, 58, 237, 0.42);
+      --glow-brand-sm: 0 4px 14px rgba(131, 0, 116, 0.32);
+      --glow-brand-md: 0 8px 24px rgba(131, 0, 116, 0.4);
+      --glow-brand-lg: 0 16px 40px rgba(110, 0, 97, 0.42);
       --shadow-card-light: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 16px -2px rgba(15, 13, 21, 0.03);
-      --shadow-card-hover: 0 12px 28px -6px rgba(139, 92, 246, 0.18), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+      --shadow-card-hover: 0 12px 28px -6px rgba(131, 0, 116, 0.18), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
 
       /* Status Accents */
       --grad-status-emerald: linear-gradient(135deg, #10B981 0%, #059669 100%);
@@ -143,7 +145,7 @@
       --grad-status-blue: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
 
       /* Accessibility Focus Ring */
-      --focus-ring: 0 0 0 3px rgba(139, 92, 246, 0.45);
+      --focus-ring: 0 0 0 3px rgba(131, 0, 116, 0.45);
     }
 
     :root, html {
@@ -156,7 +158,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Outfit', sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -197,7 +199,7 @@
       background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-      background-color: rgba(139, 92, 246, 0.22);
+      background-color: rgba(131, 0, 116, 0.22);
       border: 2px solid transparent;
       border-radius: 999px;
       background-clip: padding-box;
@@ -207,7 +209,7 @@
       background-color: var(--ps-purple-primary);
     }
     ::selection {
-      background: rgba(139, 92, 246, 0.28);
+      background: rgba(131, 0, 116, 0.28);
       color: inherit;
     }
 
@@ -239,7 +241,7 @@
       height: 60%;
     }
     .metric.purple {
-      background: rgba(139, 92, 246, 0.14);
+      background: rgba(131, 0, 116, 0.14);
       color: var(--ps-purple-light);
       border: 1px solid var(--ps-purple-soft-border);
     }
@@ -299,7 +301,7 @@
     }
 
     body {
-      background: radial-gradient(circle at 50% -100px, rgba(139, 92, 246, 0.05) 0%, transparent 600px), var(--ps-light-bg);
+      background: radial-gradient(circle at 50% -100px, rgba(131, 0, 116, 0.05) 0%, transparent 600px), var(--ps-light-bg);
       color: var(--ps-text-dark);
       min-height: 100vh;
       display: flex;
@@ -329,7 +331,7 @@
       background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 100%);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+      border-bottom: 1px solid rgba(131, 0, 116, 0.2);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
       padding: 0.85rem 2rem;
       transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
@@ -361,7 +363,7 @@
       background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 100%) !important;
       backdrop-filter: blur(20px) !important;
       -webkit-backdrop-filter: blur(20px) !important;
-      border-bottom: 1px solid rgba(139, 92, 246, 0.2) !important;
+      border-bottom: 1px solid rgba(131, 0, 116, 0.2) !important;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
     }
 
@@ -435,9 +437,9 @@
     }
 
     .brand-tag {
-      background: rgba(139, 92, 246, 0.15);
-      border: 1px solid rgba(139, 92, 246, 0.35);
-      color: #C084FC;
+      background: rgba(131, 0, 116, 0.15);
+      border: 1px solid rgba(131, 0, 116, 0.35);
+      color: #C030A8;
       font-size: 0.68rem;
       font-weight: 800;
       padding: 0.15rem 0.55rem;
@@ -445,7 +447,7 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-left: 0.4rem;
-      box-shadow: 0 0 10px rgba(139, 92, 246, 0.18);
+      box-shadow: 0 0 10px rgba(131, 0, 116, 0.18);
       white-space: nowrap;
     }
 
@@ -581,7 +583,7 @@
         linear-gradient(180deg, rgba(8, 10, 18, 0.78) 0%, rgba(8, 10, 18, 0.3) 25%, transparent 55%),
         linear-gradient(90deg, rgba(7, 9, 16, 0.94) 0%, rgba(7, 9, 16, 0.85) 45%, rgba(7, 9, 16, 0.45) 75%, rgba(7, 9, 16, 0.18) 90%, transparent 100%),
         linear-gradient(180deg, transparent 65%, rgba(8, 10, 18, 0.95) 95%, #0B0E17 100%),
-        radial-gradient(circle at 75% 25%, rgba(139, 92, 246, 0.15) 0%, transparent 60%);
+        radial-gradient(circle at 75% 25%, rgba(131, 0, 116, 0.15) 0%, transparent 60%);
     }
 
     /* Hero Main Content Container */
@@ -642,9 +644,9 @@
     }
 
     .fa-hero-badge--host {
-      background: rgba(139, 92, 246, 0.16);
-      color: #DDD6FE;
-      border: 1px solid rgba(139, 92, 246, 0.35);
+      background: rgba(131, 0, 116, 0.16);
+      color: #EAC7E9;
+      border: 1px solid rgba(131, 0, 116, 0.35);
     }
 
     .fa-hero-title {
@@ -784,13 +786,13 @@
       background: var(--grad-brand-primary);
       color: #FFFFFF;
       border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 10px 28px rgba(124, 58, 237, 0.45), var(--gloss-specular-brand);
+      box-shadow: 0 10px 28px rgba(110, 0, 97, 0.45), var(--gloss-specular-brand);
     }
 
     .fa-btn--primary:hover {
       background: var(--grad-brand-hover);
       transform: translateY(-2px);
-      box-shadow: 0 14px 35px rgba(124, 58, 237, 0.6), var(--gloss-specular-brand);
+      box-shadow: 0 14px 35px rgba(110, 0, 97, 0.6), var(--gloss-specular-brand);
       color: #FFFFFF;
     }
 
@@ -809,7 +811,7 @@
     }
 
     .fa-btn--secondary:hover {
-      background: rgba(139, 92, 246, 0.2);
+      background: rgba(131, 0, 116, 0.2);
       border-color: rgba(168, 85, 247, 0.45);
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
@@ -967,9 +969,9 @@
     }
 
     .fa-search-divider span {
-      background: rgba(139, 92, 246, 0.08);
-      border: 1px solid rgba(139, 92, 246, 0.22);
-      color: #7C3AED;
+      background: rgba(131, 0, 116, 0.08);
+      border: 1px solid rgba(131, 0, 116, 0.22);
+      color: #830074;
       padding: 0.42rem 1.15rem;
       border-radius: 999px;
       font-size: 0.8rem;
@@ -1005,7 +1007,7 @@
 
     .search-input:focus {
       border-color: var(--ps-purple-primary);
-      box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15), 0 8px 30px rgba(139, 92, 246, 0.12);
+      box-shadow: 0 0 0 4px rgba(131, 0, 116, 0.15), 0 8px 30px rgba(131, 0, 116, 0.12);
     }
 
     .search-btn {
@@ -1020,7 +1022,7 @@
       font-size: 0.92rem;
       cursor: pointer;
       transition: var(--transition);
-      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
+      box-shadow: 0 4px 14px rgba(131, 0, 116, 0.35);
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
@@ -1029,7 +1031,7 @@
     .search-btn:hover {
       background: var(--grad-brand-hover);
       transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(139, 92, 246, 0.5);
+      box-shadow: 0 6px 18px rgba(131, 0, 116, 0.5);
     }
 
     .search-btn:focus-visible {
@@ -1088,7 +1090,7 @@
       color: #FFFFFF;
       border-color: transparent;
       transform: translateY(-1px);
-      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
+      box-shadow: 0 4px 14px rgba(131, 0, 116, 0.35);
     }
 
     .global-search-overlay {
@@ -1144,7 +1146,7 @@
       background: var(--grad-card-light-hover);
       border-color: rgba(168, 85, 247, 0.45);
       transform: translateX(4px);
-      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.12);
+      box-shadow: 0 4px 12px rgba(131, 0, 116, 0.12);
     }
 
     .hero-subtext {
@@ -1272,27 +1274,27 @@
     }
 
     .showcase-card.purple {
-      background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 48%, #4C1D95 100%);
+      background: linear-gradient(135deg, #830074 0%, #6E0061 60%, #FF6B4A 100%);
       color: #FFFFFF;
-      border: 1px solid rgba(192, 132, 252, 0.45);
-      box-shadow: 0 16px 36px rgba(124, 58, 237, 0.4), var(--gloss-specular-brand);
+      border: 1px solid rgba(234, 199, 233, 0.45);
+      box-shadow: 0 16px 36px rgba(131, 0, 116, 0.35), var(--gloss-specular-brand);
     }
 
     .showcase-card.purple:hover {
-      box-shadow: 0 22px 46px rgba(124, 58, 237, 0.55), var(--gloss-specular-brand);
-      border-color: rgba(221, 214, 254, 0.6);
+      box-shadow: 0 22px 46px rgba(131, 0, 116, 0.5), var(--gloss-specular-brand);
+      border-color: rgba(234, 199, 233, 0.7);
     }
 
     .showcase-card.dark {
-      background: linear-gradient(145deg, #191627 0%, #120F1E 100%);
+      background: linear-gradient(145deg, #1A0518 0%, #0F0012 100%);
       color: #FFFFFF;
-      border: 1px solid rgba(139, 92, 246, 0.25);
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(234, 199, 233, 0.2);
+      box-shadow: 0 14px 34px rgba(15, 0, 18, 0.5);
     }
 
     .showcase-card.dark:hover {
-      border-color: rgba(168, 85, 247, 0.45);
-      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.5), 0 0 25px rgba(139, 92, 246, 0.18);
+      border-color: rgba(255, 107, 74, 0.45);
+      box-shadow: 0 18px 42px rgba(15, 0, 18, 0.6), 0 0 25px rgba(131, 0, 116, 0.25);
     }
 
     .showcase-card.offline-pwa {
@@ -1349,7 +1351,7 @@
       margin-bottom: 4rem;
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(139, 92, 246, 0.22);
+      border: 1px solid rgba(131, 0, 116, 0.22);
       box-shadow: 0 16px 42px rgba(0, 0, 0, 0.45), var(--gloss-specular-dark);
     }
 
@@ -1360,7 +1362,7 @@
       right: -60px;
       width: 260px;
       height: 260px;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.22) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(131, 0, 116, 0.22) 0%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
     }
@@ -1418,7 +1420,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 1.5rem;
-      border: 1px solid rgba(139, 92, 246, 0.25);
+      border: 1px solid rgba(131, 0, 116, 0.25);
       box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35), var(--gloss-specular-dark);
       position: relative;
       overflow: hidden;
@@ -1457,7 +1459,7 @@
 
     .cbt-simulator-banner {
       background: linear-gradient(145deg, #1C152B 0%, #130E20 100%);
-      border: 1px solid rgba(139, 92, 246, 0.35);
+      border: 1px solid rgba(131, 0, 116, 0.35);
       border-radius: var(--radius-lg);
       padding: 2.25rem 2.5rem;
       margin-bottom: 2rem;
@@ -1500,7 +1502,7 @@
     }
 
     .faculty-card:hover {
-      border-color: rgba(139, 92, 246, 0.5);
+      border-color: rgba(131, 0, 116, 0.5);
       transform: translateY(-3px);
       box-shadow: var(--shadow-card-hover);
       background: var(--grad-card-light-hover);
@@ -1522,8 +1524,8 @@
     }
 
     .faculty-dept-pill {
-      background: rgba(139, 92, 246, 0.08);
-      border: 1px solid rgba(139, 92, 246, 0.22);
+      background: rgba(131, 0, 116, 0.08);
+      border: 1px solid rgba(131, 0, 116, 0.22);
       color: var(--ps-purple-primary);
       padding: 0.25rem 0.65rem;
       border-radius: 20px;
@@ -1536,8 +1538,8 @@
     }
 
     .faculty-card:hover .faculty-dept-pill {
-      background: rgba(139, 92, 246, 0.14);
-      border-color: rgba(139, 92, 246, 0.35);
+      background: rgba(131, 0, 116, 0.14);
+      border-color: rgba(131, 0, 116, 0.35);
     }
 
     .faculty-dept-pill-dot {
@@ -1579,7 +1581,7 @@
     .faculty-dept-chip.highlight {
       background: var(--ps-purple-soft);
       color: var(--ps-purple-primary);
-      border-color: rgba(139, 92, 246, 0.35);
+      border-color: rgba(131, 0, 116, 0.35);
       font-weight: 700;
     }
 
@@ -1618,7 +1620,7 @@
     }
 
     .card:hover {
-      border-color: rgba(139, 92, 246, 0.45);
+      border-color: rgba(131, 0, 116, 0.45);
       transform: translateY(-3px);
       box-shadow: var(--shadow-card-hover);
       background: var(--grad-card-light-hover);
@@ -1632,8 +1634,8 @@
     }
 
     .card-badge {
-      background: rgba(139, 92, 246, 0.08);
-      border: 1px solid rgba(139, 92, 246, 0.22);
+      background: rgba(131, 0, 116, 0.08);
+      border: 1px solid rgba(131, 0, 116, 0.22);
       color: var(--ps-purple-primary);
       padding: 0.3rem 0.75rem;
       border-radius: 6px;
@@ -1643,8 +1645,8 @@
     }
 
     .card:hover .card-badge {
-      background: rgba(139, 92, 246, 0.14);
-      border-color: rgba(139, 92, 246, 0.35);
+      background: rgba(131, 0, 116, 0.14);
+      border-color: rgba(131, 0, 116, 0.35);
     }
 
     .card-title {
@@ -1724,7 +1726,7 @@
     .filter-chip:hover {
       border-color: var(--ps-purple-primary);
       color: var(--ps-purple-primary);
-      background: rgba(139, 92, 246, 0.04);
+      background: rgba(131, 0, 116, 0.04);
     }
 
     .filter-chip.active {
@@ -1752,8 +1754,8 @@
     }
 
     .faq-item:hover {
-      border-color: rgba(139, 92, 246, 0.45);
-      box-shadow: 0 6px 18px rgba(139, 92, 246, 0.1);
+      border-color: rgba(131, 0, 116, 0.45);
+      box-shadow: 0 6px 18px rgba(131, 0, 116, 0.1);
       background: var(--grad-card-light-hover);
     }
 
@@ -1845,7 +1847,7 @@
     footer {
       background: var(--grad-surface-dark);
       color: #94A3B8;
-      border-top: 1px solid rgba(139, 92, 246, 0.2);
+      border-top: 1px solid rgba(131, 0, 116, 0.2);
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
       padding: 3.5rem 2rem;
       text-align: center;
@@ -1886,7 +1888,7 @@
     }
 
     .footer-links a:hover {
-      color: #C084FC;
+      color: #C030A8;
       text-shadow: 0 0 12px rgba(192, 132, 252, 0.4);
     }
 
@@ -1969,14 +1971,14 @@
     }
 
     .mobile-nav-btn:hover {
-      color: #DDD6FE;
-      background: rgba(139, 92, 246, 0.08);
+      color: #EAC7E9;
+      background: rgba(131, 0, 116, 0.08);
     }
 
     .mobile-nav-btn.active {
-      color: #C084FC;
-      background: rgba(139, 92, 246, 0.16);
-      box-shadow: inset 0 0 12px rgba(139, 92, 246, 0.2);
+      color: #C030A8;
+      background: rgba(131, 0, 116, 0.16);
+      box-shadow: inset 0 0 12px rgba(131, 0, 116, 0.2);
     }
 
     html, body {
@@ -2435,14 +2437,14 @@
       align-items: center;
       gap: 0.35rem;
       transition: var(--transition);
-      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4), var(--gloss-specular);
+      box-shadow: 0 4px 14px rgba(131, 0, 116, 0.4), var(--gloss-specular);
       margin-left: 0.75rem;
     }
 
     .nav-install-btn:hover {
       background: var(--grad-brand-hover);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.55), var(--gloss-specular);
+      box-shadow: 0 6px 20px rgba(131, 0, 116, 0.55), var(--gloss-specular);
     }
 
     .nav-install-btn:focus-visible {
@@ -2462,14 +2464,14 @@
       cursor: pointer;
       align-items: center;
       gap: 0.25rem;
-      box-shadow: 0 2px 8px rgba(139, 92, 246, 0.35), var(--gloss-specular);
+      box-shadow: 0 2px 8px rgba(131, 0, 116, 0.35), var(--gloss-specular);
       transition: var(--transition);
     }
 
     .mobile-header-install-btn:hover {
       background: var(--grad-brand-hover);
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.5);
+      box-shadow: 0 4px 12px rgba(131, 0, 116, 0.5);
     }
 
     .mobile-header-install-btn:focus-visible {
@@ -2510,7 +2512,7 @@
       max-width: 480px;
       width: 100%;
       color: #FFFFFF;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 35px rgba(139, 92, 246, 0.15), var(--gloss-specular-brand);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 35px rgba(131, 0, 116, 0.15), var(--gloss-specular-brand);
       position: relative;
     }
 
@@ -2594,7 +2596,7 @@
     .google-signin-btn:hover {
       background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
       border-color: rgba(192, 132, 252, 0.45);
-      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 1);
+      box-shadow: 0 4px 14px rgba(131, 0, 116, 0.15), inset 0 1px 0 rgba(255, 255, 255, 1);
       transform: translateY(-1px);
     }
 
@@ -2628,7 +2630,7 @@
     .google-auth-btn:hover {
       background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
       border-color: rgba(192, 132, 252, 0.5);
-      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 1);
+      box-shadow: 0 6px 20px rgba(131, 0, 116, 0.2), inset 0 1px 0 rgba(255, 255, 255, 1);
       transform: translateY(-1px);
     }
 
@@ -2688,8 +2690,8 @@
     }
 
     .user-dept-pill-mini {
-      background: rgba(139, 92, 246, 0.25);
-      color: #C084FC;
+      background: rgba(131, 0, 116, 0.25);
+      color: #C030A8;
       font-size: 0.7rem;
       font-weight: 800;
       padding: 0.1rem 0.45rem;
@@ -2735,7 +2737,7 @@
     }
 
     .dropdown-item-btn:hover {
-      background: rgba(139, 92, 246, 0.15);
+      background: rgba(131, 0, 116, 0.15);
       color: #FFF;
     }
 
@@ -2772,7 +2774,7 @@
     .onboarding-card {
       background: var(--grad-card-dark);
       border: 1px solid rgba(168, 85, 247, 0.32);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 35px rgba(139, 92, 246, 0.18), var(--gloss-specular-brand);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 35px rgba(131, 0, 116, 0.18), var(--gloss-specular-brand);
       border-radius: var(--radius-slab, clamp(20px, 2.2vw, 32px));
       width: 100%;
       max-width: 520px;
@@ -2809,9 +2811,9 @@
 
     .wizard-step-dot.active {
       background: var(--grad-brand-primary);
-      border-color: #C084FC;
+      border-color: #C030A8;
       color: #FFFFFF;
-      box-shadow: 0 0 16px rgba(139, 92, 246, 0.65), var(--gloss-specular);
+      box-shadow: 0 0 16px rgba(131, 0, 116, 0.65), var(--gloss-specular);
     }
 
     .wizard-step-dot.completed {
@@ -2857,21 +2859,21 @@
 
     .role-option-card:hover {
       background: var(--grad-card-dark-highlight);
-      border-color: rgba(139, 92, 246, 0.45);
+      border-color: rgba(131, 0, 116, 0.45);
       transform: translateY(-2px);
     }
 
     .role-option-card.selected {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.22) 0%, rgba(124, 58, 237, 0.1) 100%), var(--grad-card-dark);
+      background: linear-gradient(135deg, rgba(131, 0, 116, 0.22) 0%, rgba(110, 0, 97, 0.1) 100%), var(--grad-card-dark);
       border-color: rgba(168, 85, 247, 0.7);
-      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.3), var(--gloss-specular-brand);
+      box-shadow: 0 6px 20px rgba(131, 0, 116, 0.3), var(--gloss-specular-brand);
     }
 
     .role-icon-box {
       width: 44px;
       height: 44px;
       border-radius: 12px;
-      background: rgba(139, 92, 246, 0.2);
+      background: rgba(131, 0, 116, 0.2);
       color: var(--ps-purple-light);
       display: flex;
       align-items: center;
@@ -2879,7 +2881,7 @@
       font-size: 1.4rem;
       flex-shrink: 0;
       box-shadow: var(--gloss-specular-brand);
-      border: 1px solid rgba(139, 92, 246, 0.3);
+      border: 1px solid rgba(131, 0, 116, 0.3);
     }
 
     .role-title {
@@ -2930,7 +2932,7 @@
     }
 
     .wizard-select option {
-      background: #161420;
+      background: #1A0518;
       color: #FFFFFF;
     }
 
@@ -3145,7 +3147,7 @@
       right: -50px;
       width: 240px;
       height: 240px;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.28) 0%, rgba(0, 0, 0, 0) 70%);
+      background: radial-gradient(circle, rgba(131, 0, 116, 0.28) 0%, rgba(0, 0, 0, 0) 70%);
       border-radius: 50%;
       pointer-events: none;
     }
@@ -3160,9 +3162,9 @@
     }
 
     .hub-badge-pill {
-      background: rgba(139, 92, 246, 0.25);
-      border: 1px solid rgba(139, 92, 246, 0.4);
-      color: #C084FC;
+      background: rgba(131, 0, 116, 0.25);
+      border: 1px solid rgba(131, 0, 116, 0.4);
+      color: #C030A8;
       font-size: 0.78rem;
       font-weight: 800;
       padding: 0.25rem 0.75rem;
@@ -3173,7 +3175,7 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 0.6rem;
-      box-shadow: 0 0 12px rgba(139, 92, 246, 0.2);
+      box-shadow: 0 0 12px rgba(131, 0, 116, 0.2);
     }
 
     .hub-title {
@@ -3257,14 +3259,14 @@
 
     /* USER ENROLLED FACULTY SPOTLIGHT (CATALOG) */
     .user-faculty-spotlight-card {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.18) 0%, rgba(124, 58, 237, 0.07) 100%);
+      background: linear-gradient(135deg, rgba(131, 0, 116, 0.18) 0%, rgba(110, 0, 97, 0.07) 100%);
       border: 1.5px solid rgba(168, 85, 247, 0.5);
       border-radius: var(--radius-lg);
       padding: 1.85rem 2rem;
       margin-bottom: 2.25rem;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 12px 36px rgba(139, 92, 246, 0.2), var(--gloss-specular-brand);
+      box-shadow: 0 12px 36px rgba(131, 0, 116, 0.2), var(--gloss-specular-brand);
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -3385,7 +3387,7 @@
     .faculty-card.user-faculty-highlight {
       border: 2px solid var(--ps-purple-primary);
       background: var(--grad-card-light-accent);
-      box-shadow: 0 8px 26px rgba(139, 92, 246, 0.22);
+      box-shadow: 0 8px 26px rgba(131, 0, 116, 0.22);
       position: relative;
     }
 
@@ -3400,7 +3402,7 @@
       padding: 0.2rem 0.65rem;
       border-radius: 12px;
       letter-spacing: 0.5px;
-      box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4), var(--gloss-specular-brand);
+      box-shadow: 0 2px 8px rgba(131, 0, 116, 0.4), var(--gloss-specular-brand);
       border: 1px solid rgba(255, 255, 255, 0.25);
     }
 
@@ -3431,7 +3433,7 @@
       padding: 2.5rem 2rem;
       max-width: 480px;
       width: 100%;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 45px rgba(139, 92, 246, 0.2), var(--gloss-specular-brand);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 45px rgba(131, 0, 116, 0.2), var(--gloss-specular-brand);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       text-align: center;
@@ -3454,8 +3456,8 @@
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
-      background: rgba(139, 92, 246, 0.12);
-      border: 1px solid rgba(139, 92, 246, 0.3);
+      background: rgba(131, 0, 116, 0.12);
+      border: 1px solid rgba(131, 0, 116, 0.3);
       color: #A78BFA;
       font-size: 0.75rem;
       font-weight: 800;
@@ -3506,8 +3508,8 @@
       width: 42px;
       height: 42px;
       border-radius: 12px;
-      background: rgba(139, 92, 246, 0.15);
-      border: 1px solid rgba(139, 92, 246, 0.3);
+      background: rgba(131, 0, 116, 0.15);
+      border: 1px solid rgba(131, 0, 116, 0.3);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -3544,7 +3546,7 @@
       top: 0;
       left: 0;
       height: 3px;
-      background: linear-gradient(90deg, #8B5CF6 0%, #EC4899 50%, #10B981 100%);
+      background: linear-gradient(90deg, #830074 0%, #EC4899 50%, #10B981 100%);
       width: 0%;
       z-index: 9999;
       transition: width 0.1s ease-out;
@@ -3576,8 +3578,8 @@
     }
 
     .guide-back-pill:hover {
-      background: rgba(139, 92, 246, 0.2);
-      border-color: #8B5CF6;
+      background: rgba(131, 0, 116, 0.2);
+      border-color: #830074;
       color: #FFFFFF;
       transform: translateX(-2px);
     }
@@ -3685,8 +3687,8 @@
       width: 38px;
       height: 38px;
       border-radius: 10px;
-      background: rgba(139, 92, 246, 0.2);
-      border: 1px solid rgba(139, 92, 246, 0.4);
+      background: rgba(131, 0, 116, 0.2);
+      border: 1px solid rgba(131, 0, 116, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -3698,9 +3700,9 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      background: rgba(139, 92, 246, 0.15);
-      border: 1px solid rgba(139, 92, 246, 0.3);
-      color: #DDD6FE;
+      background: rgba(131, 0, 116, 0.15);
+      border: 1px solid rgba(131, 0, 116, 0.3);
+      color: #EAC7E9;
       padding: 0.4rem 0.85rem;
       border-radius: 8px;
       font-size: 0.82rem;
@@ -3711,7 +3713,7 @@
     }
 
     .guide-share-btn:hover {
-      background: #8B5CF6;
+      background: #830074;
       color: #FFFFFF;
     }
 
@@ -3719,7 +3721,7 @@
       font-size: 1.12rem;
       line-height: 1.65;
       color: #CBD5E1;
-      border-left: 3px solid #8B5CF6;
+      border-left: 3px solid #830074;
       padding-left: 1.15rem;
       margin: 1.25rem 0 0.5rem 0;
       font-style: italic;
@@ -3749,7 +3751,7 @@
       font-family: 'Outfit', sans-serif;
       font-size: 1.25rem;
       font-weight: 700;
-      color: #DDD6FE;
+      color: #EAC7E9;
       margin-top: 1.75rem;
       margin-bottom: 0.65rem;
     }
@@ -3782,8 +3784,8 @@
     }
 
     .guide-article-body blockquote {
-      background: rgba(139, 92, 246, 0.08);
-      border-left: 4px solid #8B5CF6;
+      background: rgba(131, 0, 116, 0.08);
+      border-left: 4px solid #830074;
       border-radius: 0 10px 10px 0;
       padding: 1rem 1.25rem;
       margin: 1.5rem 0;
@@ -3831,8 +3833,8 @@
     }
 
     .guide-article-body th {
-      background: rgba(139, 92, 246, 0.18);
-      color: #DDD6FE;
+      background: rgba(131, 0, 116, 0.18);
+      color: #EAC7E9;
       font-family: 'Outfit', sans-serif;
       font-size: 0.88rem;
       font-weight: 700;
@@ -3891,8 +3893,8 @@
     }
 
     .feedback-btn:hover {
-      background: rgba(139, 92, 246, 0.3);
-      border-color: #8B5CF6;
+      background: rgba(131, 0, 116, 0.3);
+      border-color: #830074;
       box-shadow: var(--glow-brand-sm);
     }
 
@@ -3927,7 +3929,7 @@
 
     /* MULTI-PART SERIES NAVIGATION STYLES */
     .guide-series-banner {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.22) 0%, rgba(59, 130, 246, 0.16) 100%);
+      background: linear-gradient(135deg, rgba(131, 0, 116, 0.22) 0%, rgba(59, 130, 246, 0.16) 100%);
       border: 1px solid rgba(168, 85, 247, 0.38);
       border-radius: 14px;
       padding: 1.15rem 1.4rem;
@@ -3968,9 +3970,9 @@
 
     .series-part-badge {
       font-size: 0.8rem;
-      color: #DDD6FE;
+      color: #EAC7E9;
       font-weight: 700;
-      background: rgba(139, 92, 246, 0.3);
+      background: rgba(131, 0, 116, 0.3);
       padding: 0.15rem 0.55rem;
       border-radius: 12px;
       margin-left: 0.35rem;
@@ -3978,7 +3980,7 @@
 
     .series-dropdown-select {
       background: #1F1B2E;
-      border: 1px solid rgba(139, 92, 246, 0.4);
+      border: 1px solid rgba(131, 0, 116, 0.4);
       color: #FFFFFF;
       padding: 0.45rem 0.85rem;
       border-radius: 8px;
@@ -4025,7 +4027,7 @@
 
     .series-nav-card.next {
       text-align: right;
-      border-color: rgba(139, 92, 246, 0.25);
+      border-color: rgba(131, 0, 116, 0.25);
     }
 
     .series-nav-label {
@@ -4046,9 +4048,9 @@
     }
 
     .series-chip-badge {
-      background: rgba(139, 92, 246, 0.2);
+      background: rgba(131, 0, 116, 0.2);
       color: #C4B5FD;
-      border: 1px solid rgba(139, 92, 246, 0.35);
+      border: 1px solid rgba(131, 0, 116, 0.35);
       border-radius: 20px;
       padding: 0.2rem 0.55rem;
       font-size: 0.72rem;
@@ -4084,13 +4086,13 @@
     }
 
     body.reader-light-mode header .nav-btn:hover {
-      color: #7C3AED !important;
-      background: rgba(124, 58, 237, 0.06) !important;
+      color: #830074 !important;
+      background: rgba(110, 0, 97, 0.06) !important;
     }
 
     body.reader-light-mode header .nav-btn.active {
-      color: #7C3AED !important;
-      background: rgba(124, 58, 237, 0.1) !important;
+      color: #830074 !important;
+      background: rgba(110, 0, 97, 0.1) !important;
     }
 
     body.reader-light-mode .audience-toggle-btn {
@@ -4101,8 +4103,8 @@
     }
 
     body.reader-light-mode .audience-toggle--100l {
-      border-color: rgba(139, 92, 246, 0.4) !important;
-      color: #6D28D9 !important;
+      border-color: rgba(131, 0, 116, 0.4) !important;
+      color: #6E0061 !important;
     }
 
     body.reader-light-mode .audience-toggle--utme {
@@ -4118,9 +4120,9 @@
     }
 
     body.reader-light-mode .profile-badge-chip {
-      background: #F3E8FF !important;
-      color: #6D28D9 !important;
-      border: 1px solid #DDD6FE !important;
+      background: #F5E3F4 !important;
+      color: #6E0061 !important;
+      border: 1px solid #EAC7E9 !important;
     }
 
     /* Sepia Global Accents */
@@ -4332,7 +4334,7 @@
     }
 
     #tab-guide-detail[data-reader-theme="light"] .guide-breadcrumb .crumb-link {
-      color: #7C3AED;
+      color: #830074;
     }
 
     #tab-guide-detail[data-reader-theme="light"] .guide-breadcrumb .crumb-sep {
@@ -4365,9 +4367,9 @@
     }
 
     #tab-guide-detail[data-reader-theme="light"] .card-badge {
-      background: #F3E8FF;
-      color: #6D28D9;
-      border: 1px solid #DDD6FE;
+      background: #F5E3F4;
+      color: #6E0061;
+      border: 1px solid #EAC7E9;
     }
 
     #tab-guide-detail[data-reader-theme="light"] .guide-provenance-box {
@@ -4376,9 +4378,9 @@
     }
 
     #tab-guide-detail[data-reader-theme="light"] .guide-author-avatar {
-      background: #EDE9FE;
-      border: 1px solid #DDD6FE;
-      color: #7C3AED;
+      background: #F5E3F4;
+      border: 1px solid #EAC7E9;
+      color: #830074;
     }
 
     #tab-guide-detail[data-reader-theme="light"] #guide-author-name {
@@ -4391,19 +4393,19 @@
 
     #tab-guide-detail[data-reader-theme="light"] .guide-share-btn {
       background: #F5F3FF;
-      border: 1px solid #DDD6FE;
-      color: #6D28D9;
+      border: 1px solid #EAC7E9;
+      color: #6E0061;
     }
 
     #tab-guide-detail[data-reader-theme="light"] .guide-share-btn:hover {
-      background: #7C3AED;
+      background: #830074;
       color: #FFFFFF;
-      border-color: #7C3AED;
+      border-color: #830074;
     }
 
     #tab-guide-detail[data-reader-theme="light"] .guide-article-lead {
       background: #F8FAFC;
-      border-left: 4px solid #7C3AED;
+      border-left: 4px solid #830074;
       color: #334155;
       border-radius: 0 10px 10px 0;
       padding: 1.15rem 1.35rem;
@@ -4441,7 +4443,7 @@
 
     #tab-guide-detail[data-reader-theme="light"] .guide-article-body blockquote {
       background: #F8FAFC;
-      border-left: 4px solid #7C3AED;
+      border-left: 4px solid #830074;
       color: #1E293B;
     }
 
@@ -4460,7 +4462,7 @@
     #tab-guide-detail[data-reader-theme="light"] .guide-article-body pre code {
       background: transparent;
       border: none;
-      color: #DDD6FE;
+      color: #EAC7E9;
     }
 
     #tab-guide-detail[data-reader-theme="light"] .guide-article-body table {
@@ -4489,13 +4491,13 @@
 
     #tab-guide-detail[data-reader-theme="light"] .guide-series-banner {
       background: #F5F3FF;
-      border: 1px solid #DDD6FE;
-      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.06);
+      border: 1px solid #EAC7E9;
+      box-shadow: 0 4px 16px rgba(110, 0, 97, 0.06);
     }
 
     #tab-guide-detail[data-reader-theme="light"] .series-icon-pill {
-      background: #EDE9FE;
-      color: #7C3AED;
+      background: #F5E3F4;
+      color: #830074;
     }
 
     #tab-guide-detail[data-reader-theme="light"] .series-title-text {
@@ -4515,13 +4517,13 @@
     }
 
     #tab-guide-detail[data-reader-theme="light"] .series-nav-card:hover {
-      border-color: #7C3AED;
-      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.08);
+      border-color: #830074;
+      box-shadow: 0 8px 24px rgba(110, 0, 97, 0.08);
       transform: translateY(-2px);
     }
 
     #tab-guide-detail[data-reader-theme="light"] .series-nav-label {
-      color: #7C3AED;
+      color: #830074;
     }
 
     #tab-guide-detail[data-reader-theme="light"] .series-nav-title {
@@ -4572,9 +4574,9 @@
     }
 
     #tab-guide-detail[data-reader-theme="light"] .feedback-btn:hover {
-      background: #EDE9FE;
-      border-color: #7C3AED;
-      color: #6D28D9;
+      background: #F5E3F4;
+      border-color: #830074;
+      color: #6E0061;
     }
 
     #tab-guide-detail[data-reader-theme="light"] .guide-related-header h3 {
@@ -4586,7 +4588,7 @@
     }
 
     #tab-guide-detail[data-reader-theme="light"] .guide-view-all-btn {
-      color: #7C3AED;
+      color: #830074;
     }
 
     #tab-guide-detail[data-reader-theme="light"] .card {
@@ -4596,8 +4598,8 @@
     }
 
     #tab-guide-detail[data-reader-theme="light"] .card:hover {
-      border-color: #7C3AED !important;
-      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.08) !important;
+      border-color: #830074 !important;
+      box-shadow: 0 8px 24px rgba(110, 0, 97, 0.08) !important;
       transform: translateY(-2px);
     }
 
@@ -4848,16 +4850,16 @@
     }
 
     .audience-toggle--100l {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.18) 0%, rgba(109, 40, 217, 0.28) 100%);
+      background: linear-gradient(135deg, rgba(131, 0, 116, 0.18) 0%, rgba(109, 40, 217, 0.28) 100%);
       border: 1px solid rgba(168, 85, 247, 0.45);
-      color: #DDD6FE;
-      box-shadow: 0 2px 10px rgba(139, 92, 246, 0.2);
+      color: #EAC7E9;
+      box-shadow: 0 2px 10px rgba(131, 0, 116, 0.2);
     }
 
     .audience-toggle--100l:hover {
       border-color: rgba(168, 85, 247, 0.75);
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.28) 0%, rgba(109, 40, 217, 0.4) 100%);
-      box-shadow: 0 4px 16px rgba(139, 92, 246, 0.35);
+      background: linear-gradient(135deg, rgba(131, 0, 116, 0.28) 0%, rgba(109, 40, 217, 0.4) 100%);
+      box-shadow: 0 4px 16px rgba(131, 0, 116, 0.35);
       color: #FFFFFF;
     }
 
@@ -4880,9 +4882,9 @@
     }
 
     .audience-badge-chip--100l {
-      background: rgba(139, 92, 246, 0.15);
-      color: #C084FC;
-      border: 1px solid rgba(139, 92, 246, 0.35);
+      background: rgba(131, 0, 116, 0.15);
+      color: #C030A8;
+      border: 1px solid rgba(131, 0, 116, 0.35);
     }
 
     .audience-badge-chip--shared {
@@ -4922,9 +4924,9 @@
     }
 
     .audience-switch-option-card.card-100l.selected {
-      border-color: #8B5CF6 !important;
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.14) 0%, rgba(109, 40, 217, 0.24) 100%) !important;
-      box-shadow: 0 0 24px rgba(139, 92, 246, 0.28), 0 0 0 1px #8B5CF6 !important;
+      border-color: #830074 !important;
+      background: linear-gradient(135deg, rgba(131, 0, 116, 0.14) 0%, rgba(109, 40, 217, 0.24) 100%) !important;
+      box-shadow: 0 0 24px rgba(131, 0, 116, 0.28), 0 0 0 1px #830074 !important;
     }
 
     .audience-switch-radio {
@@ -4946,8 +4948,8 @@
     }
 
     .audience-switch-option-card.card-100l.selected .audience-switch-radio {
-      border-color: #8B5CF6;
-      background: rgba(139, 92, 246, 0.2);
+      border-color: #830074;
+      background: rgba(131, 0, 116, 0.2);
     }
 
     .admin-inventory-table {
@@ -4987,12 +4989,16 @@
     <header class="header-over-hero">
       <div class="header-container">
         <div class="header-left-group">
-          <a href="#" onclick="switchTab('home', event)" class="brand">
-            <div class="brand-logo">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          <a href="#" onclick="switchTab('home', event)" class="brand be-logo-wrap" title="BlastExams Academic Navigator">
+            <div class="be-monogram">
+              <div class="be-monogram-outer"></div>
+              <div class="be-monogram-inner">
+                <span class="be-monogram-letter">S</span>
+              </div>
             </div>
-            <div class="brand-title">
-              BlastExams<span>.</span> <span class="brand-tag">v2.4 Live</span>
+            <div class="be-logo-text">
+              <span>blastexams</span><span class="be-logo-dot">.</span>
+              <span class="be-logo-badge">Verified</span>
             </div>
           </a>
 
@@ -5208,7 +5214,7 @@
             onclick="switchTab('cbt', event); switchCbtMode('100L');" 
             class="fa-btn fa-btn--secondary"
             id="hero-explore-tools-btn"
-            style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.35) 0%, rgba(99, 102, 241, 0.3) 100%); border-color: rgba(168, 85, 247, 0.7); color: #FFFFFF;"
+            style="background: linear-gradient(135deg, rgba(131, 0, 116, 0.35) 0%, rgba(99, 102, 241, 0.3) 100%); border-color: rgba(168, 85, 247, 0.7); color: #FFFFFF;"
           >
             <svg class="fa-btn-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
               <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
@@ -5327,11 +5333,11 @@
       <!-- 1. CONTEXTUAL GREETING & TRACK SWITCHER BANNER -->
       <div class="home-dashboard-banner" id="home-context-banner">
         <div style="display: flex; align-items: center; gap: 0.85rem;">
-          <div id="home-track-avatar" style="width: 44px; height: 44px; border-radius: 12px; background: rgba(139, 92, 246, 0.12); color: #7C3AED; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <div id="home-track-avatar" style="width: 44px; height: 44px; border-radius: 12px; background: rgba(131, 0, 116, 0.12); color: #830074; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
             <svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
           </div>
           <div>
-            <div id="home-greeting-kicker" style="font-size: 0.78rem; font-weight: 800; color: #7C3AED; text-transform: uppercase; letter-spacing: 0.8px;">Academic Companion</div>
+            <div id="home-greeting-kicker" style="font-size: 0.78rem; font-weight: 800; color: #830074; text-transform: uppercase; letter-spacing: 0.8px;">Academic Companion</div>
             <h2 id="home-greeting-title" style="font-family: 'Outfit', sans-serif; font-size: 1.45rem; font-weight: 800; color: #0F172A; margin: 0.1rem 0 0 0;">University of Ibadan 100-Level Hub</h2>
           </div>
         </div>
@@ -5347,7 +5353,7 @@
       <div id="home-primary-hero-wrap">
         <div class="home-primary-hero-card" id="home-dominant-hero">
           <div style="max-width: 680px;">
-            <div id="home-hero-badge" style="display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; font-weight: 800; color: #7C3AED; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.5rem;">
+            <div id="home-hero-badge" style="display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; font-weight: 800; color: #830074; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.5rem;">
               <svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               <span id="home-hero-kicker">OFFICIAL 100L SEMESTER EXAMINATION ENGINE</span>
             </div>
@@ -5371,13 +5377,13 @@
       <div class="home-quick-launchpad-grid" id="home-quick-launchpad">
         <div class="home-quick-launch-card" onclick="switchTab('cbt', event); switchCbtMode('100L');">
           <div>
-            <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(139, 92, 246, 0.1); color: #7C3AED; display: flex; align-items: center; justify-content: center; margin-bottom: 0.85rem;">
+            <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(131, 0, 116, 0.1); color: #830074; display: flex; align-items: center; justify-content: center; margin-bottom: 0.85rem;">
               <svg class="app-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             </div>
             <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 800; color: #0F172A; margin-bottom: 0.35rem;" id="quick-card-1-title">Full Timed Examination</h3>
             <p style="color: #64748B; font-size: 0.86rem; line-height: 1.45; margin: 0;" id="quick-card-1-desc">Timed mock session under genuine test hall conditions with instant score breakdown.</p>
           </div>
-          <div style="color: #7C3AED; font-weight: 800; font-size: 0.84rem; margin-top: 1rem; display: flex; align-items: center; gap: 0.35rem;">
+          <div style="color: #830074; font-weight: 800; font-size: 0.84rem; margin-top: 1rem; display: flex; align-items: center; gap: 0.35rem;">
             <span>Start Full Exam →</span>
           </div>
         </div>
@@ -5415,7 +5421,7 @@
           
           <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.25rem; margin-bottom: 1.5rem;">
             <div style="max-width: 720px;">
-              <div id="home-practice-kicker" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 800; color: #7C3AED; text-transform: uppercase; letter-spacing: 0.9px; margin-bottom: 0.45rem;">
+              <div id="home-practice-kicker" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 800; color: #830074; text-transform: uppercase; letter-spacing: 0.9px; margin-bottom: 0.45rem;">
                 <svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                 OFFICIAL UNIVERSITY OF IBADAN SEMESTER CBT
               </div>
@@ -5456,7 +5462,7 @@
                   <button class="cbt-launch-btn-primary" onclick="UI100L.startCbt('COS 101', 'FULL_CBT')">Full Exam (30m)</button>
                   <button class="vault-btn-view" style="font-size: 0.82rem; padding: 0.65rem 0.5rem; justify-content: center; border-radius: 8px; background: #F8FAFC; color: #0F172A; border-color: #E2E8F0;" onclick="UI100L.startCbt('COS 101', 'QUICK_DRILL')">10-Q Drill</button>
                 </div>
-                <button class="vault-btn-download" style="width: 100%; justify-content: center; font-size: 0.8rem; padding: 0.55rem 0.75rem; border-radius: 8px; background: #F8FAFC; color: #7C3AED; border-color: #E2E8F0;" onclick="UI100L.openCourseDetail('COS 101', 'cbt')">Past Papers &amp; Hub →</button>
+                <button class="vault-btn-download" style="width: 100%; justify-content: center; font-size: 0.8rem; padding: 0.55rem 0.75rem; border-radius: 8px; background: #F8FAFC; color: #830074; border-color: #E2E8F0;" onclick="UI100L.openCourseDetail('COS 101', 'cbt')">Past Papers &amp; Hub →</button>
               </div>
             </div>
 
@@ -5480,7 +5486,7 @@
                   <button class="cbt-launch-btn-primary" onclick="UI100L.startCbt('CHE 126', 'FULL_CBT')">Full Exam (30m)</button>
                   <button class="vault-btn-view" style="font-size: 0.82rem; padding: 0.65rem 0.5rem; justify-content: center; border-radius: 8px; background: #F8FAFC; color: #0F172A; border-color: #E2E8F0;" onclick="UI100L.startCbt('CHE 126', 'QUICK_DRILL')">10-Q Drill</button>
                 </div>
-                <button class="vault-btn-download" style="width: 100%; justify-content: center; font-size: 0.8rem; padding: 0.55rem 0.75rem; border-radius: 8px; background: #F8FAFC; color: #7C3AED; border-color: #E2E8F0;" onclick="UI100L.openCourseDetail('CHE 126', 'cbt')">Past Papers &amp; Hub →</button>
+                <button class="vault-btn-download" style="width: 100%; justify-content: center; font-size: 0.8rem; padding: 0.55rem 0.75rem; border-radius: 8px; background: #F8FAFC; color: #830074; border-color: #E2E8F0;" onclick="UI100L.openCourseDetail('CHE 126', 'cbt')">Past Papers &amp; Hub →</button>
               </div>
             </div>
 
@@ -5504,7 +5510,7 @@
                   <button class="cbt-launch-btn-primary" onclick="UI100L.startCbt('ECO 102', 'FULL_CBT')">Full Exam (30m)</button>
                   <button class="vault-btn-view" style="font-size: 0.82rem; padding: 0.65rem 0.5rem; justify-content: center; border-radius: 8px; background: #F8FAFC; color: #0F172A; border-color: #E2E8F0;" onclick="UI100L.startCbt('ECO 102', 'QUICK_DRILL')">10-Q Drill</button>
                 </div>
-                <button class="vault-btn-download" style="width: 100%; justify-content: center; font-size: 0.8rem; padding: 0.55rem 0.75rem; border-radius: 8px; background: #F8FAFC; color: #7C3AED; border-color: #E2E8F0;" onclick="UI100L.openCourseDetail('ECO 102', 'cbt')">Past Papers &amp; Hub →</button>
+                <button class="vault-btn-download" style="width: 100%; justify-content: center; font-size: 0.8rem; padding: 0.55rem 0.75rem; border-radius: 8px; background: #F8FAFC; color: #830074; border-color: #E2E8F0;" onclick="UI100L.openCourseDetail('ECO 102', 'cbt')">Past Papers &amp; Hub →</button>
               </div>
             </div>
 
@@ -5528,7 +5534,7 @@
                   <button class="cbt-launch-btn-primary" onclick="UI100L.startCbt('PHY 102', 'FULL_CBT')">Full Exam (30m)</button>
                   <button class="vault-btn-view" style="font-size: 0.82rem; padding: 0.65rem 0.5rem; justify-content: center; border-radius: 8px; background: #F8FAFC; color: #0F172A; border-color: #E2E8F0;" onclick="UI100L.startCbt('PHY 102', 'QUICK_DRILL')">10-Q Drill</button>
                 </div>
-                <button class="vault-btn-download" style="width: 100%; justify-content: center; font-size: 0.8rem; padding: 0.55rem 0.75rem; border-radius: 8px; background: #F8FAFC; color: #7C3AED; border-color: #E2E8F0;" onclick="UI100L.openCourseDetail('PHY 102', 'cbt')">Past Papers &amp; Hub →</button>
+                <button class="vault-btn-download" style="width: 100%; justify-content: center; font-size: 0.8rem; padding: 0.55rem 0.75rem; border-radius: 8px; background: #F8FAFC; color: #830074; border-color: #E2E8F0;" onclick="UI100L.openCourseDetail('PHY 102', 'cbt')">Past Papers &amp; Hub →</button>
               </div>
             </div>
           </div>
@@ -5613,12 +5619,194 @@
       </div>
     </section>
 
+    
+      <!-- =========================================================
+           PROVEN EXCELLENCE SECTION ($g from blastexams.html)
+           ========================================================= -->
+      <section class="excellence-section" id="excellence-section">
+        <div class="excellence-container">
+          <div class="excellence-header">
+            <div class="excellence-shimmer-wrap">
+              <span class="shimmer-badge excellence-badge">
+                ★ PROVEN EXCELLENCE
+              </span>
+            </div>
+            <h2 class="excellence-title">
+              Trusted by thousands of <span>UI students</span>
+            </h2>
+            <p class="excellence-desc">
+              Accurate, verified academic data directly from official University of Ibadan sources.
+            </p>
+          </div>
+          <div class="excellence-grid">
+            <div class="excellence-card card-hover">
+              <div class="excellence-card-icon" style="background: rgba(131, 0, 116, 0.12); color: #830074;">
+                🏛️
+              </div>
+              <div>
+                <div class="excellence-card-num" style="color: #830074;" id="stat-faculties-num">17</div>
+                <div class="excellence-card-label">Canonical Faculties</div>
+                <div class="excellence-card-sub">Every faculty at UI fully covered with official course packages and credit limits.</div>
+              </div>
+            </div>
+            <div class="excellence-card card-hover">
+              <div class="excellence-card-icon" style="background: rgba(45, 187, 170, 0.12); color: #2DBBAA;">
+                🎓
+              </div>
+              <div>
+                <div class="excellence-card-num" style="color: #2DBBAA;" id="stat-departments-num">94+</div>
+                <div class="excellence-card-label">Departments Mapped</div>
+                <div class="excellence-card-sub">From Architecture to Zoology, no department left out with past question banks.</div>
+              </div>
+            </div>
+            <div class="excellence-card card-hover">
+              <div class="excellence-card-icon" style="background: rgba(255, 107, 74, 0.12); color: #FF6B4A;">
+                💚
+              </div>
+              <div>
+                <div class="excellence-card-num" style="color: #FF6B4A;" id="stat-free-num">100%</div>
+                <div class="excellence-card-label">Completely Free</div>
+                <div class="excellence-card-sub">No paywalls, no hidden subscription fees — 100% free for every fresher & aspirant.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           EXPLORE ALL 17 FACULTIES CAROUSEL (ev from blastexams.html)
+           ========================================================= -->
+      <section class="faculty-carousel-section" id="faculty-carousel-section">
+        <div class="faculty-carousel-container">
+          <div class="faculty-carousel-header">
+            <div>
+              <div class="faculty-kicker-badge">
+                🏛️ Faculties
+              </div>
+              <h2 class="faculty-carousel-title">
+                Explore All <span style="color: var(--be-primary);">17 Faculties</span>
+              </h2>
+              <p class="faculty-carousel-desc">
+                Browse departments, core courses, credit units, and syllabi across University of Ibadan.
+              </p>
+            </div>
+            <div class="faculty-carousel-controls">
+              <button class="faculty-toggle-play" id="faculty-auto-slide-btn" onclick="toggleFacultyAutoSlide()">
+                ⏸ Auto-Sliding
+              </button>
+              <button class="faculty-ctrl-btn" onclick="stepFacultyCarousel(-1)" aria-label="Previous faculty">
+                ←
+              </button>
+              <button class="faculty-ctrl-btn primary" onclick="stepFacultyCarousel(1)" aria-label="Next faculty">
+                →
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic 3-Card Carousel Track -->
+          <div class="faculty-cards-track" id="faculty-cards-track">
+            <!-- Injected dynamically by blastexams-interactive.js -->
+          </div>
+
+          <!-- Pagination Indicator Dots -->
+          <div class="faculty-dots-indicator" id="faculty-dots-container">
+            <!-- Injected dynamically by blastexams-interactive.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           FREQUENTLY ASKED QUESTIONS ACCORDION (tv from blastexams.html)
+           ========================================================= -->
+      <section class="faq-section" id="home-faq-section">
+        <div class="faq-container">
+          <div class="faq-header">
+            <div class="faculty-kicker-badge" style="margin: 0 auto 0.6rem;">
+              ❓ FAQs
+            </div>
+            <h2 class="excellence-title">
+              Frequently Asked <span style="color: var(--be-primary);">Questions</span>
+            </h2>
+            <p class="excellence-desc">
+              Everything a UI 100-Level student and UTME candidate typically asks about.
+            </p>
+          </div>
+
+          <div class="faq-list">
+            <!-- FAQ 1 -->
+            <div class="faq-item active" data-faq-id="1">
+              <button class="faq-trigger" onclick="toggleFaqItem(1)">
+                <span class="faq-number">01</span>
+                <span class="faq-question">What is the deadline for course registration each semester?</span>
+                <span class="faq-icon-arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </button>
+              <div class="faq-content" style="display: block;">
+                <div class="faq-answer-inner">
+                  Course registration at University of Ibadan typically closes at the end of the third week of each semester. Late registration attracts a penalty fee and may affect your eligibility to sit examinations. Always confirm the exact date on the UI portal or with your faculty office each session.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item" data-faq-id="2">
+              <button class="faq-trigger" onclick="toggleFaqItem(2)">
+                <span class="faq-number">02</span>
+                <span class="faq-question">How is First Class Honours calculated at UI?</span>
+                <span class="faq-icon-arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </button>
+              <div class="faq-content" style="display: none;">
+                <div class="faq-answer-inner">
+                  A First Class Honours requires a Cumulative Grade Point Average (CGPA) of 4.50–5.00 on the 5-point scale. Each course's grade is multiplied by its credit unit to give grade points, which are totalled and divided by total credit units attempted. Consistent A-grades (70% and above) across all semesters are required.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item" data-faq-id="3">
+              <button class="faq-trigger" onclick="toggleFaqItem(3)">
+                <span class="faq-number">03</span>
+                <span class="faq-question">What materials am I allowed to bring into an exam hall?</span>
+                <span class="faq-icon-arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </button>
+              <div class="faq-content" style="display: none;">
+                <div class="faq-answer-inner">
+                  You may bring only approved writing materials (pens, pencils), your student ID card, your exam docket/timetable, and any specifically permitted instruments (calculators, rulers) stated in the exam instructions. Phones, smart watches, and unauthorized notes are strictly prohibited and may result in exam cancellation.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item" data-faq-id="4">
+              <button class="faq-trigger" onclick="toggleFaqItem(4)">
+                <span class="faq-number">04</span>
+                <span class="faq-question">Is there a verified Telegram community for UI students?</span>
+                <span class="faq-icon-arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </button>
+              <div class="faq-content" style="display: none;">
+                <div class="faq-answer-inner">
+                  Yes — BlastExams maintains a verified Telegram channel and group for current 100-Level students, updated with official announcements, deadline reminders, and peer support. Click the Telegram button in the navigation bar to join. Beware of impersonators — only join via the link from this official platform.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
     <!-- 2. ACADEMIC COURSE CATALOG TAB -->
     <section id="tab-catalog" class="tab-section">
       <!-- SENATE RULE CALLOUT BANNER -->
       <div class="academic-policy-banner">
         <div>
-          <span style="background: rgba(139, 92, 246, 0.2); color: var(--ps-purple-light); font-size: 0.78rem; font-weight: 800; padding: 0.3rem 0.8rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.6px; display: inline-block; margin-bottom: 0.6rem;"><svg class="app-icon app-icon-mr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>UI Academic Policy</span>
+          <span style="background: rgba(131, 0, 116, 0.2); color: var(--ps-purple-light); font-size: 0.78rem; font-weight: 800; padding: 0.3rem 0.8rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.6px; display: inline-block; margin-bottom: 0.6rem;"><svg class="app-icon app-icon-mr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>UI Academic Policy</span>
           <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.85rem; font-weight: 800; color: #FFFFFF; letter-spacing: -0.5px;">Semester Credit Load & 5.0 CGPA Scale</h2>
           <p style="color: #94A3B8; font-size: 0.95rem; margin-top: 0.35rem; max-width: 680px;">Official Senate rules: Credit load is strictly 15 – 24 units per semester. Good Standing minimum CGPA is 1.50.</p>
         </div>
@@ -5960,7 +6148,7 @@
         <div class="vault-header-hero" style="background: linear-gradient(135deg, rgba(30, 27, 75, 0.96) 0%, rgba(15, 13, 21, 0.98) 100%); border-color: rgba(168, 85, 247, 0.35); margin-bottom: 2rem;">
           <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem;">
             <div style="max-width: 680px;">
-              <div style="display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; font-weight: 800; color: #C084FC; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.45rem;">
+              <div style="display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; font-weight: 800; color: #C030A8; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.45rem;">
                 <svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                 OFFICIAL UNIVERSITY OF IBADAN SEMESTER CBT
               </div>
@@ -5970,7 +6158,7 @@
               </p>
             </div>
             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-              <button onclick="UI100L.filterCbtPortal('QUESTIONS_ONLY')" id="cbt-filter-toggle-btn" class="action-btn" style="background: rgba(139, 92, 246, 0.25); border: 1px solid #8B5CF6; color: #FFF; font-weight: 700; padding: 0.65rem 1.15rem; border-radius: 10px; font-size: 0.85rem;">
+              <button onclick="UI100L.filterCbtPortal('QUESTIONS_ONLY')" id="cbt-filter-toggle-btn" class="action-btn" style="background: rgba(131, 0, 116, 0.25); border: 1px solid #830074; color: #FFF; font-weight: 700; padding: 0.65rem 1.15rem; border-radius: 10px; font-size: 0.85rem;">
                 <span>Active CBT Courses (67)</span>
               </button>
             </div>
@@ -6179,6 +6367,64 @@
     </section>
   </main>
 
+    <!-- =========================================================
+         CANONICAL FOOTER (lv from blastexams.html)
+         ========================================================= -->
+    <footer class="be-footer" id="be-canonical-footer">
+      <div class="be-footer-container">
+        <div class="be-footer-top">
+          <div class="be-footer-brand-col">
+            <div class="be-footer-brand-title">
+              <div class="be-monogram" style="transform: scale(0.85); transform-origin: left center;">
+                <div class="be-monogram-outer"></div>
+                <div class="be-monogram-inner"><span class="be-monogram-letter">S</span></div>
+              </div>
+              <span style="font-weight: 800; font-size: 1.3rem; margin-left: 0.35rem;">blastexams<span style="color: #FF6B4A;">.</span></span>
+            </div>
+            <p class="be-footer-brand-desc">
+              The most accurate academic guide and verified examination engine for University of Ibadan students.
+            </p>
+          </div>
+
+          <div class="be-footer-links-grid">
+            <div>
+              <div class="be-footer-col-title">Platform</div>
+              <a href="#" onclick="switchTab('home', event)" class="be-footer-link">Home Dashboard</a>
+              <a href="#" onclick="switchTab('catalog', event)" class="be-footer-link">Academic Hub</a>
+              <a href="#" onclick="switchTab('resources', event)" class="be-footer-link">Drive Vault</a>
+              <a href="#" onclick="switchTab('cbt', event)" class="be-footer-link">100L CBT Simulator</a>
+              <a href="#" onclick="switchTab('opportunities', event)" class="be-footer-link">Scholarships & Grants</a>
+            </div>
+
+            <div>
+              <div class="be-footer-col-title">Resources</div>
+              <a href="#" onclick="switchTab('catalog', event)" class="be-footer-link">Course Packages</a>
+              <a href="#" onclick="switchTab('guides', event)" class="be-footer-link">Clearance Guide</a>
+              <a href="#" onclick="switchTab('guides', event)" class="be-footer-link">5.0 CGPA Scale</a>
+              <a href="#home-faq-section" class="be-footer-link">Frequently Asked Questions</a>
+              <a href="#" onclick="switchTab('cbt', event)" class="be-footer-link">Exam Prep Engine</a>
+            </div>
+
+            <div>
+              <div class="be-footer-col-title">Community</div>
+              <a href="https://t.me/UIDCNComputingFreshersBot" target="_blank" rel="noreferrer" class="be-footer-link">Telegram Companion</a>
+              <a href="https://chat.whatsapp.com/KNFYXP7nTlZApyHOgHr5oJ?mode=gi_t" target="_blank" rel="noreferrer" class="be-footer-link">Freshers Community</a>
+              <a href="#" onclick="switchTab('guides', event)" class="be-footer-link">Campus Survival Guides</a>
+              <a href="#" onclick="triggerPWAInstall()" class="be-footer-link">Install App on Phone</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="be-footer-bottom">
+          <span>© 2026/27 BlastExams. Built for academic excellence. Not an official UI publication.</span>
+          <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
+            Made with <span style="color: #FF6B4A;">♥</span> for 100-Level Students & UTME Aspirants
+          </span>
+        </div>
+      </div>
+    </footer>
+
+
   <!-- MOBILE NAVIGATION -->
   <div class="mobile-nav">
     <div class="mobile-nav-container">
@@ -6190,7 +6436,7 @@
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
         Courses
       </button>
-      <button class="mobile-nav-btn" data-tab="cbt" onclick="switchTab('cbt', event)" style="color: #A855F7; font-weight: 700;">
+      <button class="mobile-nav-btn" data-tab="cbt" onclick="switchTab('cbt', event)" style="color: #C030A8; font-weight: 700;">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
         CBT Exam
       </button>
@@ -6805,7 +7051,7 @@
           html += `<div class="global-search-category"><svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> ⚡ 100-Level CBT Examinations (${matchedCbt.length})</div>`;
           matchedCbt.slice(0, 5).forEach(c => {
             html += `
-              <div class="search-result-item" style="cursor: default; background: rgba(139, 92, 246, 0.04); border-color: rgba(139, 92, 246, 0.2);">
+              <div class="search-result-item" style="cursor: default; background: rgba(131, 0, 116, 0.04); border-color: rgba(131, 0, 116, 0.2);">
                 <div>
                   <div style="display: flex; align-items: center; gap: 0.45rem;">
                     <strong style="color: var(--ps-purple-primary); font-size: 0.95rem;">${escapeHtml(c.code)}: ${escapeHtml(c.title)}</strong>
@@ -7152,11 +7398,11 @@
 
         let sharedNoticeHtml = "";
         if (dept.faculty.name === "Dentistry") {
-          sharedNoticeHtml = `<div style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg><strong>Shared Package Link:</strong> Dentistry's 100L Pre-Med package is linked directly to Clinical Sciences' Pre-Med course records.</div>`;
+          sharedNoticeHtml = `<div style="background: rgba(131, 0, 116, 0.08); border: 1px solid rgba(131, 0, 116, 0.25); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg><strong>Shared Package Link:</strong> Dentistry's 100L Pre-Med package is linked directly to Clinical Sciences' Pre-Med course records.</div>`;
         } else if (dept.faculty.name === "Nursing Science") {
-          sharedNoticeHtml = `<div style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg><strong>Shared Package Link:</strong> Nursing Science (BNSc) 100L Pre-Med package is linked directly to College of Medicine Pre-Med course records.</div>`;
+          sharedNoticeHtml = `<div style="background: rgba(131, 0, 116, 0.08); border: 1px solid rgba(131, 0, 116, 0.25); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg><strong>Shared Package Link:</strong> Nursing Science (BNSc) 100L Pre-Med package is linked directly to College of Medicine Pre-Med course records.</div>`;
         } else if (dept.faculty.name === "Veterinary Medicine") {
-          sharedNoticeHtml = `<div style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg><strong>Shared Package Link:</strong> Veterinary Medicine's 100L Pre-Vet package is linked directly to Faculty of Science course records.</div>`;
+          sharedNoticeHtml = `<div style="background: rgba(131, 0, 116, 0.08); border: 1px solid rgba(131, 0, 116, 0.25); border-radius: 10px; padding: 0.9rem 1.25rem; margin-bottom: 1.5rem; color: var(--ps-purple-primary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem;"><svg class="app-icon app-icon-mr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg><strong>Shared Package Link:</strong> Veterinary Medicine's 100L Pre-Vet package is linked directly to Faculty of Science course records.</div>`;
         }
 
         const sem1Dept = deptCourses.filter(c => c.semester === "1st");
@@ -7177,7 +7423,7 @@
               <td style="font-weight: 700; text-align: center; white-space: nowrap;">${c.units} Units</td>
               <td style="white-space: nowrap;"><span class="badge-${c.isCompulsory ? 'compulsory' : 'required'}">${c.isCompulsory ? 'Compulsory' : 'Required'}</span></td>
               <td style="white-space: nowrap; text-align: right;">
-                <button onclick="if(window.UI100L) UI100L.openCourseDetail('${escapeHtml(c.courseCode)}', 'cbt')" style="background: rgba(139, 92, 246, 0.12); border: 1px solid rgba(139, 92, 246, 0.35); color: var(--ps-purple-primary); padding: 0.35rem 0.65rem; border-radius: 6px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
+                <button onclick="if(window.UI100L) UI100L.openCourseDetail('${escapeHtml(c.courseCode)}', 'cbt')" style="background: rgba(131, 0, 116, 0.12); border: 1px solid rgba(131, 0, 116, 0.35); color: var(--ps-purple-primary); padding: 0.35rem 0.65rem; border-radius: 6px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
                   ⚡ CBT &amp; Vault
                 </button>
               </td>
@@ -7198,7 +7444,7 @@
               <td style="font-weight: 700; text-align: center; white-space: nowrap;">${c.units} Units</td>
               <td style="white-space: nowrap;"><span class="badge-ges">University GES</span></td>
               <td style="white-space: nowrap; text-align: right;">
-                <button onclick="if(window.UI100L) UI100L.openCourseDetail('${escapeHtml(c.courseCode)}', 'cbt')" style="background: rgba(139, 92, 246, 0.12); border: 1px solid rgba(139, 92, 246, 0.35); color: var(--ps-purple-primary); padding: 0.35rem 0.65rem; border-radius: 6px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
+                <button onclick="if(window.UI100L) UI100L.openCourseDetail('${escapeHtml(c.courseCode)}', 'cbt')" style="background: rgba(131, 0, 116, 0.12); border: 1px solid rgba(131, 0, 116, 0.35); color: var(--ps-purple-primary); padding: 0.35rem 0.65rem; border-radius: 6px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
                   ⚡ CBT &amp; Vault
                 </button>
               </td>
@@ -7742,7 +7988,7 @@
       if (!toast) {
         toast = document.createElement("div");
         toast.id = "app-toast-notification";
-        toast.style.cssText = "position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: #1E1B2E; color: #FFFFFF; border: 1px solid rgba(139, 92, 246, 0.4); padding: 0.75rem 1.25rem; border-radius: 999px; font-weight: 700; font-size: 0.88rem; z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 0.5rem; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease; opacity: 0; pointer-events: none; font-family: 'Outfit', sans-serif;";
+        toast.style.cssText = "position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: #1E1B2E; color: #FFFFFF; border: 1px solid rgba(131, 0, 116, 0.4); padding: 0.75rem 1.25rem; border-radius: 999px; font-weight: 700; font-size: 0.88rem; z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 0.5rem; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease; opacity: 0; pointer-events: none; font-family: 'Outfit', sans-serif;";
         document.body.appendChild(toast);
       }
       toast.textContent = message;
@@ -8696,7 +8942,7 @@
             <button class="hub-quick-btn" onclick="switchTab('guides', event)">
               <svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg> ${escapeHtml(facultyName)} Guides
             </button>
-            <a href="https://t.me/UIDCNComputingFreshersBot" target="_blank" rel="noopener" class="hub-quick-btn" style="background: rgba(139, 92, 246, 0.3); border-color: var(--ps-purple-primary);">
+            <a href="https://t.me/UIDCNComputingFreshersBot" target="_blank" rel="noopener" class="hub-quick-btn" style="background: rgba(131, 0, 116, 0.3); border-color: var(--ps-purple-primary);">
               <svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg> Ask Faculty Bot on TG
             </a>
             <button class="hub-quick-btn" onclick="openOnboardingModal(1)" style="background: transparent; border-color: rgba(255,255,255,0.15);">
@@ -8875,7 +9121,7 @@
           utmeCard.classList.remove("selected");
           utmeCard.setAttribute("aria-checked", "false");
         }
-        if (uiRadio) uiRadio.innerHTML = `<div style="width: 10px; height: 10px; border-radius: 50%; background: #8B5CF6; box-shadow: 0 0 8px #8B5CF6;"></div>`;
+        if (uiRadio) uiRadio.innerHTML = `<div style="width: 10px; height: 10px; border-radius: 50%; background: #830074; box-shadow: 0 0 8px #830074;"></div>`;
         if (utmeRadio) utmeRadio.innerHTML = '';
       }
     }
@@ -8966,7 +9212,7 @@
               <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
               Courses &amp; Vault
             </button>
-            <button class="nav-btn ${activeTab === 'cbt' ? 'active' : ''}" data-tab="cbt" onclick="switchTab('cbt', event)" style="color: #A855F7; font-weight: 700;">
+            <button class="nav-btn ${activeTab === 'cbt' ? 'active' : ''}" data-tab="cbt" onclick="switchTab('cbt', event)" style="color: #C030A8; font-weight: 700;">
               <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
               100L CBT Exams
             </button>
@@ -9018,7 +9264,7 @@
               <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
               Courses
             </button>
-            <button class="mobile-nav-btn ${activeTab === 'cbt' ? 'active' : ''}" data-tab="cbt" onclick="switchTab('cbt', event)" style="color: #A855F7; font-weight: 700;">
+            <button class="mobile-nav-btn ${activeTab === 'cbt' ? 'active' : ''}" data-tab="cbt" onclick="switchTab('cbt', event)" style="color: #C030A8; font-weight: 700;">
               <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
               CBT Exam
             </button>
@@ -9150,8 +9396,8 @@
         if (homeGreetingKicker) homeGreetingKicker.textContent = "Academic Companion";
         if (homeGreetingTitle) homeGreetingTitle.textContent = "University of Ibadan 100-Level Hub";
         if (homeTrackAvatar) {
-          homeTrackAvatar.style.background = "rgba(139, 92, 246, 0.12)";
-          homeTrackAvatar.style.color = "#7C3AED";
+          homeTrackAvatar.style.background = "rgba(131, 0, 116, 0.12)";
+          homeTrackAvatar.style.color = "#830074";
           homeTrackAvatar.innerHTML = `<svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`;
         }
         if (homeDominantHero) homeDominantHero.classList.remove("utme-hero");
@@ -9711,7 +9957,7 @@
 
       <!-- Option B: UI 100L -->
       <div class="audience-switch-option-card card-100l" id="switch-card-100l" role="radio" aria-checked="false" tabindex="0" onclick="selectAudienceOption('UI_100_LEVEL_STUDENT')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectAudienceOption('UI_100_LEVEL_STUDENT'); }">
-        <div style="width: 44px; height: 44px; background: rgba(139, 92, 246, 0.2); color: #C084FC; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(139, 92, 246, 0.35);">
+        <div style="width: 44px; height: 44px; background: rgba(131, 0, 116, 0.2); color: #C030A8; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(131, 0, 116, 0.35);">
           <svg class="app-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
         </div>
         <div style="flex: 1; min-width: 0;">
@@ -9759,9 +10005,9 @@
           <div style="font-size: 0.72rem; color: #FBBF24; font-weight: 700;">UTME Only</div>
           <div style="font-size: 1.2rem; font-weight: 800; color: #FDE68A;" id="admin-stat-utme">--</div>
         </div>
-        <div style="background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.25); padding: 0.65rem; border-radius: 10px; text-align: center;">
+        <div style="background: rgba(131, 0, 116,0.08); border: 1px solid rgba(131, 0, 116,0.25); padding: 0.65rem; border-radius: 10px; text-align: center;">
           <div style="font-size: 0.72rem; color: #A78BFA; font-weight: 700;">UI 100L Only</div>
-          <div style="font-size: 1.2rem; font-weight: 800; color: #DDD6FE;" id="admin-stat-100l">--</div>
+          <div style="font-size: 1.2rem; font-weight: 800; color: #EAC7E9;" id="admin-stat-100l">--</div>
         </div>
         <div style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.25); padding: 0.65rem; border-radius: 10px; text-align: center;">
           <div style="font-size: 0.72rem; color: #34D399; font-weight: 700;">Shared Both</div>
@@ -9781,7 +10027,7 @@
           <button class="filter-chip" id="admin-btn-utme" onclick="setAdminFilter('utme', event)">UTME</button>
           <button class="filter-chip" id="admin-btn-100l" onclick="setAdminFilter('100l', event)">100L</button>
           <button class="filter-chip" id="admin-btn-shared" onclick="setAdminFilter('shared', event)">Shared</button>
-          <button class="filter-chip" onclick="UI100L.openAdminVaultReport()" style="background: rgba(139,92,246,0.2); border-color: #8B5CF6; color: #DDD6FE;">📊 100L Vault &amp; CBT Audit</button>
+          <button class="filter-chip" onclick="UI100L.openAdminVaultReport()" style="background: rgba(131, 0, 116,0.2); border-color: #830074; color: #EAC7E9;">📊 100L Vault &amp; CBT Audit</button>
         </div>
       </div>
 
@@ -9809,5 +10055,43 @@
 
   <script src="/utme.js" defer></script>
   <script src="/academic100l.js" defer></script>
+
+  <!-- =========================================================
+       MOBILE BOTTOM NAVIGATION BAR (Kg from blastexams.html)
+       ========================================================= -->
+  <nav class="be-mobile-nav" id="be-mobile-bottom-nav" aria-label="Mobile Navigation">
+    <button class="be-mobile-nav-btn active" data-be-tab="home" onclick="handleMobileNavClick('home', event)">
+      <span class="be-mobile-nav-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </span>
+      <span class="be-mobile-nav-label">Home</span>
+    </button>
+    <button class="be-mobile-nav-btn" data-be-tab="catalog" onclick="handleMobileNavClick('catalog', event)">
+      <span class="be-mobile-nav-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+      </span>
+      <span class="be-mobile-nav-label">Courses</span>
+    </button>
+    <button class="be-mobile-nav-btn" data-be-tab="cbt" onclick="handleMobileNavClick('cbt', event)">
+      <span class="be-mobile-nav-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </span>
+      <span class="be-mobile-nav-label">CBT</span>
+    </button>
+    <button class="be-mobile-nav-btn" data-be-tab="guides" onclick="handleMobileNavClick('guides', event)">
+      <span class="be-mobile-nav-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </span>
+      <span class="be-mobile-nav-label">Guides</span>
+    </button>
+    <button class="be-mobile-nav-btn" data-be-tab="resources" onclick="handleMobileNavClick('resources', event)">
+      <span class="be-mobile-nav-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+      </span>
+      <span class="be-mobile-nav-label">Vault</span>
+    </button>
+  </nav>
+
+  <script src="/blastexams-interactive.js" defer></script>
 </body>
 </html>

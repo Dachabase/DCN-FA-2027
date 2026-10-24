@@ -453,7 +453,7 @@
               ${state.flexibleConfig.questionCount} Questions • ${state.flexibleConfig.durationMinutes} Minutes • Verified Question Bank
             </div>
           </div>
-          <button onclick="window.UTME.startFlexibleExam()" class="action-btn" style="background: #7C3AED; color: #FFF; font-weight: 800; padding: 0.75rem 1.75rem; border-radius: 10px; border: none; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 14px rgba(124, 58, 237, 0.3);">
+          <button onclick="window.UTME.startFlexibleExam()" class="action-btn" style="background: #830074; color: #FFF; font-weight: 800; padding: 0.75rem 1.75rem; border-radius: 10px; border: none; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 14px rgba(110, 0, 97, 0.3);">
             Start Practice Session →
           </button>
         </div>
@@ -513,7 +513,7 @@
               <div style="font-size: 0.85rem; color: #64748B;">Reveals the verified solution and educational explanation immediately after selecting an option.</div>
             </div>
             <div class="utme-mode-card ${!state.drillConfig.isInstantFeedback ? 'active' : ''}" onclick="window.UTME.setDrillFeedback(false)" style="flex: 1; min-width: 240px; cursor: pointer; padding: 1rem; border-radius: 10px;">
-              <div style="font-weight: 800; color: #7C3AED; font-size: 0.95rem; margin-bottom: 0.25rem;">📋 End-of-Drill Review</div>
+              <div style="font-weight: 800; color: #830074; font-size: 0.95rem; margin-bottom: 0.25rem;">📋 End-of-Drill Review</div>
               <div style="font-size: 0.85rem; color: #64748B;">Take the drill uninterrupted and review all scores and explanations on final submission.</div>
             </div>
           </div>
@@ -593,7 +593,7 @@
               <!-- FRONT -->
               <div class="utme-flashcard-front">
                 <div class="utme-flashcard-header">
-                  <span style="font-weight: 800; font-size: 0.85rem; color: #7C3AED; background: #EDE9FE; padding: 0.2rem 0.6rem; border-radius: 6px;">
+                  <span style="font-weight: 800; font-size: 0.85rem; color: #830074; background: #F5E3F4; padding: 0.2rem 0.6rem; border-radius: 6px;">
                     ${escapeHtml(state.flashcardsDeck[state.currentCardIndex]?.subjectName || 'Question')} • Card ${state.currentCardIndex + 1}/${state.flashcardsDeck.length}
                   </span>
                   <span style="font-size: 0.8rem; color: #64748B; font-weight: 600;">
@@ -628,7 +628,7 @@
                   ${escapeHtml(state.flashcardsDeck[state.currentCardIndex]?.backExplanation || '')}
                 </div>
 
-                <div class="utme-flashcard-hint" style="color: #6D28D9;">
+                <div class="utme-flashcard-hint" style="color: #6E0061;">
                   Tap card again to flip back
                 </div>
               </div>
@@ -690,7 +690,7 @@
             </div>
             <div class="utme-dash-stat-card">
               <div style="font-size: 0.82rem; font-weight: 800; color: #64748B; text-transform: uppercase;">Total Questions Solved</div>
-              <div class="utme-dash-stat-val" style="color: #7C3AED;">${state.progressData.totalQuestionsAnswered}</div>
+              <div class="utme-dash-stat-val" style="color: #830074;">${state.progressData.totalQuestionsAnswered}</div>
               <div style="font-size: 0.8rem; color: #64748B; margin-top: 0.2rem;">${state.progressData.totalCorrect} Correct Answers</div>
             </div>
             <div class="utme-dash-stat-card">
@@ -779,7 +779,7 @@
                     <td><span style="color: ${att.accuracy >= 65 ? '#10B981' : '#EF4444'}; font-weight: 700;">${att.accuracy}%</span></td>
                     <td>${Math.round(att.durationMinutes)} mins</td>
                     <td>
-                      <button onclick="window.UTME.openReview('${att.id}')" style="background: #EDE9FE; border: 1px solid #C4B5FD; color: #6D28D9; padding: 0.35rem 0.75rem; border-radius: 6px; font-weight: 700; font-size: 0.82rem; cursor: pointer;">
+                      <button onclick="window.UTME.openReview('${att.id}')" style="background: #F5E3F4; border: 1px solid #EAC7E9; color: #6E0061; padding: 0.35rem 0.75rem; border-radius: 6px; font-weight: 700; font-size: 0.82rem; cursor: pointer;">
                         Review Solutions →
                       </button>
                     </td>
@@ -868,7 +868,7 @@
             ${c.compulsorySubjects.map((s, idx) => `
               <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; background: #F8FAFC; border-radius: 8px; border: 1px solid #E2E8F0;">
                 <span style="font-weight: 700; color: #1E293B;">
-                  ${idx + 1}. ${escapeHtml(s)} ${idx === 0 ? '<span style="color: #6D28D9; font-size: 0.8rem; font-weight: 800;">(Compulsory)</span>' : ''}
+                  ${idx + 1}. ${escapeHtml(s)} ${idx === 0 ? '<span style="color: #6E0061; font-size: 0.8rem; font-weight: 800;">(Compulsory)</span>' : ''}
                 </span>
                 <span style="font-size: 0.85rem; color: #64748B; font-weight: 600;">
                   ${isFull ? (idx === 0 ? '60 Questions' : '40 Questions') : (idx === 0 ? '15 Questions' : '10 Questions')}
