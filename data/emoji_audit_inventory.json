@@ -1,0 +1,560 @@
+[
+  {
+    "file": "src\\ai\\ai.service.ts",
+    "line": 139,
+    "emoji": "😊",
+    "snippet": "mputing Freshers Study Buddy! 😊\\n\\nI can answer questions abo",
+    "char_codes": [
+      "U+1F60A"
+    ]
+  },
+  {
+    "file": "src\\ai\\mock.provider.ts",
+    "line": 30,
+    "emoji": "🤖",
+    "snippet": "will be connected here next. 🤖`",
+    "char_codes": [
+      "U+1F916"
+    ]
+  },
+  {
+    "file": "src\\onboarding\\onboarding.handler.ts",
+    "line": 121,
+    "emoji": "🎓",
+    "snippet": "`Nice! ${department.name}. 🎓\\n\\n` +",
+    "char_codes": [
+      "U+1F393"
+    ]
+  },
+  {
+    "file": "src\\telegram\\bot-info.ts",
+    "line": 16,
+    "emoji": "🤖",
+    "snippet": "console.log(\"🤖 Bot information:\");",
+    "char_codes": [
+      "U+1F916"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 30,
+    "emoji": "🎭",
+    "snippet": ".text(\"🎭 Practice CBT\").text(\"📝 Exam M",
+    "char_codes": [
+      "U+1F3AD"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 30,
+    "emoji": "📝",
+    "snippet": ".text(\"🎭 Practice CBT\").text(\"📝 Exam Mode\").row()",
+    "char_codes": [
+      "U+1F4DD"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 31,
+    "emoji": "🔄",
+    "snippet": ".text(\"🔄 Revision\").text(\"📊 My Stats\")",
+    "char_codes": [
+      "U+1F504"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 31,
+    "emoji": "📊",
+    "snippet": ".text(\"🔄 Revision\").text(\"📊 My Stats\").row()",
+    "char_codes": [
+      "U+1F4CA"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 32,
+    "emoji": "🏆",
+    "snippet": ".text(\"🏆 Leaderboard\").text(\"💡 Quick P",
+    "char_codes": [
+      "U+1F3C6"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 32,
+    "emoji": "💡",
+    "snippet": ".text(\"🏆 Leaderboard\").text(\"💡 Quick Prompts\").row()",
+    "char_codes": [
+      "U+1F4A1"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 33,
+    "emoji": "💬",
+    "snippet": ".text(\"💬 Ask AI Mentor\")",
+    "char_codes": [
+      "U+1F4AC"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 39,
+    "emoji": "📋",
+    "snippet": ".text(\"📋 100L Course Registration Guid",
+    "char_codes": [
+      "U+1F4CB"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 40,
+    "emoji": "📊",
+    "snippet": ".text(\"📊 How UI 5.0 CGPA Works\", \"prom",
+    "char_codes": [
+      "U+1F4CA"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 41,
+    "emoji": "🏛",
+    "snippet": ".text(\"🏛️ Lecture Venues & Labs\", \"pro",
+    "char_codes": [
+      "U+1F3DB"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 42,
+    "emoji": "💰",
+    "snippet": ".text(\"💰 Scholarships & Jobs\", \"prompt",
+    "char_codes": [
+      "U+1F4B0"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 43,
+    "emoji": "❓",
+    "snippet": ".text(\"❓ Clearance FAQs\", \"prompt_clea",
+    "char_codes": [
+      "U+2753"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 44,
+    "emoji": "🎭",
+    "snippet": ".text(\"🎭 CBT Question Bank\", \"prompt_c",
+    "char_codes": [
+      "U+1F3AD"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 66,
+    "emoji": "👋",
+    "snippet": ", ${telegramUser.first_name}! 👋\\n\\n` +",
+    "char_codes": [
+      "U+1F44B"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 80,
+    "emoji": "👋",
+    "snippet": "`👋 *Welcome, ${telegramUser.firs",
+    "char_codes": [
+      "U+1F44B"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 80,
+    "emoji": "🎓",
+    "snippet": "${telegramUser.first_name}!* 🎓\\n\\n` +",
+    "char_codes": [
+      "U+1F393"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 83,
+    "emoji": "👇",
+    "snippet": "`👇 *Tap a prompt below to get st",
+    "char_codes": [
+      "U+1F447"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 103,
+    "emoji": "📚",
+    "snippet": ".text(\"📚 100L Core Courses\", \"prompt_c",
+    "char_codes": [
+      "U+1F4DA"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 104,
+    "emoji": "⏳",
+    "snippet": ".text(\"⏳ Add/Drop Deadline\", \"prompt_a",
+    "char_codes": [
+      "U+23F3"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 105,
+    "emoji": "🔙",
+    "snippet": ".text(\"🔙 Back to Main Prompts\", \"promp",
+    "char_codes": [
+      "U+1F519"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 108,
+    "emoji": "📋",
+    "snippet": "`📋 *100L Course Registration Wal",
+    "char_codes": [
+      "U+1F4CB"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 110,
+    "emoji": "📌",
+    "snippet": "`📌 *Key Rules:*\\n` +",
+    "char_codes": [
+      "U+1F4CC"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 122,
+    "emoji": "⚠",
+    "snippet": ".text(\"⚠️ Probation & Withdrawal Rules",
+    "char_codes": [
+      "U+26A0"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 123,
+    "emoji": "🔙",
+    "snippet": ".text(\"🔙 Main Prompts\", \"prompt_main_m",
+    "char_codes": [
+      "U+1F519"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 126,
+    "emoji": "📊",
+    "snippet": "`📊 *UI 5.0 CGPA Grading System*\\",
+    "char_codes": [
+      "U+1F4CA"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 143,
+    "emoji": "🏛",
+    "snippet": "`🏛️ *UI Campus Lecture Venues &",
+    "char_codes": [
+      "U+1F3DB"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 154,
+    "emoji": "💰",
+    "snippet": "`💰 *Freshers Scholarships & Work",
+    "char_codes": [
+      "U+1F4B0"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 165,
+    "emoji": "❓",
+    "snippet": "`❓ *Departmental Physical Cleara",
+    "char_codes": [
+      "U+2753"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 179,
+    "emoji": "📚",
+    "snippet": "`📚 *100L Core Computing Courses*",
+    "char_codes": [
+      "U+1F4DA"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 193,
+    "emoji": "💡",
+    "snippet": "`💡 *Choose a topic prompt below",
+    "char_codes": [
+      "U+1F4A1"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 202,
+    "emoji": "🎭",
+    "snippet": "computingBot.hears([\"🎭 Practice CBT\", \"📝 Exam Mode\",",
+    "char_codes": [
+      "U+1F3AD"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 202,
+    "emoji": "📝",
+    "snippet": "Bot.hears([\"🎭 Practice CBT\", \"📝 Exam Mode\", \"🔄 Revision\", \"pr",
+    "char_codes": [
+      "U+1F4DD"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 202,
+    "emoji": "🔄",
+    "snippet": "ractice CBT\", \"📝 Exam Mode\", \"🔄 Revision\", \"prompt_cbt\"], asy",
+    "char_codes": [
+      "U+1F504"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 207,
+    "emoji": "📚",
+    "snippet": "`📚 *CBT Question Bank Update*\\n\\",
+    "char_codes": [
+      "U+1F4DA"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 209,
+    "emoji": "💡",
+    "snippet": "`💡 In the meantime, tap a quick",
+    "char_codes": [
+      "U+1F4A1"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 221,
+    "emoji": "🎯",
+    "snippet": "`🎯 *Select a Course for CBT Prac",
+    "char_codes": [
+      "U+1F3AF"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 230,
+    "emoji": "💡",
+    "snippet": "computingBot.hears([\"💡 Quick Prompts\", \"/prompts\"],",
+    "char_codes": [
+      "U+1F4A1"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 232,
+    "emoji": "💡",
+    "snippet": "`💡 *Explore Freshers Guide Promp",
+    "char_codes": [
+      "U+1F4A1"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 237,
+    "emoji": "📊",
+    "snippet": "computingBot.hears(\"📊 My Stats\", async (ctx) => {",
+    "char_codes": [
+      "U+1F4CA"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 256,
+    "emoji": "📊",
+    "snippet": "`📊 *Your Academic Progress & Sta",
+    "char_codes": [
+      "U+1F4CA"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 257,
+    "emoji": "👤",
+    "snippet": "`👤 *Student:* ${user.firstName |",
+    "char_codes": [
+      "U+1F464"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 258,
+    "emoji": "🎓",
+    "snippet": "`🎓 *Faculty:* ${user.faculty?.na",
+    "char_codes": [
+      "U+1F393"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 259,
+    "emoji": "📚",
+    "snippet": "`📚 *Department:* ${user.departme",
+    "char_codes": [
+      "U+1F4DA"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 260,
+    "emoji": "🔥",
+    "snippet": "`🔥 *Daily Streak:* ${streak} day",
+    "char_codes": [
+      "U+1F525"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 261,
+    "emoji": "⭐",
+    "snippet": "`⭐ *Total Points:* ${points} pts",
+    "char_codes": [
+      "U+2B50"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 262,
+    "emoji": "📝",
+    "snippet": "`📝 *Quizzes Completed:* ${attemp",
+    "char_codes": [
+      "U+1F4DD"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 271,
+    "emoji": "🏆",
+    "snippet": "computingBot.hears(\"🏆 Leaderboard\", async (ctx) =>",
+    "char_codes": [
+      "U+1F3C6"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 276,
+    "emoji": "🏆",
+    "snippet": "`🏆 *UI Freshers Leaderboard*\\n\\n",
+    "char_codes": [
+      "U+1F3C6"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 281,
+    "emoji": "🏆",
+    "snippet": "let msg = `🏆 *Top UI Freshers Leaderboard*",
+    "char_codes": [
+      "U+1F3C6"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 284,
+    "emoji": "🔥",
+    "snippet": "ame}* — ${u.totalPoints} pts (🔥 ${u.streakCount}d streak)\\n`;",
+    "char_codes": [
+      "U+1F525"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 306,
+    "emoji": "🎭",
+    "snippet": "if ([\"🎭 Practice CBT\", \"📝 Exam Mode\",",
+    "char_codes": [
+      "U+1F3AD"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 306,
+    "emoji": "📝",
+    "snippet": "if ([\"🎭 Practice CBT\", \"📝 Exam Mode\", \"🔄 Revision\", \"📊",
+    "char_codes": [
+      "U+1F4DD"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 306,
+    "emoji": "🔄",
+    "snippet": "ractice CBT\", \"📝 Exam Mode\", \"🔄 Revision\", \"📊 My Stats\", \"🏆 L",
+    "char_codes": [
+      "U+1F504"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 306,
+    "emoji": "📊",
+    "snippet": "\"📝 Exam Mode\", \"🔄 Revision\", \"📊 My Stats\", \"🏆 Leaderboard\", \"",
+    "char_codes": [
+      "U+1F4CA"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 306,
+    "emoji": "🏆",
+    "snippet": "\"🔄 Revision\", \"📊 My Stats\", \"🏆 Leaderboard\", \"💡 Quick Prompt",
+    "char_codes": [
+      "U+1F3C6"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 306,
+    "emoji": "💡",
+    "snippet": "My Stats\", \"🏆 Leaderboard\", \"💡 Quick Prompts\", \"💬 Ask AI Men",
+    "char_codes": [
+      "U+1F4A1"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 306,
+    "emoji": "💬",
+    "snippet": "erboard\", \"💡 Quick Prompts\", \"💬 Ask AI Mentor\"].includes(mess",
+    "char_codes": [
+      "U+1F4AC"
+    ]
+  },
+  {
+    "file": "src\\telegram\\computing-bot.ts",
+    "line": 307,
+    "emoji": "💬",
+    "snippet": "if (message === \"💬 Ask AI Mentor\") {",
+    "char_codes": [
+      "U+1F4AC"
+    ]
+  }
+]

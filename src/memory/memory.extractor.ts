@@ -6,6 +6,7 @@ import { saveMemory } from "./memory.service";
 // GEMINI SETUP
 // ---------------------------------------------------------
 
+<<<<<<< HEAD
 const apiKey =
   process.env.GEMINI_API_KEY;
 
@@ -24,6 +25,23 @@ const model =
   process.env.GEMINI_MEMORY_MODEL?.trim() ||
   process.env.GEMINI_MODEL?.trim() ||
   "gemini-3.7-flash";
+=======
+let aiInstance: any = null;
+
+function getAIClient(): any {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey || apiKey.trim() === "") {
+    return null;
+  }
+  if (!aiInstance) {
+    aiInstance = new GoogleGenAI({ apiKey: apiKey.trim() });
+  }
+  return aiInstance;
+}
+
+const model =
+  process.env.GEMINI_MODEL?.trim() || "gemini-3.7-flash";
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 
 // ---------------------------------------------------------
 // TYPES
@@ -57,6 +75,7 @@ const ALLOWED_MEMORY_TYPES = [
 ] as const;
 
 // ---------------------------------------------------------
+<<<<<<< HEAD
 // MEMORY CANDIDATE FILTER
 // ---------------------------------------------------------
 
@@ -229,6 +248,8 @@ function isMemoryCandidate(
 }
 
 // ---------------------------------------------------------
+=======
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 // EXTRACT MEMORIES
 // ---------------------------------------------------------
 
@@ -236,13 +257,18 @@ export async function extractAndSaveMemories(
   userId: string,
   userMessage: string
 ): Promise<ExtractedMemory[]> {
+<<<<<<< HEAD
   const message =
     userMessage.trim();
+=======
+  const message = userMessage.trim();
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 
   if (!message) {
     return [];
   }
 
+<<<<<<< HEAD
   // -------------------------------------------------------
   // CHEAP FILTER
   // -------------------------------------------------------
@@ -278,6 +304,21 @@ export async function extractAndSaveMemories(
 
         config: {
           systemInstruction: `
+=======
+  console.log("[MEMORY] Analyzing student message...");
+
+  try {
+    const client = getAIClient();
+    if (!client) {
+      return [];
+    }
+
+    const response = await client.models.generateContent({
+      model,
+      contents: message,
+      config: {
+        systemInstruction: `
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 You are the memory extraction system for a personalized
 University of Ibadan student AI study companion.
 
@@ -288,6 +329,7 @@ conversations.
 Do NOT save ordinary questions, greetings, temporary statements,
 or information that has no meaningful future value.
 
+<<<<<<< HEAD
 Useful memories include:
 
 - long-term goals
@@ -301,6 +343,9 @@ Useful memories include:
 - recurring difficulties
 
 Examples:
+=======
+Examples of useful memories:
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 
 "The course I'm struggling with most is calculus."
 → academic/challenge memory
@@ -367,6 +412,7 @@ Rules:
 - Do not create duplicate memories when the same fact is merely
   repeated.
 - Prefer one strong memory over several redundant memories.
+<<<<<<< HEAD
 - If there is nothing genuinely useful to remember, return
   an empty memories array.
           `.trim(),
@@ -424,6 +470,34 @@ Rules:
         "[MEMORY] No useful memories detected."
       );
 
+=======
+`,
+      },
+    });
+
+    const text = response.text?.trim();
+
+    if (!text) {
+      console.log("[MEMORY] Gemini returned no extraction.");
+      return [];
+    }
+
+    console.log("[MEMORY] Raw extraction:", text);
+
+    const parsed = parseGeminiJson(text);
+
+    if (!parsed || !Array.isArray(parsed.memories)) {
+      console.log("[MEMORY] Invalid extraction format.");
+      return [];
+    }
+
+    const validMemories = parsed.memories
+      .filter(isValidMemory)
+      .map(normalizeMemory);
+
+    if (validMemories.length === 0) {
+      console.log("[MEMORY] No useful memories detected.");
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
       return [];
     }
 
@@ -431,6 +505,7 @@ Rules:
       `[MEMORY] ${validMemories.length} memory candidate(s) found.`
     );
 
+<<<<<<< HEAD
     const savedMemories:
       ExtractedMemory[] = [];
 
@@ -466,6 +541,24 @@ Rules:
 
         confidence:
           saved.confidence,
+=======
+    const savedMemories: ExtractedMemory[] = [];
+
+    for (const memory of validMemories) {
+      const saved = await saveMemory({
+        userId,
+        type: memory.type,
+        content: memory.content,
+        importance: memory.importance,
+        confidence: memory.confidence,
+      });
+
+      savedMemories.push({
+        type: saved.type,
+        content: saved.content,
+        importance: saved.importance,
+        confidence: saved.confidence,
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
       });
 
       console.log(
@@ -475,6 +568,7 @@ Rules:
 
     return savedMemories;
   } catch (error) {
+<<<<<<< HEAD
     console.error(
       "[MEMORY] Extraction failed:",
       error
@@ -484,6 +578,12 @@ Rules:
      * Memory extraction must NEVER break the student's
      * normal conversation.
      */
+=======
+    console.error("[MEMORY] Extraction failed:", error);
+
+    // Memory extraction should NEVER break the student's
+    // normal conversation with the AI.
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
     return [];
   }
 }
@@ -495,6 +595,7 @@ Rules:
 function isValidMemory(
   memory: unknown
 ): memory is ExtractedMemory {
+<<<<<<< HEAD
   if (
     !memory ||
     typeof memory !== "object"
@@ -510,22 +611,42 @@ function isValidMemory(
       "string" ||
     typeof candidate.content !==
       "string"
+=======
+  if (!memory || typeof memory !== "object") {
+    return false;
+  }
+
+  const candidate = memory as Partial<ExtractedMemory>;
+
+  if (
+    typeof candidate.type !== "string" ||
+    typeof candidate.content !== "string"
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
   ) {
     return false;
   }
 
   if (
+<<<<<<< HEAD
     typeof candidate.importance !==
       "number" ||
     typeof candidate.confidence !==
       "number"
+=======
+    typeof candidate.importance !== "number" ||
+    typeof candidate.confidence !== "number"
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
   ) {
     return false;
   }
 
+<<<<<<< HEAD
   if (
     !candidate.content.trim()
   ) {
+=======
+  if (!candidate.content.trim()) {
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
     return false;
   }
 
@@ -541,12 +662,17 @@ function normalizeMemory(
 ): ExtractedMemory {
   const normalizedType =
     ALLOWED_MEMORY_TYPES.includes(
+<<<<<<< HEAD
       memory.type as
         (typeof ALLOWED_MEMORY_TYPES)[number]
+=======
+      memory.type as (typeof ALLOWED_MEMORY_TYPES)[number]
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
     )
       ? memory.type
       : "personal";
 
+<<<<<<< HEAD
   const importance =
     Math.max(
       1,
@@ -576,6 +702,22 @@ function normalizeMemory(
 
     importance,
 
+=======
+  const importance = Math.max(
+    1,
+    Math.min(5, Math.round(memory.importance))
+  );
+
+  const confidence = Math.max(
+    0,
+    Math.min(1, memory.confidence)
+  );
+
+  return {
+    type: normalizedType,
+    content: memory.content.trim(),
+    importance,
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
     confidence,
   };
 }
@@ -588,6 +730,7 @@ function parseGeminiJson(
   text: string
 ): MemoryExtractionResult | null {
   try {
+<<<<<<< HEAD
     return JSON.parse(
       text
     ) as MemoryExtractionResult;
@@ -603,6 +746,19 @@ function parseGeminiJson(
   if (
     fencedMatch?.[1]
   ) {
+=======
+    return JSON.parse(text) as MemoryExtractionResult;
+  } catch {
+    // Gemini can occasionally wrap JSON in markdown even when
+    // explicitly instructed not to.
+  }
+
+  const fencedMatch = text.match(
+    /```(?:json)?\s*([\s\S]*?)\s*```/i
+  );
+
+  if (fencedMatch?.[1]) {
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
     try {
       return JSON.parse(
         fencedMatch[1].trim()
@@ -612,6 +768,7 @@ function parseGeminiJson(
     }
   }
 
+<<<<<<< HEAD
   const objectStart =
     text.indexOf("{");
 
@@ -627,6 +784,16 @@ function parseGeminiJson(
         objectStart,
         objectEnd + 1
       );
+=======
+  const objectStart = text.indexOf("{");
+  const objectEnd = text.lastIndexOf("}");
+
+  if (objectStart !== -1 && objectEnd > objectStart) {
+    const possibleJson = text.slice(
+      objectStart,
+      objectEnd + 1
+    );
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 
     try {
       return JSON.parse(

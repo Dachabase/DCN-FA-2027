@@ -24,7 +24,11 @@ async function main() {
   console.log({
     id: user.id,
     firstName: user.firstName,
+<<<<<<< HEAD
     telegramId: user.telegramId.toString(),
+=======
+    telegramId: user.telegramId ? user.telegramId.toString() : "N/A",
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
   });
 
   console.log("--------------------------------");

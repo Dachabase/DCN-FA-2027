@@ -1,5 +1,6 @@
 import "dotenv/config";
 
+<<<<<<< HEAD
 import {
   GoogleGenAI,
   type Content,
@@ -8,11 +9,15 @@ import {
 import type {
   AIContext,
 } from "./ai.provider";
+=======
+import { GoogleGenAI } from "@google/genai";
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 
 // ---------------------------------------------------------
 // CONFIGURATION
 // ---------------------------------------------------------
 
+<<<<<<< HEAD
 const apiKey =
   process.env.GEMINI_API_KEY;
 
@@ -59,6 +64,37 @@ const models = Array.from(
  */
 const maxAttemptsPerModel = 2;
 
+=======
+let aiInstance: any = null;
+
+function getAIClient(): any {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey || apiKey.trim() === "") {
+    return null;
+  }
+  if (!aiInstance) {
+    aiInstance = new GoogleGenAI({ apiKey: apiKey.trim() });
+  }
+  return aiInstance;
+}
+
+const primaryModel =
+  process.env.GEMINI_MODEL?.trim() || "gemini-3.6-flash";
+
+const fallbackModels = (process.env.GEMINI_FALLBACK_MODELS ?? "")
+  .split(",")
+  .map((model) => model.trim())
+  .filter(Boolean);
+
+const models = Array.from(
+  new Set([primaryModel, ...fallbackModels])
+);
+
+// Number of attempts allowed for each model.
+const maxAttemptsPerModel = 2;
+
+// Delay before retrying the same model.
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 const retryDelayMs = 2000;
 
 // ---------------------------------------------------------
@@ -78,6 +114,7 @@ function timestamp(): string {
   return new Date().toISOString();
 }
 
+<<<<<<< HEAD
 function log(
   message: string,
   ...args: unknown[]
@@ -106,12 +143,25 @@ function error(
     `[${timestamp()}] [AI] ${message}`,
     ...args
   );
+=======
+function log(message: string, ...args: unknown[]): void {
+  console.log(`[${timestamp()}] [AI] ${message}`, ...args);
+}
+
+function warn(message: string, ...args: unknown[]): void {
+  console.warn(`[${timestamp()}] [AI] ${message}`, ...args);
+}
+
+function error(message: string, ...args: unknown[]): void {
+  console.error(`[${timestamp()}] [AI] ${message}`, ...args);
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 }
 
 // ---------------------------------------------------------
 // HELPERS
 // ---------------------------------------------------------
 
+<<<<<<< HEAD
 function sleep(
   ms: number
 ): Promise<void> {
@@ -123,11 +173,19 @@ function sleep(
 function getErrorStatus(
   errorValue: unknown
 ): number | undefined {
+=======
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function getErrorStatus(errorValue: unknown): number | undefined {
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
   if (
     typeof errorValue === "object" &&
     errorValue !== null &&
     "status" in errorValue
   ) {
+<<<<<<< HEAD
     const status =
       (
         errorValue as {
@@ -138,6 +196,11 @@ function getErrorStatus(
     if (
       typeof status === "number"
     ) {
+=======
+    const status = (errorValue as { status?: unknown }).status;
+
+    if (typeof status === "number") {
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
       return status;
     }
   }
@@ -145,6 +208,7 @@ function getErrorStatus(
   return undefined;
 }
 
+<<<<<<< HEAD
 function getErrorDescription(
   errorValue: unknown
 ): string {
@@ -178,6 +242,13 @@ function isRetryableOnSameModel(
     status === 503 ||
     status === 504
   ) {
+=======
+function isRetryableError(errorValue: unknown): boolean {
+  const status = getErrorStatus(errorValue);
+
+  // Gemini/API temporary availability problems.
+  if (status === 429 || status === 500 || status === 502 || status === 503 || status === 504) {
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
     return true;
   }
 
@@ -193,6 +264,7 @@ function isRetryableOnSameModel(
     message.includes("econnrefused") ||
     message.includes("network") ||
     message.includes("fetch failed") ||
+<<<<<<< HEAD
     message.includes(
       "temporarily unavailable"
     ) ||
@@ -522,12 +594,30 @@ function buildConversationContents(
 
 // ---------------------------------------------------------
 // BASIC GEMINI REQUEST
+=======
+    message.includes("temporarily unavailable") ||
+    message.includes("unavailable")
+  );
+}
+
+function getErrorDescription(errorValue: unknown): string {
+  if (errorValue instanceof Error) {
+    return errorValue.message;
+  }
+
+  return String(errorValue);
+}
+
+// ---------------------------------------------------------
+// GEMINI REQUEST
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 // ---------------------------------------------------------
 
 async function requestFromModel(
   model: string,
   options: GenerateAIResponseOptions
 ): Promise<string> {
+<<<<<<< HEAD
   const startedAt =
     Date.now();
 
@@ -563,6 +653,32 @@ async function requestFromModel(
     throw new Error(
       `Model ${model} returned an empty response.`
     );
+=======
+  const startedAt = Date.now();
+
+  log(`Sending request to model: ${model}`);
+  const client = getAIClient();
+  if (!client) {
+    return "I am the UI Computing Freshers Study Buddy! 😊\n\nI can answer questions about UI 100-Level Course Packages, the 5.0 CGPA Senate Scale, CBT prep, lecture venues, and clearance guidelines. How can I help you today?";
+  }
+
+  const response = await client.models.generateContent({
+    model,
+    contents: options.userMessage,
+    config: {
+      systemInstruction:
+        options.systemInstruction ??
+        "You are a helpful assistant for University of Ibadan students.",
+    },
+  });
+
+  const elapsedMs = Date.now() - startedAt;
+
+  const text = response.text?.trim();
+
+  if (!text) {
+    throw new Error(`Model ${model} returned an empty response.`);
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
   }
 
   log(
@@ -573,6 +689,7 @@ async function requestFromModel(
 }
 
 // ---------------------------------------------------------
+<<<<<<< HEAD
 // CONTEXT-AWARE GEMINI REQUEST
 // ---------------------------------------------------------
 
@@ -657,12 +774,15 @@ async function requestFromModelWithContext(
 }
 
 // ---------------------------------------------------------
+=======
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 // PUBLIC AI SERVICE
 // ---------------------------------------------------------
 
 export async function generateAIResponse(
   options: GenerateAIResponseOptions
 ): Promise<string> {
+<<<<<<< HEAD
   const startedAt =
     Date.now();
 
@@ -701,6 +821,21 @@ export async function generateAIResponse(
   ) {
     const model =
       models[modelIndex];
+=======
+  const startedAt = Date.now();
+
+  log("========================================");
+  log("Starting AI response generation");
+  log(`Models available: ${models.join(" → ")}`);
+  log(`Primary model: ${primaryModel}`);
+  log(`Total models in pool: ${models.length}`);
+  log("========================================");
+
+  let lastError: unknown = undefined;
+
+  for (let modelIndex = 0; modelIndex < models.length; modelIndex++) {
+    const model = models[modelIndex];
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 
     log(
       `Model ${modelIndex + 1}/${models.length}: ${model}`
@@ -711,14 +846,19 @@ export async function generateAIResponse(
       attempt <= maxAttemptsPerModel;
       attempt++
     ) {
+<<<<<<< HEAD
       const attemptStartedAt =
         Date.now();
+=======
+      const attemptStartedAt = Date.now();
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 
       log(
         `Attempt ${attempt}/${maxAttemptsPerModel} using ${model}`
       );
 
       try {
+<<<<<<< HEAD
         const response =
           await requestFromModel(
             model,
@@ -727,11 +867,17 @@ export async function generateAIResponse(
 
         const totalElapsedMs =
           Date.now() - startedAt;
+=======
+        const response = await requestFromModel(model, options);
+
+        const totalElapsedMs = Date.now() - startedAt;
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 
         log(
           `AI generation successful using ${model}. Total time: ${totalElapsedMs}ms`
         );
 
+<<<<<<< HEAD
         log(
           "========================================"
         );
@@ -749,23 +895,41 @@ export async function generateAIResponse(
           getErrorStatus(
             requestError
           );
+=======
+        log("========================================");
+
+        return response;
+      } catch (requestError) {
+        lastError = requestError;
+
+        const attemptElapsedMs =
+          Date.now() - attemptStartedAt;
+
+        const status = getErrorStatus(requestError);
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 
         warn(
           `Model ${model} failed on attempt ${attempt} after ${attemptElapsedMs}ms.`
         );
 
+<<<<<<< HEAD
         if (
           status !== undefined
         ) {
           warn(
             `Gemini/API status: ${status}`
           );
+=======
+        if (status !== undefined) {
+          warn(`Gemini/API status: ${status}`);
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
         }
 
         warn(
           `Error: ${getErrorDescription(requestError)}`
         );
 
+<<<<<<< HEAD
         // -------------------------------------------------
         // 429 → IMMEDIATE FAILOVER
         // -------------------------------------------------
@@ -809,11 +973,19 @@ export async function generateAIResponse(
         ) {
           error(
             `Non-retryable error from ${model}.`
+=======
+        const retryable = isRetryableError(requestError);
+
+        if (!retryable) {
+          error(
+            `Non-retryable error from ${model}. Stopping failover.`
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
           );
 
           throw requestError;
         }
 
+<<<<<<< HEAD
         // -------------------------------------------------
         // RETRY TEMPORARY SERVER / NETWORK ERRORS
         // -------------------------------------------------
@@ -822,17 +994,29 @@ export async function generateAIResponse(
           attempt <
           maxAttemptsPerModel
         ) {
+=======
+        // Retry the same model if attempts remain.
+        if (attempt < maxAttemptsPerModel) {
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
           warn(
             `Temporary failure detected. Retrying ${model} in ${retryDelayMs}ms...`
           );
 
+<<<<<<< HEAD
           await sleep(
             retryDelayMs
           );
+=======
+          await sleep(retryDelayMs);
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 
           continue;
         }
 
+<<<<<<< HEAD
+=======
+        // No attempts left for this model.
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
         warn(
           `Model ${model} exhausted all ${maxAttemptsPerModel} attempts.`
         );
@@ -841,6 +1025,7 @@ export async function generateAIResponse(
       }
     }
 
+<<<<<<< HEAD
     // -----------------------------------------------------
     // FALLBACK MODEL
     // -----------------------------------------------------
@@ -851,6 +1036,11 @@ export async function generateAIResponse(
     ) {
       const nextModel =
         models[modelIndex + 1];
+=======
+    // Move to the next model.
+    if (modelIndex < models.length - 1) {
+      const nextModel = models[modelIndex + 1];
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 
       warn(
         `Failing over from ${model} → ${nextModel}`
@@ -859,6 +1049,7 @@ export async function generateAIResponse(
       continue;
     }
 
+<<<<<<< HEAD
     warn(
       "No fallback models remain."
     );
@@ -866,6 +1057,12 @@ export async function generateAIResponse(
 
   const totalElapsedMs =
     Date.now() - startedAt;
+=======
+    warn("No fallback models remain.");
+  }
+
+  const totalElapsedMs = Date.now() - startedAt;
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 
   error(
     `All Gemini models failed after ${totalElapsedMs}ms.`
@@ -875,6 +1072,7 @@ export async function generateAIResponse(
     `Last error: ${getErrorDescription(lastError)}`
   );
 
+<<<<<<< HEAD
   log(
     "========================================"
   );
@@ -1114,6 +1312,9 @@ export async function generateAIResponseFromContext(
   log(
     "========================================"
   );
+=======
+  log("========================================");
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 
   throw new Error(
     "All configured Gemini AI models are currently unavailable. Please try again shortly."

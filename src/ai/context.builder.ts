@@ -8,6 +8,7 @@ import type {
   AIContext,
 } from "./ai.provider";
 
+<<<<<<< HEAD
 // ---------------------------------------------------------
 // CONTEXT CONFIGURATION
 // ---------------------------------------------------------
@@ -29,6 +30,12 @@ export async function buildAIContext(
   // LOAD USER
   // -------------------------------------------------------
 
+=======
+export async function buildAIContext(
+  userId: string,
+  conversationId: string
+): Promise<AIContext> {
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
   const user =
     await prisma.user.findUnique({
       where: {
@@ -38,6 +45,7 @@ export async function buildAIContext(
       include: {
         faculty: true,
         department: true,
+<<<<<<< HEAD
 
         memories: {
           orderBy: [
@@ -51,6 +59,14 @@ export async function buildAIContext(
           ],
 
           take: MEMORY_LIMIT,
+=======
+        memories: {
+          orderBy: {
+            importance: "desc",
+          },
+
+          take: 20,
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
         },
       },
     });
@@ -61,6 +77,7 @@ export async function buildAIContext(
     );
   }
 
+<<<<<<< HEAD
   // -------------------------------------------------------
   // LOAD CONVERSATION HISTORY
   // -------------------------------------------------------
@@ -109,6 +126,19 @@ export async function buildAIContext(
 
       username:
         user.username,
+=======
+  const messages =
+    await getRecentMessages(
+      conversationId,
+      20
+    );
+
+  return {
+    user: {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      username: user.username,
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
 
       faculty:
         user.faculty?.name ?? null,
@@ -116,6 +146,7 @@ export async function buildAIContext(
       department:
         user.department?.name ?? null,
 
+<<<<<<< HEAD
       level:
         user.level,
     },
@@ -169,5 +200,31 @@ export async function buildAIContext(
     // -----------------------------------------------------
 
     isFirstMessage,
+=======
+      level: user.level,
+    },
+
+    memories: user.memories.map(
+      (memory) => ({
+        type: memory.type,
+        content: memory.content,
+        importance:
+          memory.importance,
+        confidence:
+          memory.confidence,
+      })
+    ),
+
+    messages: messages.map(
+      (message) => ({
+        role:
+          message.role === "USER"
+            ? "user"
+            : "assistant",
+
+        content: message.content,
+      })
+    ),
+>>>>>>> 6e2e38577695a97901aa20f7c0e064e5b40aafa2
   };
 }
