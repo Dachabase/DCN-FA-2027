@@ -210,12 +210,12 @@
       </div>
 
       <!-- Navigation Switcher: Materials Vault vs Course Hub -->
-      <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 0.5rem;">
-        <button id="vault-tab-btn-materials" class="filter-chip active" onclick="UI100L.filterVault('VIEW_MATERIALS')" style="font-size: 0.95rem; padding: 0.55rem 1.25rem;">
+      <div class="vault-mode-switch-strip" style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; width: 100%;">
+        <button id="vault-tab-btn-materials" class="filter-chip active" onclick="UI100L.filterVault('VIEW_MATERIALS')" style="font-size: 0.95rem; padding: 0.55rem 1.25rem; white-space: nowrap; flex-shrink: 0;">
           <svg class="app-icon app-icon-mr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
           Browse All Materials (1,866)
         </button>
-        <button id="vault-tab-btn-courses" class="filter-chip" onclick="UI100L.filterVault('VIEW_COURSES')" style="font-size: 0.95rem; padding: 0.55rem 1.25rem;">
+        <button id="vault-tab-btn-courses" class="filter-chip" onclick="UI100L.filterVault('VIEW_COURSES')" style="font-size: 0.95rem; padding: 0.55rem 1.25rem; white-space: nowrap; flex-shrink: 0;">
           <svg class="app-icon app-icon-mr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg>
           Course Directory &amp; CBT Portal (147 Courses)
         </button>
