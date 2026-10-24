@@ -1132,6 +1132,18 @@ app.use(express.static(publicDir, {
   }
 }));
 
+// Dedicated routes for serving blastexams.html portal app
+app.get(["/portal", "/app", "/blastexams", "/companion"], (req: Request, res: Response) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  res.sendFile(path.join(publicDir, "app.html"), (err) => {
+    if (err) {
+      res.redirect("/");
+    }
+  });
+});
+
 app.use((req: Request, res: Response) => {
   if (req.path.startsWith("/api/")) {
     return res.status(404).json({ success: false, error: "API endpoint not found" });
