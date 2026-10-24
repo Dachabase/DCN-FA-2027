@@ -1774,11 +1774,24 @@
    100L ACADEMIC HUB & CBT EXAM MOBILE RESPONSIVENESS (ECC)
    ========================================================= */
 
-/* Prevent global mobile nav clash during 100L CBT exams */
-body:has(.cbt-hall-overlay) .mobile-nav,
+/* Prevent global mobile nav clash during 100L CBT exams & Course Hub (Cross-Browser Safe) */
 body.cbt-hall-active .mobile-nav,
-.cbt-hall-overlay.active ~ .mobile-nav {
+body.course-hub-active .mobile-nav,
+.cbt-hall-overlay.active ~ .mobile-nav,
+#course-hub-overlay:not([style*="display: none"]) ~ .mobile-nav {
   display: none !important;
+}
+
+@supports selector(:has(*)) {
+  body:has(.cbt-hall-overlay) .mobile-nav {
+    display: none !important;
+  }
+  body:has(.cbt-hall-overlay.active) .mobile-nav {
+    display: none !important;
+  }
+  body:has(#course-hub-overlay:not([style*="display: none"])) .mobile-nav {
+    display: none !important;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1885,16 +1898,28 @@ body.cbt-hall-active .mobile-nav,
     gap: 0.75rem !important;
   }
 
-  .cbt-hall-overlay.dark .cbt-nav-bar,
+  .cbt-hall-overlay.dark .cbt-nav-bar {
+    position: sticky !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: #0F0D15 !important;
+    padding: 0.75rem 0.5rem max(0.75rem, env(safe-area-inset-bottom)) !important;
+    z-index: 60 !important;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.4) !important;
+    margin-top: 1.25rem !important;
+  }
+
   .cbt-hall-overlay.light .cbt-nav-bar {
     position: sticky !important;
     bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    background: inherit !important;
+    background: #FFFFFF !important;
     padding: 0.75rem 0.5rem max(0.75rem, env(safe-area-inset-bottom)) !important;
     z-index: 60 !important;
-    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.25) !important;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08) !important;
+    border-top: 1px solid #E2E8F0 !important;
     margin-top: 1.25rem !important;
   }
 

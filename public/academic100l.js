@@ -1344,8 +1344,10 @@
     }
 
     overlay.style.display = "block";
+    overlay.classList.add("active");
+    document.body.classList.add("course-hub-active");
     overlay.innerHTML = `
-      <div style="position: fixed; inset: 0; background: rgba(15,13,21,0.85); backdrop-filter: blur(8px); z-index: 9999; overflow-y: auto; padding: 2rem 1rem;">
+      <div style="position: fixed; inset: 0; background: rgba(15,13,21,0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 9999; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 2rem 1rem;">
         <div style="max-width: 960px; margin: 0 auto; background: #FFFFFF; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); overflow: hidden; position: relative;">
           <div style="text-align: center; padding: 4rem 2rem; color: #64748B;">
             <div class="app-icon-spin" style="font-size: 2rem; margin-bottom: 1rem;"><svg class="app-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg></div>
@@ -1361,6 +1363,8 @@
       if (!json.success || !json.data) {
         alert("Course not found or unavailable.");
         overlay.style.display = "none";
+        overlay.classList.remove("active");
+        document.body.classList.remove("course-hub-active");
         return;
       }
 
@@ -1369,12 +1373,18 @@
     } catch (err) {
       console.error("[UI100L] Error opening course hub:", err);
       overlay.style.display = "none";
+      overlay.classList.remove("active");
+      document.body.classList.remove("course-hub-active");
     }
   }
 
   function closeCourseDetail() {
     const overlay = document.getElementById("course-hub-overlay");
-    if (overlay) overlay.style.display = "none";
+    if (overlay) {
+      overlay.style.display = "none";
+      overlay.classList.remove("active", "cbt-hall-overlay");
+    }
+    document.body.classList.remove("course-hub-active", "cbt-hall-active");
   }
 
   function switchCourseTab(tabName) {
@@ -1685,9 +1695,11 @@
     const overlay = document.getElementById("course-hub-overlay");
     if (!overlay) return;
     overlay.style.display = "block";
+    overlay.classList.add("cbt-hall-overlay", "active");
+    document.body.classList.add("cbt-hall-active");
 
     overlay.innerHTML = `
-      <div style="position: fixed; inset: 0; background: #0F0D15; z-index: 10000; overflow-y: auto; padding: 1.5rem;">
+      <div style="position: fixed; inset: 0; background: #0F0D15; z-index: 10000; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 1.5rem;">
         <div style="text-align: center; padding: 6rem 1rem; color: #DDD6FE;">
           <div class="app-icon-spin" style="font-size: 2.5rem; margin-bottom: 1rem;"><svg class="app-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg></div>
           <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.85rem; font-weight: 800; color: #FFFFFF;">Initializing CBT Examination...</h2>
@@ -1715,6 +1727,8 @@
       if (!json.success || !json.data) {
         alert(json.error || "Failed to start examination.");
         overlay.style.display = "none";
+        overlay.classList.remove("cbt-hall-overlay", "active");
+        document.body.classList.remove("cbt-hall-active");
         return;
       }
 
@@ -2023,7 +2037,11 @@
     if (confirm("Are you sure you want to exit the examination hall? Any unsaved answers will be discarded.")) {
       clearInterval(state.cbt.timerInterval);
       const overlay = document.getElementById("course-hub-overlay");
-      if (overlay) overlay.style.display = "none";
+      if (overlay) {
+        overlay.style.display = "none";
+        overlay.classList.remove("cbt-hall-overlay", "active");
+      }
+      document.body.classList.remove("cbt-hall-active", "course-hub-active");
     }
   }
 

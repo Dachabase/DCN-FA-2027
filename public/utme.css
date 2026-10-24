@@ -488,6 +488,10 @@
   .utme-exam-body {
     grid-template-columns: 1fr;
   }
+  .utme-question-pane {
+    border-right: none;
+    border-bottom: 1px solid var(--ps-border-light);
+  }
 }
 
 .utme-question-pane {
@@ -1064,6 +1068,7 @@ body.utme-in-exam #tab-cbt > div:not(#utme-app-root) {
   inset: 0;
   background: rgba(15, 13, 21, 0.65);
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   z-index: 998;
   opacity: 0;
   transition: opacity 0.25s ease;
@@ -1770,6 +1775,7 @@ body.utme-in-exam #tab-cbt > div:not(#utme-app-root) {
   inset: 0;
   background: rgba(15, 23, 42, 0.45);
   backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   z-index: 99998;
   display: none;
 }
