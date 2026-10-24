@@ -1137,7 +1137,19 @@ app.get(["/portal", "/app", "/blastexams", "/companion"], (req: Request, res: Re
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.setHeader('Pragma', 'no-cache');
   res.setHeader('Expires', '0');
-  res.sendFile(path.join(publicDir, "app.html"), (err) => {
+  res.sendFile(path.join(publicDir, "index.html"), (err) => {
+    if (err) {
+      res.redirect("/");
+    }
+  });
+});
+
+// Classic 100L Past Exam Engine & Vault route
+app.get(["/classic", "/cbt", "/exam-hall"], (req: Request, res: Response) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  res.sendFile(path.join(publicDir, "classic.html"), (err) => {
     if (err) {
       res.redirect("/");
     }
