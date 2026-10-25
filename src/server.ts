@@ -13,9 +13,10 @@ import { requireAuth, optionalAuth } from "./auth/auth.middleware";
 import { ALL_GUIDES } from "./data/guides-data";
 import { resolveAudienceFromRequest, normalizeAudience } from "./personalization/audience.helper";
 import { createCorsOptions } from "./config/cors";
+import { env } from "./config/env";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = env.PORT;
 
 // Trust reverse proxies (Render, Cloudflare, AWS ALB/CloudFront) for secure HTTPS cookies
 app.set("trust proxy", 1);
@@ -86,7 +87,7 @@ const FALLBACK_FACULTIES = [
 
 const FALLBACK_GUIDES = ALL_GUIDES;
 
-const GOOGLE_DRIVE_VAULT_URL = process.env.GOOGLE_DRIVE_RESOURCES_URL || "https://drive.google.com/drive/folders/1fnSakjwMMiewYKsSPc92CZVKPFe4EOQX";
+const GOOGLE_DRIVE_VAULT_URL = env.GOOGLE_DRIVE_RESOURCES_URL || "";
 
 const FALLBACK_RESOURCES = [
   {
@@ -1170,7 +1171,7 @@ app.use((req: Request, res: Response) => {
 
 // Keep-alive cron / self-pinger to prevent Render spin-down
 function initKeepAliveService() {
-  const externalUrl = process.env.APP_URL || process.env.RENDER_EXTERNAL_URL || (process.env.NODE_ENV === "production" ? "https://blastexams.app" : "");
+  const externalUrl = env.APP_URL || (env.NODE_ENV === "production" ? "https://blastexams.app" : "");
   if (!externalUrl) {
     return;
   }

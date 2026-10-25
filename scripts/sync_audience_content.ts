@@ -107,7 +107,7 @@ async function syncAudience() {
   console.log(`  Uncertain / Flagged for Review: ${uncertainGuideCount}`);
 
   // 2. Seed & Classify Resources
-  const GOOGLE_DRIVE_VAULT_URL = process.env.GOOGLE_DRIVE_RESOURCES_URL || "https://drive.google.com/drive/folders/1fnSakjwMMiewYKsSPc92CZVKPFe4EOQX";
+  const GOOGLE_DRIVE_VAULT_URL = process.env.GOOGLE_DRIVE_RESOURCES_URL || "";
 
   const ALL_RESOURCES = [
     // 100L University Resources

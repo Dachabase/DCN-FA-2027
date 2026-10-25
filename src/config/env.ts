@@ -51,6 +51,7 @@ export function resolveTelegramToken(rawEnv: Record<string, string | undefined> 
 export interface AppEnv {
   NODE_ENV: "development" | "production" | "test";
   PORT: number;
+  APP_URL: string;
   DATABASE_URL?: string;
   TELEGRAM_COMPUTING_BOT_TOKEN?: string;
   DEFAULT_TELEGRAM_BOT_USERNAME: string;
@@ -62,6 +63,7 @@ export interface AppEnv {
   CORS_ALLOWED_ORIGINS?: string;
   GOOGLE_CLIENT_ID?: string;
   GOOGLE_CLIENT_SECRET?: string;
+  GOOGLE_DRIVE_RESOURCES_URL?: string;
   DB_POOL_MAX: number;
   DB_SSL_STRICT: string;
 }
@@ -90,6 +92,7 @@ export function parseAndValidateEnv(rawEnv: Record<string, string | undefined> =
   const envData: AppEnv = {
     NODE_ENV: nodeEnv,
     PORT: port,
+    APP_URL: rawEnv.APP_URL?.trim() || "https://blastexams.app",
     DATABASE_URL: rawEnv.DATABASE_URL?.trim() || undefined,
     TELEGRAM_COMPUTING_BOT_TOKEN: tokenResolution.token,
     DEFAULT_TELEGRAM_BOT_USERNAME: rawEnv.DEFAULT_TELEGRAM_BOT_USERNAME?.trim() || "UIDCNComputingFreshersBot",
@@ -101,6 +104,7 @@ export function parseAndValidateEnv(rawEnv: Record<string, string | undefined> =
     CORS_ALLOWED_ORIGINS: rawEnv.CORS_ALLOWED_ORIGINS?.trim() || undefined,
     GOOGLE_CLIENT_ID: rawEnv.GOOGLE_CLIENT_ID?.trim() || undefined,
     GOOGLE_CLIENT_SECRET: rawEnv.GOOGLE_CLIENT_SECRET?.trim() || undefined,
+    GOOGLE_DRIVE_RESOURCES_URL: rawEnv.GOOGLE_DRIVE_RESOURCES_URL?.trim() || undefined,
     DB_POOL_MAX: isNaN(poolMax) ? 20 : poolMax,
     DB_SSL_STRICT: rawEnv.DB_SSL_STRICT?.trim() || "false",
   };
@@ -108,13 +112,13 @@ export function parseAndValidateEnv(rawEnv: Record<string, string | undefined> =
   // Strict production assertions
   if (envData.NODE_ENV === "production") {
     if (!envData.DATABASE_URL) {
-      throw new Error("DATABASE_URL is required in production environment.");
+      throw new Error("DATABASE_URL is required in production environment. Please configure it in Render Environment.");
     }
     if (!envData.JWT_SECRET) {
-      throw new Error("JWT_SECRET is required in production environment.");
+      throw new Error("JWT_SECRET is required in production environment. Please configure it in Render Environment.");
     }
     if (!envData.JWT_REFRESH_SECRET) {
-      throw new Error("JWT_REFRESH_SECRET is required in production environment.");
+      throw new Error("JWT_REFRESH_SECRET is required in production environment. Please configure it in Render Environment.");
     }
   }
 
