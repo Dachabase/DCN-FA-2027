@@ -1133,29 +1133,15 @@ app.use(express.static(publicDir, {
   }
 }));
 
-// Dedicated routes for serving blastexams.html portal app
+// Legacy redirects for portal and CBT routes
 app.get(["/portal", "/app", "/blastexams", "/companion"], (req: Request, res: Response) => {
-  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-  res.setHeader('Pragma', 'no-cache');
-  res.setHeader('Expires', '0');
-  res.sendFile(path.join(publicDir, "index.html"), (err) => {
-    if (err) {
-      res.redirect("/");
-    }
-  });
+  res.redirect("/");
 });
 
-// Classic 100L Past Exam Engine & Vault route
 app.get(["/classic", "/cbt", "/exam-hall"], (req: Request, res: Response) => {
-  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-  res.setHeader('Pragma', 'no-cache');
-  res.setHeader('Expires', '0');
-  res.sendFile(path.join(publicDir, "classic.html"), (err) => {
-    if (err) {
-      res.redirect("/");
-    }
-  });
+  res.redirect("/#/cbt");
 });
+
 
 app.use((req: Request, res: Response) => {
   if (req.path.startsWith("/api/")) {

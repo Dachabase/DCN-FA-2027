@@ -172,7 +172,7 @@
       <div class="vault-header-hero">
         <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem;">
           <div style="max-width: 680px;">
-            <div style="display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; font-weight: 800; color: #C030A8; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.45rem;">
+            <div style="display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; font-weight: 800; color: #A78BFA; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.45rem;">
               <span><svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg>OFFICIAL ACADEMIC MATERIALS VAULT</span>
             </div>
             <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.85rem; font-weight: 900; color: #FFFFFF; margin: 0 0 0.5rem 0; letter-spacing: -0.5px;">University of Ibadan 100-Level Archive</h2>
@@ -786,7 +786,7 @@
 
     bar.style.display = "flex";
     bar.innerHTML = `
-      <span style="font-weight: 800; color: #830074; display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8rem;">
+      <span style="font-weight: 800; color: #7C3AED; display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8rem;">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
         Active Filters (${tags.length}):
       </span>
@@ -983,7 +983,7 @@
         <div class="vault-header-hero" style="background: linear-gradient(135deg, rgba(30, 27, 75, 0.96) 0%, rgba(15, 13, 21, 0.98) 100%); border-color: rgba(168, 85, 247, 0.35); margin-bottom: 2rem;">
           <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem;">
             <div style="max-width: 680px;">
-              <div style="display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; font-weight: 800; color: #C030A8; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.45rem;">
+              <div style="display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; font-weight: 800; color: #C084FC; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.45rem;">
                 <svg class="app-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                 OFFICIAL UNIVERSITY OF IBADAN SEMESTER CBT
               </div>
@@ -993,7 +993,7 @@
               </p>
             </div>
             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-              <button onclick="UI100L.filterCbtPortal('QUESTIONS_ONLY')" id="cbt-filter-toggle-btn" class="action-btn" style="background: rgba(131, 0, 116, 0.25); border: 1px solid #830074; color: #FFF; font-weight: 700; padding: 0.65rem 1.15rem; border-radius: 10px; font-size: 0.85rem;">
+              <button onclick="UI100L.filterCbtPortal('QUESTIONS_ONLY')" id="cbt-filter-toggle-btn" class="action-btn" style="background: rgba(139, 92, 246, 0.25); border: 1px solid #8B5CF6; color: #FFF; font-weight: 700; padding: 0.65rem 1.15rem; border-radius: 10px; font-size: 0.85rem;">
                 <span>Active CBT Courses (67)</span>
               </button>
             </div>
@@ -1254,7 +1254,7 @@
                 10-Q Drill
               </button>
             </div>
-            <button class="vault-btn-download" style="width: 100%; justify-content: center; font-size: 0.8rem; padding: 0.55rem 0.75rem; border-radius: 8px; background: #F8FAFC; color: #830074; border-color: #E2E8F0;" onclick="UI100L.openCourseDetail('${escapeHtml(c.code)}', 'cbt')">
+            <button class="vault-btn-download" style="width: 100%; justify-content: center; font-size: 0.8rem; padding: 0.55rem 0.75rem; border-radius: 8px; background: #F8FAFC; color: #7C3AED; border-color: #E2E8F0;" onclick="UI100L.openCourseDetail('${escapeHtml(c.code)}', 'cbt')">
               Past Papers &amp; Hub →
             </button>
           </div>
@@ -1410,11 +1410,11 @@
         <div style="max-width: 960px; margin: 0 auto; background: #FFFFFF; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); overflow: hidden; position: relative;">
           
           <!-- Header Banner -->
-          <div style="background: linear-gradient(135deg, #2B0A28 0%, #1A0518 100%); padding: 2.25rem 2.5rem; color: #FFFFFF; position: relative;">
+          <div style="background: linear-gradient(135deg, #1E1B2E 0%, #110F1D 100%); padding: 2.25rem 2.5rem; color: #FFFFFF; position: relative;">
             <button onclick="UI100L.closeCourseDetail()" style="position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(255,255,255,0.1); border: none; color: #FFF; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">✕</button>
             <div style="display: flex; gap: 0.65rem; align-items: center; margin-bottom: 0.75rem;">
               <span style="background: var(--grad-brand-primary); color: #FFF; font-weight: 800; font-size: 0.88rem; padding: 0.35rem 0.85rem; border-radius: 8px;">${escapeHtml(c.code)}</span>
-              <span style="background: rgba(255,255,255,0.1); color: #EAC7E9; font-weight: 700; font-size: 0.8rem; padding: 0.35rem 0.75rem; border-radius: 8px;">100 Level • ${escapeHtml(c.semester)} Semester</span>
+              <span style="background: rgba(255,255,255,0.1); color: #DDD6FE; font-weight: 700; font-size: 0.8rem; padding: 0.35rem 0.75rem; border-radius: 8px;">100 Level • ${escapeHtml(c.semester)} Semester</span>
               <span style="background: rgba(16,185,129,0.15); color: #6EE7B7; font-weight: 700; font-size: 0.8rem; padding: 0.35rem 0.75rem; border-radius: 8px;">${c.units} Credit Units</span>
             </div>
             <h1 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 900; color: #FFFFFF; margin: 0 0 0.5rem 0;">${escapeHtml(c.title)}</h1>
@@ -1595,7 +1595,7 @@
           <div class="flashcard-inner ${f.isFlipped ? 'flipped' : ''}">
             <div class="flashcard-front">
               <div>
-                <span style="font-size: 0.72rem; font-weight: 800; color: #C030A8; text-transform: uppercase; letter-spacing: 0.6px;">CONCEPT PROMPT / QUESTION</span>
+                <span style="font-size: 0.72rem; font-weight: 800; color: #A78BFA; text-transform: uppercase; letter-spacing: 0.6px;">CONCEPT PROMPT / QUESTION</span>
                 <div style="font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 700; line-height: 1.5; margin-top: 1.25rem; color: #FFFFFF;">
                   ${escapeHtml(card.front)}
                 </div>
@@ -1699,8 +1699,8 @@
     document.body.classList.add("cbt-hall-active");
 
     overlay.innerHTML = `
-      <div style="position: fixed; inset: 0; background: #0F0012; z-index: 10000; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 1.5rem;">
-        <div style="text-align: center; padding: 6rem 1rem; color: #EAC7E9;">
+      <div style="position: fixed; inset: 0; background: #0F0D15; z-index: 10000; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 1.5rem;">
+        <div style="text-align: center; padding: 6rem 1rem; color: #DDD6FE;">
           <div class="app-icon-spin" style="font-size: 2.5rem; margin-bottom: 1rem;"><svg class="app-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg></div>
           <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.85rem; font-weight: 800; color: #FFFFFF;">Initializing CBT Examination...</h2>
           <p style="color: #94A3B8;">Configuring authentic UI exam hall simulation for ${escapeHtml(courseCode)}</p>
@@ -1936,7 +1936,7 @@
                 </div>
 
                 <div style="margin-top: 1.25rem; font-size: 0.78rem; display: flex; flex-direction: column; gap: 0.45rem; opacity: 0.85;">
-                  <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="display:inline-block; width:12px; height:12px; background:#830074; border-radius:3px;"></span> Answered</div>
+                  <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="display:inline-block; width:12px; height:12px; background:#7C3AED; border-radius:3px;"></span> Answered</div>
                   <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="display:inline-block; width:12px; height:12px; background:#F59E0B; border-radius:3px;"></span> Flagged for review</div>
                   <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="display:inline-block; width:12px; height:12px; background:#E2E8F0; border: 1px solid #CBD5E1; border-radius:3px;"></span> Unanswered</div>
                 </div>
@@ -1992,7 +1992,7 @@
       overlay.innerHTML = `
         <div class="cbt-hall-overlay ${theme}" style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
           <div style="text-align: center; max-width: 450px; padding: 2rem;">
-            <div class="app-icon-spin" style="font-size: 2.5rem; margin-bottom: 1.25rem; color: #830074;">
+            <div class="app-icon-spin" style="font-size: 2.5rem; margin-bottom: 1.25rem; color: #7C3AED;">
               <svg class="app-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
             </div>
             <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem;">Grading Examination...</h2>
@@ -2194,7 +2194,7 @@
 
                   <!-- Explanation Box -->
                   <div class="cbt-explanation-box">
-                    <div style="font-weight: 800; color: #830074; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.4rem; letter-spacing: 0.05em;">VERIFIED EXPLANATION:</div>
+                    <div style="font-weight: 800; color: #7C3AED; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.4rem; letter-spacing: 0.05em;">VERIFIED EXPLANATION:</div>
                     <div style="line-height: 1.6;">${escapeHtml(cleanCbtText(q.explanation || 'Verified according to University of Ibadan departmental course curriculum.'))}</div>
                     <div style="font-size: 0.78rem; opacity: 0.75; margin-top: 0.65rem;">
                       Source: ${escapeHtml(q.sourceDocument || 'Official Past Questions')}${q.sourcePage ? `, Page ${q.sourcePage}` : ''}
