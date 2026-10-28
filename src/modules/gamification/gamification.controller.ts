@@ -185,3 +185,4 @@ gamificationRouter.get("/leaderboard", optionalAuth, async (req: AuthenticatedRe
     res.status(500).json({ success: false, message: error.message });
   }
 });
+

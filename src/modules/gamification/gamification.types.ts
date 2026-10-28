@@ -36,3 +36,4 @@ export const HUNTER_RANKS = [
 export const XP_PER_ANSWER = 10;
 export const XP_DAILY_QUEST_BONUS = 50;
 export const XP_WEEKLY_STREAK_BONUS = 150;
+

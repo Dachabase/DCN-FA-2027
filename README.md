@@ -117,3 +117,4 @@ npm run start
 - `POST /api/sessions/:sessionId/answer` — Submit answer with confidence rating.
 - `POST /api/sessions/:sessionId/complete` — Complete session and retrieve diagnostic report.
 - `GET /api/courses/:courseId/intel` — Retrieve high-yield topic ranking, likelihood %, and weak-area flags.
+

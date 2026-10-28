@@ -200,3 +200,4 @@ export async function awardAnswerXp(userId: string, xpAmount = XP_PER_ANSWER) {
     justCompletedQuest: isNowCompleted && !quest.isCompleted,
   };
 }
+
