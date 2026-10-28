@@ -193,7 +193,7 @@ export async function getReviewQueueSummary(userId: string) {
           explanation: true,
           distractorNotes: true,
           limbRationales: true,
-          referenceSource: true,
+          sourceDocument: true,
           hasImage: true,
           imageUrl: true,
         },
