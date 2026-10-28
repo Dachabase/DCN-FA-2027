@@ -12,6 +12,7 @@ import { academic100lRouter, vaultRouter } from "./academic100l/academic100l.con
 import { gamificationRouter } from "./modules/gamification/gamification.controller";
 import { reviewRouter } from "./modules/review/review.controller";
 import { contentRouter } from "./modules/content/content.controller";
+import { practiceRouter } from "./modules/practice/practice.controller";
 import { requireAuth, optionalAuth } from "./auth/auth.middleware";
 import { ALL_GUIDES } from "./data/guides-data";
 import { resolveAudienceFromRequest, normalizeAudience } from "./personalization/audience.helper";
@@ -66,6 +67,7 @@ app.use("/api/vault", vaultRouter);
 app.use("/api/gamification", gamificationRouter);
 app.use("/api/review", reviewRouter);
 app.use("/api/content", contentRouter);
+app.use("/api/practice", practiceRouter);
 
 // =========================================================
 // FALLBACK DATA (For offline/testing resilience)
