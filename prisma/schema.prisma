@@ -101,6 +101,9 @@ model Course {
   questions        Question[]
   flashcards       CourseFlashcard[]
   quizAttempts     QuizAttempt[]
+  topics           CourseTopic[]
+  examPapers       ExamPaper[]
+  lessons          Lesson[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -179,6 +182,11 @@ model User {
   utmeAttempts  UtmeExamAttempt[]
   flashcardProgress UtmeFlashcardProgress[]
   courseFlashcardProgress CourseFlashcardProgress[]
+  gamification      UserGamification?
+  spacedReviews     SpacedReviewItem[]
+  dailyQuests       UserDailyQuest[]
+  groupMembers      StudyGroupMember[]
+  notifications     NotificationSubscription[]
 }
 
 // =========================================================
@@ -290,6 +298,14 @@ model Question {
 
   facultyId    String?
   faculty      Faculty? @relation(fields: [facultyId], references: [id])
+
+  distractorNotes Json?
+  limbRationales  Json?
+  examPaperId     String?
+  examPaper       ExamPaper?   @relation(fields: [examPaperId], references: [id])
+  courseTopicId   String?
+  courseTopic     CourseTopic? @relation(fields: [courseTopicId], references: [id])
+  spacedReviews   SpacedReviewItem[]
 
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
@@ -758,4 +774,183 @@ model UtmeFlashcardProgress {
   @@unique([userId, questionId])
   @@index([userId, subjectCode])
   @@index([userId, status])
-}
+}
+
+// =========================================================
+// COURSE TOPICS (FOR EXAM INTEL & TOPIC-LEVEL REVISION)
+// =========================================================
+
+model CourseTopic {
+  id                  String       @id @default(cuid())
+  courseId            String
+  course              Course       @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  name                String
+  orderIndex          Int          @default(0)
+  historicalFrequency Int          @default(0)
+  examLikelihoodPct   Float        @default(0.0)
+  isHighYield         Boolean      @default(false)
+
+  questions           Question[]
+  lessons             Lesson[]
+
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+
+  @@index([courseId, isHighYield])
+}
+
+// =========================================================
+// EXAM PAPERS & CBT SESSIONS
+// =========================================================
+
+model ExamPaper {
+  id          String     @id @default(cuid())
+  courseId    String
+  course      Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  title       String     // e.g. "GES 107 2022/2023 CBT Examination"
+  sessionYear String     // e.g. "2022/2023"
+  sourceType  String     @default("SEMESTER_EXAM") // "SEMESTER_EXAM", "GES_CBT_TEST", "MOCK_EXAM"
+  durationMin Int        @default(60)
+  totalMarks  Int        @default(50)
+
+  questions   Question[]
+
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@index([courseId, sessionYear])
+}
+
+// =========================================================
+// SPACED REPETITION REVIEW QUEUE (SM-2 / FSRS)
+// =========================================================
+
+model SpacedReviewItem {
+  id             String    @id @default(cuid())
+  userId         String
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questionId     String
+  question       Question  @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  intervalDays   Int       @default(1) // 1, 3, 7, 16, 35
+  repetitions    Int       @default(0)
+  easeFactor     Float     @default(2.5) // SuperMemo-2 ease factor
+  dueDate        DateTime  @default(now())
+  lastReviewedAt DateTime?
+  status         String    @default("LEARNING") // "LEARNING", "REVIEWING", "MASTERED"
+
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@unique([userId, questionId])
+  @@index([userId, dueDate, status])
+}
+
+// =========================================================
+// DAILY QUESTS & GAMIFICATION
+// =========================================================
+
+model UserDailyQuest {
+  id               String   @id @default(cuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  targetDate       DateTime @db.Date
+  targetAnswers    Int      @default(20) // Configurable 10 to 300
+  completedAnswers Int      @default(0)
+  xpEarned         Int      @default(0)
+  grade            String   @default("E") // E through M
+  isCompleted      Boolean  @default(false)
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@unique([userId, targetDate])
+  @@index([userId, targetDate])
+}
+
+model UserGamification {
+  userId          String    @id
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  totalXp         Int       @default(0)
+  currentLevel    Int       @default(1)
+  academicTier    String    @default("Freshite")
+  hunterRank      String    @default("E")
+  currentStreak   Int       @default(0)
+  longestStreak   Int       @default(0)
+  lastActiveDate  DateTime? @db.Date
+  aliasName       String?   // e.g. "TedderAce #42"
+  showRealName    Boolean   @default(true)
+  dailyAnswerGoal Int       @default(20)
+
+  updatedAt       DateTime  @updatedAt
+}
+
+// =========================================================
+// STUDY GROUPS
+// =========================================================
+
+model StudyGroup {
+  id         String             @id @default(cuid())
+  name       String
+  inviteCode String             @unique
+  courseCode String?
+  members    StudyGroupMember[]
+
+  createdAt  DateTime           @default(now())
+  updatedAt  DateTime           @updatedAt
+}
+
+model StudyGroupMember {
+  id       String     @id @default(cuid())
+  groupId  String
+  group    StudyGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  userId   String
+  user     User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  joinedAt DateTime   @default(now())
+
+  @@unique([groupId, userId])
+}
+
+// =========================================================
+// MODULAR LESSONS & REVISION STEPS
+// =========================================================
+
+model Lesson {
+  id          String      @id @default(cuid())
+  courseId    String
+  course      Course      @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  topicId     String
+  topic       CourseTopic @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  title       String
+  summary     String?
+  readTimeMin Int         @default(5)
+  content     String      // Markdown reading content
+  checkQIds   Json?       // Question IDs for check questions
+  orderIndex  Int         @default(0)
+
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@index([courseId, topicId])
+}
+
+// =========================================================
+// WEB PUSH NOTIFICATIONS & DRILL SCHEDULES
+// =========================================================
+
+model NotificationSubscription {
+  id             String    @id @default(cuid())
+  userId         String
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  endpoint       String    @unique
+  p256dh         String
+  auth           String
+  drillTime      String    @default("21:00") // e.g. "06:30", "19:00", "21:00"
+  isActive       Boolean   @default(true)
+  lastNotifiedAt DateTime?
+
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([userId, drillTime])
+}
