@@ -27,6 +27,22 @@ export function levelStartXp(level: number): number {
   return Math.round(quadraticXp + beyondLinear);
 }
 
+export const getXpThresholdForLevel = levelStartXp;
+
+/**
+ * Computes letter grade (E to M) for daily quest completion.
+ */
+export function calculateDailyQuestGrade(completed: number, target: number): string {
+  const ratio = completed / Math.max(1, target);
+  if (ratio >= 2.0) return "M";
+  if (ratio >= 1.5) return "S";
+  if (ratio >= 1.2) return "A";
+  if (ratio >= 1.0) return "B";
+  if (ratio >= 0.7) return "C";
+  if (ratio >= 0.4) return "D";
+  return "E";
+}
+
 /**
  * Calculates current level and progression info for a given cumulative XP.
  */
@@ -138,14 +154,7 @@ export async function awardAnswerXp(userId: string, xpAmount = XP_PER_ANSWER) {
   const questXpEarned = quest.xpEarned + xpAmount + (isNowCompleted && !quest.isCompleted ? XP_DAILY_QUEST_BONUS : 0);
 
   // Compute Grade based on completed count vs target
-  let grade = "E";
-  const ratio = newCompleted / Math.max(1, quest.targetAnswers);
-  if (ratio >= 2.0) grade = "M";
-  else if (ratio >= 1.5) grade = "S";
-  else if (ratio >= 1.2) grade = "A";
-  else if (ratio >= 1.0) grade = "B";
-  else if (ratio >= 0.7) grade = "C";
-  else if (ratio >= 0.4) grade = "D";
+  const grade = calculateDailyQuestGrade(newCompleted, quest.targetAnswers);
 
   // Check and maintain streaks
   const today = new Date();

@@ -112,9 +112,49 @@ npm run start
 - `POST /api/review/:questionId/resolve` — Submit review attempt (`{ isCorrect, confidence }`), updates SM-2 schedule.
 - `POST /api/review/:questionId/enqueue` — Manually bookmark/enqueue a question for spaced recall.
 
-### Practice & CBT Simulator (Mounted in subsequent phases)
-- `POST /api/sessions/start` — Launch practice drill or timed CBT mock.
-- `POST /api/sessions/:sessionId/answer` — Submit answer with confidence rating.
-- `POST /api/sessions/:sessionId/complete` — Complete session and retrieve diagnostic report.
-- `GET /api/courses/:courseId/intel` — Retrieve high-yield topic ranking, likelihood %, and weak-area flags.
+### Practice & CBT Hall Simulator
+- `POST /api/practice/start` — Launch practice drill or timed UI CBT Hall mock exam (`mode: PRACTICE | EXAM | REVISION | TOPIC`).
+- `POST /api/practice/:sessionId/answer` — Submit answer with confidence rating (`LOW | MEDIUM | HIGH`) and instant solution.
+- `POST /api/practice/:sessionId/complete` — Complete session, calculate net score, accuracy %, topic mastery, and grade ($A \to F$).
+- `GET /api/practice/history` — List past completed practice and mock exam sessions.
+- `GET /api/practice/:sessionId` — Detailed session review with questions, user answers, and rationales.
+
+### Exam Intelligence
+- `GET /api/intel/courses/:courseIdOrCode` — Deep topic frequency, Likelihood % ring ($0-100\%$), hero topics, and weak-area radar.
+- `GET /api/intel/faculties/:facultyIdOrCode` — Faculty-wide overview, top tested courses, and cross-course high-yield topics.
+- `GET /api/intel/ges-cbt` — University-wide CBT intelligence for all UI General Studies (GES) courses.
+
+### Modular Lessons
+- `GET /api/lessons/course/:courseCodeOrId` — Syllabus lesson guides with estimated read times and completion markers.
+- `GET /api/lessons/:lessonId` — Full lesson guide with embedded diagnostic check questions.
+- `POST /api/lessons/:lessonId/complete` — Mark lesson as completed and earn +20 XP.
+- `POST /api/lessons` — Create or update lesson syllabus guide.
+
+### Content Ingestion Pipeline
+- `GET /api/content/faculties` — List faculties, departments, and course counts.
+- `GET /api/content/courses` — Filter courses by faculty, department, level, semester, or university-wide flag.
+- `GET /api/content/courses/:courseId` — Course details, syllabus topics, and past exam papers.
+- `POST /api/content/import/json` — Ingest bulk question banks and exam papers via structured JSON.
+- `POST /api/content/import/csv` — Ingest questions from CSV upload.
+
+### Push Notifications & Drill Reminders
+- `POST /api/notifications/subscribe` — Register Web Push credentials and custom drill reminder time.
+- `POST /api/notifications/later` — Snooze drill notification by 1 hour (matches `mbprep.app`).
+- `POST /api/notifications/read` — Mark drill notification as read.
+- `GET /api/notifications/config` — Retrieve student's active drill schedule.
+
+---
+
+## 🧪 Testing & Quality Assurance
+Run the automated test suite (33 unit and integration tests):
+```bash
+npm test
+```
+Tests cover:
+- CORS Allowlist and Domain Migration (`blastexams.app`)
+- Environment variable standardization
+- Gamification XP mathematical formulas (Levels 1–13 exact match, quadratic 14–45, Hunter Ranks $E \to M$)
+- Single Best Answer (SBA) and True/False multi-limb scoring
+- SuperMemo-2 (SM-2) Spaced Repetition interval expansion and failure lapse
+- Exam Intelligence likelihood and weak-area detection rules
 
