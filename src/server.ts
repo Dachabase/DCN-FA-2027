@@ -13,6 +13,7 @@ import { gamificationRouter } from "./modules/gamification/gamification.controll
 import { reviewRouter } from "./modules/review/review.controller";
 import { contentRouter } from "./modules/content/content.controller";
 import { practiceRouter } from "./modules/practice/practice.controller";
+import { intelRouter } from "./modules/intel/intel.controller";
 import { requireAuth, optionalAuth } from "./auth/auth.middleware";
 import { ALL_GUIDES } from "./data/guides-data";
 import { resolveAudienceFromRequest, normalizeAudience } from "./personalization/audience.helper";
@@ -68,6 +69,7 @@ app.use("/api/gamification", gamificationRouter);
 app.use("/api/review", reviewRouter);
 app.use("/api/content", contentRouter);
 app.use("/api/practice", practiceRouter);
+app.use("/api/intel", intelRouter);
 
 // =========================================================
 // FALLBACK DATA (For offline/testing resilience)
