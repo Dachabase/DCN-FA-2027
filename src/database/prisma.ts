@@ -24,7 +24,7 @@ const pool = new Pool({
   connectionString,
   max: parseInt(process.env.DB_POOL_MAX || "20", 10),
   idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 5000,
+  connectionTimeoutMillis: 15000,
   ssl: process.env.DB_SSL_STRICT === "true"
     ? { rejectUnauthorized: true }
     : { rejectUnauthorized: false },
@@ -33,4 +33,3 @@ const pool = new Pool({
 const adapter = new PrismaPg(pool);
 
 export const prisma = new PrismaClient({ adapter });
-
