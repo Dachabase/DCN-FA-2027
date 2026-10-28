@@ -15,6 +15,7 @@ import { contentRouter } from "./modules/content/content.controller";
 import { practiceRouter } from "./modules/practice/practice.controller";
 import { intelRouter } from "./modules/intel/intel.controller";
 import { lessonsRouter } from "./modules/lessons/lessons.controller";
+import { notificationsRouter } from "./modules/notifications/notifications.controller";
 import { requireAuth, optionalAuth } from "./auth/auth.middleware";
 import { ALL_GUIDES } from "./data/guides-data";
 import { resolveAudienceFromRequest, normalizeAudience } from "./personalization/audience.helper";
@@ -72,6 +73,7 @@ app.use("/api/content", contentRouter);
 app.use("/api/practice", practiceRouter);
 app.use("/api/intel", intelRouter);
 app.use("/api/lessons", lessonsRouter);
+app.use("/api/notifications", notificationsRouter);
 
 // =========================================================
 // FALLBACK DATA (For offline/testing resilience)

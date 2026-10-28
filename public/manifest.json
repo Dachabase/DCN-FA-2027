@@ -1,24 +1,47 @@
 {
   "id": "https://blastexams.app/",
-  "name": "BlastExams",
+  "name": "BlastExams - UI CBT Academic Prep",
   "short_name": "BlastExams",
-  "description": "Official Student Academic Navigator, Course Packages & CBT Exam Engine",
-  "start_url": "/#/home",
+  "description": "Student Academic Navigator, GES CBT Exam Engine, Spaced Review & Exam Intel",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#0F0D15",
-  "theme_color": "#8B5CF6",
-  "categories": ["education", "books", "productivity"],
+  "orientation": "portrait-primary",
+  "background_color": "#0B0F17",
+  "theme_color": "#10B981",
+  "categories": ["education", "productivity", "study"],
+  "shortcuts": [
+    {
+      "name": "Spaced Repetition Review",
+      "short_name": "Review",
+      "description": "Clear your due revision queue for today",
+      "url": "/#review",
+      "icons": [{ "src": "https://api.iconify.design/lucide:repeat.svg?color=%2310B981", "sizes": "96x96" }]
+    },
+    {
+      "name": "Practice Mode Drills",
+      "short_name": "Practice",
+      "description": "Course-specific practice with instant explanations",
+      "url": "/#practice",
+      "icons": [{ "src": "https://api.iconify.design/lucide:book-open.svg?color=%2310B981", "sizes": "96x96" }]
+    },
+    {
+      "name": "GES CBT Mock Hall",
+      "short_name": "Mock CBT",
+      "description": "Timed UI CBT Hall examination simulation",
+      "url": "/#cbt",
+      "icons": [{ "src": "https://api.iconify.design/lucide:timer.svg?color=%2310B981", "sizes": "96x96" }]
+    }
+  ],
   "icons": [
     {
-      "src": "https://api.iconify.design/lucide:graduation-cap.svg?color=%238B5CF6",
+      "src": "https://api.iconify.design/lucide:graduation-cap.svg?color=%2310B981",
       "sizes": "192x192",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     },
     {
-      "src": "https://api.iconify.design/lucide:graduation-cap.svg?color=%238B5CF6",
+      "src": "https://api.iconify.design/lucide:graduation-cap.svg?color=%2310B981",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
