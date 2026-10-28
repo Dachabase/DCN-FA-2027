@@ -116,3 +116,4 @@ practiceRouter.get("/:sessionId", optionalAuth, async (req: Request, res: Respon
     res.status(500).json({ success: false, message: error.message });
   }
 });
+

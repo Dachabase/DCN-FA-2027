@@ -65,3 +65,4 @@ export async function getSubscriptionConfig(userId: string) {
     lastNotifiedAt: sub ? sub.lastNotifiedAt : null,
   };
 }
+

@@ -34,3 +34,4 @@ describe("Exam Intelligence Engine Logic", () => {
     assert.equal(isCriticalWeakArea(30, 40, 5), false);
   });
 });
+

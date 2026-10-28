@@ -93,3 +93,4 @@ window.addEventListener("online", () => {
 if (typeof navigator !== "undefined" && navigator.onLine) {
   setTimeout(flushPendingAnswers, 2000);
 }
+

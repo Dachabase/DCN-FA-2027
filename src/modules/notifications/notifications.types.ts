@@ -16,3 +16,4 @@ export const SnoozeNotificationSchema = z.object({
 
 export type SubscribePushInput = z.infer<typeof SubscribePushSchema>;
 export type SnoozeNotificationInput = z.infer<typeof SnoozeNotificationSchema>;
+
