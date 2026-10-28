@@ -28,7 +28,7 @@ This runbook provides end-to-end instructions for migrating the UI Freshers Comp
 
 ```bash
 # Verify connection to destination AWS RDS instance
-pg_isready -h fa27.ct2ua4mes3jl.eu-north-1.rds.amazonaws.com -p 5432 -d ui_freshers
+pg_isready -h your-rds-instance.region.rds.amazonaws.com -p 5432 -d ui_freshers
 ```
 
 ---
@@ -66,7 +66,7 @@ Restore the exported dataset into the new AWS RDS PostgreSQL instance.
 
 ```bash
 # Destination AWS RDS Connection details
-TARGET_HOST="fa27.ct2ua4mes3jl.eu-north-1.rds.amazonaws.com"
+TARGET_HOST="your-rds-instance.region.rds.amazonaws.com"
 TARGET_PORT="5432"
 TARGET_USER="postgres"
 TARGET_DB="ui_freshers"
