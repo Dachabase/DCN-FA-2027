@@ -1,0 +1,67 @@
+/* BlastExams UI: LearnHub's design language (Geist, pill buttons, soft rounded cards)
+   with the BlastExams violet. Follows the device's light/dark setting by default;
+   set data-theme="light" or "dark" on <html> to override. */
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+
+:root {
+  --be-font: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --be-primary: #8B5CF6; --be-primary-hover: #7C3AED; --be-on-primary: #fff;
+  --be-bg: #FFFFFF; --be-surface: #FFFFFF; --be-input: #F8FAFC;
+  --be-text: #0F172A; --be-muted: #64748B; --be-border: #E2E8F0;
+  --be-danger: #DC2626; --be-ok: #16A34A;
+  --be-radius: 20px; --be-pill: 999px; --be-shadow: 0 20px 50px rgba(15, 23, 42, .12);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --be-bg: #0F0D15; --be-surface: #161420; --be-input: #1A1826;
+    --be-text: #F8FAFC; --be-muted: #94A3B8; --be-border: #2A2740;
+    --be-danger: #F87171; --be-ok: #4ADE80; --be-shadow: 0 20px 50px rgba(0, 0, 0, .5);
+  }
+}
+:root[data-theme="dark"] {
+  --be-bg: #0F0D15; --be-surface: #161420; --be-input: #1A1826;
+  --be-text: #F8FAFC; --be-muted: #94A3B8; --be-border: #2A2740;
+  --be-danger: #F87171; --be-ok: #4ADE80; --be-shadow: 0 20px 50px rgba(0, 0, 0, .5);
+}
+
+/* Buttons */
+.be-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; width: 100%;
+  font: 600 .95rem/1 var(--be-font); padding: .9rem 1.25rem; border-radius: var(--be-pill);
+  border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background .15s, transform .05s, border-color .15s; }
+.be-btn:active { transform: scale(.985); }
+.be-btn:disabled { opacity: .6; cursor: not-allowed; }
+.be-btn-primary { background: var(--be-primary); color: var(--be-on-primary); }
+.be-btn-primary:hover:not(:disabled) { background: var(--be-primary-hover); }
+.be-btn-outline { background: transparent; color: var(--be-text); border-color: var(--be-border); }
+.be-btn-outline:hover:not(:disabled) { border-color: var(--be-primary); }
+.be-link { background: none; border: 0; padding: 0; font: 600 .85rem var(--be-font); color: var(--be-primary); cursor: pointer; }
+.be-link:hover { text-decoration: underline; }
+
+/* Form controls */
+.be-field { text-align: left; margin-bottom: .9rem; }
+.be-label { display: block; font: 600 .8rem var(--be-font); color: var(--be-text); margin-bottom: .35rem; }
+.be-input { width: 100%; box-sizing: border-box; font: 500 .95rem var(--be-font); color: var(--be-text);
+  background: var(--be-input); border: 1px solid var(--be-border); border-radius: var(--be-pill); padding: .85rem 1.1rem; outline: none; }
+.be-input:focus { border-color: var(--be-primary); box-shadow: 0 0 0 3px rgba(139, 92, 246, .22); }
+.be-input.be-code { text-align: center; letter-spacing: .5rem; font-size: 1.4rem; font-weight: 700; }
+.be-pass { position: relative; }
+.be-pass .be-input { padding-right: 4.2rem; }
+.be-pass button { position: absolute; right: .9rem; top: 50%; transform: translateY(-50%); }
+
+/* Messages, dividers, text */
+.be-alert { font: 500 .83rem/1.45 var(--be-font); border-radius: 14px; padding: .65rem .9rem; margin-bottom: .9rem; text-align: left; }
+.be-alert-error { color: var(--be-danger); background: rgba(220, 38, 38, .1); }
+.be-alert-ok { color: var(--be-ok); background: rgba(22, 163, 74, .12); }
+.be-divider { display: flex; align-items: center; gap: .75rem; color: var(--be-muted); font: 500 .75rem var(--be-font); margin: 1rem 0; }
+.be-divider::before, .be-divider::after { content: ""; flex: 1; height: 1px; background: var(--be-border); }
+.be-eyebrow { font: 700 .72rem var(--be-font); letter-spacing: .7px; text-transform: uppercase; color: var(--be-primary); }
+.be-title { font: 700 1.4rem/1.2 var(--be-font); color: var(--be-text); margin: .15rem 0 .4rem; }
+.be-sub { font: 400 .88rem/1.5 var(--be-font); color: var(--be-muted); margin: 0 0 1.1rem; text-align: left; }
+.be-foot { font: 400 .85rem var(--be-font); color: var(--be-muted); margin-top: 1rem; text-align: center; }
+
+/* The sign-in card: LearnHub-style rounded surface inside the existing modal overlay */
+#signin-modal .onboarding-card { background: var(--be-surface) !important; border: 1px solid var(--be-border) !important;
+  border-radius: var(--be-radius) !important; box-shadow: var(--be-shadow); max-width: 420px !important; padding: 1.75rem !important; }
+.be-head { display: flex; align-items: flex-start; justify-content: space-between; text-align: left; }
+.be-x { background: var(--be-input); color: var(--be-muted); border: 1px solid var(--be-border); width: 34px; height: 34px;
+  border-radius: 50%; cursor: pointer; font-size: 1.1rem; line-height: 1; }

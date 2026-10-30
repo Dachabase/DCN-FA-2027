@@ -1,0 +1,21 @@
+/* JAMB UTME track on the same design system as the University track (first pass: cards, chips, search, options, tabs, tables). */
+.utme-hero-banner{background:var(--r-tint);border:1px solid var(--r-line);border-radius:24px;box-shadow:none}
+.utme-mode-card,.utme-course-card,.utme-option-btn,.utme-instant-feedback-card{background:var(--r-card);color:var(--r-ink);border:1px solid var(--r-line2);border-radius:20px;box-shadow:none}
+.utme-mode-card:hover,.utme-course-card:hover,.utme-option-btn:hover{border-color:var(--r-p)}
+.utme-mode-card.selected,.utme-mode-card.active,.utme-option-btn.selected,.utme-option-btn.active{border:2px solid var(--r-p);background:var(--r-tint)}
+.utme-chip{background:var(--r-card);color:var(--r-ink);border:1px solid var(--r-line2);min-height:40px}
+.utme-chip:hover{border-color:var(--r-p)}
+.utme-chip.active{background:var(--r-p2);color:#fff;border-color:transparent;box-shadow:none}
+.utme-search-input{background:var(--r-card);color:var(--r-ink);border:1px solid var(--r-line2);box-shadow:none;min-height:52px}
+.utme-search-input:focus{outline:none;border-color:var(--r-p);box-shadow:0 0 0 3px rgba(124,58,237,.2)}
+.utme-subject-pill{background:var(--r-tint);color:var(--r-p2);border:1px solid var(--r-line);border-radius:999px}
+.utme-course-action-btn{background:var(--r-p2);box-shadow:none;min-height:44px}
+.utme-course-action-btn:hover{filter:brightness(1.08)}
+.utme-nav-tab-btn{color:var(--r-mute);border-radius:999px}
+.utme-nav-tab-btn.active{background:var(--r-tint);color:var(--r-p2)}
+.utme-dash-table th{color:var(--r-mute);border-color:var(--r-line)}
+.utme-dash-table td{color:var(--r-ink);border-color:var(--r-line)}
+.utme-topic-tag{background:var(--r-tint);color:var(--r-p2)}
+/* dashboard subject cards in UTME mode: violet like everything else, no amber */
+.home-cbt-card .utme-tone{background:var(--r-tint)!important;color:var(--r-p2)!important;border:1px solid var(--r-line)!important}
+html[data-theme="dark"] .home-cbt-card .utme-tone{color:#C4B5FD!important}

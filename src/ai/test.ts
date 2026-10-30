@@ -1,0 +1,27 @@
+import "dotenv/config";
+
+import { generateAIResponse } from "./ai.service";
+
+async function main(): Promise<void> {
+  console.log("Testing Gemini AI...");
+  console.log("--------------------------------");
+
+  const response = await generateAIResponse({
+    systemInstruction:
+      "You are a friendly AI assistant helping test the University of Ibadan Freshers AI project.",
+    userMessage:
+      "Introduce yourself in one short paragraph and explain what you can help a University of Ibadan fresher with.",
+  });
+
+  console.log("Gemini response:");
+  console.log("--------------------------------");
+  console.log(response);
+  console.log("--------------------------------");
+  console.log("Gemini test completed successfully.");
+}
+
+main().catch((error) => {
+  console.error("Gemini test failed:");
+  console.error(error);
+  process.exit(1);
+});

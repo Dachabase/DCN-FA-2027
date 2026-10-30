@@ -1,0 +1,6429 @@
+================================================================================
+SOURCE DOCUMENT: Principles-of-Accounts-JAMB-Past-Questions.pdf
+TOTAL PAGES: 38
+================================================================================
+
+
+--- [PAGE 1] ---
+Principles of
+Accounts
+1994-2004
+JAMB
+Past 
+Questions
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 2] ---
+Principles of Accounts 1994
+1.
+The term ‘accounting period’ is used to refer to the
+A.
+time span during which taxes are paid to the
+Inland Revenue Board
+B.
+Budget period, usually one year, relied on by
+the accountant
+C.
+time span, usually one year covered by
+financial statement
+D.
+period within which debtors are expected to
+settle accounts.
+2.
+Assigning revenues to the accounting period in which
+goods were sold or services rendered and expenses in-
+curred is known as
+A.
+passing of entries   B. consistency convention
+C.
+matching concept  D. adjusting for revenue.
+3.
+The accounting convention which states that ‘profit must
+not be recognized until realized while all losses should
+be adequately provided for’ is termed
+A. materiality
+B. objectivity
+C. consistency
+D. conservatism.
+4.
+Accounting information is used by investors and credi-
+tors of a company to predict
+A.
+future cash flows of the company
+B.
+future tax payments of the company
+C.
+potential merger candidates for the company
+D.
+appropriate remuneration for the company’s
+staff.
+5.
+Antics Electronics Company recently bought six genera-
+tors. Which of the following is the correct method of
+recording this transaction.
+A.Debit generator account and credit cash account.
+B. Debit purchases account and credit cash account.
+C. Debit cash account and credit purchases account.
+D. Debit cash account and credit generator account.
+6.
+When a business incurs labours cost in installing a fixed
+asset, the cost is treated as
+A.
+additional cost to the asset
+B.
+business wages and salaries
+C.
+installation cost of the asset
+D.
+business cost of the asset.
+7.
+What is the cardinal rule of the double entry system?
+A.
+Debit the increasing account and credit the
+decreasing account.
+B.
+Debit the receiving account and credit the
+giving account.
+C.
+ Debit the asset account and credit the liability
+account.
+D.
+Debit the revenue account and credit the
+expenditure account.
+8.
+Malam Gambo bought a freezer for his shop costing N
+10,500. In recording, he debited office expenses account
+and credited the bank account. What book keeping error
+has he committed?
+A. Error of commission
+B. Error of reversal of
+entries. C. Error of principle.
+D. Compensation er-
+ror.
+9.
+The use of the folio in the ledger is for
+A.
+Referencing purposes
+B.
+Particulars of the transaction
+C.
+the account titles
+D.
+Only credit items.
+10. Account of Tanko Nig Ltd.
+Dr.
+Cr.
+        N      
+        N
+1/10 Bal. b/f     5,000   
+  2/10 Cash      3,000
+Sales  
+  10,000  
+  15/10 Bank    6,500
+What is the closing balance of the account shown above?
+A.
+N 5,000
+B.
+N 6,500
+C.
+N 5,500
+D.
+N 15,000.
+11. The suspense account is used to correct book keeping
+errors where the
+A.
+amount involved is quite significant
+B.
+item involved is not material
+C.
+item involved is unknown
+D.
+error does not affect the agreement of the trial
+balance.
+12. The discount column of a three column cashbook is not
+balanced off but periodically transferred to the discount
+accounts because discounts.
+A.
+are not important in cash book
+B.
+are cash items only
+C.
+do not form part of double entry
+D.
+are used for bank reconciliation.
+13. When is a petty cash account debited?
+A.
+When the fund is established and every time
+money is spent
+B.
+when the fund is established and every time it
+is replenished
+C.
+when the fund is established and when the size
+of the float is decreased
+D.
+Every time money is drawn from the petty cash.
+14. When preparing a bank reconciliation statement, which
+of the following is deducted from the balance per bank
+statement?
+A. Bank charges.
+B. Uncleared cheques
+C. returned cheques   D. Unpresented cheques.
+15. The financial position of an organization at a particular
+time can be ascertained from the
+A.
+statement of sources and application of funds
+B.
+statement of retained earnings
+C.
+balance sheet
+D. profit and loss account.
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 3] ---
+16. Given:
+                                                                    N
+Purchase
+            20,000
+Sales
+            40,000
+Carriage inwards
+ 5,000
+Carriage outwards
+ 5,000
+Opening stock
+            10,000
+Closing stock
+ 5,000
+What is the cost of good sold?
+A.
+N 30,000
+B.
+N 25,000
+C.
+ N 20,000
+D.
+N 15,000
+17. The net profit or loss for the year is determined in the
+profit and loss account after
+A.
+deducting purchases from sales
+B.
+deducting cost of goods sold from sales and
+adding administrative expenses
+C.
+adding commissions received to gross profit
+D.
+ eliminating all expenses from gross profit
+and
+adding any other income.
+Use the table below to answer  question 18 and 19
+Stock
+Cost price
+   Qty (units)
+                       N
+          Opening balance1/1/90       3.00
+3,000
+Purchases January       3.50
+15,000
+Purchases February      4.00
+25,000
+Sales
+January           4.50
+13,000
+Sales
+February         5.00
+28,000
+18. Using LIFO, determine the value  of closing stock.
+A.
+ N 9,600
+B.
+N 7,600
+C.
+          N 6,000
+   D.
+ N 2,000.
+19. What is the gross profit at the end of February, if the
+closing stock were valued at N 20,000?
+A.
+ N 65,000
+B.
+N 57,000
+C.
+ N 48,000
+D.
+ N 37,000.
+20. A trial balance shows provision for doubtful debts, N
+190 and debtors, N 6,000. It is required to write off further
+N320 as bad debts and maintain the provision at 2½% of
+debtors. To do this, the profit and loss should show a
+A.
+ credit of N 20 and a debit of N 100
+B.
+ credit of N 28 and a debit of N 300
+C.
+ credit of N 48
+D. debit entry of N 414
+21. If a bad debt previously written off
+is subsequently repaid, the amount collected is recorded
+as an
+A.
+income in the profit and loss account
+B.
+income in the balance sheet
+C.
+addition cash in the profit and loss account
+D.
+expense in the balance sheet.
+22. Beginning and ending accounts receivable balances were
+N 8,000 and N 15,000 respectively. If collections from
+customers during the period were N 36,000, them total
+sales on account would be
+A.
+N 23,000
+B.
+N 29,000
+C.
+N 36,000
+D.
+ N 43,000.
+23. From which of the following sources are creditors con-
+trol account most likely to be posted?
+A.
+Supplier’s invoices
+B.
+Cash disbursements journal
+C.
+Subsidiary debtor’s ledger
+D.
+Purchases journal.
+Use the information below to answer questions 24 and
+25
+Chukwuma Okeke did not keep his books based on the
+double entry principle. On 1st January 1993, Cash in hand
+was N60, Bank overdraft N1,100, Debtor N7,240, Stock
+N27.450, Furnishings N2,000 and creditors N6,990. As at
+31st December 1993, Cash in hand was N40, Cash at bank
+was N 1,050, Debtors N6,750, Stock N29, 180, Furnish-
+ings N2,000 and Creditors N 6,090.
+24. Compute the capital as at 1st  January 1993.
+A. N29,800
+B. N28,900
+C. N26, 700  D. N20,800.
+25. Determine his net profit as at 31st December 1993.
+A.
+N2,000
+B.
+N2,200
+C.
+N3,500
+D.
+N4,200.
+26. Which of the following categories of labours cost will be
+classified as direct?
+A. Accountant’s salary             B. Factory workers’ salary
+C. Managing director’s salary   D. Cashier’s salary.
+Use the information below to answer questions 27 and
+28
+Unit Unit
+Total
+Unit
+Cost
+ Cost Sold
+N
+   N
+ Begining inventory     20
+ 6
+ 120
+Sale No. 1
+              18
+Purchase No. 1              30
+  8
+  240
+Sales No. 2
+              20
+Purchase No 2
+    10
+  9
+  90
+Total
+     60
+38
+27. Using the FIFO method of stock valuation, the
+ending inventory cost is
+A.
+ N 146
+ B.
+ N 165
+C.
+N 186
+D.
+N 314
+28. Using the LIFO inventory procedures, the ending
+inventory  cost is
+A.
+ N136
+B.
+N 176
+C.
+ N 196
+D.
+ N 264
+29. The major difference between the receipt and
+payment account and the income and expenditure ac-
+count is that while the former
+A.
+ is kept by the treasurer, the latter is not
+B.
+deals with all receipt and payments in the year
+regardless of the time it relates to the latter
+is
+for just that year
+C.
+ is a T-account the latter is not
+D.
+is not in the ledger, the latter is.
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 4] ---
+30. The following information relates to a hockey club:
+                                                                                 N
+Subscription owing at the beginning
+40
+Subscription owing at the end
+35
+Subscription received in the advance at the
+beginning
+15
+Subscription received During the period
+          2,560
+The amount to be shown in the income and expenditure
+account would be
+A.
+N 2,500
+B.
+ N 2,540
+C.
+N 2,570
+D.
+N 2,590.
+31.
+The net profit from the trading account of a non-profit
+making organization would be treated as income in the
+A.
+income and expenditure account
+B.
+receipt and payment account
+C.
+balance sheet
+D.
+statement of affairs
+Use the information below to answer questions 32 and 33.
+Ada and Udo are lawyers who went into partnership as
+Ado & Co. Ada brought cash of N12,000, furnishing
+worth N18,000 and a motor vehicle worth N70, 000 Udo
+on the other hand brought in cash N10,000, his building
+valued at N05,000 and a personal computer worth
+N135,000.
+32.
+What is the capital of Ado &  Co.?
+A.
+N22,000
+B.
+N100,000
+C.
+N 150,000
+D.
+N 250,000.
+33. What is the profit sharing ratio if it is based on capital
+contributed by Ada and Udo?
+A. 2:1
+B. 3:2
+C. 2:3
+D. 1:2
+34. The major distinguishing element between the final ac-
+counts of a partnership and a sole trader is the
+ A. drawings account
+B. appropriation account
+ C.   capital account
+D. creditors account.
+35. Good will appears in the books of a business only if it
+has been
+A.
+purchased at a certain price
+B.
+raised in connection with the admission of a
+new partner
+C.
+raised to account for the true value of a
+business on the death of a partner
+D.
+raised in order to prevent the balance sheet
+showing that the business is insolvent.
+36. Kayode, Akpan and Kachalla are in partnership. Their
+respective capital accounts had the following balances:
+N40,000 N50,000 and N70,000. The partners agree to ad-
+mit Wamo as a new partner with a one-fifth interest in the
+partnership capital in exchange for N50,000 cash. Wamo’s
+equity in the resulting partnership is
+A.
+ N32,000
+B.
+N50,000
+        C.
+N42,000
+D.
+N50,000.
+37. Under which of the following conditions is a partnership
+dissolved?
+A.
+Change of the partnership’s head office.
+B.
+Admission of a new partner.
+C.
+ Purchase of a large quatity of fixed assets.
+D.
+Retirement of a manager who is not a partner.
+38. When shares issued are paid for the accounting entry
+required is
+A.
+debit bank or cash account and credit share
+capital and/or premium account
+B.
+credit bank or cash account and debit shares
+capital and/or premium account
+C.
+debit shares account and  credit capital account
+D.
+credit shares account and debit capital account.
+Use the information below to answer questions 39 and
+40
+A limited liability company has an authorized share capi-
+tal of N 50 million split into 100 million shares. 80 million
+shares were offered for subscription at 60k per share
+payable in full on application. These have been fully
+subscribed and issued.
+39. What is the nominal value of each share?
+A. N2
+B. N0.80
+C.N0.60
+D. N0.50
+40. What is the issued capital?
+A.
+N40 million
+B. N48 million
+C.
+N50 million
+D. N80 million.
+41. The document setting out theregulations regarding
+shares, meetings and internal organization of a company
+is known as
+A.
+memorandum of association
+B.
+articles of association
+C.
+prospectus
+ D. company law.
+42. An advantage of using accounting ratio is that they
+A.
+can be easily calculated
+B.
+facilitate decision-making
+C.
+are stipulated by law
+D.
+show errors and frauds.
+43. The accounts of Buba (Nig.) Plc
+showed the following for the year ended December 31,
+1993:
+     N
+Gross sales
+219,900
+Sales returns and
+allowances
+4,900
+Net sales
+215,000
+Accounts receivable (net):
+1/1/93
+20,000
+31/12/93
+30,000
+The turnover of accounts receivable is A. 6.14 times per
+year B.8.14 times per year C. 8.60 times per year D. 8.64
+times per year.
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 5] ---
+44.
+ Given:
+Sales
+ N20,000
+Costs of sales
+  N15,000
+The gross profit margin would be
+A.
+ 33.33%
+B.
+25.00%
+C.
+20.00%
+D.
+14.28%
+Use the information below to answer questions 45 and
+46
+Perebeni Enterprises has two departments A and B, with
+following information
+A
+B
+N
+N
+          Open. Stock
+           5,000
+           1,500
+          Purchases
+         26,000                3,000
+          Close. Stock
+           7,000
+           2,500
+          Sales
+         45,000
+           4,000
+The following expenses are to be shared in the ratio 4:1
+Rent
+N 8,300
+General Expenses N 3,200
+45.    What are the company’s gross profit for the year?
+A. N11,500
+B. N12,500
+C. N20,000
+D. N23,000.
+46. What is the net profit (or loss) contributed by depart-
+ment B?
+A.
+N 2,000
+B.
+(N2,000)
+ C.
+(N 300)
+D.
+ N300.
+47. The expenditure on a good or service which is consumed
+either immediately or within a current accounting period
+is called
+A. fixed expenditure
+B. capital expenditure
+C. annual expenditure
+D. recurrent expenditure
+48. The receipts from a special tax levy to pay maturing inter-
+est obligation are recorded in
+A. Capital Project Fund
+B. Debt Service Fund
+C. Tax  Assessment Fund
+D. Special Revenue Fund.
+49.
+The cash basis of accounting requires the recognition
+of revenue only when they are
+A.
+due
+B.
+earned
+C.
+paid
+D.
+received.
+50.
+The amount for individual items on a government
+budget is called a
+A.
+vote
+B.
+deposit
+C.
+ loan
+D.
+grant.
+1.
+Which of the following factors’ has aided the develop-
+ment of Accounting?
+A.
+The emergency of nation states
+B.
+The discovery of mineral resources in
+commercial quantity.
+C.
+The growth in size of businesses and the
+separation of ownership and management.
+D.
+The development and management of a
+sophisticated monetary system.
+2.
+Which of the following concepts stipulates that account-
+ing profit is the difference between revenue and expenses?
+A. Accrual concept
+B. Conservation Concept
+C. Prudence Concept
+D. Materiality concept.
+3.
+An effective accounting system should provide infor-
+mation
+A.
+on new products and methods
+B.
+for customer feedback and requirements
+C.
+on internal and external reporting for managers
+and third parties
+D.
+for promoters, directors, labour unions and
+distributors.
+4.
+Which of the following accounting records are source
+documents?
+Principles of Account 1995
+A.
+ Journals and ledgers
+B.
+ Sales invoice and cashbook
+C.
+Cash book and debit note
+D.
+Sales invoice and debit note.
+5.
+Given: Motor van, N3,600, Premises, N5,000: Loan from
+R. Nwaeke, N1,000: Cash at bank, N1,650: Stock of goods,
+N4,800: Creditors, N2,560: Cash in hand, N250 and Debt-
+ors, N6,910. Calculate the capital figure.
+A.
+N19,650
+B.
+N18,650
+C.
+N 17,850
+D.
+N 19,850.
+6.
+Which of the following transactions is BEST recorded in
+the general journal?
+A.
+Payment of rent with a cheque.
+B.
+Payment of stock with cash
+C.
+Purchase of an asset on credit terms
+D.
+Transfer of cash from head office to branch.
+7.
+Diamon Ringo business was started when Mr. Diamon
+brought in a Cheque of N 500,000 which was paid into
+the bank account. Which of the following entries prop-
+erly records the transaction?
+A.
+Cash account was credited with N 500,000 and
+the capital account was debited with N 500,000
+B.
+          Bank account was debited with N 500,000 and
+         capital account was credited with N 500,000
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 6] ---
+C.
+Bank account was credited with N 500,000
+and capital account was debited with
+N 500,000.
+D.
+Mr. Diamon’s’account was debited with
+N500,000 and the cheque account was
+credited
+with N 500,000.
+8.
+One major advantage of a ledger is that it
+A.
+is a book of original entry
+B.
+ is only accessible to shareholders during
+liquidation
+C.
+removes the need for preparing a balance sheet
+after each transaction
+D.
+can be used by any type of business.
+9.
+A trial balance is usually prepared by an accounting from
+account balances in the ledger for the purpose of
+A.
+classifying account in the ledger
+B.
+testing arithmetical accuracties of the ledger
+account balances
+C.
+identifying the balance sheet items
+D.
+providing a basis for establishing the
+accountant’s competence.
+10. What are the advantages of an imprest petty cash book?
+(i.) Cheque can be drawn easily (ii.) A check on the use of
+cash (iii.) Liability of the petty cashier is limited to the
+value of petty cash. (iv.) Loses through the petty cashier
+can be minimized.
+A.  I, II, and III and III only
+B. I, II and IV only
+C.  I, III and IV only
+D. II, III and IV only.
+11. Bola, UTC’s regular customer, owed N 1,000 on account
+of radio brought. If he sent in a cheque for N 1,500, UTC
+would send him a
+        A. credit note B. debit note C. journal voucher D. way bill.
+12. A payment of cash of N20 to John was entered on the
+receipt side of the cashbook in error and credited to John’s
+account. Which of the following journal entries can be
+used to correct the error?
+A.
+    John: N 40 Dr,Cash N 40Cr
+ B.     Cash N 40 Dr, John: N 40 Cr.
+C.    John: N 20 Dr, Cash N 20 Cr.
+D. Cash: N 20 Dr, John: N 20 Cr.
+13. The following represents extracts from the trading ac-
+count of a retail outlet for a given month:
+    N
+Opening Stock
+2,400
+Closing Stock           6, 400
+Other expenses          2,000
+Sales                      11,000
+Profit
+              900
+What is the purchase figure for the month?
+A. N 13,000
+B. N 12,100
+C. N 12,000
+D. N 11,200.
+14.
+Adama’s bank account showed on overdraft of N600
+on 31st March. On going through the account. It was
+discovered that the N 1,080 paid into the account on
+29th March had not been a credited. What should be
+the balance in Adama’s cash accounts?
+A. N 1.680 Dr.
+B. N 1,080 Cr.
+C. N 600 Dr.
+D. N 480 Cr.
+15. Why are adjustments in the profit and loss account nec-
+essary?
+A. to cover some expenses of the following year.
+B to ascertain the actual expenses incurred and income
+earned during the year.
+C.  To show the provisions made during the year
+D. To show the total expenses paid and income received
+during the year.
+Use the information below to answer questions 16 and
+17.
+MACHINERY
+      Historical cost
+5,000,000.00
+      Estimated useful life
+20 years
+      Residual value
+N25,000:00
+      Date of acquisition
+1/1/71
+      Depreciation method
+Straight line
+16. Accumulated depreciation on the asset as at 31/12/81
+was
+A.   N 2,487,500.00
+B. N2,736,250.00
+    C.    N 4,511,192.00
+D. N 4,975,000.00.
+17. The book value of the asset as at 31/12/86 was
+A.   N3,731,250.00
+B.  N2,487,500.00
+C.   N 1,268,750.00
+D.  N1,020,000.00
+Use the information below to answer question
+18 and 19
+The following is a draft balance sheet as at 31/12/92
+ Accumulated
+      Cost Depreciation     Net
+   N              N
+       N
+       Fixed Assets    200,000    100,000      100,000
+(Tan)
+Current Assets:
+Stock in trade
+      10,000
+Trade debtors
+        4,500
+Cash at bank
+      22,800
+Cash in hand
+        9,700
+Trade creditors
+?
+  Capital
+?
+Trade creditors’ account was maintain at 25% of the
+capital
+18. What was the balance in the trade creditors account as
+at 31/12/92?
+A.
+N 29,800
+B. N 29,500
+C.
+N 29,400
+D. N 29,000.
+19. What was the balance in the capital account as at 31/12/
+92?
+A.
+N76,000
+B. N83,000
+C.
+N117,600
+D.N117,650.
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 7] ---
+20. The trial balance showed wages N 2,500 and a note stated
+that N500 wages were due but unpaid. When preparing
+final accounts and balance sheet, it is required to debit
+profit and loss account with
+A.
+N3,000 and show wages accrued N500 in the
+balance sheet
+B.
+N2,000 and show wages accrued N 500 in the
+balance sheet
+C.
+N3,000 and show wages prepaid N500 in the
+balance sheet.
+D.
+N2,000 and show wages paid in advance N500
+in the balance sheet.
+21. Sales ledger control account contains the total amount
+in respect of
+A.
+creditors
+B.
+debtors
+C.
+ investors
+D.
+shareholders.
+22. The purchases ledger account control of a company had
+an opening balance of N45,600 credit and closing bal-
+ance of N72,600 credit. The made company payments of
+N437,000 to credit suppliers during the period; and  had
+discount received of N18,600 on this account. What were
+the credit purchases for the period?
+A.
+N509, 600
+B.
+N482,600
+C.
+N428, 600
+D.
+N18, 400.
+23. The starting point for the production of accounts from
+incomplete records is to
+A.
+ascertain the total sales
+B.
+compute the opening stock of goods sold
+C.
+verify the total purchases
+D.
+prepare an opening statement of affairs.
+Use the information below to answer questions 24 and 25.
+I. A retailer when fixing his selling price adds one-quar-
+ter: to the cost of the article. II. The expense of the re-
+tailer is 10% of his sales.
+III. The total sales is N23,000 IV. He turned over his
+stock five times in the year
+24. Compute the average amount of  stock in hand at
+       cost price.
+A.
+N3,860 B. N3,806  C. N3,680  D.   N3,086.
+25. The net profit for the year is
+A.
+N5,750  B. N5,650 C. N3,200  D.N2, 300.
+26.
+Given:
+     N
+Prime cost
+ 320,000
+Factory cost
+   32,000
+Working in progress at beginning   25,000
+Working in progress at  close
+   19,000
+Administrative expenses
+   21,000
+Determine the production cost.
+A.
+N296,000
+B. N277,000
+C.  N258,000
+D. N246,000.
+27.
+The factory cost of goods produced is made up of
+A.
+prime Cost and factory overhead
+B.
+prime cost and office overhead
+C.
+raw materials consumed and fixed
+cost
+D.
+Raw materials and Administrative
+overhead.
+ 28.
+The below information is provided for Amusa Com-
+pany Ltd. a  manufacturer.
+     N
+Prime cost
+999,000
+Manufacturing Overhead
+  132,000
+Closing work in progress
+transferred to the trading  Account 1,116,000
+If included in the manufacturing overhead were rents of N
+5,000 paid in advance, what is the opening work in progress
+for the period?
+A
+N85,000
+B. N80,000
+C.
+N70,000
+D.N65,000.
+29.
+Subscription in arrears are A. credited to the  income
+and expenditure account and shown as
+A.
+liability in the balance sheet
+B.
+debited to the income and expenditure account
+and shown as an asset in the balance sheet
+C.
+credited to the income and expenditure account
+and shown as a asset in the balance sheet
+D.
+debited to the income and expenditure account
+and shown as a liability in the balance sheet.
+30.
+Where a non-profit making organization prepares the
+account using accruals basis of reporting the statement
+showing how well the organization is doing is the
+A.    appropriation account
+B. balance sheet
+C.
+income and expenditure account
+D.
+receipts and payment account.
+31.
+A charitable club has the following Figures:-
+  N
+Subscriptions received in 1991
+2,800
+Subscriptions unpaid in 1990
+   300
+Subscriptions paid for 1992
+   150
+Subscriptions due 1991
+   180
+How much should be charged to the income and expendi-
+ture of this club as subcribution for 1991?
+A.
+N2,530
+B.
+N2,680
+C.
+N2,830
+D. N2,980
+32.
+A member of a club paid N1,000 as his subscription for
+1993 and N1,200 as subscription for 1994. If the
+financial year of the society ended  on 31st December
+1993 the N1,200 subscription will be treated in the
+balance sheet as
+A.
+current asset
+B.
+current liability
+C.
+capital
+D.
+profit.
+33.
+Which of the following is a strong feature of
+partnership?
+A.
+The life of the partnership is generally as-
+sumed
+to be indefinite
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 8] ---
+B.    The owners are liable personally for all debts
+       of the business.
+C.    The transfer of ownership is frequent an easy
+         to accomplish
+D.     The partnership is complex to form because of
+         many legal and reporting requirements.
+34.
+Interest on a partner’s drawing is debited to the
+A.
+partner’s current account and credited to the
+profit and loss appropriation account
+B.
+profit and loss appropriation account
+C.
+profit and loss account and credited to the
+partner’s current account.
+D.
+partner’s current account and credited to the
+profit and loss account.
+35.
+A partnership on admitting a new
+member, revalued
+the business’ land and building from N30,000 to
+N70,000. The difference of N40,000 should be
+A.
+credited to land and building account
+B.
+debited to asset revaluation account
+C.
+credited to asset revaluation account
+D.
+credited to profit and loss appropriation
+account
+Use the information below to answer questions 36 and 37.
+Halidu and Hamed are business partners with N30,000
+and N20,000 capital respectively. At the end of the finan-
+cial year, a profit of N12,000 which included Halidu’s sal-
+ary of N3,000 was made
+36.
+Halidu’s share of the profit is
+A.
+N7,500
+B.
+N6,000
+C.
+N5,400
+D.
+N4,500.
+37.
+Hamed’s share of the profit should be
+A.
+credited to partners’ capital account
+B.
+credited to partners’ current account
+C.
+credited to appropriation account
+D.
+debited to partners’ drawings account.
+38.
+The conversion of a partnership business into a
+limited liability company affords the
+A.
+general partners the chance of enjoying the
+limited liability protection
+B.
+limited liability partners the chance of en
+joying the limited liability protection
+C.
+creditors the chance of enjoying the
+limited liability protection
+D.
+debtors the chance of enjoying the limited
+iability protection.
+Use the information below to answer questions 39 and 40
+Yakubu (Nigeria) Limited (Extract) Balance Sheet as at 31st
+December 1993.
+               Authorized    Issued
+           N              N                     N
+Ordinary shares
+      100,000        80,000
+10% preference shares            30,000       20,000
+Share premium
+          20,000
+Profit and loss A/C
+               13,000
+Trade creditors
+                30,000
+Accruals
+                  5,000
+Stock
+            10,000
+Debtors
+            40,000
+Bank
+            25,000
+39.
+Equity shareholder fund is
+A.
+N130,000
+B.
+N120,000
+C.
+N113,000
+D.
+N100,000
+40.
+If a 10% dividend is approved, what is the dividend
+payable to ordinary shareholders?
+A.
+N13,000 B.
+N 11,300
+C.
+N10,000 D.
+N8,000
+41.
+Which of the following ratios gives an idea of the
+liquidity of a firm?
+A.
+Turnover ratio
+B.
+Quick ratio
+C.
+Debt ratio
+D.
+Divided yield.
+42.
+A total of N400,000 shares of N1 each are to be issued
+by Sariki Company Ltd. at a price of N1.20 per share.
+Applications were received for 600,000 shares out
+of which 100,000 were dishonored. If the available
+shares are distributed pro rata, what refund will be
+due a subscriber who applied for 5,000 shares?
+A.
+N1,000
+B.
+N1,200
+C.
+N4,800
+D.
+N6,000
+43.
+The measure of a company’s ability to pay its debts.
+quickly is called
+A.
+current ratio B.
+turnover ratio
+C.
+acid test ratio D.
+return on investment.
+44.
+Department accounts are maintained to ascertain the
+A.
+profits of the entire organization
+B.
+contribution of each department
+C.
+expenses of each department
+D.
+sales of each department.
+45.
+The Asa branch of Emene Company Ltd. Made a
+           sale of N 549,000 from the goods sent from the head
+office during the period ended 31/12/94. These sales
+were based on a 22% mark up. If branch expenses
+were N34,400 and there were no discrepancies, what
+should be the net profit of the branch for the period?
+A.
+N6,500
+B.
+N64,600
+C.
+N85,380 D.
+N514,600
+46.
+Which of the following statement is current about the
+head office current account and the branch current
+account?
+A.
+Both always have debit balances
+B.
+ Both always have credit balances
+C.
+The head office current account has a credit
+balance while the branch current account
+has a debit balance.
+D.
+ The head office current account has a debit
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 9] ---
+7.
+Books of original entry are use for
+A.
+recording business transactions
+B.
+the adjustment of accounts
+C.
+reminding the bookkeeper to post transactions in
+the ledger
+D.
+Informing about the state ofaffairs.
+8.
+The term posting in accounting refers to
+A.
+recording entries in the journal
+B.
+transferring the balances in the ledger to the trial
+balance  C. tracing amounts from the journal to the
+ledger to find errors
+D.
+transferring entries to the ledger from the journal.
+9.
+Erroneous rearrangement of financial figures such as
+writing N624 as N264 is called
+A.
+ transposition
+B.
+principle
+C.
+commission
+D.
+omission
+10.
+Bank Account
+                       N
+          N
+Capital      50,000
+Purchase   20,000
+Sales         38,500
+Rent
+         2,590
+  Motor V       6,500
+What is the balance of the bank account shown above?
+A.
+N 88,500 debit
+B.
+N88,500credit
+C.
+ N59,410 credit
+D.
+N59,410 debit.
+11.
+Which of the following demonstrates the imprest
+system?
+A. Float-> expenses paid —>cash in bank--> float.
+B. Float --> cash from bank --> expenses paid       float
+C. Float--> expenses paid--> cash from bank --> float
+D. Float--> cash in bank--> expenses paid -> float.
+12. When a sum of money appears on the credit side of the
+cash book. but not on the debit side of the bank state-
+ment, the sum is regarded as
+balance while the  branch current account has
+a credit balance.
+47.
+ Which of the following are sources of revenue to
+share governments in Nigeria? I Statutory
+allocation, II Fines from customary courts,
+ III Petroleum tax
+IV   Income tax.
+A.
+I and II only B.
+ II and III only
+C.
+I and IV only D.
+III and IV only.
+Use the information to answer questions 48 and 49
+  Eko Local Government Expenditure
+    N
+    Hospital building
+200,000
+    Drugs
+180,000
+    Hospital beds and Mattresses
+  40,000
+   Doctors’ and nurses’ Salaries
+120,000
+    Administrative expenses
+  50,000
+48.
+Capital expenditure is
+A.
+N420,000
+B.
+N380,000
+C.
+N240,000
+D.
+N200,000
+49.
+Recurrent expenditure is
+A.  N390,000
+B.   N360,000
+C.   N 350,000
+D.   N 170,000
+50.
+A governmental accounting system must make sure
+that
+A.       revenue exceeds expenditure
+B.         all applicable legal provisions are complied with
+C.        capital expenditure is equal to revenue
+D.
+capital project fund is tied to recurrent
+expenditure.
+1.
+The most important reason for studying accounting is
+that
+ A.
+the information provided by accounting is useful
+in making decisions
+B.
+accounting plays an important role in a society
+C.
+the study of accounting leads to a challenging
+career
+D.
+accounting provides gross profit information.
+2.
+   In preparing accounting records, the owners of a
+business and the business are treated as
+A.
+the same person      B. having business  relation-
+ship C.
+separate legal entities
+D. partners
+3.
+Creditors use accounting information for the purpose
+of
+A.
+planning sales to a company
+B.
+controlling a company’s affairs
+C.
+investing in a company
+D.
+assessing a company liquidity.
+4.
+The instruments that are generated when firms enter
+into business transactions with others are called
+A.
+purchases documents
+B.
+journals
+C.
+source documents           D.
+invoices.
+5.
+The document that is used to acknowledge the accep-
+tance of the return of goods by the seller from the buyer
+is known as
+ A.
+credit note
+B.
+debit note
+C.
+invoice
+D.
+voucher.
+6.
+ The effects of the payment of a liability is that it
+A.
+increases both assets and liabilities
+B.
+increases assets and decreases  liabilities
+C.
+decreases assets and increases liabilities
+D.
+decrease both assets and liabilities.
+Principles of Accounts  1997
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 10] ---
+A.   uncredited cheques
+B. dishonoured cheques
+C.      direct remittance to the bank D. unpresented cheques.
+13. An examination of the cahs book on 3rd August 1993
+showed a different balance from the bank statement of
+31st July 1993 which read N722. Uncredited cheques were
+Bimpe N 40: Wale N60 while unpresented cheques were:
+Usman  N 20. Kalu N32 and Musa N 70. What is the cash
+book balance after the reconciliation?
+A.
+N700
+B.
+ N 770
+C.
+N800 .
+D.
+N 822.
+Use the information to answer questions 14 and 15
+On 30/05/93 Tolu & Co. paid 2 years rent of N50,000
+which was debited to the rent account
+14. At 31/12/93, what portion of that amount was prepaid?
+A.
+N14,583
+B.
+N 25,000
+C.
+N 35,417
+D.
+ N 37,415
+15. The adjustment needed as at 31st December, 1993 as?
+A.
+debit rent account and credit adjustment
+account
+B.
+debit prepayment account and credit rent
+account prepayment account
+D.
+debit adjustment account and credit
+prepayment account
+16.  The receipt of cash from a customer who bought goods
+with N800 list price 25% trade discount and 2/10, n/30 term
+would, If paid within discount period, amount to
+A.
+ N576
+B.
+N588
+C.
+N600
+D.
+N624
+17. At the end of a financial period, the trading profit and loss
+account of a company showed a profit of N120,000. It was
+however recorded that revenue of N12,000 was recovered as
+expenses while expenses of N4,000 had been recorded as
+revenue. What should be the correct profit for the period?
+A.
+N104,000
+B.
+N128,000
+      C.
+N136,000
+ D.
+N144,000
+18.
+Given
+   N
+Net profit
+25,000
+Cost of sales
+25,000
+Sales
+85,000
+Determine the total expenses.
+A.N45,000  B.N35,000  C.N25,000  D.N15,000
+19.
+Given capital, N13,000;office machinery, N9,000; credi-
+tors, N900; stock of goods, N1,550; debtors, N275; cash
+at bank, N5,075 and loan from Jumbo, N2,000. What is
+the balance sheet total?
+        A.
+N19,500 B.
+N18,500      C.
+N17,900
+       D.
+N15,900
+20.
+The recording of wages due but not yet paid, is an
+example of an adjustment for
+A.
+apportionment of revenue between two periods
+B.
+recognizing accrued expenses 
+C.
+recognizing unaccounted revenue
+D.
+ recognizing prepaid expenses.
+21.
+The process of allocating the cost of an intangible
+asset over its useful life is known as
+A.
+depreciation
+B.
+ extraction
+C.
+depletion
+D.
+ amortization
+22.
+The principal use of control accounts is to
+A.
+ Localize errors within the ledgers
+B.
+ prevent fraud
+C. increase sales
+D.
+ record assets and liabilities
+23.
+In the absence of a sales day book or sales account,
+the credit for sales can be computed from
+A.
+ creditors control account
+B.
+debtors control account
+C.
+ opening figures of the balance sheet
+D.
+closing figures of the balance sheet
+24.
+Which of the following conditions best represents
+the net effect of discount allowed on credit sales on
+the account of a business?
+A.
+Decrease in the closing balance of sales ledger
+control account
+B.
+ increase in net profit
+C.
+increase in the values of sales.
+D.
+decrease in the value of purchases in the trading
+account.
+25.
+The total of the creditors at the beginning of the
+year was N4,600 and at the end of the year N5,250.
+During the year, N26,500 was paid to suppliers and
+N130 was received in discounts from these suppliers.
+The purchases for the year would be
+A.
+N26,630 B.
+ N27,038
+C.
+N27,150 D.
+N27,280
+26.
+Given
+     N
+Capital at the beginning
+    20,000
+Drawings
+      3,000
+Capital at end
+    30,000
+New capital introduced
+      8,000
+What is the profit for the period?
+A.
+N4,000
+B.
+N5,000
+C.
+N6,000
+D.
+N8,000
+27.
+In analyzing incomplete records, which of the
+following should be investigated?
+A.
+The general ledger.
+B.
+The purchases daybook and sales day
+book
+C.
+The nature trading activities and the basis
+on which goods are sold.
+D.
+The asset register together with the
+depreciation schedule
+28.
+Which of the following stock valuation methods is
+suitable under inflationary conditions?
+A.
+ FIFO
+B.
+LIFO
+C.
+Simple average
+D. Weighed
+average
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 11] ---
+29.
+Given
+         N
+Direct material
+      10,000
+Director labour
+        5,000
+Director expenses        2,000
+Factory overhead        4,000
+What is the prime cost?
+A.
+N21,000 B.
+ N17,000
+C.
+N15,000 D.
+N6,000
+30.
+The understatement of closing value of work-in-
+process would have the effect of
+A.
+understating cost of goods manufactured
+B.
+overstating prime cost of goods manufactured
+C.
+overstating cost of goods manufactured
+D.
+understating prime cost of goods
+manufactured.
+31.
+Emeka Manufacturing Company (Extract)
+Manufacturing Account.
+Direct material
+      N5,000
+Direct labour
+      N4,000
+Direct expenses
+      N3,000
+Factory overhead
+      N2,500
+Selling and distribution
+      N1,500
+Calculate the production cost.
+A.
+N16,500
+B.
+N15,000
+C.
+N14,000
+D.
+N12,500
+32.
+The difference between a trading account and a
+manufacturing account is that while the
+manufacturing account
+A.
+has no particular period, the trading account
+has
+B.
+does not consider the cost of goods involved,
+the trading account does
+C.
+is concerned with the cost of production
+the trading account is not
+D.
+is not concerned with the stock of raw
+materials, the trading account is.
+33.
+An income and expenditure account is a summary
+of
+A.
+all income and expenditure during a period
+B.
+revenue income and expenditure during a
+period
+C. receipts and payment during a period
+D.
+the trading income during a period
+Use the information below to answer questions 34 and 35
+Gbagada Social Club
+Receipt and Payments Account for the year 1993
+N
+  N
+Balance b/d
+720          Rent                       180
+Subscriptions
+14,300     Furniture             3,500
+Proceed from raffle draws  2,000       Rate                       580
+                 Stationery             120
+Musa
+   N
+Kalu
+  N
+Lawal
+   N
+Musa
+   N
+Kalu
+   N
+Lawal
+N
+                Welfare
+                                                               expenses            1,000
+                  Raffle prize           950
+                 Balance c/d       10,690
+17,020
+17,020
+Additional Information
+1:1:93
+31:12:93
+N
+N
+Subscription in arrears
+300
+450
+Furniture
+7,000
+Subscription received in advance
+   500
+400
+Rate owing
+  50
+60
+34.
+Subscription relating to the accounting year 1993 in
+the income and expenditure account is
+A.
+N15,050
+B.
+N14,550
+C.
+N14,300
+D.
+N13,400
+35.
+Accumulated fund on 1st January 1993 is
+A.
+N8,570
+B.
+N8,470
+C.
+N7,850
+D.
+N7,520
+36.
+Adamu Babaji and Chukwu are in partnership and
+they share profit and losses on ratio 3:2:1. Their
+respective capitals are N20,000, N15,000 and N5,000
+on which they are entitled to interest at 5% per
+annum. The profit for the year before charging interest
+on capital amounted to N5,500. Calculate the profit
+for Adamu.
+A.
+N583
+B.
+N1,000
+C.
+N1,167
+D.
+N1,750
+Use the table below to answer questions 37 and 38
+Partners Current Account
+Interest
+         Interest
+ On
+           on
+ capital     10,000   8,000    8,000   capital           800        600        360
+Drawings   8,800   10,000   6,000   Share of
+                28,800  18,000  14,000  profit         26,200   13,100   13,100
+Balance                                           Balance
+  b/d          1,800   4,300      540       c/d             1,800     4,300      540
+          28,800    18,800  14,000
+The current account above for Musa, Kalu and Lawal has
+some errors in the arrangement of accounts.
+37.
+The correct closing balance for Musa’s current account
+is
+A.
+N36,200 credit
+B.     N16,600credit
+C.
+N16,600debit
+D.    N1,800 credit
+38.
+The correct closing balance of Lawal’s current
+account is
+A.
+N21,100 debit
+B.
+N14,740 debit
+      C.
+N14,740 credit
+D.
+N540 credit
+39.
+Faruk and Osawe are in partnership sharing profits
+and losses in the ratio of 3:7. Faruk is to receive a
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 12] ---
+salary of N9,000. In one accounting period, the business
+recorded a loss of N1,500 (before deduction
+of Faruk’s salary). The appropriate distribution of
+the net loss would be
+A.    Faruk,(N450);Osawe,(N1,050)
+             B.    Faruk,(N3,150); Osawe (N7,350),
+             C.     Faruk,(N2,250);Osawe,(N5,250),
+             D.     Faruk, (N8,550);Osawe,(N1,050)
+40.
+On partnership dissolution, if partner’s capital account
+has a debit balance and the partner is insolvent, the
+deficiency will in accordance with the decision of the
+case of Garner v Murry, be
+A.
+Borne by all the partners
+B.
+Borne by the insolvent partner,
+C.
+ Written off,
+ D.
+Borne by the solvent partners
+41.
+Share premium can be used to
+i. Write off discount on shares  ii. Give loans to direc-
+tors,  iii. Pay dividends, iv.  Pay company’s formation
+expenses
+A.
+i and iv only
+B.
+ i and iii
+C.
+ii and iii only
+D.
+iii and iv only
+42. A company has 5% debentures worth N500,000, ordi-
+nary capital N2,000,000, and preference shares N1,500,000.
+If the company made a profit of N1,000,000, the deben-
+ture interest would amount to
+A.
+N1,000,000
+B.
+N500,000
+C.
+N50,000
+D.
+N25,000
+43. Alabede (Nig.) limited issued 50,000 ordinary shares of
+N1 each at market value of N2.50 each. The share pre-
+mium is
+A.
+N125,000
+B.
+N100,000
+C.
+N75,000
+D.
+N50,000
+44. A dividend of % in a company on 500,000 ordinary shares
+of N1 nominal value has been declared. How much will a
+shareholder receive if he has 200 shares?
+A.
+N500,000
+B.
+N50,000
+C.
+N200
+D.
+N20
+Us the information below to answer questions 45 & 46.
+Udoh trading company
+Balance sheet as at 31st December, 1992
+Capital
+ 39,000
+Land
+20,000
+Loan term      15,000
+Building                30,000
+Creditors         9,000
+Stock
+  4,000
+Acrued wages 5,000
+Cash
+  8,000
+Debtors
+6,000
+           68,000
+68,000
+45. What is the working capital?
+A.
+N12,000
+B.
+N11,000
+C.
+N8,000
+D.
+N4,000
+46. The acid test ratio in the company is
+A.  1:1
+B.  1:2
+C.  2:3
+D.  3:2
+47. If goods are invoiced to the branch at cost and the in-
+voice par value is N2,000 with 5% discount rate, cash
+remitted to the head office is
+A.
+N2,100
+B.
+N2,000
+C.
+N1,900
+D.
+N100
+48. Which of the following are advantages of departmental
+accounts? (i) The department making the highest profit
+can be easily determined (ii) The capital of the business
+can be calculated easily (iii) Easy knowledge of the
+sources of funding (iv) Encouragement of healthy rivalry
+among the various departments.
+ A. i and iv only
+B.
+ ii and iii only
+C.
+ii and iv only
+D.
+ 
+iii
+and iv only
+49. Public sector accounting is based on
+A.
+cash
+B.
+accrual
+C.
+         budgets
+   D.
+consolidated fund.
+50. The end result of governmental accounting procedure is
+to
+A.
+keep proper records of government
+expenditures
+B.
+give financial information to the public and
+investors
+C.
+produce timely and accurate financial re
+ports timely and accurate financial reports
+for legislators and the public
+D.
+give information on the performance of
+public enterprises
+Principles of Account 1998
+1.
+The Act establishing the Institute of Chartered
+Accountants of Nigeria (ICAN) came into force on
+A.  1st September, 1960
+B.  1st October, 1960
+C.  1st October,1963
+D.  1st September,1965.
+2.
+Cost reports for attention of management should
+reflect
+A.
+as much details as possible
+B.
+summary figures only
+C.
+details of non-controllable expenses
+D.
+cost and comparable data useful in decision-
+making.
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 13] ---
+9.
+If the inventory at the end of the current year is
+understated and the error is not caught during the
+following year, the effect is to
+A. understate income this year and understate in
+      next year
+B. overstate income this year and overstate in next
+     year
+C. understate this year’s income with no effect on
+      next year’s
+D. overstate the income for the two-year period.
+10.
+The total of the discounts received column in the
+cash book is posted to the
+A.
+credit of the discounts received account
+B.
+debit of the discounts allowed account
+C.
+credit of the discounts allowed account
+D.
+debit of the discounts received account.
+Use the information below to answer questions 11 and 12
+The initial imprest as at July 1st was N500. Petty cash voucers
+with the custodian by July 15th added up to N394. An IOU slip
+received from a co-worker was N65 and there was a shorage
+of N5 cash. The co-worker made refund on July 18th just
+before  the imprest was replenished.
+11.
+What was the actual cash in the till as at 15th July?
+A.
+N106
+B.
+N101
+C.N70 D.
+N36
+12.
+The amount required to replenish the payments made
+from the imprest was
+A.
+N399
+B.
+N394
+C.
+N358
+D.
+N101
+13.
+State Bank collected a note for Al-Makura Company.
+This collection, not yet recorded in Al-Makura’s
+books, appears on the bank reconciliation as
+A.       an addition to balance per books
+B.         a deduction from balance per bank statement
+C.       an addition to balance per bank statement
+D.       a deduction from balance per books.
+14.
+Mayana Corporation uses special journals to record
+its transactions. If one of Mayana’s customers
+returns merchandize purchased with cash (for a
+refund), it makes an entry in the
+A.
+cash receipts journal
+B. sales journal
+C.
+ general journal
+D.
+cash disbursement journal.
+15.
+Sobande Incorporation acquire a machine that
+involved the following expenditures and related
+factors
+                                                                                           N
+Gross invoice price
+15,000
+Sales tax
+900
+Purchases discount taken
+300
+Freight
+750
+Assembly of machine
+500
+Installation of machine
+800
+Assorted spare parts for future use
+1,200
+Turning and adjusting machine
+700
+3.
+Responsibility accounting is particularly concerned
+with
+A. historical accounting
+B. controllable costs
+C. storekeeping
+D. valuation of stocks
+4.
+An advantage of the use of the voucher system is
+that it
+A.
+reduces the number of cheques that will be
+written during any given period
+B.
+provides a highly flexible system for handling
+unusual transactions
+C.
+provides a comprehensive record of business
+done with particular suppliers
+D.
+ensures that every expenditure is reviewed and
+verified before payment is made.
+5.
+A business transaction is recorded in the books of
+accounts when the
+A.
+owner of the business invests his N10,000 in
+another company
+B.
+business retains part of its profits for future
+expansion purposes
+C.
+business applies for overdraft facilities from
+its bankers
+D.
+ owner of the business collects N5,000 from
+the accountant.
+6.
+When a transaction causes an asset account to
+increase, there is
+A.
+a decrease of equal amount in the owner’s
+equity account
+B.
+ an increase in a liability account
+C.
+an increase of equal amount in another asset
+account
+D.
+ a decrease of equal amount in a liability
+account.
+7.
+  N
+Bank account
+59,410
+Capital account
+50,000
+Purchases account
+20,000
+Rent
+2,500
+Stationery
+ 90
+Typewriter
+ 6,500
+Sales
+ 38,000
+In preparing a trial balance from the list of balances
+given above, what is the total in debit and credit
+columns?
+A.
+N147910
+B.
+N138500
+C.
+N88500
+D.
+N85800
+8.
+The purchase of two generators by Hassan
+Electronics Enterprises should be recorded as
+A.
+an acquisition of fixed assets.
+B.
+ an expense in its general office expenses
+column.
+C.
+an acquisition of stock,
+D.
+a part of capital in the capital account.
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 14] ---
+What is the initial accounting cost of the machine?
+A.
+N19,550
+B.
+N18,950
+C.
+N18,350
+D.
+N17,500
+16.
+A pottery company had sales of N176,000 during
+the current period and a gross profit rate of 40%.
+The company’s cost of merchandize available for
+sale during the period was N128,000. The company’s
+ending inventory is
+A.
+N22,400
+B.
+N32,000
+C.
+N51,200
+D.
+N76,800
+Use the information below to answer questions 17 and 18
+Wazobia Enterprises Balance Sheet as at 1/1/95
+Liabilities
+   N
+Assets
+   N
+Capital
+40,000
+Furnishing
+10,000
+Ceiling fan
+  1,500
+Cash in hand
+28,500
+40,000
+40,000
+If at 31/1/95 the following information was ascertained (i)
+Rent shop N12,000 paid for the year (ii) Total purchases
+N15,000 (iii) Total sales N8,200 (iv) Stock of goods left
+N10,000 (v) Paid sales boy N500.
+17.
+What is the new balance sheet total as at 31/1/95?
+A.
+N40,000
+B.
+N41,500
+C.
+N41,700
+D.
+N48,500.
+18.     What is the balance on its cash account as at 31/1/95?
+A.
+N22,800 B.
+N21,200
+C.
+N9,200
+D.
+N800
+19.
+On 1st January, 1993, Lobo Company purchased
+equipment for N18,000. It uses straight-line
+depreciation and estimates an eight-year useful life
+and a N2,000 salvage value. On 31st December, 1996,
+it sells the equipment for N8,000. In recording this
+sale, it should reflect
+A.
+N10,000 loss
+B.
+N2,000 loss
+C.
+N6,000 gain
+D.
+N8,000 gain
+20.
+The balance on a purchases ledger control account
+represents the
+A.
+ present amount that a business owes its
+suppliers at date.
+B.
+ Total credit available to the business at the
+end of the year to be utilized in future
+C.
+total credit the business enjoyed for the
+particular year from its suppliers. D. total credit
+owed the business by its customers.
+21.
+A powerful instrument of control over both the sales
+ledger and the clerk whose duty is to post the ledger
+is the
+A. total debtors account.
+ B. Purchases day book
+ C. sales daybook
+D. Cash book..
+ 22.
+Mini Enterprises sales Ledgers as at 31/12/94 read:
+N
+Balance b/f
+12750
+Total credit sales
+28185
+Payments by debtors
+12112
+Discount allowed
+638
+Sales returns
+1500
+Prepare the sales ledger control account and deter
+mine the balance due from debtors.
+A.
+N40935 B.
+N27961
+C.
+N26685 D.
+N1185
+23.
+Determine the year’s purchases from the following
+information relating to a firm
+N
+Total creditor’s b/f
+7200
+Total cash payments to suppliers 98800
+Total creditors c/f
+8400
+A.
+N7,200
+B.
+N98,800
+C.
+N100,000
+D
+N105,200
+24.
+Derive the total sales figure from the following
+information extracted from a firm’s cash book and
+other relevant records.
+N
+Total debtors b/f
+5,600
+Total cash receipts from debtors
+and cash sales
+153,000
+Total debtors c/f
+6,800
+A.
+N6,800
+B.
+N153,000
+C.
+N154,200
+D.
+N159,800
+25.
+The statement of affairs prepared from incomplete
+records can be described as
+A.
+the summary of all the business transac
+tions of the trader ascertained by the
+accountant
+B.
+a balance sheet at a particular date
+showing the assets and liabilities of the
+business
+C.
+a schedule of all the business ventures
+entered into for the period to which the
+records relate
+D.
+the statement that shows the profit or loss
+made during the period.
+26.
+The contribution margin on a job is the
+A.
+gross profit
+B.
+ net profit
+C.
+excess of sales revenue over variable costs
+D.
+difference between fixed and variable costs.
+27.
+The objective of allocating all costs to product is to
+A.
+produce a scientifically accurate cost
+B.
+avoid unallocated overhead and compute
+total product cost
+C.
+co-ordinate the cost and financial accounts
+D.
+compute the contribution of the product
+to the final profit.
+Use the information below to answer questions 28 and 29
+Raw materials inventory at the beginning of a period was
+N46,800 and at the close of the period there was a balance of
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 15] ---
+N38,600. From the purchases made during the period,
+defective  materials costing N9,200 were returned. Cost of
+materials consumed during the period was N448500.
+28.
+What was the total purchases made during the
+period?
+A.
+N487100
+B.
+N457700
+C.
+N449500
+D.
+N440300
+29.
+What is the cost of materials available for use during
+the period?
+A.
+N487100 B.
+N449500
+C.
+N448500 D.
+N440300.
+30.
+A non-profit-making organization differs from a profit
+making on in that
+A.
+it does not earn income
+B.
+proceeds from sale of shares form part of its
+income
+C.
+all its income is committed
+D.
+annual subscriptions and levies form part of
+its income.
+31.
+The limitations of the receipts and payments account
+arise mainly because of the reliance
+A.
+ cash movement as evidence of transaction
+B.
+the accounting officer to report
+C.
+the capital account of the organization
+D.
+ the transaction papers as evidence of
+transaction
+32.
+The trading account is to a sole trader what income
+and expenditure account is to a
+A.
+partnership
+B.
+public limited organization
+C.
+ manufacturing organization
+D.
+ non-profit-making organization.
+33.
+Which of the following indicate that a partnership
+business is in place? (i) there is a business (ii) it is
+run commonly by partners (iii) it has profit-making
+in view (iv) partners’ liability is limited.
+A.
+i and ii only
+B.
+i,ii and iii only
+C
+.i,ii and iv only D.
+ii,iii and iv only.
+34.
+When forming a partnership, new partners should
+record non-monetary assets on the new
+partnership’s books at
+A.
+their current fair market values
+B.
+their historical costs when first used
+C.
+their historical costs when first purchased
+by each new partner
+D.
+the highest values practical so that future
+income tax deductions are maximized.
+35.
+Umar and Ahmed share profits and losses equally
+and have capital balances of N40,000 and N60,000
+respectively. If Abdullahi purchases a one-third
+interest with no bonus, how much will he have to
+contribute to the partnership?
+A.
+N33,333 B.
+N40,000
+C.
+N44,444 D.
+N50,000
+36.
+Which of the following is an intangible asset and a
+measure of a firm’s superior earning power?
+A.
+Patent
+B.
+ Goodwill
+C.
+Trademark
+D.
+Right issue.
+Use the information below to answer questions 38 and 39
+       Dan & Baker are in partnership with capitals of N50,000
+and N30,000 each. The partnership agreement provides
+that: (i) profits be shared in the ratio of capital (ii) Baker
+be paid a salary of N8,000 (iii) both partners pay inter-
+est on drawings at 6% p.a.
+At the end of the year, Dan drew N15,000 while Baker
+drew N14,000 in four equal installment on 31/3, 30/6, 30/
+9 and 31/12. The net profit for the year was N48,000.
+N5,000 is to be written off the Goodwill account.
+38.
+What is the interest on the drawings by Baker?
+A.
+N210
+ B.
+N315
+C.
+N450
+ D.
+N840
+39.
+Determine the total interest on capital due to the
+partners.
+A.
+N1200
+B.
+N1800
+C.
+N3000
+D.
+N4800
+40.
+The ordinary shareholders enjoy the following rights
+except the right to
+A.
+ vote at annual general meetings
+B.
+elect the board of directors
+C.
+ participate in additional issues of shares
+D.
+receive dividends at a predetermined rate.
+41.
+Granada Corporation has net assets of N600,000 and
+contributed capital of N180,000. The corporation has
+30,000 shares of common stock outstanding with no
+preferred stock. This suggests that the corporation
+has
+A.
+ a book value of N14 per share
+B.
+a book value of N20 per share
+C.
+a deficit of N420,000
+D.
+ retained earnings of N600,000
+42.
+Under which of these conditions can a company
+issue shares at discount? (i) a resolution must be
+passed at a general meeting (ii) the amount of
+discount must be stated in the resolution (iii) the
+share must have existed for at least six years. (iv) on
+the order of a court.
+A.
+ i,ii and iii only
+B.
+i,ii and iv  only.
+ C.
+i,iii and iv only
+D.
+ ii,iii and ivonly
+43.
+The part of equity which is payable on winding up
+is called
+A.        general reserve       B. revenue reserve
+C.
+capital reserve     D. normal reserve
+44.
+To compute gearing ratio, divide
+A.
+profit by capital employed
+B.
+current assets by current liability
+C.
+profit by total assets
+D.
+long-term debt by equity capital.
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 16] ---
+45.
+Which of the following entries is effected by  a
+department when goods are charged to it at selling
+prices?
+A.
+ Stock account is debited
+B.
+ Purchases account is debited
+C.
+ stock account is credited
+D.
+ mark-up account is debited.
+46.
+The difference between the closure of the books of
+a branch and those of a separate company is that
+A.
+there is retained earnings account on
+the branch books
+B.
+the revenue and expense account is
+closed to branch current account
+C.
+there is no retained earnings account
+on the branch books
+D.
+ the revenue and expense account is not
+closed to the home office current account
+47.
+The term fiscal compliance means
+A.
+all financial and related laws and
+regulations are adhered to
+B.
+only the budget for the current period is
+compiled with and no deficits allowed
+C.
+all physical assets requirements have been met
+1.
+Accrual concept stipulates that
+A.
+revenue should be recognized when it is
+earned
+B.
+costs should be recognized when the
+expenditure is paid
+C.
+revenue should be recognized only when
+cash is paid
+D.
+costs should be recognized when they
+are incurred.
+2.
+The basic role of accounting is to;
+A.     detect fraud
+B.
+altest to financial statement
+C.
+ measure performance
+D.
+protect shareholders
+3.
+The need for changes in accounting theory in
+Nigeria was influenced by the
+A.
+dynamics of commercialization and
+privatization policies
+B.
+growth in size of business units
+C.
+introduction of he structural adjustment
+programme
+D.
+ inconvertibility of the nation’s currency.
+4.
+A book-keeping error occurs when there is a.
+A.
+ deliberate manipulation of records
+B.
+unintentional correct posting in the
+ledger
+C.
+intentional failure to record transactions
+and oversights that are no intended
+D.
+interest records and completely
+oversights that are not intended.
+p
+g
+y
+p
+p
+accountability in the public sector.
+48.
+In a public corporation, the capital expenditure
+incurred in a financial period is
+A.
+ spread over the useful life of the assets
+through depreciation
+B.
+apportioned at a pre-determined rate
+stipulated by law
+C.
+written off in the year in which they occur
+D.
+merged with recurrent expenditure and
+reported in one lump sum.
+49.
+Money not required to meet chargeable expenditure
+in any fiscal year under cash accounting, should be
+A.
+surrendered to the consolidated revenue fund
+B.      carried forward to the next financial year
+C.       reserved to meet any deficits or contingencies
+D.      returned to the taxpayer.
+50.
+If a monthly insurance premium is remitted to a
+company by the state government, the initial
+deductions from employees are recorded in
+A.
+the general fund
+B.      agency fund
+C.
+special fund
+D.      general long-term fund.
+Principles of Accounts 1999
+5.
+When a proprietor withdraw cash from the business
+for private use, he
+A.
+debits cash account and credits drawings
+account
+B.
+credits cash account  and debit its bank
+account
+C.
+debits bank account and credit drawings
+account
+D.
+credits cash account and debit drawings
+accounts.
+6.
+A basic unifying concept in accounting implies that
+A.
+where creditors’ accoun is zero, the
+assets are equal to the owner’s equity.,
+B.
+there should be a balance in he
+creditors’s account in order to measure
+total assets
+C.
+revcenues should be supported by
+invested and owners’s capital
+D.
+total assets can be less than liability and
+equity.
+7.
+A source document for the sales day book is
+A.  requisition form
+B.
+an invoice
+C. a customer advice D.
+a credit advice.
+8.
+In a cash book, the opening balance was N7,600,
+closing balance N9,200 and the total cash received
+during the period was N18,000.  What was the amount
+of cash paid out during the period?
+A.
+ N8,900 B.
+N9,800
+C.
+N14,600 D.
+N16,400
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 17] ---
+9.
+If the total discount allowed in cash book was N230
+and the total discount received was N255 and the
+total following is true concerning the two discounts?
+A.
+They must be balanced in the cash book
+and the difference taken to the debtors
+ledger,
+B.
+they must be balanced in the cash,
+balance and  the difference taken to the
+trial balance.
+C.
+They should not be balanced in the cash
+book before being taken to the trial
+balance.
+D.
+They should not appear in the trial
+balance a they were already either
+received or paid out.
+10.
+Which of  the following bank reconciliation items
+should not be added or subtracted from the bank
+statement balance to determine the adjusted cash
+balnce?
+A.
+Outstanding cheques
+B.
+Bank service charges
+C.
+deposits in the mail not yet received by
+the bank
+D.
+Bank error, charging a company for
+another company’s cheques.
+11.
+The fixed amount of money given to a petty cashier
+at the beginning of a period is called
+A.
+imprest B.
+petty cash
+ C. float
+D.
+cash advance
+12.
+A provision for bad debt account had N3,800 at the
+beginning of the year and N4,220 at the close of the
+year.  If bad debts are calculated at the rate of 1/20% of
+annual credit sales. what was the credit sales for the
+period?
+A.
+N210,000
+B.
+N844,400
+C.
+N840,000
+D.
+N500,000.
+13.
+Asa company bought a vehicle worth N20,000 and
+the vehicle is to be depreciated 5% using the
+reducing balance method of depreciation, what would
+be the value of the assets after 3 years?
+A.
+N19,000.00
+B.
+N18,050.50
+C.
+N17,147.50
+D.
+N16,290.13
+         Use the information below to answer questions 14 and 15
+  N
+Capital: Opening balance
+307,000
+Closing balance
+342,000
+Net profit for the period
+121,600
+Opening stock
+ 98,800
+Purchases
+706,000
+Carriage inwards
+ 17,500
+Cost of goods sold
+740,700
+Total selling, general and
+Administrative exps
+526,000
+Discount received
+    9,650
+14.
+What is the closing stock for the period?
+A.
+N69,300
+B.
+N84,300
+C.
+N81,600
+D.
+N106,400
+15.
+Calculate the gross profit for the period
+A.
+N535,650
+B.
+N628,300,
+C.
+N637,950
+D.
+N647,600
+16.
+Chibuike bought 36 notebooks at N10 each from
+John and was given a trade discount of 5%.  In
+addition, he as offered 1% cash discount which
+he took advantage of.  How much did Chibuike
+pay?
+A.
+N338.58
+B.
+342.000
+C.
+N345.42
+D.
+N360.00.
+17.
+Depreciation on a particular piece of machinery
+was N2,700 during the fifth year of its service
+life and N4,050 during the sixth year.  The
+logical explanation for this is that.
+ A. an addition was made to the asset
+during the sixth year.
+B.
+the estimate of salvage value on this
+equipment was decreased at the
+beginning of the fifth year
+C.
+a unit-of-output method of depreciation
+was used during the sixth year.
+D.
+the estimated remaining service life of
+the asset was increased at the
+beginning of the sixth year.
+18.
+The main features of the single entry system
+are that
+A.    books of accounts are not maintained
+and business relies only on bank
+statement
+B.
+the journal records are absent and only
+the main ledger is kept
+C.
+there are incomplete classifications and
+recording procedures
+D.
+only credit sales transactions and credit
+purchases are recorded.
+19.
+The principal function of a sales ledger control
+account is to
+A.
+serve as internal check and provide
+quick information for the preparation of
+interim financial statements
+B.
+serve as external check and provide
+quick information for the preparation of
+interim financial statements
+C.
+provide quick information for the
+preparation of customers’ statements,
+D.
+provide information for the control of
+salesmen’s activities
+20.
+In dealing with incomplete records, fixed assets
+are posted to
+A.    opening profit and loss as brought
+forward figures
+B.
+closing balance sheet as carried forward
+figures
+C.
+closing balance sheet as brought
+forward figures
+D.
+closing profit and loss as bought
+forward figures.
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 18] ---
+Use the information below to answer questions 21 and22
+Aminu and Sons credit purchases (Extract) as at February, 1996
+     N
+Feb 1 Credit balances
+  40,000
+Debit balances
+    1,000
+Feb 28 Purchases journal totals
+500,000
+Returns outwards journal total           50,000
+Cheques paid to suppliers
+400,000
+Promissory notes sent to suppliers    30,000
+Discount received from suppliers
+  8,000
+Credit balances in the purchases
+ ledger set off against debit balances
+in the sales ledger
+ 2,000
+21.
+The total for the purchases ledger control account
+is
+A.
+N480,000
+B.
+N490,000
+C.
+N500,000
+D.
+N540,000
+22.
+What is the balance c/d in the purchases ledger
+conrol account?
+A.
+N2,000
+B.
+N8,000
+C.
+N40,000
+D.
+N45,000.
+23.
+Given:
+ N
+Total cash received from debtors
+30,000
+Total purchases for the period
+21,000
+Amount owed by debtors at the beginning
+of the period
+4,000
+Equipment bought
+2,500
+Amount owed by debtors at the
+end of the period
+3,000
+Determine the value of sales for the period.
+A.
+N29,000 B.
+N31,500
+C.
+N46,500 D.
+ N50,000
+24.
+When the factory cost of production has been
+ascertained, manufactured goods are transferred
+to trading accounts by
+A.
+ debiting manufacturing account and
+crediting trading account
+B.
+crediting sales account and debiting
+trading account
+C.
+debiting sales account and crediting
+trading account
+D.
+crediting manufacturing account and
+debiting trading account.
+25.
+Lawal and Co makes blocks and sells to builders.
+In computing prime cost, which of the following
+costs would be considered appropriate?
+A.
+Cement, sand and carriage outward
+B.
+Water, carriage inwards and cement
+C.
+Sales boys wages, cement and sand
+D.
+carriage outwards, carriage inwards and
+cement.
+26.
+Manufacturing cost can be classified based on
+A.     timing of charges, degree of averaging, ease
+of traceability and timing of charges
+B.
+degree carriage inwards and cements
+C.
+degree of averaging and size of capital
+D.
+number of employed, timing of charges and
+management style.
+27.
+The difference between the factory cost of
+production and prime cost production is
+A.
+direct materials
+B.
+direct labour
+C.
+selling expenses D.
+overhead.
+28.
+Receipts and payments account of a non-profit
+making organisation is principally a summary of
+the
+A.
+bank entries B.
+cash book entries
+C.
+expenditure entries D. balance sheet entries.
+29.
+Given:                              N
+Club debtors at start
+150
+Cash sales
+4,850
+Club debtors at close
+  900
+Cash received from debtors   550
+What is the amount club sales
+A.
+N6,150
+B. N4,850
+C.
+N4,650
+D. N1,300
+30.
+A credit balance on a receipts and payments
+account indicates that the non-profit making
+organisation.
+A.    had more revenues than expenses during
+the period
+B.
+did not owe much liabilities during the
+period
+C.
+received more cash than it paid out during
+the period
+D.
+ made more cash payments than it received
+during the period.
+31.
+Goodwill can be valued in partnership when,
+A.
+partners make profits
+B.
+large losses are made
+C.
+a partner retires
+D.
+a new branch is opened.
+32.
+As part of the initial investment, a partner
+contributes office equipment that originally cost
+N20,000 and on which provision for depreciation
+of N12,500 had been recorded.  If the partners agree
+on a valuation of N9,000 for the equipment, what
+amount should be debited to the office equipment,
+what amount should be debited to the office
+equipment account?
+A.
+N7,500
+B. N9,000
+C.
+N12,500
+D. N20,000
+33.
+When a partner makes a drawing of stock items
+from a partnership, the accounting impact of the
+drawing is to increase the partner’s
+A.
+Goodwill account balance
+B.
+Current account credit balance
+C.
+Current account debit balance
+D.
+Profit and account credit loss
+balance.
+34.
+Appropriate Account
+ Kudu
+ Wale
+Interest on capital
+   750
+  550
+Salaries
+   800
+  600
+Share of profits
+3,300
+3,300
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 19] ---
+Determine the net profit of the partnership
+A.  N 9,300  B.  N 6,600  C.  N 4,850  D.  N 4,450
+35.
+Dele and Seun who are in partnership, have decided to
+convert their business into a limited liability company
+where both become directors. To convert the business
+A.
+They will simply continue since there are
+no new members.
+B.
+The partnership is formally ended and new
+company books opened.
+C.
+The shares and all other items will be shared
+equally and not in their former ratios.
+D.
+Computation of goodwill must b e done as
+it is legally required.
+36.
+If a sole proprietorship is purchased for cash, then
+                        A.
+The purchaser debits his business  purchase
+                         account with the consideration he pays.
+                        B.
+All assets and liabilities must be bought
+                         C. Goodwill results where value liabilities taken
+is higher than the value of assets.
+                         D. The vendor debits his businesspurchase
+account with the consideration he receives.
+37.
+The market price per ordinary share of a corporation
+listed on the stock exchange is most closely related to its
+A.
+Earnings per share
+B.
+Redemption price per share
+C.
+Book value per share
+D.
+Call price per share
+38.
+Which of the following events increases a corporation’s
+shareholders equity?
+A. Donation of shares out of the corporation’s
+own stock to the corporation
+B.
+The corporation’s purchase of treasury
+stock.
+C.
+Shares of previously subscribed stock
+issued to subscribing stockholders
+D. A municipality donation of land to the
+corporation
+Use the information below to answer questions 39 and 40
+Zoom Plc Balance Sheet (Extract) as at 31st December 1997
+    N
+  N
+Paid-up capital
+200,000  Fixed assets       300,000
+Share premium
+  15,000  Investment         180,000
+Profit & loss a/c  60,000  Stock
+ 28,000
+Debtors                    90,000     Creditors
+200,000
+Provision (3,000)    87,000
+Other current Cas  60,000
+Liabilities
+100,000   Bank
+      100,000
+755,000
+       755,000
+39.
+The quick ratio is
+A.  0.82 : 1  B.  0.91 : 1   C.  0.95 : 1  D.  1.53 : 1.
+40.
+Determine the owner’s equity
+A.  N 200,000
+B.  N215,000
+C.  N 275,000
+D.  N755,000
+41.
+If a promote pays a lawyer N5,000 for services rendered
+in preparing a Memorandum of Incorporation, the
+journal entry is to debit
+                A.
+Preliminary expenses, credit cash, accounts.
+                B.
+Promoters, credit creditors’ Accounts.
+                C.
+Lawyer’s credit cash accounts
+                D.
+Cash credit incorporation accounts.
+42.
+Calls in advance are treated in the balance sheet as
+A.
+Current asset
+ B.
+  Current liability
+ C.
+ fixed assets
+D.
+fixed liability.
+43.
+Shares issued to a vendour in payment of business
+purchased would require a debit to
+                 A. Cash account and credit to share capital account
+                 B. Share capital account and credit to vendor’s
+account
+                C.
+Vendor’s account and credit to share capital
+account.
+                D.
+Share capital account and credit to cash
+account.
+44.
+The best method of allocating expenses among
+departments is to
+A.
+Allocate expenses to each department in
+proportion to the sales of that department
+B.
+Charge against each department those
+costs which are within its control
+C.
+Charge expenses against each department
+in proportion to the purchases of that
+department.
+D.
+Allocate expenses to each section of the
+department in relation to the number of
+people.
+45.
+To record the transfer of stock fro one department to
+another, the correct entry would be to debit
+A.
+Gods outwards and credit goods inwards.
+B.
+Merchandise account and credit department
+stock account
+C.
+Department transferring and credit department
+receiving
+D.
+Department receiving and credit department
+transferring.
+Use the information below to answer question 46 and 47.
+Amoga Limited invoiced goods at a cost of N 10,000 to its Ikeja
+branch at a margin of 20%. The branch later returned goods
+worth N 1,200 at invoice price to the head office.
+46.
+The profit margin should be
+A.
+debited to goods sent to branch account
+B.
+debited to branch stock adjustment account
+C.
+credited to branch adjustment account
+D.
+credited to branch stock account.
+47.
+What is the correct entry in the head office books at the
+point of initial transfer of the goods?
+A. Branch stock account would be credited
+with N10,000
+B.
+Branch stock account would be debited
+with N12,000
+C.
+Goods sent to branch account would be
+debited with N10,800.
+D. Goods sent to branch account would be
+credited with N12,000.
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 20] ---
+48.
+Capital and revenue expenditures of government are
+usually accounted for under funds which include
+A.
+Personal advances, technical and public funds.
+B.
+Technical, special trust and commercial funds.
+C.
+Personal advances, treasury clearance and special
+trust funds.
+D.
+Commercial loans and treasury clearance funds.
+49.
+Which of the following accounts is kept by local gov-
+ernments in Nigeria?
+A.
+Balance sheet
+B.
+Advances account.
+C.
+Debtors account
+D.
+Profit and loss accounts.
+50.
+The conventional source of public revenue include
+A.
+Loans, taxation, foreign reserves and dividends.
+B.
+Interest, royalties, taxation and loans
+C.
+Crude oil, interest, posted price and taxation
+D.
+Taxation, deficit budgeting, royalties and loans.
+1.
+On November 1, 1998, Zaria Holdings owed N 13,600 in
+respect of creditor. On November 15, it purchased goods
+worth N69,000 and paid a cheques of N51,600. On No-
+vember 29, one of the Holdings’ cheque’s worth N3,000
+was returned while the creditor granted N1,500 discount.
+The amount owed by Zaria Holdings as at November 29
+is
+A.
+ N32,5000
+B.
+N32,000
+C.
+N31,000
+D.
+N29,500
+2.
+To write off bad debt, debit
+A.
+Debtor’s account and credit provision for bad
+debt.
+B.
+Bad debt account and credit debtor’s account.
+C.
+Debtor’ account and credit bad debt.
+D.
+Provision for bad debt.
+3.
+In order to make the cash book balance equal to the
+bank statement, it is usual to add
+A.    Uncredited cheques.     B.   Direct payments by bank
+C.  Bank charges
+ D. Unpresented cheques.
+Use the information below to answer the questions 4 and 5
+    N
+Sale
+            20,000
+Cost of sales
+            10,000
+Operating expenses
+              2,500
+Expenses prepaid included in operating expense
+  500
+4.
+Calculate the net profit.
+A. N12,500
+B. N10,000  C.  N8,000  D. N7,500
+5.
+What is the gross profit margin?
+A.  100%   B.   50%   C.   40%   D.  30%
+6.
+The main object of book keeping is to record economic.
+A.
+Transactions systematically for routine managerial
+decision making.
+B.
+Events clearly to ensure adequate checks and bal-
+ances
+C.
+Events clearly to facilitate strategic managerial de-
+cision-making
+D.
+Transactions systematically to ascertain the finan-
+cial position of a business.
+37.
+Which of the following is an example of intangible as-
+set?
+A.  Trade debtorsB.  Stock of goods
+C.  trade creditors    D.   Motor vehicles
+8.
+A source document that aids the ascertainment of
+amount paid out of a current is the
+A.  Teller   B.  Cheque  stub   C.   Cheque  D.  teller stub
+9.
+Yahuza Enterprises
+Trial Balance (Extracts) as at Dec. 31, 1998.
+                             N        N
+Capital
+21,000
+Premises
+            90,000
+Debtors
+35,000
+Provisions 1/1/98
+Depreciation
+  9,000
+Bad and doubtful debts
+  1,500
+If a premise is to be depreciated at 10% on cost and a
+5% provision is to be allowed on debtors, the total as-
+set in the balance sheet is
+A.  N 125,000   B.  N 114,500   C.   N 105,500  D.  N 105,250
+10.
+The most convenient cash book used by a petty trader
+operating in an area where there is no banking facility is
+A.  Four column
+B.  Three column
+C.  Single column.
+D.  two column
+11.
+A general journal contains
+A.
+Date narration, folio, debit and credit.
+B.
+Date narration, folio, debit and purchases.
+C.
+Folio, credit, date, debit and sales.
+D.
+Debit, credit, narration, date and discount.
+12.
+Which of the following errors will affect the trial bal-
+ance totals?
+A.
+Posting discount allowed to the debit side of the
+discount allowed account.
+B.
+Omission of one account from the list when ex-
+tracting from the ledgers.
+C.
+Failure to post sales of N 2,000 and purchases of
+N 2,000 from subsidiary ledgers.
+D.
+Omission of sales of N 3,000 and purchase of
+N 2,000.
+13.
+An expense account is closed by a debit to
+A.
+An asset account and credit to the expense
+account.
+B.
+The expense account and a credit to an asset
+account.
+ C.
+Profit and loss account and a credit to the expense
+account.
+D.     The expense account and a credit to profit and
+         loss account.
+Principles of Accounts 2000
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 21] ---
+14.
+The accounting convention which stipulates that money
+or goods taken from the business by the owner for per-
+sonal use should be treated as deductions from capital
+is
+A.
+Cost
+B.
+Prudence
+C.
+Consistency   D.
+Entity
+Use the information below to answer questions 15 and 16
+Cost raw materials consumed
+300,600
+Carriage inwards
+    6,700
+Returns of raw materials
+  10,800
+Closing stock of raw materials
+100,250
+Manufacturing wages
+  27,000
+Lighting, power, insurance and rent relating
+to the factory are apportioned 1/3/5, 1/6/
+and 1/7 with totals N30,000, N75,000;
+N36,000 and N56,000 respectively.
+15.
+What is the cost of the opening raw materials?
+A.  N 418,350  B.  N 404,950  C.  N 400,250  D.  N 398,250
+16.
+The production cost of finished goods is
+A.  N 524,600  B.  N 408,000  C.  N 381,600  D. N 327,600
+17.
+Amin Ltd. Creditors Ledger Control Account (Extracts)
+Beginning control account
+      N
+Balances:
+Debit
+32,000
+Credit
+61,000
+Purchases during the year:
+Cash
+30,000
+Credit
+60,000
+Payment to suppliers:
+Cash
+13,000
+Cheque
+29,000
+Debtor’s contra
+6,000
+The closing control account balance is
+A.    N 41,000     B.  N 65,000     C.   N 71,000    D.  77,000
+18.
+ Given:
+   N
+Depreciation of plant and
+machinery
+1,600
+Factory rent
+   650
+Indirect wages
+   695
+General indirect expenses
+  726
+Lubricants
+1,235
+Carriage inwards
+   829
+Factory power
+   350
+Bank charges
+   612
+Carriage outwards
+2,900
+Determine the total factory overhead cost
+A.  N4,485 B.  N5,256  C. N6,085  D.   N6,556
+19.
+Given
+   N
+Cash book items:
+Paid to suppliers
+10,800
+Expenses paid
+  6,900
+Drawings made
+     900
+Balances at start
+15,750
+Balances at end
+  3,870
+Drawings from bank to shop
+   1,720
+Determine the receipt from debtors
+A. N22,470     B. N17,470      C. N8,440      D. N5,000
+20.
+The items entered in an opening statement of affairs of
+an enterprise that keeps incomplete record are
+A.
+Sales income
+B.
+ Receipt
+from debtors  C.
+Fixtures and fittings  D.
+Rent paid
+21.
+In a manufacturing company, the total cost of goods
+produced is equivalent to
+A.  Purchases
+B. Sales
+C. Cost of goods sold
+D.  Cost of materials used.
+  22.
+Given: Sales Ledger Control Account (Extracts)
+   N
+Balance b/f
+10,600
+Total cash payments by debtors
+32,275
+Total credit sales
+59,193
+Discount received
+  9,700
+Balance c/f
+20,751
+Discount allowed
+  2,890
+Determine the sales returns
+A.     N24,577   B.   N13,877   C.     N7,067    D.   N2,890
+23.
+The simplest form of single entry procedure consist of
+keeping a
+A.
+Day book or general journal
+B.
+Cash book and ledger accounts showing debt-
+ors and creditors balances
+C.
+Cash journal, sales journal and purchases jour-
+nal
+D.
+Day book in which transaction are described
+in chronological order.
+24.
+A fixed cost is fixed only in relation to
+A.
+The quantity of goods produced
+B.
+The quantity of goods sold
+C.
+A given period of time a range of activities
+D.
+A given period of time and the nature of activity.
+25.
+One of the shortcomings of single entry procedures is
+that
+A.
+A trial balance is not  available
+B.
+Profits are overestimated
+C.
+There are no subsidiary books
+D.
+There are no control accounts.
+26.
+When a customer’s cheque is returned unpaid in a debtor’s
+control accounting system, the treatment will be
+A.
+debit bank, credit customer and credit control
+account.
+B.
+credit bank, debit customer and debit control
+account.
+C.
+debit customer, credit control account and
+credit bank.
+D.
+credit control account, debit bank and debit
+customer.
+27.
+Didi Ltd. Offered 10,000 ordinary shares of N1.50 each
+at a discount of 2% which were fully subscribed. With
+regard to the offer above,
+A.
+Shares are never offered at a discount; the offer is
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 22] ---
+invalid
+B.
+The value of shares in the capital account will be
+lowered by 2%.
+C.
+The company incurs a loss to the tune of 2% of the
+offer.
+D.
+Each of the subscribers loses 2% of investment.
+Use the information below to answer questions 28 and 29
+Maro Merchant Bank Plc is to issue 500,000 ordinary
+shares of 50k each at N 3,000 per share. Applications
+were received for 1,550,000 shares fully paid, 1,250,000
+shares are to be issued on a pro rata basis and excess
+subscriptions were dishonored and refunds made
+28.
+The refund due to an application for 25,000 shares is
+A. N45,000  B. N30,000  C. N7,500  D. N5,000
+29.
+What will be the number of shares to be issued to a
+subscriber who applied for 30,000 shares?
+A. N20,000   B. N18,000   C. N15,000   D. N12,000
+30.
+Which of the following items does  not feature in the
+balance sheet of a club?
+A.
+Arrears of current year’s subscription
+B.
+Salary arrears paid in the current year
+C.
+Rental income received in advance
+D.
+Advance subscription in respect of a coming year.
+31.
+An outright sale of partnership amounts to the
+A.
+compenstion of vendors by the purchase
+B.
+admission of a new partner
+C.
+purchase of rights of a dead partner
+D.
+change of sharing ratio of vendors
+32.
+Given:
+   N
+Opening Cash balance
+20,000
+Sale of match tickets
+15,000
+Clearing of pitch
+  1,200
+Refreshments
+  3,500
+Referees’ allownace
+  1,000
+Cost of petrol for bus
+  1,120
+Donation from local government
+  3,800
+The club’s cash balance is
+A.
+N39,180
+B.
+N34,830
+C.
+N34,830
+D.
+N31,980
+Use the information below to answer question 33 and 34
+Maimalari Ltd had 1. Earnings per share 30k
+111. Par value of each share N1.20 1V. Market price per
+share N1.50
+33.
+The companys’ yields is
+A.    20.00%   B.
+25.00%   C. 31.33%   D.  39.17%
+34.
+What will be the price earnings ratio of the company?
+A.  3.91 B.  3.19 C.  2.95 D.  2.55
+35.
+The partnership Deed noramally specifies
+A.
+how profits or losses are to be shared
+B.
+the capital to be contributed annually
+C.
+how  salaries are paid to employees.
+D.
+the profit that should be earned annually
+36.
+The accumulated fund of a non-trading concern can
+equally be referred to as
+A.
+members’ equity
+B.  share capital
+C.
+general fund D.  surplus fund
+37.
+When a purchased business is revalued the effects is that.
+A.
+a decrease in the value of assets has no effect no
+value of goodwill
+B.
+an increase in the value of asset is treated as
+an increase in the value of goodwill
+C.
+a decrease in the value of asset is treated as a
+decrease in the value of goodwill
+D.
+an increase in the value of asset is treated as
+decrease in the value of goodwill
+38.
+An item of appropriation in partnership profit and loss
+account is.
+A.
+interest on partners’ capital
+B.
+interest on partners’ loan
+C.
+employees’ salaries
+D.
+partners drawings
+Use the information below to answer question 39 and 40
+Rakya ad Joy are in partnership and agreed that 5% interest per
+annum is to be charged on drawings. The drawing made by both
+partners in one year were:
+Rakiya, N200 on March 31 and N300 on September 30, Joy, N100
+on April 1 and N240 on July 1
+39.
+The interest on Joy’s drawing is
+A.  N6.00   B.  N7.25   C.  N9.00  D.   N9.75
+40.
+Assuming that Rakiya was not credited with any in
+come during the period, what is her closing current ac
+count balance?
+A.
+N340.00 credit
+B.
+N349.75 debit
+C.
+N500.00 credit
+D.
+N511.25 debit
+41.
+A business is acquired at par when the
+A.
+purchase consideration equals good will
+B.
+purchase consideration equals net value
+C.
+purchase consideration is greater than the net
+value is greater than the liabilities.
+Yola Social Club
+Statement of Account 1999 Financial Year
+N
+31/12/98:
+Subscription in arrears
+21,000
+Subscription in advance
+12,000
+Receipts during 1999:
+Arrears
+1998
+21,000
+Dues
+1999
+48,000
+Advance
+2000
+11,000
+The subscription transferable to the income and
+expenditure  account is
+A.   N48,000  B. 59,000  C. N60,000  D. N69,000
+43.
+The most appropriate basis for apportioning inventory
+holding cost among departments is to use the value of
+A.  purchase   B.  opening stock  C. closing stock
+D. average stock
+44.
+The body constitutionally charge with the accounts of
+the Federation and other Assembly in the
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 23] ---
+A.   Public Accounts Committee  B. Public Audit
+Committee
+C. Internal Audit Committee
+D. External Audit Committee.
+45.
+1. Meet growth and diversification needs.
+11. Reach out to particular customers or markets
+111. Comply with some regulatory directives.
+1V. Increase employees’ income
+Which of the reasons above do consider in estalishing
+branches.
+A 1 and 11  B. 1, 11 and 111 C. 11, 111 and 1V
+D. 111 and 1V
+46.
+The channel through which all government borrowing
+and domestic lending transactions pass is called
+A. special trust fund  B.  agency fund  C. national laon
+fund   D. contingency fund
+47
+Given:
+Dept A
+Dept B
+Floor space
+400m
+2
+60m
+2
+Machine
+1200
+1400
+Turnover
+N36million
+N64 million
+Labour hoours
+1000
+1400
+A joint cost N72 million incurred by the two depart
+ments was apportioned N30 million to
+A. and N42 million to  B.  The basis used for
+apportionment must have been
+A.  labour hours  B. floor space  C. turnover
+D. machine hours
+48.
+Recurrent expenditure are expenses for the period not
+exceeding.   A. 10 years  B. 5 years C. 2years D. 1 year
+49.
+A major benefit derived from the reconciliation of branch
+and head office books is to
+A.
+ determine accurate returns by the branch
+B
+ascertain the correct profit or loss on branch
+activites
+C.
+enable the branch to keep control over stock
+D.
+enable the branch to ascertain debtors balance
+50.
+Haial Limited with three departments has a total of
+N7,2000,000 as the net debtors for the year ended 31/12/
+97. The company’s policy provides for 15% bad debt
+annually. Whcih of the following represents the total
+balance of debtors before adjustments?
+A. N6,120,000   B. 6,120,300  C. N8,280,000 D. N8,820.00
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 24] ---
+1.
+The current growth in the volume of trading and
+financial dealings in Nigeria is helped by
+A.
+Increased financial activities.
+B.
+Government intervention
+C.
+Credit as a factor in business
+D.
+Paying for goods in cash.
+2.
+Cost accounting entails provision of information
+A. For investment purpose   B. For decision making
+C.  To shareholders
+     D. To stockholders
+3.
+The main objective of accounting report is to provide
+information about
+A.
+A company’s shareholding
+B.
+An entity’s management    C.  The efficacy of assets
+D.   A company’s economic resources.
+4.
+If liabilities amounted to N12,045, other assets N36,800
+and equity N26,896, the cash at hand would be
+A. N2,241  B.  N2,214   C.   N2,141   D.  N2,114.
+Use the information below to answer questions 5 and 6
+Given
+      N
+Fixed assets
+  85,600
+Sales
+197,000
+Stock
+  34,300
+Salaries and wages
+  37,000
+Purchases
+127,700
+Share capital
+120,000
+Creditors
+  16,050
+Motor expenses
+10,500
+Debtors
+  25,000
+5.
+What is the cash balance?
+A.  N12,095        B.  N12,590       C.  N12,905    D.  N12,950
+6.
+Determine the total of the trial balance.
+A.  N335,050      B.  N333,050      C.   N323,050  D.  N230,550
+7.
+The accuracy of journalizing is checked by
+A. Ensuring that debit totals equal credit totals.
+B. Posting all journal entries to ledger accounts.
+C. Adding all figures in the debit column.
+D. Comparing accounts in the ledger against the jour-
+nals.
+8.
+Hauwa Ltd bought 10 bags of rice for N500 each. The
+company was given 5% and 12% trade and cash dis-
+counts respectively. What will be recorded as discount
+received in the company’s book?
+A.  N250     B.  N570     C.  N600     D.  N850
+9.
+A cash book had opening balance of N15,200, closing
+balance  N18,400 and total cash received during the
+period N36,000. What was the amount  of cash paid out
+during the same period?
+A. N17,800 B. N19,600  C. N29,200  D. N32,800
+Principles of Accounts  2001
+10.
+In a petty cash book, the closing balance was N235,
+imprest N1250, while the stationery expenses were N655.
+how much was paid for other general expenses?
+A.  N360     B.  N355      C.  N350     D.  N305.
+11.
+When a bill  is negotiated to a abank, it is said to be
+A.
+Surrendered
+B.
+ Cashed
+C.
+Discounted
+D.
+Accepted
+12.
+Given that the balance as per cash book after necessary
+adjustments was N4,315, unpresented cheques were
+N1,688 and the bank statement balance was N4,791, what
+was the balance of the uncredited cheques?
+A.  N1,223    B. N1,212    C. N1,202    D. N1,115
+13.
+If a property developing company sells a completed
+building to an interested third party, this sale can be
+treated in the books of the company as
+A.  Capital receipt         B.  Revenue receipt
+C.  Windfall receipt    D.  Miscellaneous  Receipt.
+Use the information below to answer questions 14 and 15
+Palaju Enterprises had fixed assets of N3,100,000 at the end of the
+year. Fixed assets costing N900,000 with provision for deprecia-
+tion of N150,000 were disposed of during the period. Fixed assets
+of N100,000 were added during the year. Provision for deprecia-
+tion was N350,000 at the beginning of the year and N300,000 at
+the end of the year.
+14.
+What was the value of fixed assets at the beginning of
+the year?
+A.  N2,900,000
+B.  N3,800,000
+C.  N3,900,000
+D.  N4,000,000
+15.
+The depreciation expense charged for the year is
+A.  N450,000
+B.  N250,000
+C.  N150,000
+D.  N100,000
+16.
+A reduction in the catalogue price of an article given by
+a wholesaler to a retailer is called a
+A.  Bad debt  B.  Trade discount  C.  Premium  D.  Cash
+discount.
+Use the information below to answer questions 17 and 18.
+Stock Control Account [Extract] as at January, 2000
+Date
+Receipts    Issues    Balance
+Qty  Unit      Amt       Qty      Unit       Amt      Amt
+                          Price                                Price
+                             N          N                        N            N            N
+Jan. 1        100   5. 00   500.00        -       -
+         -        500.00
+Jan. 5
+50   6.00   300.00        -       -
+         -        800.00
+Jan. 7
+  -     -
+       -
+        40     6.00      240.00    560.00
+Jan. 10
+50    4.00    200.00      -        -            -           760.00
+Jan. 15
+  -       -
+      -
+       50      4.00     200.00     560.00
+Jan. 20
+  -       -
+      -
+       10        X         Y            Z
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 25] ---
+17.
+What is the stock valuation method used?
+A.
+ Last In First Out        B.
+First In First Out.
+C.
+Average cost
+      D.     Weighted average.
+18.
+The value of x is
+A.  N4.00
+B.  N5.00
+C.  N5.50
+D.  N6.00
+Use the information below to answer questions 19 and 20
+     N
+Purchases ledger opening balance
+  4,000
+Sales ledger opening balance
+  6,000
+Credit purchases during the year
+25,000
+Discounts allowed
+1,000
+Returns inwards
+  2,000
+Credit sales during the year
+10,000
+Returns outwards
+  6,000
+19.
+Calculate the sales ledger balance .
+A. N3,000
+B. N6,000
+C. N10,000
+ D. N13,000
+20.
+What is the purchases ledger balance?
+A. N4,000  B. N23,000  C. N24,000  D. N29,000
+21.
+For an incomplete record to provide necessary informa-
+tion, it must be converted to
+A.  Complete records
+B.  Double entry records
+C.   Statement of affairs
+D.  Single entry.
+Use the information below to answer questions 22 and 23
+Given:
+31/12/98
+31/12/99
+Assets: Plant & Mach.
+1,500
+1,200
+Fixtures
+   700
+   520
+Stock
+  500
+   600
+Debtors
+   900
+   400
+Cash
+   200
+   300
+Liabilities:  Creditors
+   500
+   600
+Loan
+   600
+   400
+22.
+Determine the total fixed asset from the opening bal-
+ance sheet
+A.
+N2,200
+B.
+N2,020
+C.
+N1,720
+D.
+N1,270
+23.
+What is the capital from the opening balance sheet?
+A.
+N3,600  B.  N2,700  C.  N2,070  D.  1,520.
+24.
+Given:
+ N
+   Direct material
+2,500
+Direct labour
+5,500
+Direct expenses
+1,000
+Overhead expenses
+1,500
+From the data above, compute the prime cost
+A.  N8,500  B. N7,500  C. N6,500  D.  N6,000
+Use the information below to answer questions 25 and
+26
+Bar opening stock
+10,000
+Amount owed to bar suppliers at the
+beginning of the year
+10,000
+Bar sales
+50,000
+Bar credit purchases
+40,000
+Payment to suppliers
+30,000
+Bar expenses
+  1,000
+Bar closing stock
+15,000
+25.
+What is the bar profits?
+A.  N20,000      B.  N15,000      C.  N14,0000      D.   N10,000.
+26.
+How much is owed to supplier?
+A.   N50,000         B.   N40,000
+C.   N30,000         D.    N20,000
+27.
+Lubricating oil and spare parts of machinery are examples
+of
+A.     Direct material
+ B.    Indirect materials
+C.       Indirect expenses      D.    Direct expenses
+Use the information below to answer questions 28 and
+29
+    N
+Subscriptions received during the year       30,000
+Subscription owed last year
+  4,000
+Subscription received for next year               6,000
+28.
+The N6,000 subscription received is
+A    .  Current asset
+B.
+Current liability
+C.       Fixed asset
+D.
+Capital
+29.
+What is the subscription to be charged to income and
+expenditure account?
+A. N36,000
+B. N34,000
+C. N30,000
+D. N20,000
+30.
+A club received rent N10,000 and donation N30,000. It
+paid N6,000 for entertainment and is still owing N16,000.
+The balance of the receipts and payment account is
+A. N24,000  B. N22,000  C. N14,000  D. N8,000
+31.
+Given
+    N
+Club training profit
+12,000
+Members’ subscription
+15,000
+Profit on sale of fixed assets
+  2,500
+Loss on sale of investment
+  1,000
+Wages
+16,500
+Other expenses
+10,000
+Determine the club’s excess of income over expenditure
+A.  N500   B.  N1,500  C.  N2,000  D.   N2,500
+32.
+The excess of income over expenditure is usually trans-
+ferred to the
+A.   Accumulated fund
+B.  Profit and loss account
+C.  Current assets in the balance sheet
+D.  Current liabilities in the balance sheet.
+33.
+Partner’s salaries and drawing are usually posted to the
+A.  Trading account           B.   Current account
+C.   Capital  account
+D. Partners’ accoun.
+34.
+marmuhu and Yusuf are in partnership sharing profits
+and losses in the ratio 2 : 1. On 31/3/2000, the partner-
+ship decided to admit Idris who is to take ¼ of future
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 26] ---
+profits without changing the ratio of Murhunu and
+Yusuf. What is the new profit-sharing ratio of Marhunu
+and Yusuf?
+A.  50% : 25%
+B.  50% : 20%
+C.  25% : 50%
+D.  25% : 25%.
+35.
+If a partner pays a premium of N500 for 1/5 share of
+profit, then the total value of goodwill is
+A.  N500  B.  N2,000  C.  N2,500  D.  N3,000
+36.
+On the dissolution of a partnership business, the net
+book value of the assets is transferred to
+A.
+Debit of realization account.
+B.
+Credit of realization  account.
+C.
+Debit of bank account
+D.
+Credit of bank account
+37.
+Baba Ltd acquired the business of Bello Ltd and caused
+the separate existence of the latter company to termi-
+nate. This situation is best described as
+A.  Absorption
+B.  Merger
+C.  Conversion
+D.  Dissolution.
+38.
+Where a company acquires controlling shares of an-
+other and the consideration is paid in cash, the entries
+in the books of the purchases are debit
+A.
+Investment and credit cash
+B.
+Investment and credit shares
+C.
+Purchases and credit cash
+D.
+Purchases and credit shares.
+39.
+Given
+Capital
+  200,000     Total assets
+  210,000
+Liabilities    10,000
+    210,000
+  210,000
+If the business is purchase at a price including a good-
+will of N20,000, what must have been the purchase price?
+A.   N190,000
+B.  N210,000
+C.    N220,000
+D.    N230,000.
+40.
+The main difference between the ordinary and prefer-
+ence shareholders is that
+A.
+The former receive dividends while the latter do
+not
+B.
+The latter are not members of the company while
+the former are
+C.
+In the case of winding up, the former are paid first
+before the latter.
+D.
+The former have rights while the latter do not
+Use the information below to answer questions 241
+and 42
+Given:
+   N
+Authorized capital:
+100,000 ordinary shares of N1 each
+issued and fully paid:
+50,000 ordinary shares of N1 each
+  50,000
+10,000 8% preference shares of N1 each    10,000
+Reserves
+25,000
+Creditors
+15,000
+Debtors
+            13,000
+Cash in hand
+              5,000
+41.
+Determine the net current assets.
+A. N43,000   B. N28,000   C. 13,000  D. N3,000
+42.
+Calculate the shareholder’s fund.
+A.  N60,000          B.  N75,000      C.  N85,000  D.  N185,000
+43.
+The law that currently regulates the registration of com-
+panies in Nigeria is the
+A.
+Constitution of the Federal Republic of Nigeria,
+1999.
+B.
+Nigerian Enterprises Promotion Decree, 1972.
+C.
+Companies  and Allied Matters Decree, 1972.
+D.
+Companies Decree, 1968.
+44.
+X and Y are two departments that are to share 50% of all
+joint costs equally and the balance in the ratio 2 : 1. If a
+um of N150,000 is incurred jointly, what will the portion
+attributable to X?
+A.  N37,500       B.  N62,500        C.  N87,500   D.  N100,000
+45.
+Department F transferred some goods to department G
+at a selling price. The goods were not sold at the end of
+the accounting period. Which account is affected at the
+time of preparing  a combined balance sheet?
+A. Creditors  B. Debtors  C.  Stock  D.  Suspense.
+46.
+The correct entry to reflect the receipt of cash sent by a
+branch to a head office is
+A.
+Debit cash and credit branch  current account
+B.
+Debit branch current account credit cash
+C.
+Credit branch debtors and debit cash
+D.
+Credit branch current account and debit branch
+debtors.
+47.
+To account for expenses paid by head office on behalf
+of the branch, the branch should
+A.
+Debit head office account and credit cash
+B.
+Debit profit and loss account and credit head of-
+fice account
+C.
+Credit cash and debit profit and loss account
+D.
+Credit profit and loss account and debit head of-
+fice account.
+48.
+The officer responsible for ascertaining whether all pub-
+lic expenditure and appropriation are in line with ap-
+proved guidelines is the
+A.  Account General         B.  Auditor General    C.
+Finance Minister    D.  Permanent Secretary
+Use the information below to answer questions 49 and
+50
+Given:  PTF Trial balance [Extract] as at 31 December
+1999.
+Dr
+           Cr
+N’000         N’000
+Cash
+2,000
+Investments
+3,000
+Accounts receivable
+ 6,000
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 27] ---
+Fund balance
+                    11,000
+11,000
+        11,000
+49.
+Assuming all the investments realized N4m, what will
+be the ending fun balance?
+A.   N8m     B.  N11m      C.   N13m     D.  N16m
+50.
+If only 1/3 of the investment is sold for N2m and N5m
+realized from the accounts receivable, what will be the
+balance of the fund?
+A.  N9m    B.      C.  N13m    D.  N16m
+Principles of Account
+1999 - Type A
+1.
+In preparing the final account, the bad debt account is
+closed by a transfer to theA.  Balance sheet    B.   Provi-
+sion for bad debt    C.   Profit and loss account  C.
+Trading account.
+2.
+Given
+  N
+Stock (1/4/94)
+   800
+Purchases of flour
+2,450
+Sales
+4,745
+Wages of bakery staff
+   675
+Carriage outwards
+     50
+Salary of administrative staff
+    225
+Stock (31/3/95)
+    940
+Capital
+1,540
+Determine the cost of goods sold.
+A.   N2,575
+B. N2,985
+C.  3,250     D.  3,925.
+3.
+In a petty cash book the imprest is N1,380
+Expenses:
+ N
+Stationery
+350
+Cleaning material
+335
+General expenses
+265
+How much was received to maintain the imprest at the end of the
+month?
+A.  N950      B.  N970      C.  N430      D.  N380
+4.
+Income statement for the year ended June 30, 2001
+     N
+ N
+Office rent
+  20,000
+  Revenue       820,000
+NEPA (light)
+  15,000
+Salary of staff
+120,000
+Miscellaneous
+Expenses
+     ?
+Net income     ?
+                      .
+                      .
+Miscellaneous expenses is 10% of revenue.
+Calculate the net income
+A.  N583,000
+B.  N563,000
+C.  N483,000
+D.  N683,000
+5.
+An entry in a subsidiary book which does not form part
+of the double entry system is a
+A.
+Contra entry
+B.  Journal entry
+C.  Single entry
+D.   Memorandum entry.
+6.
+In an incomplete record, the preparation of the bank
+reconciliation ensured that
+A.
+All cash taking are banked
+B.
+The cash book is correct
+C.
+There are no overdrafts
+D.
+There are no hidden loans.
+Principles of Account 2002
+7.
+I.      Fixtures  account      II.   Machinery  account
+III.    Wages account        IV.  Rent account.
+Which of the above are nominal account?
+A.   III and IV
+B.  I and II
+ C.  I and III
+D.  II and III
+8.
+NAFARA & SONS Balance Sheet items as at 31st De-
+cember, 9187
+    N
+Capital
+74,480
+Creditors
+15,875
+Prepaid expenses
+     580
+Motor vehicles
+34,750
+Furniture
+35,850
+Accrued expenses
+     645
+Stock
+  8,100
+Cash balances
+  9,911
+Debtors
+  1,809
+Compute the value of current assets.
+A.    N20,400         B.    20,465       C.    35,695      D.   N19,820
+Use the information below to answer questions 9 and
+10
+The Assets and Liabilities of Udo Co. Ltd, as at 31st
+December, 2000.
+    N
+Capital
+  50,000
+Debtors
+  46,000
+Loan
+100,000
+Stock
+  20,000
+Motor vehicle
+120,000
+Building
+  70,000
+Accrued wages
+  30,000
+Bank
+30,000
+9.
+The value of capital invested by own owners is
+A.   N110,000     B.  N105,000      C.  N101,000   D.  N100,000
+10.
+The liabilities of Udo Co. Ltd is
+A.   N180,000       B.  N181,000    C.    N177,000  D.  N110,000
+11.
+The normal accounting entry to record the dishonour
+of a cheque by a businessman is to
+A.
+Debit cash book and credit suspense account.
+B.
+Debit cash book and credit drawer
+C.
+Credit cash book and debit suspense account
+D.
+Credit cash book and debit drawer.
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 28] ---
+Use the information below to answer questions 12 and
+13
+Statement of Assets and Liabilities as at 31st Decem-
+ber, 2001.
+N(m)
+Shareholder’s interest
+240
+Current liabilities
+  20
+Current assets
+110
+Fixed assets
+140
+12.
+What is the net working capital?
+A.  N90m   B.  N70m    C.   N100m   D.   N80m
+13.
+Determine the value of the trade investment.
+A.   N8m    B.  N10m     C.  N15m    D.  N20m
+14.
+The concise statement used to explain entries in the
+general journal is known as
+A.   Narration
+B.
+Summary
+C.   Inforrnation
+D.
+Commentary
+Use the information below to answer questions 15 and 16.
+Erero’s Trading Account for the month ended 31/05/2001.
+N      N
+           N
+Opening stock
+  45,000     Sales
+161,000
+Purchases          110,000
+   Less returns     4,000
+Less returns           6,000
+104,000
+ 157,000
+149,000
+less closing stock
+    ???
+Cost of sales
+    ???
+Gross profit
+    ???
+            157,000
+   157,000
+The gross profit ratio for the company is 25%.
+15.
+If the total expenses is N20,845, what will be the net
+profit for the company during the month?
+A. N19,149 B. N16,168  C. N21,655  D. N18,405
+16.
+The closing stock for this company is
+A. N72,000 B. N45,000  C. N42,500  D. N31,250
+17.
+In a departmental accounting system, which of the fol-
+lowing expenses will most likely be apportioned on the
+basis of turnover?
+A.   Carriage outwards
+B.   Carriages inwards
+C.   Discounts received      D.  Returns outwards.
+Use the information below to answer questions 18 and 19.
+  N
+Stock of raw materials (1st January)
+3,000
+Direct wages
+2,500
+Direct expenses
+1,000
+Factory overheads
+2,000
+Cost of raw materials used
+5,500
+Stock of finished goods (31st December)
+2,000
+18.
+Determine the prime cost
+A.  N7,500  B.  N6,500   C. N9,000  D.  N8,000
+19.
+The cost of goods manufactured is
+A.  N11,000  B. N12,000  C. N14,000  D. N9,000
+20.
+I.     Orientation         II.    Entity       III.   Legal status       IV.
+Finance
+Which of the characteristics above distinguishes a
+profit-making from a not-for-profit-making organization?
+A.  I, II, III and IV     B. I, II and III   C.  II and III   D.  I and
+II
+Use the information below to answer question 21 and 22.
+Adex Ltd. Issues stock to its retail branch at cost price. The
+following particulars relate to Ede branch
+         N
+Stock at branch 1st January at cost
+         400
+Goods sent to branch at cost
+      8,000
+Returns to head office
+         340
+Cash sales
+      9,160
+Stock at branch 31st December at cost      720
+21.
+What is the gross profit carried to the profit and loss
+account?
+A.  N1,820   B. N1,640   C.  N1,530  D.  N1,870
+22.
+Calculate the cost of goods credited to the head office
+trading account.
+A.  N7,660  B.  N7,500  C.  N7,460  D.  N7,200
+23.
+Nasara manufacturing Plc has three direct labour em-
+ployees that work 40 hours each a week for 50 weeks a
+year. Factory overhead costs of N60,000 is distributed
+on the basis of direct labour hours. Compute the over-
+head rate.
+A.
+ N12 per hour
+B.  N16 per hour
+C.
+ N10 per hour
+D.  N15 per hour
+Use the information below to answer questions 24 and 25.
+Receipts and Payments Account [Extract]
+     N
+N
+Balance b/d  4,000
+Motor vehicle
+Expenses        820,000
+Subscription
+ Insurance           3,000
+received
+     ?
+Ambulance
+Donations
+Expenses          12,500
+received
+ 6,000 Electricity          1,000
+Refreshment sales  10,000 Balance c/d           ?   .
+          .
+                      .
+Subscriptions received are always put at 125% of the
+total donations received and refreshment sales.
+24.
+What is the closing cash balance?
+A. N11,500 B. N12,000 C. N13,000  D. N13,500
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 29] ---
+25.
+Compute the subscriptions received
+A. N30,000  B. N28,000  C. N24,000 D. N20,000
+Use the information below to answer questions 26 and 27
+Total
+    Dept. P
+Dept. Q
+  N
+        N
+    N
+Sales
+10,000
+      6,000  4,000
+Purchases
+  4,000
+      1,000  3,000
+Discount received
+  1,000
+          ?
+Discounts allowed
+  2,000
+     ?
+Discount (allowed and received) are apportioned to the two de-
+partments on the basis of departmental sales and purchases.
+26.
+Department P’s share of discount received is
+A.  N750   B.  N1,000   C.  N250    D. N500.
+27.
+What is department Q’s share of discount allowed?
+A.  N2,000    B.  N1,500  C.  N800   D.  N1,200
+Use the information below to answer questions 28 and 29.
+Income and Expenditure Account
+  N
+        N
+Waged
+12,000   Subscriptions
+   Received        20,000
+Electricity
+5,000
+   Donations
+Depreciation:
+   received         10,000
+Furniture
+1,000
+   Profits on sale
+                of investment   5,000
+Other expenses
+     ?
+Excess of income
+over expenditure
+      ?
+                     .
+35,000                         35,000
+It is the tradition of the club to write off an amount equal to 25%
+of the subscriptions received as other expenses.
+28.
+What is the amount to be written off as other expenses?
+A.  N4,500  B. N6,000   C. N4,000  D. N5,000.
+29.
+Determine the club’s excess of income over expenditure
+A. N12,000  B. N15,000 C. N10,000 D.  N14,500
+30.
+The gross profit on manufactured goods is the differ-
+ence between the cost of goods manufactured and the
+A.
+Market value of goods produced
+B.
+Prime cost of production
+C.
+Indirect cost of production
+D.
+Goods produced.
+31.
+given that 1/3 of the N6,000 stock held by a branch is
+purchased from outsider. If goods are invoiced to branch
+at 25% on cost, the provision for unrealized profit is
+A.  N1000.00       B.  N333.33        C.  N666.66  D.  N800.00
+32.
+A.S.D. Club Balance Sheet [Extract]
+      N
+N
+Accumulated fund  6,000   Motor van       4,000
+Add surplus
+income
+   1,000
+   Stock    3,500
+ 7,000  Debtors for
+    subscriptions   1,000
+Creditors for
+supplies
+   1,000     Bank
+1,500
+Subscription in
+advance
+   2,000
+                     .
+  10,000                          35,000
+The working capital of the club is
+A.  N5,000  B.  N4,000   C.  N3,000    D.  N7,000
+33.
+Costs that vary in proportion to the level of production
+in a manufacturing environment are known as
+A.   Control costs    B.   Overheads    C.   Direct costs    D.
+Indirect costs.
+34.
+A company operating a chain of retail provision stores
+invoices goods to the branches at cost plus a mark-up
+of 25% on selling price?
+A.   35%    B.  30%    C.   20%    D.     15%
+35.
+Given:
+     N
+Cash purchases
+25,000
+Trade creditors
+45,000
+Opening balance of trade creditors  35,000
+Calculate the purchases for the period
+A.  N80,000      B.  N35,000       C.  N105,000  D.  N70,000
+36.
+Which method of pricing can be used satisfactorily in
+either a rising or falling price situation?
+A.
+Standard price
+B.  Market  price
+C.
+FIFO
+D.  Average method.
+37.
+Given
+      N
+Capital at start
+    3,250
+Capital at close
+    6,250
+Additional capital during the period    1,000
+Calculate the profit or loss
+A.  N8,500 loss
+B. N2,000 loss
+C.  N2,000 profit
+D.  N8,500 profit.
+38.
+In a control account, discount received is found on the
+A.
+Debit side of the purchases ledger control account
+B.
+Debit side of the sales ledger contol account
+C.
+Credit side of the purchases ledger control account
+D.
+Credit side of the sales ledger control account.
+39.
+In an incomplete record system, a trading account can-
+not be prepaid until the
+A.
+Day book has been balanced
+B.
+Amount of personal drawings has been estab-
+lished
+C.
+Cash book has been balanced
+D.
+Amount of sales and purchases has been estab-
+lished.
+Use the information below to answer questions 40 and 41.
+Date
+Qty
+        Rate
+Total
+(units)          (N)
+  (N)
+January 2nd 500
+           25
+12,500
+March 7th
+250
+           28
+  7,000
+Issue were made a follow:
+Date
+Qty (units)
+January 9th
+200
+February 14th
+200
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 30] ---
+March 11th
+200
+40.
+The closing stock on March 11th by LIFO valuation is
+A.  N4,200  B.  N2,700  C.  N4,500  D.  N3,900
+41.
+The value of closing stock as at February 14th by simple
+average method is
+A.   N3,900   B.  N2,500  C.  N4,100  D.  N2,700.
+42.
+Given an incomplete record without sufficient informa-
+tion to determine profit, the necessary thing to do it to
+A.
+Draw up the statement of affairs.
+B.
+Draw up a T-account to establish the amount.
+C.
+Compare the journal entries with the cash book .
+D.
+Cross-check the cash book for further information.
+4.3
+Control accounts help to verify the arithmetic accuracy
+of the postings from the
+A.
+Subsidiary books into the trial balance
+B.
+Ledgers into the trial balance
+C.
+Journals into the ledgers
+D.
+Subsidiary books into the ledgers.
+44.
+Keeping records under the single entry system has the
+advantage of
+A.
+Duality in terms of records
+B.
+Completeness in terms of records
+C.
+Accuracy in terms of operation
+D.
+Simplicity in terms of operation
+45.
+Given:
+     N
+Sales
+195,200
+Stock 1st January
+  34,000
+Purchases
+126,000
+Sales returns
+    1,200
+Purchases returns
+    2,000
+If the gross profit is N66,000, what is the value of stock
+at 31st December?
+A.  N30,000        B. N40,000        C.  N50,000      D.  N20,000
+46.
+Given:
+   N(m)
+Balance at 31 December
+14,744
+Treasury Bills issued Jan – Dec
+  7,124
+Revenue for the year
+  6,387
+Expenditure
+  8,767
+What is the opening balance on the consolidated rev-
+enue fund account?
+A.   N10,000m
+B.   N12,000m
+C.   N9,000m
+D.   N11,000m
+Use the information below to answer questions 47 and 48.
+The partnership agreement between Abba, Bada and Kaka con-
+tains the following provisions: (i)   5% interest to be paid on
+capital and no interest to be charged o drawings     (ii)  Profits and
+losses to be shared in the ration 3:2:1 respectively.
+(iii)   Net profits as at 31/12/95 N2,250.
+Abba Baba
+Kaba
+   N
+   N
+  N
+Capital
+5,000
+4,000
+3,000
+Current account
+  250
+   100
+   175
+Salary
+   300
+   300
+     -
+Drawings
+   600
+   500
+   250
+47.
+Abba’s capital balance at the end of the year will be
+A.
+ N5,475
+B.
+  N5,725
+C.
+N4,400
+D.
+N5,000.
+48.
+Current account balance of Kaka at the end of the year
+will be
+A.   N250      B . N350      C. N175      D. N325.
+49.
+Upon the dissolution of a partnership, the Partnership
+Act provides that the amount realized should be
+A.
+Used to pay all taxes due to government
+B.
+Used to start a new partnership business by mem-
+bers who are willing
+C.
+Shared equally by the existing partners
+D.
+Used in paying the debts and liabilities of the firm
+to persons who are not partners.
+50.
+In the public sector, the method of accounting that re-
+ports revenues and expenditures in the period in which
+they are received and paid is called
+A.
+Fund accounting
+B.
+Commitment accounting
+C.
+Cash accounting
+D.
+Accrual accounting
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 31] ---
+Principles of Accounts 2003
+1.
+Which of the following is used to update the
+cash book in bank reconciliation?
+    A.  Interest received and unpresented cheques
+    B.  Commission and debit note
+    C.  Unpresented cheques and direct credit
+    D.  Interest received and direct credit
+2.
+The two legally recognized professional
+accounting bodies in Nigeria are the
+A.
+Institute of Certified Public Accountants
+of Nigeria and the Institute of Cost and
+Management Accountants of Nigeria.
+B.
+Association of Accountants of Nigeria and
+the Institute of Management
+Accountants of Nigeria
+C.
+Institute of Chartered Accountants of
+Nigeria and the Association of National
+Accountants of Nigeria
+D.
+Nigeria Accounting Association and the
+Executive Cost and Management Accountants
+of Nigeria.
+3.
+Verifiability in accounting is only possible when
+there are
+     A.  minutes of meetings
+B.  payment vouchers
+     C.  source documents
+  D. audit certificates
+Use the information below to answer questions 4 and 5
+                                                                       N
+Capital                                                         2 000
+Bank                                                            1 200
+Purchases                                                     2 500
+Sales                                                             6 700
+Stock                                                            1 300
+Creditors                                                      1 000
+Fixed assets                                                  3 700
+Drawings                                                          ?
+Drawings are always estimated at 50% of capital
+4. The trial balance total is
+    A.   N 9 700    B.   N 8 700
+    C.   N 7 900    D.  N 7 800
+5. Compute the amount withdrawn
+    A.  N 2 000    B.  N 1 500
+    C.  N 1 200    D.  N1 000
+Use the information below to answer questions 6 and 7.
+Ezekiel Malgwi is a retailer.  He recorded sales representing
+95% cash and 5% credit.  He took the total cash sales of N19
+000 from the business tray and banked it.
+6.  The credit sales for the period would be
+     A.  N5 000     B.  N1 900
+     C.  N1 000     D. N950
+7.
+The transaction would be recorded in the cash
+book as debit
+    A.  cash and credit bank    B.  bank and credit cash
+    C.  cash and credit cash    D.  bank and credit bank
+8.
+Which accounting concept supports the assertion
+that economic reality takes precedence over
+legal issues?
+A.
+Realization concept   B.
+Substance over form
+C.
+Conservatism
+    D.
+Measurement concept
+9.
+The transaction that completes its double entry
+in the same ledger account
+appears in.
+A.
+cash account and personal account
+B.
+bank account and general ledger
+C.
+discount received and discount allowed
+D.
+cash account and bank account
+10.  Given:                                                    N
+                             Capital                         1 000
+                             Liabilities                        500
+                             Assets                          1 500
+      The accounting equation can be expressed as
+A.
+N1 000 + N500 + N1 500 = N3 000
+B.
+N1 000 – N500 + N1 500 = N2 000
+C.
+N1 000 + N500 = N1 500
+D.
+N1 500 + N500 = N2 000
+11.  The recording phase of accounting is known as
+       A.  bookkeeping
+B.  trial balancing
+       C.  ledger accounting
+D.  final accounting
+Use the information below to answer questions 12 and 13.
+Motor Vehicle Account as at 31st December, 2001
+                                                    N
+    Debit:
+   Jan. 1, cost
+          1,950 000
+   Dec. 31, Addition
+400 000
+   Credit:
+   Jan. 1, Depreciation
+1,360 000
+   June 30, Sales proceeds       700 000
+The vehicle sold was purchased on January 1, 1998 at a cost of
+N1,000 000 and had depreciated at 25% on cost.
+12.
+Assuming that depreciation is charged on theaddition
+of the year at the rate of 15% on reducing balance, what
+should be the net book value of the vehicle as at 31st
+December 2003?
+A.
+N111 000
+B.
+N280 000
+C.
+N289 000
+D.
+N340 000
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 32] ---
+13.
+What is the actual profit or loss arising from the
+vehicle disposed of?
+       A.  N250 000 loss       B.  N50 000 loss
+       C.  N450 000 profit    D. N575 000 profit
+14.  Given:
+I.
+  Order of performance
+II.
+  Order of liquidity
+III.
+  Vertical order
+IV.
+  Horizontal order
+       The orders in which a balance asset is arranged are
+A.
+I and 11
+B.
+I and IV
+C.
+II and III
+D.
+III and IV
+Use the information below to answer questions 15 and 16
+                                                     N                  N
+Capital                                                          24 000
+           Land and building             8,470
+          Mortgage on premises                    11 090
+           Drawings                          3,000
+           Profit and loss                                    3 600
+           Furniture and fittings        5,120
+           Motor Vehicles                   3,462
+           Closing Stock                     3,000
+           Debtors                              11,474
+           Creditors                                             7 354
+           Cash                                    1,518
+     46,044      46 044
+15.  What is the capital employed?
+       A.  N44 600       B.  N43 052
+       C.  N43 044       D.  N38 600
+16.  Calculate the value of fixed assets
+       A.  N15 992       B.  N18 470
+       C.  N27 000       D.  N27 052
+17.
+Provision for discount allowed can be recorded
+as a debit to
+A.
+the profit and loss account and a credit to
+provision for discount allowed
+B.
+provision for discount allowed and a credit to
+the profit and loss account
+C.
+discount allowed and a credit to the profit and
+loss account
+D.
+expenses and a credit to customers’ account
+Use the information below to answer questions 18 and 19
+Date                                 Details
+Feb.                    1 Purchased 400 units at N1.00 each
+“                         5 Purchased 200 units at N2.00 each
+“                        10 Purchased 200 units at N3.00 each
+“                        15 Issued 320 units
+“                        20 Purchased 200 units at N4.00 each
+“                        25 Issued 120 units
+18.
+Calculate the price per unit of closing stock using the
+periodic weighted average method.
+A.
+N3. 20
+     B.  N3. 00
+C.
+N2. 20
+      D.  N2. 00
+19.  Using the periodic simple average method, the
+       cost per unit is
+       A.  N4. 25       B.  N3. 25
+       C.  N2. 25       D.  N1. 25
+Use the information below to answer questions 20 and 21.
+                             Purchases ledger control account
+                                   N                                              N
+             Balance b/d          2,900
+Discount received       1,000   Credit purchases    ?
+Bills payable               1,500     Bills payable
+Cash paid to                             dishonoured        1,600
+Suppliers                    8,000
+Returns outwards     3,000      Dishonoured
+                                                    Cheques                2,000
+Balance c/d                       ?
+                                           ?                                           ?
+Credit purchases are always put at 150% of the total cash paid
+to suppliers
+20.  Calculate the closing balance of the ledgeraccount
+       A.  N6 900
+       B.  N6 400
+       C.  N5 000       D.  N4 000
+21.  Determine the credit purchases
+       A.  N15 500
+       B.  N13 500
+       C.  N13 400
+       D. N12 000
+22.
+In a control account, provision for bad debts is
+found on the
+       A. debit side of the purchases ledger control
+account
+       B. debit side of the sales ledger control account
+       C. credit side of the purchases ledger
+control account
+       D. credit side of the sales ledger control account
+23.
+The stock valuation data is important because it
+enables management to
+A.
+separate debtors from creditors
+B.
+determine the cost of stock at the end of
+business
+C.
+determine the cost of stock at the beginning of
+business
+D.
+determine the total cost of goods purchased
+24.
+During the year ended 31st December 2001, Nuju
+Enterprises paid rent as follows:
+Jan. 20  N24 000 for a period of 4 months
+May 16 N30 000 for a period of 5 months
+Oct. 15  N36 000 for a period of 6 months
+What is the overpaid portion of the rent?
+A.   N36 000       B.   N18 000
+C.   N12 000       D.  N6 000
+25.
+Advertising expenses incurred on a product in a
+business organization should be charged to
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 33] ---
+      A.  production department       B.  sales department
+       C.  administration department
+       D.  purchases department
+26.  Four broad classifications of overheads are
+       A.  production, selling, distribution and material
+       B.  production, selling, distribution and administration
+       C.  selling, distribution, production and wages
+       D.  distribution, selling, administration and  material
+27.  Given:
+N
+       Cost of raw material issue to production
+37,000
+       Opening stock of raw material
+  2,000
+       Purchases of raw material
+38,000
+       Wages
+  5,000
+       What is the closing stock of raw material?
+A.  N4 000
+B.  N3 000
+C.  N2 000
+D. N 1 000
+Use the information below to answer questions 28 and 29
+PQ Manufacturing Company                         N
+Raw materials (1/1/2001)
+  3,500
+Raw materials (31/12/2001)
+  4,900
+Purchase of raw materials
+56,000
+Salary
+63,000
+Wages
+148,050
+Factory lighting
+  3, 080
+Plant Depreciation
+   2,800
+Factory Insurance
+   2,170
+28.  The overhead cost is
+       A.   N71 050       B.   N68 250
+       C.   N67 970       D.  N66 080
+29.
+The company consumed raw materials worth
+A.    =N=54 600
+B.
+=N=56 000
+C.    =N=57 400
+D.
+=N=59 500
+30.
+Income and expenditure account is more informative
+than receipts and payments account because it
+discloses
+A.   Cash
+B.
+Cheques
+C.
+Debtors
+D.
+stocks
+31.
+A company has two departments X AND Y. Y
+transferred goods to X at a profit margin of 25%.
+=N=10 000 worth of goods was not sold at the end of
+the accounting period. How much is the unrealized
+profit?
+A.
+  =N=2 000
+B.
+=N=2 500
+C.
+=N=12 000
+D.
+=N=12 500
+32.
+Given: Rich Social Club
+   =N=
+  Cash
+            100 000
+  Loan
+30 000
+ Subscription in arrears
+   5 000
+ Subscription in advance
+ 15 000
+33.
+A company has departments M and N. The expense
+incurred wholly in M is =N=5 000. General expenses
+incurred amount to =N=25 000. Expenses are
+apportioned in the ratio 2:3 for departments M and N
+respectively. What is N’s share of the expenses?
+A.
+=N=10 000
+B.
+=N=15 000
+C.
+18 000
+D.
+20 000
+Use the information below to answer questions 34 and 35
+       =N=
+Total sales of ticket
+        300 000
+Amount received from the sales
+        260 000
+Cash purchase of the club house
+        100 000
+Credit purchase of equipment
+          60 000
+Electricity bill paid
+            5 000
+Salaries owed
+            2 000
+34.
+What is the receipts and payment account balance?
+A.
+=N=260 000
+B.
+=N=233 000
+C.
+=N=155 000
+D.
+=N=100 000
+35.
+What is the balance of the income and expenditure
+account?
+A.
+=N=300 000
+B.
+=N=293 000
+C.
+=N=193 000
+D.
+=N=133 000
+36.
+The first step in converting a single entry to a double
+entry system of bookkeeping is to prepare a
+A.
+Suspense account
+ B.Statement of affairs
+C.
+Realization accountC.
+Trial balance
+37.
+Emeka Enterprises Statement of Affairs at start
+Assets
+Liabilities
+        =N=
+=N=
+Cash
+        70 000
+Creditors
+85 000
+Inventory
+        58 000
+Bank Loan
+60 000
+Machines
+      100 000
+What is the capital at start?
+A.
+=N=53 000
+B.
+=N=63 000
+C.
+=N=73 000
+D.
+=N=83 000
+38.
+Receipts and payments account is the summary of
+A.
+Income and expenditure
+B.
+Cash book
+C.
+Balance sheet
+D.
+Profit and loss
+39.
+Given:
+=N=
+Total debtors b/d 31/12/99
+         25 000
+Cheques received from debtors   225 000
+Total debtors c/d 31/12/00
+          15 000
+Determine the sales figure.
+A.
+=N=295 000
+B.
+=N=265 000
+C.
+=N=245 000
+D.
+=N=215 000
+40.
+Which of these is a capital expenditure warrant?
+A.
+Provisional general warrant
+B.
+Development fund general warrant
+C.
+Reserved expenditure general warrant
+D.
+Supplementary warrant
+41.
+For the purpose of conversion of a partnership to a
+company, a total purchase consideration of =N=3.6m
+was paid. I f 30% of the purchase consideration was
+in cash and the rest by 50k shares, how many shares
+were issued?
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 34] ---
+A.
+1 080 000
+B.
+2 160 000
+C.
+3 600 000
+D.
+5 040 000
+42.
+Given:
+I.
+The consolidated revenue fund
+balance b/d =N=650 000
+II.
+Issues from contingency fund
+amounted to =N=240 000
+III.
+Amount transferred to contingency
+fund is =N=210 000
+What is the consolidated revenue fund balance?
+A.
+=N=1 100 000
+B.
+=N=680 000
+C.
+=N=440 000
+D.
+=N=410 000
+Use the information below to answer questions 43 and 44
+=N=
+Goods from head office
+13,400
+Returns to head office
+    118
+Rates and insurance paid
+   188
+Wages paid
+   913
+ Cash remitted to head office           16,625
+Stocks at 1/1/2000
+             1,875
+Rent paid
+   325
+Stock at 31/12/2000
+1,975
+Sundry expenses
+   200
+43.
+The profit realized from the trade is
+A.
+N4 069
+B.
+N1 817
+C.
+N1 440
+D.
+N1 328
+44.
+What is the total expenses?
+A.
+N1 875
+B.
+N1 764
+C.
+N1 626
+D.
+N1 426
+45.
+The necessary accounts to be opened on the issue of
+ordinary share capital  are
+A.
+preference share capital, cash and allotment
+accounts
+B.
+bank and ordinary share capital accounts
+C.
+cash and ordinary share capital accounts
+D.
+nominal value and ordinary share capital
+accounts
+46.
+The amount of each invoiced goods sent to the
+branch is debited to
+A.
+branch expense account and credited to branch
+debtors’ account
+B.
+branch stock account and credited to the goods
+sent to branch account
+C.
+branch debtors’ account and credited to branch
+expense account
+D.
+goods sent to branch account and credited to
+branch expense account
+Use the information below to answer questions 47 and 48.
+                                                  ZEBRA PLC
+                Balance sheet as at 31 st March, 2002
+                           N                                                   N                  N
+Capital          100 000         Fixed assets:
+Current                               Land and
+Liabilities                           buildings               50,000
+Creditors         30 000        Furniture               10,000             60,000
+                                           Current
+                                            Assets:
+                                            Stock                     30,000
+                                           Debtors                  30,00
+                                          Cash                         10,000             70,000
+                                                                           130,000          130 000
+The business was acquired on 1 st April, 2002 at a purchase
+consideration of N120 000 by SOZ.  All assets and liabilities
+were taken over except the cash.
+To open the new firm’s bank account, additional N20,000 was
+paid into the bank.
+47.
+The goodwill on purchase is
+A.
+N90 000
+B.
+N30 000
+C.
+N19 000
+D.
+N18 000
+48.
+Calculate the networth of the business
+A.
+N120 000
+B.
+N90 000
+C.
+N80 000
+D.
+N30 000
+49.
+Gross profit in the branch adjustment account is
+transferred to the branch
+A.
+trading account
+B.
+receipts and payments account
+C.
+profit and loss account
+D.
+income and expenditure account
+50.
+Mamza Nigeria Limited issued 20 000 ordinary shares
+of N1.50 per share
+On 2 nd July 2002.  1 500 ordinary shares were fully
+subscribed for and their monies received as below:
+                                                                                  N
+On application                                                      0.40
+On allotment                                                         0.20
+First call (including premium of N 0.50)           0 70
+The last and final call was yet to be made.
+What is the balance of the ordinary share capital
+account after the first call was received?
+A.
+N300
+B.
+N1050
+C.
+N1200
+D.
+N1950s
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 35] ---
+Principles of Accounts  2004
+1.
+The accounting principle that is applied to check
+arbitrary actions on the part of accountants is
+A.
+Consistency
+B.
+Materiality
+C.    Objectivity
+D.
+Realization
+2 The loss of equipment in a fire disaster results in
+A.
+decrease in current asset
+B.
+an increase in liabilities and assets
+C.
+a decrease  in assets and capital,
+D.
+an increase in liabilities and a decrease in
+assets.
+       3.     A source document is used for verifying the
+A.  Amount due to creditors,   B. Actual cost of an
+asset, C. Selling price of goods, D. Amount due from
+debtors
+4.
+The rule of accounting equation requires that account
+payable should be placed under
+A.
+Liabilities,
+B.  Equities
+C.
+Assets
+D. Capital
+Use the information below to answer questions 5 and 6
+           Cash Book
+                  N
+   N
+Capital   6 600
+   Purchases 3.500
+Sales  3 000
+Stationery
+1300
+Debtors 2 500
+   Wages
+2 700
+The owner wishes to maintain an amount equal to 1/3 of capital
+as drawings
+ 5.
+The amount withdrawn is
+A. N2,100,   B. N2, 200,  C. N4,400,  D.N6,400
+ 6.
+The cash book closing balance will be
+A.
+N900,  B. N2,400,  C. N4,200, D.N4,600
+ 7.
+A debit in the suspense account will appear in the
+balance sheet as
+A.
+A current asset,
+B.  A current liability
+C.    Capital
+D.  Drawings
+   8.
+The recipient whose name appears on cheque is
+called a
+A.
+Payer  B. Drawer  C. Drawee  D. Payee
+9.
+The imprest account is subsidiary to the
+A.
+ledger account,
+B.  Bank account
+C.    Cash book
+D. Petty cash
+10.
+The three-column cash book differs
+from the two-column cash book in
+A.
+Cash column, B. Discount column
+B.
+Bank column, D.  Folio column
+11.
+Zakari started business in January 2000.  He bought
+a shop costing N54,000 and stock worth N7,600.
+profit for the year amounted to N22,100.  His closing
+capital was N73,800
+Zakari’s personal drawings amounted to
+A.  N2,300,  B. N9,900,  C. N17,100, D.N19,500
+12.
+The balance on the provision for
+depreciation account is
+A.
+added to fixed assets on the balance sheet
+B.
+deducted from fixed assets on the balance sheet
+C.
+deducted from the profit and loss account
+D.
+added to the current liabilities of the account
+13.
+Given:
+Rates paid during the year amount to N2,250 at N125
+per month and N1,035 was paid for electricity in the
+same period an N115 per month
+Determine the amount of prepaid rates
+A.
+N345,    B. N750,   C. N1,380  D.N1,500
+Use the information below to answer questions 14 and 15
+      Date
+Receipt
+Issued (Units
+     May 2
+80 @ N3.00
+-
+    May 10
+50 @ N3.20
+-
+    May 17
+-
+20
+   May 25
+-
+60
+   May 31
+20 @ N2.90
+-
+14. What is the value of raw materials issued on May 17th
+based ion the LIFO method?
+A.
+N60,   B. N61,   C. N62,  D. N64
+15. Based on the FIFO method of valuation, the total cost of
+raw materials issued is
+A.N150,    B.  N160,   C.  N240, D.
+N250
+16. Where closing stock is undervalued, the effect is
+A.
+an increase in gross profit,
+B.
+a decrease in gross profit,
+C.
+an increase in purchases,
+D.
+a decrease in purchases
+Use the information below to answer questions 17 and 18
+               N
+Opening balance
+10,640
+Purchases
+26,912
+Returns inwards
+     492
+Returns outwards
+     810
+Cash discount received
+  1,348
+Cash discount allowed
+  1,560
+Cash paid to suppliers
+20,808
+At the year-end, the purchases ledger showed a
+debitbalance of N108.
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 36] ---
+.
+17.
+The total on the debit side of the purchase ledger con-
+trol account will be:
+A.
+N22,966
+B.
+N22,15
+C.
+N21,834,
+D.
+N21,054
+18.
+   The balancing figure in the purchases
+ledger control account is
+A.
+N15,828
+B.
+N15,720
+C.
+N14,940
+D.
+N14,694
+19.
+In a sales ledger, contra entry is found on the
+A.
+debit side of the debtors’ control account
+B.
+debit side of the creditors’ control account
+C.
+credit side of the debtors’ control account
+D.
+credit side of the creditors’ control account
+20.
+The beginning and ending accounts receivable balances
+were N20,000 and N30,000 respectively.  The collection
+from customers during the period was N70,000.  What
+was the total sale on account?
+A.
+N20,000
+B.
+N60,000
+C.
+N80,000
+D.
+N120,000
+21. Given :
+General expenses account
+ N
+Paid by cheque
+671
+Paid by cash
+70
+Acrued b/f
+65
+Acrued c/f
+115
+Determine how much to be charged profit and loss ac-
+count
+A.  N606,    B. N786,     C. N791,  D.N856
+22.
+ In converting single entry to final account, the balanc-
+ing figures on the income and expenses accounts are
+transferred to the
+A.
+revenue and expenditure account
+B.
+receipts and payments account
+C.
+profit and loss appropriation account
+D.
+profit and loss account
+Use the information below to answer questions 23 and 24
+  N
+Beginning inventory  ?
+Purchases
+  ?
+Ending inventory 4,800
+Sales
+12,800
+Wages
+ 1,040
+Gross profit
+ 5,900
+The beginning inventory was estimated at 80% of sales.
+23.      Determine the amount for the beginning inventory
+A.
+N20,140
+B.
+N10,240
+ C.
+N8,140
+D.
+N7,240
+24.
+What is the figure for purchases?
+A.  N2,400,  B.  N2,500,   C. N4,200, D.N5,200
+25.
+Cost classification in relation to charges is determine
+by the level of
+A.
+raw materials B. labour
+C.    activity
+D. profitability
+Use the information below to answer questions 26 and 27
+    N
+Materials consumed 16,600
+Direct cost
+  5,400
+Factory rent
+  2,300
+Factory lighting
+  1,200
+Cost of production to be transferred at cost plus 20% mark-up
+26.
+The gross profit on manufacture is
+A.
+N6,120 B.
+N6, 100
+C.    N5,100 D.
+N5,000
+27.
+The market value of goods produced is
+A.
+N30,500
+B.
+N30,600
+C.    N31,600
+D.
+N31,620
+Use the information below to answer questions 28 and 29
+On January 1, 2000, a club’s assets and liabilities were as
+follows:
+    N
+Club house
+8000
+Subscription in arrears
+  300
+Cash
+1000
+Wages owed
+ 100
+The club has 50 members and annual subscription is N100 per
+member.  Subscription received is N4,000 and this includes
+1999 arrears of N200
+28.
+The accumulated fund is
+A.
+N9,400
+B.
+N9,300
+C.    N9,200
+D.
+N9,100
+29.
+In the balance sheet, the subscription in
+arrears will be
+A.
+N200
+B.
+N300
+C.    N1,200
+D.
+N1,300
+30.
+Where the debit side of the income and expenditure
+account is higher than the credit side, the difference is
+a
+A.
+Deficit
+B.
+surplus
+C.
+Gain
+D.
+loss
+31.
+In the balance sheet of a not-for profit making
+organization, subscription paid in advance is regarded
+as a
+A.
+current asset
+B.  current liability
+C.    capital
+D.   reserve
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 37] ---
+32.
+A rapidly growing business organisation with
+multiple units that is interested in comparing the
+performances and weakness of each unit should
+adopt
+A.
+manufacturing accounts
+B.
+consolidated accounts
+C.
+departmental accounts
+D.
+joint venture accounts
+Use the information below to answer questions 33 and 34
+        Dept. S    Dept. T    Total
+N            N            N
+Gross profit b/d
+         6,000        4,000    10,000
+Less: salaries&wages        1,800        1,200      3,000
+Electricity
+?
+   ?          2,000
+Depreciation
+           60
+ ?          1,000
+Net profit c/d
+           ?          1,600       4,000
+        6,000       4,000      10,000
+33.
+What is the net profit by department S?
+A.
+N3,600
+B.
+N3,000
+C.     N2,400
+D.
+N2,000
+34.
+The depreciation to be charged to department T is
+A.
+N300
+B.
+N400
+C.    N500
+D.
+N600
+35.
+How are credit sales by a department treated?
+A.
+the same was as normal debtors’ transactions
+B.
+in a different way from normal debtors’ transac-
+tions
+C.
+as an addition to the sales manager’s account
+D.
+as an addition to the production manager’s account
+36.
+Discounts granted to branch customers are treated as a
+debit to branch
+A.
+stock account and a credit to branch debtors’ ac-
+count
+B.
+discount account and a credit to branch bank ac-
+count
+C.
+stock account and a credit to branch bank account
+D.
+discount account and a credit to branch debtors’
+account
+37. Transfers from the head office to branches are best carried
+out at
+A.
+cost price
+B.
+selling price
+C.            cost plus mark-up
+D.
+market price
+38. On dissolution, the final distribution of cash to partners is
+based on
+        A. partnership agreement
+ B. articles of association
+        C.  goodwill
+D.  capital balances
+Use the information below to answer questions 39 and 40
+Jumoke and Kunle have a original investment of N25,000 and
+N15,000 respectively in a partnership.  The articles of partner-
+ship provide 3% interest on capital and salaries of N1,500 and
+N1,000 respectively for the PARTIES.  The profit & loss are to
+be shared in the ration 3:2 miscellaneous expenses of N2,500
+were incurred with gross profit of N6,500 during the financial
+year.
+39.
+The balance of profit and loss account will be
+A.
+N4,000
+B.  N2,800
+        C.    N1,500
+D.  N300
+40.
+What is Kunle’s share of the profit?
+A.
+N600,    B.  N300,  C. N180, D. N120
+41.
+When a new partner is admitted to a partnership there is
+a need to revolved the
+A.
+capital of the business
+B.
+capital and liabilities of the business
+C.
+assets and capital of the business
+D.
+assets and liabilities of the business
+42.
+The accounting entry to record the premium on good-
+will is to debit
+A.
+cash and credit old partners’ capita,
+B.
+goodwill and credit revaluation
+C.
+assets and credit capital
+D.
+capital and credit assets
+43.
+The expenses incurred in promoting a company are:
+A.
+promoters’ expenses,   B. floating expenses
+B.
+preliminary expenses   C. the board’s expenses
+44.
+Debentures can be redeemed out of
+A.
+existing share capital reserve
+B.
+existing general reserve
+C.
+proceeds from new issue of shares
+D.
+withholding tax
+Use the information below to answer questions 45 and 46
+Given:
+Share capital
+      Issued
+                                                          N
+600,000 10% preference shares of N0.50 each             -
+600,000 ordinary shares of N1 each
+      500,000
+Capital reserves
+      250,000
+Revenue reserves
+      207,000
+Long-term liabilities
+     400,000
+  1,357,000
+45.
+What is the value of the authorized share capital?
+A.
+N500,000
+B.
+N600,000
+C.    N750,000
+D.
+N1,200,000
+46.
+The value of the owner’s equity is
+A.
+N400,000
+B.
+N900,000
+B.
+N957,000
+D.
+N1,357,000
+47.
+Share premium is an example of
+A.
+revenue reserves
+B.  capital reserves
+C.    general reserves
+D.  loan capital
+48.
+According to the provisions of the 1999 constitution,
+all revenue generated by the Federal Government must
+be paid into the
+A.
+Consolidated revenue fund,
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 38] ---
+B.
+Federation account
+C.
+revenue mobilization allocation and fiscal
+commission’s account,
+D.
+equalization fund
+49.
+The budget statement presented to the legislature by
+the Chief Executive is called
+A.
+an appropriation act,  B.  a budget bill
+C.    an appropriation bill
+D. a budget proposal
+50.
+ The statement of assets and liabilities in the public
+sector can be described as the
+A. income and expenditure account of government
+B. appropriation account of government
+C. balance sheet of government
+D. funds flow statement of government
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+

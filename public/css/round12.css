@@ -1,0 +1,57 @@
+/* BlastExams round 12 (additive): load AFTER redesign.css.
+   Mobile dropdown fix, header layout on tablets, one-line track row, enrolled-faculty card, WCAG AA contrast fixes in both themes. */
+html[data-theme="dark"]{--r-p:#7C3AED}
+/* =================== round-12: header layout, mobile dropdown, track row, enrolled-faculty contrast =================== */
+/* The header container used to clip the profile dropdown on phones, so taps on menu items hit the page behind it. */
+html body .header-container{overflow:visible!important;justify-content:flex-start!important}
+html body .user-dropdown-menu{max-width:calc(100vw - 24px);z-index:300}
+html body .dropdown-item-btn{min-height:44px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+/* Right-hand controls always sit at the far right: a spacer after the brand/nav takes the free space, no auto margins. */
+.header-container::after{content:"";order:2;flex:1 1 auto;min-width:0}
+html body .brand,html body .nav-links{margin-right:0}
+html body .brand{margin-right:20px}
+html body .audience-mode-switcher-container,html body .auth-header-wrapper,html body .r-theme-btn{margin-left:0;margin-right:0;flex:none}
+html body .r-theme-btn{order:3}
+@media (max-width:900px){html body .brand{margin-right:0}}
+/* Track row in the profile menu: one line, "Change" pushed to the right */
+html body .r-track-row{display:flex!important;align-items:center;gap:8px;flex-wrap:nowrap!important;white-space:nowrap;min-width:0}
+html body .r-track-row *{white-space:nowrap}
+html body .r-track-row .r-track-change{margin-left:auto;flex:none}
+/* "Your enrolled faculty" card */
+html body .user-faculty-spotlight-card{background:var(--r-card)!important;border:1px solid var(--r-line)!important;border-radius:20px!important;box-shadow:none!important}
+html body .spotlight-title{color:var(--r-ink)!important;font:700 26px/1.25 var(--r-font)!important}
+html body .spotlight-desc{color:var(--r-mute)!important;font-size:16px!important}
+html body .spotlight-desc strong{color:var(--r-ink)!important;font-weight:700}
+html body .spotlight-level-tag{color:var(--r-mute)!important;font-weight:600!important;font-size:13px!important}
+html body .spotlight-tag{background:var(--r-p)!important;color:#fff!important;box-shadow:none!important}
+html[data-theme="dark"] .spotlight-desc strong{color:#E9E4FF!important}
+
+/* round-12b: contrast fixes found by an automated audit (WCAG AA, light and dark) */
+html body .course-stat-badge{color:#047857}
+html body .audience-badge-chip--100l,html body .audience-badge-chip{color:#6D28D9!important}
+html[data-theme="dark"] .audience-badge-chip--100l,html[data-theme="dark"] .audience-badge-chip{color:#DDD6FE!important}
+html:not([data-theme="dark"]) [style*="color: #10B981"],html:not([data-theme="dark"]) [style*="color:#10B981"],html:not([data-theme="dark"]) .card-header>span:last-child{color:#047857!important}
+html:not([data-theme="dark"]) [style*="color: #3B82F6"],html:not([data-theme="dark"]) [style*="color:#3B82F6"]{color:#1D4ED8!important}
+html body .resource-vault-banner a *,html body .resource-vault-banner button *{color:#fff!important}
+html body .vault-category-chip.active,html body .vault-quick-chip.active{background:var(--r-p)!important;color:#fff!important}
+html body .vault-view-btn{color:var(--r-ink2)!important}
+html body .vault-view-btn.active{color:var(--r-p2)!important}
+html body .onboarding-card [style*="color: #94A3B8"],html body .onboarding-card [style*="color:#94A3B8"]{color:var(--r-mute)!important}
+html body .user-dropdown-menu #dropdown-user-name{color:var(--r-ink)!important}
+html body .user-dropdown-menu #dropdown-user-email{color:var(--r-mute)!important}
+html body .user-dropdown-menu #dropdown-academic-identity{color:var(--r-p2)!important}
+
+/* round-12c: dark theme contrast (fills stay #7C3AED so white text passes AA; violet text uses lighter tints) */
+html body .cbt-launch-btn-primary.r-ghost{background:var(--r-card)!important;color:var(--r-ink)!important;border:1px solid var(--r-line2)!important}
+html[data-theme="dark"] .r-link,html[data-theme="dark"] #home-explore-all-btn,html[data-theme="dark"] .r-list-item:hover{color:#C4B5FD!important}
+html[data-theme="dark"] .cbt-launch-btn-primary:hover,html[data-theme="dark"] .action-btn:hover,html[data-theme="dark"] .search-btn:hover,html[data-theme="dark"] .vault-btn-view:hover,html[data-theme="dark"] .spotlight-primary-btn:hover,html[data-theme="dark"] .guide-view-all-btn:hover,html[data-theme="dark"] .hub-quick-btn:hover{background:#6D28D9!important;color:#fff!important}
+html body .course-stat-badge{color:#047857!important}
+html body .course-stat-badge.materials{color:#1D4ED8!important}
+html[data-theme="dark"] .course-stat-badge{background:rgba(255,255,255,.07)!important;color:#A7F3D0!important}
+html[data-theme="dark"] .course-stat-badge.materials{color:#BFDBFE!important}
+html[data-theme="dark"] .vault-course-chip{color:#DDD6FE!important}
+html[data-theme="dark"] .vault-chip-label{color:var(--r-soft)!important}
+html[data-theme="dark"] .vault-view-btn{background:transparent!important;color:var(--r-ink2)!important}
+html[data-theme="dark"] .vault-view-btn.active{background:var(--r-tint)!important;color:#DDD6FE!important}
+html[data-theme="dark"] :has(>.vault-view-btn){background:var(--r-bg2)!important;border-color:var(--r-line)!important}
+html[data-theme="dark"] .resource-vault-banner a *,html[data-theme="dark"] .resource-vault-banner button *{color:#fff!important}

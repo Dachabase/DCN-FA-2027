@@ -1,0 +1,29 @@
+/* App shell in LearnHub's style: flat, rounded, Geist. Visual overrides only, no layout changes. */
+header .brand, header .nav-btn, header .audience-toggle-btn, .nav-install-btn, .google-signin-btn,
+.user-profile-pill, .dropdown-item-btn, footer { font-family: var(--be-font); }
+.brand-title { font-family: var(--be-font) !important; font-weight: 800; letter-spacing: -.02em; }
+.brand-logo { background: var(--be-primary); border-radius: 12px; box-shadow: none; border: 0; }
+
+/* Navigation: pill buttons, flat violet for the active page */
+.nav-btn { border-radius: var(--be-pill); padding: .5rem .95rem; font-weight: 600; }
+.nav-btn:hover { background: rgba(139, 92, 246, .14); color: #fff; }
+.nav-btn.active { background: var(--be-primary); border-color: transparent; box-shadow: none; color: #fff; }
+
+/* Sign in + profile */
+.google-signin-btn { background: var(--be-primary); color: #fff; border: 0; border-radius: var(--be-pill);
+  padding: .55rem 1.15rem; box-shadow: none; }
+.google-signin-btn:hover { background: var(--be-primary-hover); }
+.google-signin-btn svg { display: none; }
+.user-profile-pill { border-radius: var(--be-pill); background: rgba(255, 255, 255, .06); border-color: rgba(255, 255, 255, .14); }
+.user-dropdown-menu { background: #161420; border: 1px solid #2A2740; border-radius: var(--be-radius); box-shadow: 0 24px 50px rgba(0, 0, 0, .55); }
+.dropdown-item-btn { border-radius: 12px; }
+.dropdown-item-btn:hover { background: rgba(139, 92, 246, .16); color: #fff; }
+
+/* Admin-only menu item stays hidden until the server confirms the person is an admin */
+.user-dropdown-menu button[onclick*="openAdminContentModal"] { display: none; }
+body.is-admin .user-dropdown-menu button[onclick*="openAdminContentModal"] { display: flex; }
+
+/* Footer */
+footer { background: #0F0D15; border-top: 1px solid #2A2740; box-shadow: none; }
+.footer-links a { border-radius: var(--be-pill); padding: .3rem .8rem; }
+.footer-links a:hover { background: rgba(139, 92, 246, .16); color: #fff; }

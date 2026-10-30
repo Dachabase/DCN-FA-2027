@@ -1,0 +1,793 @@
+// Prisma schema for UI Freshers AI (Shared between Part A Web App & Part B Telegram Bot)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// =========================================================
+// FACULTY
+// =========================================================
+
+model Faculty {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  code      String?  @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  departments   Department[]
+  users         User[]
+  bots          Bot[]
+  guides        Guide[]
+  resources     Resource[]
+  opportunities Opportunity[]
+  faqs          FAQ[]
+  questions     Question[]
+  courses       Course[]
+}
+
+// =========================================================
+// BOT
+// =========================================================
+
+model Bot {
+  id String @id @default(cuid())
+
+  telegramBotId BigInt @unique
+  username      String @unique
+  name          String
+
+  facultyId String?
+  faculty   Faculty? @relation(fields: [facultyId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// =========================================================
+// DEPARTMENT
+// =========================================================
+
+model Department {
+  id   String @id @default(cuid())
+  name String
+
+  facultyId String
+  faculty   Faculty @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+
+  users         User[]
+  guides        Guide[]
+  resources     Resource[]
+  opportunities Opportunity[]
+  faqs          FAQ[]
+  courses       DepartmentCourse[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([facultyId, name])
+}
+
+// =========================================================
+// COURSE & SHARED PACKAGE JOIN MODEL
+// =========================================================
+
+enum CourseStatus {
+  COMPULSORY
+  REQUIRED
+  ELECTIVE
+}
+
+model Course {
+  id               String       @id @default(cuid())
+  code             String       @unique // e.g. "CSC 101", "MAT 111", "GES 107"
+  title            String
+  level            Int          @default(100) // Extensible to 200, 300, 400 later
+  semester         String       // "1st" or "2nd"
+  status           CourseStatus @default(COMPULSORY)
+  units            Int
+  isUniversityWide Boolean      @default(false) // True for GES/GST block
+  description      String?
+
+  facultyId        String?
+  faculty          Faculty?     @relation(fields: [facultyId], references: [id])
+
+  departments      DepartmentCourse[]
+  resources        Resource[]
+  questions        Question[]
+  flashcards       CourseFlashcard[]
+  quizAttempts     QuizAttempt[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DepartmentCourse {
+  id           String     @id @default(cuid())
+  departmentId String
+  department   Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+
+  courseId     String
+  course       Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([departmentId, courseId])
+}
+
+// =========================================================
+// REFERENCE RULES (CREDIT LIMITS & CGPA SCALE)
+// =========================================================
+
+model ReferenceRule {
+  id          String   @id @default(cuid())
+  category    String   // "CREDIT_LOAD" or "CGPA_SCALE"
+  title       String
+  key         String   @unique
+  value       String   // JSON stringified rule details
+  description String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum UserRole {
+  CURRENT_STUDENT
+  PROSPECTIVE_UTME
+}
+
+model User {
+  id         String   @id @default(cuid())
+  googleSub  String?  @unique
+  email      String?  @unique
+  fullName   String?
+  avatarUrl  String?
+  telegramId BigInt?  @unique
+
+  firstName String?
+  lastName  String?
+  username  String?
+
+  role         UserRole?
+  facultyId    String?
+  faculty      Faculty?    @relation(fields: [facultyId], references: [id])
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id])
+
+  level          Int?
+  utmeExamYear   Int?
+  onboardingStep String?
+  onboardingCompletedAt DateTime?
+
+  streakCount    Int       @default(0)
+  lastActiveDate DateTime?
+  totalPoints    Int       @default(0)
+  lastSeenAt     DateTime  @default(now())
+  refreshTokenHash String?
+  passwordHash      String?
+  emailVerifiedAt   DateTime?
+  failedLoginCount  Int       @default(0)
+  lockedUntil       DateTime?
+  sessionsValidFrom DateTime? // tokens issued before this moment are rejected
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  conversations Conversation[]
+  memories      Memory[]
+  quizAttempts  QuizAttempt[]
+  interactions  Interaction[]
+  utmeAttempts  UtmeExamAttempt[]
+  flashcardProgress UtmeFlashcardProgress[]
+  courseFlashcardProgress CourseFlashcardProgress[]
+}
+
+// =========================================================
+// INTERACTION (User Activity & Personalization Tracking)
+// =========================================================
+
+model Interaction {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  eventType  String   // e.g. "VIEW_FACULTY", "VIEW_DEPARTMENT", "VIEW_GUIDE", "DOWNLOAD_RESOURCE", "SEARCH", "EXPLORE_OPPORTUNITY"
+  resourceId String?
+  metadata   Json     @default("{}")
+
+  createdAt  DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([eventType])
+}
+
+// =========================================================
+// CONVERSATION
+// =========================================================
+
+model Conversation {
+  id String @id @default(cuid())
+
+  userId String
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  messages Message[]
+}
+
+// =========================================================
+// MESSAGE
+// =========================================================
+
+model Message {
+  id String @id @default(cuid())
+
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  role    MessageRole
+  content String
+
+  createdAt DateTime @default(now())
+}
+
+enum MessageRole {
+  USER
+  ASSISTANT
+}
+
+// =========================================================
+// MEMORY
+// =========================================================
+
+model Memory {
+  id String @id @default(cuid())
+
+  userId String
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  type       String
+  content    String
+  importance Int   @default(1)
+  confidence Float @default(1.0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// =========================================================
+// =========================================================
+// CBT QUESTION BANK
+// =========================================================
+
+model Question {
+  id           String   @id @default(cuid())
+  courseCode   String   // e.g. "CSC101", "MAT111", "GST101", "GES107"
+  courseTitle  String   // e.g. "Introduction to Computer Science"
+  courseId     String?
+  course       Course?  @relation(fields: [courseId], references: [id])
+  topic        String   // e.g. "Binary Arithmetic", "Calculus", "Logic"
+  type         String   @default("MCQ") // "MCQ" or "TRUE_FALSE"
+  questionText String
+  options      String[] // ["A) Option 1", "B) Option 2", "C) Option 3", "D) Option 4"]
+  correctAnswer String  // e.g. "A" or "True"
+  explanation  String   // Detailed explanation
+
+  examYear               Int?
+  semester               String?
+  academicSession        String?
+  sourceDocument         String?
+  sourcePage             Int?
+  originalQuestionNumber Int?
+  passage                String?
+  hasImage               Boolean  @default(false)
+  imageUrl               String?
+  verificationStatus     String   @default("VERIFIED") // "VERIFIED", "NEEDS_REVIEW", "OFFICIAL_KEY"
+  verificationNotes      String?
+  answerProvenance       String?
+  difficulty             String?  @default("MEDIUM")
+
+  facultyId    String?
+  faculty      Faculty? @relation(fields: [facultyId], references: [id])
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([courseCode, examYear])
+  @@index([courseId])
+  @@index([topic])
+}
+
+// =========================================================
+// QUIZ ATTEMPTS & PROGRESS TRACKER
+// =========================================================
+
+model QuizAttempt {
+  id               String   @id @default(cuid())
+  userId           String?
+  user             User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  guestSessionId   String?
+
+  courseCode       String
+  courseTitle      String?
+  courseId         String?
+  course           Course?  @relation(fields: [courseId], references: [id])
+  mode             String   // "PRACTICE", "EXAM", "REVISION", "TOPIC", "QUICK", "MIXED"
+  score            Float
+  totalQuestions   Int
+  correctCount     Int
+  wrongCount       Int
+  unansweredCount  Int
+  timeSpentSeconds Int      @default(0)
+
+  examYear           Int?
+  semester           String?
+  accuracyPercentage Float?
+  status             String   @default("SUBMITTED") // "IN_PROGRESS", "SUBMITTED", "TIMED_OUT"
+  questionsSnapshot  Json?
+  selectedAnswers    Json?
+  topicPerformance   Json?
+  timeAllowedSeconds Int?
+  submittedAt        DateTime?
+
+  createdAt        DateTime @default(now())
+
+  @@index([courseCode])
+  @@index([userId, courseCode])
+}
+
+// =========================================================
+// 100L COURSE FLASHCARDS & STUDY PROGRESS
+// =========================================================
+
+model CourseFlashcard {
+  id                 String   @id @default(cuid())
+  courseCode         String
+  courseTitle        String
+  courseId           String?
+  course             Course?  @relation(fields: [courseId], references: [id])
+  topic              String
+  front              String   // Question, formula, definition prompt
+  back               String   // Answer, explanation, meaning
+  explanation        String?
+  sourceDocument     String?
+  sourcePage         Int?
+  verificationStatus String   @default("VERIFIED")
+  difficulty         String   @default("MEDIUM")
+
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  progress           CourseFlashcardProgress[]
+
+  @@index([courseCode])
+  @@index([topic])
+}
+
+model CourseFlashcardProgress {
+  id             String          @id @default(cuid())
+  userId         String
+  user           User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cardId         String
+  card           CourseFlashcard @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  status         String          @default("NEEDS_REVISION") // "KNOWN" | "NEEDS_REVISION"
+  timesReviewed  Int             @default(1)
+  lastReviewedAt DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  @@unique([userId, cardId])
+  @@index([userId, status])
+}
+
+// =========================================================
+// PART A: RESOURCE
+// =========================================================
+
+model Resource {
+  id          String   @id @default(cuid())
+  type        String   // "pdf", "link", "handbook", "past_questions", "lecture_notes"
+  title       String
+  description String
+  url         String
+  category    String   // "Academic", "Administrative", "Library", "Tools"
+  tags        String[] // ["100L", "CSC101", "Registration"]
+  audience    String[] @default(["UI_100_LEVEL_STUDENT"]) // ["UTME_STUDENT"], ["UI_100_LEVEL_STUDENT"], or both for SHARED
+  status      String   @default("PUBLISHED") // "PUBLISHED", "DRAFT", "ARCHIVED"
+
+  facultyId   String?
+  faculty     Faculty? @relation(fields: [facultyId], references: [id])
+
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id])
+
+  courseId        String?
+  course          Course?  @relation(fields: [courseId], references: [id])
+  courseCode      String?
+  fileSize        Int?
+  filePath        String?
+  fileHash        String?
+  fileFormat      String?
+  pageCount       Int?
+  semester        String?
+  academicSession String?
+  isScanned       Boolean  @default(false)
+  hasQuestions    Boolean  @default(false)
+
+  // Provenance metadata (Required for AI bot factual grounding)
+  source       String   // e.g. "UI Academic Affairs / Faculty Handbook"
+  verifiedDate DateTime @default(now())
+  owner        String   // e.g. "UI Academic Secretariat"
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([courseCode])
+  @@index([category])
+  @@index([facultyId])
+}
+
+// =========================================================
+// PART A: FACULTY GUIDE
+// =========================================================
+
+model Guide {
+  id          String   @id @default(cuid())
+  title       String
+  summary     String
+  content     String   // Markdown / Rich text content
+  category    String   // "Course Registration", "Grading System", "Lecture Venues", "Exams & Rules", "Campus Life"
+  audience    String[] @default(["UI_100_LEVEL_STUDENT"]) // ["UTME_STUDENT"], ["UI_100_LEVEL_STUDENT"], or both
+  status      String   @default("PUBLISHED")
+
+  facultyId   String?
+  faculty     Faculty? @relation(fields: [facultyId], references: [id])
+
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id])
+
+  // Multi-part series metadata
+  seriesId    String?
+  seriesTitle String?
+  seriesOrder Int?
+  seriesTotal Int?
+
+  // Provenance metadata
+  source       String
+  verifiedDate DateTime @default(now())
+  owner        String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// =========================================================
+// PART A: OPPORTUNITY
+// =========================================================
+
+model Opportunity {
+  id           String    @id @default(cuid())
+  title        String
+  description  String
+  organization String
+  url          String
+  deadline     DateTime?
+  type         String    // "Scholarship", "Internship", "Hackathon", "Work-Study", "Mentorship"
+  category     String    @default("General")
+  tags         String[]
+  audience     String[]  @default(["UI_100_LEVEL_STUDENT", "UTME_STUDENT"])
+  status       String    @default("ACTIVE")
+
+  facultyId    String?
+  faculty      Faculty?  @relation(fields: [facultyId], references: [id])
+
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id])
+
+  // Provenance metadata
+  source       String
+  verifiedDate DateTime  @default(now())
+  owner        String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// =========================================================
+// PART A: FAQ
+// =========================================================
+
+model FAQ {
+  id          String   @id @default(cuid())
+  question    String
+  answer      String
+  category    String   // "Admissions & Clearance", "Fees & Payments", "Course Add/Drop", "Hostel & Housing", "Exams & Results"
+  tags        String[]
+  audience    String[] @default(["UI_100_LEVEL_STUDENT"])
+  status      String   @default("PUBLISHED")
+
+  facultyId   String?
+  faculty     Faculty? @relation(fields: [facultyId], references: [id])
+
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id])
+
+  // Provenance metadata
+  source       String
+  verifiedDate DateTime @default(now())
+  owner        String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// =========================================================
+// UTME PREPARATION & MOCK EXAMINATION SYSTEM
+// =========================================================
+
+model UtmeSubject {
+  id              String         @id @default(cuid())
+  code            String         @unique // e.g. "ENG", "MTH", "CHM", "PHY", "BIO", "ECO", "GOV", "LIT", "COM", "ACC", "CRK"
+  name            String         @unique // e.g. "Use of English", "Mathematics"
+  description     String?
+  icon            String?
+  questionCount   Int            @default(40) // 60 for English, 40 for others
+  durationMinutes Int            @default(30)
+  isCompulsory    Boolean        @default(false)
+  syllabusTopics  String[]       @default([])
+
+  questions       UtmeQuestion[]
+
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+}
+
+model UtmeCourseCombination {
+  id                  String    @id @default(cuid())
+  courseName          String    // e.g. "Medicine and Surgery"
+  slug                String    @unique // e.g. "medicine-and-surgery"
+  facultyName         String    // e.g. "Clinical Sciences"
+  degreeType          String    // e.g. "MBBS", "B.Sc.", "LL.B", "B.Eng"
+  compulsorySubjects  String[]  // e.g. ["Use of English", "Biology", "Chemistry", "Physics"]
+  alternativeSubjects String[]  @default([])
+  subjectCodes        String[]  // e.g. ["ENG", "BIO", "CHM", "PHY"]
+  notes               String?
+  institutionNotes    String?   // University-specific requirements (e.g. UI, UNILAG, OAU)
+  officialSource      String    // e.g. "JAMB Official Brochure (UI Specific Requirements Section 2.2.02)"
+  verifiedDate        DateTime  @default(now())
+
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+}
+
+enum UtmeVerificationStatus {
+  AI_GENERATED
+  SOURCE_MATCH
+  INDEPENDENTLY_SOLVED
+  HUMAN_REVIEWED
+  APPROVED_FOR_PUBLICATION
+  NEEDS_REVIEW
+  REJECTED
+}
+
+enum UtmePublicationStatus {
+  PUBLISHED
+  DRAFT
+  FLAGGED
+  ARCHIVED
+}
+
+model UtmeQuestion {
+  id                     String                 @id @default(cuid())
+  subjectCode            String                 // e.g. "BIO", "ENG", "MTH", "PHY", "CHM"
+  subjectName            String                 // e.g. "Biology"
+  subjectId              String?
+  subject                UtmeSubject?           @relation(fields: [subjectId], references: [id])
+  topic                  String                 // e.g. "Cell Biology & Cytology"
+  subtopic               String?
+  examYear               Int                    // e.g. 2018, 2015, 2010, 2004
+  sourceDocument         String                 // e.g. "JAMB-Biology-Past-Questions-and-Answers.pdf"
+  sourcePage             Int                    // e.g. 2
+  originalQuestionNumber Int                    // e.g. 2
+  questionText           String
+  passage                String?                // Reading passage for comprehension/literature
+  options                String[]               // ["A. cytoplasm...", "B. nucleus...", "C. cell wall...", "D. ..."]
+  correctAnswer          String                 // "A", "B", "C", "D"
+  explanation            String                 // Detailed secondary-school student explanation
+  whyOthersIncorrect     String?                // Educational breakdown of distractors
+  verificationStatus     UtmeVerificationStatus @default(APPROVED_FOR_PUBLICATION)
+  verificationNotes      String?
+  extractionConfidence   Float                  @default(1.0)
+  hasImage               Boolean                @default(false)
+  imageUrl               String?
+  syllabusTopic          String?
+  publicationStatus      UtmePublicationStatus  @default(PUBLISHED)
+
+  groupId                String?
+  group                  UtmeQuestionGroup?     @relation(fields: [groupId], references: [id], onDelete: SetNull)
+  sectionName            String?
+  sectionType            String?
+  skillTag               String?
+  groupOrder             Int?
+
+  audits                 UtmeQuestionAudit[]
+  flashcardProgress      UtmeFlashcardProgress[]
+
+  createdAt              DateTime               @default(now())
+  updatedAt              DateTime               @updatedAt
+
+  @@index([subjectCode, examYear])
+  @@index([publicationStatus, verificationStatus])
+  @@index([topic])
+  @@index([groupId])
+}
+
+model UtmeQuestionGroup {
+  id             String         @id @default(cuid())
+  subjectCode    String         @default("ENG")
+  sectionName    String         // e.g. "Section A: Comprehension Passages", "Section B: Lexis and Structure"
+  sectionType    String         // "COMPREHENSION", "CLOZE", "LEXIS_AND_STRUCTURE", "SYNONYMS", "ANTONYMS", "ORAL_ENGLISH"
+  title          String?        // e.g. "Passage A: Population & Nature"
+  instructions   String?        // e.g. "Read each passage carefully and answer the questions that follow it."
+  passage        String?        // Shared passage text
+  examYear       Int
+  sourceDocument String
+  sourcePage     Int?
+  orderIndex     Int            @default(0)
+
+  questions      UtmeQuestion[]
+
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  @@index([subjectCode, examYear])
+}
+
+enum ExamMode {
+  FULL_UTME_SIMULATION
+  PRACTICE_MODE
+  TOPIC_REVISION
+}
+
+enum ExamAttemptStatus {
+  IN_PROGRESS
+  SUBMITTED
+  TIMED_OUT
+  ABANDONED
+}
+
+model UtmeExamAttempt {
+  id                 String            @id @default(cuid())
+  userId             String?
+  user               User?             @relation(fields: [userId], references: [id], onDelete: SetNull)
+  guestSessionId     String?
+  courseName         String            // e.g. "Medicine and Surgery"
+  institutionName    String?           @default("University of Ibadan (UI)")
+  mode               ExamMode          @default(FULL_UTME_SIMULATION)
+  subjectCodes       String[]          // ["ENG", "BIO", "CHM", "PHY"]
+  totalQuestions     Int               @default(180)
+  durationMinutes    Int               @default(120)
+  currentQuestionIndex Int               @default(0)
+  isInstantFeedback  Boolean           @default(false)
+  examType           String            @default("MOCK_SIMULATION") // "MOCK_SIMULATION" | "QUICK_DRILL" | "FLEX_PRACTICE"
+  startedAt          DateTime          @default(now())
+  expiresAt          DateTime
+  submittedAt        DateTime?
+  status             ExamAttemptStatus @default(IN_PROGRESS)
+
+  // Scores (computed server-side upon submission)
+  scoreTotal         Float?            // Raw correct count
+  scoreAggregate     Float?            // Scaled score out of 400 (JAMB aggregate)
+  accuracyPercentage Float?
+  correctCount       Int?              @default(0)
+  incorrectCount     Int?              @default(0)
+  unansweredCount    Int?              @default(0)
+  timeSpentSeconds   Int               @default(0)
+
+  subjectScores      Json              @default("{}") // Breakdown per subject { "ENG": { score: 72, correct: 43, total: 60 }, ... }
+  topicPerformance   Json              @default("{}") // Topic breakdown { "Cell Biology": { correct: 4, total: 5 }, ... }
+  questionsSnapshot  Json              // Immutable snapshot of presented questions (without revealing answers before submit)
+
+  responses          UtmeExamResponse[]
+
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+
+  @@index([userId, status])
+  @@index([guestSessionId, status])
+}
+
+model UtmeExamResponse {
+  id                String          @id @default(cuid())
+  attemptId         String
+  attempt           UtmeExamAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  questionId        String
+  subjectCode       String
+  selectedOption    String?         // "A", "B", "C", "D" or null
+  isMarkedForReview Boolean         @default(false)
+  isCorrect         Boolean?        // Evaluated server-side on submission
+  timeSpentSeconds  Int             @default(0)
+
+  answeredAt        DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+
+  @@unique([attemptId, questionId])
+  @@index([attemptId, subjectCode])
+}
+
+// =========================================================
+// UTME ACCURACY AUDIT TRAIL
+// =========================================================
+
+model UtmeQuestionAudit {
+  id                  String                 @id @default(cuid())
+  questionId          String
+  question            UtmeQuestion           @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  originalAnswer      String
+  verifiedAnswer      String
+  originalExplanation String?
+  verifiedExplanation String?
+  verificationStatus  UtmeVerificationStatus @default(APPROVED_FOR_PUBLICATION)
+  sourceReference     String?                // e.g. "JAMB Physics 2004 Q14 / Official Answer Key"
+  auditNotes          String?
+  isDisputed          Boolean                @default(false)
+  auditedBy           String                 @default("AUTOMATED_AUDITOR_WITH_EXPERT_VERIFICATION")
+  createdAt           DateTime               @default(now())
+
+  @@index([questionId])
+  @@index([verificationStatus])
+}
+
+// =========================================================
+// UTME FLASHCARD PROGRESS TRACKING
+// =========================================================
+
+model UtmeFlashcardProgress {
+  id            String       @id @default(cuid())
+  userId        String
+  user          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questionId    String
+  question      UtmeQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  subjectCode   String
+  topic         String?
+  status        String       @default("NEEDS_REVISION") // "KNOWN" | "NEEDS_REVISION"
+  timesReviewed Int          @default(1)
+  lastReviewedAt DateTime    @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  @@unique([userId, questionId])
+  @@index([userId, subjectCode])
+  @@index([userId, status])
+}
+
+enum AuthCodePurpose {
+  EMAIL_VERIFY
+  PASSWORD_RESET
+}
+
+// One-time 6-digit codes for email verification and password reset (only a hash is stored)
+model AuthCode {
+  id        String          @id @default(cuid())
+  email     String
+  purpose   AuthCodePurpose
+  codeHash  String
+  attempts  Int             @default(0)
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime        @default(now())
+
+  @@index([email, purpose, createdAt])
+}
+
+// Admins added from inside the app by the owner (OWNER_EMAIL). At most 3 extra admins.
+model StaffMember {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  addedBy   String
+  createdAt DateTime @default(now())
+}

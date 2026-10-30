@@ -1,0 +1,13765 @@
+================================================================================
+SOURCE DOCUMENT: MATHEMATICS-JAMB-Past-Questions.pdf
+TOTAL PAGES: 64
+================================================================================
+
+
+--- [PAGE 1] ---
+Mathematics
+1983-2004
+JAMB
+Past 
+Questions 
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 2] ---
+Mathematics 1983
+1.
+If M represents the median and D the mode of the
+measurements 5, 9, 3, 5, 8 then (M,D) is
+A.
+(6,5)
+B.
+(5,8)
+C.
+(5,7)
+D.
+(5,5)
+E.
+(7,5)
+2.
+A construction company is owned by two partners X
+and Y and it is agreed that their profit will be divided in
+the ratio 4:5. at the end of the year. Y received #5,000
+more than x. what is the total profit of the company for
+the year?
+A. #20,000.00
+B.  P’0#25,000.00
+    C.  #30,000.00
+D. #15,000.003       E.#45,000.00
+3.
+Given a regular hexagon, calculate each interior angle
+of the hexagon.
+A.
+600
+B.
+300
+C.
+1200
+D.
+450
+E.
+1350
+4.
+Solve the following equations
+4x – 3 = 3x + y = 2y + 5x – 12
+A. 4x = 5, y = 2
+   B.     x = 2, y = 5     C.      x = -2, y = -5
+D. x = 5, y = -2
+ E.
+x = -5, y = -2
+5.
+If x = 1 is root of the equation
+x3 – 2x2 – 5x + 6, find the other roots
+A.
+-3 and 2  B.
+–2 and 2        C.
+3 and –2
+D.
+1 and 3
+  E.
+–3 and 1
+6.
+If x is jointly proportional to the cube of y and the
+fourth power of z. In what ratio is x increased or
+decreased when y is halved and z is doubled?
+A.  4:1 increase
+  B.     2:1 increase
+   C.     1:4 decrease
+D.
+1: 1 no change  E.     3: 4 decrease
+7.
+In the above figure PQR = 600, QPR = 900, PRS = 900,
+RPS = 450, QR= 8cm. Determine PS
+A.
+2√3cm
+B.
+4√6cm
+    C.   2√6cm
+D.
+8√6cm
+E.
+8cm
+8.
+Given that cos z = L, where z is an acute angle find an
+expression for Co +Z - cosecz
+ sec Z  + tan z
+A. l - L
+B. L2-√1−L2
+C.  -L-√1−L
+1+L 
+ L2+L-1
+(C1+L) +√1−L2
+D. √L−1.
+E.
+ L-(L2-1)
+    (L1+L2) +√1−L2             1+ √1 - L2+ √1 - L2
+9.
+If 0.0000152 x 0.00042 = A x 108, where
+1 £ A < 10, find A and B.
+A. A = 9, B = 6`.38  B.   A = 6.38, B = -9   C.    A = 6.38, B = 9
+D. A = 6.38, B = -1  E.   A = 6.38, B = 1
+10.
+If x + 2 and x – 1 are factors of the expressions lx +
+2kx2 + 24, find the values of l and k
+A. l = -6, k = -9
+B.   l = -2, k = 1
+C. l = -2, k = -1
+D. l = 0, k = 1
+E. l = 6, k = 0
+11.
+Make T the subject of the equation
+  av    =  3     2V   +  T
+1- V
+    a  
+ 2T
+A.
+3av/(1-v)
+B. 2v(1-v)2 - a2v2/2a2v2 - (1-V)2
+C.
+2v(1 - v)2  + a3v2/ 2a2v2 + (1 - v)2
+D.
+2v(1 - v)2 - a4v3/2a3v3 - (1 - v)3
+E.
+2v(1-v)3 - a4v3/2a3v3 + (1-v)3
+12.
+In a class of 60 pupils, the statistical distribution of the
+number of pupils offering Biology, History, French,
+Geography and Additional Mathematics is as shown in
+the pie chart above. How many pupils offer Additional
+Mathematics?
+A.
+15
+B.
+10
+C.
+18
+D.
+12
+E.
+28
+13
+The value of (0.303)3 – (0.02)3 is
+A. 0.019
+B. 0.0019
+C. 0.00019
+D. 0.000019
+E. 0.000035
+14.
+y varies partly as the square of x and y partly as the
+inverse of the square root of x. write down the
+expression for y if y = 2 when x = 1 and y = 6 when x =
+4
+A. y  = 10x2  + 52
+B. y  = x2  +  1
+   31    31√x 
+           √x
+C. y = x2 + 1
+  D.
+y = x2 + 1
+E. y  =   10 (x2 + 1  )
+ x       
+ 31  31√ x 
+   31(      √x)
+15.
+Simplify (x – 7) / (x2 – 9) ( x2 – 3x)/( x2 - 49)
+A. x/ (x - 3)(x + 7)
+B.  (x + 3) (x + 7)/x
+C. x/(x - 3) (x -
+7)
+D. x/(x + 3) (x + 7)
+E.  x/(x + 4) (x + 7)
+16.
+The lengths of the sides of a right-angled triangle at (3x
++ 1)cm, (3x - 1)cm and x cm.
+A.
+2
+B.
+6
+C.
+18
+D.
+12
+E.
+0
+17.
+The scores of a set of a final year students in the first
+semester 
+examination 
+in 
+a 
+paper 
+are
+41,29,55,21,47,70,70,40,43,56,73,23,50,50. find the median
+of the scores.
+A.
+47 B.
+481/2
+C.
+50
+D.
+48 E.
+49
+45
+O
+60
+O
+S 
+P 
+8 cm
+Q 
+R
+(2 -24)
+x
+O
+(3 -18)
+x
+O
+( +12)
+x
+O
+(2 +12)
+x
+O
+x
+O
+Geography
+Additional
+Mathematics
+Biology
+French
+History  
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 3] ---
+18.
+Which of the following equations represents the above
+graph?
+A. y = 1 + 2x + 3x2  B.  y = 1 – 2x + 3x2    C.  y = 1 + 2x 3x2
+D. y = 1 – 2x – 3x2
+  E. y = 3x2 + 2x - 1
+19.
+The above figure FGHK is a rhombus. What is the value
+of the angle x?
+A.
+900
+B.
+300
+C.
+1500
+D.
+1200
+E.
+600
+20.
+PQRS is a desk of dimensions 2m x 0.8m which is inclined
+at 300 to the horizontal. Find the inclination of the
+diagonal PR to the horizontal.
+A.
+23035’
+B.
+300
+C.
+15036’
+D.
+100
+E.
+10042’
+21.
+Find x if (x 
+base 4)2 = 100 1000base 2
+A.
+6
+B.
+12
+C.
+100
+D.
+210
+E.
+110
+22.
+Simplify log10a1/2 + 1/4log10a – 1/12log10a7
+A.
+1
+B.
+7/6log10a 
+ C.
+ 0
+D.
+10
+E.
+a
+23.
+If w varies inversely  as V and u varies directly  as w3,
+find the relationship between u and V given that u = 1,
+when V = 2
+A.
+u = 8V3
+ B.
+u = 2   V   C.
+ V = 8/u2
+D.
+V = 8u2
+ E.
+U = 8/v3
+24.
+Solve the simultaneous equations for x
+x2 + y – 8 = 0
+y + 5x – 2 = 0
+A.
+–28, 7
+B.
+6, -28
+C.
+6, -1
+D.
+–1, 7
+E.
+3, 2
+25.
+Find the missing value in the following table.
+A.
+-3
+B.
+3
+C.
+–9
+D.
+13
+E.
+9
+26.
+If O is the centre of the circle in the figure above. Find
+the value of x
+A.
+50
+B.
+260
+C.
+100
+D.
+65
+E.
+130
+27.
+Find the angle of the sectors representing each item in
+a pie chart of the following data.
+6,10,14,16,26
+A. 150, 250,350,400,650,
+B. 600, 1000,1400,1600,2600
+C.  60, 100,140,160,260,
+D. 300, 500,700,800,1300
+E. 
+ None of the above
+28.
+The scores of 16 students in a Mathematics test are
+65,65,55,60,60,65,60,70,75,70,65,70,60,65,65,70
+What is the sum of the median and modal scores?
+A.
+125
+B.
+130
+C.
+140
+D.
+150
+E.
+137.5
+29.
+The letters of the word MATRICULATION are cut and
+put into a box. One of the letter is drawn at random from
+the box. Find the probability of drawing a vowel.
+A.
+2/13
+B.
+5/13
+C.
+6/13
+D.
+8/13
+E.
+4/13
+30.
+Correct each of the number 59.81789 and 0.0746829 to
+three significant figures and multiply them, giving your
+answer to three significant figures.
+A.
+4.46
+B.
+4.48
+C.
+4.47
+D.
+4.49
+E.
+4.50
+31.
+If a rod of length 250cm is measured as 255cm longer in
+error, what is the percentage error in measurement?
+A.
+55
+B.
+10
+C.
+5
+D.
+4
+E.
+2
+32.
+If (2/3)m (3/4)n = 256/729, find thevalues of m and n
+A.  m = 4, n = 2
+B. m = -4, n = -2
+C.  m = -4, n = 2
+D. m = 4, n = -2
+E.  m = -2, n = 4
+33.
+Without using tables find the numerical value of log749
++ log7(1/7)
+A.
+1
+B.
+2
+C.
+3
+D.
+7
+E.
+0
+y
+x
+12
+9
+6
+3
+-3
+-6
+-9
+-12
+-15
+-3   -2  -1
+3  2   1
+30
+O
+H 
+K 
+G 
+F
+x
+30
+O
+0-8 m
+2 m
+P
+0
+Q
+R
+S
+130
+O
+x
+OO
+x 
+-2
+-1
+ 0 
+ 1 
+  2 
+ 3
+y = x - x + 3 
+ 3 
+ 3 
+ 3  
+  9  27
+O3
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 4] ---
+34.
+Factorize completely 81a4 – 16b4
+A.
+(3a + 2b) (2a – 3b) (9a2 + 4b2)
+B.
+(3a - 2b) (2a – 3b) (4a2 - 9b2)
+C.
+(3a - 2b) (3a – 2b) (9a2 + 4b2)
+D.
+(3a - 2b) (2a – 3b) (9a2 + 4b2)
+E.
+(3a - 2b) (2a – 3b) (9a2 - 4b2)
+35.
+One interior angle of a convex hexagon is 1700 and
+each of the remaining interior angles is equal to x0. find
+x
+A.
+1200
+B.
+1100
+C.
+1050
+D.
+1020
+E.
+1000
+36.
+PQRS is a cyclic quadrilateral in which PQ = PS. PT is a
+tangent to the circle and PQ makes and angle 500 with
+the tangent as shown in the figure below. What is the
+size of QRS?
+A.
+500
+B.
+400
+C.
+1100
+D.
+800
+E.
+1000
+37.
+A ship H leaves a port P and sails 30km due South.
+Then it sails 60km due west. What is the bearing of H
+from P?
+A.
+26034’
+B.
+243026’
+C.
+116034’
+D.
+63026’
+E.
+2400
+38.
+In a sample survey of a university community the
+following table shows the percentage distribution of
+the number of members per household.
+A.
+4
+B.
+3
+C.
+5
+D.
+4.5
+E.
+None
+39.
+On a square paper of length 2.524375cm is inscribed a
+square diagram of length 0.524375. find the area of the
+paper no covered by the diagram correct to 3 significant
+figures.
+A.
+6.00cm2
+B.
+6.10cm2
+C.
+6.cm2
+D.
+6.09cm2
+E.
+4.00cm2
+40.
+If    f(X) = 1    +  x - 1     find f(1-x)
+                x-1        x2-1
+A.   1/x + 1/(x+2)
+B.      x +1/(2x -1)
+C. -1/x - 1/(x-2)                           D.    -1/x + 1/(x2-1)
+41.
+In the figure below find PRQ
+A.
+661/2
+0
+B.
+621/2
+0
+C.
+1250
+D.
+1050
+E.
+650
+42.
+Simplify     27a9/8
+A.
+9a2/2
+B.
+9a3/2
+C.
+2/3a2
+D.
+2/3a2
+E.
+3a3/2
+43.
+The farm yields of four crops on a piece of land in
+Ondo are represented on the pie chart above. What is
+the angle of the sector occupied by Okro in the chart?
+A.
+911/2
+0
+B.
+191/3
+0
+C.
+331/3
+0
+D.
+110
+E.
+910
+44.
+In the figure above, PQR is a straight line. Find the
+values of x and y
+A.
+x = 22.50 and y = 33.750
+B.
+x = 150 and y = 52.50
+C.
+x = 22.50 and y = 45.00
+D.
+x = 56.250 and y = 11.50
+E.
+x = 18.0 and y = 56.50
+45.
+PQR is the diameter of a semicircle RSP with centre  at
+Q and radius of length 3.5cmc. if QPT = QRT = 600. Find
+the perimeter of the figure (PTRS p = 22/7)
+A.
+25cm
+B.
+18ccm C.
+36cm
+D
+29cm
+E
+255cm
+50
+O
+S 
+R 
+Q
+T
+P 
+No of members
+per household
+1   2    3    4    5   6   7  8 Total
+3  12 15  28  21  10  7 4 100
+Number of 
+households
+235o
+Q
+P
+R
+Yams
+184.5 kg
+Rice
+45.4
+kg
+Okro
+14.5
+kg
+Beans
+14.5 kg
+45
+O
+y
+O
+(x+3y)
+O
+(3x+y)
+O
+R
+Q
+P
+60
+O
+O
+60
+O
+R
+P
+S
+T
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 5] ---
+46.
+In a triangle PQR, QR = 3cm, PR =     3cm, PQ =      3cm and
+PQR = 300. find angles P and R
+A.
+P = 600 and R = 900
+B.
+P = 300 and R = 1200
+C.
+P = 900 and R = 600
+D.
+P = 600 and R = 600
+E.
+P = 450 and R = 1050
+47.
+In the above diagram if PS = SR and PQ//SR. what is the
+size of PQR?
+A.
+250
+B.
+500
+C.
+550
+D.
+650
+E.
+750
+48.
+Find 
+the 
+mean 
+of 
+the 
+following
+24.57,25.63,25.32,26.01,25.77
+A.
+25.12
+B.
+25.30
+C.
+25.26
+D.
+25.50q
+E.
+25.73
+49.
+In the figure above PT is a tangent to the circle with
+centre O. if PQT = 300. find the value of PTO
+A.
+300
+B.
+150
+C.
+240
+D.
+120
+E.
+600
+50
+  A man drove for 4hours at a certain speed, he then
+doubled his speed and drove for another 3 hours.
+Altogether he covered 600km. At what speed did he
+drive for the last 3 hours?
+A.     120km/hr            B.       60km/hr
+     C.  600/7km/hr
+D.     50km/hr
+    E.       100km/hr.
+1.
+Simplify (2/3 – 1/5) – 1/3 of 2/5
+3 – 1/1/2
+A.
+1/7B.
+7
+C.
+1/3
+D.
+3 E.
+1/5
+2.
+If 263 + 441 = 714, what number base has been used?
+A.
+12
+B.
+11
+C.
+10
+D.
+9
+E.
+8
+3.
+0.00014323/1.940000 = k x 10n where 1 £ k < 10 and n is
+a whole number. The values of K and are
+A.
+7.381 and –11
+B.
+2.34 and 10
+C.
+3.87 and 2
+D.
+7.831 and –11
+E.
+5.41 and –2
+4.
+P sold his bicycle to Q at a profit of 10%. Q sold it to R
+for #209 at a loss of 5%. How much did the bicycle cost
+P?
+A.
+#200
+B.
+#196
+C.
+#180
+D.
+#205
+E.
+#150
+5.
+If the price of oranges was raised by 1/2k per orange,
+the number of oranges customer can buy for #2.40 will
+be less by 16. What is the present price of an orange?
+A.
+21/2k
+B.
+31/2k
+C.
+51/2k
+D.
+20k
+E.
+211/2k
+Mathematics 1984
+6.
+A man invested a total of #50,000 in two companies. If
+these companies pay dividend of 6% and 8%
+respectively, how much did he invest at 8% if the total
+yield is #3.700?
+A.
+#15,000 B.
+#29,600 C.
+#21,400
+D.
+#27,800 E.
+#35,000
+7.
+Thirty boys and x girls sat for a test. The mean of the
+boys’ scores and that of the girls were respectively 6
+and 8. find x if the total score was 468.
+A.
+38
+B.
+24
+C.
+36
+D.
+22
+E.
+41
+8.
+The cost of production of an article is made up as
+follows
+Labour
+#70
+Power
+#15
+Materials
+#30
+Miscellaneous
+#5
+Find the angle of the sector representing labour in a pie
+chart.
+A.
+2100
+B.
+1050
+C.
+1750
+D.
+1500
+E.
+900
+9.
+Bola chooses at random a number between 1 and 300.
+What is the probability that the number is divisible by
+4?
+A.
+1/3
+B.
+¼
+C.
+1/5
+D.
+4/300
+E.
+1/300
+100
+O
+P 
+Q
+130
+O
+S 
+R
+30
+O
+2x
+O
+x
+O
+x
+O
+Q 
+T 
+P 
+O
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 6] ---
+10.
+Find without using logarithm tables, the value of
+Log327 – Log1/464
+       Log31/81
+A.
+7/4
+B.
+–7/4
+C.
+–3/2
+D.
+7/3
+E.
+–1/4
+11.
+A variable point P(x, y) traces a graph in a two
+dimensional plane. (0, -3) is one position of P. If x
+increases by 1 unit, y increases by 4 units. The equation
+of the graph is
+A.
+-3 = y + 4/ x + 1
+B.
+4y = -3 + x
+C.
+y/x = -3/4
+D.
+y + 3 = 4x
+E.
+4y = x + 3
+12.
+A trader in a country where their currency ‘MONT’ (M)
+is in base five bought 103(5) oranges at M14(5) each. If
+he sold the oranges at M24(5) each, what will be his
+gain?
+A.
+M103(5)    B.
+M1030(5)   C.
+M102(5)
+D.
+M2002(5)    E.
+M3032(5)
+13.
+Rationalize
+(5√5 - 7√5)(/√7 - √5
+A.
+-2√35
+     B.
+4√7 - 6√5   C.
+   -√35
+D.
+4√7 - 8√5   E.
+√35
+14.
+Simplify
+3n – 3n – 1
+     33 x 3n – 27 x 3n – 1
+A.
+1
+B.
+0
+C.
+1/27
+D.
+3n – 3n – 1 E.
+2/27
+15.
+ p varies directly as the square of q an inversely as r. if
+p = 36, when q = 3 and r = p, find p when q = 5 and r = 2
+A.
+72
+B.
+100
+C.
+90
+D.
+200
+E.
+125
+16.
+Factorise
+6x2 – 14x - 12
+A.
+2(x + 3) (3x - 2)
+B.
+6(x - 2) (x + 1)
+C.
+2(x - 3) (3x + 2)
+D.
+6(x + 2) (x - 1)
+E.
+(3x + 4) (2x + 3)
+17.
+A straight line y = mx meets the curve y = x2 – 12x + 40
+in two distinct points. If one of them is (5,5), find the
+other
+A.
+(5,6)
+B.
+(8,8)
+C.
+(8,5)
+D.
+(7,7)
+E.
+(7,5)
+18.
+The table below is drawn for a graph  y = x2 – 3x + 1
+From x = -2 to x = 1, the graph crosses the x-axis in the
+range(s)
+A.
+-1 < x < 0 and 0 < x < 1
+B.
+-2 < x < -1 and 0 < x < 1
+C.
+-2 < x < -1 and 0 < x < 1
+D.
+0 < x < 1 E.
+1 < x < 2
+19.
+In a racing competition. Musa covered a distance of 5xkm
+in the first hour and (x + 10)km in the next hour. He was
+second to Ngozi who covered a total distance of 118km
+in the two hours. Which of the following inequalities is
+correct?
+A.
+0 < -x < 15
+B.
+–3 < x < 3
+C.
+15 < x < 18
+ D.
+0 < x < 15
+E.
+0 < x < 18
+20.
+2x + 3y = 1 and y = x – 2y = 11, find (x + y)
+A.
+5
+B.
+–3
+C.
+8
+D.
+2
+E.
+–2
+21.
+  Tunde and Shola can do a piece of work in 18days.
+Tunde can do it alone in x days, whilst Shola takes 15
+days longer to do it alone. Which of the following
+equations is satisfied by x?
+A.
+x2 – 5x – 18 = 0
+   B.
+x2 – 20x + 360 = 0
+C.
+x2 - 21x – 270 = 0
+   D.
+2x2 + 42x – 190 = 0
+E.
+3x2 – 31x + 150 = 0
+22.
+If fx) = 2(x - 3)2 + 3(x - 3) – 4 and g(y) = √5 + y, find g(f(3))
+and g{f(4)}
+A.
+3 and 4
+B.
+–3 and 4
+C.
+–3 and –4
+D.
+3 and –4
+E.
+0 and √5
+23.
+The quadratic equation whose roots are 1 -   13 and 1 +
+      13 is
+A.
+x2 + (1 - √13)x + 1 + √13 = 0
+B.
+x2 + (1 - √13)x + 1 - √13 = 0
+C.
+x2 + 2x + 12 = 0
+      D.
+    x2 – 2x + 12 = 0
+E.
+x2 – 2x – 12 = 0
+24.
+Find a factor which is common to all three binomial
+expressions
+4a2 – 9b2, a3 + 27b3, (4a + 6b)2
+A.
+4a + 6b
+B.
+4a – 6b
+C.
+2a + 3b
+D.
+2a – 3b
+E.
+none
+25.
+What is the volume of the regular three dimensional
+figure drawn above?
+A.
+160cm3
+  B.
+48cm3
+  C.
+96cm3
+D.
+120cm3
+  E.
+40cm3
+26.
+If (x - 2) and (x + 1) are factors of the expression x3 + px2
++ qx + 1, what is the sum of p and q?
+A.
+0
+B.
+–3
+C.
+3
+D.
+–17/3
+E.
+–2/3
+y=x - 3x + 1
+1 x 
+1    -1    3    1    -1   3    1
+-3   -2  -1    0    1    2    3
+P 
+5 cm
+11 cm
+4 cm
+Q 
+R 
+S 
+T
+2
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 7] ---
+27.
+A cone is formed by bending a sector of a circle having
+an angle of 2100. Find the radius of the base of the cone
+if the diameter of the circle is base of the cone if the
+diameter of the circle is 12cm
+A.
+7.00cm
+  B.
+1.75cm
+  C.
+ Ö21cm
+D.
+3.50cm
+  E.
+2Ö21cm
+28.
+Using    XYZ in the figure above find XYZ
+A.
+290
+B.
+31020’
+   C.
+310
+D.
+31018’
+E.
+590
+29.
+The sides of a triangle are (x + 4)cm, x cm and (x- 4) cm
+respectively. If the cosine of the largest angle is 1/5,
+find the value of x
+A.
+24cm
+      B.
+20cm
+   C.
+ 28cm
+D.
+88/7ccm      E.
+0cm
+30.
+If a = 2x/1 – x and b = 1 + x / 1 – x
+then a2 – b2 in the simplest form is
+A.3x+1/(x-1)
+B. 3x2-1/(x-1)2
+C. 3x2+1/(1-x)2
+D. 5x2-1/(1-x)2
+E. 5x2 -2x -1/(1-x)2
+ ( x-1)
+31.
+Simplifty (1  +   1    )   (x+2)
+                              (       x+1)
+ A.
+ (x2 - 1)(x + 2)
+B.
+x2 (x + 2)/x + 1
+C.
+x2 - (x + 2)
+D.
+2x(x + 2)
+E.
+2x(x + 2)/x + 1
+32.
+In the figure above PQRSTW is a regular hexagon. QS
+intersects RT at V. calculate TVS.
+A.
+600
+B.
+900
+C.
+1200
+D.
+300
+E.
+800
+33.
+Find the integral values of x which satisfy the
+inequalities –3 < 2 –5x < 12
+A.
+-2, -1
+B.
+–2, 2
+C.
+–1, 0
+D.
+0,1
+E.
+1,2
+34.
+Find the area of the shaded portion of the semi – circular
+figure above.
+A.
+r2/4(4p - 3    3)
+B.
+r2/4(2p + 3   3)
+C.
+1/2r2p
+D.
+1/8r   3
+E.
+r2/8(4p + 3   3)
+35.
+In the figure above QRS is a line, PSQ = 350 SPR = 300
+and O is the centre of the circle find OQP
+A.
+350
+B.
+300
+C.
+1300
+D.
+250
+E.
+650
+36.
+If pq + 1 = q2 and t = 1/p – 1/pq
+express t in terms of q
+A.
+1/p – q
+B.
+1/ q – 1
+C.
+1/q + 1
+D.
+1 + q
+E.
+1/ 1- q
+37.
+The cumulative frequency function of the data below
+is given by the frequency y = cf(x). what is cf(5)?
+Scores(n)
+Frequency(f)
+3
+30
+4
+32
+5
+30
+6
+35
+7
+20
+A.
+30
+B.
+35
+C.
+55
+D.
+62
+E.
+92
+38.      In the figure determine the angle marked y
+A.
+660
+B.
+1100
+C.
+260
+D.
+700
+E.
+440
+X 
+120
+5 cm
+3 cm
+Z 
+Y
+P
+Q
+S
+T
+V
+W 
+R 
+60
+O
+r 
+r 
+r 
+r
+60
+O
+60
+O
+20
+O
+44
+O
+R 
+Q 
+r
+y
+P
+S
+20
+O
+44
+O
+R 
+Q 
+r
+y
+P
+S
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 8] ---
+39.
+A right circular cone has a base radius r cm and a vertical
+2y0. the height of the cone is
+A.
+r tan y0cm
+B.
+r sin y0cm
+C.
+r cot y0cm
+D.
+r cos y0cm
+E.
+r cosec y0cm
+40.
+Two fair dice are rolled. What is the probability that
+both show up the same number of point?
+A.
+1/36
+B.
+7/36
+C.
+½
+D.
+1/3
+E.
+1/6
+41.
+The larger value of y for which (y - 1)2 = 4y – 7 is
+A.
+2
+B.
+4
+C.
+6
+D.
+7
+E.
+8
+42.
+Find the x coordinates of the points of intersection of
+the two equations in the graph above.
+A.
+1,1
+B.
+0,-4
+C.
+4,9
+D.
+0,0
+E.
+0,4
+43.
+If sin q = x/y and 00 < q < 900
+then find 1/ tan q
+A.
+x/√(y2 – x2)
+B.
+x/y
+C.
+√y2 –n2
+√y2−x2
+D.
+(√y2 – x2)/(√y2 – x2)
+E.
+√y2 – x2/y
+44.
+In the figure above TSP =PRQ, QR = 8cm. PR = 6cm and
+ST = 12cm. Find the length SP
+A.
+4cm
+B.
+16cm
+C.
+9cm
+D.
+14cm
+E.
+Impossible insufficient data
+45.
+The bar chart above shows the mark distribution in a
+class test. Find the number of students in the class.
+A.
+9
+B.
+2
+C.
+60
+D.
+30
+E.
+34
+46.
+In the figure above, O is the centre of circle PQRS and
+PS//RT. If PRT = 1350, then PSQ is
+A.
+671/2
+0
+B.
+450
+C.
+900
+D.
+333/4
+0
+E.
+221/2
+0
+47.
+XYZ is a triangle and XW is perpendicular to YZ at W.
+if  XZ = 5cm and WZ = 4cm, calculate XY.
+A.
+5√3cm
+  B.
+3√5cm
+  C.
+3Ö3cm
+D.
+ 5cm
+  E.
+6cm
+48.
+Measurements of the diameters in centimeters of 20
+copper spheres are distributed as shown below
+Class boundary in cm
+frequency
+3.35-3.45
+3
+3.45-3.55
+6
+3.55-3.65
+7
+3.65-3.75
+4
+What is the mean diameter of the copper sphere?
+A.
+3.40cm
+ B.
+3.58cm
+ C.
+ 3.56cm
+D.
+3.62cm
+ E.
+3.63cm
+y
+y = x + 
+2
+1
+y =x - x - 
+2
+1
+2
+x
+S 
+12 cm
+6 cm
+8 cm
+T 
+P 
+R 
+Q
+Bar Chart
+Frequency
+Marks
+0-9  10-19  20-29   30-39  40-49  50-59
+10
+8
+6
+4
+2
+0
+135
+O
+P 
+S 
+O 
+T 
+R 
+Q
+10 cm
+4 cm
+5 cm
+Y 
+X 
+Z 
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 9] ---
+Use the instruction below to answer question49 and 50
+49.
+What is the obtuse angle formed when the point U is
+joined to Q?
+A.
+750
+B.
+1540
+C.
+1200
+D.
+1050
+E.
+1250
+50.
+What is the acute angle formed when the point V joined
+to Q?
+A.
+600
+B.
+300
+C.
+450
+D.
+900
+E.
+150
+Mathematics 1985
+T 
+V 
+R 
+S 
+P 
+O 
+U 
+1.
+Arrange the following numbers in ascending order of
+magnitude    6/7,13/15,0.865
+A.
+6/7 < 0.865 < 13/15
+B.
+6/7 < 13/15 < 0.865
+C.
+13/15 < 6/7 < 0.865
+D.
+13/15 < 0.865 < 6/7
+E.
+0.865 < 6/7 < 13/15
+2.
+A sum of money was invested at 8% per annum simple
+interest. If after 4years the money amounts to #330.00,
+find the amount originally invested.
+A.
+#180.00      B.
+#165.00    C.
+#150.00
+D.
+#200.00      E.
+#250.00
+3.
+In the equation below,  solve for x if all the numbers are in
+base 2?
+11/x = 1000/(x + 101)
+A.
+101
+B.
+11
+C.
+110
+D.
+111
+E.
+10
+4.
+List all integers satisfying the inequality
+-2 < 2x – 6 < 4
+A.
+2,3,4,5
+B.
+2,3,4
+C.
+2,5
+D.
+3,4,5
+E.
+4,5
+5.
+Find correct to tow decimal places
+100 + 1/100 + 3/1000 + 27/10000
+A.
+100.02
+B.
+1000.02
+C.
+100.22
+D.
+100.01
+E.
+100.51
+6.
+Simplify 1/2 + 1
+         1
+                         2 +  -------------
+        1
+          2 - --------------
+4 +1/5
+A.
+¾ B.
+–1/3
+C.
+169/190
+D.
+13/15
+E.
+121/169
+7.
+If three number p,q,r are in the ratio 6:4:5 find the value
+of (3q – q)/(4q + r)
+A.
+3/2B.
+2/3
+C.
+2
+D.
+3 E.
+18
+8.
+Without using tables, evaluate  Log24 + Log42 – Log255
+A.
+½ B.
+1/5
+C.
+0
+D.
+5 E.
+2
+9.
+John gives one third of his money to Janet who has
+#105.00. He then finds that his money is reduced to
+one-fourth of what Janet now has. Find how much
+money John had at first.
+A.
+#45.00
+B.
+#48.00
+C.
+#52.00
+D.
+#58.00
+E.
+#60.00
+10.
+Find x if Log9x = 1.5
+A.
+72.0
+B.
+27.0
+C.
+36.0
+D.
+3.5
+E.
+24.5
+11.
+Write h in terms of  a =b(1 - ch)
+           (1-dh)
+A
+h = (a  -  b)
+B.  h = (a   +  b )
+                   (ad- bc)
+(ad  -  bc)
+C.
+h = (ad - bc)
+D.   h = (1   - b)
+        ( a -  b )
+              (d - bc)
+E.
+h = (b  -   a)
+        (ad - bc)
+12.
+221/2% of the Nigerian Naira is equal to 171/10% of a foreign
+currency M. what is the conversion rate of the M to the
+Naira?
+A.
+1M = 15/57N
+B.
+1M = 211/57N
+C.
+1M = 118/57N
+D.
+1M = 381/4N
+E.
+1M = 3843/4N
+13.
+Find the values of p for which the equation x2 – (p - 2)x
++ 2p + 1 = 0 has equal roots
+A.
+(0,12)
+B.
+(1,2)
+C.
+(21,0)
+D.
+(4,5)
+E.
+(3,4)
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 10] ---
+14.
+If ex= 1 + x + x2/12 + x3/1.2.3 + ….. find 1/e1/2
+A. 1 - x   + x2 - x2 +... B.  1 + x +  x2  + x2
+          2     123  24 3
+             2   1.22   23.3
+C. 1 + x   + x2 - x2 +...
+D.  1 -  x +  x2  -  x2   +
+          2     1.23  24. 3
+           2   1.22   23.3
+E. 1+ x 3   + x3 - x4 +
+        1.2  12.4   12.63
+5.
+(4√3 + 4√2) (4√3 - 4√2) (3√ + √2) is equal to
+A.
+0
+B.
+4√3 + 4√2
+C.
+(4√2 - 4√3) (√3 + √2)
+D.
+√3 + √2
+E.
+1
+16.
+In a restaurant, the cost of providing a particular type
+of food is partly constant and partly inversely
+proportional to the number of people. If the cost per
+head for 100people is 30k and the cost for 40 people is
+60k, find the cost for 50 people
+A.
+15k
+B.
+45k
+C.
+20k
+D.
+50k
+E.
+40k
+17.
+The factors of 9 – (x2 – 3x - 1)2 are
+A.
+-(x - 4)(x + 1)(x - 1)(x - 2)
+B.
+(x - 4)(x - 1)(x - 1)(x + 2)
+C.
+-(x - 2)(x + 1)(x + 2)(x + 4)
+D.
+(x - 4)(x -3)(x - 2)(x + 1)
+E.
+(x - 2)(x + 2)(x - 1)(x + 1)
+18.
+If 32y – 6(3y) = 27 find y
+A.
+3
+B.
+–1
+C.
+2
+D.
+–3
+E.
+1
+19.
+Factorize abx2 + 8y – 4bx –2axy
+A.
+(ax - 4) (bx – 2y)
+   B.
+(ax + b) (x – 8y)
+C.
+(ax – 2y) (by – 4)   D.
+(abx - 4) (x – 2y)
+E.
+(bx - 4) (ax – 2y)
+20.
+At what real value of x do the curves whose equations
+are y = x3 + x and y = x2 + 1 intersect?
+A.
+-2
+B.
+2
+C.
+–1
+D.
+0
+E.
+1
+21.
+If the quadrilateral function 3x2 – 7x + R is a perfect
+square find R
+A.
+49/24
+B.
+49/3
+C.
+49/6
+D.
+49/12
+E.
+49/36
+22.
+Solve the following equation
+2/(2r – 1) – 5/3 = 1/ (r + 2)
+A.
+(-1, 5/2)
+B.
+(-1, -5/2)
+C.
+(5/2, 1)
+D.
+(2, 1)
+E.
+(1, 2)
+23.
+Solve for (x,y) in the equations
+2x + y = 4: x2 + xy = -12
+A.
+(6, -8); (-2,8)
+B.
+(3, -4); (-1, 4)
+C.
+(8, -4); (-1, 4)
+D.
+(-8, 6);(8, -2)
+E.
+(-4, 3);(4, -1)
+24.
+Solve the simultaneous equations
+2x – 3y + 10 = 10x – 6y = 5
+A.
+x = 21/2, y = 31/3
+   B.
+x = 31/2, y = 21/3
+C.
+x = 21/4, y = 3
+   D.
+x = 31/2, y = 21/5
+E.
+x = 21/2, y = 21/3
+25.
+If f(x - 2) = 4x2 + x + 7 find f(1)
+A.
+12 B.
+27
+C.
+7
+D.
+46 E.
+17
+26.
+In DXYZ, XY = 13cm, YZ = 9cm, XZ = 11cm and XYZ =
+q0. find cos  q0
+A.
+4/39
+B.
+43/39
+C.
+209/286
+D.
+1/6
+E.
+43/78
+27.
+Find the missing value in the table below
+A.
+-32
+B.
+–14
+C.
+40
+D.
+22
+E.
+37
+28.
+Find the number of goals scored by a football team in
+20matches is shown below
+What are the values of the mean and the mode
+respectively?
+A.
+(1.75, 5)
+B.
+(1.75, 2)
+C.
+(1.75, 1)
+D.
+(2,2)
+E.
+(2,1)
+29.
+If the hypotenuse of a right angle isosceles triangle is
+2, what is the length of each of the other sides?
+A.
+√2 B.
+1/√2
+C.
+2√2
+D.
+1
+E.    2 -1
+30.
+If two fair coins are tossed, what is the probability of
+getting at least one head?
+A.
+¼
+B.
+½
+C.
+1
+D.
+2/3
+E.
+¾
+31.
+The ratio of the length of  two similar rectangular blocks
+is 2:3, if the volume of the larger block is 351cm3, then
+the volume of the other block is
+A.
+234.00cm3
+B.
+526.50cm3
+C.
+166.00cm3
+D.
+729.75cm3
+E.
+104.00cm3
+32.
+The bearing of bird on a tree from a hunter on the
+ground is N720E. what is the bearing of the hunter from
+the bird?
+A.
+S180W
+B.
+S720W
+C.
+S720Eq
+D.
+S270E
+E.
+S270W
+x                  -2       -1       0       1       2       3
+y = x - x + 3                     3       3       3         9     27
+O
+No . of goals
+No . of matches
+0   1   2   3   4   5
+3   5   7   4   1   0
+2
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 11] ---
+33.
+In D XYZ above, XKZ = 900, XK = 15cm, XZ cm and YK
+= 8cm. Find the area of the D XYZ.
+A.
+180sq.cm
+B.
+210sq.cm
+C.
+160sq.cm
+D.
+320sq.cm
+E.
+390sq.cm
+34.
+Without using tables. Calculate the value of 1 + sec230?
+A.
+21/3
+B.
+2
+C.
+11/3
+D.
+¾
+E.
+3/7
+35.
+What is the probability that a number chosen at random
+from the integers between 1 and 10 inclusive is either a
+prime or a multiple of 3?
+A.
+7/10
+B.
+3/5
+C.
+4/5
+D.
+½
+E.
+3/10
+36.
+Find the area of a regular hexagon inscribed in a circle
+of radius 8cm.
+A.
+16√3cm2
+B.
+96√3cm2
+C.
+192.3cm2 D.
+16cm2
+E.
+32cm2
+37.
+In the figure above, MNOP is a cyclic quadrilateral,
+MN and PQ are produced to meet at X and NQ and MP
+are produced to meet at Y. if MNQ = 860 and NQP = 1220,
+find (x0, y0)
+A.
+(280 ,,360)
+B.
+(360  ,280)
+C.
+(430 ,,610)
+D.
+(610  ,430)
+E.
+(360  ,430)
+38.
+If cosq = √3/2 and 0 is less than 900, calculate
+cot (90 - q) / sin2q
+A.
+4√3/3
+B.
+4√3
+C.
+√3/2
+D.
+1/√3
+E.
+2/√3
+39.
+A solid sphere of radius 4cm has mass of 64kg. What will
+be the mass of a shell of the same metal whose internal
+and external radii are 2cm and 3cm respectively?
+A.
+5kg
+B.
+16kg
+C.
+19kg
+D.
+25kg
+E.
+48kg
+40.
+In the figure above POQ is the diameter of the circle
+PQRS. If PSR = 1450, find x0
+A.
+250
+B.
+350
+C.
+450
+D.
+550
+E.
+250
+41.
+In the figure above GHIJKLMN is a cube of side a. find
+the length of HN
+A.
+3√a
+B.
+3a
+C.
+3a2
+D.
+a√2
+E.
+a√3
+42.
+PQRS is a trapezium  of area 14cm2 in which PQ//RS, if
+PQ = 4cm and SR = 3cm, find the area of DSQR in cm2
+A.
+7.0
+B.
+6.0
+C.
+5.2
+D.
+5.0
+E.
+4.1
+43.
+In the figure PQ is the tangent from P to the circle QRS
+with SR as its diameter. If PQR = q0, which of the following
+relationship 00 is correct.?
+A.
+q0 + f = 900
+B.
+f0 = 900 - 200
+C.
+q0  = f0
+D.
+f0 = 200
+E.
+q0 + 2f0 = 1200
+X 
+Y 
+8 
+15 
+25 
+K 
+Z 
+122
+O
+N 
+Q
+P 
+Y 
+X 
+M
+86
+O
+145
+O
+P 
+S
+O
+Q
+R
+G 
+H 
+I 
+J 
+K 
+L 
+M 
+N 
+0
+O
+0
+O
+S 
+R 
+Q 
+P
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 12] ---
+48.
+In a class of 120students, 18 of them scored an A grade in
+Mathematics. If the section representing the A grade
+students on a pie chart has angle Z0 at the centre of the
+circle, what is Z?
+A.
+15
+B.
+28
+C.
+50
+D.
+52
+E.
+54
+49.
+In the figure above find the angle x
+A.
+1000
+B.
+1200
+C.
+600
+D.
+1100
+E.
+1400
+50.
+If  a (x+1) - (x +1)     = bx
+       ( x-2 )  (  n+2)
+Find a simplest form
+A.
+x2 – 1
+B.
+x2 + 1
+C.
+x2 + 4
+D.
+1
+E.
+x2 - 4
+44.
+A bag contains 4 white balls and 6 red balls. Two Redballs
+are taken from the bag without replacement. What is
+the probability that they are both red?
+A.
+1/3
+B.
+2/9
+C.
+2/15
+D.
+1/5
+E.
+3/5
+45.
+How many 2     2cm diameter discs can be cut out of a
+sheet of cardboard 218   2p3/4cm long and     p1/2cm wide?
+A.
+49
+B.
+219          C.        217p3/4(     2p + 2)
+D.
+210p3/4(1 +     2)
+           E.
+       29(     2 + 1)
+46.
+Two points X and Y both on latitude 600S have
+longitudes 1470E and 1530W respectively. Find to the
+nearest kilometre the distance between X and Y
+measured along the parallel of latitudes (Take 2  R = 4 x
+104km, where R is the radius of the earth).
+A.
+28.850km
+B.
+16.667km
+C.
+8.333km
+D.
+6.667km
+E.
+3.333km
+47.
+In the figure above the area of the shaded segment is
+A.
+3p
+B.
+9    3/4
+C.
+3(p - 3    3/4)
+D.
+3(    3 - p)/4
+E.
+p + 9    3/4
+Mathematics 1986
+120
+O
+3
+3
+80
+O
+40
+O
+x
+O
+20
+O
+1.
+Evaluate
+(212)3 – (121)3 + (222)3
+A.
+(313)3
+B.
+(1000)3
+C.
+(1020)3
+D.
+(1222)3
+2.
+If Musa scored 75 in Biology instead of 57, his
+average mark in four subjects would have been 60.
+what was his total mark?
+A.
+282
+B.
+240
+C.
+222
+D.
+210
+3.
+Divide the L.C.M. of 48, 64 and 80 by their H.C.F
+A.
+20
+B.
+30
+C.
+48
+D.
+60
+4.
+Find the smallest number by which 252 can be
+multiplied to obtain a perfect square
+A.
+2
+B.
+3
+C.
+5
+D.
+7
+5.
+Find the reciprocal of          2/3
+                                                        1/2 + 1/3
+A.
+4/5
+B.
+5/4
+C.
+2/5
+D.
+6/7
+6.
+Three boys shared some oranges. The first receive 1/3
+of the oranges, the second received 2/3 of the remainder,
+if the third boy received the remaining 12 oranges. How
+many oranges did they share?
+A.
+60
+B.
+54
+C.
+48
+D.
+42
+7.
+If P = 18, Q = 21, R = -6 and S = -4 calculate (P - Q) + S2
+A.
+-11/216
+B.
+11/216
+C.
+–43/115
+D.
+41/116
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 13] ---
+8.
+Simplify    0.03 x 4 x 0.00064
+          0.48 x 0.012
+A.
+3.6 x 102
+B.
+36 x 102
+C.
+3.6 x 103
+D.
+3.6 x 104
+9.
+Udoh deposited #150 00 in the bank. At the end of 5
+years the simple interest on the principal was #55 00.
+At what rate per annum was the interest paid?
+A.
+11%
+B.
+71/3%
+C.
+5%
+D.
+31/2%
+10.
+A number of pencils were shared out among Bisi, Sola
+and Tunde in the ratio 2:3:5 respectively. If Bisi got 5,
+how many were shared out?
+A.
+15
+B.
+25
+C.
+30
+D.
+50
+11.
+The ages of Tosan and Isa differ by 6 and the product
+of their ages is 187. write their ages in the form (x, y),
+where x > y
+A.
+(12, 9)
+B.
+(23, 17)
+C.
+(17, 11)
+D.
+(18, 12)
+12.
+In 1984, Ike was 24 years old and is father was 45 years
+old in what year was Ike exactly half his father’s age?
+A.
+1982
+B.
+1981
+C.
+1979
+D.
+1978
+13.
+Simplify   (      1
+                1    ) x -1/√3
+                                 (√5 + √3    −  √5 − √3)
+A.
+√3/√5
+B.
+–2/√3
+C.
+–2
+D.
+–1
+14.
+Find n if Log24 + Log2Z – Log2n = -1
+A.
+10
+B.
+14
+C.
+27
+D.
+28
+15.
+(91/3 x 27-1/2) / (3-1/6 x 3-2/3)
+A.
+1/3
+B.
+1
+C.
+3
+D.
+9
+16.
+If x varies directly as y3 and x = 2 when y = 1, find x
+when y = 5
+A.
+2
+B.
+10
+C.
+125
+D.
+250
+17.
+Factorize completely.
+3a + 125ax3
+A.
+(2a + 5x2)(4 + 25ax)
+B.
+a(2 + 5x)(4 – 10x + 25ax2)
+C.
+(2a + 5x)(4  - 10ax + 25ax2)
+D.
+a(2 + 5x)(4 + 10ax + 25ax2)
+18.
+If y = x/(x – 3) + x/(x + 4) find y when x = -2
+A.
+-3/5
+B.
+3/5
+C.
+–7/5
+D.
+7/5
+19.
+Find all the numbers x which satisfy the inequality 1/
+3(x + 1) – 1 > 1/5 (x + 4)
+A.
+x < 11
+B.
+x < -1
+C.
+x > 6
+D.
+x > 11
+20.
+Factorize x2 + 2a + ax + 2x
+A.
+(x + 2a)(x + 1)
+B.
+(x + 2a)(x - 1)
+C.
+(x2 - 1)(x + a)
+D.
+(x + 2)(x + a)
+21.
+Solve the equation 3x2 + 6x – 2 = 0
+A.
+x = -1,±√3/3
+B.
+x = -1,±√15/√3
+C.
+x = -2, ±2√3/3
+D.
+x = -2, ±2√15/3
+22.
+Simplify.    1/ 5x +5    + 1/7x + 7
+    A.
+12/35+7
+B.
+1/35(x+1)
+C.
+12x/35(x+1)
+D.
+12/35x + 35
+23.
+The curve y = -x2 + 3x + 4 intersects the coordinate axes
+at
+A.
+(4,0)(0,0)(-1,0)
+B.
+(-4,0)(0,4)(1,1)
+C.
+(0,0)(0,1)(1,0)
+D.
+(0,4)(4,0)(-1,0)
+24.
+Factorize (4a + 3)2 – (3a - 2)2
+A.
+(a + 1)(a + 5)
+B.
+(a - 5)(7a - 1)
+C.
+(a + 5)(7a + 1)
+D.
+a(7a + 1)
+25.
+If 5(x + 2y) = 5 and 4(x + 3y) = 16, find 3(x +y)
+A.
+0
+B.
+1
+C.
+3
+D.
+27
+26.
+Simplify  1/ x - 2     + 1/ x + 2 + 2x / x2 - 4
+    A.   2x/ (x-2) (x+2) (x2 - 4)  B.2x/x2 - 4
+C.
+x/x2 - 4
+D. 4x/ x2 - 4
+27.
+Make r the subject of the formula
+S =  6/v  - w/2
+A.  V =   6    = 12
+B.
+ v = 12
+  S2      w
+     252 - w
+C. v = 12  - 2s2
+D.   v = 12
+w                                              2s2  + w
+28.
+Find the values of x which satisfy the equation
+16x – 5x  4x + 4 = 0
+A.
+1 and 4
+B.
+–2 and 2
+C.
+0 and 1
+D.
+1 and 0
+29.
+a/b –c/d = k, find the value of
+(3a2 – ac + c2)/(3b2 – bd + d2) in term of k
+A.
+3k2
+B.
+3k – k2
+C.
+17k2/4
+D.
+k2
+30.
+At what point does the straight line y = 2x + 1 intersect
+the curve y = 2x2 + 5x – 1?
+A.
+(-2,-3) and (1/2, 2)       B.
+(-1/2 0) and (2, 5)
+C.
+(1/2, 2) and (1, 3)         D.
+(1, 3) and (2, 5)
+31.
+A regular polygon on n sides has 1600 as the size each
+interior. Find n.
+A.
+18
+B.
+16
+C.
+14
+D.
+12
+32.
+If cos q = a/b, find 1 + tan2q
+A.
+b2/a2
+B.
+a2/b2
+C.
+(a2 + b2) / (b2 – a2) D.
+(2a2 + b2)/ (a2 + b2)
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 14] ---
+33.
+In the diagram below, PQ and RS are chords of a circle
+centre O which meet at T outside the circle. If TP =
+24cm, TQ = 8cm and TS = 12cm, find TR.
+A.
+16cm
+B.
+14cm
+C.
+12cm
+D.
+8cm
+34.
+The angle of elevation of the top of a vertical tower 50
+metres high from a point X on the ground is 300. From a
+point Y on the opposite side of the tower, the angle of
+elevation of the top of the tower is 600. find the distance
+between the points X and Y.
+A.
+14.43m
+B.
+57.73m
+C.
+101.03m
+D.
+115.47m
+35.
+A girl walk 45 metres in the direction 0500 from a point Q
+to a point X. She then walks 24metres in the direction
+1400 from X to a point Y. How far is she then from Q?
+A.
+69m
+B.
+57m
+C.
+51m
+D.
+21m
+36.
+The figure is a solid with the trapezium PQRS as its
+uniform cross-section. Find its volume
+A.
+102m3
+B.
+576m3
+C.
+816m3
+D.
+1056m3
+37.
+PQ and PR are tangents from P to a circle centre O as
+shown in the figure above. If QRP = 340. Find the angle
+marked x.
+A.
+340
+B.
+560
+C.
+680
+D.
+1120
+38.
+An arc of circle of radius 6cm is 8cm long. Find the area of
+the sector.
+A.
+51/3cm2
+B.
+24cm2
+C.
+36cm2
+D.
+48cm2
+39.
+In     XYZ above, determine the cosine of angle Z
+A.
+¾
+B.
+29/36
+C.
+2/3
+D.
+½
+40.
+In the figure above      PQT is isosceles. PQ = QT. SRQ
+= 350, TQ = 200 and PQR is a straight line. Calculate
+TSR.
+A.
+200
+B.
+550
+C.
+75
+D.
+1400
+41.
+Find the total surface are of a solid cone of radius 2 3cm
+and slanting side 4    3cm
+A.
+8√3cm2 B.
+24cm2
+C.
+15√3cm2 D.
+36cm2
+42.
+If U and V are two distinct fixed points and W is a
+variable point such that UWV is a straight angle. What
+is the locus of W?
+A.
+The perpendicular bisector of UV
+B.
+A circle with UV as radius
+C.
+A line parallel to the line UV
+D.
+A circle with the line  UV as the diameter
+43.
+In the figure above, PQ//ST, RS//UV. If PQR = 350 and
+QRS = 650, find STV
+A.
+300
+B.
+350
+C.
+550
+D.
+650
+P
+O 
+S 
+R 
+Q 
+T
+S 
+R 
+11 m
+6 m
+8 m
+12 m
+Q 
+P
+Q 
+T 
+x
+R
+O
+Y 
+4 
+3 
+6 
+X 
+Z 
+35
+O
+20
+O
+S
+Q
+T 
+R
+65
+O
+35
+O
+P
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 15] ---
+48.
+The people in a city with a population of 109 million were
+grouped according to their ages. Use the diagram below
+to determine the number of people in the 15-29 years
+group.
+A.
+29 x 104
+B.
+26 x 104
+C.
+16 x 104
+D.
+13 x 104
+49.
+A man kept 6black, 5 brown and 7 purple shirts in a
+drawer. What is the probability of his picking a purple
+shirt with his eyes closed?
+A.
+1/7
+B.
+11/18
+C.
+7/18
+D.
+7/11
+50.
+The table below gives the scores of a group of students
+in a Mathematics test
+If the mode is m and the number of students who scored
+4 or less is S. What is (s, m)?
+A.
+(27,4 )
+B.
+(14, 4)
+C.
+(13, 4)
+D.
+(4, 4)
+44.
+An open rectangular box externally measures 4m x 3m x
+4m. find the total cost of painting the box externally if it
+costs #2.00 to paint one square metre.
+A.
+#96.00
+B.
+#112.00
+C.
+#136.00
+D.
+#160.00
+45.
+Of the nine hundred students admitted in a university
+in 1979, the following was the distribution by state
+Anambra
+185
+Imo
+135
+Kaduna
+90
+Kwara
+110
+Ondo
+155
+Oyo
+225
+In a pie chart drawn to represent this distribution, the
+angle subtended at the centre by Anambra is
+A.
+500
+B.
+650
+C.
+740
+D.
+880
+46.
+Find the median of the numbers 89, 141, 130, 161, 120,
+131, 131, 100, 108 and 119
+A.
+131
+B.
+125
+C.
+123
+D.
+120
+47.
+Find the probability that a number selected at random
+from 40 to 50 is a prime
+A.
+3/11
+B.
+5/11
+C.
+3/10
+D.
+4/11
+Mathematics 1987
+24
+O
+116
+O
+104
+O
+64
+O
+52
+O
+1.
+Convert 241 in base 5 to base 8
+A.
+718
+B.
+1078
+C.
+1768
+D.
+2418
+2.
+Find the least length of a rod which can be cut into
+exactly equal strips, each of either 40cm or 48cm in
+length.
+A.
+120cm
+B.
+240ccm
+C.
+360cm
+D.
+480cm
+3.
+A rectangular has lawn has an area of 1815square yards.
+If its length is 50meters, find its width in metres. Given
+that 1meters equals 1.1yards
+A.
+39.93
+B.
+35.00
+C.
+33.00
+D.
+30.00
+4.
+Reduce each number to two significant figures and then
+evaluate                   (0.02174 x 1.2047)
+         0.023789
+A.
+0.8
+B.
+0.9
+C.
+1.1
+D.
+1.2
+5.
+A  train moves from P to Q at an average speed of 90km/
+hr and immediately returns from O to P through the
+same route and at an average speed of 45km/h. find the
+average speed for the centre journey.
+A.
+55 00km/hr
+B.
+60 00km/hr
+C.
+67.50km/hr
+D.
+75 00km/hr
+6.
+If the length of a square is increased by 20% while its
+width is decreased by 20% to form a rectangle, what is
+the ratio of the area of the rectangle to the area of the
+square?
+A.
+6.5
+B.
+25.24
+C.
+5.6
+D.
+24.25
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 16] ---
+7.
+Two brothers invested a total of #5,000.00 on a farm
+project. The farm yield was sold for # 15, 000.00 at the
+end of the season. If the profit was shared in the ratio
+2:3, what is the difference in the amount of profit
+received by the brothers?
+A.
+#2,000.00
+B.
+#4,000.00
+C.
+#6,000.00
+D.
+#10,000.00
+8.
+Peter’s weekly wages are #20.00 for the first 20 weeks
+and #36.00 for the next 24 weeks. Find his average
+weekly wage for the remaining 8 weeks of the year. If
+his average weekly wage for the whole year is #30.00
+A.
+#37.00
+B.
+#35.00
+C.
+#30.00
+D.
+#5.00
+9.
+A man invests a sum of money at 4% per annum simple
+interest. After 3 years, the principal amounts to
+#7,000.00. find the sum invested
+A.
+#7,840.00
+B.
+#6,250.00
+C.
+#6,160.00
+D.
+#5,833.33
+10.
+By selling 20 oranges for #1.35 a trader makes a profit
+8%. What is his percentage gain or loss if he sells the
+same 20 oranges for #1.10?
+A.
+8%
+B.
+10%
+C.
+12%
+D.
+15%
+11.
+Four boys and ten girls can cut a field in 5 hours. If the
+boys work at 1/4 the rate of which the girls work, how
+many boys will be needed to cut the field in 3 hours?
+A.
+180
+B.
+60
+C.
+25
+D.
+20
+12.
+Evaluate without using tables.
+A.
+625/8
+B.
+8/625
+C.
+1/8
+D.
+8
+13.
+Instead of writing 35/6 as a decimal correct to 3
+significant figures, a student wrote it correct to 3 places
+of decimals. Find his error in standard form
+A.
+0.003
+B.
+3.0 x 10-3
+C.
+0.3 x 102
+D.
+0.3 x 10-3
+14.
+Simplify without using tables
+(Log26 – Log23)/(Log28- 2Log21/2)
+A.
+1/5
+B.
+½
+C.
+–1/2
+D.
+Log23/Log27
+15.
+Simplify without using tables
+                    2√ 14  x  3√21) / 7√24x 2√98)
+A.
+ 3√14
+B.
+3√21
+   4                                   4
+C.
+3 √14
+D.
+3 √2
+                                       28                                 28
+16.
+If p – 2/3 (1 – r2)/n2, find n when r = Ö1/3 and p = 1
+A.
+3/2
+B.
+3
+C.
+1/3
+D.
+2/3
+17.
+If a =U2–3V2 and b = 2UV + V2 evaluate (2a - b) (a – b3 ),
+when u = 1 and v = -1
+A.
+9
+B.
+15
+C.
+27
+D.
+33
+18.
+The formula Q = 15 + 0 5n gives the cost Q (in Naira) of
+feeding n people for a week. Find in kobo the extra cost
+of feeding one additional person.
+A.
+350k
+B.
+200k
+C.
+150k
+D.
+50k
+19.
+If P varies inversely as V and V varies directly as R2,
+find the relationship between P and R given that R = 7
+when P = 2
+A.
+P = 98R2
+B.
+PR2 = 98
+C.
+P = 1/98R
+D.
+P = R2/98
+20.
+Make y the subject of the formula
+Z = x2 + 1/y3
+A. y =      1
+B.  y =      1
+               (z - x2) 3                                   (Z + x3) 1/3
+C.   y =       1
+D.  y  =       1
+                           (Z - x2) 1/3                                  3√Ζ  −  3√ x2
+21.
+Find the values of m which make the following quadratic
+function a perfect square
+x2 + 2 (m + 1) x + m + 3
+A.
+-1, 1
+B.
+–1, 2
+C.
+1, -2
+D.
+2, -2
+22.
+Factorize 62x + 1 + 7(6x) - 5
+A.
+{3(6x) – 5}   {2(6x)} + 1}
+B.
+{3(6x) – 5} {2(6x)} - 1}
+C.
+{2(6x) – 5} {3(6x)} + 1}
+D.
+{2(6x) – 5} {3(6x)} - 1}
+23.
+Find two values of y which satisfy the simultaneous
+equations x + y  = 5, x2 – 2y2 = 1
+A.
+12, -2
+B.
+–12, 12
+C.
+–12, 2
+D.
+2, -2
+24.
+An (n - 2)2 sided figure has n diagonals find the number
+n of diagonals for a 25 sided figure
+A.
+7
+B.
+8
+C.
+9
+D.
+10
+25.
+A cubic function f(x) is specified by the graph show
+above. The values of the independent variable for which
+the function vanishes are
+A.
+-1, 0, 1
+B.
+–1 < x < 1
+C.
+x, - 1
+D.
+x > 1
+26.
+Solve the inequality x – 1 > 4(x + 2)
+A.
+x > -3
+B.
+x < -3
+C.
+2 < x < 3 D.
+–3 < x < -2
+f(x)    
+0
+-1
+1
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 17] ---
+27.
+Simplify (x2 - y2) / (2x2+ xy-y2)
+   A.
+  x + - y
+B.
+x  + y
+  2x + y
+               2x - y
+C.     x  -  y
+D.      x  -  y
+        2x  - y                                      2x + y
+28.
+The minimum value of y in the equation
+y = x2 – 6x + 8 is
+A.
+8
+B.
+3
+C.
+0
+D.
+–1
+29.
+Find the sum of the first 21 terms of the progression –
+10, -8, -6,….
+A.
+180
+B.
+190
+C.
+200
+D.
+210
+30.
+Find the eleventh term of the progression 4, 8, 16,..
+A.
+213
+B.
+212
+C.
+211
+D.
+210
+31.
+In the diagram above, POQ is a diameter, O is the centre
+of the circle and TP is a tangent. Find the value of x.
+A.
+B.
+400
+C.
+450
+D.
+500
+32.
+In the diagram above, QR//TS, QR:TS = 2:3. find the
+ratio of the area of triangle PQR to the area of the
+trapezium QRST
+A.
+4:9
+B.
+4:5
+C.
+1:3
+D.
+2:3
+33.
+Three angle s of a nonagon are equal and the sum of six
+other angles is 11100. Calculate the size of one of the
+equal triangles
+A.
+2100
+B.
+1500
+C.
+1050
+D.
+500
+34.
+In the figure above, XYZ = YTZ = 900,  XT = 9cm and
+TZ = 16cm. Find YZ
+A.
+25cm
+B.
+20cm
+C.
+16cm
+D.
+9cm
+35.
+Two chords QR and NP of a circle intersect inside the
+circle at X. if RQP = 370, RQN = 490 and QPN = 350,  find
+PRQ
+A.
+350
+B.
+370
+C.
+490
+D.
+590
+36.
+In the figure above, find the value of x.
+A.
+1100
+B.
+1000
+C.
+900
+D.
+800
+37.
+In the figure above, PQRS is a rectangle. If the shaded
+area is 72sq.cm find h
+A.
+12cm
+B.
+10cm
+C.
+8cm
+D.
+5cm
+38.
+The sine, cosine and tangent of 2100 are respectively
+A.
+-1/2,    3/2,   3/3
+B.  1/2,     3/2      3/3
+C.       3/2,    3/3,      1
+D.  3/2,  1/2     1
+39.
+If tan q = (m2 – n2)/2mn, find sec q
+A.
+(m2 + n2)/(m2 – n2) B.
+(m2 + n2)/2mn
+C.
+mn/2(m2 – n2)
+D.
+m2 n2/(m2 – n2)
+30
+O
+Q 
+x 
+O 
+R 
+P 
+T
+T 
+Q 
+R 
+S 
+P
+16 cm
+9 cm
+Y 
+X 
+T
+Z
+x 
+x 
+x 
+y y 
+P 
+Q 
+3h
+S 
+2 cm
+2 cm
+2h
+R 
+2 cm
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 18] ---
+40.
+From two points X and Y, 8m apart, and in line with a pole,
+the angle of elevation of the top of the pole are 300 and
+600 respectively. Find the height of the pole, assuming
+that X, Y and the foot of the pole are on the same
+horizontal plane.
+A.
+4m
+B.
+8√3/2m
+C.
+4√3m
+D.
+8√3m
+41.
+A room is 12m long. 9m wide and  8m high. Find the
+cosine of the angle which a diagonal of the room makes
+with the floor of the room
+A.
+15/17
+B.
+8/17
+C.
+8/15
+D.
+12/17
+42.
+What is the circumference of radius of the earth?
+A.
+R cos q
+B.
+2p R cos q
+C.
+R sin q
+D.
+2p R sin q
+43.
+The base of a pyramid is a square of side 8cm. If its
+vertex is directly above the centre, find the height, given
+that the edge is 4.3cm
+A.
+6cm
+B.
+5cm
+C.
+4cm
+D.
+3cm
+44.
+The figure above is an example of the construction of a
+A.
+perpendicular bisector to a given straight line
+B.
+perpendicular from a given point to a given line
+C.
+perpendicular to a line from a given point on
+that line
+D.
+given angle.
+45.
+What is the locus of the mid-points of all chords of length
+6cm within a circle of radius 5cm and with centre O.
+A.
+A circle of radius 4cm and with centre O
+B.
+The perpendicular bisector of the chords
+C.
+A straight line passing through center O
+D.
+A circle of radius 6cm and with centre O
+46.
+Taking the period of daylight on a certain day to be
+from 5.30a.m to 7.00p.m, calculate the period of daylight
+and of darkness on that day
+A.
+187030’ 172030’
+B.
+1350225’
+C.
+202030’157030’
+D.
+1950165’
+47.
+The goals scored by 40 football teams from three league
+divisions are recorded below
+What is the total number of goals scored by all the
+teams?
+A.
+21
+B.
+40
+C.
+91
+D.
+96
+48.
+The numbers 3,2,8,5,7,12,9 and 14 are the marks scored
+by a group by a group of students in a class test if P is
+the mean and Q the median the P + Q is
+A.
+18
+B.
+171/2
+C.
+16
+D.
+15
+49.
+Below are the scores of a group of students in  a music
+test
+If CF(x) is the number of students with scores less than
+or equal to x, find CF(6)
+A.
+40
+B.
+38
+C.
+33
+D.
+5
+50.
+Find the probability of selecting a figure which is
+parallelogram from a square, a rectangle, a rhombus, a
+kite and a trapezium
+A.
+3/5
+B.
+2/5
+C.
+4/5
+D.
+1/5
+Mathematics 1988
+Q 
+P 
+R
+X
+1.
+Simplify   (1 1  / (2÷ 1  of 32)
+       2          4
+                A.
+3/256
+B.
+3/32
+C.
+6
+D.
+85
+2.
+If x is the addition of the prime numbers between 1 and
+6, and y the H. C.F of 6,9, 15, find the product of x and
+y
+A.
+27
+B.
+30
+C.
+33
+D.
+90
+3.
+A 5.0g of salts was weighed by Tunde as 5.1g. what is
+the percentage error?
+A.
+20
+B.
+2
+C.
+2
+D.
+0.2
+4.
+Find correct to one decimal place,
+0.24633 /0.0306
+A.
+0.8
+B.
+1.8
+C.
+8.0
+D.
+8.1
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 19] ---
+5.
+Two sisters, Taiwo and Kehinde, own a store. The ratio
+of Taiwo’s share to Kehind’s is 11:9. later Kehinde sells
+2/3 of her share to Taiwo for #720.00. Find the value of
+the store.
+A.
+#1,080.00 B.
+#2,400.00
+C.
+#3,000.00 D.
+#3,600.00
+6.
+A basket contains green, black and blue balls in the
+ratio 5:2:1. if there are 10 blue balls, find the
+corresponding new ratio when 10green and 10black
+balls are removed from the basket.
+A.
+1:1;1
+B.
+4:2:1
+C.
+5:1:1
+D.
+4:1:1
+7.
+A taxpayer is allowed 1/8th of his income tax free, and
+pays 20% on the remainder. If he pays #490. 00 tax,
+what is his income?
+A.
+#560.00
+B.
+#2,450.00
+C.
+#2,800.00
+D.
+#3,920.00
+8.
+Evaluate (8 1/3 x 5 2/3) / 102/3
+   A.
+2/5
+B.
+5/3
+C.
+2√5
+ D.
+3√5
+9.
+If Log102 = 0.3010 and Log103 = 0.4771, evaluate, without
+using logarithm tables log104.5
+A.
+0.3010
+B.
+0.4771
+C.
+0.6352
+D.
+0.9542
+10.
+Find m such that (m ¸ 3) (1 - √3 )2 = 6 - √3 = 6 - 2√3
+A.
+1
+B.
+2
+C.
+3
+D.
+4
+11.
+The thickness of an 800-paged book is 18mm. Calculate
+the thickness of one leaf of the book giving your answer
+in metres and in standard form.
+A.
+2.25 x 10-4m
+B.
+4.50 x 10-4m
+C.
+2.25 x 10-5m
+D.
+4.50 x 10-5m
+12.
+Simplify   ( x + 2)  -  (x - 2)
+                  ( x + 1)     ( x +2)
+    A.      3
+B.          3x + 2
+             x + 1                                     (x+1) (x+2)
+C.      5x + 6
+D.
+2x2 + 5x + 2
+        (x + 1) (x + 2)                               (x + 1) (x + 2)
+13.
+If 1/p = (a2 + 2ab + b2)
+                                   (a - b)                and
+                  1/q =       (a + b)
+                           (a2 - 2ab + b2)           find p/q
+A.
+a + b
+B.
+1
+                        a - b                             a2 - b2
+C.      a - b
+D.
+a2 - b2
+          a + b
+14.
+If x varies inversely as the cube root of y and x = 1 when
+y = 8 find y when x = 3
+A.
+1/3
+B.
+2/3
+C.
+8/27
+D.
+4/9
+15.
+If a = -3, b = 2, c = 4, calculate     (a3-b3-c1/2)
+             (b-1-c)
+A.
+37
+B.
+–37/5
+C.
+37/5
+D.
+–37
+16.
+If g(y) = y – 3/11 + 11/ y2 – 9 what is g(y + 3)?
+A.   y      +    11
+B.
+      y   +   11
+       11        y(y+6)                                    11    y(y+3)
+C.  y + 30   +   11
+D.        y + 3 +     11
+                      11        y(y+3)                                 11    y(y-6)
+17.
+Factorize completely (x2 + x) 2 (2x + 2)2
+A.
+(x + y)(x + 2)(x - 2)     B.
+(x + y)2(x - 2)2
+C.
+(x + 1)2(x + 2)2
+     D.
+(x + 1)2(x + 2)2(x - 2)
+18.
+Simplify    (x - y)
+                                (x1/3 - y1/2)
+A. x2 = xy + y2
+B.
+x2/3 + x1/3 + y2/3
+C.  x2/3 - x1/3 y1/3 - y2/3 D.
+ x2 - xy + y2
+19.
+Solve the following equation for x
+x2  + 2x   + 1   =   o
+                                  r2            r1
+A.
+r2
+B.
+1/r2
+C.
+–1/r2
+D.
+1/r
+20.
+List the integral values of x which satisfy the inequality
+1 < 5 < -2x < 7
+A.
+-1,0,1,2
+B.
+0,1,2,3
+C.
+-1,0,1,2,3,
+D.
+-1,0,2,3
+21.
+Given value that     3x – 5y – 3 = 0
+ 2y – 6x + 5 = 0
+the value of (x, y) is
+A.  (-1/8, 19/24)
+B.  (8, 24/10)
+C.   (-8, 24/19)
+D.  (19/24, -1/8)
+22.
+The solution of the quadratic equation
+bx2 + qx + b = 0
+A    -b±√b2 − 4ac
+B  -b± p2− 4pb
+                             2a                                         2a
+C    -q±√q2 - 4bp
+D   -q±√p2 - 4bp
+               2p
+  2p
+23.
+Simplify       1           +           1
+(x2+5x+6)        (x2 + 3x + 2)
+A.        x + 3
+B.                   1
+        (x+1) (x+2)                                  (x+1) x+2) x+3)
+C.            2
+D.                4
+          (x+1) (x+3)                                  (x+1) (x+3)
+24.
+Evaluate     (4a2 - 4ab2)
+(2a2 + 5ab - 7b2)
+A.        a  - b
+B.  2a + 7b
+                           2a + b
+                       a  -  b
+C.  2a - 7b
+D.   2a - 7b
+        a  + b
+        a - b
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 20] ---
+Using the graph to answer questions 25 and 26
+25.
+What is the solution of the equation
+x2 – x – 1 = 0?
+A.
+x = 1.6 and x = -0.6      B.
+x = -1.6 and x = 0.6
+C.
+x = 1.6 and x = 0.6
+      D.
+x = -1.6 and x = -0.6
+26.
+For what values of  x is the curve
+y = (x2 + 3) / (x + 4)
+A.
+-3 < x< 0
+B.
+–3 < x < 0
+C.
+0 < x < 3
+D.
+0 < x < 3
+27.
+The solution of x2 – 2x – 1 0 are the points of intersection
+of two graphs. If one of the graphs is y= 2 + x – x2, find
+the second graph.
+A.
+y = 1 – x
+B.
+y = 1 + x
+C.
+y = x – 1
+D.
+y = 3x + 3
+28.
+If the sum of the 8th and 9th terms of an arithmetic
+progression is 72 and the 4th term is –6, find the common
+difference.
+A.
+4
+B.
+8
+C.
+62/3
+D.
+91/3
+29.
+If 7 and 189 are the first and fourth terms of a geometric
+progression respectively find the sum of the first three
+terms of the progression.
+A.
+182
+B.
+91
+C.
+63
+D.
+28
+30.
+In the figure above, PQRS is a circle. If chords QR and
+RS are equal, calculate the value of x
+A.
+800
+B.
+600
+C.
+450
+D.
+400
+31.
+In the figure above, PQ is parallel to ST and QRS = 400.
+find the value of x
+A.
+55
+B.
+60
+C.
+65
+D.
+75
+32.
+For which of the following exterior angles is a regular
+polygon possible?
+i  350
+ii  180     iii.  1150
+A.
+i and ii
+B.
+ii only
+C.
+ii and iii
+D.
+iii only
+33.
+In the figure above, PS = 7cm and RY = 9cm. If the area
+of parallelogram PQRS is 56cm2, find the area of
+trapezium PQTS.
+A.
+56cm2
+B.
+112cm2
+C.
+120cm2
+D.
+1762
+34.
+A quadrilateral of a circle of radius 6cm is cut away
+from each corner of a rectangle 25cm long and 18cm
+wide. Find the perimeter of the remaining figure
+A.
+38cm
+B.
+(38 + 12p)cm
+C.
+(86 - 12p)cm
+D.
+(86 - 6p)cm
+35.
+In the figure above STQ = SRP, PT = TQ = 6cm and QS
+= 5cm. Find SR.
+A.
+47/5
+B.
+5
+C.
+37/5
+D.
+22/5
+36.
+Four interior angles o f a pentagon are 900 – x0,  900 + x0,
+100 – 2x0, 1100 + 2x0. find the fifth interior angle.
+A.
+1100
+B.
+1200
+C.
+1300
+D.
+1400
+y
+4
+3
+2
+1
+-2
+-1
+-4        -3       -2       -1
+0      1          2        1
+y = I
+120
+O
+100
+O
+S
+P 
+Q 
+R 
+T
+40
+O
+S
+P 
+Q 
+T
+R
+3x
+o
+x
+o
+P 
+Q 
+R 
+9cm
+7cm
+S 
+T 
+Y
+P 
+R
+T 
+Q 
+ 5 
+6 
+6
+S
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 21] ---
+37.
+In the figure above, PS = RS = QS and QSR = 500. find
+QPR.
+A.
+250
+B.
+400
+C.
+500
+D.
+650
+38.
+In the figure above, XR and YQ are tangents to the
+circle YZXP if ZXR = 450 and YZX = 550 find ZYQ.
+A.
+1350
+B.
+1250
+C.
+1000
+D.
+900
+39.
+From a point 14√3 metres away from a tree, a man
+discovers that the angle of elevation of the tree is 300.
+If the man measures this angle of elevation from a point
+2meters above the ground how high is the tree?
+A.
+12m
+B.
+14m
+C.
+14√3m
+D.
+16m
+40.
+Alero starts a 3km walk from P on  a bearing 0230. she
+then walks 4km on a bearing 1130 to Q what is the bearing
+of Q from P?
+A.
+26052’
+B.
+5208’
+C.
+7608’
+D.
+900
+41.
+If cot q = x/y, find cosec q
+A.     1/y(x2+y)
+B.   (x/y)
+C.     1/y(x2+y)
+D.   y/x
+42.
+In triangle PQR, PQ = 1cm, QR = 2cm and PQR = 1200.
+Find the longest side of the triangle
+A.
+3
+B.
+3    7/7
+C.
+3     7
+D.
+     7
+44.
+If a metal pipe 10cm long has an external diameter of
+12cm and a thickness of 1cm, find the volume of the
+metal used in making the pipe.
+A.
+120pcm3
+B.
+110pcm3
+C.
+60pcm3
+D.
+50pcm3
+45.
+In the figure above, a solid consists of a hemisphere
+surmounted by a right circular cone with radius 3.0cm
+and height 6.0cm. find the volume of the solid.
+A.
+18pcm3
+B.
+36pcm3
+C.
+54pcm3
+D.
+108pcm3
+46.
+PQR is a triangle in which PQ= 10ccm and QPR = 600. S
+is a point equidistant from P and Q. also S is a point
+equidistant from PQ and PR. If U is the foot of the
+perpendicular from S on PR, find the length SU in cm to
+one decimal place.
+A.
+2.7
+B.
+2.9
+C.
+3.1
+D.
+3.3
+47.
+In a class of 150 students, the sector in a pie chart
+representing the students offering Physics has angle
+120. How many students are offering Physics?
+A.
+18
+B.
+15
+C.
+10
+D.
+5
+48.
+If x and y represents the mean and the median
+respectively of the following set of numbers; 11,
+12,13,14,15,16,17,18,19,21,. Find x/y correct to one
+decimal place.
+A.
+1.6
+B.
+1.2
+C.
+1.1
+D.
+1.0
+49.
+In the distribution above, the mode and the median
+respectively are
+A.
+1.3
+B.
+1.2
+C.
+3.3
+D.
+0.2
+50.
+If two dice are thrown together, what is the probability
+of obtaining at least a score of 10?
+A.
+1/6
+B.
+1/12
+C.
+5/6
+D.
+11/12
+50
+O
+P 
+S 
+R 
+Q 
+60 cm
+30 cm
+45
+O
+55
+O
+Y 
+Q 
+Z 
+P 
+R 
+X
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 22] ---
+1.
+Which of the following is in descending order?
+A.
+9/10,4/5,3/4,17/10
+B.
+4/5,9/10,3/4,17/20
+C.
+6/10,17/20,4/5,3/4
+D.
+4/5,9/10,17/10,3/4
+2.
+Evaluate 2,700, 000 x 0.03 ¸ 18,000
+A.
+4.5 x 100
+B.
+4.5 x 101
+C.
+4.5 x 102
+D.
+4.5 x 103
+3.
+The prime factors of 2,520 are
+A.
+2,9,5,
+B.
+2,9,7,
+C.
+2,3,5,7,
+D.
+2,3,7,9,
+4.
+If 12e = X7 find x where e = 12
+A.
+20
+B.
+15
+C.
+14
+D.
+12
+5.
+Simplify  3√64r -6)1/2
+    A.
+        r
+             B.        2r
+C.
+1/2r
+D.
+2/r
+6.
+What is the difference between 0.007685 correct to three
+significant figures and 0.007685 correct to four places
+of decimal?
+A.
+10-5
+B.
+7 x 10-4
+C.
+8 x 10-5
+D.
+10 -6
+7.
+If a : b = 5: 8, x : y = 25 : 16, evaluate a/x : b/y
+A.
+125:128
+B.
+3:5
+C.
+3:4
+D.
+2:5
+8.
+Oke deposited #800.00 in the bank aat the rat of 121/2%
+simple interest. After some time the total amount was
+one and half times the principal. For how many years
+was the money left in the bank
+A.
+2
+B.
+4
+C.
+51/2
+D.
+8
+9.
+If the surface area of a sphere is increased by 44%.
+Find the percentage increase in its diameter.
+A.
+44
+B.
+30
+C.
+22
+D.
+20
+10.
+Simplify   4 -   1
+                                     (2-√3)
+A.
+2√3
+B.
+–2., √3
+C.
+–2 + √3
+D.
+2, -√3
+11.
+Find p in terms of q if Log3p + 3log3q = 3
+    A.     (3)3
+B.    (q)1/3
+                         (q)                                       (3)
+C.        (q)3
+D.  (3)1/3
+                        (3)                                       (q)
+12.
+What are the values of y which satisfy the equation
+ 9y – 4 ( 3y) + 3 = 0
+A.
+-1 and 0
+B.
+–1 and 1
+C.
+1 and 3
+D.
+0 and 1
+13.
+Make R the subject of the formula
+S = √(2R +Τ  )
+            (3RT)
+A.   R =      T
+B.
+    T
+                          (TS2 - 1)                    2(TS2 - 1)
+C    R =     T
+D.         T
+                           (TS2 + 1)
+        2(TS2 + 1)
+14.
+Find the value of the expression
+ 32    -     64     81      when x = -3/4
+                                81x3        xx2      16
+A.
+101/2
+B.
+101/6
+C.
+33/8
+D.
+–131/2
+15.
+The cost of dinner for a group of students is partly
+cconstant and partly varies directly as the number of
+students. If the cost is #74.00 when the number of
+students is 20, and #96.00 when the number is 30, find
+the cost when there are 15 students.
+A.
+#68.50
+B.
+#63.00
+C.
+#60.00
+D.
+#52.00
+16.
+If f(x) = 2x2 + 5x + 3, find f(x + 1)
+A.
+2x2 – x
+B.
+2x2 – x + 10
+C.
+4x2 + 3x + 2
+D.
+4x2 + 3x + 12
+17.
+Solve the positive number x such that
+2(x3 – x2 – 2x) = 1
+A.
+4
+B.
+3
+C.
+2
+D.
+1
+18.
+Simplify  (32x - 4x2)
+  (2x + 18)
+A.
+2(x - 9)
+B.
+2(9 + x )
+C.
+81 – x2
+D.
+–2(x - 9)
+19.
+Factorize completely y3 – 4xy + xy3 – 4y
+A.
+(x + xy)(y + 2)(y - 2)
+B.
+(y + xy)(y + 2)(y - 2)
+C.
+y(1 + x)(y + 2)(y - 2)
+D.
+y(1 - x)(y + 2)(y - 2)
+20.
+If one of x3 – 8-1 is x – 2–1 , the other factors is
+A.
+x2 + 2-1 x – 4-1
+B.
+x2 - 2-1 x – 4-1
+C.
+x2 + 2-1 x + 4-1
+D.
+x2 + 2-1 x –4-1
+21.
+Factorize 4a2 + 12ab – c2+ 9b2
+A.
+4a(a – 3b) + (3b - c)2
+B.
+(2a + 3b – c )(2a + 3b + c)
+C.
+(2a – 3b -c)(2a –3b + c)
+D.
+4a(a – 3b) +  (3b +c)2
+22.
+What are K and L respectively if ½ (3y – 4x)2 = (8x2 +
+kxy + Ly2)
+A.
+-12, 9/2
+B.
+–6, 9
+C.
+6, 9
+D.
+12, 9/2
+Mathematics 1989
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 23] ---
+A.
+1,10
+B.
+2,10
+C.
+3,13
+D.
+4,16
+31.
+MN is a tagent to the given circle at M, MR and MQ are
+two chords. If QMN is 600 and MNQ is 400, find RMQ
+A.
+1200
+B.
+110
+C.
+600
+D.
+200
+32.
+In the diagram above, HK is prallel to QR, PH = 4cm and
+HQ = 3cm. What is the ratio of KR;PR?
+A.
+7:3
+B.
+3:7
+C.
+3:4
+D.
+4:3
+33.
+A regular polygon of (2k + 1) sides has 1400 as the size
+of each interior angel. Find K.
+A.
+4
+B.
+41/2
+C.
+8
+D.
+81/2
+34.
+If PST is a straight line and PQ = QS = SR in the above
+diagram, find y
+A.
+240
+B.
+480
+C.
+720
+D.
+840
+35.
+In the above diagram PQ is parallel to RS and QS bisects
+PQR. If PQR is 600, find x
+A.
+300
+B.
+400
+C.
+600
+D.
+1200
+36.
+PQRS is a rhombus. If PR2 + QS2 = kPQ2. Determine k.
+A.
+1
+B.
+2
+C.
+3
+D.
+4
+23.
+Solve the pair of equation for x and y respectively
+2x-1 – 3y-1 = 4
+4x-1 + y-1 = 1
+A.
+-1,2
+B.
+1,2
+C.
+2,1
+D.
+2,-1
+24.
+What value of Q will make the expression 4x2 + 5x + Q a
+complete square?
+A.
+25/16
+B.
+25/64
+C.
+5/8
+D.
+5/4
+25.
+Find the range of values of r which satisfies the following
+inequality, where a, b and c are positive.   r/a+r/b+r/c >1
+A.      r>       abc
+B.    r>abc
+                bc + ac + ab
+C.      r > 1/a + 1/b + 1/c
+D.
+r>1/abc
+26.
+Express     1            -            1
+                               (x + 1)                 (x - 2)
+A.       -3
+B.                   3
+        (x +1)(2-x)                                   (x+1)2-X)
+C.        -1
+D.              1
+       (x+1)(x-2)
+(x+1)(x-2)
+27.
+Simplify    x    -     (x+ 1 ) 1/2
+             (x + 1)    (x + 1) 1/2
+A.
+   1
+B.    -     1
+                          x + 1
+x + 1
+C.   1
+D.   1
+       x
+        x + 1
+28.
+On the curve above, the points at which the gradient of
+the curve is equal to zero are
+A.
+c.d.f.i.l
+B.
+b.e.g.j.m
+C.
+a.b.c.d.f.i.j.l.
+D.
+c.d.f.h.i.l
+29.
+The sum of the first two terms of a geometric progression
+is x and the sum of the last two terms is y. if there are n
+terms in all, then the common ratio is
+A.
+x/y
+B.
+y/x
+C.
+(x/y)1/2
+D.
+(y/x)1/2
+30.
+If –8, m,n, 19 in arithmetic progression, find (m, n)
+-1
+a 
+b 
+c 
+d 
+e 
+f 
+g 
+h 
+i 
+j 
+k 
+y 
+x 
+l 
+m
+1                2                3               4               5          6
+R
+M 
+N
+Q 
+P 
+H 
+3 cm
+4 cm
+K
+Q 
+R
+24
+O
+P 
+Q
+S
+T 
+R
+R 
+Q 
+S 
+P 
+60
+O
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 24] ---
+37.
+In DXYZ, Y = Z = 300 and XZ = 3cm find YZ
+A.
+√3/2cm
+B.
+ 3√3/2cm
+C.
+3√3cm
+D.
+2√3cm
+38.
+In DPQR, the bisector of QPR meets QR at S. the line PQ
+is produced to V and the bisector of VQS meets PS
+produced at T. if QPR = 460 and QST = 750, calculate
+QTS
+A.
+410
+B.
+520
+C.
+640
+D.
+820
+39.
+A.
+If PQR is a straight line with OS = = QR,
+calculate TPQ, if QT//SR and TQS = 3y0.
+A.
+620
+B.
+560
+C.
+202/3
+0
+D.
+182/3
+0
+40.
+If x : y = 5:12 and z = 52cm, find the perimeter of the
+triangle.
+A.
+68cm
+B.
+84cm
+C.
+100cm
+D.
+120cm
+41.
+The pilot of an aeroplane, flying 10km above the ground
+in the direction of a landmark, views the landmark to
+have angle of depression of 350 and 550. find the distance
+between the two points of observation
+A.
+10(sin 350 – sin 550)
+B.
+10(cos 350 – cos 550)
+C.
+10(tan 350 – tan 550)
+D.
+10(cot 350 – cot 550)
+42.
+A sin2x – 3 = 0, find x if 0 < x < 900
+A.
+300
+B.
+450
+C.
+600
+D.
+900
+43.
+A square tile has side 30cm. How many of these tiles
+cover a rectangular floor of length 7.2cm and width
+4.2m?
+A.
+336
+B.
+420
+C.
+576
+D.
+720
+44.
+A cylindrical metal pipe 1m long has an outer diameter
+of 7.2cm and an inner diameter of 2.8cm. find the volume
+of metal used for the cylinder.
+A.
+440pcm3
+B.
+1,100pcm3
+C.
+4,400pcm3
+D.
+11,000pcm3
+45.
+OXYZW is a pyramid with a square base such that OX
+= OY = OZ = OW = 5cm and XY = XW = YZ = WZ =
+6cm. Find the height OT.
+A.
+2√5
+B.
+3
+C.
+4
+D.
+√7
+46.
+In preparing rice cutlets, a cook used 75g of rice, 40g of
+margarine, 105g of meat and 20g of bread crumbs. Find
+the angle of the sector which represents meat in a pie
+chart.
+A.
+300
+B.
+600
+C.
+112.50
+D.
+157.50
+47.
+In a class of 30 students, the marks scored in an
+examination are displayed in the following histogram.
+What percentage of the students scored more than
+40%
+A.
+14%
+B.
+40%
+C.
+452/3%
+D.
+531/3%
+48.
+In a family of 21 people, the average age is 14years. If
+the age of the grandfather is not counted, the average
+age drops to 12years. What is the age of the
+grandfather?
+A.
+35years
+B.
+40years
+C.
+42years
+D.
+54years
+49.
+If n is the median and m is the mode of the following set
+of numbers,2.4,2.1,1.6,2.6,2.6,3.7,2.,1,2.6, then (n, m) is
+A.
+(2.6,2.6)
+B.
+(2.5,2.6)
+C.
+(2.6,2.5)
+D.
+(2.5,2.1)
+50.
+The numbers are chosen at random from three numbers
+1,3,6. find the probability that the sum of the two is not
+odd.
+A.
+2/3
+B.
+½
+C.
+1/3
+D.
+1/6
+Q 
+P 
+y
+O
+56
+O
+3y
+O
+Y 
+S 
+R
+X 
+R 
+Z 
+T 
+S
+Y 
+Z 
+W 
+T 
+X
+O
+20       40        60       80      100
+Marks scored
+No . of students
+10
+8
+6
+4
+2
+0
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 25] ---
+1.
+Simplify      (43/4 - 61/4)
+    (41/5 of 1 1/4)
+A.
+-77/8
+B.
+–2/7
+C.
+–10/21
+D.
+10/21
+2.
+The H.C.F. of a2bx + abx2 and a2b – b3 is
+A.
+b
+B.
+a + b
+C.
+a(a + b)
+D.
+abx (a2 – b2)
+3.
+Correct 241.34 (3 x 10-3)2 to 4 significant figures
+A.
+0.0014
+B.
+0.001448
+C.
+0.0022
+D.
+0.002172
+4.
+At what rate would a sum of #100.00 deposited for 5
+years raise an interest of #7.50?
+A.
+11/2%
+B.
+21/2%
+C.
+15%
+D.
+25%
+5.
+Three children shared a basket of mangoes in such a
+way that the first child took ¼ of the mangoes and the
+second ¾ of the remainder. What fraction of the
+mangoes did the third child take?
+A.
+3/16
+B.
+7/16
+C.
+9/16
+D.
+13/16
+6.
+Simplify and express in standard form
+(0.00275 x 0.00640/( 0.025 x 0.08)
+A.
+8.8 x 10-1B.
+8.8 x 102
+C.
+8.8 x 10-3D.
+8.8 x 103
+7.
+Three brothers in a business deal share the profit at the
+end of contract. The first received 1/3 of the profit and
+the second 2/3 of the remainder. If the third received
+the remaining #12.000.00, how much profit did they
+share?
+A.
+#60,000.00
+B.
+#54,000.00
+C.
+#48,000.00
+D.
+#42,000.00
+8.
+Simplify √ 160r2 + √ (71r4 + √100r3
+A.
+9r2
+B.
+12    3r
+C.
+13r
+D.
+    13r
+9.
+Simplify √27 + 3/√3
+A.
+4√3
+B.
+4/√3
+C.
+3√3
+D.
+3√/4
+10.
+Simplify 3Log69 + Log612 + Log664 – Log672
+A.
+5
+B.
+7776
+C.
+Log631
+D.
+(7776)6
+11.
+Simplify  (1        +    1  ) -1
+                                  x-1         y-1
+A.
+x/y
+B.
+xy
+C.
+y/x
+D.
+(xy)-1
+12.
+If a = 2, b = -2 and c = -1/2,
+evaluate (ab2 – bc2) (a2c - abc)
+A.
+0
+B.
+–28
+C.
+–30
+D.
+–34
+13.
+Y varies inversely as x2 and X varies directly as Z2. find
+the relationship between Y and Z, if C is a constant.
+A.
+Z2y = C
+B.
+Y = CZ2
+C.
+Y = CZ2
+D.
+Y = C
+14.
+Find the value of r in terms of p and q in the following
+equation
+    P/2 = (r/(r+q)
+A.    r  =  q
+B.   pq2
+             2 - p2                                 2 - q2
+  C.     r =     p2q2
+D.
+   p
+                               2 - pq                               q(2-p)
+15.
+If f(x - 4) = x2 + 2x + 3, find f(2)
+A.
+6
+B.
+11
+C.
+27
+D.
+51
+16.
+Factorize 9(x + y)2 – 4(x - y)2
+A.
+(x + y) (5x + y)
+B.
+(x + y)2
+C.
+(x + 5y) (5x + y)
+D.
+5(x + y)2
+17.
+If a2 + b2 = 16 and 2ab = 7 find all the possible values of
+(a – b )
+A.
+3, -3
+B.
+2, -2
+C.
+1, -1
+D.
+3, -1
+18.
+Divide x3 – 2x2 – 5x + 6 by (x - 1)
+A.
+x2 – x –6
+B.
+x2 – 5x + 6
+C.
+x2 – 7x + 6
+D.
+x2 – 5x - 6
+19.
+If x +  = 4, find the x2 + 1/x
+A.
+16
+B.
+14
+C.
+12
+D.
+9
+20.
+What must be added to 4x2 – 4  to make it a perfect
+square?
+A.
+-1/x2
+B.
+1/x2
+C.
+1
+D.
+-1
+21.
+Find the solution of the equation
+x – 8 √x + 15 = 0
+A.
+3, 5
+B.
+–3, -5
+C.
+9, 25
+D.
+–9, 25
+22.
+The lengths of the sides of a right-angled triangle are
+xcm. (3x-1)cm and (3x + 1)cm. Find x
+A.
+5
+B.
+7
+C.
+8
+D.
+12
+23.
+The perimeter of a rectangular lawn is 24m, if the area of
+the lawn is 35m2, how wide is the lawn?
+A.
+5m
+B.
+7m
+C.
+12m
+D.
+14m
+Mathematics 1990
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 26] ---
+25.
+Simplify           x         +       y      -     x2
+                                     (x+y)          (x-y)         (x2  - y2)
+A.       x2
+B.      y2
+         x2  -  y2                       x2 - y2
+C.      x
+D.      y
+                   x2 - y2                          x2 - y2
+26.
+Given that x2 + y2 + z2 = 194, calculate z if x = 7 and√ y = 3
+A.
+√10
+B.
+8
+C.
+12.2
+D.
+13.4
+27.
+Find the sum of the first twenty terms of the arithmetic
+progression Log a, Log a2, Log a3
+A.
+log a20
+B.
+log a21
+C.
+log a200
+D.
+log a210
+24.
+A carpainter charges #40.00 per day for himself and
+#10.00 per day for his assistant. If a fleet of a cars were
+painted for #2,000.00 and the painter worked 10 days
+more than his assistant, how much did the assistant
+receive?
+A.
+#32.00
+B.
+#320.00
+28.
+Find the sum of the first 18 terms of the progression 3,
+6, 12 ………..
+A.
+3(217 - 1)
+B.
+3(218 ) - 1 )
+C.
+3(218 + 1)
+D.
+3(218 - 1)
+29.
+What is the equation of the quadratic function
+represented by the graph above?
+A.
+y =  x2 + x  - 2
+B.
+y = x2 – x –2
+C.
+y = -x2 – x + 2
+D.
+y = -x + x + 2
+30.
+At what value of x is the function x2 + x + 1 minimum?
+A.
+-1
+B.
+–1/2
+C.
+½
+D.
+1
+31.
+In the diagram above, the area of PQRS is 73.5cm2 and
+its height is 10.5cm. find the length of PS if QR is one-
+third of PS.
+A.
+21cm
+B.
+171/2cm
+C.
+14cm
+D.
+101/2cm
+32.
+The angle of a sector of a circle, radius 10.5cm, is 480.
+calculate the perimeter of the sector
+A.
+8.8cm
+B.
+25.4cm
+C.
+25.6cm
+D.
+29.8cm
+33.
+In the figure above PS = QS and QSR = 1000, find QPR
+A.
+400
+B.
+500
+C.
+800
+D.
+1000
+34.
+In triangle XYZ and XQP, XP = 4cm, XQ= 5cm and PQ =
+QY = 3ccm. Find ZY
+A.
+8cm
+B.
+6ccm
+C.
+4cm
+D.
+3cm
+35.
+Find the length of a side of a rhombus whose diagonals
+are 6cm and 8cm.
+A.
+8cm
+B.
+5cm
+C.
+4cm
+D.
+3cm
+36.
+Each of the interior angles of a regular polygon is 1400.
+how many sides has the polygon?
+A.
+9
+B.
+8
+C.
+7
+D.
+5
+37.
+In the figure above, PQRS is a circle. If PQT and SRT
+are straight lines, find the value of x.
+A.
+590
+B.
+770
+C.
+1030
+D.
+1210
+-1
+0
+2
+y 
+x
+P 
+Q 
+R 
+S 
+100
+O
+P 
+R
+Q 
+S
+Q 
+Z 
+Y 
+3 cm
+3 cm
+5 cm
+4 cm
+X 
+P
+0
+0
+P 
+T
+S 
+Q
+x
+R
+81
+O
+22
+O
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 27] ---
+38.
+In a regular pentagon, PQRST, PR intersects QS at O.
+calculate RQS.
+A.
+360
+B.
+720
+C.
+1080
+D.
+1440
+39.
+If cos q = 12/13, find 1 + cot2 q
+A.
+169/25
+B.
+25/169
+C.
+169/144
+D.
+144/169
+40.
+In the figure above, YXZ = 300, XYZ = 1050 and XY =
+8cm. Calculate YZ.
+A.
+162√cm
+B.
+8√2cm
+C.
+4√2cm
+D.
+2√2cm
+41.
+In the figure above PQR is a semicircle. Calculate the
+area of the shaded region.
+A.
+1252/7cm2
+B.
+1492/7cm2
+C.
+2431/7cm2
+D.
+2671/2cm2
+42.
+A cylindrical pipe, made of metal is 3cm, thick if the
+internal radius of the pipe is 10cm. Find the volume of
+metal used in making 3m of the pipe
+A.
+153πcm3
+B.
+207πcm3
+C.
+15,300πcm3
+D.
+20,700πcm3
+43.
+If the height of two circular cylinders are in the ratio 2:3
+and their base radii are in the ratio 9. what is the ratio of
+their volume
+A.
+27:32
+B.
+27:23
+C.
+23:32
+D.
+21:27
+44.
+Find the curved surface area of the frustrum in the  figure.
+A.
+16     10cm
+B.
+20     10
+C.
+24
+D.
+45.
+The locus of a point which moves so that it is
+equidistant from two intersecting straight lines is the
+A.
+perpendicular bisector of the two lines
+B.
+angle bisector of the two lines
+C.
+bisector of the two lines
+D.
+line parallel to the two lines
+46
+4, 16, 30, 20, 10, 14 and 26 are represented on a pie chart.
+Find the sum of the angles of the sectors representing
+all numbers equal to or greater than 16.
+A.
+480
+B.
+840
+C.
+920
+D.
+2760
+47.
+The mean of ten positive numbers is 16. when another
+number is added, the mean becomes 18. find the
+eleventh number.
+A.
+3
+B.
+16
+C.
+18
+D.
+30
+48.
+Below are the scores of a group of students in a test.
+If the average score is 3.5, find the value of x.
+A.
+1
+B.
+2
+C.
+3
+D.
+4
+49.
+Two numbers are removed at random from the numbers
+1,2,3 and 4. what is the probability that the sum of the
+numbers removed is even?
+A.
+2/3
+B.
+½
+C.
+1/3
+D.
+¼
+50.
+Find the probability that a number selected at random
+from 41 to 56 is a multiple of 9
+A.
+1/9
+B.
+2/15
+C.
+3/16
+D.
+7/8
+X 
+Y 
+8 cm
+Z
+T
+S 
+P
+R
+Q 
+O
+11 cm
+6 cm
+8 cm
+6 cm
+6 cm
+4 cm
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 28] ---
+1.
+Simplify 31/3 – 11/4 x 2/3 + 12/5
+A.
+217/30
+B.
+39/10
+C.
+41/10
+D.
+4 11/36
+2.
+If 2257 is the result of subtracting 4577 from 7056 in base
+n, find n.
+A.
+8
+B.
+9
+C.
+10
+D.
+11
+3.
+Find correct to 3 decimal places
+(     1      ÷        1
+                                  0.05         5.005     -   (0.05X2.05)
+A.
+99.998
+B.
+98.999
+C.
+89.899
+D.
+9.998
+4.
+Express 62/3 as a decimal correct to 3 significant figures.
+A.
+20.6
+B.
+20.667
+C.
+20.67
+D.
+20.7
+5.
+Factory P produces 20,000 bags of cement per day while
+factory Q produces 15,000 bags per day. If P reduces
+production by 5% and Q increases production by 5%
+determine the effective loss in the number of bags
+produced per day by the two factories.
+A.
+250
+B.
+750
+C.
+1000
+D.
+1250
+6.
+Musa borrows #10.00 at 2% per month interest and
+repays #8.00 after 4 months. However much does he
+still owe?
+A.
+#10.80
+B.
+#10.67
+C.
+#2.80
+C.
+#2.67
+7.
+If 3 gallons of spirit containing 20% water are added to
+5gallons of another spirit containing 15% water, what
+percentage of the mixture is water?
+A.
+24/5%
+B.
+167/8%
+C.
+181/8%
+D.
+187/8%
+8.
+What is the product of 27/5 – (3)3 and (1/5)?
+A.
+5
+B.
+3
+C.
+1
+D.
+1/25
+9.
+Simplify 2log2/5 – log72/125 + log9
+A.
+1 – 4log 3
+B.
+–1 + 2log3
+C.
+–1 +5log2
+D.
+1-2log2
+10.
+Rationalize (2√3 + 3√2)/(3√2 - 2√3)
+A.
+5 - 2    6
+B.
+5 + 2    6
+C.
+5     3
+D.
+5
+11.
+Simplify (1/3 + √5) – 1/3 - √5
+A.
+-1/2    5
+B.
+1/2   5
+C.
+–1/4    5
+D.
+0
+12.
+Multiply (x2 –3x - + 1)2 by (x - a)
+A.
+x3 – (3 - a)x2 + (1 + 3a)x –1
+B.
+x3 – (3 - a)x2 + 3ax – a
+C.
+x3 – (3 - a)x2 + (1 + 3a) – a
+D.
+x3+ (3 - a)x2+ (1 + 3a) - a
+13.
+Evaluate  (Xy2 - X2y)
+    (x2 - xy)
+when x = -2 and y = 3
+A.
+-3
+B.
+–3/5
+C.
+3/5
+D.
+3
+14.
+A car travels from Calabar to Enugu, a distant of pkm
+with an average speed of ukm per hour and continues
+to Benin, a distance of qkm, with an average speed of
+wkm per hour. Find its average speed from Calabar to
+Benin.
+A. (p+q)/(up+wq)
+B.
+u+w
+C.
+uw(p+q)/(wp+uq)
+D. (wp+uq)/(u+wq)
+15.
+If w varies inversely as uv/u + v and is equal to 8 when
+u = 2 and v = 6, find a relationship between u, v, w.
+A.
+upw = 16(u + t)
+   B.
+16ur = 3w(u + t)
+C.
+upw = 12(u + t)
+   D.
+12upw = u + r
+16.
+If g(x = x2 + 3x ) find g(x + 1) – g(x)
+A.
+(x + 2)
+B.
+2(x + 2)
+C.
+(2x + 1)
+D.
+(x + 4)
+17.
+Factorize m3 – m2 – m + 2
+A.
+(m2 + 1)(m - 2)
+B.
+(m + 1)(m + 1)(m + 2)
+C.
+(m + 1)(m + 1)(m - 2)
+D.
+(m2 + 2)(m - 1)
+18.
+Factorize 1 – (a - b)2
+A.
+(1 – a - b)(1 – a - b)    B.
+(1 – a + b)(1 + a - b)
+C.
+(1 – a + b)(1 – a + b)   D.
+(1 – a - b)(1 + a - b)
+19.
+Which of the following is a factor of rs + tr – pt –ps?
+A.
+(p - s)
+B.
+(s - p)
+C.
+(r - p)
+D.
+(r + p)
+20.
+Find the two values of y which satisfy the simultaneous
+equation  3x + y = 8
+x2 + xy = 6
+A.
+-1 and 5
+B.
+–5 and 1
+C.
+1 and 5
+D.
+1 and 1
+21.
+Find the range of values of x which satisfy the inequality
+(x/2 + x/3 + x/4) < 1
+A.
+x < 12/13B.
+x < 13
+C.
+x < 9
+D.
+x < 13/12
+22.
+Find the positive number n, such that thrice it s square
+is equal to twelve times the number.
+A.
+1
+B.
+2
+C.
+3
+D.
+4
+23.
+Solve the equation (x - 2)(x - 3) = 12
+A.
+2,3
+B.
+3,6
+C.
+–1,6
+D.
+1,6
+Mathematics 1991
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 29] ---
+24.
+Simplify   (√1 + x + √x)
+                                  (√ 1 + X - √ x)
+A.   1- 2x - 2√x(1 + x)
+B.  1 +2x +2√x(1+x)
+C.    √x(1+x)
+D.  1 + 2x - 2√x (1+x)
+25.
+Evaluate x2(x2 - 1)1/2 – (x2 – 1)1/2
+A.
+(x2 – 1)1/2B.
+(x2 – 1)
+C.
+(x2 – 1)-1
+D.
+(x2 – 1)-1/2
+26.
+Find the gradient of the line passing through the points
+(-2,0) and (0, -4)
+A.
+2
+B.
+–4
+C.
+–2
+D.
+4
+27.
+At what value of x is the function y = x2 – 2x – 3
+minimum?
+A.
+1
+B.
+–1
+C.
+–4
+D.
+4
+28.
+What is the nth term of the progression 27, 9,3,………..?
+A.
+27(1/3)n – 1
+B.
+3n + 2
+C.
+27 + 18(n - 1)
+D.
+27 + 6(n - 1)
+29.
+Find the sum of the 20 term in an arithmetic progression
+whose first term is 7 and last term is 117
+A.
+2480
+B.
+1240
+C.
+620
+D.
+124
+30.
+In the figure above, find the value of x
+A.
+1300
+B.
+1100
+C.
+1000
+D.
+900
+31.
+The angles of a quadrilateral are 5x – 30, 4x + 60, 60 – x
+and 3x + 61. find the smallest of these angles.
+A.
+5x – 30
+B.
+4x + 60
+C.
+60 – x
+D.
+3x + 61.
+32.
+The area of a square is 144sqcm. Find the length of its
+diagonal
+A.
+11√3cm
+B.
+12cm
+C.
+12√2cm
+D.
+13cm
+33.
+One angle of a rhombus is 600. the shorter of the two
+diagonals is 8cm long. Find the length of the longer
+one
+A.
+8√3
+B.
+16/√3
+C.
+5√3
+D.
+10/√3
+34.
+If the exterior angles of a pentagon are x0, (x + 5)0, (x +
+10)0, (x + 15)0 and (x + 20)0, find x
+A.
+1180
+B.
+720
+C.
+620
+D.
+360
+use the figure below to answer questions 35 and 36
+PMN and PQR are two secants of the circle MQTRN
+and PT is a tangent
+35.
+If PM = 5cm, PN = 12cm and PQ = 4.8cm, calculate the
+respective lengths of PR and PT in centimeters.
+A.
+7.3,5.9
+B.
+7.7,12.5
+C.
+12.5,7.7
+D.
+5.9,7.3 36.
+If PNR = 1100 and PMQ = 550, find MPQ.
+A.
+400
+B.
+300
+C.
+250
+D.
+150
+37.
+In the figure above, find the value of y
+A.
+280
+B.
+1220
+C.
+1500
+D.
+1520
+38.
+In the figure above, PQ = PR = PS and SRTY = 680. find
+QPS.
+A.
+1360
+B.
+1240
+C.
+1120
+D.
+680
+39.
+A flagstaff stands on the top of a vertical tower. A man
+standing 60m  away from the tower observes that the
+angles of elevation of the top and bottom of the flagstaff
+are 640 and 620 respectively. Find the length of a flagstaff.
+A.
+60(tan 620 – tan 640)
+B.
+60(cot 640 – cot 620)
+C.
+60(cot 620 – cot 640)
+D.
+60(tan 640 – tan 620)
+110
+O
+P  
+Q 
+R 
+S 
+T 
+120
+O
+x
+T 
+P 
+R 
+N 
+M  
+Q
+152
+O
+30
+O
+y
+P  
+Q 
+R 
+S 
+T 
+68
+O
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 30] ---
+40.
+Simplify cos2x (sec2x + sec2x tan2x)
+A.
+Tan x
+B.
+Tan x sec x
+C.
+Sec2 x
+D.
+Cosec2 x
+41.
+If cos x = √a/b, find cosec x.
+A.       b
+B.      b
+      √ b - a
+     √    a
+C.      b
+D.    √  b - a
+    √  b - a                                    a
+42.
+From a point Z, 60m, north of X, a man walks 60Ö3m
+eastwards to another point Y. find the bearing of y from
+x.
+A.
+0300
+B.
+0450
+C.
+0600
+D.
+0900
+43.
+A surveyor walks 500m up a hill which slopes at an
+angle of 300. calculate the vertical height through which
+he rises
+A.
+250m
+B.
+500Ö3/3m
+C.
+250Ö2m
+D.
+250Ö3m
+44.
+In the figure above, PQRS is a square of side 8cm. What
+is the area of      UVW?
+A.
+64sq.cm
+B.
+54sq.cm
+C.
+50sq.cm
+D.
+10sq.cm
+45.
+Find the total area of the surface of a solid cylinder
+whose base radius is 4cm and height is 5cm.
+A.
+56pcm2
+B.
+72pcm2
+C.
+96pcm2
+D.
+192pcm2
+46.
+Find the volume of the figure above.
+A.
+pa2/3
+B.
+pa2y
+C.
+pa2/3(y + x)
+D.
+(1/3pa2 x + y)
+47.
+3% of a family’s income is spent on electricity. 9% on
+food. 20% on transport, 11% on education and 7% on
+extended family. The angles subtended at the centre of
+the pie chart under education and food are respectively
+A.
+76.80 and 25.20
+  B.
+10.80 and 224.60
+C.
+112.40 and 72.00  D.
+39.60 and 212.40
+Use the following information to answer question 48
+and 49.
+Fifty boxes each of 50balls were inspected for the
+number which were defective. The following was the
+result
+48.
+The mean and the median of the distribution are
+respectively
+A.
+6.7,6
+B.
+6.7,6.5
+C.
+6,6.7
+D.
+6.5,6.7
+49.
+Find the percentage of boxes containing at least 5
+defective bolts each.
+A.
+96
+B.
+94
+C.
+92
+D.
+90
+50.
+A crate of soft drinks contains 10bottles of Coca-cola,
+8 of Fanta and 6 of Sprite. If one bottle s selected at
+random, what is the probability that it is NOT a Coca
+cola bottle?
+A.
+5/12
+B.
+1/3
+C.
+¾
+D.
+7/1
+S 
+P 
+8 cm
+6 cm
+2 cm
+4 cm
+Q 
+V 
+R 
+W
+x
+y
+a 
+a 
+No of defective
+per box
+4      5      6     7    8     9
+2      7     17   10    8     6
+No . of boxes
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 31] ---
+1.
+Find n if 34n = 100112
+A.
+5
+B.
+6
+C.
+7
+D.
+8
+2.
+The radius of a circle is given as 5cm subject to an error
+of 0.1cm. what is the percentage error in the area of the
+circle.
+A.
+1/25
+B.
+¼
+C.
+4
+D.
+25
+3.
+Evaluate Logban if b = 1/an
+A.
+n2
+B.
+n
+C.
+1/n
+D.
+1/n
+4.
+What is the value of x satisfying the equation 42y / 43x =
+2?
+A.
+-2
+B.
+–1/2
+C.
+½
+D.
+2
+5.
+Simplify  {(1.25 x 104)  x (2.0 x 10-1)
+(6.25 x 105
+A.
+4.0 x 10-3B.
+5.0 x 10-2
+C.
+2.0 x 10-1D.
+5.0 x 103
+6.
+Simplify 5√18 - 3√72 + 4√50
+A.
+17√4
+B.
+4√17
+C.
+17√2
+D.
+12√4
+7.
+If x = 3 - √3, find x2 + 36 / x2
+A.
+9
+B.
+18
+C.
+24
+D.
+27
+8.
+If x = {all prime factors of 44} and
+y = {all prime factors of 60}, the elements of x∩y and
+xÇy respectively are.
+A.
+{2,4,3,5,11} and {4}
+B.
+{4,3,5,11} and {3,4}
+C.
+{2,5,11} and {2}
+D.
+{2,3,5,11} and {2}
+9.
+If U = {0,2,3,6,7,8,9,10} is the universal set, E = {0,4,6,8,}
+and F = {x: x2 = 26 ,}, x is odd}. Find (ECF)’ where means
+the complement of a set
+A.
+{0}
+B.
+U
+C.
+C
+D.
+f
+10.
+Make l the subject of the formula
+s = ut + ½ at2
+A. 1/a [u± √(u2−2as)]
+B. 1/a [-u± √(u2 - 2as]
+C. 1/a [u±√(u2 + 2as)
+D. 1/a [-u±√(u2 + 2as)]
+11.
+Factorize 9p2 – q2 + 6pr – 9r2
+A.
+(3p – 3q + r)(3p – q – 9r)
+B.
+(6p – 3q + 3r)(3p – q – 4r)
+C.
+(3p – q + 3r)(3p + q – 3r)
+D.
+(3p – q + 3r)(3p – q – 3r)
+12.
+Solve the equation y - 11    y + 24 = 0
+A.
+8,3
+B.
+64,9
+C.
+6,4
+D.
+9,-8
+13.
+A man invested a sum of #280.00 partly at 59% and
+partly at 4%. If the total interest is #12.80 per annum,
+find the amount invested at 5%.
+A.
+#14.00
+B.
+#120.00
+C.
+#140.00
+D.
+#160.00
+14.
+If x + 1 is a factor of x3 + 3x2 + kx +4, find the value of k
+A.
+6
+B.
+–6
+C.
+8
+D.
+–8
+15.
+Resolve (3/x2 + x – 2) into partial fractions
+   A.  1            -       1
+B.      1          1
+      x-1                 x+2                     x + 2        x - 1
+C.       1     -    1
+D.  1           1
+       x + 1   x  -   2           x - 2   +  x + 1
+16.
+Find all values of x satisfying the inequality –11≤ 43x ≤ 28
+A.
+-5 ≤ x   ≤ 18
+B.
+5  ≤ x  ≤  8
+C.
+–8 ≤ x ≤  5
+D.
+–5 < x  ≤ 8
+17.
+The sketch above is the curve of y = ax2 + bx + c. find a,
+b, and c respectively
+A.
+1,0,-4
+B.
+–2,2,-4
+C.
+0,1,-4
+D.
+2,-2,-4
+18.
+Find the sum of the infinity of the following series. 3 +
+2 + 4/3 + 8/9 + 16/27 + ..
+A.
+1270
+B.
+190
+C.
+18
+D.
+9
+19.
+What is the nth term of the sequence 2,6,12,20,…?
+A.
+4n – 2
+B.
+2(3n - 1)
+C.
+n2 + n
+D.
+n2 + 3n +2
+20.
+For an arithmetic sequence, the first term is 2 and the
+common difference is 3. find the sum of the fist 11 terms.
+Mathematics 1992
+-3     -2     -1      
+1        2       3      
+4
+3
+2      
+-1
+-2
+-3      
+0
+y 
+x
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 32] ---
+A.
+157
+B.
+187
+C.
+197
+D.
+200
+21.
+If the binary operation * is defined by m*n = mn + m + n
+for any real number m and n, find the identity element
+under this operation.
+A.
+e = 1
+B.
+e = -1
+C.
+e = -2
+D.
+e = 0
+Use the matrices below to answer questions 22 and 23.
+22.
+When PT is the transpose of P, calculate [PT] when x = 0,
+y = 1 and z = 2
+A.
+48
+B.
+24
+C.
+–24
+D.
+–48
+23.
+PQ is equivalent to
+A
+PPT
+B.
+PP-T
+C.
+QP
+D.
+PP
+24.
+In the figure above, TSP = 1050 and PRQ = 200, find
+PQR
+A.
+1300
+B.
+1200
+C.
+750
+D.
+300
+25.
+If the angles of a quadrilateral are
+(p + 10)0, (p + 20)0 and 4p0, find p
+A.
+63
+B.
+40
+C.
+36
+D.
+28
+26.
+In the figure above, PQR is a semicircle while PQ and
+QR are chords. QS is the perpendicular from Q to the
+diameter PR. What is the expression for QS?
+A.
+QS = PS.SR
+B.
+QS = √(PS.SR)
+C.
+QS = √2 √(PS.SR)
+D.
+QS = 1/√2√(PS.SR)
+27.
+Determine the distance on the earth’s surface between
+two towns P(Lat. 600N, Long. 200E) and Q(Lat. 600N,
+Long 250W)
+A.
+800p/9km
+B.
+800Ö3p/9km
+C.
+800pkm
+D.
+800Ö3pkm
+28.
+If in the diagram above, FG is parallel to KM, find the
+value of x
+A.
+750
+B.
+950
+C.
+1050
+D.
+1250
+29.
+X is a point due east of point Y on a coast Z is another
+point on the coast but 6.3km due south of Y. if the
+distance ZX is 12km, calculate the bearing of Z from X
+A.
+2400
+B.
+2100
+C.
+15008
+D.
+600
+30.
+The above diagram is a circle with centre O. find the
+area of the shaded portion.
+A.
+9πcm2
+B.
+9(π  -2)cm2
+C.
+18πcm2
+3D.
+36πcm2
+31.
+The locus of a point which is equidistant from two
+given fixed points is the
+A.
+perpendicular bisector of the straight line
+joining them
+B.
+parallel line to the straight line joining them
+C.
+transverse to the straight line joining them
+D.
+angle bisector of 900 which the straight line
+joining them makes with the horizontal
+32.
+What is the perpendicular distance of a point (2, 3 )from
+the line 2x – 4y + 3 = 0
+A.
+√5/2
+B.
+-√5/20
+C.
+–5/√13
+D.
+0
+33.
+Find the equation of the line through (5, 7) parallel to
+the line7x + 5y = 12
+A.
+5x + 7y = 120
+B.
+7x + 5y = 70
+C.
+ x + y = 7
+D.
+15x + 17y = 90
+34.
+Given that q is an acute angle and sin q = m/n, find cot q.
+A.
+n2 - m2
+B.        (n + m) (n - m)
+                             m                                     m
+                             m
+C.
+       D.             n
+               n2 - m2                              n2 - m2
+Q 
+P 
+S 
+R 
+105
+O
+20
+O
+U 
+P
+Q 
+R 
+S 
+T 
+X
+109
+O
+109
+O
+F 
+H
+G 
+K 
+M 
+x
+O
+6 cm
+6 cm
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 33] ---
+35.
+In the figure above, if XZ is 10cm, calculate RY in cm
+A.
+10
+B.
+10(1 – 1/Ö3)
+C.
+10(1 - Ö3)
+D.
+10(1 - 1Ö2)
+36.
+Evaluate lim              (x-2) (x2+3x-2)
+                                    x-->2            (x2-4)
+A.
+0
+B.
+2
+C.
+3
+D.
+4
+37.
+If y = x, find d2y/dx2
+A.
+2 cos x – x sin x    B.
+sin x + x cos x
+C.
+sin x – x cos x
+D.
+x sin x – 2 cos x
+38.
+Ice forms on a refrigerator ice-box at the rate of (4 –
+0.6t)g per minute after t minute. If initially there are 2g
+of ice in the box, find the mass of ice formed in 5 minutes.
+A.
+19.5
+B.
+17.0
+C.
+14.5
+D.
+12.5
+39.
+Obtain a maximum value of the function
+f(x) = x3 – 12x + 11
+A.
+-5
+B.
+–2
+C.
+5
+D.
+27
+40.
+A student blows a ballon and its volume increases at a
+rate of p (20 – t2)ccm3s-1 after t seconds. If the initial
+volume of 0cm3, find the volume of the balloon after 2
+seconds.
+A.
+37.00π
+B.
+37.33π
+C.
+40.00π
+D.
+42.67π
+41.
+Evaluate the integral   π/4π/12 cos 2x dx
+A.
+-1/2
+B.
+–1
+C.
+½
+D.
+1
+42.
+A storekeeper checked his stock of five commodities
+and arrived at the following statistics.
+What angle will commodity H represent on a pie chart?
+A.
+2160
+B.
+1080
+C.
+680
+D.
+540
+43.
+If the mean of the above frequency distribution is 5.2,
+find y
+A.
+6.0
+B.
+5.2
+C.
+5.0
+D.
+4.0
+44.
+Find the mode and median respectively of the
+distribution above
+A.
+2,1
+B.
+1,2
+C.
+1,5
+D.
+5,2
+45.
+If the scores of 3students in a test are 5,6 and 7 find the
+standard deviation of their scores
+A.
+2/3
+B.
+3/2√3
+C.
+√ 2/3
+D.
+√3/2
+46.
+Sample variance can be defined as
+S2 = 1/n      n=1  (x1-x)2 and
+S2 =  1      n∑n=11 (x1−x)
+                      (n-1)
+Where n is the number of sample observations. There
+is no difference practically between the above
+definitions when
+A.
+n  =35
+B.
+n > 35
+C.
+n < 35
+D.
+n = 5
+47.
+Two perfect dice are throw together. Determine the
+probability of obtaining a total score of 8
+A.
+1/12
+B.
+5/36
+C.
+1/8
+D.
+7/36
+48.
+The probability of an event P is ¾ while that of another
+Q is 1/6. if the probability of both P and Q is 1/12, what
+is the probability of either P or Q?
+A.
+1/96
+B.
+1/8
+C.
+5/6
+D.
+11/12
+49.
+Five people are to be arranged in a row for a group
+photograph. How many arrangements are there if a
+married couple in the group insist on sitting next to
+each other?
+A.
+48
+B.
+24
+C.
+20
+D.
+10
+50.
+A student has 5 courses to take from Mathematics and
+Physics. There are 4 courses in Mathematics and 3 in
+Physics which he can choose from at will. In how many
+ways can he choose his courses so that he takes exactly
+two courses in Physics?
+A.
+11
+B.
+12
+C.
+10
+D.
+7
+30
+O
+15
+O
+X 
+Y 
+Z
+10 cm
+R
+Commodity
+Quantity
+F
+G
+H
+K
+M
+215
+113
+108
+216
+68
+2            4           6          8
+x
+f
+4            y           6          5
+0      1   2     3     4     5      6
+7     11   6    7      7    5      3
+No . of children
+No . of families
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 34] ---
+1.
+Change 7110 to base 8
+A.
+1078
+B.
+1068
+C.
+718
+D.
+178
+2.
+Evaluate 3524/0.05 correct to 3 significant figures.
+A.
+705
+B.
+70000
+C.
+70480
+D.
+70500
+3.
+If 9(x-1/2)= 3x2, find the value of x.
+A.
+½
+B.
+1
+C.
+2
+D.
+3
+4.
+Solve for y in the equation 10y, X5(2y-2) x 4(y-1)=1
+A.
+¾
+B.
+2/3
+C.
+ 1
+D.
+5/4
+5.
+Simplify  1/3-2 – 1/3+2
+A.
+4
+B.
+2/3
+C.
+0
+D.
+-4
+6.
+If 2 log3 y+ log3
+x2 = 4, then y is
+A.
+(4-log3
+x2)/2
+B.
+4/log3
+x2
+C.
+2/X
+D.
+± 9/X
+7.
+Solve without using tables
+log5 (62.5)-log5 (1/2)
+A.
+       3
+B.
+       4
+C.
+       5
+D.
+       8
+8.
+If #225.00 yields #27.00 in x years simple interest
+at the rate of 4%per annum, find x
+A.
+3
+B.
+4
+C.
+12
+D.
+27
+9.
+The shaded portion in the venn diagram above is
+A.
+        XÇZ
+B.
+        XcÇYÇZ
+C.
+        XÇYcÇ Z
+D.
+        XÇYÇZc
+10.
+If     x2 + 9 = x+ 1, solve for x
+A.
+5
+B.
+4
+C.
+3
+D.
+1
+11.
+Make x the subject of the relation
+1+ax/1-ax = p/q
+A.
+      p+q/a(p-q)
+B.
+      p-q /a(p+q)
+C.
+      p-q/apq
+D.
+      pq/a(p-q)
+12.      Which of the following is a factor of
+15 + 7x – 2x2?
+A.
+x-3
+B.
+x+3
+C.
+x-5
+D.
+x+5
+13.
+Evaluate
+(x+1/x+1)2 – (x-1/x-1) 2
+A.
+       4x2
+B.
+       (2/x+2) 2
+C.
+        4
+D.
+        4(1+x)
+14.
+Solve the following simultaneous equations for x.
+x2 + y – 5= 0
+y – 7x  + 3=0
+A.
+-2, 4
+B.
+2, 4
+C.
+-1, 8
+D.
+1, -8
+15.
+Solve the following equation
+(3x-2)(5x-4)=(3x-2) 2
+A.
+       -3/2, 1
+B.
+       1
+C.
+          2/3, 1
+D.
+          2/3, 4/5
+16.
+The figure above represents the graphs of y= x (2-x)
+and y = (x-1) (x-3). What are the x-coordinates of p,
+q and r respectively?
+A.
+        1,3,2
+B.
+        0,0,0
+C.
+        0,2,3
+D.
+        1,2,3
+17.
+If the function f is defined by
+          f(x+2)=2x2 + 7x – 5, find f(-1)
+A.
+        -10
+B.
+        -8
+C.
+         4
+D.
+        10
+18.
+Divide the expression
+  x3 + 7x2 –x –7 by -1 +x2
+A.
+        –x3+7x2-x-7
+B.
+        –x3-7x+7
+C.
+        X-7
+D.
+        X+7
+19.
+Simplify
+1/p-1/q –p/q-q/p
+A.
+      1/p-q
+B.
+       -1/p+q
+C.
+       1/pq
+D.
+       1/pq(p-q)
+20.
+Solve the inequality
+y2-3y>18
+A.
+      -2<y<6
+B.
+      y<-3 or y>6
+C.
+      y>-3 or y>6
+D.
+      y<-3 or y<6
+21
+If x is negative, what is the range of values of x within
+which
+x+1/3 > 1/x+3
+A.
+       3<x<4
+B.
+      -4<x<-3
+C.
+      -2<x<-1
+D.
+      -3<x<0
+30
+O
+2x
+O
+x
+O
+x
+O
+Q 
+T 
+P 
+O
+Y 
+X 
+Z
+Mathematics 1993
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 35] ---
+In the diagram above. O is the centre of the circle
+and POQ a diameter. If POR = 960 , find the value of
+ORQ.
+A.
+        840
+B.
+480
+C.
+        450
+D.
+420
+30.
+In the diagram above, QP//ST; PQR. = 340 , QRS=
+730 and RS = RT. Find SRT
+A.
+680
+B.
+1020
+C.
+1070
+D.
+1410
+31.
+In the figure above, PT is a tangent to the circle at u
+and QU//RS. If TUR=350 and SRU = 50.0 find x.
+A.
+950
+B.
+850
+C.
+500
+D.
+350
+32.
+In the diagram above, QPS = SPR, PR= 9cm, PQ=
+4cm and QS=3cm. Find SR.
+A.
+       63/4
+B.
+       33/8
+C.
+       43/8
+D.
+       22/3
+33.
+The three sides of an isosceles triangle are of lengths
+x+3, 2x+3, 2x-3 respectively. Calculate x.
+A.
+0
+B.
+1
+C.
+3
+D.
+6
+34.
+5 cm
+2 cm 
+O
+S
+Q
+T
+22
+A man’s initial salary is #540.00 a month and increases
+after each period of six months by #36.00 a month.
+Find his salary in the eighth month of the third year.
+A.
+#828.00
+B.
+#756.00
+C.
+#720.00
+D.
+#684.00
+23.
+If k+1, 2k-1,3k+1 are three consecutive terms of a
+geometric progression, find the possible values of the
+common ratio.
+A.
+0,8
+B
+-1, 5/3
+C.
+2, 3
+D.
+1, -1
+24.
+A binary operation * is defined on a set of real
+numbers by x*y = xy for all real values of x and y, if
+x*2 = x, find the possible values of x
+A. 0, 1
+B. 1, 2
+C. 2, 2
+D. 0,2
+25
+PQRST is a regular pentagon and PQVU is a
+rectangle with U and V lying on TS and SR
+respectively as shown in the diagram above. Calculate
+TUV
+A.
+180
+B.
+540
+C.
+900
+D.
+1080
+26.
+A regular polygon has 1500 as the size of each interior
+angle. How many sides has the polygon?
+A. 12
+B. 10
+C. 9
+D. 8
+27.
+Calculate the length, in cm, of the arc of the circle of
+diameter 8cm which subtends an angle of 221/2
+0
+A.
+2
+B.
+C.
+2/3
+D.
+   /2
+28.
+In the diagram above, PQRS is a circle with O as
+centre and PQ//RT if RTS = 320 , find PSQ
+A.
+320
+B.
+450
+C.
+580
+D.
+900
+29.
+O 
+S 
+P 
+R 
+Q 
+T 
+P 
+Q 
+V 
+T 
+U 
+S
+R
+96
+0
+O 
+P 
+Q 
+R
+73
+0
+P 
+T 
+S 
+Q 
+R
+34
+0
+P 
+Q 
+x
+T 
+U 
+S
+R
+50
+0
+Q  
+S 
+3 cm
+R 
+P
+9 cm
+4 cm
+π
+π
+π
+π
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 36] ---
+In the figure above, the line segment ST is tangent
+to the two circles at S and T. O and Q are the centres
+of the circles with OS = 5cm, QT = 2cm and OQ =
+14cm. Find ST.
+A.
+       7"3
+B.
+      12cm
+C.
+     “87cm
+D.
+      7cm
+35.
+In the figure above, the area of the square PQRS is
+100cm2. If the ratio of the area of the square TUYS
+to the area of the square XQVU is 1:16, find YR
+A.
+       6cm
+B.
+       7cm
+C.
+        8cm
+D.
+       9cm
+36.
+Find the radius of a sphere whose surface area is
+154cm2
+(    =22/7)
+A.
+7.00cm
+B.
+3.50cm
+C.
+3.00cm
+D.
+1.75cm
+37.
+Find the area of the sector of a circle with radius 3m,
+if the angle of the sector is 600
+A.
+4.0m2
+B.
+4.1m2
+C.
+4.7m2
+D.
+5.0m2
+38.
+The angle between latitudes 300S and 130N is
+A.
+170
+B.
+330
+C.
+430
+D.
+530
+39.
+If sin θ= cos 0, find 0 between 00  and 3600.
+A.
+450 ,2250
+B.
+1350 ,3150
+C.
+450 ,3150
+D.
+1350 ,2250
+40.
+From the figure above, calculate TH in centimeters.
+A.
+5/(√3+1)
+B.
+5/√3-1
+C.
+5/√3
+D.
+√3/5
+41.
+If two angles of a triangle are 300 each and the longest
+side is 10cm, calculate the length of each of the other
+sides.
+A.
+5cm
+B.
+4cm
+C.
+3√3cm
+D.
+10√3/5cm
+42
+Quantities in the proportions 1,4,6,7 are to be
+represented in a pie chart. Calculate the angle of the
+sector with proportion 7
+A.
+200
+B.
+800
+C.
+1200
+D.
+1400
+43.
+The bar chart above shows the distribution of marks
+in a class test. How many students took the test?
+A.
+       15
+B.
+       20
+C.
+       25
+D.
+       50
+44.
+The following marks were obtained by twenty
+students in an examination
+53 30 70 84 59 43 90 20 78 48
+44 60 81 73 50 37 67 68 64 52
+Find the number of students who scored at least
+50marks
+A.
+       6
+B.
+       10
+C.
+       13
+D.
+       14
+45.
+              Estimate the mode of the frequency distribution
+              above.
+A.
+13.2g
+B.
+15.0g
+C.
+16.8g
+D.
+17.5g
+46.
+The mean of the ages of ten secondary school pupils
+is 16 but when the age of their teacher is added to it,
+the mean becomes 19. Find the age of the teacher.
+A.
+27
+B.
+35
+C.
+38
+D.
+49
+47
+1 - 5
+6 - 10
+11 - 15
+16 - 20
+21 - 25
+26 - 30
+31 - 35
+36 - 40
+2
+4
+5
+2
+3
+2
+1
+1
+              Find the median of the observations in the table
+P 
+X 
+Q 
+T 
+U 
+V 
+Y 
+S 
+R
+Q 
+P 
+H 
+5 
+ 
+m
+30
+0
+45
+0
+π
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 37] ---
+10.
+Simplify
+[(2m - u)2 – (m – 2u)2]
+(5m2 – 5u2)
+A.
+¾
+B.
+2/5
+C.
+2m – u/5m + u
+D.
+m – 2u/m + 5u
+11.
+Factorize
+a2x – b2y – b2x + a2y
+A.
+(a - b)(x + y)
+B.
+(y - x)(a - b)(a + b)
+C.
+(x - y)(a - b)(a + b) D.
+(x + y)(a - b)(a + b)
+12.
+Find the values of p  and q such that (x - 1) and (x -
+3) are factors of px3 + qx2 + 11x - 6
+A.
+-1,-6
+B.
+1,-6
+C.
+1,6
+D.
+6,-1
+13.
+The equation of the graph above is
+A.
+y = (x - 3)3
+B.
+y = (x + 3)3
+C.
+y = x3 – 27
+D.
+y = -x3 + 27
+14.
+If a = 1, b = 3, solve for x in the equation
+a/a – x = b/x – b
+A.
+4/3
+B.
+2/3
+C.
+3/2
+D.
+¾
+15.
+Solve for r in the following equation
+1/(r – 1) + 2/(r + 1) = 3/r
+A.
+3
+B.
+4
+C.
+5
+D.
+6
+16.
+Find P if x – 3/(1 - x)(x + 2) = P/(1 – x) + Q/(x + 2)
+A.
+-2/3
+B.
+-5/3
+C.
+5/3
+D.
+ 2/3
+17.
+Find the range of values of x for which 1/x > 2 is
+true
+A.
+x < ½
+B.
+x < 0 or x > ½
+C.
+0 < x < ½
+D.
+1 < x < 2
+x
+y
+(3.0)
+0
+(0.-27)
+             above.
+A.
+        11.5
+B.
+        12.5
+C.
+        14.0
+D.
+        14.5
+48.
+A number is selected at random between 20 and 30
+both numbers inclusive. Find the probability that the
+number is a prime
+A.
+2/11
+B.
+5/11
+C.
+6/11
+D.
+8/11
+1.
+Evaluate
+    1/3÷[5/7(9/10 – 1 + 3/4)]
+A.
+28/39
+B.
+13/84
+C.
+39/28
+D.
+84/13
+2.
+Evaluate (0.36x 5.4 x 0.63) (4.2 x 9.0 x 2.4)
+correct to 2 significant figures
+A.
+0.013
+B.
+0.014
+C.
+0.13
+D.
+0.14
+3.
+Evaluate
+Log5(0.04)
+         (Log318 – Log32)
+A.
+1
+B.
+-1
+C.
+2/3
+D.
+-2/3
+4.
+Without using tables, solve the equation
+8x-2 = 2/25
+A.
+4
+B.
+6
+C.
+8
+D.
+10
+5
+Simply
+√48 – 9/√3 + √75
+A.
+5√3
+B.
+6√3
+C.
+8√3
+D.
+18√3
+6.
+Given that “2 = 1.414, find without using tables, the
+value of 1/”2
+A.
+0.141
+B.
+0.301
+C.
+0.667
+D.
+0.707
+7.
+In a science class of 42 students, each offers at least
+one of Mathematics and Physics. If 22 students offer
+Physics and 28 students offer Mathematics, find how
+many students offer Physics only?
+A.
+6
+B.
+8
+C.
+12
+D.
+14
+8.
+Given that for sets A and B, in a universal set E, A⊆
+B then
+              A∩(A∩B)’ is
+A.
+A
+B.
+O/
+C.
+B
+D.
+∑
+9.
+Solve for x if 25x + 3(5x) = 4
+A.
+1 or -4
+B.
+0
+C.
+1
+D.
+-4 or 0
+Mathematics 1994
+49.
+Calculate the standard deviation of the following
+data.
+7, 8, 9, 10, 11, 12, 13.
+A.
+2
+B.
+4
+C.
+10
+D.
+11
+50.
+The chances of three independent event X, Y, Z
+occurring are 1/2 , 2/3, ¼ respectively. What are the
+chances of y and z only occurring?
+A.
+1/8
+B.
+1/24
+C.
+1/12
+D.
+¼
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 38] ---
+26.
+The equation of the line in the graph above is
+A.
+3y = 4x + 12
+B.
+3y = 3x + 12
+C.
+3y = -4x + 12
+D.
+ 3y = -4x + 9
+27.
+In the diagram above, O is the centre of the circle. If
+SOQ is a diameter and <PRS is  380, what is the value
+of <PSQ?
+A.
+1480
+B.
+1040
+C.
+800
+D.
+520
+28.
+If three angles of a quadrilateral are (3y – x - z)0, 3x0,
+(2z – 2y - x) 0, find the fourth angle in terms of x, y, and
+z.
+A.
+(360 – x – y - z)0
+B.
+(360 + x + y - z)0
+C.
+(180 – x + y + z)0 D.
+(180 + x + y + z)0
+29.
+An open rectangular box is made of wood 2cm thick. If
+the internal dimensions of the box are 50cm long, 36cm
+wide and 20cm deep, the volume of wood in the box is
+A.
+11520cm3
+B.
+36000cm3
+C.
+38200cm3
+D.
+47520cm3
+30.
+Calculate the perimeter in cm, of a sector of a circle of
+radius 8cm and angle 450
+A.
+2
+B.
+8  + 2
+C.
+16 + 2
+D.
+16 + 16
+31.
+In the diagram above, PTS is a tangent to the circle
+TQR at T. calculate < RTS.
+A.
+1200
+B.
+700
+C.
+600
+D.
+400
+32.
+18.
+Find the inequality which represents the shaded
+portion in the diagram
+A.
+2x – y – 2 £ 0
+B.
+2x – y – 2 ³ 0
+C.
+2x – y – 2 < 0
+D.
+2x – y – 2 > 0
+19.
+If the 6th term of an arithmetic progression is 11 and
+the first term is 1, find the common difference.
+A.
+12/5
+B.
+5/3
+C.
+-2
+D.
+2
+20.
+Find the value of r if log10r + log10r2 + log10r4 + log10r8
++ log10r16 + log10r32 = 63
+A.
+10-8
+B.
+100
+C.
+10
+D.
+102
+21.
+Find the nth term of the sequence
+3,6,10,15,21,…..
+A.
+n(n - 1/2)
+B.
+n(n + 1/2)
+C.
+(n + 1)(n + 2)/2 D.
+n(2n + 1)
+22.
+A binary operation * is defined on the set of all positive
+integers by a*b = ab for all positive integers a,b. which of
+the following properties does NOT hold?
+A.
+Closure
+B.
+Associativity.
+C.
+Identity.
+D.
+Inverse.
+23.
+The multiplication table above has modulo 10 on the
+set S = {2,4,6,8}. Find the inverse of 2
+A.
+2
+B.
+4
+C.
+6
+D.
+8
+24.
+Solve for x and y
+1
+1
+x       =  4
+3
+y
+1
+1
+A.
+x = -3, y = 3
+B.
+x = 8, y = 3
+C.
+x = 3, y = -8
+D.
+x = 8, y = -3
+25.
+The determinant of the matrix
+(1
+2
+3)
+(4
+5
+6)
+is
+(2
+0          -1)
+A.
+-67
+B.
+-57
+C.
+-3
+D.
+3
+y
+x
+0
+-2
+1                2                3
+-2
+2x-y-2=0
+-4
+30
+O
+50
+O
+38
+O
+R 
+S 
+Q 
+P 
+O
+          10           2           4           6          8
+2
+4
+6
+8         
+4
+8
+2
+6         
+8
+6
+4
+2         
+2
+4
+6
+8         
+6
+2
+8
+4       
+xO mod
+50
+O
+60
+O
+Q 
+T 
+P
+R
+5 cm
+h
+6 cm
+7 cm
+π
+π
+π
+π
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 39] ---
+43.
+The grades A1, A2, A3, C4 and F earned by
+students in a particular course are shown in the pie
+chart above. What percentage of the students
+obtained a C4 grade?
+A.
+52.0
+B.
+43.2
+C.
+40.0
+D.
+12.0
+44.
+The table above shows the frequency distribution
+of a data. If the mean is 43/14, find y.
+A.
+1
+B.
+2
+C.
+3
+D.
+4
+45.
+The mean of twelve positive numbers is 3. when
+another number is added, the mean becomes 5. find
+the thirteenth number.
+A.
+29
+B.
+26
+C.
+25
+D.
+24
+46.
+Find the mean deviation of the set of numbers 4, 5, 9
+A
+0
+B.
+2
+C.
+5
+D.
+6
+47.
+            Estimate the median of the frequency distribution
+             above.
+             A.
+101/2
+     B.
+111/2
+             C.
+121/2
+ D.        13
+48.
+   Find the variance of the frequency distribution above
+             A.                3/2
+  B.
+9/4
+            C.
+5/2
+ D.
+     3
+49.
+               The table above shows the number of pupils in each
+             age group in a class. What is the probability that a
+             pupil chosen at random is at least 11 years old?
+A.
+27/40
+B.
+17/20
+C.
+33/40
+D.
+3/20
+1-5      6-10     11-15    16-20  21-25
+  6         15         20           7         2
+Class interval
+Frequency
+1  
+2  
+3  
+4  
+5  
+x
+f
+2            1          2          1         2
+10         11          12
+6           27          7
+Number of pupils
+Age in years
+In the diagram above, find h.
+A.
+12/7cm
+B.
+12/7 V6cm
+C.
+7/12cm
+D.
+1/2 V51cm
+33.
+In the frustum of a cone shown above, the top diameter
+is twice the bottom diameter. If the height of the frustum
+is h centimeters, find the height of the cone.
+A.
+2h
+B.
+2πh
+C.
+πh
+D.
+πh/2
+34.
+What is the locus of a point P which moves on one side
+of a straight line XY, so that the angle XPY is always
+equal to 900
+A.    The perpendicular
+B.     A right-angled triangle.
+        bisector of XYX
+C.    A circle
+D.     A semi-circle.
+35.
+If M(4,q) is the mid-point of the line joining L(p, -2)
+and N(q, p), find the values of p and q.
+A.
+p = 2, q = 4
+B.
+p = 3, q = 1
+C.
+p = 5, q = 3
+D.
+p = 6, q = 2
+36.
+37.
+The angle of depression of a boat from the top of a
+cliff 10m high is 300. how far is the boat from the
+foot of the cliff?
+A.
+5√3/3m
+B.
+5√3m
+C.
+10√3m
+D.
+10√3/3m
+38.
+What is the value of sin (-6900)?
+A.
+√3/2
+B.
+-√3/2
+C.
+-1/2
+D.
+½
+39.
+If y = 3t3 + 2t2 – 7t + 3, find dy/dt at t = -1
+A.
+-1
+B.
+1
+C.
+-2
+D.
+2
+40.
+Find the point (x, y) on the Euclidean plane where
+the curve y = 2x2 – 2x + 3 has 2 as gradient.
+A.
+(1,3)
+B.
+(2,7)
+C.
+(0,3)
+D.
+(3,15)
+41.
+Integrate (1 – x)/x3 with respect to x.
+A.
+(x – x2)/(x4 + k)
+B.
+4/x4 – 3/x3 + k
+C.
+1/x – 1/2x2 + k
+D.
+1/3x3 – 1/2x + k
+42.
+Evaluate      1
+ (2x + 1)2 dx
+          
+-1
+A.
+32/3
+B.
+4
+C.
+41/3
+D.
+42/3
+h
+y
+x
+(0,4)
+(0,0)
+(3,0)
+1  
+2  
+3  
+4  
+5  
+x
+f
++ 2     - 1       2 + 3     + 4     3 - 4
+y 
+y 
+y 
+y 
+y 
+72
+O
+64.8
+O
+43.2
+O
+144
+O
+A1
+A2
+F
+A3
+C4
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 40] ---
+50.
+In a survey, it was observed that 20 students read
+newspapers and 35 read novels. If 40 of the students
+read either newspaper or novels, what is the
+1.
+Calculate 33105 - 14425
+A. 13135   B. 21135     C. 43025   D.  11035
+2.
+Convert 3.1415926 to 5 decimal places
+A. 3.14160    B. 3.14159    C. 0.31415    D. 3.14200
+3.
+The length of a notebook 15cm, was measured as
+16.8cm. calculate the percentage error to 2 significant
+figures.
+A. 12.00%    B. 11.00%     C. 10.71%     D. 0.12%
+4.
+A worker’s present salary is #24,000 per annum. His
+annual increment is 10% of his basic salary. What would
+be his annual salary at the beginning of the third year?
+A. #28,800     B. #29,040   C. #31,200    D.#31,944
+5.
+Express the product of 0.0014 and 0.011 in standard
+form.
+A. 1.54 x 102     B. 1.54 x 10-3     C. 1.54 x 104   D. 1.54 x 10-5
+6.
+Evaluate  (813/4  -  27 1/3)
+                                       3 x 23
+A. 27     B. 1    C. 1/3     D. 1/8
+7.
+Find the value of (16)3/2 + log100.0001 + log232
+A. 0.065    B. 0.650     C. 6.500
+D. 65.00
+8.
+Simplify √12 - √3
+√12 + √3
+A. 1/3     B. 0    C. 9/15    D. 1
+9.
+Four members of a school first eleven cricket team are
+also members of the first fourteen rugby team. How
+many boys play for at least one of the two teams?
+A. 25    B. 21    C. 16    D. 3
+10.
+If S = (x : x2 = 9, x > 4), then S is equal to
+A. 0    B. {0}    C. f    D. {f}
+11.
+If x – 1 and x + 1 are both factors of the equation x3 +
+px3 + qx + 6 = 0, evaluate p and q
+A. –6, -1    B. 6, 1    C. -1    D. 6, -6
+12.
+Find a positive value of p if the equation 2x2 – px + p
+leaves a remainder 6 when added
+A. 1    B. 2   C. 3    D. 4
+13.
+Find r in terms of K, Q and S if s = 2r√ (QπΤ+Κ)
+A.       r2     -    k
+B.
+r2       -    k
+                  2πr2Q     Q              4πr2Q
+C.       r2     - k
+D.       r2        -  k
+                   2πr2Q                           4πr2Q
+14.
+The graph of f(x) = x2 - 5x + 6 crosses the x-axis at the
+points
+Mathematics 1995
+probability of the students who read both
+newspapers and novel?
+A.
+1/2
+B.
+2/3
+C
+3/8
+D.
+3/11
+A. (-6, 0)(-1, 0)
+B. (-3,0)(-2, 0)
+C. (-6, 0)(1, 0)
+D. (2, 0)(3, 0)
+15.
+Factorize completely the expression
+abx2 + 6y – 3ax –2byx
+A. (ax – 2y)(bx - 3)
+B. (bx + 3)(2y - ax)
+C. (bx + 3)(ax – 2y)
+D. (ax – 2y) (ax - b)
+16.
+Solve the following inequality (x - 3)(x - 4) ≤0
+A.
+3≤ x ≤ 4
+B.
+3 < x < 4
+C.
+3 ≤ x < 4
+D.
+3 < x  ≤4
+17.
+The 4th term of an A. P is 13cm while the 10th term is 31.
+find the 31st term.
+A.
+175
+B.
+85
+C.
+64
+D.
+45
+18.
+Simplify          x2  - 1
+     x3 + 2x2 – x - 2
+A.
+1/x + 2
+B.
+x – 1/x + 1
+C.
+x – 1/x + 2
+D.
+1/x – 2
+19.
+Express 5x – ½ (x - 2)(x - 3) in partial fraction
+A.
+2/x – 2 – 3/x – 3 B.
+2/x – 2 + 3/x – 3
+C.
+2/x – 3 – 3x –2
+D.
+5/x – 3 + 4/x – 2
+20.
+Use the graph of the curve y = f(x) above to solve the
+inequality f(x) > 0.
+A.
+-1≤  x ≤ 1, x > 2 B.
+x ≤-1, 1, < x > 2
+C.
+x≤  -1, 1 ≤ x ≤ 2 D.
+x ≤ 2, -1 ≤ x ≤ 1
+21.
+Which of the following binary operation is commutative
+in a set of integers?
+A.
+a*b = a + 2b
+B.
+a*b = a +  b –ab
+C.
+a*b = a2 + b
+D.
+a*b = a(b + 1)/2
+22.
+If a*b = +√ab, Evaluate 2*(12*27)
+A.
+12
+B.
+9
+C.
+6
+D.
+2
+23.
+Find the sum to infinity of the following sequence
+1, 9/10, (9/10)2, (9/10)3
+A.
+1/10
+B.
+9/10
+C.
+10/9
+D.
+10
+24.
+Find the value of K if    2, 1,  1
+         2, 1    k
+         1, 3   -1    = 23
+A.
+1
+B.
+2
+C
+3
+D
+4
+y
+x
+-1 
+0 
+1 
+2 
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 41] ---
+25.
+If X =            1,   2         and Y  =   2,      1
+       0,  3                           4,      3
+A.
+(10,  7)
+B.
+(2,   7)
+(12,  9)
+(1,  17)
+C.
+(10,   4)
+D.
+ (4,   3)
+( 4,    6)
+(10,  9)
+26.
+Determine the value of x in the figure above
+A.
+1340
+B.
+810
+C.
+530
+D.
+460
+27.
+PT is a tangent to the circle TYZX, YT = YX and <
+PTX = 500. calculate <TZY
+A.
+500
+B.
+650
+C.
+850
+D.
+1300
+28.
+In a triangle XYZ, <YXZ = 440? and <XYZ = 1120.
+calculate the acute angle between the internal triangle
+of <XYZ and <XZY.
+A.
+420
+B.
+560
+C.
+680
+D.
+780
+29.
+Find the distance between two towns P(450N, 300N) and
+Q(150S, 300W) if the radius of the earth is 7 000km.
+A.    1  100
+B.
+  2  200
+                                      3                                                     3
+C.   11  000
+3
+30.
+Two perpendicular lines PQ and QR intersect at (1, -1). If
+the equation of PQ is x – 2y + 4 = 0, find the equation of
+QR.
+A.
+x – 2y + 1 = 0
+B.
+2x + y – 3 – 0
+C.
+x – 2y – 3 = 0
+D.
+2x + y – 1 = 0
+31.
+P is on the locus of a point equidistant form two given
+points X and Y. UV is a straight line through Y parallel
+to the locus. If < PYU is 400 find <XPY
+A.
+1000
+B.
+800
+C.
+500
+D.
+400
+32.
+In the diagram above, k, m, and n are parallel lines.
+What is the value of the angle marked x?
+A.
+370
+B.
+630
+C.
+1170
+D.
+1530
+33.
+In the diagram above, the base diameters is 14cm while
+the height is 12cm. Calculate the total surface area if
+the cylinder has both a base and a top (p = 22/7)
+A.
+836cm2
+B.
+528cm2
+C.
+308cm2
+D.
+154cm2
+34.
+In the diagram above, find PQ if the area of triangle
+PQR is 35ccm2
+A.
+97cm
+B.
+10cm
+C.
+14cm
+D.
+17cm
+35.
+A schoolboy lying on the ground 30m away from the
+foot of a water tank lower observes that the angle of
+elevation of the top of the tank is 600. Calculate the
+height of the water tank.
+A.
+60m
+B.
+30.3m
+C.
+20.3m
+D.
+10.3m
+36.
+QRS is a triangle with QS = 12m, <RQS = 300 and
+<QRS = 450,  calculate the length of RS.
+A.
+18√2m
+B.
+12√2m
+C.
+6√2m
+D.
+3√2m
+37.
+Which of the following is a sketch of y = 3 sin x?
+A.
+B.
+C.
+D.
+38.
+The derivative of cosec x is
+A.
+tan x cosec x
+B.
+– cot x cosec x
+C.
+tan x sec x
+D.
+–cot x sec x
+39.
+For what value of x is the tangent o the curve y = x2 –
+4x + 3 parallel to the x – axis?
+A.
+3
+B.
+2
+C.
+1
+D.
+0
+40.
+Two variables x and y are such that dy/dx = 4x – 3 and y
+= 5 when x = 2. find y in terms of x
+A. 2x2 – 3x + 5
+B. 2x2 – 3x + 3
+C. 2x2 – 3x    D. 4
+41.
+Find the area bounded by the curve y = 3x2 – 2x + 1, the
+coordinates x = 1 and y = 3 and the x-axis
+A. 24 9.
+    B. 22
+47       C. 21       D. 20
+x
+53
+O
+81
+O
+P 
+T 
+X 
+Z 
+Y 
+50
+O
+117
+O
+ xO
+km
+n
+12 cm
+14 cm
+30
+O
+10 cm
+P 
+R 
+Q
+0 
+2
+2
+3
+0 
+2
+2
+3
+3
+0 
+2
+2
+3
+3
+0 
+2
+2
+3
+3
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 42] ---
+42.
+The frequency distribution above shows the ages of
+students in a secondary school. In a pie chart constructed
+to represent the data, the angle corresponding to the 15
+years-old is
+A. 270 B. 300 C. 540 D. 1080
+43.
+The pie chart above shows the distribution of students
+in a secondary school class. If 30 students offered
+French, how many offered C.R.K?
+A. 25 B. 15 C. 10 D. 8
+44.
+The mean and the range of the set of numbers
+0.20,1.00,0.90,1.40,0.80,0.80,1.20,and 1.10
+are m and r respectively. Find m + r
+A. 1.11 B. 1.65 C. 1.85 D. 2.45
+45.
+Find the standard deviation of the data using the table
+above
+A  .5  B. √6 C. 5/3 D. √5
+Age in years
+13    14    15    16   17
+3    10    30    42   15
+No . of students
+90
+O
+150
+O
+Economics History 
+French 
+C. R. K.
+Class
+1 - 3    4 - 6   7 - 9
+5          8        5
+Frequency
+Class
+Boudaries
+Class
+Mid-point
+Class
+Interval
+1.5-1.9
+2.0-2.4
+2.5-2.9
+3.0-3.4
+3.5-3.9
+4.0-4.4
+4.5-4.9
+1.45-1.95
+1.95-2.45
+2.45-2.95
+2.95-3.45
+3.45-3.95
+3.95-4.45
+4.45-4.95
+2
+1
+4
+15
+10
+5
+3
+1.7
+2.2
+2.7
+3.2
+3.7
+4.2
+4.7
+Frequency
+46.
+The variance of the scores 1,2,3,4,5 is
+A. 1.2 B. 1.4 C. 2.0 D. 3.0
+Use the table below to answer questions 47 and 48
+47.
+find the mode of the distribution
+A. 3.2
+       B. 3.4           C. 3.7
+    D. 4.2
+48.
+The median of the distribution is
+A. 4.0
+        B. 3.5
+C. 3.2
+    D. 3.0
+49.
+Let P be a probability function on set S, where S =
+(a1,a2,a3,a4) find P(a1) if P(a2) = P(a3) = 1/6 and P(a4)1/5
+A. 7/10          B 2/3            C. 1/3        D. 3/10
+50.
+A die has four of its faces coloured while and the
+remaining two coloured black . What is the probability
+that when the die is thrown two consecutive times, the
+top face will be white in both cases?
+A. 2/3            B. 1/9          C. 4/9          D. 1/36
+1.
+If (1PO3)4 = 11510, find P
+A.
+0
+B.
+1
+C.
+2
+D.
+3
+2.
+Evaluate 64.7642 – 35.2362 correct to 3 significant
+figures
+A.
+2960
+B
+2950
+C.
+2860
+D.
+2850
+3.
+Find the value of (0.006) 3 + (0.004) 3 in standard form.
+A.
+2.8 X 10-9
+B
+2.8 X 10-8
+C.
+2.8 X 10-7
+D.
+2.8 X 10-6
+4.
+Given that loga2 = 0.693 and loga3 = 1.097, find
+loga13.5
+A.
+1.404
+B.
+1.790
+C.
+2.598
+D.
+2.790
+5.
+Simplify log296 – 2log26
+A.
+2 - log23
+B.
+3 – log23
+C.
+log23 – 3
+D.
+log23 – 2
+6.
+If 8x/2 = [23/8][43/4], find x
+A.
+3/8
+B.
+¾
+C.
+4/5
+D.
+5/4
+7.
+Simplify (2√3+3√5)/(3√5 - 2√3)
+Mathematics 1997
+A.
+19 + 4"15/11
+B.
+19 + 4"15/19
+C.
+19 + 2"15/11
+D.
+19 + 2"15/19
+8.
+Find the simple interest rate per cent per annum at
+which #1000 accumulates to #1240 in 3 years.
+A.
+6%
+B.
+8%
+C.
+10%
+D.
+12%
+9
+If U = {S,P,L,E,N,D,O,U,R}
+     X = {S,P,E,N,D}
+     Y = {P,N,O,U,R}
+Find X∩(Y’UZ).
+A.
+{P,O,U,R}
+B.
+{S,P,D,R}
+C.
+{P,N,D}
+D.
+{N,D,U}
+10.
+A survey of 100 students in an institution shows that
+80 students speak Hausa and 20 students   Igbo, while
+only 9 students speaks both languages. How many
+students neither Hausa nor Igbo?
+A.
+ 0
+B.
+9
+C.
+11
+D.
+20
+11.
+If the function (x) = x3 + 2x2 + qx – 6 is divisible by x +
+1, find q.
+A.
+-5
+B.
+-2
+C.
+2
+D.
+5
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 43] ---
+12.
+Solve the simultaneous equations
+2/x – 3/y = 2, 4/x + 3/y = 10
+A.
+x = 3/2, y = ½
+B.
+x = ½, y = 3/2
+C.
+x = -1/2, y = -3/2
+D.
+x = ½, y = - 3/2
+13.
+Find the minimum value of x2 – 3x + 2 for all  real
+values of x.
+A.
+-1/4
+B.
+-1/2
+C.
+¼
+D.
+½
+14.
+Make f the subject of the formula
+A.
+gv – t2/gt2
+B.
+gt2/gv – t2
+C.
+v/t1/2  - 1/g
+D.
+gv/t2 – g
+15.
+What value of g will make the expression 4x2 – 18xy
+– g a perfect square?
+A.
+9
+B.
+9y2/4
+C.
+81y2
+D.
+81y2/4
+16.
+Find the value of K if 5+2r/(r+1)(r-2) expressed in partial
+fraction is K/r-2 + L/r+1, where K and L are constants.
+A.
+3
+B.
+2
+C.
+1
+D.
+-1
+17.
+Let f(x) = 2x + 4 and g(x) = 6x + 7 where g(x) > 0.
+solve the inequality f(x)/g(x) < 1
+A.
+x < - ¾
+B.
+x > - 4/3
+C.
+x > - 3/4
+D.
+x > - 12
+18.
+Find the range of values of x which satisfies the
+inequality 12x2< x + 1
+A.
+-1/4 < x < 1/3
+B.
+¼ < x <1/3
+C.
+-1/3 < x<1/4
+D.
+-1/4 < x <-1/3
+19.
+Sn is the sum of the first n terms of a series given by
+Sn = n2 – 1. find the nth term.
+A.
+4n + 1
+B.
+4n – 1
+C.
+2n + 1
+D.
+2n – 1
+20.
+The nth term of a sequence is given by 31-n. find the
+sum of the first three terms of the sequence.
+A.
+13/9
+B
+1
+C.
+1/3
+D.
+1/9
+21.
+Two binary operations * and Ä are defined as m*n =
+mn – n – 1 and m Ä n = mn + n – 2 for all real numbers
+m, n. find the values of 3Ä (4*5).
+A.
+60
+B.
+57
+C.
+54
+D.
+42
+22.
+If xy =  x + y – xy, find x,
+      when (x*2)+(x*3) = 68
+A.
+24
+B.
+22
+C.
+-12
+D.
+-21
+23.
+Determines x + y if
+2   -3   (x)   = (-1)
+              -1    4  (y)      (8)
+A.
+3
+B.
+4
+C.
+7
+D.
+12
+24.
+Find the non-zero positive value of x which satisfies
+the equation
+x  1  0
+1  x   1    =  0
+0  1   x
+A.
+ 2
+B.
+3
+C.
+2
+D.
+1
+25.
+Each of the base angles of an isosceles triangle is
+580 and all the vertices of the triangle lie on a
+circle. Determine the angle which the  base of the
+triangle subtends at the centre of the circle.
+A.
+1280
+B.
+1160
+C.
+640
+D.
+580
+26.
+From the figure above, FK//GR and FH = GH,< RFK
+= 340 and < FGH = 470. calculate the angle marked
+x.
+A.
+420
+B.
+520
+C.
+640
+D.
+720
+27.
+The figure above shows circles of radii 3cm and 2cm
+with centres at X and Y respectively. The circles have
+a transverse common tangent of length 25cm.
+Calculate XY.
+A.
+630 cm
+B.
+626 cm
+C.
+615 cm
+D.
+600 cm
+28.
+A chord of a circle diameter 42cm subtends an angle
+of 600 at the centre of the circle. Find the length of
+the minor arc.
+A.
+22 cm
+B.
+44 cm
+C.
+110 cm
+D.
+220 cm
+[    = 22/7]
+29.
+An arc of a circle subtends an angle of 700 at the
+centre. If the radius of the circle is 6cm, calculate the
+area of the sector subtended by the given angle.
+A.
+22 cm2
+B.
+44 cm2
+C.
+66 cm2
+D.
+88 cm2
+30.
+Find the volume of the prism above.
+t = 
+v
+1 + 1
+f     g
+34
+O
+47
+O
+x
+G 
+H 
+R 
+F 
+K
+X 
+Y
+2 cm
+25 cm
+3 cm
+5 cm
+8 cm
+10 cm
+11 cm
+π
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 44] ---
+A.
+990 cm3
+B.
+880 cm3
+C.
+550 cm3
+D.
+495 cm3
+31.
+A cone with the sector angle of 450 is cut out of a
+circle of radius r cm. find the base radius of the
+cone.
+A.
+r/16cm
+B.
+r/8cm
+C.
+r/4cm
+D.
+r/2cm
+32.
+A point P moves so that it is equidistant from
+points L and M. if LM is 16cm, find the distance of
+P from LM when P is 10cm from L.
+A.
+12cm
+B.
+10cm
+C.
+8cm
+D.
+6cm
+33.
+The angle between the positive horizontal axis and
+a given line is 1350. find the equation of the line if
+it passes through the point (2, 3).
+A.
+x – y = 1
+B.
+x + y = 1
+C.
+x + y = 5
+D
+x – y = 5
+34.
+Find the distance between the point Q(4, 3) and the
+point common to the lines 2x – y = 4 and x + y = 2
+A.
+3   10
+B.
+3    5
+C.
+   26
+D.
+   13
+35.
+The angle of elevation of a building from a
+measuring instrument placed on the ground is 300.
+if the building is 40m high, how far is the
+instrument from the foot of the building?
+A.
+20√3m
+B.
+40√3m
+C.
+20√3m
+D.
+40√3m
+36.
+In a triangle XYZ, if <XYZ is 600, XY = 3cm and
+YZ = 4cm, calculate the length of the side XZ.
+A.
+“23cm
+B.
+“13cm
+C.
+2"5cm
+D.
+2"3cm
+37.
+In the figure above, XYZ is a triangle with XY =
+5cm, XZ = 2cm and XZ is produced to E making the
+angle YZE = 1500. if the angle XYZ = è, calculate
+the value of the sin è.
+A.
+3/5
+B.
+½
+C.
+2/5
+D.
+1/5
+38.
+Differentiate    6x3-5x2+1
+3x2
+A.
+2 + 2/3x3
+B.
+2 + 1/6x
+C.
+2-2/3x3
+D.
+2-1/6x
+39.
+d/dx cos(3x2 – 2x) is equal to
+A.
+-sin(6x - 2)
+        B.
+-sin(3x2 – 2x)
+C.
+(6x - 2) sin(3x2 – 2x)         D.     (6x - 2) sin (3x2 – 2x)
+40.
+Find the gradient of the curve y = 2 √x – 1/x at the
+point x= 1
+A.  0
+B.   1      C.   2
+    D.   3
+41.
+Integrate 1/x + cos x with respect to x.
+A.
+-1/x2 + sin x + k
+B.
+1nx + sin x + k
+C.
+1nx – sin x + k
+D.
+-1/x2 – sin x + k
+42.
+If y = x(x4 + x2 + 1), evaluate 
+1
+-1dyx
+A.
+11/12
+B.
+11/16
+C.
+5/6
+E.
+0
+43.
+The pie chart above shows the income of a civil
+servant in a month. If his monthly income is #6000,
+find his monthly basic salary.
+A.
+#2000
+B.
+#2600
+C.
+#3100
+D.
+#3450
+44.
+In an examination, the result of a certain school is as
+shown in the histogram above. How many candidates
+did the school present?
+A.
+12
+B.
+16
+C.
+18
+D.
+19
+45.
+Find the median age of the frequency distribution in
+the table above
+A.
+20
+B.
+25
+C.
+30
+D.
+35
+46
+The following are the scores of ten students in a test
+of 20 marks; 15,16,17,13,16,8,5,16,19,17. what is the
+modal score?
+A.
+13
+B.
+15
+C.
+16
+D.
+19
+47.
+Find the standard deviation of the following data -
+5,-4,-3,-2,-1,0,1,2,3,4,5
+A.
+2
+B.
+3
+C.
+√10
+D.
+√11
+48.
+Find the difference between the range and the variance
+of the following set of numbers 4,9,6,3,2,8,10,5,6,7
+where d2 = 60.
+A.
+2
+B.
+3
+C.
+4
+D.
+6
+2 cm
+5 cm
+E 
+Z 
+X 
+Y
+150
+O
+69
+O
+60
+O
+61
+O 50
+O
+Basic 
+Meal
+Housing  
+Others  
+Transport
+Age 
+20    25    30    35   40   45
+3     5      1      1     2     3
+No . of students
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 45] ---
+In the venn diagram above, the shaded region is
+A.
+(PÇQ)ÈR
+B.
+(PÇQ)ÇR
+C.
+(PÇQ’)ÇR
+D.
+(PÇQ’)ÇR
+10.
+When the expression pm2 + qm + 1 is divided by (m
+- 1), it has a remainder 2 and when divided by (m +
+1) the remainder is 4. find p and q respectively
+A.
+2, -1
+B.
+-1, 2
+C.
+3, -2
+D.
+-2, 3
+11.
+Factorize r2 – r (2p + q)  + 2pq
+A.
+(r – 2q)(2r - p)
+B.
+(r - q)(r + p)
+C.
+(r - q)(r – 2p)
+D.
+(2r - q)(r + p)
+12.
+Solve the equation    x -    (x - 2) – 1 = 0
+A.
+3/2
+B.
+2/3
+C.
+4/9
+D.
+9/4
+13.
+Find the range of values of m for which the roots of
+the equation 3x2 – 3mx + (m2 – m - 3) = 0
+A.
+-1<m<7
+B.
+-2<m<6
+C.
+-3<m<9
+D.
+-4<m<8
+14.
+Make a/x the subject of the formula
+x + a/x – a = m
+A.
+m – 1/m + 1
+B.
+1 + m/1 – m
+C.
+1-m/1 + m
+D.
+m +  1/m – 1
+15.
+Divide 2x3 + 11x2 + 17x + 6 by 2x + 1
+A.
+x2 + 5x + 6
+B.
+2x2 + 5x + 6
+C.
+2x2 – 5x + 6
+D.
+x2 – 5x + 6
+16.
+Express in partial fractions
+  11x + 2
+6x2 – x – 1
+A.
+1/3x – 1 + 3/2x + 1 B.
+3/3x + 1 – 1/2x – 1
+C.
+3/3x – 1 – 1/2x + 1 D.
+1/3x + 1 + 3/2x- 1
+17.
+If x is a positive real number, find the range of values
+for which
+1/3x + ½ > 1/4x
+A.
+x> - 1/6
+B.
+x>0
+C.
+0<x<4
+D.
+0<x<1/6
+18.
+The shaded area above represents
+A.  x≥0, 3y + 2x ≥ 6
+ B.    x≥ 0, y≥3, 3x +  2y≥ 6
+C.  x ≥ 2, y ≥ 0, 3x + 2y ≤6       D.    x ≥ 0, y ≥ 0, 3x + 2y≥6
+Mathematics 1998
+Q 
+P 
+R
+49.
+In a basket of fruits, there are 6 grapes, 11 bananas
+and 13 oranges. If one fruit is chosen at random,
+what is the probability that the fruit is either a grape
+or a banana?
+A.
+17/30
+B.
+11/30
+C.
+6/30
+D.
+5/30
+50.
+A number is selected at random between 10 and 20,
+both numbers inclusive. Find the probability that the
+numbers is an even number.
+A.
+5/11
+B.
+½
+C.
+6/11
+D.
+7/10
+(0, 3)
+y 
+x
+(2, 0)
+1.
+If 10112 + X7, = 2510, solve for X
+A.
+14
+B.
+20
+C.
+24
+D.
+25
+2.
+Evaluate [1/0.03 ÷ 1/0.024] -1, correct to 2 decimal
+places
+A.
+3.76
+B.
+1.25
+C.
+0.94
+D.
+0.75
+3.
+If b3 = a-3 and c 1/3 = a1/2b, express in terms of a
+A.
+a-1/2
+B.
+a1/2
+C.
+a3/2
+D.
+a-2/3
+4.
+Given that Log4(y - 1) + Log4(1/2x) = 1 and Log2 (y +
+1) + log2x = 2, solve for x and y respectively
+A.
+2, 3
+B.
+3, 2
+C.
+-2, -3
+D.
+-3, -2
+5.
+Find the value of K if K/”3 + “2 = “3 - 2
+A.
+3
+B.
+2
+C.
+“3
+D.
+“2
+6.
+A market woman sells oils in cylindrical tins 10cm
+deep and 6cm diameter at #15.00 each. If she bought
+a full cylindrical jug 18cm deep and 10cm in diameter
+for #50.00, how much did she make by selling all
+the oil?
+A.
+#62.50
+B.
+#35.00
+C.
+#31.00
+D.
+#25.00
+7.
+A man is paid r naira per hour for normal work  and
+double rate for overtime. If he does a 35-hour week
+which includes q hours of overtime, what is his
+weekly earning in naira?
+A.
+r(35 + q)
+B.
+q(35r - q)
+C.
+q(35r + r)
+D.
+r(35r - q)
+8.
+Given the universal set U = {1,2,3,4,5,6,} and the
+sets P = {1,2,3,4,} Q = {3,4,5} and R = {2,4,6}. Find
+PÈ(QÈR).
+A.
+{4}
+B.
+{1,2,3,4}
+C.
+{1,2,3,5,6}
+D.
+{1,2,3,4,5,6}
+9.
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 46] ---
+In the diagram above, PQ//ST and ÐPQR = 1200, ÐRST
+= 1300. find the angle marked x.
+A.
+500
+B.
+650
+C.
+700
+D.
+800
+27.
+In the figure above, PQST is a parallelogram and TSR
+is a straight line. If the area of  ∠QRS is 20cm2, find
+the area of the trapezium PQRT.
+A.
+35cm2
+B.
+65cm2
+C.
+70cm2
+D.
+140cm2
+28.
+TQ is tangent to circle XYTR. ∠YXT = 320,
+∠RTQ = 400. find ∠YTR.
+A.
+1080
+B.
+1210
+C.
+1400
+D.
+1480
+29.
+A chord of a circle radius Ö3cm subtends an angle of
+600 on the circumference of the circle. Find the length
+of the chord.
+A.
+√3/2 cm
+B.
+3/2 cm
+C.
+√3 cm
+D.
+3 cm
+30.
+A cylindrical drum of diameter 56 cm contains 123.2
+litres of oil when full. Find the height of the drum in
+centimeters.
+A.
+12.5
+B.
+25.0
+C.
+45.0
+D.
+50.0
+31.
+The locus of all points at a distance 8 cm from a
+point N passes through point T and S. if S is
+equidistant from T and N , find the area of triangle
+STN.
+A.
+4√3 cm2
+B.
+16√3 cm2
+C.
+32cm2
+D.
+64 cm2
+32.
+If the distance between the points (x, 3) and (-x, 2)
+is 5. find x
+A.
+6.0
+B.
+2.5
+C.
+   6
+D.
+    3
+33
+The midpoint of the segment of the line y = 4x + 3
+which lies between the x-axis and the y-axis is
+A.
+(-3/2, 3/2)
+B.
+(-2/3, 3/2)
+C.
+(3/8, 3/2)
+D.
+(-3/8, 3/2)
+34.
+Solve the equation
+cos x + sin x = 1/cos x – sinx
+for values of x such that 0 ≤ x < 2π
+A.
+π/2, 3π/2
+B.  π/3, 2π/3
+C.
+0, π/3
+D.
+0, π
+19.
+If p + 1, 2p – 10 ,1 – 4p2 are the consecutive terms of
+an arithmetic progression, find the possible values
+of p.
+A.
+-4, 2
+B.
+–2, 4/11
+C.
+–11/4, 2
+D.
+5, -3
+20.
+The sum of the first three terms of a geometric
+progression is half its sum to infinity. Find the
+positive common ration of the progression.
+A.
+¼
+B.
+½
+C.
+1/3"3
+D.
+1/3"2
+21.
+              The identity element with respect to the multiplication
+               shown in the table above is
+A.
+p
+B.
+q
+C.
+r
+D.
+s
+22.
+The binary operation * is defined by x*y = xy – y – x
+for all real values x and y x*3 = 2 * x, find x.
+A.
+-1
+B.
+0
+C.
+1
+D.
+5
+23.
+The determinant of matrix
+x,    1,     0
+1-x,  2,    3
+1,   1+ x,   4
+in terms of x is
+A.
+-3x2 - 17
+B.
+-3x2 + 9x – 1
+C.
+3x2 + 17
+D.
+3x2 – 9x + 5
+24.
+Let I=  1  0.  P= 2  3  Q=     u, 4 + u
+            0  1        4   5           -2v,    v
+be 2 x 2 matrices such that PQ=1. find (u,v)
+A.
+(-5/2, -1)
+B.
+(-5/2, 3/2)
+C.
+(–5/6,1)
+D.
+(5/2, 2/3)
+25.
+In the diagram above, PR is a diameter of the circle
+PQRS. PST and QRT are straight lined. Find Ð QSR.
+A.
+200
+B.
+250
+C.
+300
+D.
+350
+26.
+O          p            q          r           s
+P
+q
+r
+s
+r
+p
+r
+q
+p
+q
+r
+s
+r
+r
+r
+r
+p
+s
+r
+q
+x
+R 
+P
+Q  
+S  
+T 
+35
+O
+30
+O
+120
+O
+130
+O
+x
+P 
+R 
+Q 
+S 
+T
+T 
+Y 
+R 
+X 
+Q 
+40
+O
+32
+O
+Q
+R
+S
+T
+P
+10cm
+8cm
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 47] ---
+A.
+2/3
+B.
+1
+C.
+K + 1
+D.
+(K + 1)2
+45.
+Find the positive value of x if the standard deviation
+of the numbers 1, x +1, 2x + 1 is √6
+A.
+1
+B.
+2
+C.
+3
+D.
+4
+46.
+A bag contains 16red balls and 20blue balls only. How
+many white balls must be added to the bag so that
+the probability of randomly picking a red ball is equal
+to 2/5?
+A.
+4
+B.
+20
+C.
+24
+D.
+40
+47.
+The pie chart above shows the monthly expenditure
+of a public servant. The monthly expenditure on
+housing is twice that of school fees. How much does
+the worker spend on housing if his monthly income
+is #7.200?
+A
+#1000
+B.
+#2000
+C.
+#3000
+D.
+#4000
+48.
+The bar chart above shows the distribution of marks
+scored by 60 pupils in a test in which the maximum
+score was 10. if the pass mark was 5,  what percentage
+of the pupils failed the test?
+A.
+59.4%
+B.
+50.0%
+C.
+41.7%
+D.
+25.0%
+49.
+In a recent zonal championship games involving
+10teams, teams X and Y were given Probabilities 2/
+5 and 1/3 respectively of wining the gold in the
+football event. What is the probability that either team
+will win the gold?
+A.
+2/15
+B.
+7/15
+C.
+11/15
+D.
+13/15
+50.
+If x, y can take values from the set {1,2,3,4,}, find
+the probability that the product of x and y is not
+greater than 6.
+A.
+5/8
+B.
+5/16
+C.
+½
+D.
+3/8
+35.
+In the diagram above, QTR is a straight line and∠
+PQT = 300. find the sine of ∠PTR.
+A.
+8/15
+B.
+2/3
+C.
+¾
+D.
+15/16
+36.
+For what value of x does 6 sin (2x - 25)0 attain its
+maximum value in the range 00  ≤x ≤ 1800?
+A.
+121/2
+B.
+321/2
+C.
+571/2
+D.
+1471/2
+37.
+From the top of a vertical mast 150m high, two
+huts on the same ground level are observed. One
+due east and the other due west of the mast. Their
+angles of depression are 600 and 450 respectively.
+Find the distance between the huts.
+A.
+150 (1 + √3)m
+B.
+50 (3 + √3)m
+C.
+150√3m
+D.
+50/√3m
+38.
+If y = 243 (4x + 5)-2, find dy/dx when x = 1
+A.
+-8/3
+B.
+3/8
+C.
+9/8
+D.
+–8/9
+39.
+Differentiate x/cos x with respect to x.
+A.
+1 + x sec x tan x
+B.
+1 + sec2x
+C.
+cos x + x tan x
+D.
+sec x + x sec x tan x
+40.
+Evaluate π2(sec2x – tan2x)dx
+A.
+π/2
+B.
+π - 2
+C.
+π/3
+D.
+π + 2
+41.
+Find the equation of the curve which passes
+through the point (2, 5) and whose gradient at any
+point is given by 6x - 5
+A.
+6x2 – 5x + 5
+B.
+6x2 + 5x + 5
+C.
+3x2 – 5x – 5
+D.
+3x2 – 5x + 3
+42.
+If m and n are the mean and median respectively of
+the set of numbers 2,3,9,7,6,7,8,5 and m + 2n to the
+nearest whole number.
+A.
+19
+B.
+18
+C.
+13
+D.
+12
+43.
+Estimate the mode of the above frequency
+distribution.
+A.
+12.2
+B.
+12.7
+C.
+12.9
+D.
+13.4
+44.
+Find the variance of the numbers K, K + 1,  K + 2.
+T 
+P
+15 
+8
+10
+R 
+Q 
+30
+O
+17        32        25         24  
+5 - 9   10 - 14  15 - 19  20 - 24
+Average hourly
+earnings (N)
+ No . of workers
+120
+O
+T
+r
+a
+n
+s
+p
+o
+r
+t
+F
+o
+o
+d
+ 
+S
+c
+h
+o
+o
+l
+ 
+F
+e
+e
+s
+ 
+H
+o
+u
+s
+i
+n
+g
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 48] ---
+12.
+The first term of a geometrical progression is twice
+its common ratio. Find the sum of the first two terms
+of the progression if its sum to infinity is 8
+A.
+8/5
+B.
+8/3
+C.
+72/25
+D.
+56/9
+13.
+Tope bought x oranges at #5.00 each and some
+mangoes at #4.00 each. If she bought twice as many
+mangoes as oranges and spent at least #and at most
+#, find the range of the value of x
+A.
+4 ≤ x ≤ 5
+B.
+5 ≤ x ≤ 8
+C.
+5 ≤ x ≤ 10
+D.
+8 ≤ x ≤ 10
+14.
+If m*n = m/n – n/m, for m,n E R, evaluate –3 *4
+A.
+-25/12
+B.
+–7/12
+C.
+7/12
+D.
+25/12
+15.
+Find the matrix T if ST = I where       S = (-1,  1)
+            (1,  -2)
+and I is the identity matrix.
+A.   (-2,  1)
+B.   (-2, -1)
+       (-1, 1)
+       (-1, -1)
+C.    (-1,  -1)
+D.   (-1,  -1)
+       (01,  -1)              (0,    1)
+16.
+Divide 4x3 – 3x + 1 by 2x - 1
+A.
+2x2 – x + 1
+B.
+2x2 – x – 1
+C.
+2x2 + x + 1
+D.
+2x2 + x - 1
+17.
+Three consecutive positive integers k, l and m are
+such that l2 = 3(k + m). find the value of m.
+A.
+4
+B.
+5
+C.
+6
+D.
+7
+18.
+The shaded portion in the graph above is represented
+by
+A.       y + x – x3 0, y – x  £ 0       B.     y - + x 3 ³ 0, y – x £ 0
+C.       y + x – x3 £ 0, y + x ³ 0     D.     y – x + x3 £ 0, y + x £ 0
+19.
+Factorize completely
+x2 + 2xy + y2 + 3x + 3y – 18
+A.             (x + y + 6)(x + y - 3)    B.
+(x - y - 6)(x - y + 3)
+C.             (x - y + 6)(x - y - 3)
+20.
+The sum of two members is twice their difference. If
+the difference of the numbers is P, find the larger of
+the two numbers.
+A.
+p/2
+B.
+3p/2
+C.
+5p/2
+D.
+3p
+21.
+Express 1/x3 - 1
+A.
+B.
+ C.
+D.
+1.
+If (a2b3c)/a-1b4c5
+What is the value of P + 2q?
+A.
+5/2
+B.
+–5/4
+C.
+–25/4
+D.
+–10
+2.
+Find the value of x if √2/(x + √2) = 1/(x - √2)
+A.
+3√2 + 4
+B.
+3√2 – 4
+C.
+3 - 2√2
+D.
+4 + 2√2
+3.
+A trader bought 100 oranges at 5 for #1.20,20 oranges
+got spoilt and the remaining  were sold at 4 for #1.50.
+find the percentage gain or loss
+A.
+30% gain
+B.
+25% gain
+C.
+30% loss
+D.
+25% loss
+4.
+If U = {1, 2, 3, 4, 5, 6}, P = {3, 4, 5}, Q = {2, 4, 6}
+and R = {1, 2, 3 4}, list elements of (PÈQ’ÇR).
+A.
+{1, 2, 3, 4, 5, 6}
+B.
+{1, 2, 3, 4}
+C.
+{1}
+D.
+Æ
+5.
+Divide 24346 by 426
+A.
+236
+B.
+356
+C.
+526
+D.
+556
+6.
+If 29 x (Y3) 9 = 35 (Y3) 9, find the value of Y
+A.
+4
+B.
+3
+C.
+2
+D.
+1
+7.
+Simplify √(0.0023 x 750)/(0.00345) x 1.25
+A.
+15
+B.
+20
+C.
+40
+D.
+75
+8.
+If log810 = x, evaluate log85 in terms of x.
+A.
+1/2x
+B.
+x – 1/4
+C.
+x – 1/3
+D.
+x – 1/2
+9.
+A group of market women sell at least one of yam,
+plantain and maize. 12 of them sell maize, 10 sell
+yam and 14 sell plantain. 5 sell plantain and maize, 4
+sell yam and maize, 2 sell yam and plantain only
+while 3 sell all the three items. How many women
+are in the group?
+A.
+25
+B.
+19
+C.
+18
+D.
+17
+10.
+Given that Q =  (6, 0)         and   Q + P =  (7,  2)
+           (4, 5)                                (6,  8)
+evaluate /Q + 2P/
+A.
+90
+B.
+96
+C.
+102
+D.
+120
+11.
+A binary operation * is defined by a*b = ab + b for
+any real number a and b. if the identity element is
+zero, find the inverse of 2 under this operation
+A.
+2/3
+B.
+½
+C.
+–1/2
+D.
+56/9
+Mathematics 1999
+-1    
+0  
+1    
+y    
+x 
+45
+O
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 49] ---
+22.
+In        MNO, MN = 6 units, MO = 4 units and NO – 12
+units. If the bisector of angle M meets NO at P,
+calculate NP.
+A.
+4.8 units
+B.
+7.2 units
+C.
+8.0 units
+D.
+18.0 units
+23.
+Find the equation of the locus of a point P(x, y ) such
+that PV = PW, where V = (1, 1) and W = (3, 5)
+A.
+2x + 2y = 9
+B.
+2x + 3y = 8
+C.
+2x + y = 9
+D.
+x + 2y = 8
+24.
+Find the value of l in the frustum above.
+A.
+5cm
+B.
+6cm
+C.
+7cm
+D.
+8cm
+25.
+Find the length XZ in the triangle above
+A.
+√7m
+B.
+√6m
+C.
+√5m
+D.
+√3m
+26.
+Find a positive value of a if the coordinate of the
+centre of a circle x2 + y2 – 2ax + 4y - a = 0 is (a, -2)
+and the radius is 4 units
+A.
+1
+B.
+2
+C.
+3
+D.
+4
+27.
+A man 1.7m tall observes a bird on top of a tree at an
+angle of 300. if the distance between the man’s head
+and the bird is 25m, what is the height of the tree?
+A.
+26.7m
+B.
+14.2m
+C.
+(1.7 + 25√3m)/3
+D.
+(1.7 + 25√2m)/2
+28.
+In the figure above, TZ is  tangent to the circle QPZ.
+Find x if TZ = 6 units and PQ =  9 units.
+A.
+3
+B.
+4
+C.
+5
+D.
+6
+29.
+Find the tangent of the acute angle between the lines 2x
++ y =3 and 3x – 2y = 5
+A.
+-7/4
+B.
+7/8
+C.
+7/4
+D.
+7/2
+30.
+From the Point P, the bearings of two points Q and R
+are N670W and N230E respectively. If the bearing of R
+from Q is N680E and PQ = 150m, calculate PR.
+A.
+120m
+B.
+140m
+C.
+150m
+D.
+160m
+31.
+In the figure above, PQRS is a circle with ST//RQ. Find
+the value of x if PT = PS
+A.
+700
+B.
+550
+C.
+400
+D.
+350
+32.
+In the diagrams above, EFGH is a cyclic quadrilateral
+in which EH//FG and FH are chords. If ∠FHG = 420
+and ∠ΕFH  = 340, calculate ∠HEG
+A.
+340
+B.
+420
+C.
+520
+D.
+760
+33.
+If the maximum value of y = 1+ hx – 3x2is 13, find h.
+A.
+13
+B.
+12
+C.
+11
+D.
+10
+34.
+Evaluate  
+1 
+–2 (x - 1) 2
+A.
+-31/3
+B.
+7
+C.
+9
+D.
+11
+35.
+Evaluate 
+π/4 (x -1)2dx
+A.
+       √2 + 1
+B.
+       √2 - 1
+C.
+      -√2 - 1
+D.
+       1 - √2
+36.
+Find the area bounded by the curve
+y = x(2 - x), the x-axis, x = 0 and x = 2
+A.
+4 sq units
+B.
+2sq units
+C.
+11/2 sq units
+D.
+1/3 sq units
+37.
+If y = 3x2 (x3 + 1)1/2find dy/dx
+     A. 6x(x3+1) + 3x2/2(x3+1)1/2  B.  12x(x3+1) + 3x2/2(x3+1)1/2
+C.(15x4 + 6x)/6x2(x3+1)1/2
+ D.  12x(x3+1) + 9x4/2(x3+1)1/2
+38.
+Find the volume of solid generated when the area
+enclosed by y = 0, y = 2x and 3 is rotated about the x –
+axis.
+A.
+81π cubic units
+B.
+36π cubic units
+C.
+18π cubic units
+D.
+9π cubic units
+6 cm
+4 cm
+3 cm
+1cm
+120cm
+2m
+X 
+Y 
+Y    
+Z
+O 
+P 
+6 
+9 
+x
+Z 
+T 
+x
+T 
+P 
+S 
+Q
+R
+110
+O
+H 
+E 
+F 
+G
+42
+O
+34
+O
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 50] ---
+39.
+What is the derivative of t2sin (3t - 5) with respects to the
+variable?
+A.     6t cos (3t - 5)
+      B.     2dt sin (3t - 5) – 3t2 cos (3t - 5)
+C.    2t sin (3t - 5) + 3t2 cos (3t - 5)
+D.    2t sin (3t - 5) + t2 cos 3t
+40.
+Find the value of x for which the function y = x3 – x has
+a minimum value.
+A.
+-√3
+B.
+-√3/2
+C.
+√3/3
+D.
+√3
+41.
+Three boys play a game a luck in which their respective
+chances of wining are ½, 1/3 and ¼. What is the
+probability that one and only of the boys wins the game?
+A.
+1/24
+B.
+1/12
+C.
+11/24
+D.
+23/24
+42.
+A number is selected at random from 0 to 20. what is
+the probability that the number is an odd prime?
+A.
+8/21
+B.
+1/3
+C.
+2/7
+D.
+5/21
+43.
+If 6Cr/6P/r = 1/6, find the value of r.
+A.
+1
+B.
+3
+C.
+5
+D.
+6
+44.
+If the standard deviation of the set of numbers 3, 6, x,
+7, 5,  is √2, find the least possible value of x.
+A.
+2
+B.
+3
+C.
+4
+D.
+6
+45.
+How many two digit numbers can be formed from the
+digits 0, 1, 2,  if a digit can be repeated and no number
+may begin with 0
+A.
+4
+B.
+12
+C.
+16
+D.
+20
+46.
+The grades of 36 students in a class test are as shown
+in the pie chart above. How many students had
+excellent?
+A.
+7
+B.
+8
+C.
+9
+D.
+12
+47.
+The marks scored by students in a test are given in the
+above. Find the median.
+A.
+7
+B.
+6
+C.
+5
+D.
+4
+48.
+A student calculated the mean of 5 numbers as 45, 3.
+while rechecking his working, he discovered that his
+total was short by 20.5. what is the correct mean of the
+5 numbers?
+A.
+24.8
+B.
+41.2
+C.
+49.4
+D.
+65.8
+49.
+The sectorial allocations to various ministries in a state
+budget are as follows:
+Agriculture
+- #25 000 000.00
+Education
+- #20 000 000 .00
+Women affairs
+- #35 000 000.00
+Commerce and
+Industries
+- #20 000 000.00
+In a pie chart to represent this information the
+corresponding angle to agriculture is
+A.
+250
+B.
+450
+C.
+500
+D.
+900
+50.
+The mean of four numbers is 5 and the mean deviation
+is 3. find the fourth number if the mean deviation of the
+first three  numbers is 2.
+A.
+6
+B.
+10
+C.
+11
+D.
+17
+No of students
+Marks
+2   2  11 10  16  51  40  10  25  15  20
+0   1  2    3     4   5     6   7    8    9   10
+Mathematics 2000
+1.
+Let P = {1,2,u,v,w,x}
+       R = {2,3,u,v,w,5,6,y}
+and R = (2,3,4,v,x,y)
+Determine (P - Q) ∩ R.
+A.
+{1, x}
+B.
+{x, y}
+C.
+{x}
+D.
+φ
+2.
+If the population of a town was 240000 in January
+1998 and it increased by 2% each year, what would
+be the population of the town in January 2000?
+A.
+480 000
+B.
+249 696
+C.
+249 600
+D.
+244 800
+3.
+If 2√3 - √2/√3 + 2√2 = m + n√6,
+Find the values of m and n respectively
+A.
+1, -2
+B.
+–2, 1
+C.
+ –2/5, 1
+D.
+2, 3/5
+4.
+In a youth club with 94 members, 60 like modern
+music and 50 like like traditional music. The number
+of members who like both traditional and modern
+music is three times who do not like any type of
+music. How many members like only one type of
+music?
+A.
+8
+B.
+24
+C.
+62
+D.
+86
+5.
+Evaluate (2.813 x 10-3) x 1.063
+    5.637 x 10-2
+reducing each number to two significant figures and
+leaving your answers in two significant figures.
+A.
+0.056
+B.
+0.055
+C.
+0.054
+D.
+0.54
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 51] ---
+A.
+B.
+C.
+D.
+18.
+Find the values of t for which the determinant of the
+matrix   (t  -4
+0
+0  )
+(-1
+t+t
+1  )  is zero
+( 3
+4
+t-2)
+A.
+0, 2, 3
+B.
+–4, 2, 3
+C.
+–4, -2, -3
+D.
+4, -2, 3
+19.
+If (x - 1), (x + 1) and (x - 2) are factors of the
+polynomial ax3 + bx2 + cx – 1, find a, b, c, respectively
+A.
+-1/2, 1, ½
+B.
+½, 1, ½
+C.
+½, 1, -1/2
+D.
+½, -1, ½
+20.
+A trader realizes 10x –x2naira profit from the sale of
+x bags of corn. How many bags will give him the
+maximum profit?
+A.
+4
+B.
+5
+C.
+6
+D.
+7
+21.
+Solve the inequality 2 – x > x2
+A.
+x < -2 or x > 1
+B.
+x > 2 or x < -1
+C.
+–1 < x> 2
+D.
+–2 < x < 1
+22.
+If a and b are the roots of the equation 3x2 + 5x – 2 =
+0, find the value of 1/α + 1/β
+A.
+-5/2
+B.
+–2/3
+C.
+½
+D.
+5/2
+23.
+Find the minimum value of the function f(θ ) = 2/3 –
+cosθ for ο ≤ θ ≤ 2π.
+A.
+½
+B.
+2/3
+C.
+1
+D.
+2
+24.
+A frustum of a pyramid with square base has its upper
+and lower sections as squares of sizes 2m and 5m
+respectively and the distance between them 6m. find
+the height of the pyramid from which the frustum
+was obtained.
+A.
+8.0m
+B.
+8.4m
+C.
+9.0m
+D.
+10.0m
+25.
+P is a point on one side of the straight line UV and P
+moves in the same direction as UV. If the straight
+line ST is on the locus of P and ∠  VUS = 500, find ∠
+UST.
+A.
+3100
+B.
+1300
+C.
+800
+D.
+500
+-1    
+-1    
+1    
+2    
+3    
+-2    
+-2    
+2 3    
+-3    
+-3    
+0  
+1    
+-1    
+-1    
+1    
+2    
+3    
+-2    
+-2    
+2 3    
+-3    
+-3    
+0  
+1    
+-1    
+-1    
+1    
+2    
+3    
+-2    
+-2    
+2 3    
+-3    
+-3    
+0  
+1    
+-1    
+-1    
+1    
+2    
+3    
+-2    
+-2    
+2 
+3    
+-3    
+-3    
+0  1    
+6.
+A man wishes to keep some money in a savings
+deposit at 25% compound  interest so that after 3
+years he can buy a car for #150,000. how much does
+he need to deposit now?
+A.
+#112,000.50.
+B.
+#96,000.00
+C.
+#85,714.28
+D.
+#76,800.00
+7.
+If 31410 – 2567 = 340x, find x
+A.
+2n + 1
+B.
+2n – 1
+C.
+4
+D.
+¼
+8.
+Audu bought an article for #50 000 and sold it to
+Femi at a loss of x%. Femi later sold the article to
+Oche at a profit of 40%. If Femi made a profit of
+#10,000, find the value of x.
+A.
+60
+B.
+50
+C.
+40
+D.
+20
+9.
+Simplify 3(2n + 1) – 4(2n -1 )/2(n + 1) – 2n
+A.
+2n + 1
+B.
+2n - 1
+C.
+4
+D.
+¼
+10.
+If P3446 – 23P26 = 2PP26, find the value of digit P.
+A.
+2
+B.
+3
+C.
+4
+D.
+5
+11.
+Evaluate 5-3log52 x 22log23
+A.
+8
+B.
+11/8
+C.
+2/5
+D.
+1/8
+12.
+A binary operation * is defined by a * b = ab. if a * 2
+= 2 –a, find the possible values of a.
+A.
+1, -1
+B.
+1, 2
+C.
+2, -2
+D.
+1, -2
+13.
+The 3rd term of an A. P. is 4x – 2y and the 9th term is
+10x -  8y . find the common difference.
+A.
+19x  - 17y
+B.
+8x - 4y
+C.
+x – y
+D.
+2x
+14.
+Find the inverse of p under the binary operation * by
+p * q= p + q – pq, where p and q are real numbers
+and zero is the identity.
+A.
+p
+B.
+p – 1
+C.
+p/p – 1
+D.
+p/p+1
+   (a, b)
+15.
+A matrix P(a, b)
+    is such that PT= p, where
+   (c, d)
+PT is the transpose of P, if b = 1, then P is
+A.
+(0, 1)
+B.
+(0, 1)
+(1, 0)
+(-1, 0)
+C.
+(0, 1)
+D.
+(1, 1)
+(1, 1)
+(-1,0)
+16.
+Evaluate (1/2 – ¼ + 1/8 – 1/16 + …….) -1
+A.
+2/3
+B.
+0
+C.
+–2/3
+D.
+–1
+17.
+The solution of the simultaneous inequalities 2x – 2
+£ y and 2y 2 £ x is represent by
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 52] ---
+26.
+A ship sails a distance of 50km in the direction S50E
+and then sails a distance of 50km in the direction
+N400E. find the bearing of the ship from its original
+position.
+A.
+S900E
+B.
+N400E
+C.
+S950E
+D.
+N850E
+27.
+An equilateral triangle of side  √3 cm is inscribed in
+a circle. Find the radius of the circle.
+A.
+2/3cm
+B.
+2cm
+C.
+1cm
+D.
+3cm
+28.
+3y = 4x – 1 and Ky = x + 3 are equations of two
+straight lines. If the two lines are perpendicular to
+each other, find K
+A.
+-4/3
+B.
+–3/4
+C.
+¾
+D.
+4/3
+29.
+In the diagram above, if  ∠ RPS = 500, ∠ RPQ = 300
+and PQ =  QR, find the value of ∠ PRS
+A.
+800
+B.
+700
+C.
+600
+D.
+500
+30.
+In the diagram above, EFGH is a circle center O. FH
+is a diameter and GE is a chord which meets FH at
+right angle at the point N. if NH = 8 cm and EG = 24
+cm, calculate FH.
+A.
+16cm
+B.
+20cm
+C.
+26cm
+D.
+32cm
+31.
+If P and Q are fixed points and X is a point which
+moves so that XP = XQ, the locus of X is
+A.
+a straight line
+     B.
+a circle
+C.
+the bisector ∠ PXQ     D.
+the perpendicular
+bisector of PQ
+32.
+In a regular polygon, each interior angle doubles its
+corresponding exterior angle. Find the number of
+sides of the polygon.
+A.
+87
+B.
+6
+C.
+4
+D.
+3
+33.
+A predator moves in a circle of radius √2 centre (0,
+0), while a prey moves along the line y = x. if 0≤ x≤
+2, at which point(s) will they meet?
+A.
+(1, 1) only
+B.
+(1, 1) and (1, 2)
+50
+O
+S 
+P 
+Q 
+R 
+30
+O
+E 
+O 
+N 
+H 
+F 
+G 
+34.
+If the diagram above is the graph of y=x2, the shaded
+area is
+A.
+64 square units
+B.
+128/3 square units
+C.
+64/3 square units
+D.
+32 square units
+35.
+Find the value of
+ π(cos2θ – 1/sin2θ) dθ
+A.
+π
+B.
+π/0
+C.
+-π/0
+D.
+π
+36.
+If y = 2y cos 2x – sin 2x, find dy/dx when x = ë/4
+A.
+π
+B.
+– π
+C.
+π/2
+D.
+– π/2
+37.
+A bowl is designed by revolving completely the area
+enclosed by y = x2 – 1, y= 0, y = 3 and x ³ 0 around
+the y-axis. What is the volume of this bowl?
+A.
+7 π cubic units.
+B.
+15 π/2 cubic units
+C.
+8 π cubic  units
+D.
+17 π/2 cubic units.
+38.
+If the volume of a hemisphere is increasing at a steady
+rate of 8 πm3s-1, at what rate is its radius changing
+when it is 6m?
+A.
+2.50ms-1
+B.
+2.00ms-1
+C.
+0.25ms-1
+D.
+0.20ms-1
+39.
+A function f(x) passes through the origin and its first
+derivative is 3x + 2. what is f(x)
+A.
+y = 3/2x2 + 2x
+B.
+y = 3/2 x2 + x
+C.
+y = 3 x2 + x/2
+D.
+y = 3 x2 + 2x
+40.
+The expression ax2 + bx + c equals 5 at x = 1. if its
+derivative is 2x + 1, what are the values of a, b, c,
+respectively?
+A.
+1, 3, 1
+B.
+1, 2, 1
+C.
+2, 1, 1
+D.
+1, 1, 3
+41.
+X and Y are two events. The probability of X and Y
+is 0.7 and the probability of X is 0.4. If X and Y are
+independent, find the probability of Y.
+A.
+0.30
+B.
+0.50
+C.
+0.57
+D.
+1.80
+42.
+If the mean of the numbers 0, x + 2, 3x + 6 and 4x +
+8 is 4, find their mean deviation.
+A.
+0
+B.
+2
+C.
+3
+D.
+4
+43.
+In how many ways can the word MATHEMATICS
+be arranged?
+A.
+11!/9! 2!
+B.
+11!/9! 2! 2!
+C.
+11!/2! 2! 2!
+D.
+11!/2! 2!
+y
+y= 16
+x
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 53] ---
+The cumulative frequency curve above represents
+the ages of students in a school. Which are group
+do 70% of the students belong?
+A.
+15.5 – 18.5
+B.
+15.5 – 19.5
+C.
+16.5 – 19.5
+D.
+17.5 – 20.5
+47.
+The variance of x, 2x, 3x 4x and 5x is
+A.
+x√2
+B.
+2x2
+C.
+x2
+D.
+3x
+48.
+Find the sum of the range and the mode of the set of
+numbers 10, 5, 10, 9, 8, 7, 7, 10, 8, 10, 8, 4, 6, 9, 10,
+9, 10, 9, 7, 10, 6, 5
+A.
+16
+B.
+14
+C.
+12
+D.
+10
+49.
+In how many ways can a delegation of 3 be chosen
+from among 5 men and 3 women, if at least one man
+at least one woman must be included?
+A.
+15
+B.
+28
+C.
+30
+D.
+45
+50.
+The table above shows the frequency distribution of
+the ages (in years) of pupils in a certain secondary
+school. What percentage of the total number of pupils
+is over 15 years but less than 21 years?
+A.
+35%
+B.
+45%
+C.
+50%
+D.
+60%
+Mathematics 2001
+44.
+A dice  is rolled 240 times and the result depicted in
+the table above. If a pie chart is constructed to
+represent the data, the angle corresponding to 4 is
+A.
+100
+B.
+160
+C.
+400
+D.
+600
+45.
+If U = {x : x is an integer and {1 ≤ x ≤ 20}
+E1 = {x : x is a multiple of 3}
+E2 = {x : x is a multiple of 4}
+And an integer is picked at random from U, find the
+probability that it is not in E2
+A.
+¾
+B.
+3/10
+C.
+¼
+D.
+1/20
+46.
+No . Of
+Pupils
+1.
+Find the principal which amounts to #5,000 at simple
+interest in 5 years at 2% per annum
+A.
+#5000
+B.
+#4900
+C.
+#4800
+D.
+#4700
+2.
+A car dealer bought a second-hand car for
+#250,000.00 and spent #70 000.00 refurbishing it.
+He then sold the car for #400 000.00. what is the
+percentage gain?
+A.
+20%
+B.
+25%
+C.
+32%
+D.
+60%
+3.
+Evaluate 21.05347 – 1.6324 x 0.43, to 3 decimal
+places.
+A.
+20.351
+B.
+20.352
+C.
+20.980
+D.
+20.981
+4.
+Evaluate (0.14)2 x 0.275)/7(0.02) correct to 3 decimal
+places
+A.
+0.033
+B.
+0.039
+C.
+0.308
+D.
+0.358
+5.
+Given that p = 1 + √2 and q = 1 - √2, evaluate (p2 –
+q2)/2pq
+A.
+-2(2 + √2 )
+B.
+2(2 + √2)
+C.
+-2√2
+D.
+2√2
+6.
+If y/2 = x, evaluate
+ (x3/y3 + 1/2) + (1/2 – x2/y2)
+A.
+5/16
+B.
+5/8
+C.
+5/4
+D.
+5/2
+7.
+Simplify (3√64a3)-3
+A.
+8a
+B.
+4a
+C.
+1/4a
+D.
+1/4a
+8.
+Factorize 4x2 – 9y2 + 20x + 25
+A.
+(2x – 3y)(2x + 3y) B.
+(2x + 5)(2x – 9y + 5)
+C.
+(2x – 3y + 5)(2x – 3y - 5)
+D.
+(2x – 3y)(2x + 3y + 5)
+9.
+If tow graphs y = px2 and y = 2x2 – 1 intersect at x =
+2, find the value of p in terms of q
+A.
+(7 + q)/8
+B.
+(8 – q)/2
+C.
+(q – 8)/7
+D.
+7 / (q –1)
+10.
+Solve the equations: m2 + n2 = 29;m + n = 7
+A.
+(5, 2) and (5, 3)
+B.
+(5, 3) and (3, 5)
+C.
+(2, 3) and (3, 5)
+D.
+(2, 5) and (5, 2)
+11.
+Divide a3x – 26a2x + 156ax – 216 by
+a2x – 24ax + 108
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 54] ---
+A.
+ax – 18
+B.
+ax – 6
+C.
+ax – 2
+D.
+ax + 2
+12.
+Find the integral values of x and y satisfying the
+inequality 3y + 5x  £ 15, given that y > 0, y< 3 and
+x > 0.
+A.
+(1, 1), (2, 1), (1, 3)
+B.
+(1, 1), (1, 2), (1, 3)
+C.
+(1, 1), (1, 2), (2, 1) D.
+(1, 1), (3, 1), (2, 2)
+13.
+Triangle SPT is the solution of the linear inequalities
+A.
+2y – x – 2 ≤ 0, y + 2x + 2  ≤ 0,≥0, x ≤ 0
+B.
+2y – x – 2 ≤ 0, y + 2x + 2 ≤ 0, ≤ 0
+C.
+2y – x – 2 ≤ 0, y + 2x + 2 ≤ 0, ≤ 0, x ≤ -1
+D.
+-2y < x ≤ 2 ≤ 0, y + 2x + 2 ≤ 0, ≤ 0
+14..
+The sixth term of an arithmetic progression is half of
+its twelfth term. The first term is equal to
+A.
+half of the common difference
+B.
+double of the common difference
+C.
+the common difference
+D.
+zero
+15.
+A man saves #100.00 in his first year of work and
+each year saves #20.00 more than in the preceding
+year. In how many years will he save #580.00
+A.
+20 years
+B.
+29 years
+C.
+58 years
+D.
+100 years
+16.
+An operation * is defined on the set of real numbers
+by a*b = a + b + 1. if the identity elements is  -1, find
+the inverse of the element 2 under.
+A.
+-4
+B.
+–2
+C.
+0
+D.
+4
+17
+The identity element with respect to the
+multiplication shown in the table above is
+A.
+k
+B.
+l
+C.
+m
+D.
+o
+18.
+Given that matrix k = (2,  1) the matrix
+        (3,  4)
+k2 + k + 1, where I is the 2 x 2 identity matrix, is
+A. (9,   8 )
+B.
+(10,   7)
+    (22, 23)
+(21, 24)
+C. (7,   2)
+D.
+(6,    3)
+    (12, 21)
+(13, 20)
+19.
+Evaluate
+-1    -1      -1
+ 3      1       1
+ 1      2       1
+S -1
+-2
+-2
+1 
+x 
+y
+y+ x+
+2
+2=0
+2
+2=0
+y-x-
+P T 
+A.
+ 4
+B.
+ –2
+C.
+–4
+D.
+–12
+20.
+If P =  3     -3      4    then  -2p is
+           5      0      6
+           1      2
+1
+A.   -6, 4, -8
+B  -6,  4,  -8
+        5,  0,  6
+   -10,  0,   6
+        7,  5, -1
+   -14,  5,  -1
+C.    -6,   -4,    2
+D   -6,  4,  -8
+      -10,  -2, -12
+     -10, 0, -12
+       -14, 10,   2
+     -14, 40,  2
+21.
+Find the number of sides of a regular polygon whose
+interior angle is twice the exterior angle
+A.
+2
+B.
+3
+C.
+6
+D.
+8
+22.
+In the figure above, PQR is a straight line segment,
+PQ = QT. Triangle PQT is an isosceles triangle, <
+SRQ is 750 and < QPT = 250. calculate the value of <
+RST.
+A.
+250
+B.
+450
+C.
+500
+D.
+550
+23.
+A cylindrical tank has a capacity of 3080m3. what is
+the depth of the tank if the diameter of its base is
+14m?
+A.
+20m
+B.
+22m
+C.
+23m
+D.
+25m
+24.
+A sector of a circle of radius 7.2 cm which subtends
+an angle 3000 at the centre is used to form a cone.
+What is the radius of the base of the cone?
+A.
+6cm
+B.
+7cm
+C.
+8cm
+D.
+9cm
+25.
+The chord ST of a circle is equal to the radius, r of
+the circle. Find the length of arc ST.
+A.
+πr/2
+B.
+πr/3
+C.
+πr/6
+D.
+πr/12
+26.
+A point P moves such that it is equidistant from the
+points Q and R. find QR when PR = 8cm and < PRQ
+= 300
+A.
+4cm
+B.
+4√3cm
+C.
+8cm
+D.
+8√3cm
+27.
+Find the locus of a point which moves such that its
+distance from the line y = 4 is a constant, k.
+A.
+y = 4 + k
+B.
+y = k – 4
+C.
+y = k ± 4
+D.
+y = 4 ± k
+28.
+A straight line makes an angle of 300 with the positive
+x-axis and cuts the y-axis at y = 5. find the equation
+of the straight line.
+k       l       m
+k       l       m     k
+l       m       k     l
+m       k       l     m
+x
+P 
+Q 
+T 
+S 
+R
+25
+O
+75
+O
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 55] ---
+A.
+√3y = x + 5y√3
+B.
+√3y = -x + 5√3
+C.
+y = x + 5
+D.
+y = 1/10x + 5
+29.
+P(-6, 1) and Q(6, 6) are the two ends of the diameter
+of a given circle. Calculate the radius
+A.
+3.5 units
+B.
+6.5 units
+C.
+7.0 units
+D.
+13.0 units
+30.
+Find the value of p if the line joining (p, 4) and (6, -
+2) is perpendicular to the line joining (2, p) and (-1,
+3)
+A.
+0
+B.
+3
+C.
+4
+D.
+6
+31.
+The bearing of P and Q from a common point N are
+0200 and 3000 respectively. If P and Q are also
+equidistant from N, find the bearing of P from Q.
+A.
+3200
+B.
+2800
+C.
+0700
+D.
+0400
+32.
+Find the value of q in the diagram above.
+A.
+300
+B.
+600
+C.
+1000
+D.
+1200
+33.
+Differentiate (2x + 5)2(x - 4) with respect to x
+A.
+(2x + 5)(6x - 11)
+B.
+(2x + 5)(2x – 13)
+C.
+4(2x + 5)(x - 4)
+D.
+4(2x + 5)(4x - 3)
+34.
+If y =  x sin x, find dy/dx when x = π/2
+A.
+π/2
+B.
+1
+C.
+–1
+D.
+π/-2
+35.
+If the gradient of the curve
+y = 2kx2 + x + 1 at x = 1 find k
+A.
+1
+B.
+2
+C.
+3
+D.
+4
+36.
+Find the rate of change of the volume V of a sphere
+with respect to its radius r when r = 1
+A.
+4π
+B.
+8π
+C.
+12π
+D.
+24π
+37.
+Find the dimensions of the rectangle of greatest area
+which has a fixed perimeter p.
+A.
+Square of sides p/4 B.
+Square of sides p/2
+C.
+Square of sides p
+D.
+Square of sides 2p
+38.
+Evaluate 2(2x - 3)2/3 dx
+A.
+2x – 3 + k
+B.
+2(2x - 3) + k
+C.
+6/5(2x - 3)5/3 + k
+D.
+3/5(2x - 3)5/3 + k
+39.
+Find the area bounded by the curves
+y = 4 – x2
+A.
+101/3 sq. units
+B.
+102/3 sq. units
+C.
+201/3 sq. units
+D.
+202/3 sq. units
+3t 
+0
+t 
+t
+40.
+The bar chart above shows different colours of cars
+passing a particular point of a certain street in two
+minutes. What fraction of the total number of cars is
+yellow?
+A.
+4/15
+B.
+1/5
+C.
+3/25
+D.
+2/25
+41
+The histogram above shows the distribution of
+passengers in taxis of a certain motor park. How many
+taxis have more than 4 passenger?
+A.
+14
+B.
+15
+C.
+16
+D.
+17
+Using the table below to answer questions 42 and
+43
+42.
+Find the square of the mode
+A.
+25
+B.
+49
+C.
+64
+D.
+121
+43.
+The mean score is
+A.
+11.0
+B.
+9.5
+C.
+8.7
+D.
+7.0
+44.
+Find the range of 1/6, 1/3, 3/2, 2/3, 8/9 and 4/3
+A.
+4/3
+B.
+7/6
+C.
+5/6
+D.
+¾
+45.
+Find the variance of 2, 6, 8, 6, 2 and 6
+A.
+√5
+B.
+√6
+C.
+5
+D.
+6
+46.
+No . of cars 8
+7
+6
+5
+4
+3
+2
+1
+Color of cars 
+Yellow
+White
+Red
+Green
+Blue
+Black
+No . of taxis
+8
+7
+6
+5
+4
+3
+2
+1
+0
+No . of passengers
+0.5
+2.5
+4.5
+6.5
+8.5
+10.5
+12.5
+Score
+Frequency
+4         7         8       11       13       8
+3         5        2         7         2         1
+50
+40
+30
+20
+10
+0
+Cumulative
+frequency
+Masses (Kg)
+5.5
+10.5
+15.5
+20.5
+25.5
+30.5
+P
+Q   Q   Q
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 56] ---
+The graph above shows the cumulative frequency
+of the distribution of masses of fertilizer for 48
+workers in one institution. Which of the following
+gives the interquartile range?
+A.
+Q3 – Q1
+B.
+Q3 – Q2
+C.
+Q2 – Q1
+D.
+½ (Q3 – Q1)
+47.
+Find the number of ways of selecting 8 subjects from
+12 subjects for an examination.
+A.
+498
+B.
+496
+C.
+495
+D.
+490
+48.
+If 6Pr = 6, find the value of 6Pr+1
+A.
+15
+B.
+30
+C.
+33
+D.
+35
+Colour
+No . of beads
+Blue  Black   Yellow  White  Brown
+Blue  Black   Yellow  White  Brown
+1          2           4           5           3
+49.
+The distribution of colors of beads in a bowl is given
+above. What is the probability that a bead selected at
+random will be blue or white?
+A.
+1/15
+B.
+1/3
+C.
+2/5
+D.
+7/15
+50.
+Teams P and Q are involved in a game of football.
+What is the probability that the game ends in a draw?
+A.
+¼
+B.
+1/3
+C.
+½
+D.
+2/3
+1.
+A trader bought goats for #4 000 each. He sold them
+for #180 000 at a loss of 25%. How many goats did
+he buy?
+A.
+36
+B.
+45
+C.
+50
+D.
+60
+2.
+Simplify (√0.7 + √70)2
+A.
+217.7
+B.
+168.7
+C.
+84.7
+D.
+70.7
+3.
+Evaluate
+          (0.21 x 0.072 x 0.0054)/ (0.006 x 1.68 x 0.063)
+correct to four significant figures.
+A.
+0.1286
+B.
+0.1285
+C.
+0.01286
+D.
+0.01285
+4.
+In a school, 220 students offer Biology or
+Mathematics or both. 125 offer Biology and 110
+Mathematics. How many offer Biology but not
+Mathematics?
+A.
+125
+B.
+110
+C.
+95
+D.
+80
+5.
+Simplify 52.4 – 5.7 – 3.45 – 1.75
+A.
+42.2
+B.
+42.1
+C.
+41.5
+D.
+41.4
+6.
+Without using tables, evaluate
+      (343)1/3 x (0.14)-1 x (25)1/2
+A.
+7
+B.
+8
+C.
+10
+D.
+12
+7.
+In the diagram below are two concentric circles of
+radii r and R respectively with centre O. if r = 2/5 R,
+express the area of the shaded portion in terms of π
+and R.
+A.
+9/25πR2
+B.
+5/9πR2
+C.
+21/25πR2
+D
+21/23πR2
+Mathematics 2002
+R  
+O  r
+8.
+Find the value of & if the line 2y - &x + 4 = 0 is
+perpendicular to the line y + 1/4x – 7 =
+0
+A.
+-8
+B.
+–4
+C.
+4
+D.
+8
+9.
+A bucket is 12cm in diameter at the top, 8cm in
+diameter at the bottom and 4cm deep. Calculates its
+volume.
+A.
+144πcm3
+B.
+304πcm3/3
+C.
+72πcm3
+D.
+128πcm3/
+10.
+In the diagram below, XZ is the diameter of the circle
+XYZW, with centre O and radius 15/2cm. If XY =
+12cm, find the area of the triangle XYZ.
+A.
+75cm2
+B.
+54cm2
+C.
+45cm2
+D.
+27cm2
+11.
+Find the coordinate of the midpoint of x and y
+intercepts of the line 2y = 4x - 8
+A.
+(-1, -2)
+B.
+(1, 2)
+C.
+(2, 0)
+D.
+(1, -2)
+12.
+A chord of a circle subtends an angle of 1200 at the
+centre of a circle of diameter 4Ö3cm. Calculate the
+area of the major sector.
+A.
+32πcm2
+B.
+16πcm2
+C.
+8πcm2
+D.
+4πcm2
+13.
+If tan q = 4/3, calculate sin2 θ - cos2 θ.
+A.
+7/25
+B.
+9/25
+C.
+16/25
+SD.
+24/25
+14.
+X  
+O 
+Z 
+Y
+P 
+R 
+Q 
+S 
+T
+x
+72
+O
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 57] ---
+In the diagram above, PST is a straight line, PQ =
+QS = RS. If < RSRT = 720, find x.
+A.
+720
+B.
+360
+C.
+240
+D.
+180
+15.
+The locus of a point P which is equidistant from two
+given points S and T is
+A.
+a perpendicular to ST
+B.
+a line parallel to ST
+C.
+the angle bisector of PS and ST
+D.
+the perpendicular bisector ST
+16.
+A solid hemisphere has radius 7cm. Find the total
+surface area.
+A.
+462cm2
+B.
+400cm2
+C.
+308cm2
+D.
+66cm2
+17.
+The angle PGR below is
+A.
+a scalene triangle
+B.
+an isosceles triangle
+C.
+an equilateral triangle
+D.
+an obtuse – angled triangle
+18.
+The sum of the interior angles of a polygon is 20
+right angles. How many sides does the polygon have?
+A.
+10
+B.
+12
+C.
+20
+D.
+40
+19.
+Find the equation of the set of points which are
+equidistant from the parallel lines x = 1 and x = 7
+A.
+y = 4
+B.
+y = 3
+C.
+x  = 3
+D.
+x = 4
+20.
+In the diagram below, a cylinder is surrounded by a
+hemispherical bowl. Calculate the volume of the
+solid.
+A.
+216πcm3
+B.
+198πcm3
+C.
+180πcm3
+D.
+162πcm3
+21.
+A hunter 1.6m tall, views a bird on top of a tree at an
+angle of 450. If the distance between the hunter and
+the tree is 10.4m, find the height of the tree.
+A.
+8.8m
+B.
+9.0m
+C.
+10.4m
+D.
+12.0m
+22.
+The mean of a set of six numbers is 60. if the mean of
+the first five is 50, Find the sixth number in the set.
+A.
+110
+B.
+105
+C.
+100
+D.
+95
+23.
+The range of the data k + 2, k – 3, k + 4, k – 2, k, k – 5,
+k + 3, k – 1 and k + 6 is.
+A.
+6
+B.
+8
+C.
+10
+D.
+11
+24.
+The distribution above shows the number of days a
+group of 260 students were absent from school in a
+particular term. How many students were absent for
+at least four days in the term?
+A.
+40
+B.
+120
+C.
+160
+D.
+210
+25.
+The venn diagram below shows the number of
+students offering Music and History in a class of 80
+students. If a student is picked at random from the
+class, what is the probability that he offers Music
+only?
+A.
+0.13
+B.
+0.25
+C.
+0.38
+D.
+0.50
+26.
+Find the mean of the data  7,-3,4,-2,5,-9,4,8,-6,12
+A.
+1
+B.
+2
+C.
+3
+D.
+4
+27.
+The probability of a student passing any examination
+is 2/3. if the student takes three examination, what is
+the probability that he will not pass any of them?
+A.
+1/27
+B.
+8/27
+C.
+4/9
+D.
+2/3
+28.
+How many three-digit numbers can be formed from
+32564 without digit being repeated?
+A.
+10
+B.
+20
+C.
+60
+D.
+120
+29.
+The acres for rice, principle, cassava, cocoa and palm
+oil, in a certain district are given respectively as 2,5,3,
+11 and 9. what is the angle of the sector for cassava
+in a pie chart?
+A.
+360
+B.
+600
+C.
+1080
+D.
+1800
+30.
+Calculate the mean deviation of the set of numbers
+7,3,14,9,7 and 8
+A.
+21/2
+B.
+21/3
+C.
+21/6
+D.
+11/6
+31.
+Find the maximum value of y in the equation
+y = 1 – 2x – 3x2
+A.
+5/3
+B.
+4/3
+C.
+5/4
+D.
+¾
+32.
+If the 9th term of an A. P is five times the 5th term,
+find the relationship between a and d.
+50
+O
+128
+O
+Q 
+P 
+R
+3cm
+23cm
+Music
+History U80
+20
+30
+40 -x
+-x
+x
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 58] ---
+A.
+a + 2d = 0
+B.
+a + 3d = 0
+C.
+3a + 5d = 0
+D.
+2a + d = 0
+33.
+The time taken to do a piece of work is inversely
+proportional to the number of men employed. If it
+takes 45men to do a piece of work in 5 days, how
+long will take 25 men?
+A.
+5 days
+B.
+9 days
+C.
+12 days
+D.
+15 days
+34.
+The binary operation is defined on the set of integers
+p and q by p*q = pq + p + q. find 2 (3*4)
+A.
+19
+B.
+38
+C.
+59
+D.
+67
+35.
+If –2 is the solution of the equation 2x + 1 – 3c = 2c
++ 3x – 7, find the value of c.
+A.
+1
+B.
+2
+C.
+3
+D.
+4
+36.
+If N =  3   5    -4
+           6   -3   -5
+                        -2    2    1,         find /N/
+A.
+91
+B.
+65
+C.
+23
+D.
+17
+37.
+Use the graph below to find the values of p and q if
+px + qy < 4
+A.
+p = 1, q = 2
+B.
+p = 2, q = 1
+C.
+p = -1, q = 2
+D.
+p = 2, q = -1
+38.
+The inverse of the function f(x) = 3x + 4 is
+A.
+1/3(x + 4)
+B.
+1/4(x + 3)
+C.
+1/5(x - 5)
+D.
+1/3(x - 4)
+39.
+Solve for x in the equation
+x3 – 5x2 - x + 5 = 0
+A.
+1, 1 or 5
+B.
+–1, 1 or –5
+C.
+1, 1 or –5
+D.
+1, -1 or 5
+40.
+If P = (2,  1)
+ (-3  0)    and I is a 2 x 2 unit matrix, evaluate
+p2 – 2p + 41
+A.  (2, 1)
+B. (1, 0)
+      (4, 1)
+     (0, 1)
+x
+y
+(-4,0)
+(0,2)
+C.  (-3, 0)
+D.  (9,  4)
+     (0  -3)
+     (12, 1)
+41.
+Find the range of values of x for which
+x + 2/4 – 2x – 3/3 <4
+A.
+x > -3
+B.
+x < 4
+C.
+x > -6
+D.
+x < 8
+42.
+If x varies directly as   n and x = 9 when n = 9, find x
+when n = 17/9
+A.
+27
+B.
+   17
+C.
+4
+D.
+    3
+43.
+The sum of infinity of the series
+1 + 1/3 + 1/9 + 1/27 + ……………… is
+A.
+3/2
+B.
+5/2
+C.
+10/3
+D.
+11/3
+44.
+Make r the subject of the formula
+x/r + a = a/r
+A.
+a/(x – a)
+B.
+(a/x + a
+C.
+a2/(x – a)
+D.
+a2/(x + a)
+45.
+If y = x2 – 1/x, find dy/dx
+A.
+2x + x2
+B.
+2x – x2
+C.
+2x – 1/x2
+D.
+2x – 1/x2
+46.
+Evaluate 
+ sin3xdx
+A.
+-2/3 cos 3x + c
+B.
+–1/3 cos 3x + c
+C.
+1/3 cos  3x + c
+D.
+2/3 cos 3x + c
+47.
+A circle with a radius 5cm has its radius increasing
+at the rate of 0.2cms-1. what will be the corresponding
+increase in the area?
+A.
+5p
+B.
+4p
+C.
+2p
+D.
+p
+48.
+If dy/dx = 2x – 3 and y = 3 when x = 0, find y in
+terms of x.
+A.
+x2 – 3x
+B.
+x2 – 3x + 3
+C.
+2x2 – 3x
+D.
+x2 – 3x – 3
+49.
+Find the derivative of y = sin2(5x) with respect to x
+A.
+2 sin 5x cos 5x
+B.
+5 sin 5x cos 5x
+C.
+10 sin 5x cos 5x D.
+15 sin 5x cos 5x
+50.
+The slope of the tangent to the curve y = 3x2 – 2x + 5
+at the point (1, 6) is
+A.
+1
+B.
+4
+C.
+5
+D.
+61.
+Mathematics 2003
+1.
+Simplify 1 – (21/3 x 11/4) + 3/5
+A.
+-231/60
+B.
+–27/15
+C.
+–119/60
+D.
+–11/15
+2.
+A cinema hall contains a certain number of people.
+If 221/2% are children, 471/2% are men and 84 are
+women, find the number of men in the hall.
+A.
+133
+B.
+113
+C.
+63
+D.
+84
+3.
+Simplify 2134 x 234
+A.
+132114
+B.
+103114
+C.
+103214
+D.
+122314
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 59] ---
+4.
+A woman buys 270 oranges for # 1800.00 and sells
+at 5 for #40.00. what is her profit?
+A.
+#630.00
+B.
+#360.00
+C.
+#1620.00
+D.
+#2160.00
+5.
+Simplify (√98 - √50)
+     √32
+A.
+½
+B.
+¼
+C.
+1
+D.
+3
+6.
+The sum of four numbers is 12145. what is the
+average expressed in base five?
+A.
+411
+B.
+401
+C.
+141
+D.
+114
+7.
+Evaluate log√24 + log1/216 – log432
+A.
+-2.5
+B.
+5.5
+C.
+–5.5
+D.
+2.5
+8.
+Given:
+U = {Even numbers between 0 and 30}
+P  = {Multiples of 6 between 0 and 30}
+Q = {Multiples of 4 between 0 and 30}
+Find (PUQ)c.
+A.
+{0, 2, 6, 22, 26}
+B.
+{2, 4, 14, 18, 26}
+C.
+{2, 10, 14, 22, 26} D.
+{0, 10, 14, 22, 26}
+9.
+In a class of 40 students, 32 offer Mathematics, 24
+offer Physics and 4 offer neither Mathematics nor
+Physics. How many offer both Mathematics and
+Physics?
+A.
+16
+B.
+4
+C.
+20
+D.
+8
+10.
+Find (1/0.06 ÷ 1/0.042)-1, correct to two decimal
+places
+A.
+4.42
+B.
+3.14
+C.
+1.53
+D.
+1.43
+11.
+If 92x – 1/27x + 1 = 1, find the value of x.
+A.
+2
+B.
+8
+C.
+5
+D.
+3
+12.
+Factorize completely
+4abx – 2axy – 12b2x +6bxy
+A.
+2x(3b - a)(2b - y)
+B.
+2x(a – 3b)(b - 2y)
+C.
+2x(2b - a)(3b - y)
+D.
+2x(a – 3b)(2b - y)
+13.
+The sum of the first n terms of an arithmetic
+progression is 252. if the first term is –16 and the
+last term is 72, find the number of terms in the series.
+A.
+7
+B.
+9
+C.
+6
+D.
+8
+14.
+The graphs of the function y = x2 + 4 and a straight
+line PQ are drawn to solve the equation  x2 – 3x + 2 =
+0. what is the equation of PQ?
+A.
+y = 3x + 2
+B.
+y = 3x – 4
+C.
+y = 3x + 4
+D.
+y = 3x – 2
+15.
+A matrix P has an inverse P-1 =   (1 -3)
+           (0, 1)  Find P.
+A.
+(1 3)
+B
+(1 -3)
+(0 1)
+(0 -1)
+C.
+(1 3)
+D.
+(-1 3)
+(0 -1)
+(0 -1)
+16.
+Find the values of x and y respectively if 3x – 5y + 5
+= 0 and 4x – 7y + 8 = 0
+A.
+-4, -5
+B.
+–5, -4
+C.
+5, 4
+D.
+4, 5
+17.
+If –(x,  2) = (3, 3x)
+     (4x, 1)    (4, –5) find the value of x
+A.
+-2
+B.
+–5
+C.
+2
+D.
+5
+18.
+Find the range of values of x satisfying the
+inequalities 5 + x ≤ 8 and 13 + ³ 7.
+A.
+-6 ≤ x ≤ 3
+B.
+-6 ≤ x ≤ -3
+C.
+3 ≤ x ≤ 6
+D.
+–3 ≤ x ≤ 3
+19.
+x varies directly as the product of U and V and
+inversely as their sum. If x = 3 when U = 3 and V =
+1, what is the value of x if U  = 3 and V = 3?
+A.
+4
+B.
+9
+C.
+6
+D.
+3
+20.
+Triangle OPQ above is the solution of the
+inequalities.
+A.
+x – 1 ≤ 0, y + x  ≤ 0, y, - x ≤ 0
+B.
+x + 1 ≥  0, y + x ≤ 0, y, - x ≥ 0
+C.
+y + x ≤ 0, y – x ≥ 0, x – 1 ≥  0
+D.
+x –1 ≤ 0, y – x  ≥ 0, y + x ≥ 0
+21.
+Three consecutive terms of a geometric progression
+are given as n – 2, n and n + 3. find the common
+ratio.
+A.
+2/3
+B.
+3/2
+C.
+½
+D.
+¼
+22.
+The length a person can jump is inversely
+proportional to his weigth. If a 20kg person can jump
+1.5 m, find the constant of proportionality.
+A.
+30
+B.
+60
+C.
+15
+D.
+20
+23.
+P 
+y  
+x + 1 = 0
+y - x = 0
+y + x = 0
+x
+Q 
+O 
+M 
+P 
+N
+Q 
+O 
+40
+O
+42
+O
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 60] ---
+In the diagram above, O is the centre of the circle,
+POM is a diameter and ∠ MNQ = 420. calculate
+∠QMP.
+A.
+1380
+B.
+1320
+C.
+420
+D.
+480
+24.
+The locus of a point P which moves on one side only
+of a straight line XY so that ∠ XPY = 900 is.
+A.
+the perpendicular bisector of XY
+B.
+a circle
+C.
+a semicircle
+D.
+an arc of a circle through X,Y
+25.
+In the diagram above, PQ is parallel to RS. What is
+the value of α + β + y?
+A.
+1800
+B.
+900
+C.
+2000
+D.
+3600
+26.
+Whicch of the following is the graph of sinθ for
+-π  ≤ ο ≤ 3π
+ 2
+ 2
+A.
+B.
+C.
+D.
+27.
+In the diagram above, PQR is a straight line and PS
+is a tangent to the circle QRS with /PS/ = ∠/SR/ and
+SPR = 400. find ∠PSQ.
+A.
+200
+B.
+100
+C.
+400
+D.
+300
+28.
+If π/2 ≤ 2π, find the maximum value of f(θ) = 4/6 + 2
+cos θ
+A.
+1
+B.
+½
+C.
+4
+D.
+2/3
+P 
+R 
+Q 
+S
+0 
+2
+2
+2
+3
+1
+1
+0 
+2
+2
+2
+3
+1
+1
+0 
+2
+2
+2
+3
+1
+1
+0 
+2
+2
+2
+3
+1
+1
+Q
+R 
+S 
+P
+O 
+40
+O
+29.
+An aeroplane flies due north from airports P to Q
+and then flies due east to R. if Q is equidistant from
+P and R, find the bearing of P and R.
+A.
+2700
+B.
+0900
+C.
+1350
+D.
+2250
+30.
+Find the value of p, if the line of which passes through
+(-1, -p) and (-2, 2) is parallel to the line 2y + 8x – 17
+= 0.
+A.
+–2/7
+B.
+7/6
+C.
+–6/7
+D.
+6/7
+31.
+Find the equation of the locus of a point P(x, y) which
+is equidistant form Q(0,0) and R(2, 1).
+A.
+2x + y = 5
+B.
+2x + 2y = 5
+C.
+4x + 2y = 5
+D.
+4x – 2y = 5
+32.
+An arc of a circle subtends an angle of 300 on the
+circumference of a circle of a radius 21cm. Find the
+length of the arc
+A.
+66cm
+B.
+44cm
+C.
+22cm
+D.
+11cm
+33.
+A trapezium has two parallel sides of length 5cm and
+9cm. If the area is 121cm2, find the distance between
+the parallel sides.
+A.
+7cm
+B.
+3cm
+C.
+4cm
+D.
+6cm
+34.
+XYZ is a circle centre O and radius 7cm. Find the
+area of the shaded region.
+A.
+14cm2
+B.
+38cm2
+C.
+77cm2
+D.
+84cm2
+35.
+A triangle has vertices P(-1, 6), Q(-3, -4) and R(1, -
+4). Find the midpoints of PQ and QR respectively.
+A.
+(-1, 0) and (-1, -1)
+B.
+(-2, 1) and (-1, -4)
+C.
+(0, -1) and (-1, -4)
+D.
+(-2, 1) and (0, 1)
+36.
+Evaluate 
+3
+2(x2 – 2x)dx
+A.
+4/3
+B.
+1/3
+C.
+2
+D.
+4
+37.
+If y = 3 sin (-4x), dy/ dx is
+A.
+-12 cos (-4x)
+B.
+12 sin (-4x)
+C.
+12x cos (4x)
+D.
+–12x cos (-4x)
+38.
+Determine the maximum value of
+y = 3x2 + 5x – 3 at
+A.
+6
+B.
+0
+C.
+2.
+D.
+4
+39.
+Find the slope of the curve
+y = 2x2 + 5x – 3 at (1, 4).
+7 cm
+Z 
+Y
+X
+45
+O
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 61] ---
+A.
+7
+B.
+9
+C.
+4
+D.
+6
+40.
+The histogram above shows the ages of the victims
+of a pollution. How many people were involved in
+the pollution?
+A.
+18
+B.
+21
+C.
+15
+D.
+20
+41.
+Find the mean of the distribution above.
+A.
+4
+B.
+3
+C.
+1
+D.
+2
+42.
+The mean of the numbers 3, 6, 4, x and 7 is 5. find
+the standard deviation
+A.
+2
+B.
+3
+C.
+√3
+D.
+√2
+43.
+A bag contains 5 blsck ball and 3 red balls. Two  balls
+are picked at random without replacement. What is
+the probability that a black and a red balls are picked?
+A.
+5/14
+B.
+13/28
+C.
+3/14
+D.
+15/28
+44.
+On a pie chart, there are four sectors of which three
+angles are 450, 900 and 1350. if the smallest sector
+represents #28.00, how much is the largest sector?
+Value
+Frequency
+0         1        2          3           4
+1         2        2          1           9
+Number
+Frequency
+1        2      3        4         5        6    
+12      20           21         -1    28  
+x
+x
+A.
+#48.00
+B.
+#96.00
+C.
+#42.00
+D.
+#84.00
+45.
+The range of 4, 3, 11, 9, 6, 15, 19, 23, 27, 24, 21 and
+16 is
+A.
+23
+B.
+24
+C.
+21
+D.
+16
+46.
+The result of tossing a fair die 120 times is
+summarized above. Find the value of x.
+A.
+21
+B.
+19
+C.
+22
+D.
+20
+47.
+If nP3 – 6 (nC4) = 0, find the value of n
+A.
+6
+B.
+5
+C.
+8
+D.
+7
+48.
+Two dice are thrown. What is the probability that the
+sum of the numbers is divisible by 3.
+A.
+½
+B.
+1/3
+C.
+¼
+D.
+2/3
+49.
+Find the number of committees of three that can be
+formed consisting of two men and one woman from
+four men and three women.
+A.
+24
+B.
+18
+C.
+3
+D.
+6
+50.
+By how much is the mean of 30, 56, 31, 55, 43 and
+44 less than the median.
+A.
+0.50
+B.
+0.75
+C.
+0.17
+D.
+0.33
+Mathematics 2004
+C.
+(0, 0) and (1, 1)
+D.
+(√2, √2) only
+1
+4
+2
+4
+3
+_
+1 3
+x
+4
+y
+3
+4
+4
+Find x and y respectively in the subtraction above c
+arried out in base 5
+A.
+2, 4
+B.
+3, 2
+C.
+4, 2
+D.
+4, 3
+2.
+Find p, if 4516 – p7 = 3056
+A.
+6117
+B.
+1427
+C.
+1167
+D.
+627
+3.
+1/10 x 2/3 + 1/4
+________________
+  1/2  ÷  3/5 - ¼
+A
+2/25
+B.
+19/60
+C.
+7/12
+D.
+19/35
+4.
+A farmer planted 5000 grains of maize and harvested
+5000 cobs, each bearing 500 grains. What is the ratio
+of the number of grains sowed to the number
+harvested?
+A.
+1:500
+B.
+1:5000
+C.
+1:25000
+D.
+1:250000
+5.
+Three teachers shared a packet of chalk. The first
+teacher got 2/5 of the chalk and the second teacher
+received 2/15 of the remainder. What fraction did the
+third teacher receive?
+A.
+11/25
+B.
+12/25
+C.
+13/25
+D.
+8/15
+6.
+Given that 3√42x, find the value of x
+A.
+2
+B.
+3
+C.
+4
+D.
+6
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 62] ---
+7.
+Simplify 1/√3 + 2 in the form a + b√3
+A.
+-2 -   3
+B.
+–2+   3
+C.
+2-    3
+D.
+2+   3
+8.
+If 6logx2 – 3logx3 = 3log50.2, find x.
+A.
+3/8
+B.
+¾
+C.
+4/3
+D.
+8/3
+9.
+The shaded region in the venn diagram above
+A.        Pc ∩(QR)B.        P∩Q
+C.        Pc U(Q∩R)
+D.        Pc∩ (QUR)
+10.
+In a class of 40 students, each student offers at least
+one of Physics and Chemistry. If the number of
+students that offer Physics is three times the number
+that offer both subjects and the number that offers
+Chemistry is twice the number that offer Physics, find
+the number of students that offer Physics only.
+A.
+25
+B.
+15
+C.
+10
+D.
+5
+11.
+Find the values of x where the curve
+y = x3 + 2x2 – 5x – 6 crosses the x-axis.
+A.
+-2, -1 and 3
+B.
+-2, 1 and –3
+C.
+2, -1 and –3
+D.
+2, 1 and 3
+12.
+Find the remainder when
+3x3 + 5x2 – 11x + is divided by x + 3
+A.
+4
+B.
+1
+C.
+–1
+D.
+–4
+13.
+Factorize completely ac – 2bc – a2 + 4b2
+A.
+(a – 2b)(c  + a – 2b)
+B.
+(a – 2b)(c  - a – 2b)
+C.
+(a – 2b)(c  + a + 2b)
+D.
+(a – 2b)(c  - a + 2b)
+14.
+y is inversely proportional to x and y = 4 when x = 1/
+2 . find x when y = 10
+A.
+1/10
+B.
+1/5
+C.
+2
+D.
+10
+15.
+The length L of a simple pendulum varies directly as
+the square of its period T. if a pendulum with period
+4 secs is 64cm long, find the length of a pendulum
+whose period is 9 sec.
+A.
+36cm
+B.
+96ccm
+C.
+144cm
+D.
+324cm
+16.
+The shaded area in the diagram above is represented
+by
+A.
+{(x, y) : y + 3x < 6}
+B.
+{(x, y) : y + 3x < - 6}
+C.
+{(x, y) : y - 3x < 6}
+D.
+{(x, y) : y - 3x < -  6}
+17.
+What are the integral values of x which satisfy the
+inequality –1 < 3 – 2x ≤ 5?
+A.
+-2, 1, 0, -1
+B.
+-1, 0, 1, 2
+C.
+-1, 0, 1,
+D.
+0, 1, 2
+18.
+The nth terms of two sequences are Qn – 3.2n-2 and
+Um = 3.22m – 3. find the product of Q2 and U2
+A.
+3
+B.
+6
+C.
+12
+D.
+18
+19.
+Given that the first and fourth terms of a G.P are 6
+and 162 respectively, find the sum of the first three
+terms of the progression.
+A.
+8
+B.
+27
+C.
+48
+D.
+78
+20.
+Find the sum to infinity of the series ½, 1/6, 1/
+18,……………
+A.
+1
+B.
+¾
+C.
+2/3
+D.
+1/3+
+21.
+If the operation * on the set of integers is defined by
+p*q = “pq, find the value of 4*(8*32).
+A.
+16
+B.
+8
+C.
+4
+D.
+3
+22.
+The inverse of the matrix      (2   1)
+      (1    1)
+is
+A.
+(1  1)
+B.
+(1  -1)
+(-1 2)
+(1   2)
+C.
+(1  1)
+D.
+(1  -1)
+(1  2)
+(-1 2)
+23.
+If P = 1   0   -1
+         3   4    5
+                       -1    0  1  then /P/ is
+A.
+-8
+B.
+0
+C.
+4
+D.
+8
+24.
+The sum of the interior angles of a  pentagon is 6x +
+6y. find y in terms of x
+Q 
+P 
+R
+y
+x
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 63] ---
+A.
+y = 60 – xB.
+y = 90 – x
+C.
+y = 120 – x
+D.
+y = 150 – x
+25.
+PQRSTV is a regular polygon of side 7cm inscribed in
+a circle. Find the circumference of the circle PQRSTV.
+A.
+22cm
+B.
+42cm
+C.
+44cm
+D.
+56cm
+26.
+P, R and S lie on a circle centre O as shown above
+while Q lies outside the circle. Find ÐPSO.
+A.
+350
+B.
+400
+C.
+450
+D.
+550
+27.
+In the diagram above, PQ =4cm and TS = 6cm, if the
+area of parallelogram PQTU is 32cm2, find the area
+of the trapezium PQRU
+A.
+24cm2
+B.
+48cm2
+C.
+60cm2
+D.
+72cm2
+28.
+An arc of a circle of length 22cm subtends an angle
+of 3x0 at the centre of the circle. Find the value of x
+if the diameter of the circle is 14cm.
+A.
+300
+B.
+600
+C.
+1200
+D.
+1800
+29.
+Determine the locus of a point inside a square PQRS
+which is equidistant from PQ and QR
+A.
+The diagonal PR.
+B.
+The diagonal QS
+C.
+Side SR
+D.
+The perpendicular bisector of PQ.
+30.
+The locus of a point which is 5cm from the line LM
+is a
+A.
+pair of lines on opposite sides of LM and
+parallel to it, each distances 5cm form LM
+B.
+line parallel to LM and 5cm from LM
+C.
+pair of parallel lines on one side of LM and
+parallel to  LM
+D.        line distance 10cm from LM and
+parallel to LM.
+31.
+Find the value of α2 + β2 if a + b = and the distance
+between the points (1, α) ands (β, 1) is 3 units.
+A.
+3
+B.
+5
+C.
+11
+D.
+14
+32.
+Find the midpoint of the line joining P(-3, 5) and Q
+(5, -3).
+35
+O
+20
+O
+4 cm
+A.
+(4, -4)
+B.
+      (4, 4)
+C.
+      (2, 2)
+D.
+       (1,1)
+33.
+Find the value of x in the figure above.
+A.
+20√6
+B.
+15√6
+C.
+5√6
+D.
+3√6
+34.
+The shadow of a pole 5√3 m high is 5m. find the
+angle of elevation of the sun.
+A.
+300
+B.
+450
+C.
+600
+D.
+750
+35.
+Find the derivative of (2 + 3x)(1 - x) with respect to
+x
+A.
+6x – 1
+B.
+1 – 6x
+C.
+6
+D.
+–3
+36.
+Find the derivative  of the function
+y = 2x2(2x - 1) at the point x= -1
+A.
+-6
+B.
+–4
+C.
+16
+D.
+18
+37.
+If y – 3 cos (x/3), find dy/dx when x = 3π/2
+A.
+2
+B.
+1
+C.
+–1
+D.
+–3
+38.
+What is the rate of change of the volume v of
+hemisphere with respect to its radius r when r = 2?
+A.
+2π
+B.
+4π
+C.
+8π
+D.
+16π
+39.
+Evaluate 
+3
+1 (x2 - 1) dx
+A.
+62/3
+B.
+2/3
+C.
+-2/3
+D.
+-62/3
+40.
+The pie chart above shows the distribution of the
+crops harvested from a farmland in a year. If 3000
+tonnes of millet is harvested, what amount of beans
+is harvested?
+A.
+9000 tonnes
+B.
+6000 tonnes
+C.
+1500 tonnes
+D.
+1200 tonnes
+41.
+I.   Rectangular bars of equal width
+II.  The height of each rectangular bar
+        is proportional to the frequency of
+      the3 corresponding class interval.
+ III. Rectangular bars have common
+45
+O
+60
+O
+15 cm
+X
+60
+O
+150
+O
+M
+a
+i
+z
+e
+M
+i
+l
+l
+e
+t
+ 
+B
+e
+a
+n
+s
+O
+t
+h
+e
+r
+s
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
+
+--- [PAGE 64] ---
+      sides with no gaps in between.
+A histogram is described by
+A.
+I and II
+B.
+I and III
+C.
+I,II and III
+D.
+II and III®
+42.
+The graph above shows the cumulative frequency
+curve of the distribution of marks in a class test. What
+percentage of the students scored more than 20
+marks?
+A.
+68%
+B.
+28%
+C.
+17%
+D.
+8%
+43.
+The mean age of a group of students is 15 years. When
+the age of a teacher, 45 years old, is added to the
+ages of the students, the mean of their ages becomes
+18 years. Find the number of students in the group.
+A.
+7
+B.
+9
+C.
+15
+D.
+42
+44.
+The weights of 10 pupils in a class are 15kg, 16kg,
+17kg, 18kg, 16kg, 17kg, 17kg, 17kg, 18kg and 16kg.
+What is the range of this distribution?
+A.
+1
+B.
+2
+C.
+3
+D.
+4
+45.
+Find the mean deviation of 1, 2, 3 and 4
+A.
+1.0
+B.
+1.5
+C.
+2.0
+D.
+2.5
+46.
+In how many ways can 2 students be selected from a
+group of 5 students in a debating competition?
+A.
+10 ways.
+B.
+15 ways.
+C.
+20 ways
+D.
+25 ways.
+47.
+A committee of six is to be formed by a state governor
+from nine state commissioners and three members
+of the state house of assembly. In how many ways
+can the members of the committee be chosen so as to
+include one member of the house of assembly?
+A.
+924 ways
+B.
+840 ways
+C.
+462 ways
+D.
+378 ways
+48.
+Some white balls were put in a basket containing
+twelve red balls and sixteen black balls. If the
+probability of picking a white ball from the basket is
+3/7, how many white balls were introduced?
+A.
+32
+B.
+28
+C.
+21
+D.
+12
+49.
+An unbiased die is rolled 100 times and the outcome
+is tabulated as follows:
+               What is the probability of obtaining 5?
+A.
+1/6
+B.
+1/5
+C.
+¼
+D.
+½
+50.
+A container has 30 gold medals, 22 silver medals and
+18 bronze medals. If one medal is selected at random
+from the container, what is the probability that it is
+not a gold medal?
+A.
+4/7
+B.
+3/7
+C.
+11/35
+D.
+9/35
+Download MySchoolGist JAMB CBT Software from https://www.myschoolgist.com/cbt/
+www.myschoolgist.com
+
