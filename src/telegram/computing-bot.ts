@@ -431,7 +431,7 @@ computingBot.catch((error) => {
 export async function startComputingBot(): Promise<void> {
   console.log("Starting UI Computing Freshers Bot...");
   await computingBot.start({
-    onStart: (botInfo) => {
+    onStart: (botInfo: any) => {
       console.log(`@${botInfo.username} is running`);
     },
   });

@@ -24,3 +24,4 @@ EXPOSE 3000
 
 # Start compiled server
 CMD ["node", "dist/server.js"]
+
