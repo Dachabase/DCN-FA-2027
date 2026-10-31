@@ -633,3 +633,19 @@ html.be-landing-on footer.r-footer .r-foot-grid>nav{display:none}
 html.be-landing-on footer.r-footer .r-foot-grid{grid-template-columns:1fr}
 html.be-landing-on footer.r-footer{padding-bottom:28px!important}
 html.be-landing-on .r-top{display:none}
+
+
+/* =================== Round 13 =================== */
+/* 1. Phone profile menu: the header row used to clip its own dropdown (inline overflow:hidden at <=480px),
+      so the menu opened off-screen and taps fell through to the page behind. Never clip it. */
+html body header,html body header .header-container,html body .header-right-group,html body .auth-header-wrapper,html body #header-user-profile{overflow:visible!important}
+html body .user-dropdown-menu{z-index:400;max-width:calc(100vw - 24px)}
+
+/* 2. Theme button: always pinned beside the profile at the far right, at every width.
+      One rule does it: the theme button takes the free space on its left. No other element uses auto margins. */
+html body .header-container{justify-content:flex-start!important}
+html body .nav-links{margin-right:0!important}
+html body .r-theme-btn{margin-left:auto!important;margin-right:0!important;flex:none}
+html body .auth-header-wrapper{flex:none;margin-left:auto}
+html body .r-theme-btn~.auth-header-wrapper{margin-left:0!important}
+@media (max-width:1024px){html body .brand{margin-right:0!important}}
